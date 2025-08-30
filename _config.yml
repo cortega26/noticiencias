@@ -1,0 +1,96 @@
+title: "Noticiencias"
+description: "Noticias y artículos de Ciencia, Tecnología, Salud y Medio Ambiente"
+url: "https://noticiencias.com"
+baseurl: ""
+locale: "es-CL"
+timezone: "America/Santiago"
+
+# Tema
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default"
+
+# Permalinks
+permalink: /:categories/:title/
+
+# Paginación
+paginate: 6
+paginate_path: /page:num/
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# Archivos/leídas
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - vendor
+  - node_modules
+  - mm-temp
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - CHANGELOG
+  - README
+  - /docs
+  - /test
+keep_files:
+  - .git
+  - .svn
+
+# Markdown/Syntax
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# SEO y feed
+atom_feed:
+  path: feed.xml
+
+# Defaults
+defaults:
+  # Entradas de blog
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+  # Páginas
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: false
+
+# Archivos de archivo (archives)
+category_archive:
+  type: liquid
+  path: /categorias/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Mostrar posts futuros (opcional)
+future: false

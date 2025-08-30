@@ -1,0 +1,41 @@
+#— Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-assets-cache/
+.jekyll-metadata/
+
+#— Sass cache
+.sass-cache/
+
+#— Bundler artifacts
+.bundle/
+vendor/bundle/
+vendor/cache/
+
+#— Node dependencies (if using npm/yarn)
+node_modules/
+
+#— Temporary theme clone
+mm-temp/
+
+#— Asset pipeline temp files
+.asset-cache/
+
+#— Logs and temp files
+*.log
+*.tmp
+
+#— macOS Finder files
+.DS_Store
+
+#— Windows thumbnail cache
+Thumbs.db
+
+#— Editor directories and swap files
+.vscode/
+.idea/
+*.swp
+*~
+
+#— Optional: ignore local environment files
+.env

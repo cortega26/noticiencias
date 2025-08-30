@@ -1,0 +1,5 @@
+---
+layout: home
+paginate: true
+title: "Inicio"
+---
