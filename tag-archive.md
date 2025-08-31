@@ -1,6 +1,6 @@
 ---
 layout: tags
 title: "Temas"
-permalink: /temas/
+permalink: /tema/
 ---
 
