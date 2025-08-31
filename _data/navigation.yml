@@ -1,13 +1,13 @@
-  main:
+main:
   - title: "Inicio"
     url: /
   - title: "Ciencia"
     url: /categoria/ciencia/
-  - title: "Tecnología"
-    url: /categoria/tecnologia/
   - title: "Salud"
     url: /categoria/salud/
-  - title: "Medio Ambiente"
-    url: /categoria/medio-ambiente/
+  - title: "Tecnología"
+    url: /categoria/tecnologia/
+  - title: "Buscar"
+    url: /buscar/
   - title: "Acerca de"
     url: /about/

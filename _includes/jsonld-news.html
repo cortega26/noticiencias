@@ -15,10 +15,17 @@
     "name": "{{ site.title | escape }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ site.logo | absolute_url }}"
+      "url": "{{ site.logo | absolute_url }}",
+      "width": 512,
+      "height": 512
     }
   },
-  "image": "{{ page.image.path | default: site.logo | absolute_url }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ page.image.path | default: site.logo | absolute_url }}",
+    "width": 800,
+    "height": 450
+  },
   "mainEntityOfPage": "{{ page.url | absolute_url }}"
 }
 </script>

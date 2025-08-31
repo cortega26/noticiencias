@@ -4,6 +4,7 @@ url: "https://noticiencias.com"
 baseurl: ""  # keep empty on apex domain
 timezone: America/Santiago
 locale: es-CL
+lang: es-CL
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -17,8 +18,6 @@ minimal_mistakes_skin: "sunrise"                    # try: aqua, contrast, dark.
 
 # Navigation + UI
 permalink: /:categories/:year/:month/:day/:title/
-paginate: 12
-paginate_path: "/page:num/"
 breadcrumbs: true
 
 # Build plugins (GH Pages safe)
