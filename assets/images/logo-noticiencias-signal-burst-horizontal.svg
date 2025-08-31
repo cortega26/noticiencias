@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="75" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
     <!-- Signal Burst Logo - Horizontal -->
     <g transform="translate(0,10)">
         <path d="M8 12 L8 68 L18 68 L18 35 L42 59 L52 59 L52 12 L42 12 L42 47 L18 23 L8 12 Z" fill="#0B1B2B"/>
