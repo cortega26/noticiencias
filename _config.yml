@@ -5,6 +5,7 @@ baseurl: ""  # keep empty on apex domain
 timezone: America/Santiago
 locale: es-CL
 lang: es-CL
+date_format: "%-d de %B de %Y"
 exclude:
   - Gemfile
   - Gemfile.lock
