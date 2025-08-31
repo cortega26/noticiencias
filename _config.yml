@@ -18,7 +18,14 @@ minimal_mistakes_skin: "sunrise"                    # try: aqua, contrast, dark.
 
 # Navigation + UI
 permalink: /:categories/:year/:month/:day/:title/
-breadcrumbs: true
+breadcrumbs: false
+
+category_archive:
+  type: jekyll-archives
+  path: /
+tag_archive:
+  type: jekyll-archives
+  path: /tema/
 paginate: 10
 paginate_path: "/page:num/"
 
@@ -47,7 +54,7 @@ jekyll-archives:
     category: archive
     tag: archive
   permalinks:
-    category: /categoria/:name/
+    category: /:name/
     tag: /tema/:name/
 
 # Social / SEO
