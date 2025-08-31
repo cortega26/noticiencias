@@ -39,3 +39,4 @@ Thumbs.db
 
 #— Optional: ignore local environment files
 .env
+logo/
