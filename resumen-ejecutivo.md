@@ -7,6 +7,7 @@
 **Ventaja competitiva:** Curaduría de papers + traducción especializada + explicaciones contextualizadas para audiencia hispana; transparencia y anti‑sensacionalismo.
 
 **Principales líneas de trabajo (primeros 90 días):**
+
 1. Configuración técnica: repo en GitHub Pages, plantilla Jekyll/Hugo, dominio y Cloudflare.  
 2. Producción de contenido fundacional: 8–12 artículos (noticias breves, explicadores, "paper spotlight").  
 3. SEO y discoverability: sitemap, Search Console, metadatos y RSS.  
@@ -16,6 +17,7 @@
 **Métricas objetivo 3 meses:** 5k visitas mensuales y 300 suscriptores; 6 meses: 15k visitas y 800 suscriptores (rangos orientativos).
 
 **Próximos 10 pasos (priorizados):**
+
 1. Crear repo y plantilla en GitHub Pages.  
 2. Configurar Cloudflare y HTTPS.  
 3. Preparar identidad visual mínima (logo y paleta).  
@@ -26,4 +28,3 @@
 8. Publicar anuncios en redes y grupos científicos.  
 9. Habilitar analytics (GA4 o Plausible).  
 10. Medir y ajustar las primeras dos semanas post-lanzamiento.
-
