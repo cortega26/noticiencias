@@ -1,6 +1,6 @@
 ---
 title: "Bienvenida a Noticiencias"
-date: 2024-08-30 14:04:19 -0400
+date: 2025-08-30 14:04:19 -0400
 categories:
   - ciencia
 tags:
