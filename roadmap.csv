@@ -1,0 +1,11 @@
+id,title,description,assignee,priority,status,est_start,est_end,effort_days,deliverable_link
+1,Configurar GitHub Pages,"Crear repo, plantilla Jekyll/Hugo y conectar dominio con Cloudflare",Carlos,High,Todo,2025-09-01,2025-09-03,2,
+2,Identidad visual mínima,"Logo, paleta, favicon, assets iniciales",Carlos,Medium,Todo,2025-09-02,2025-09-04,2,
+3,Plantilla de artículo y checklist editorial,"Crear frontmatter y checklist de verificación (fuente, DOI, permisos)",Carlos,High,Todo,2025-09-02,2025-09-05,3,
+4,Publicar 5 artículos fundacionales,Escribir y subir 5 artículos (mix noticias y explicadores),Carlos,High,Todo,2025-09-04,2025-09-14,10,
+5,Configurar newsletter,Crear cuenta en Substack/Beehiiv y plantilla de envío semanal,Carlos,High,Todo,2025-09-05,2025-09-07,2,
+6,SEO básico y Search Console,"Generar sitemap, metatags, y registrar en Search Console",Carlos,High,Todo,2025-09-06,2025-09-08,2,
+7,Optimización móvil y performance,"Lighthouse audit, corregir Core Web Vitals esenciales",Carlos,Medium,Todo,2025-09-08,2025-09-10,2,
+8,Pre-lanzamiento y outreach,"Crear posts de pre-lanzamiento, contactar 10 divulgadores/instituciones",Carlos,Medium,Todo,2025-09-10,2025-09-14,4,
+9,Lanzamiento oficial,Enviar primer newsletter y anunciar en redes,Carlos,High,Todo,2025-09-15,2025-09-15,1,
+10,Monitoreo y ajustes post-lanzamiento,Analítica y priorización de mejoras (2 semanas),Carlos,Medium,Todo,2025-09-16,2025-09-30,14,
