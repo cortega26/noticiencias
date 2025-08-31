@@ -59,7 +59,7 @@ jekyll-archives:
     tag: /tema/:name/
 
 # Social / SEO
-logo: /assets/images/logo.png
+logo: /assets/images/logo-noticiencias-signal-burst-horizontal.svg
 author:
   name: "Noticiencias"
 
