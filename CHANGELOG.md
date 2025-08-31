@@ -1,3 +1,6 @@
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+
 # Changelog
 
 ## Unreleased
@@ -1039,7 +1042,7 @@
 
 - Add workaround to allow theme gem's `/assets/js/main.min.js` file to be overridden by a local version. Simply add the following YAML Front Matter to the file:
 
-  ```
+  ```text
   ---
   layout:
   ---

@@ -1,0 +1,9 @@
+default:
+  name: "Noticiencias"
+  bio: "Noticias de ciencia, salud y tecnología."
+  avatar: "/assets/images/logo.png"
+
+cortega:
+  name: "Carlos Ortega"
+  bio: "Editor de Noticiencias."
+  avatar: "/assets/images/logo.png"

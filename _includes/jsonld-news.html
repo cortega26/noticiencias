@@ -1,0 +1,25 @@
+{% if page.collection == "posts" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ page.title | escape }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ page.author | default: site.author.name | escape }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.logo | absolute_url }}"
+    }
+  },
+  "image": "{{ page.image.path | default: site.logo | absolute_url }}",
+  "mainEntityOfPage": "{{ page.url | absolute_url }}"
+}
+</script>
+{% endif %}

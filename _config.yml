@@ -4,6 +4,12 @@ url: "https://noticiencias.com"
 baseurl: ""  # keep empty on apex domain
 timezone: America/Santiago
 locale: es-CL
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - CHANGELOG.md
 
 # Minimal Mistakes
 remote_theme: "mmistakes/minimal-mistakes@4.27.3"   # pin a release if you want
@@ -21,6 +27,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-archives
 
 # Search (Lunr is the theme’s default and GH Pages–friendly)
 search: true
@@ -30,19 +37,16 @@ lunr:
   search_within_pages: true
 
 # Archives via jekyll-archives (requires building with Actions; see §8)
-# If you plan to use Actions, enable these lines and add the plugin to Gemfile.
-# plugins:
-#   - jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive
-#     tag: archive
-#   permalinks:
-#     category: /:name/
-#     tag: /tema/:name/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive
+    tag: archive
+  permalinks:
+    category: /categoria/:name/
+    tag: /tema/:name/
 
 # Social / SEO
 logo: /assets/images/logo.png
