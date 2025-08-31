@@ -19,10 +19,13 @@ minimal_mistakes_skin: "sunrise"                    # try: aqua, contrast, dark.
 # Navigation + UI
 permalink: /:categories/:year/:month/:day/:title/
 breadcrumbs: true
+paginate: 10
+paginate_path: "/page:num/"
 
 # Build plugins (GH Pages safe)
 plugins:
   - jekyll-include-cache
+  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
