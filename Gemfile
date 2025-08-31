@@ -16,4 +16,6 @@ gem "faraday-retry"
 
 gem "wdm", "~> 0.1", platforms: [:mingw, :x64_mingw, :mswin]
 
+gem "html-proofer"
+
 gem "http_parser.rb", "~> 0.6.0", platforms: [:jruby]
