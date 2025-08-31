@@ -1,6 +1,4 @@
 main:
-  - title: "Inicio"
-    url: /
   - title: "Ciencia"
     url: /ciencia/
   - title: "Salud"
