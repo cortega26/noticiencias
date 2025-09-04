@@ -79,7 +79,7 @@ defaults:
   - scope:
       path: ""
       type: "posts"
-  - values:
+    values:
       layout: single
       author_profile: true
       classes: wide
@@ -94,7 +94,7 @@ defaults:
   - scope:
       path: ""
       type: "pages"
-  - values:
+    values:
       layout: single
       author_profile: false
       toc: false
