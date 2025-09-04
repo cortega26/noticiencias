@@ -43,6 +43,11 @@ teaser: "/assets/images/og-default-1200x630.jpg" # imagen por defecto para tarje
 breadcrumbs: true
 masthead_title: "Noticiencias"
 
+# ——— Taxonomías ———
+category_archive:
+  type: liquid
+  path: /categorias/
+
 
 # ——— Plugins soportados por GitHub Pages ———
 plugins:
