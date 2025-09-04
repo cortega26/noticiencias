@@ -191,7 +191,7 @@ $(document).ready(function () {
       throw new Error("No code block found for this button.");
     }
 
-    // Skip line numbers if present (i.e. {% highlight lineno %})
+    // Skip line numbers if present (i.e. &#123;% highlight lineno %&#125;)
     var realCodeBlock = codeBlock.querySelector("td.code, td.rouge-code");
     if (realCodeBlock) {
       codeBlock = realCodeBlock;
