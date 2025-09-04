@@ -1258,18 +1258,18 @@
 
 ### Enhancements
 
-- Improve line numbered code block styling when using `{% highlight linenos %}` tag. [#513](https://github.com/mmistakes/minimal-mistakes/issues/513)
+- Improve line numbered code block styling when using `&#123;% highlight linenos %&#125;` tag. [#513](https://github.com/mmistakes/minimal-mistakes/issues/513)
 - Add English fallback to "Follow" button label. [#496](https://github.com/mmistakes/minimal-mistakes/pull/496)
 
 ### Bug Fixes
 
-- Fix Firefox alignment issues with code blocks generated with the `{% highlight %}` tag. [#512](https://github.com/mmistakes/minimal-mistakes/issues/512)
+- Fix Firefox alignment issues with code blocks generated with the `&#123;% highlight %&#125;` tag. [#512](https://github.com/mmistakes/minimal-mistakes/issues/512)
 
 ### Maintenance
 
 - Clarified comment for `author.stackoverflow` value used in author sidebar links. [#487](https://github.com/mmistakes/minimal-mistakes/pull/487)
 - Add list of localized text strings. [#488](https://github.com/mmistakes/minimal-mistakes/pull/488)
-- Add `{% highlight %}` code block examples to demo site.
+- Add `&#123;% highlight %&#125;` code block examples to demo site.
 - Add documentation for using custom sidebar navigation menus. [#476](https://github.com/mmistakes/minimal-mistakes/issues/476)
 
 ## [3.4.4](https://github.com/mmistakes/minimal-mistakes/releases/tag/3.4.4)
@@ -1624,7 +1624,7 @@
 
 - Rebuilt the entire theme: layouts, includes, stylesheets, scripts, you name it.
 - Refreshed the look and feel while staying true to the original design of the theme (author sidebar/main content).
-- Replaced grid system with [Susy](http://susy.oddbird.net/).
+- Replaced grid system with [Susy](https://susy.oddbird.net/).
 - Replaced Grunt tasks with `npm` scripts.
 - Removed Google Fonts and replaced with system fonts to improve performance (they can be [added back](https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/) if desired)
 - Greatly improved [theme documentation](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/).
@@ -1771,12 +1771,12 @@
 
 ### Bug Fixes
 
-- Removed [Typeplate](http://typeplate.com/) styles. Was [causing issues with newer versions of Less](https://github.com/typeplate/typeplate.github.io/issues/108) and is no longer maintained.
+- Removed [Typeplate](https://typeplate.com/) styles. Was [causing issues with newer versions of Less](https://github.com/typeplate/typeplate.github.io/issues/108) and is no longer maintained.
 
 ### Enhancements
 
-- Added [image attribution](http://mmistakes.github.io/minimal-mistakes/theme-setup/#feature-images) for post and page feature images.
-- Added [404 page](http://mmistakes.github.io/minimal-mistakes/404.html).
+- Added [image attribution](https://mmistakes.github.io/minimal-mistakes/theme-setup/#feature-images) for post and page feature images.
+- Added [404 page](https://mmistakes.github.io/minimal-mistakes/404.html).
 - Cleaned up various Less variables to better align with naming conventions used in other MM Jekyll themes.
 - Removed Chrome Frame references.
 - Added global CSS3 transitions to text and block elements.

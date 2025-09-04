@@ -43,6 +43,11 @@ teaser: "/assets/images/noticiencias-isotipo-dramatico.svg" # imagen por defecto
 breadcrumbs: true
 masthead_title: "Noticiencias"
 
+# ——— Taxonomías ———
+category_archive:
+  type: liquid
+  path: /categorias/
+
 
 # ——— Plugins soportados por GitHub Pages ———
 plugins:
