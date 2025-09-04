@@ -8,7 +8,7 @@ header:
   overlay_image: "/assets/images/hero.jpg" # agrega esta imagen
   actions:
     - label: "Explorar artículos"
-      url: "/categories/"
+      url: "/categorias/"
     - label: "Buscar"
       url: "/buscar/"
 excerpt: "Hallazgos científicos explicados con rigor y en buen español."
@@ -27,7 +27,7 @@ feature_row:
 cta_row:
   - title: "Suscríbete al boletín"
     excerpt: "Recibe lo mejor de la semana."
-    url: "/about/#newsletter"
+    url: "/about/"
     btn_label: "Quiero suscribirme"
     btn_class: "btn--primary"
 ---
