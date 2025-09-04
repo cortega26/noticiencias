@@ -39,7 +39,7 @@ analytics:
 
 # ——— UI ———
 logo: "/assets/images/logo.png" # opcional
-teaser: "/assets/images/og-default-1200x630.jpg" # imagen por defecto para tarjetas sociales
+teaser: "/assets/images/noticiencias-isotipo-dramatico.svg" # imagen por defecto para tarjetas sociales
 breadcrumbs: true
 masthead_title: "Noticiencias"
 
