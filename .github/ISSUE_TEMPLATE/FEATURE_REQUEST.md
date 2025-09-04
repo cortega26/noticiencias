@@ -1,5 +1,5 @@
 ---
-name: ✨ Propuesta de mejora
+name: Propuesta de mejora
 about: Sugiere una idea para Noticiencias
 title: "[Feature] <descripción corta>"
 labels: [enhancement]
@@ -19,7 +19,7 @@ Otras opciones que evaluaste.
 **Impacto**
 Usuarios afectados, riesgos y métricas.
 
-**Checklist**
+### Checklist
 
 - [ ] Esta propuesta no expone información sensible
 - [ ] Incluye criterios de aceptación

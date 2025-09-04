@@ -1,32 +1,40 @@
 ---
-layout: home
-title: "Inicio"
+layout: splash
+title: "Traduce la ciencia. Sin humo."
+permalink: /
+header:
+  overlay_color: "#000"
+  overlay_filter: 0.35
+  overlay_image: "/assets/images/hero.jpg" # agrega esta imagen
+  actions:
+    - label: "Explorar artículos"
+      url: "/categories/"
+    - label: "Buscar"
+      url: "/buscar/"
+excerpt: "Hallazgos científicos explicados con rigor y en buen español."
+intro:
+  - excerpt: "Publicamos resúmenes claros y honrados de papers y avances verificados — con enlaces a las fuentes originales."
 feature_row:
-  - image_path: /assets/images/TODO-destacado1.jpg
-    alt: "TODO: descripción destacada 1 (Crédito: Autor)"
-    title: "Destacado 1"
-    excerpt: "Descripción breve del artículo destacado 1."
-    url: /ciencia/
-  - image_path: /assets/images/TODO-destacado2.jpg
-    alt: "TODO: descripción destacada 2 (Crédito: Autor)"
-    title: "Destacado 2"
-    excerpt: "Descripción breve del artículo destacado 2."
-    url: /salud/
-  - image_path: /assets/images/TODO-destacado3.jpg
-    alt: "TODO: descripción destacada 3 (Crédito: Autor)"
-    title: "Destacado 3"
-    excerpt: "Descripción breve del artículo destacado 3."
-    url: /tecnologia/
+  - title: "Curaduría rigurosa"
+    excerpt: "Seleccionamos por **novedad**, **autoridad** y **relevancia**."
+    icon: beaker
+  - title: "Sin hype"
+    excerpt: "Nada de clickbait. Ideas y límites en contexto."
+    icon: activity
+  - title: "Fuentes trazables"
+    excerpt: "Cada pieza enlaza al trabajo original (DOI/Preprint)."
+    icon: link
+cta_row:
+  - title: "Suscríbete al boletín"
+    excerpt: "Recibe lo mejor de la semana."
+    url: "/about/#newsletter"
+    btn_label: "Quiero suscribirme"
+    btn_class: "btn--primary"
 ---
+
+
+{% include feature_row id="intro" type="center" %}
 
 {% include feature_row %}
 
-## Ciencia
-{% include posts-category.html category="ciencia" %}
-
-## Salud
-{% include posts-category.html category="salud" %}
-
-## Tecnología
-{% include posts-category.html category="tecnologia" %}
-
+{% include feature_row id="cta_row" %}

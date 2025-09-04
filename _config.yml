@@ -1,73 +1,100 @@
-title: Noticiencias
-description: "Noticias de ciencia, salud y tecnología en español."
+# ——— Site ———
+title: "Noticiencias"
+description: "Traduce la ciencia global en español claro para 580 millones de hispanohablantes."
 url: "https://noticiencias.com"
-baseurl: ""  # keep empty on apex domain
+baseurl: ""
+locale: es
 timezone: America/Santiago
-locale: es-CL
-lang: es-CL
-date_format: "%-d de %B de %Y"
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - CHANGELOG.md
+repository: cortega26/noticiencias
 
-# Minimal Mistakes
-remote_theme: "mmistakes/minimal-mistakes@4.27.3"   # pin a release if you want
-minimal_mistakes_skin: "sunrise"                    # try: aqua, contrast, dark...
 
-# Navigation + UI
-permalink: /:categories/:year/:month/:day/:title/
-breadcrumbs: false
+# ——— Theme ———
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "default" # otras: air, aqua, contrast, dark, mint, plum, sunrise
 
-category_archive:
-  type: jekyll-archives
-  path: /
-tag_archive:
-  type: jekyll-archives
-  path: /tema/
-paginate: 10
+
+# ——— Build ———
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: /:categories/:title/
+paginate: 6
 paginate_path: "/page:num/"
 
-# Build plugins (GH Pages safe)
-plugins:
-  - jekyll-include-cache
-  - jekyll-paginate
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-archives
 
-# Search (Lunr is the theme’s default and GH Pages–friendly)
+# ——— Search ———
 search: true
 search_provider: lunr
-search_full_content: true
 lunr:
   search_within_pages: true
 
-# Archives via jekyll-archives (requires building with Actions; see §8)
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive
-    tag: archive
-  permalinks:
-    category: /:name/
-    tag: /tema/:name/
 
-# Social / SEO
-logo: /assets/images/logo-noticiencias-signal-burst-horizontal.svg
-author:
-  name: "Noticiencias"
+# ——— Analytics (GA4) ———
+# Reemplaza G-XXXX por tu Measurement ID
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-XXXXXXX"
 
-# Defaults (make posts uniform)
+
+# ——— UI ———
+logo: "/assets/images/logo.png" # opcional
+teaser: "/assets/images/og-default-1200x630.jpg" # imagen por defecto para tarjetas sociales
+breadcrumbs: true
+masthead_title: "Noticiencias"
+
+
+# ——— Plugins soportados por GitHub Pages ———
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+
+
+# ——— Sass ———
+sass:
+  sass_dir: _sass
+  style: compressed
+
+
+# ——— Inclusiones/Exclusiones ———
+include: [".htaccess"]
+exclude:
+  - "node_modules"
+  - "vendor"
+  - "Gemfile*"
+  - "README.md"
+  - "LICENSE"
+  - "planes_iniciales"
+  - "resumen-ejecutivo.md"
+  - "roadmap.csv"
+  - "tasks.json"
+
+
+
+# ——— Defaults ———
 defaults:
-  - scope: { path: "" , type: posts }
-    values:
+  - scope:
+      path: ""
+      type: "posts"
+  - values:
       layout: single
+      author_profile: true
+      classes: wide
       read_time: true
       show_date: true
       share: true
+      related: true
+      toc: true
+      toc_sticky: true
+      toc_label: "En esta página"
+      comments: false
+  - scope:
+      path: ""
+      type: "pages"
+  - values:
+      layout: single
+      author_profile: false
+      toc: false

@@ -3,11 +3,15 @@ default:
   bio: "Noticias de ciencia, salud y tecnología."
   avatar: "/assets/images/logo-noticiencias-signal-burst-horizontal.svg"
 
-cortega:
+cortega26:
   name: "Carlos Ortega"
-  bio: "Editor de Noticiencias."
-  avatar: "/assets/images/logo-noticiencias-signal-burst-horizontal.svg"
+  bio: "Data & Python automation. Editor en Noticiencias."
+  avatar: "/assets/images/author.jpg" # opcional
   links:
     - label: "X"
-      url: "https://twitter.com/TODO-cortega"
+      icon: "fab fa-x-twitter"
+      url: "https://x.com/cortega26"
+    - label: "LinkedIn"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/cortega26/"
 

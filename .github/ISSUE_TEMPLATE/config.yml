@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
 - name: Reporte de seguridad / vulnerabilidad
-  url: mailto:seguridad@noticiencias.com
+  url: https://noticiencias.com/security
   about: Usa este canal para reportar hallazgos sensibles (no crees un issue público).
