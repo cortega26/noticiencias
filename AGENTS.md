@@ -1,70 +1,42 @@
-# Guía de agentes de Noticiencias
+# Agentes de Noticiencias
 
-## Taxonomía de agentes
-| Agente | Rol principal | Entrega |
-|--------|---------------|---------|
-| Monitor de fuentes | Revisa journals, instituciones y agregadores | Pasa artículos candidatos al Traductor |
-| Traductor | Genera borradores en español con IA | Envía al Revisor científico |
-| Revisor científico | Comprueba datos y metodología | Devuelve observaciones al Editor |
-| Editor de estilo | Ajusta lenguaje B1-B2 y SEO | Publica o devuelve para correcciones |
-| Asistente de redes | Prepara mensajes para plataformas sociales | Coordina con Editor |
+Este documento describe a alto nivel cómo usamos agentes para apoyar la curación y redacción de contenidos. **No** incluye prompts completos, cadenas de herramientas, ni credenciales.
 
-## Habilidades y herramientas
-- DeepL y ChatGPT para borradores de traducción.
-- Google Analytics 4 para métricas.
-- Mailchimp para newsletter.
-- Cloudflare para CDN.
-- TODO: herramientas adicionales.
+## Objetivos
 
-## Prompts y políticas
-- Nunca usar IA para datos o afirmaciones técnicas.
-- Mantener tono anti-sensacionalista.
-- Citar siempre la fuente original con DOI.
-- Añadir limitaciones y advertencias cuando corresponda.
-- TODO: plantilla de prompts detallados.
+- Descubrir fuentes de ciencia/tecnología confiables
+- Resumir hallazgos con trazabilidad
+- Sugerir titulares y metadatos SEO sin clickbait
 
-## Esquemas de entrada/salida
-- **Entrada artículo:** título, enlace, fecha, resumen de origen.
-- **Salida artículo:** Markdown con frontmatter, secciones y fuentes.
-- **Entrada redes:** título, enlace, resumen corto.
-- **Salida redes:** texto optimizado y hashtags.
+## Roles (alto nivel)
 
-## Lógica de decisión y handoffs
-1. Monitor detecta fuente válida.
-2. Traductor crea borrador y marca dudas.
-3. Revisor valida cifras y metodología.
-4. Editor pule estilo, SEO y publica.
-5. Asistente de redes difunde contenido.
-6. Si se detecta error, se devuelve al paso pertinente.
+- **Orquestador**: decide flujo según tipo de fuente (RSS, web, paper)
+- **Extractor**: limpia HTML y normaliza texto con respeto a `robots.txt`
+- **Anotador**: detecta entidades/temas y genera notas con citas
+- **Redactor asistido**: sugiere borradores; humana/o los edita y aprueba
+- **Verificador**: comprueba enlaces, fecha de publicación y duplicados
 
-## Variables de entorno y claves API
-| Variable | Uso | Nota |
-|---------|-----|------|
-| `GA4_ID` | Seguimiento de analíticas | TODO |
-| `MAILCHIMP_API_KEY` | Envío de newsletter | TODO |
-| `DEEPL_API_KEY` | Traducción asistida | TODO |
-| `CLOUDFLARE_TOKEN` | Caché y despliegue | TODO |
+## Señales y criterios
 
-## Despliegue
-1. Ejecuta `bundle exec jekyll build`.
-2. Verifica salida en `_site`.
-3. Haz commit y push a la rama principal.
-4. GitHub Pages publica y Cloudflare distribuye.
+- Fecha y autoría verificables
+- Reputación de la fuente (revistas, preprints, blogs con historial)
+- Enlaces a trabajos/papers de origen
 
-## Evaluación
-- Visitas únicas, suscriptores y duración media de sesión.
-- Ratio de retorno y ingresos por visitante.
-- Lista de verificación editorial previa a publicación.
-- TODO: métricas de redes sociales.
+## Transparencia
 
-## Seguridad y límites
-- Correcciones transparentes ante errores.
-- Retirar contenido ante reclamos de copyright.
-- Nunca publicar contenido generado por IA sin revisión humana.
-- TODO: políticas de privacidad detalladas.
+- Cada pieza publicada incluye **fuentes enlazadas** y fecha de verificación.
+- Errores: aceptamos correcciones vía issue o formulario de contacto.
 
-## Solución de problemas
-- **Build falla:** ejecutar `bundle install` y repetir.
-- **Datos analíticos ausentes:** revisar `GA4_ID`.
-- **Contenido cuestionado:** seguir protocolo de corrección.
-- TODO: guía ampliada de troubleshooting.
+## Limitaciones
+
+- Los agentes **no** publican automáticamente.
+- Puede haber sesgos según cobertura de fuentes y disponibilidad.
+
+## Privacidad y cumplimiento
+
+- No almacenamos datos personales de visitantes en prompts.
+- Métricas agregadas; sin PII.
+
+## Cómo proponer mejoras
+
+Abre un issue con la etiqueta `agents:proposal` describiendo la idea y ejemplos de entradas/salidas esperadas.

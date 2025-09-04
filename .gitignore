@@ -1,42 +1,76 @@
-#— Jekyll build output
-_site/
-.jekyll-cache/
-.jekyll-assets-cache/
-.jekyll-metadata/
-
-#— Sass cache
-.sass-cache/
-
-#— Bundler artifacts
-.bundle/
-vendor/bundle/
-vendor/cache/
-
-#— Node dependencies (if using npm/yarn)
-node_modules/
-
-#— Temporary theme clone
-mm-temp/
-
-#— Asset pipeline temp files
-.asset-cache/
-
-#— Logs and temp files
-*.log
-*.tmp
-
-#— macOS Finder files
 .DS_Store
-
-#— Windows thumbnail cache
 Thumbs.db
 
-#— Editor directories and swap files
+
+# ——— Editores/IDE ———
 .vscode/
 .idea/
 *.swp
-*~
 
-#— Optional: ignore local environment files
+
+# ——— Node (si usas tooling JS) ———
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ——— Ruby/Jekyll ———
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/bundle/
+
+
+# ——— Python (si usas scripts) ———
+__pycache__/
+*.py[cod]
+.envrc
+.venv/
+venv/
+
+
+# ——— Builds/artefactos ———
+dist/
+build/
+tmp/
+logs/
+*.log
+coverage/
+
+
+# ——— Datos ———
+data/raw/
+data/interim/
+data/private/
+datasets/
+backups/
+
+
+# ——— Secretos/credenciales ———
 .env
-logo/
+.env.*
+*.key
+*.pem
+*.p12
+*secret*
+*secrets*
+*_secret.*
+*_secrets.*
+apikeys/
+credentials/
+service_account.json
+firebase-*.json
+
+
+# ——— Scripts y materiales privados ———
+scripts/privado/
+
+
+# ——— Diseño/archivos pesados ———
+*.sketch
+*.fig
+*.xd

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Burst - Archivos Listos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #0D0F14;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #0B1B2B 0%, #10BCEB 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-preview {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .file-section h2 {
+            color: #0B1B2B;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #10BCEB;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #0ea5d1;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #10BCEB;
+            margin: 1rem 0;
+        }
+
+        .instructions h3 {
+            color: #0B1B2B;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quick-links {
+            background: #0B1B2B;
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .quick-links h2 {
+            color: #10BCEB;
+            margin-bottom: 1rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .link-item h4 {
+            color: #10BCEB;
+            margin-bottom: 0.5rem;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .preview-box {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎯 Signal Burst - Archivos Listos</h1>
+            <p>Logo completo de Noticiencias optimizado para engagement digital</p>
+
+            <div class="logo-preview">
+                <div class="logo-item">
+                    <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z"
+                            fill="#0B1B2B" />
+                        <path d="M85 30 L95 25" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                        <path d="M85 35 L98 32" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M85 40 L96 40" stroke="#10BCEB" stroke-width="2" stroke-linecap="round" />
+                        <path d="M85 45 L94 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M85 50 L93 55" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="82" cy="40" r="4" fill="#10BCEB" />
+                        <circle cx="82" cy="40" r="2" fill="#0B1B2B" />
+                    </svg>
+                </div>
+                <div class="logo-item">
+                    <svg height="60" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(0,10)">
+                            <path d="M8 12 L8 68 L18 68 L18 35 L42 59 L52 59 L52 12 L42 12 L42 47 L18 23 L8 12 Z"
+                                fill="#0B1B2B" />
+                            <path d="M58 25 L68 22" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                            <path d="M58 35 L66 35" stroke="#10BCEB" stroke-width="2" stroke-linecap="round" />
+                            <path d="M58 45 L65 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                            <circle cx="56" cy="35" r="2.5" fill="#10BCEB" />
+                            <circle cx="56" cy="35" r="1.2" fill="#0B1B2B" />
+                        </g>
+                        <text x="85" y="45" font-family="Inter, sans-serif" font-size="24" font-weight="700"
+                            fill="#0B1B2B">Noticiencias</text>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <div class="instructions">
+            <h3>📁 Cómo obtener los archivos:</h3>
+            <p><strong>1.</strong> Haz clic en "Copiar código" en cada sección</p>
+            <p><strong>2.</strong> Pega el código en un editor de texto</p>
+            <p><strong>3.</strong> Guarda con la extensión indicada (.svg, .html, etc.)</p>
+            <p><strong>4.</strong> ¡Listo para usar en noticiencias.com!</p>
+        </div>
+
+        <!-- SVG ISOTIPO -->
+        <section class="file-section">
+            <h2>🔸 Isotipo SVG (para favicon, apps, redes)</h2>
+            <div class="preview-box">
+                <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z"
+                        fill="#0B1B2B" />
+                    <path d="M85 30 L95 25" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                    <path d="M85 35 L98 32" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M85 40 L96 40" stroke="#10BCEB" stroke-width="2" stroke-linecap="round" />
+                    <path d="M85 45 L94 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M85 50 L93 55" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                    <circle cx="82" cy="40" r="4" fill="#10BCEB" />
+                    <circle cx="82" cy="40" r="2" fill="#0B1B2B" />
+                </svg>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode('isotipo')">Copiar código</button>
+                <pre id="isotipo"><?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z" fill="#0B1B2B"/>
+    <path d="M85 30 L95 25" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <path d="M85 35 L98 32" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M85 40 L96 40" stroke="#10BCEB" stroke-width="2" stroke-linecap="round"/>
+    <path d="M85 45 L94 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M85 50 L93 55" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="82" cy="40" r="4" fill="#10BCEB"/>
+    <circle cx="82" cy="40" r="2" fill="#0B1B2B"/>
+</svg></pre>
+            </div>
+            <p><strong>Guardar como:</strong> <code>noticiencias-isotipo.svg</code></p>
+        </section>
+
+        <!-- SVG HORIZONTAL -->
+        <section class="file-section">
+            <h2>🔸 Logo Horizontal SVG (para headers web)</h2>
+            <div class="preview-box">
+                <svg height="60" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(0,10)">
+                        <path d="M8 12 L8 68 L18 68 L18 35 L42 59 L52 59 L52 12 L42 12 L42 47 L18 23 L8 12 Z"
+                            fill="#0B1B2B" />
+                        <path d="M58 25 L68 22" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M58 35 L66 35" stroke="#10BCEB" stroke-width="2" stroke-linecap="round" />
+                        <path d="M58 45 L65 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                        <circle cx="56" cy="35" r="2.5" fill="#10BCEB" />
+                        <circle cx="56" cy="35" r="1.2" fill="#0B1B2B" />
+                    </g>
+                    <text x="85" y="45" font-family="Inter, sans-serif" font-size="24" font-weight="700"
+                        fill="#0B1B2B">Noticiencias</text>
+                </svg>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode('horizontal')">Copiar código</button>
+                <pre id="horizontal"><?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0,10)">
+        <path d="M8 12 L8 68 L18 68 L18 35 L42 59 L52 59 L52 12 L42 12 L42 47 L18 23 L8 12 Z" fill="#0B1B2B"/>
+        <path d="M58 25 L68 22" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M58 35 L66 35" stroke="#10BCEB" stroke-width="2" stroke-linecap="round"/>
+        <path d="M58 45 L65 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="56" cy="35" r="2.5" fill="#10BCEB"/>
+        <circle cx="56" cy="35" r="1.2" fill="#0B1B2B"/>
+    </g>
+    <text x="85" y="45" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#0B1B2B">Noticiencias</text>
+</svg></pre>
+            </div>
+            <p><strong>Guardar como:</strong> <code>noticiencias-horizontal.svg</code></p>
+        </section>
+
+        <!-- VERSION OSCURA -->
+        <section class="file-section">
+            <h2>🔸 Versión para Fondos Oscuros</h2>
+            <div class="preview-box" style="background: #1a1a1a; color: white;">
+                <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z"
+                        fill="#FFFFFF" />
+                    <path d="M85 30 L95 25" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                    <path d="M85 35 L98 32" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M85 40 L96 40" stroke="#10BCEB" stroke-width="2" stroke-linecap="round" />
+                    <path d="M85 45 L94 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M85 50 L93 55" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                    <circle cx="82" cy="40" r="4" fill="#10BCEB" />
+                    <circle cx="82" cy="40" r="2" fill="#FFFFFF" />
+                </svg>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode('dark')">Copiar código</button>
+                <pre id="dark"><?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z" fill="#FFFFFF"/>
+    <path d="M85 30 L95 25" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <path d="M85 35 L98 32" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M85 40 L96 40" stroke="#10BCEB" stroke-width="2" stroke-linecap="round"/>
+    <path d="M85 45 L94 48" stroke="#10BCEB" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M85 50 L93 55" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="82" cy="40" r="4" fill="#10BCEB"/>
+    <circle cx="82" cy="40" r="2" fill="#FFFFFF"/>
+</svg></pre>
+            </div>
+            <p><strong>Guardar como:</strong> <code>noticiencias-isotipo-dark.svg</code></p>
+        </section>
+
+        <!-- FAVICON -->
+        <section class="file-section">
+            <h2>🔸 Favicon (versión simplificada para 16px-32px)</h2>
+            <div class="preview-box">
+                <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+                    style="border: 1px solid #ddd;">
+                    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z"
+                        fill="#0B1B2B" />
+                    <path d="M82 30 L95 25" stroke="#10BCEB" stroke-width="4" stroke-linecap="round" />
+                    <path d="M82 40 L95 40" stroke="#10BCEB" stroke-width="3" stroke-linecap="round" />
+                    <path d="M82 50 L95 55" stroke="#10BCEB" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="80" cy="40" r="3" fill="#10BCEB" />
+                </svg>
+                <span style="margin-left: 1rem;">← 32px preview</span>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode('favicon')">Copiar código</button>
+                <pre id="favicon"><?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z" fill="#0B1B2B"/>
+    <path d="M82 30 L95 25" stroke="#10BCEB" stroke-width="4" stroke-linecap="round"/>
+    <path d="M82 40 L95 40" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <path d="M82 50 L95 55" stroke="#10BCEB" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="80" cy="40" r="3" fill="#10BCEB"/>
+</svg></pre>
+            </div>
+            <p><strong>Guardar como:</strong> <code>favicon.svg</code> (También puedes convertirlo a PNG)</p>
+        </section>
+
+        <!-- GUÍA DE USO -->
+        <section class="file-section">
+            <h2>📖 Guía de Implementación</h2>
+            <div class="code-block" style="font-size: 0.75rem;">
+                <button class="copy-btn" onclick="copyCode('guia')">Copiar guía</button>
+                <pre id="guia">GUÍA DE USO - NOTICIENCIAS SIGNAL BURST LOGO
+
+============================================
+ESPECIFICACIONES TÉCNICAS
+============================================
+
+COLORES:
+• Deep Midnight Blue: #0B1B2B (RGB: 11, 27, 43)
+• Science Cyan: #10BCEB (RGB: 16, 188, 235)
+• Neutro Oscuro: #0D0F14 (RGB: 13, 15, 20)
+• Blanco: #FFFFFF (RGB: 255, 255, 255)
+
+TAMAÑOS MÍNIMOS:
+• Digital: ≥24px de altura
+• Impresión: ≥10mm de altura
+• Favicon: 16px, 32px, 48px
+
+ESPACIO DE SEGURIDAD:
+Margen mínimo = altura de la barra de la "N"
+
+============================================
+IMPLEMENTACIÓN WEB
+============================================
+
+HTML HEADER:
+<img src="noticiencias-horizontal.svg" alt="Noticiencias" height="40">
+
+CSS:
+.logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+FAVICON:
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+============================================
+USOS CORRECTOS
+============================================
+✅ Headers de sitio web
+✅ Redes sociales (Twitter, LinkedIn, Facebook)
+✅ Documentos oficiales y presentaciones
+✅ Email signatures
+
+============================================
+NO HACER
+============================================
+❌ NO cambiar los colores del logo
+❌ NO distorsionar las proporciones
+❌ NO agregar efectos, sombras o gradientes
+❌ NO usar sobre fondos complejos
+❌ NO separar elementos del isotipo
+
+============================================
+REDES SOCIALES
+============================================
+Twitter/X: Usar isotipo 400x400px
+LinkedIn: Usar isotipo 300x300px
+Facebook: Usar isotipo 180x180px
+Instagram: Usar isotipo 320x320px con fondo sólido</pre>
+            </div>
+            <p><strong>Guardar como:</strong> <code>guia-logo-noticiencias.txt</code></p>
+        </section>
+
+        <section class="quick-links">
+            <h2>🚀 Implementación Rápida</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <h4>Header Web</h4>
+                    <p>Usar logo horizontal SVG a 35-50px de altura</p>
+                </div>
+                <div class="link-item">
+                    <h4>Favicon</h4>
+                    <p>Usar versión simplificada, convertir SVG a PNG</p>
+                </div>
+                <div class="link-item">
+                    <h4>Redes Sociales</h4>
+                    <p>Isotipo cuadrado sobre fondo sólido</p>
+                </div>
+                <div class="link-item">
+                    <h4>Email/Documentos</h4>
+                    <p>Logo horizontal o apilado según espacio</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copyCode(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            // Usar la API moderna de clipboard si está disponible
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyConfirmation(elementId);
+                });
+            } else {
+                // Método fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyConfirmation(elementId);
+                } catch (err) {
+                    console.error('Error al copiar:', err);
+                    alert('No se pudo copiar. Por favor selecciona el texto manualmente.');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+        
+        function showCopyConfirmation(elementId) {
+            const button = document.querySelector(`#${elementId}`).parentElement.querySelector('.copy-btn');
+            const originalText = button.textContent;
+            button.textContent = '✓ Copiado';
+            button.style.background = '#22c55e';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '#10BCEB';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
