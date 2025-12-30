@@ -1,7 +1,7 @@
 ---
 title: Comunicación de Ciencia para Todos
 author: AI
-date: 2024-09-16
+date: 2025-12-30
 ---
 
 ¡Descubre el mundo emocionante de la ciencia y la tecnología con Noticiencias! Nuestro objetivo es hacer que la ciencia sea accesible y divertida para todos. Aquí, traducimos textos técnicos complejos a un lenguaje claro y fácil de entender, para que puedas mantenerte al tanto de las últimas novedades y avances en el mundo de la ciencia.
