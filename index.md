@@ -38,3 +38,10 @@ cta_row:
 {% include feature_row %}
 
 {% include feature_row id="cta_row" %}
+
+<div class="archive">
+  <h3 class="archive__subtitle">📰 Últimas Noticias</h3>
+  {% for post in site.posts limit:4 %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+</div>
