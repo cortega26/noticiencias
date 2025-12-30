@@ -293,7 +293,7 @@ idioma.
   (SINC/NCYT) que ya permiten difusión. Consultar al necesitarlo (el
   Derecho de Autor en traducción reconoce la creatividad del traductor,
   pero siempre respetar al máximo el
-  original[\[9\]](http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009#:~:text=Se%20concede%20derecho%20de%20autor,derechos%20del%20autor%20de).
+  original[\[9\]](https://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009#:~:text=Se%20concede%20derecho%20de%20autor,derechos%20del%20autor%20de).
 - **Riesgos operativos:** Al ser un proyecto unipersonal y sin
   presupuesto, existe riesgo de agotamiento o falta de tiempo.
   *Mitigación:* Planificación estricta con calendario editorial moderado
@@ -482,10 +482,10 @@ Free Plan Overview \| Cloudflare
 
 <https://www.cloudflare.com/plans/free/>
 
-[\[9\]](http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009#:~:text=Se%20concede%20derecho%20de%20autor,derechos%20del%20autor%20de)
+[\[9\]](https://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009#:~:text=Se%20concede%20derecho%20de%20autor,derechos%20del%20autor%20de)
 El traductor y el derecho de autor - SciELO Cuba - Infomed
 
-<http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009>
+<https://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352001000200009>
 
 [\[10\]](https://www.eurekalert.org/language/spanish/home%20#:~:text=5%20%2028,de%20los%20ecosistemas%20a%20escala)
 EurekAlert! EurekAlert! en Español - News Releases
