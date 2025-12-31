@@ -34,7 +34,7 @@ lunr:
 analytics:
   provider: "google-gtag"
   google:
-    tracking_id: "G-XXXXXXX"
+    # tracking_id: "G-XXXXXXX" # Uncomment and replace with real ID
 
 
 # ——— UI ———
