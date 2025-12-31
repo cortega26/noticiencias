@@ -559,3 +559,27 @@ body {
     }
   }
 }
+
+/* --- NOTICIENCIAS VISUAL POLISH --- */
+.page__content img {
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: 1.5em auto;
+}
+
+.page__content img:hover {
+  transform: scale(1.015);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.20);
+}
+
+.page__content figcaption {
+  font-family: inherit;
+  font-style: italic;
+  font-size: 0.85em;
+  text-align: center;
+  color: #777;
+  margin-top: -1em;
+  margin-bottom: 2em;
+}

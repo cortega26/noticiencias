@@ -32,7 +32,8 @@ $helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
 
 /* Serif - modern font stack */
 $transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-$old-style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;;
+$old-style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+;
 $monospace-slab-serif: 'Nimbus Mono PS', 'Courier New', monospace;
 $slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
 $antique: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
@@ -61,7 +62,7 @@ $emoji-native: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto C
 
 /* system typefaces */
 $serif: $default-serif !default;
-$sans-serif: $default-sans-serif !default;
+$sans-serif: 'Outfit', $default-sans-serif !default;
 $sans-serif-narrow: $sans-serif !default;
 $monospace: $default-monospace !default;
 
@@ -97,7 +98,7 @@ $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
 
-$background-color: #fff !default;
+$background-color: #f7f9fc !default; // Very light blue-grey for site bg
 $code-background-color: #fafafa !default;
 $code-background-color-dark: $light-gray !default;
 $text-color: $dark-gray !default;
@@ -106,7 +107,7 @@ $border-color: $lighter-gray !default;
 $form-background-color: $lighter-gray !default;
 $footer-background-color: $lighter-gray !default;
 
-$primary-color: #6f777d !default;
+$primary-color: #00b894 !default; // Science Teal
 $success-color: #3fa63f !default;
 $warning-color: #d67f05 !default;
 $danger-color: #ee5f5b !default;
