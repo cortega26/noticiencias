@@ -483,3 +483,46 @@
     margin-top: 0.5em;
   }
 }
+
+/* --- LATEST NEWS LAYOUT OVERRIDES --- */
+
+.latest-news {
+  float: none;
+  width: 100%;
+  padding-inline-end: 0;
+
+  @include breakpoint($large) {
+    float: none;
+    width: 100%;
+    padding-inline-end: 0;
+  }
+
+  @include breakpoint($x-large) {
+    width: 100%;
+    padding-inline-end: 0;
+  }
+}
+
+.latest-news .grid__item {
+  @include breakpoint($small) {
+    float: none;
+    width: 100%;
+    margin-inline-start: 0;
+    clear: both;
+  }
+
+  @include breakpoint($medium) {
+    float: inline-start;
+    width: span(6 of 12);
+
+    &:nth-child(2n + 1) {
+      clear: both;
+      margin-inline-start: 0;
+    }
+
+    &:nth-child(2n + 2) {
+      clear: none;
+      margin-inline-start: gutter(1 of 12);
+    }
+  }
+}
