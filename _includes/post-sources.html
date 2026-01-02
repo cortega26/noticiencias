@@ -1,0 +1,25 @@
+{% if page.collection == "posts" and page.sources %}
+  <section class="sources" aria-labelledby="sources-title">
+    <h2 id="sources-title">Fuentes y referencias</h2>
+    <ol>
+      {% for source in page.sources %}
+        <li>
+          {% if source.url %}
+            <a href="{{ source.url }}" rel="nofollow noopener">{{ source.title | default: source.url }}</a>
+          {% else %}
+            {{ source.title }}
+          {% endif %}
+          {% if source.publisher %}
+            <span> — {{ source.publisher }}</span>
+          {% endif %}
+          {% if source.date %}
+            <span> · {{ source.date }}</span>
+          {% endif %}
+          {% if source.doi %}
+            <span> · DOI: <a href="https://doi.org/{{ source.doi }}" rel="nofollow noopener">{{ source.doi }}</a></span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}

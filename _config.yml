@@ -1,6 +1,6 @@
 # ——— Site ———
 title: "Noticiencias"
-description: "Traduce la ciencia global en español claro para 580 millones de hispanohablantes."
+description: "Ciencia global explicada con rigor, trazabilidad y criterio editorial."
 url: "https://noticiencias.com"
 baseurl: ""
 locale: es
@@ -42,6 +42,7 @@ logo: "/assets/images/logo.png" # opcional
 teaser: "/assets/images/noticiencias-isotipo-dramatico.svg" # imagen por defecto para tarjetas sociales
 breadcrumbs: true
 masthead_title: "Noticiencias"
+og_image: "/assets/images/TODO-destacado1.jpg"
 
 # ——— Taxonomías ———
 category_archive:
@@ -103,3 +104,16 @@ defaults:
       layout: single
       author_profile: false
       toc: false
+
+footer:
+  since: 2024
+  links:
+    - label: "Metodologia"
+      url: "/methodology/"
+    - label: "Transparencia"
+      url: "/transparency/"
+    - label: "Correcciones"
+      url: "/transparency/#correcciones"
+
+after_footer_scripts:
+  - /assets/js/newsroom.js

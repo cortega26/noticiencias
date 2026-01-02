@@ -1,5 +1,7 @@
 {% if post.header.teaser %}
 {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% elsif post.image %}
+{% assign teaser = post.image %}
 {% else %}
 {% assign teaser = site.teaser %}
 {% endif %}
@@ -16,7 +18,7 @@
       lang="{{ post.locale }}" {% endif %}>
       {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
-        <img src="{{ teaser | relative_url }}" alt="">
+        <img src="{{ teaser | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" decoding="async">
       </div>
       {% endif %}
       <div class="archive__item-body" style="padding: 1.25rem;">
