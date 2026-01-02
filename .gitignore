@@ -37,6 +37,7 @@ venv/
 dist/
 build/
 tmp/
+temp-site/
 logs/
 *.log
 coverage/

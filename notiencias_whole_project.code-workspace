@@ -7,7 +7,7 @@
 			"path": "../noticiencias_news_collector"
 		},
 		{
-			"path": "../noticiencias-translation"
+			"path": "../_audit_prompts"
 		}
 	],
 	"settings": {}

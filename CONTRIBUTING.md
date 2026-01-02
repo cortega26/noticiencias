@@ -33,6 +33,7 @@ Este proyecto adopta el [Contributor Covenant](https://www.contributor-covenant.
 
 - Sigue el estilo existente; para CSS/HTML procura accesibilidad (semántica, alt text, contraste).
 - Ejecuta `bundle exec jekyll build` antes de abrir PR.
+- Si modificas posts, corre `python tools/validate_frontmatter.py`.
 - Un PR por cambio lógico; describe el **porqué** y adjunta capturas si es UI.
 - CI debe pasar (enlace/checks automáticos del repo).
 
