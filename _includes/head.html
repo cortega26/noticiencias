@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 
-{% comment %} {% include seo.html %} {% endcomment %}
+{% include seo.html %}
 
 {% unless site.atom_feed.hide %}
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"

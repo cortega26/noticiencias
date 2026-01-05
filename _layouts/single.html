@@ -2,9 +2,9 @@
 layout: default
 ---
 
-{% if page.header and (page.header.overlay_color or page.header.overlay_image or page.header.image) %}
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
 {% include page__hero.html %}
-{% elsif page.header and page.header.video.id and page.header.video.provider %}
+{% elsif page.header.video.id and page.header.video.provider %}
 {% include page__hero_video.html %}
 {% endif %}
 
@@ -37,7 +37,7 @@ layout: default
     <meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
 
     <div class="page__inner-wrap">
-      {% unless page.header and (page.header.overlay_color or page.header.overlay_image) %}
+      {% unless page.header.overlay_color or page.header.overlay_image %}
       <header>
         {% if page.title -%}
         <h1 id="page-title" class="page__title" itemprop="headline">
