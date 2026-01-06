@@ -3,6 +3,8 @@ title: "Acerca de Noticiencias"
 permalink: /about/
 layout: single
 excerpt: "Noticiencias es un medio de ciencia en espanol con foco en rigor editorial, trazabilidad y claridad."
+header:
+  overlay_color: "#333"
 ---
 
 ## Mision editorial
