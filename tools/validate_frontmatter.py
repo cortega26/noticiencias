@@ -7,6 +7,11 @@ from pathlib import Path
 
 KEY_RE = re.compile(r"^\s*([A-Za-z0-9_-]+)\s*:(.*)$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}")
+LIST_ITEM_RE = re.compile(r"^\s*-\s+(.+)$")
+
+REVIEW_STATUSES = {"verificado", "en_revision", "actualizando"}
+CONFIDENCE_LEVELS = {"alta", "media", "baja"}
+TRANSLATION_METHODS = {"humana", "asistida", "mixta"}
 
 
 def _parse_frontmatter(lines: list[str]) -> tuple[list[str], int] | None:
@@ -31,6 +36,24 @@ def _resolve_image_path(root: Path, post_path: Path, image_value: str) -> Path:
     if image_value.startswith("/"):
         return (root / image_value.lstrip("/")).resolve()
     return (root / image_value).resolve()
+
+
+def _collect_list_items(lines: list[str], key: str) -> list[str]:
+    for idx, line in enumerate(lines):
+        if not line.strip() or line.lstrip() != line:
+            continue
+        match = KEY_RE.match(line)
+        if match and match.group(1).lower() == key:
+            items: list[str] = []
+            for j in range(idx + 1, len(lines)):
+                next_line = lines[j]
+                if next_line.lstrip() == next_line and KEY_RE.match(next_line):
+                    break
+                item_match = LIST_ITEM_RE.match(next_line)
+                if item_match:
+                    items.append(item_match.group(1).strip())
+            return items
+    return []
 
 
 def validate_posts(root: Path, posts_dir: Path) -> int:
@@ -59,6 +82,8 @@ def validate_posts(root: Path, posts_dir: Path) -> int:
             stripped = line.strip()
             if not stripped or stripped.startswith("#"):
                 continue
+            if line.lstrip() != line:
+                continue
             match = KEY_RE.match(line)
             if not match:
                 continue
@@ -70,7 +95,21 @@ def validate_posts(root: Path, posts_dir: Path) -> int:
                 warnings.append(f"{post}: duplicate key '{key_lower}'")
             keys[key_lower] = value.strip()
 
-        for required in ("title", "author", "date"):
+        for required in (
+            "title",
+            "author",
+            "date",
+            "excerpt",
+            "categories",
+            "tags",
+            "image",
+            "image_alt",
+            "translation_method",
+            "editorial_score",
+            "review_status",
+            "confidence",
+            "sources",
+        ):
             if required not in keys:
                 errors.append(f"{post}: missing required key '{required}'")
 
@@ -88,6 +127,47 @@ def validate_posts(root: Path, posts_dir: Path) -> int:
                     errors.append(
                         f"{post}: image '{image_value}' not found at {image_path}"
                     )
+        else:
+            errors.append(f"{post}: image must not be empty")
+
+        image_alt = _strip_quotes(keys.get("image_alt", ""))
+        if not image_alt:
+            errors.append(f"{post}: image_alt must not be empty")
+
+        editorial_score = _strip_quotes(keys.get("editorial_score", ""))
+        if editorial_score:
+            try:
+                score_value = int(editorial_score)
+                if not 0 <= score_value <= 100:
+                    errors.append(
+                        f"{post}: editorial_score '{editorial_score}' must be 0-100"
+                    )
+            except ValueError:
+                errors.append(
+                    f"{post}: editorial_score '{editorial_score}' must be an integer"
+                )
+
+        review_status = _strip_quotes(keys.get("review_status", "")).lower()
+        if review_status and review_status not in REVIEW_STATUSES:
+            errors.append(
+                f"{post}: review_status '{review_status}' must be one of {sorted(REVIEW_STATUSES)}"
+            )
+
+        confidence = _strip_quotes(keys.get("confidence", "")).lower()
+        if confidence and confidence not in CONFIDENCE_LEVELS:
+            errors.append(
+                f"{post}: confidence '{confidence}' must be one of {sorted(CONFIDENCE_LEVELS)}"
+            )
+
+        translation_method = _strip_quotes(keys.get("translation_method", "")).lower()
+        if translation_method and translation_method not in TRANSLATION_METHODS:
+            errors.append(
+                f"{post}: translation_method '{translation_method}' must be one of {sorted(TRANSLATION_METHODS)}"
+            )
+
+        sources_items = _collect_list_items(fm_lines, "sources")
+        if "sources" in keys and not sources_items:
+            errors.append(f"{post}: sources must include at least one item")
 
     return _report(errors, warnings)
 
