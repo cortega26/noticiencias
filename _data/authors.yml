@@ -6,7 +6,7 @@ default:
 cortega26:
   name: "Carlos Ortega"
   bio: "Data & Python automation. Editor en Noticiencias."
-  avatar: "/assets/images/author.jpg" # opcional
+  avatar: "/assets/images/logo-noticiencias-signal-burst-isotipo.svg" # opcional
   links:
     - label: "X"
       icon: "fab fa-x-twitter"
