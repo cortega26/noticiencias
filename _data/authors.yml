@@ -1,21 +1,12 @@
 default:
   name: "Noticiencias"
-  role: "Equipo editorial"
-  expertise: "Ciencia, tecnologia y salud"
-  bio: "Periodismo cientifico en espanol con enfoque en evidencia, claridad y trazabilidad."
+  bio: "Noticias de ciencia, salud y tecnología."
   avatar: "/assets/images/logo-noticiencias-signal-burst-horizontal.svg"
-  home: "/about/"
-  disclosure: "Revision interna y fuentes enlazadas en cada pieza."
 
 cortega26:
   name: "Carlos Ortega"
-  role: "Editor fundador"
-  expertise: "Datos, automatizacion, IA aplicada"
-  bio: "Editor en Noticiencias. Diseña flujos para curar y verificar ciencia global."
+  bio: "Data & Python automation. Editor en Noticiencias."
   avatar: "/assets/images/author.jpg" # opcional
-  location: "Santiago, Chile"
-  home: "/about/"
-  disclosure: "Sin conflictos de interes declarados."
   links:
     - label: "X"
       icon: "fab fa-x-twitter"

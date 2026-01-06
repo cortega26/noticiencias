@@ -11,7 +11,3 @@ main:
     url: "/buscar/"
   - title: "Acerca de"
     url: "/about/"
-  - title: "Metodologia"
-    url: "/methodology/"
-  - title: "Transparencia"
-    url: "/transparency/"

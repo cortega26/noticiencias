@@ -6,7 +6,7 @@
    Typography
    ========================================================================== */
 
-$doc-font-size: 17px !default;
+$doc-font-size: 16px !default;
 $doc-font-size-medium: $doc-font-size * 1.125 !default;
 $doc-font-size-large: $doc-font-size * 1.25 !default;
 $doc-font-size-x-large: $doc-font-size * 1.375 !default;
@@ -61,12 +61,12 @@ $default-monospace: Monaco, Consolas, "Lucida Console", monospace;
 $emoji-native: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
 /* system typefaces */
-$serif: "Source Serif 4", $default-serif !default;
-$sans-serif: "Sora", $default-sans-serif !default;
+$serif: $default-serif !default;
+$sans-serif: 'Outfit', $default-sans-serif !default;
 $sans-serif-narrow: $sans-serif !default;
 $monospace: $default-monospace !default;
 
-$global-font-family: $serif !default;
+$global-font-family: $sans-serif !default;
 $header-font-family: $sans-serif !default;
 $caption-font-family: $serif !default;
 
@@ -98,22 +98,22 @@ $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
 
-$background-color: #f4f2ed !default; // Warm paper tone
-$code-background-color: #f6f4f1 !default;
+$background-color: #f7f9fc !default; // Very light blue-grey for site bg
+$code-background-color: #fafafa !default;
 $code-background-color-dark: $light-gray !default;
-$text-color: #1c1f24 !default;
-$muted-text-color: #5a636d !default;
+$text-color: $dark-gray !default;
+$muted-text-color: mix(#fff, $text-color, 20%) !default;
 $border-color: $lighter-gray !default;
-$form-background-color: #f0ede6 !default;
-$footer-background-color: #f0ede6 !default;
+$form-background-color: $lighter-gray !default;
+$footer-background-color: $lighter-gray !default;
 
-$primary-color: #0f6f63 !default; // Science Teal
+$primary-color: #00b894 !default; // Science Teal
 $success-color: #3fa63f !default;
 $warning-color: #d67f05 !default;
 $danger-color: #ee5f5b !default;
-$info-color: #2e5b7f !default;
+$info-color: #3b9cba !default;
 $focus-color: $primary-color !default;
-$active-color: mix(#fff, $primary-color, 85%) !default;
+$active-color: mix(#fff, $primary-color, 80%) !default;
 
 /* YIQ color contrast */
 $yiq-contrasted-dark-default: $dark-gray !default;
@@ -150,9 +150,9 @@ $youtube-color: #bb0000 !default;
 $xing-color: #006567 !default;
 
 /* links */
-$link-color: mix(#000, $info-color, 12%) !default;
-$link-color-hover: mix(#000, $link-color, 35%) !default;
-$link-color-visited: mix(#fff, $link-color, 10%) !default;
+$link-color: mix(#000, $info-color, 20%) !default;
+$link-color-hover: mix(#000, $link-color, 25%) !default;
+$link-color-visited: mix(#fff, $link-color, 15%) !default;
 $masthead-link-color: $primary-color !default;
 $masthead-link-color-hover: mix(#000, $primary-color, 25%) !default;
 $navicon-link-color-hover: mix(#fff, $primary-color, 75%) !default;
@@ -187,7 +187,7 @@ $small: 600px !default;
 $medium: 768px !default;
 $medium-wide: 900px !default;
 $large: 1024px !default;
-$x-large: 1200px !default;
+$x-large: 1280px !default;
 $max-width: $x-large !default;
 
 /*
@@ -202,8 +202,8 @@ $right-sidebar-width-wide: 400px !default;
    Other
    ========================================================================== */
 
-$border-radius: 10px !default;
-$box-shadow: 0 8px 24px rgba(15, 18, 23, 0.12) !default;
+$border-radius: 4px !default;
+$box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125) !default;
 $nav-height: 2em !default;
 $nav-toggle-height: 2rem !default;
 $navicon-width: 1.5rem !default;
