@@ -40,3 +40,10 @@ Este documento describe a alto nivel cómo usamos agentes para apoyar la curaci�
 ## Cómo proponer mejoras
 
 Abre un issue con la etiqueta `agents:proposal` describiendo la idea y ejemplos de entradas/salidas esperadas.
+
+## Philosophy & Workflow
+
+- **Baby Steps:** Prioritize small, incremental changes over large refactors.
+- **Safety First:** Avoid introducing regressions at all costs. Verify every step.
+- **Verification:** Run tests after every change, no matter how small.
+

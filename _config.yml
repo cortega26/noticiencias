@@ -38,7 +38,7 @@ analytics:
 
 
 # ——— UI ———
-logo: "/assets/images/logo.png" # opcional
+logo: "/assets/images/noti-logo4.png" # opcional
 teaser: "/assets/images/noticiencias-isotipo-dramatico.svg" # imagen por defecto para tarjetas sociales
 breadcrumbs: true
 masthead_title: "Noticiencias"
