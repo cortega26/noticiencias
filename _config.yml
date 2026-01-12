@@ -32,9 +32,9 @@ lunr:
 # ——— Analytics (GA4) ———
 # Reemplaza G-XXXX por tu Measurement ID
 analytics:
-  provider: "google-gtag"
+  provider: "google-gtag" # default: false
   google:
-    # tracking_id: "G-XXXXXXX" # Uncomment and replace with real ID
+    tracking_id: "G-XXXXXXX" # Replace with your ID
 
 
 # ——— UI ———

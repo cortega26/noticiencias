@@ -5,7 +5,7 @@ permalink: /
 header:
   overlay_color: "#000"
   overlay_filter: 0.35
-  overlay_image: "/assets/images/hero.jpg" # agrega esta imagen
+  overlay_image: "/assets/images/TODO-destacado1.jpg" # valid placeholder
   actions:
     - label: "Explorar artículos"
       url: "/categorias/"
@@ -27,7 +27,7 @@ feature_row:
 cta_row:
   - title: "Suscríbete al boletín"
     excerpt: "Recibe lo mejor de la semana."
-    url: "/about/"
+    url: "/suscribirse/"
     btn_label: "Quiero suscribirme"
     btn_class: "btn--primary"
 ---
