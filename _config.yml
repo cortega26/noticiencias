@@ -61,7 +61,7 @@ plugins:
 # ——— Sass ———
 sass:
   sass_dir: _sass
-  style: compressed
+  style: expanded
 
 
 # ——— Inclusiones/Exclusiones ———
