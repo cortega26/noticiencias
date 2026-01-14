@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:audit": "vitest run"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -17,5 +18,13 @@
     "gray-matter": "^4.0.3",
     "lunr": "^2.3.9",
     "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/node": "^25.0.8",
+    "cheerio": "^1.1.2",
+    "glob": "^13.0.0",
+    "ts-node": "^10.9.2",
+    "vitest": "^4.0.17"
   }
 }
