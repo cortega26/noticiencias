@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { post, headings } = Astro.props;
-const { title, description, date, author, image, tags, categories } = post.data;
+const { title, excerpt: description, date, author, image, tags, categories } = post.data;
 
 // Estimated reading time (rude approximation)
 const readingTime = Math.ceil(post.body.split(/\s+/).length / 200);

@@ -25,7 +25,7 @@ const generatePermalink = async ({
 
   const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
     .replace('%id%', id)
-    .replace('%category%', category || '')
+    .replace('%category%', category ?? '')
     .replace('%year%', year)
     .replace('%month%', month)
     .replace('%day%', day)
@@ -65,7 +65,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   const metadata = {};
 
   // Use rawCategory if exists, otherwise use first item from rawCategories
-  const categoryString = rawCategory || (rawCategories && rawCategories.length > 0 ? rawCategories[0] : undefined);
+  const categoryString = rawCategory ?? (rawCategories && rawCategories.length > 0 ? rawCategories[0] : undefined);
 
   const category = categoryString
     ? {
@@ -106,7 +106,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   };
 };
 
-const load = async function (): Promise<Array<Post>> {
+const load = async function (): Promise<Post[]> {
   const posts = await getCollection('posts');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 

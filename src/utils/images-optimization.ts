@@ -32,7 +32,7 @@ export type ImagesOptimizer = (
   width?: number,
   height?: number,
   format?: string
-) => Promise<Array<{ src: string; width: number }>>;
+) => Promise<{ src: string; width: number }[]>;
 
 /* ******* */
 const config = {
@@ -108,7 +108,7 @@ export const getSizes = (width?: number, layout?: Layout): string | undefined =>
   }
 };
 
-const pixelate = (value?: number) => (value || value === 0 ? `${value}px` : undefined);
+const pixelate = (value?: number) => (value ?? value === 0 ? `${value}px` : undefined);
 
 const getStyle = ({
   width,
@@ -127,13 +127,13 @@ const getStyle = ({
   layout?: string;
   background?: string;
 }) => {
-  const styleEntries: Array<[prop: string, value: string | undefined]> = [
+  const styleEntries: [prop: string, value: string | undefined][] = [
     ['object-fit', objectFit],
     ['object-position', objectPosition],
   ];
 
   // If background is a URL, set it to cover the image and not repeat
-  if (background?.startsWith('https:') || background?.startsWith('http:') || background?.startsWith('data:')) {
+  if ((background?.startsWith('https:') ?? background?.startsWith('http:')) || background?.startsWith('data:')) {
     styleEntries.push(['background-image', `url(${background})`]);
     styleEntries.push(['background-size', 'cover']);
     styleEntries.push(['background-repeat', 'no-repeat']);
@@ -189,7 +189,7 @@ const getBreakpoints = ({
   layout: Layout;
 }): number[] => {
   if (layout === 'fullWidth' || layout === 'cover' || layout === 'responsive' || layout === 'contained') {
-    return breakpoints || config.deviceSizes;
+    return breakpoints ?? config.deviceSizes;
   }
   if (!width) {
     return [];
@@ -204,7 +204,7 @@ const getBreakpoints = ({
       width,
       doubleWidth,
       // Filter out any resolutions that are larger than the double-res image
-      ...(breakpoints || config.deviceSizes).filter((w) => w < doubleWidth),
+      ...(breakpoints ?? config.deviceSizes).filter((w) => w < doubleWidth),
     ];
   }
 
@@ -294,8 +294,8 @@ export async function getImagesOptimized(
     height ||= typeof width === 'number' ? computeHeight(width, image.width / image.height) : undefined;
   }
 
-  width = (width && Number(width)) || undefined;
-  height = (height && Number(height)) || undefined;
+  width = width ? Number(width) : undefined;
+  height = height ? Number(height) : undefined;
 
   widths ||= config.deviceSizes;
   sizes ||= getSizes(Number(width) || undefined, layout);

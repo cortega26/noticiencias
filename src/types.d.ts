@@ -82,7 +82,7 @@ export interface MetaDataImage {
 export interface MetaDataOpenGraph {
   url?: string;
   siteName?: string;
-  images?: Array<MetaDataImage>;
+  images?: MetaDataImage[];
   locale?: string;
   type?: string;
 }
@@ -121,7 +121,7 @@ interface TeamMember {
   name?: string;
   job?: string;
   image?: Image;
-  socials?: Array<Social>;
+  socials?: Social[];
   description?: string;
   classes?: Record<string, string>;
 }
@@ -152,7 +152,7 @@ export interface Price {
   description?: string;
   price?: number | string;
   period?: string;
-  items?: Array<Item>;
+  items?: Item[];
   callToAction?: CallToAction;
   hasRibbon?: boolean;
   ribbonTitle?: string;
@@ -210,7 +210,7 @@ export interface Collapse {
 }
 
 export interface Form {
-  inputs?: Array<Input>;
+  inputs?: Input[];
   textarea?: Textarea;
   disclaimer?: Disclaimer;
   button?: string;
@@ -225,25 +225,25 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {
-  team?: Array<TeamMember>;
+  team?: TeamMember[];
 }
 
 export interface Stats extends Omit<Headline, 'classes'>, Widget {
-  stats?: Array<Stat>;
+  stats?: Stat[];
 }
 
 export interface Pricing extends Omit<Headline, 'classes'>, Widget {
-  prices?: Array<Price>;
+  prices?: Price[];
 }
 
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
-  testimonials?: Array<Testimonial>;
+  testimonials?: Testimonial[];
   callToAction?: CallToAction;
 }
 
 export interface Brands extends Omit<Headline, 'classes'>, Widget {
-  icons?: Array<string>;
-  images?: Array<Image>;
+  icons?: string[];
+  images?: Image[];
 }
 
 export interface Features extends Omit<Headline, 'classes'>, Widget {

@@ -73,7 +73,7 @@ files.forEach(file => {
             // Jaccard index of trigrams?
             // Simple: split into words and count matches
             const titleWords = title.toLowerCase().split(/\s+/);
-            const slugParts = slug.toLowerCase().split(/[\/-]/);
+            const slugParts = slug.toLowerCase().split(/[/-]/);
             const matches = titleWords.filter(w => w.length > 3 && slugParts.some(s => s.includes(w)));
             score = matches.length;
         }

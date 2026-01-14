@@ -15,6 +15,7 @@
   ],
   "exclude": [
     "dist",
-    "vendor"
+    "vendor",
+    "_site"
   ]
 }

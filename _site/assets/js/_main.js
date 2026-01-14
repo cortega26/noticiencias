@@ -78,7 +78,7 @@ $(document).ready(function () {
   };
 
   // Has issues on Firefox, whitelist Chrome for now
-  if (!!window.chrome) {
+  if (window.chrome) {
     document.addEventListener("gumshoeActivate", scrollTocToContent);
   }
 

@@ -20,7 +20,7 @@ let _images: Record<string, () => Promise<unknown>> | undefined = undefined;
 
 /** */
 export const fetchLocalImages = async () => {
-  _images = _images || (await load());
+  _images = _images ?? (await load());
   return _images;
 };
 
@@ -47,7 +47,7 @@ export const findImage = async (
   const key = imagePath.replace('~/', '/src/');
 
   return images && typeof images[key] === 'function'
-    ? ((await images[key]()) as { default: ImageMetadata })['default']
+    ? ((await images[key]()) as { default: ImageMetadata }).default
     : null;
 };
 
@@ -67,7 +67,7 @@ export const adaptOpenGraphImages = async (
   const adaptedImages = await Promise.all(
     images.map(async (image) => {
       if (image?.url) {
-        const resolvedImage = (await findImage(image.url)) as ImageMetadata | string | undefined;
+        const resolvedImage = (await findImage(image.url));
         if (!resolvedImage) {
           return {
             url: '',

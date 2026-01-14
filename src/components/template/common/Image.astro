@@ -9,7 +9,7 @@ import {
   type ImageProps,
 } from '~/utils/images-optimization';
 
-type Props = ImageProps;
+
 type ImageType = {
   src: string;
   attributes: HTMLAttributes<'img'>;
@@ -54,10 +54,11 @@ if (
 } else if (_image) {
     // START PATCH: Handle public/ assets without dimensions
     if (typeof _image === 'string' && _image.startsWith('/')) {
+        const { src: _, ...attributes } = props;
         image = {
             src: _image,
             attributes: {
-                ...props,
+                ...attributes,
                 width: props.width,
                 height: props.height,
             }

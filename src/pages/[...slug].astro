@@ -1,39 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SinglePost from '~/components/template/blog/SinglePost.astro';
 import ToBlogLink from '~/components/template/blog/ToBlogLink.astro';
 import { getPermalink } from '~/utils/permalinks';
+import { fetchPosts } from '~/utils/blog';
+import type { Post } from '~/types';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => {
-    // Standardize slug generation to match getPermalink behavior
-    // If frontmatter permalink exists, use it (stripping lead/trail slashes)
-    // Otherwise use the clean slug (no 'posts/' prefix unless that's what we want)
-    const slug = post.data.permalink 
-        ? post.data.permalink.replace(/^\/|\/$/g, '') 
-        : `/${post.slug}`; // Changed: remove 'posts/' prefix to match root-level generation seen in dist
-        
-    return {
-      params: { slug: slug.replace(/^\//, '') }, // Ensure no leading slash in params
-      props: { post },
-    };
-  });
+  const posts = await fetchPosts();
+  return posts.map((post) => ({
+    params: { slug: post.permalink?.replace(/^\/|\/$/g, '') },
+    props: { post },
+  }));
 }
 
 import ArticleSidebar from '~/components/template/blog/ArticleSidebar.astro';
 
-// ... (existing helper logic)
+interface Props {
+  post: Post;
+}
 
 const { post } = Astro.props;
-const { Content } = await post.render();
 
 const metadata = {
-  title: post.data.title,
-  description: post.data.excerpt,
-  image: post.data.image,
-  canonical: post.data.permalink ? undefined : getPermalink(post.slug, 'post'),
+  title: post.title,
+  description: post.excerpt,
+  image: post.image,
+  canonical: post.metadata?.canonical || (post.permalink ? undefined : getPermalink(post.slug, 'post')),
 };
 ---
 
@@ -41,20 +34,18 @@ const metadata = {
   <div class="container mx-auto px-0 sm:px-4">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <main class="lg:col-span-8">
-        <SinglePost post={{
-            ...post,
-            category: post.data.categories?.[0]
-              ? { slug: post.data.categories[0], title: post.data.categories[0] }
-              : undefined
-          }} 
-          url={post.data.permalink || getPermalink(post.slug, 'post')}>
-          {post.data.image ? (
-            <img slot="image" src={post.data.image} alt={post.data.image_alt || ""} class="w-full h-auto rounded-lg shadow-lg mb-6" />
+        <SinglePost post={post} url={post.permalink || getPermalink(post.slug, 'post')}>
+           {post.image ? (
+            typeof post.image === 'string' ? (
+              <img slot="image" src={post.image} alt={post.title} class="w-full h-auto rounded-lg shadow-lg mb-6" />
+            ) : (
+             <img slot="image" src={post.image.src} alt={post.title} class="w-full h-auto rounded-lg shadow-lg mb-6" />
+            )
           ) : (
             <div slot="image" class="h-10"></div>
           )}
           
-          <Content />
+          {post.Content ? <post.Content /> : <Fragment set:html={post.content} />}
         </SinglePost>
       </main>
       

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { fetchPosts } from '~/utils/blog';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Headline from '~/components/template/blog/Headline.astro';
 import BlogList from '~/components/template/blog/List.astro';
@@ -8,9 +8,9 @@ import Pagination from '~/components/template/blog/Pagination.astro';
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allPosts = await getCollection('posts');
-  // Sort by date
-  allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const allPosts = await fetchPosts();
+  // Sort by date not needed as fetchPosts does it?
+  // fetchPosts line 114 sorts. So we can remove sort here.
 
   return paginate(allPosts, {
     pageSize: 10,
