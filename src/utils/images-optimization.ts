@@ -272,14 +272,54 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
 };
 
 /* ** */
+const calculateDimensions = (
+  image: ImageMetadata | string,
+  width?: number | string,
+  height?: number | string,
+  aspectRatio?: number | string | null,
+  layout?: string
+) => {
+  let _width = width ? Number(width) : undefined;
+  let _height = height ? Number(height) : undefined;
+  let _aspectRatio = parseAspectRatio(aspectRatio);
+
+  // Inferred from image metadata if not string
+  if (typeof image !== 'string') {
+    _width ||= Number(image.width) || undefined;
+    _height ||= typeof _width === 'number' ? computeHeight(_width, image.width / image.height) : undefined;
+  }
+
+  // Calculate dimensions from aspect ratio
+  if (_aspectRatio) {
+    if (_width) {
+      if (!_height) {
+        _height = _width / _aspectRatio;
+      }
+    } else if (_height) {
+      _width = Number(_height * _aspectRatio);
+    } else if (layout !== 'fullWidth') {
+      console.error('When aspectRatio is set, either width or height must also be set');
+      console.error('Image', image);
+    }
+  } else if (_width && _height) {
+    _aspectRatio = _width / _height;
+  } else if (layout !== 'fullWidth') {
+    console.error('Either aspectRatio or both width and height must be set');
+    console.error('Image', image);
+  }
+
+  return { width: _width, height: _height, aspectRatio: _aspectRatio };
+};
+
+/* ** */
 export async function getImagesOptimized(
   image: ImageMetadata | string,
   {
     src: _,
-    width,
-    height,
+    width: inputWidth,
+    height: inputHeight,
     sizes,
-    aspectRatio,
+    aspectRatio: inputAspectRatio,
     objectPosition,
     widths,
     layout = 'constrained',
@@ -289,40 +329,16 @@ export async function getImagesOptimized(
   }: ImageProps,
   transform: ImagesOptimizer = () => Promise.resolve([])
 ): Promise<{ src: string; attributes: HTMLAttributes<'img'> }> {
-  if (typeof image !== 'string') {
-    width ||= Number(image.width) || undefined;
-    height ||= typeof width === 'number' ? computeHeight(width, image.width / image.height) : undefined;
-  }
-
-  width = width ? Number(width) : undefined;
-  height = height ? Number(height) : undefined;
+  const { width, height, aspectRatio } = calculateDimensions(
+    image,
+    inputWidth,
+    inputHeight,
+    inputAspectRatio,
+    layout
+  );
 
   widths ||= config.deviceSizes;
   sizes ||= getSizes(Number(width) || undefined, layout);
-  aspectRatio = parseAspectRatio(aspectRatio);
-
-  // Calculate dimensions from aspect ratio
-  if (aspectRatio) {
-    if (width) {
-      if (height) {
-        /* empty */
-      } else {
-        height = width / aspectRatio;
-      }
-    } else if (height) {
-      width = Number(height * aspectRatio);
-    } else if (layout !== 'fullWidth') {
-      // Fullwidth images have 100% width, so aspectRatio is applicable
-      console.error('When aspectRatio is set, either width or height must also be set');
-      console.error('Image', image);
-    }
-  } else if (width && height) {
-    aspectRatio = width / height;
-  } else if (layout !== 'fullWidth') {
-    // Fullwidth images don't need dimensions
-    console.error('Either aspectRatio or both width and height must be set');
-    console.error('Image', image);
-  }
 
   let breakpoints = getBreakpoints({ width: width, breakpoints: widths, layout: layout });
   breakpoints = [...new Set(breakpoints)].sort((a, b) => a - b);

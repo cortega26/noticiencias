@@ -25,30 +25,48 @@ export const fetchLocalImages = async () => {
 };
 
 /** */
+const shouldIgnorePath = (imagePath: string): boolean => {
+  return (
+    imagePath.startsWith('http://') ||
+    imagePath.startsWith('https://') ||
+    imagePath.startsWith('/') ||
+    !imagePath.startsWith('~/assets/images')
+  );
+};
+
+const resolveImageKey = (imagePath: string): string => {
+  return imagePath.replace('~/', '/src/');
+};
+
+const resolveImageFromCollection = async (
+  key: string,
+  images: Record<string, () => Promise<unknown>> | undefined
+): Promise<ImageMetadata | null> => {
+  if (!images || typeof images[key] !== 'function') {
+    return null;
+  }
+  const module = (await images[key]()) as { default: ImageMetadata };
+  return module.default;
+};
+
+/** */
 export const findImage = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
-  // Not string
+  // Return early if not a string
   if (typeof imagePath !== 'string') {
     return imagePath;
   }
 
-  // Absolute paths
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
-    return imagePath;
-  }
-
-  // Relative paths or not "~/assets/"
-  if (!imagePath.startsWith('~/assets/images')) {
+  // Check if path should be ignored (absolute, external, or outside assets)
+  if (shouldIgnorePath(imagePath)) {
     return imagePath;
   }
 
   const images = await fetchLocalImages();
-  const key = imagePath.replace('~/', '/src/');
+  const key = resolveImageKey(imagePath);
 
-  return images && typeof images[key] === 'function'
-    ? ((await images[key]()) as { default: ImageMetadata }).default
-    : null;
+  return resolveImageFromCollection(key, images);
 };
 
 /** */
