@@ -1,15 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import PostLayout from '../layouts/PostLayout.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SinglePost from '~/components/template/blog/SinglePost.astro';
+import ToBlogLink from '~/components/template/blog/ToBlogLink.astro';
+import { getPermalink } from '~/utils/permalinks';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map(post => {
-    // Use explicit permalink if available, ensuring no leading/trailing slashes for consistency
+  return posts.map((post) => {
+    // CRITICAL: Respect the 'permalink' frontmatter for routing if it exists
+    // If post.data.permalink is "/editorial/bienvenida/", slug should be "editorial/bienvenida"
     const slug = post.data.permalink 
-        ? post.data.permalink.replace(/^\/+|\/+$/g, '') 
-        : post.slug;
-    
+        ? post.data.permalink.replace(/^\/|\/$/g, '') 
+        : `posts/${post.slug}`;
+        
     return {
       params: { slug },
       props: { post },
@@ -18,8 +22,33 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
+
+const metadata = {
+  title: post.data.title,
+  description: post.data.excerpt,
+  image: post.data.image,
+  canonical: post.data.permalink ? undefined : getPermalink(post.slug, 'post'), // Let BaseLayout handle canonical if not explicit
+  // Add other metadata mapping here if needed
+};
 ---
-<PostLayout post={post} headings={headings}>
+
+<BaseLayout metadata={metadata}>
+  <SinglePost post={{
+      ...post,
+      category: post.data.categories?.[0]
+        ? { slug: post.data.categories[0], title: post.data.categories[0] }
+        : undefined
+    }} 
+    url={post.data.permalink || getPermalink(post.slug, 'post')}>
+    {post.data.image ? (
+      <img slot="image" src={post.data.image} alt={post.data.image_alt || ""} class="w-full h-auto rounded-lg shadow-lg mb-6" />
+    ) : (
+      <div slot="image" class="h-10"></div>
+    )}
+    
     <Content />
-</PostLayout>
+  </SinglePost>
+
+  <ToBlogLink />
+</BaseLayout>
