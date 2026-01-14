@@ -1,6 +1,6 @@
 ---
 title: "Transparencia"
-permalink: /transparency/
+permalink: /transparencia/
 layout: ../layouts/BaseLayout.astro
 excerpt: "Compromisos de transparencia, correcciones y conflicto de interés."
 ---

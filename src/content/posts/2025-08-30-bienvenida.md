@@ -20,7 +20,7 @@ why_it_matters:
   - Define la promesa editorial de Noticiencias y la forma de trabajo.
 sources:
   - title: Noticiencias - Sobre nosotros
-    url: 'https://www.noticiencias.com/about/'
+    url: 'https://www.noticiencias.com/nosotros/'
     publisher: Noticiencias
     date: '2025-08-30'
 permalink: /editorial/bienvenida/

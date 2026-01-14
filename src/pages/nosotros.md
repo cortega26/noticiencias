@@ -1,6 +1,6 @@
 ---
 title: "Acerca de Noticiencias"
-permalink: /about/
+permalink: /nosotros/
 layout: ../layouts/BaseLayout.astro
 excerpt: "Noticiencias es un medio de ciencia en español con foco en rigor editorial, trazabilidad y claridad."
 header:

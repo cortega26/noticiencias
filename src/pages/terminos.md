@@ -1,6 +1,7 @@
 ---
 title: 'Terms and Conditions'
 layout: '~/layouts/template/MarkdownLayout.astro'
+permalink: /terminos/
 ---
 
 _Last updated_: January 06, 2023

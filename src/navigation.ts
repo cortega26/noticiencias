@@ -4,15 +4,15 @@ export const headerData = {
   links: [
     {
       text: 'Acerca de',
-      href: getPermalink('/about/'),
+      href: getPermalink('/nosotros/'),
     },
     {
       text: 'Metodología',
-      href: getPermalink('/methodology/'),
+      href: getPermalink('/metodologia/'),
     },
     {
       text: 'Transparencia',
-      href: getPermalink('/transparency/'),
+      href: getPermalink('/transparencia/'),
     },
     {
       text: 'Explorar',
@@ -60,7 +60,7 @@ export const footerData = {
     },
   ],
   secondaryLinks: [
-    { text: 'Privacidad', href: getPermalink('/privacy/') },
+    { text: 'Privacidad', href: getPermalink('/privacidad/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
   ],
   socialLinks: [

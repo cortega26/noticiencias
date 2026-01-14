@@ -1,6 +1,6 @@
 ---
 title: "Metodología editorial"
-permalink: /methodology/
+permalink: /metodologia/
 layout: ../layouts/BaseLayout.astro
 excerpt: "Criterios, flujo y controles para publicar ciencia con rigor y trazabilidad."
 ---
