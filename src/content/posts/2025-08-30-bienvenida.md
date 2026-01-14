@@ -10,8 +10,7 @@ categories:
 tags:
   - noticiencias
   - editorial
-image: /assets/images/TODO-destacado2.jpg
-image_alt: Sala de redaccion con monitores y notas.
+
 translation_method: humana
 editorial_score: 84
 review_status: verificado

@@ -13,7 +13,7 @@ Si detectas un error, abre un issue con la etiqueta `agents:proposal` o usa el f
 Documentamos cambios relevantes y actualizamos la fecha de modificacion cuando corresponde.
 
 ## Conflictos de interes
-Declaramos conflictos en los perfiles de autor cuando existan. Priorizamos independencia editorial.
+Declaramos cualquier conflicto de interés relevante en la fuente original o en el proceso de selección.
 
 ## Privacidad
 No almacenamos datos personales de visitantes en prompts. Solo usamos metricas agregadas sin PII.

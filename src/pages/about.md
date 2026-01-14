@@ -18,8 +18,11 @@ Noticiencias traduce ciencia global a un espanol claro, responsable y verificabl
 ## Como trabajamos
 Cada pieza incluye fuentes enlazadas, metodo de traduccion y nivel de confianza. Consulta nuestra metodologia editorial para detalles operativos.
 
-## Equipo
-Somos un equipo editorial con experiencia en datos, automatizacion y periodismo cientifico. Los perfiles de autores incluyen roles, especialidad y enlaces verificables.
+## Nuestra Misión
+Seleccionamos y clasificamos noticias de diversas fuentes en inglés, las traducimos y adaptamos para que la ciencia sea accesible a todo el público hispanohablante.
+
+## Metodología
+Nuestro proceso se basa en la agregación, curaduría y traducción de contenido científico de alto impacto.
 
 ## Contacto
 Para consultas editoriales o correcciones, escribe a nuestro formulario de contacto o abre un issue en GitHub con la etiqueta `agents:proposal`.

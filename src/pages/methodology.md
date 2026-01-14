@@ -14,7 +14,7 @@ excerpt: "Criterios, flujo y controles para publicar ciencia con rigor y trazabi
 1. Descubrimiento: curamos fuentes confiables (revistas, preprints, laboratorios).
 2. Extraccion: limpiamos textos respetando `robots.txt` y normalizamos contenido.
 3. Anotacion: identificamos entidades y temas con citas rastreables.
-4. Redaccion asistida: borrador con lenguaje claro; edicion humana obligatoria.
+4. Traducción y Adaptación: El contenido se traduce y adapta para garantizar claridad y accesibilidad.
 5. Verificacion: enlaces, fechas, duplicados y consistencia editorial.
 
 ## Criterios de publicacion
