@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Buscar Noticias">
+    <h1>Buscador</h1>
+    
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Escribe para buscar..." />
+        <p id="search-status"></p>
+        <div id="search-results"></div>
+    </div>
+
+    <!-- Load Lunr from CDN or local if preferred, here using simple script tag for client -->
+    <script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
+    <script is:inline>
+        let index = null;
+        let store = {};
+
+        async function initSearch() {
+            const status = document.getElementById('search-status');
+            status.textContent = 'Cargando índice...';
+
+            try {
+                const response = await fetch('/search.json');
+                const documents = await response.json();
+                
+                // Build Index
+                index = lunr(function () {
+                    this.ref('url');
+                    this.field('title', { boost: 10 });
+                    this.field('description', { boost: 5 });
+                    this.field('content');
+                    this.field('tags');
+                    
+                    documents.forEach(doc => {
+                        this.add(doc);
+                        store[doc.url] = doc;
+                    });
+                });
+
+                status.textContent = '';
+                document.getElementById('search-box').disabled = false;
+                document.getElementById('search-box').focus();
+
+            } catch (e) {
+                console.error(e);
+                status.textContent = 'Error cargando el buscador.';
+            }
+        }
+
+        function doSearch(query) {
+            const resultsDiv = document.getElementById('search-results');
+            resultsDiv.innerHTML = '';
+
+            if (!query) return;
+
+            // Fuzzy matching + wildcard
+            try {
+                const results = index.search(`${query}*`);
+
+                if (results.length === 0) {
+                    resultsDiv.innerHTML = '<p>No se encontraron resultados.</p>';
+                    return;
+                }
+
+                const ul = document.createElement('ul');
+                resultsDiv.appendChild(ul);
+
+                results.slice(0, 10).forEach(r => {
+                    const doc = store[r.ref];
+                    const li = document.createElement('li');
+                    
+                    // Simple highlight (very basic)
+                    li.innerHTML = `
+                        <h3><a href="${doc.url}">${doc.title}</a></h3>
+                        <p>${doc.description || ''}</p>
+                    `;
+                    ul.appendChild(li);
+                });
+            } catch (e) {
+                // Lunr query error (e.g. empty)
+            }
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-box');
+            input.disabled = true; // Wait for index
+            
+            initSearch();
+
+            input.addEventListener('input', (e) => {
+                const query = e.target.value;
+                doSearch(query);
+            });
+        });
+    </script>
+</BaseLayout>
+
+<style>
+    .search-container { margin-top: 2rem; }
+    #search-box {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+    #search-results ul { list-style: none; padding: 0; }
+    #search-results li { margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+    #search-results h3 { margin: 0 0 0.5rem 0; }
+    #search-results p { margin: 0; color: #666; }
+</style>

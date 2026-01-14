@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+// Sort by date desc
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// 1. Featured (First 'featured: true' or newest)
+const featuredPost = sortedPosts.find(p => p.data.featured) || sortedPosts[0];
+
+// 2. Investigations
+const investigations = sortedPosts.filter(p => p.data.investigation && p.slug !== featuredPost.slug).slice(0, 2);
+
+// 3. Trending (Simulated by 'editorial_score' > 75 or specific categories)
+const trending = sortedPosts.filter(p => 
+    p.slug !== featuredPost.slug && 
+    !investigations.includes(p) && 
+    (p.data.editorial_score && p.data.editorial_score > 75)
+).slice(0, 3);
+
+// 4. Latest (Everything else)
+const latest = sortedPosts.filter(p => 
+    p.slug !== featuredPost.slug && 
+    !investigations.includes(p) && 
+    !trending.includes(p)
+).slice(0, 6);
+
+function getPermalink(post: any) {
+    return post.data.permalink 
+        ? post.data.permalink 
+        : `/posts/${post.slug}/`;
+}
+---
+
+<BaseLayout title="Inicio">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="label">Destacado</span>
+            <h2><a href={getPermalink(featuredPost)}>{featuredPost.data.title}</a></h2>
+            <p>{featuredPost.data.excerpt}</p>
+            <div class="meta">
+                {featuredPost.data.author} • {featuredPost.data.date.toLocaleDateString()}
+            </div>
+        </div>
+        {featuredPost.data.image && (
+            <div class="hero-image">
+                <img src={featuredPost.data.image} alt={featuredPost.data.image_alt || ""} />
+            </div>
+        )}
+    </section>
+
+    <!-- Trending Grid -->
+    {trending.length > 0 && (
+        <section class="trending">
+            <h3>Tendencias</h3>
+            <div class="grid">
+                {trending.map(post => (
+                    <article class="card">
+                        <span class="category">{post.data.categories?.[0]}</span>
+                        <h4><a href={getPermalink(post)}>{post.data.title}</a></h4>
+                    </article>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <!-- Investigations -->
+    {investigations.length > 0 && (
+        <section class="investigations">
+            <h3>Investigaciones Profundas</h3>
+            <div class="grid-2">
+                {investigations.map(post => (
+                    <article class="card large">
+                        {post.data.image && (
+                            <img src={post.data.image} alt="" class="card-img" />
+                        )}
+                        <div class="card-content">
+                            <span class="label-inv">Investigación</span>
+                            <h4><a href={getPermalink(post)}>{post.data.title}</a></h4>
+                            <p>{post.data.excerpt}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <!-- Latest List -->
+    <section class="latest">
+        <h3>Lo último</h3>
+        <ul>
+            {latest.map(post => (
+                <li>
+                    <span class="date">{post.data.date.toLocaleDateString()}</span>
+                    <a href={getPermalink(post)}>{post.data.title}</a>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+</BaseLayout>
+
+<style>
+    /* Hero */
+    .hero {
+        background: #222;
+        color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 3rem;
+        display: grid;
+        gap: 1rem;
+    }
+    .hero-content { padding: 2rem; }
+    .hero-content h2 { margin: 0.5rem 0; font-size: 2rem; }
+    .hero-content a { color: #fff; text-decoration: none; }
+    .hero-content a:hover { text-decoration: underline; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    @media (min-width: 768px) {
+        .hero { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Sections */
+    section { margin-bottom: 3rem; }
+    h3 { border-bottom: 2px solid #0070f3; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: inline-block; }
+
+    /* Grids */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+    /* Cards */
+    .card { background: #f9f9f9; padding: 1rem; border-radius: 4px; border: 1px solid #eee; }
+    .card h4 { margin: 0.5rem 0; font-size: 1.2rem; }
+    .card-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem; }
+    .label { background: #0070f3; color: white; padding: 0.2rem 0.6rem; font-size: 0.8rem; border-radius: 4px; }
+    .label-inv { background: #555; color: white; padding: 0.2rem 0.6rem; font-size: 0.8rem; border-radius: 4px; }
+    .category { color: #666; font-size: 0.85rem; text-transform: uppercase; font-weight: bold; }
+
+    /* List */
+    .latest ul { list-style: none; padding: 0; }
+    .latest li { padding: 0.8rem 0; border-bottom: 1px solid #eee; display: flex; align-items: baseline; gap: 1rem; }
+    .latest .date { color: #888; font-size: 0.9rem; min-width: 100px; }
+</style>

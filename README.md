@@ -1,104 +1,43 @@
-# Noticiencias
+# Astro Starter Kit: Minimal
 
-"Traduce la ciencia global en español claro para 580 millones de hispanohablantes."
-
-## Tabla de contenidos
-- [Características](#características)
-- [Arquitectura](#arquitectura)
-- [Inicio rápido](#inicio-rápido)
-- [Instalación](#instalación)
-- [Configuración](#configuración)
-- [Ejemplos de uso](#ejemplos-de-uso)
-- [FAQ](#faq)
-- [Roadmap](#roadmap)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
-- [Enlaces](#enlaces)
-
-## Características
-- Traducción y explicación sistemática de artículos revisados por pares sin sensacionalismo.
-- Flujo editorial en cuatro pasos: verificación, borrador de traducción, revisión científica y pulido editorial.
-- Criterios de curación: novedad, autoridad, relevancia y accesibilidad B1-B2.
-- Uso limitado de IA para borradores de traducción, SEO y apoyo en redes sociales.
-
-## Arquitectura
-- Sitio estático con [Jekyll](https://jekyllrb.com/) desplegado en GitHub Pages.
-- CDN y protección mediante Cloudflare.
-- Herramientas esenciales: Google Analytics 4, Mailchimp y DeepL.
-- TODO: diagrama de arquitectura.
-
-## Inicio rápido
-```bash
-# Clonar y entrar
-git clone https://github.com/<OWNER>/noticiencias.git
-cd noticiencias
-
-# Instalar dependencias y arrancar servidor local
-bundle install
-bundle exec jekyll serve
-```
-Visita <http://localhost:4000>.
-
-## Instalación
-Requiere Ruby y Bundler.
-1. `bundle install`
-2. `bundle exec jekyll build`
-
-## Configuración
-| Variable               | Descripción                           | Valor por defecto |
-|------------------------|---------------------------------------|-------------------|
-| `GA4_ID`               | Identificador de Google Analytics 4   | TODO              |
-| `MAILCHIMP_API_KEY`    | Clave para envíos de newsletter       | TODO              |
-| `DEEPL_API_KEY`        | Traducciones asistidas                | TODO              |
-| `CLOUDFLARE_TOKEN`     | Despliegue y caché CDN                | TODO              |
-
-Edita `_config.yml` para opciones del sitio.
-
-## Ejemplos de uso
-Crear un nuevo artículo:
-```markdown
----
-layout: single
-title: "Título optimizado SEO"
-categories: [ciencia]
----
-
-Resumen (50 palabras)
-
-Contexto (100 palabras)
-
-Resultados (200 palabras)
-
-Implicaciones (100 palabras)
-
-Limitaciones (50 palabras)
-
-Fuentes: [Journal] DOI: enlace
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-## FAQ
-**¿Por qué Noticiencias?**
-Responde a la falta de traducción rigurosa y rápida de investigación científica.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-**¿Cómo se garantiza la precisión?**
-Cada artículo verifica cifras y metodología contra la fuente original y añade limitaciones.
+## 🚀 Project Structure
 
-## Roadmap
-- Meses 1‑6: donaciones financian infraestructura básica.
-- Meses 7‑18: anuncios y newsletter premium permiten crecer.
-- Meses 19+: servicios y alianzas escalan el proyecto.
-- Consulta `roadmap.csv` para tareas detalladas.
+Inside of your Astro project, you'll see the following folders and files:
 
-## Contribución
-- Usa Markdown.
-- Ejecuta `bundle exec jekyll build` antes de enviar cambios.
-- Escribe mensajes de commit en presente.
-- TODO: guía de revisión y estilo completa.
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-## Licencia
-Proyecto disponible bajo la licencia MIT.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Enlaces
-- Sitio: <https://noticiencias.com>
-- Plan de negocio: `planes_iniciales/noticiencias_business_plan.md`
-- Roadmap: `roadmap.csv`
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
