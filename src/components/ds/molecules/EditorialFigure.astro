@@ -1,0 +1,38 @@
+---
+import Image from '~/components/template/common/Image.astro';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  class?: string;
+}
+
+const { src, alt, caption, credit, class: className = '' } = Astro.props;
+---
+
+<figure class:list={["my-8", className]}>
+  <div class="rounded-lg overflow-hidden bg-surface-base shadow-sm border border-border-subtle">
+    {typeof src === 'string' ? (
+        <img src={src} alt={alt} class="w-full h-auto object-cover" />
+    ) : (
+        <Image src={src} alt={alt} width={900} height={600} class="w-full h-auto" />
+    )}
+  </div>
+  
+  {(caption || credit) && (
+    <figcaption class="mt-3 px-1 flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+      {caption && (
+        <span class="font-serif italic text-sm text-text-muted leading-snug max-w-prose">
+          {caption}
+        </span>
+      )}
+      {credit && (
+        <span class="font-sans text-[10px] uppercase tracking-wider text-gray-500 whitespace-nowrap shrink-0">
+          Foto: {credit}
+        </span>
+      )}
+    </figcaption>
+  )}
+</figure>
