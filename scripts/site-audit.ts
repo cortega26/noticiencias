@@ -20,13 +20,13 @@ export class SiteAuditor {
 
     public async runAudit(): Promise<IntegrityError[]> {
         this.errors = [];
-        const htmlFiles = globSync('**/*.html', { cwd: this.distPath });
+        const htmlFiles: string[] = globSync('**/*.html', { cwd: this.distPath });
 
         // 1. Build Index of all valid pages for internal link checking
-        htmlFiles.forEach(file => {
+        htmlFiles.forEach((file: string) => {
             // /about/index.html -> /about/
             // /index.html -> /
-            let url = '/' + file.replace(/index\.html$/, '').replace(/\.html$/, '');
+            let url = '/' + (typeof file === 'string' ? file : String(file)).replace(/index\.html$/, '').replace(/\.html$/, '');
             if (url.length > 1 && url.endsWith('/')) {
                 url = url.slice(0, -1); // normalize trailing slash issues if any
             }

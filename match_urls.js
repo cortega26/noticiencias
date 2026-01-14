@@ -51,7 +51,8 @@ files.forEach(file => {
 
     // Normalize title for matching
     // Remove accents, lowercase, remove special chars
-    const normTitle = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const safeTitle = typeof title === 'string' ? title : String(title || '');
+    const normTitle = safeTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
     let bestMatch = null;
     let maxScore = 0;
@@ -59,7 +60,8 @@ files.forEach(file => {
     postUrls.forEach(url => {
         // Normalize URL slug
         // Extract last parts
-        const slug = url.replace('https://noticiencias.com', '').replace(/\/$/, '');
+        const safeUrl = typeof url === 'string' ? url : String(url || '');
+        const slug = safeUrl.replace('https://noticiencias.com', '').replace(/\/$/, '');
         const normSlug = slug.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
         // Simple length difference score + substring check?
@@ -88,7 +90,7 @@ files.forEach(file => {
         console.log(`Matched: ${file} -> ${bestMatch} (Score: ${maxScore})`);
 
         // Extract relative path
-        const relativePath = bestMatch.replace('https://noticiencias.com', '');
+        const relativePath = String(bestMatch).replace('https://noticiencias.com', '');
 
         // Update frontmatter
         parsed.data.permalink = relativePath;
