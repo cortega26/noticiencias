@@ -105,11 +105,18 @@ export const getAsset = (path: string): string =>
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
 /** */
-export const applyGetPermalinks = (menu: object = {}) => {
+interface MenuLink {
+  text?: string;
+  href?: string | { type: string; url?: string };
+  links?: MenuLink[];
+  [key: string]: any;
+}
+
+export const applyGetPermalinks = (menu: any = {}): any => {
   if (Array.isArray(menu)) {
     return menu.map((item) => applyGetPermalinks(item));
   } else if (typeof menu === 'object' && menu !== null) {
-    const obj = {};
+    const obj: any = {};
     for (const key in menu) {
       if (key === 'href') {
         if (typeof menu[key] === 'string') {

@@ -5,7 +5,9 @@ import Headline from '~/components/template/blog/Headline.astro';
 import BlogList from '~/components/template/blog/List.astro';
 import Pagination from '~/components/template/blog/Pagination.astro';
 
-export async function getStaticPaths({ paginate }) {
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getCollection('posts');
   // Sort by date
   allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -13,7 +15,7 @@ export async function getStaticPaths({ paginate }) {
   return paginate(allPosts, {
     pageSize: 10,
   });
-}
+}) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 const metadata = {
