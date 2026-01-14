@@ -1,37 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getStaticPathsBlogTag } from '~/utils/blog';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Headline from '~/components/template/blog/Headline.astro';
 import BlogList from '~/components/template/blog/List.astro';
 import Pagination from '~/components/template/blog/Pagination.astro';
 
-export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection('posts');
-  // Get all unique tags
-  const tags = new Set();
-  allPosts.forEach(post => {
-    post.data.tags?.forEach(tag => tags.add(tag));
-  });
+export const getStaticPaths = getStaticPathsBlogTag;
 
-  return Array.from(tags).flatMap(tag => {
-    // Filter posts by tag
-    const posts = allPosts.filter(post => post.data.tags?.includes(tag));
-    // Sort by date
-    posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const { page, tag } = Astro.props;
 
-    return paginate(posts, {
-      params: { tag: tag },
-      pageSize: 10,
-      props: { tagName: tag },
-    });
-  });
-}
-
-const { page, tagName } = Astro.props;
 const metadata = {
-  title: `Etiqueta: ${tagName}`,
+  title: `Etiqueta: ${tag?.title || ''}`,
   robots: {
-    index: true,
+    index: false, // As per config.yaml
     follow: true,
   },
 };
@@ -40,7 +21,7 @@ const metadata = {
 <BaseLayout metadata={metadata}>
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <Headline>
-        Etiqueta: <span class="capitalize">{tagName}</span>
+        Etiqueta: <span class="capitalize">{tag?.title}</span>
     </Headline>
     
     <BlogList posts={page.data} />

@@ -53,9 +53,9 @@ export const footerData = {
     {
       title: 'Organización',
       links: [
-        { text: 'Acerca de', href: getPermalink('/about/') },
-        { text: 'Metodología', href: getPermalink('/methodology/') },
-        { text: 'Transparencia', href: getPermalink('/transparency/') },
+        { text: 'Acerca de', href: getPermalink('/nosotros/') },
+        { text: 'Metodología', href: getPermalink('/metodologia/') },
+        { text: 'Transparencia', href: getPermalink('/transparencia/') },
       ],
     },
   ],

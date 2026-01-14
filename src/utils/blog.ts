@@ -75,14 +75,14 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     : undefined;
 
   const tags = rawTags.map((tag: string) => ({
-    slug: cleanSlug(tag),
+    slug: cleanSlug(tag).toLowerCase(),
     title: tag,
   }));
 
   return {
     id: id,
     slug: slug,
-    permalink: await generatePermalink({ id, slug, publishDate, category: category?.slug }),
+    permalink: data.permalink || await generatePermalink({ id, slug, publishDate, category: category?.slug }),
 
     publishDate: publishDate,
     updateDate: updateDate,

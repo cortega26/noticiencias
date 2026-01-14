@@ -19,7 +19,8 @@ export const cleanSlug = (text = '') =>
   trimSlash(text)
     .split('/')
     .map((slug) => slugify(slug))
-    .join('/');
+    .join('/')
+    .toLowerCase();
 
 export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
 export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);

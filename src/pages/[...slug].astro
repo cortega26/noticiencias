@@ -8,14 +8,15 @@ import { getPermalink } from '~/utils/permalinks';
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map((post) => {
-    // CRITICAL: Respect the 'permalink' frontmatter for routing if it exists
-    // If post.data.permalink is "/editorial/bienvenida/", slug should be "editorial/bienvenida"
+    // Standardize slug generation to match getPermalink behavior
+    // If frontmatter permalink exists, use it (stripping lead/trail slashes)
+    // Otherwise use the clean slug (no 'posts/' prefix unless that's what we want)
     const slug = post.data.permalink 
         ? post.data.permalink.replace(/^\/|\/$/g, '') 
-        : `posts/${post.slug}`;
+        : `/${post.slug}`; // Changed: remove 'posts/' prefix to match root-level generation seen in dist
         
     return {
-      params: { slug },
+      params: { slug: slug.replace(/^\//, '') }, // Ensure no leading slash in params
       props: { post },
     };
   });
