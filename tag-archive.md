@@ -1,6 +1,6 @@
 ---
+title: "Etiquetas"
 layout: tags
-title: "Temas"
-permalink: /tema/
+permalink: /etiquetas/
+author_profile: true
 ---
-

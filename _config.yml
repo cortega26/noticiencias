@@ -47,6 +47,7 @@ masthead_title: "Noticiencias"
 category_archive:
   type: liquid
   path: /categorias/
+  taxonomy: category
 
 
 # ——— Plugins soportados por GitHub Pages ———
@@ -56,6 +57,17 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-archives
+
+# ——— Archives ———
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: archive-taxonomy
+  permalinks:
+    category: "/categorias/:name/"
+    tag: "/etiquetas/:name/"
 
 
 # ——— Sass ———
