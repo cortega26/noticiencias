@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  size?: 'sm' | 'md' | 'lg';
+  icon?: string;
+  iconPosition?: 'left' | 'right';
+  href?: string;
+  class?: string;
+  type?: "button" | "submit" | "reset";
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  icon,
+  iconPosition = 'left',
+  href,
+  class: className = '',
+  type = 'button',
+  ...rest
+} = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+
+const variants = {
+  primary: "bg-action-primary text-white hover:bg-blue-700",
+  secondary: "bg-surface-highlight text-action-primary hover:bg-blue-100 dark:hover:bg-slate-700",
+  outline: "border border-border-subtle bg-transparent hover:bg-surface-paper text-text-body",
+  ghost: "bg-transparent hover:bg-surface-highlight text-text-body",
+  link: "text-action-primary underline-offset-4 hover:underline p-0 h-auto",
+};
+
+const sizes = {
+  sm: "text-xs px-3 py-1.5",
+  md: "text-sm px-4 py-2",
+  lg: "text-base px-6 py-3",
+};
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  type={href ? undefined : type}
+  href={href}
+  class:list={[baseStyles, variants[variant], variant !== 'link' && sizes[size], className]}
+  {...rest}
+>
+  {icon && iconPosition === 'left' && <Icon name={icon} class="w-4 h-4 mr-2" />}
+  <slot />
+  {icon && iconPosition === 'right' && <Icon name={icon} class="w-4 h-4 ml-2" />}
+</Tag>

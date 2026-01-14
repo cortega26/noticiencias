@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+import Image from '~/components/template/common/Image.astro';
+
+interface Props {
+  src?: string | ImageMetadata;
+  alt?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const {
+  src,
+  alt = 'Avatar',
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const sizes = {
+  sm: "h-8 w-8",
+  md: "h-10 w-10",
+  lg: "h-12 w-12",
+  xl: "h-16 w-16",
+};
+
+const containerClass = `rounded-full bg-surface-highlight flex items-center justify-center overflow-hidden border border-border-subtle ${sizes[size]} ${className}`;
+---
+
+<div class={containerClass}>
+  {src ? (
+     typeof src === 'string' ? (
+        <img src={src} alt={alt} class="w-full h-full object-cover" />
+     ) : (
+        <Image src={src} alt={alt} class="w-full h-full object-cover" width={100} height={100} />
+     )
+  ) : (
+    <Icon name="tabler:user" class="w-1/2 h-1/2 text-text-muted" />
+  )}
+</div>

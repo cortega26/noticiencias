@@ -1,0 +1,38 @@
+---
+interface Props {
+  topic: string;
+  href?: string;
+  size?: 'sm' | 'md';
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  topic,
+  href,
+  size = 'md',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+// Simple hash function to generate stable colors for topics if needed in the future
+// Currently using a neutral style that fits the new DS
+const baseStyles = "inline-flex items-center font-bold uppercase tracking-wider rounded-sm transition-colors";
+
+const sizes = {
+  sm: "text-[10px] px-1.5 py-0.5",
+  md: "text-xs px-2 py-1",
+};
+
+const colors = "bg-surface-highlight text-action-primary hover:bg-blue-100 dark:hover:bg-slate-700 border border-transparent";
+---
+
+{href ? (
+  <a href={href} class:list={[baseStyles, sizes[size], colors, className]} {...rest}>
+    {topic}
+  </a>
+) : (
+  <span class:list={[baseStyles, sizes[size], colors, className]} {...rest}>
+    {topic}
+  </span>
+)}

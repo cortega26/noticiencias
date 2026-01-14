@@ -15,6 +15,10 @@ type ImageType = {
   attributes: HTMLAttributes<'img'>;
 };
 
+interface Props extends ImageProps {
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
 const props = Astro.props;
 
 if (props.alt === undefined || props.alt === null) {

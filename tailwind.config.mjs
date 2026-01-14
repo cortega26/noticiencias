@@ -12,6 +12,21 @@ export default {
                 accent: 'var(--aw-color-accent)',
                 default: 'var(--aw-color-text-default)',
                 muted: 'var(--aw-color-text-muted)',
+
+                // Semantic Design System Tokens
+                surface: {
+                    base: 'var(--aw-color-bg-page)',
+                    paper: 'var(--aw-color-bg-paper)',
+                    highlight: 'var(--aw-color-bg-highlight)',
+                },
+                text: {
+                    body: 'var(--aw-color-text-default)',
+                    muted: 'var(--aw-color-text-muted)',
+                    inverse: '#ffffff',
+                },
+                border: {
+                    subtle: 'var(--aw-color-border)',
+                },
             },
             fontFamily: {
                 sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

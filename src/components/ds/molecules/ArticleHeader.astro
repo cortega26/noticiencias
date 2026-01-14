@@ -1,0 +1,67 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getFormattedDate } from '~/utils/utils';
+import { getPermalink } from '~/utils/permalinks';
+import Avatar from '~/components/ds/atoms/Avatar.astro';
+import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
+import Image from '~/components/template/common/Image.astro';
+
+interface Props {
+  title: string;
+  excerpt?: string;
+  publishDate: Date;
+  author?: string;
+  category?: { slug: string; title: string };
+  readingTime?: number;
+  image?: string | any;
+}
+
+const { title, excerpt, publishDate, author, category, readingTime, image } = Astro.props;
+---
+
+<header class="mb-8">
+  <div class="flex flex-wrap items-center gap-3 mb-4 text-sm text-text-muted">
+     {category && (
+        <TopicBadge topic={category.title} href={getPermalink(category.slug, 'category')} />
+     )}
+     <span class="flex items-center">
+        <Icon name="tabler:clock" class="w-4 h-4 mr-1" />
+        {getFormattedDate(publishDate)}
+     </span>
+     {readingTime && (
+        <span class="flex items-center">
+             · {readingTime} min lectura
+        </span>
+     )}
+  </div>
+
+  <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight font-heading text-text-body mb-6">
+    {title}
+  </h1>
+
+  {excerpt && (
+    <p class="text-xl md:text-2xl text-text-muted leading-relaxed mb-8">
+        {excerpt}
+    </p>
+  )}
+
+  <div class="flex items-center gap-3 py-4 border-y border-border-subtle mb-8">
+    <Avatar size="md" />
+    <div>
+        <span class="block text-sm font-bold text-text-body uppercase tracking-wide">
+            {author || 'Equipo Editorial'}
+        </span>
+        <span class="text-xs text-text-muted">Noticiencias</span>
+    </div>
+  </div>
+
+  {image && (
+    <div class="mb-8 rounded-lg overflow-hidden shadow-lg bg-surface-highlight">
+         {typeof image === 'string' ? (
+            <img src={image} alt={title} class="w-full h-auto object-cover" loading="eager" fetchpriority="high" />
+         ) : (
+             <Image src={image} alt={title} width={900} height={506} class="w-full h-auto" loading="eager" fetchpriority="high" />
+         )}
+    </div>
+  )}
+</header>

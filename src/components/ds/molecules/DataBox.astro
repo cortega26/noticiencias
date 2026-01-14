@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title?: string;
+  icon?: string;
+  variant?: 'default' | 'info' | 'success' | 'warning';
+  class?: string;
+}
+
+const {
+  title,
+  icon,
+  variant = 'default',
+  class: className = '',
+} = Astro.props;
+
+const variants = {
+  default: "bg-surface-paper border-l-4 border-action-primary",
+  info: "bg-blue-50 dark:bg-slate-900 border-l-4 border-blue-500",
+  success: "bg-green-50 dark:bg-green-900/30 border-l-4 border-green-500",
+  warning: "bg-yellow-50 dark:bg-yellow-900/30 border-l-4 border-yellow-500",
+};
+---
+
+<div class:list={["p-6 rounded-r-lg shadow-sm relative overflow-hidden", variants[variant], className]}>
+  {icon && (
+    <div class="absolute top-0 right-0 -mt-2 -mr-2 opacity-10">
+      <Icon name={icon} class="w-16 h-16" />
+    </div>
+  )}
+  
+  {title && (
+    <h3 class="font-bold text-gray-900 dark:text-white uppercase text-xs tracking-wider mb-3 flex items-center">
+        {icon && <Icon name={icon} class="w-4 h-4 mr-1.5" />}
+        {title}
+    </h3>
+  )}
+  
+  <div class="text-sm md:text-base leading-relaxed text-text-body">
+    <slot />
+  </div>
+</div>

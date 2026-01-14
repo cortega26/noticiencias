@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
+import DataBox from '~/components/ds/molecules/DataBox.astro';
+import Badge from '~/components/ds/atoms/Badge.astro';
 
 export interface Props {
   whyItMatters?: string[];
@@ -18,44 +20,36 @@ if (mode === 'footer' && !hasFooterContent) return null;
 ---
 
 {mode === 'intro' && (
-  <div class="my-8 bg-blue-50 dark:bg-slate-800 rounded-lg p-6 border-l-4 border-blue-500 shadow-sm relative overflow-hidden">
-    <div class="absolute top-0 right-0 -mt-2 -mr-2 opacity-10">
-      <Icon name="tabler:info-circle" class="w-16 h-16" />
-    </div>
-    
+  <DataBox variant="info" icon="tabler:info-circle">
     {factCheck && factCheck.length > 0 && (
       <div class="mb-4 flex flex-wrap gap-2">
         {factCheck.map((check) => (
-          <span class:list={[
-            "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wide",
-            check.status === 'verified' ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" :
-            check.status === 'debunked' ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100" :
-            "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
-          ]}>
-            {check.status === 'verified' && <Icon name="tabler:check" class="w-3.5 h-3.5 mr-1" />}
-            {check.status === 'debunked' && <Icon name="tabler:x" class="w-3.5 h-3.5 mr-1" />}
+          <Badge 
+            variant={check.status === 'verified' ? 'success' : check.status === 'debunked' ? 'error' : 'info'}
+            icon={check.status === 'verified' ? 'tabler:check' : check.status === 'debunked' ? 'tabler:x' : undefined}
+          >
             {check.label}
-          </span>
+          </Badge>
         ))}
       </div>
     )}
 
     {whyItMatters && whyItMatters.length > 0 && (
       <div>
-        <h3 class="font-bold text-gray-900 dark:text-white uppercase text-xs tracking-wider mb-2 flex items-center">
+        <h3 class="font-bold text-text-body uppercase text-xs tracking-wider mb-2 flex items-center">
             <Icon name="tabler:bulb" class="w-4 h-4 mr-1.5" />
             Por qué esto importa
         </h3>
         <ul class="list-none space-y-2 m-0 p-0">
           {whyItMatters.map((item) => (
-            <li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-blue-500 before:font-bold text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            <li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-action-primary before:font-bold text-sm md:text-base leading-relaxed text-text-body">
               {item}
             </li>
           ))}
         </ul>
       </div>
     )}
-  </div>
+  </DataBox>
 )}
 
 {mode === 'footer' && sources && sources.length > 0 && (
