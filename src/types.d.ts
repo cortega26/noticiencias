@@ -195,7 +195,7 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
 }
 
 export interface ItemGrid {
-  items?: Array<Item>;
+  items?: Item[];
   columns?: number;
   defaultIcon?: string;
   classes?: Record<string, string>;

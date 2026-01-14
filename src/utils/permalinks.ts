@@ -22,9 +22,9 @@ export const cleanSlug = (text = '') =>
     .join('/')
     .toLowerCase();
 
-export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
+export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname ?? 'blog');
+export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname ?? 'category');
+export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname ?? 'tag');
 
 export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
@@ -40,9 +40,17 @@ export const getCanonical = (path = ''): string | URL => {
 };
 
 /** */
-export const getPermalink = (slug = '', type = 'page'): string => {
-  let permalink: string;
+const PERMALINK_TYPES: Record<string, (slug: string) => string> = {
+  home: () => getHomePermalink(),
+  blog: () => getBlogPermalink(),
+  asset: (slug) => getAsset(slug),
+  category: (slug) => createPath(CATEGORY_BASE, trimSlash(slug)),
+  tag: (slug) => createPath(TAG_BASE, trimSlash(slug)),
+  post: (slug) => createPath(trimSlash(slug)),
+  page: (slug) => createPath(slug),
+};
 
+export const getPermalink = (slug = '', type = 'page'): string => {
   if (
     slug.startsWith('https://') ||
     slug.startsWith('http://') ||
@@ -53,38 +61,8 @@ export const getPermalink = (slug = '', type = 'page'): string => {
     return slug;
   }
 
-  switch (type) {
-    case 'home':
-      permalink = getHomePermalink();
-      break;
-
-    case 'blog':
-      permalink = getBlogPermalink();
-      break;
-
-    case 'asset':
-      permalink = getAsset(slug);
-      break;
-
-    case 'category':
-      permalink = createPath(CATEGORY_BASE, trimSlash(slug));
-      break;
-
-    case 'tag':
-      permalink = createPath(TAG_BASE, trimSlash(slug));
-      break;
-
-    case 'post':
-      permalink = createPath(trimSlash(slug));
-      break;
-
-    case 'page':
-    default:
-      permalink = createPath(slug);
-      break;
-  }
-
-  return definitivePermalink(permalink);
+  const permalinkFn = PERMALINK_TYPES[type] || PERMALINK_TYPES['page'];
+  return definitivePermalink(permalinkFn(slug));
 };
 
 /** */

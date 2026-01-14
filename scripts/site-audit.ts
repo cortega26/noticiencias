@@ -55,13 +55,13 @@ export class SiteAuditor {
             // Check Links
             $('a').each((_, el) => {
                 const href = $(el).attr('href');
-                if (href) this.checkLink(href, file);
+                if (typeof href === 'string') this.checkLink(href, file);
             });
 
             // Check Images
             $('img').each((_, el) => {
                 const src = $(el).attr('src');
-                if (src) this.checkImage(src, file);
+                if (typeof src === 'string') this.checkImage(src, file);
             });
         }
 

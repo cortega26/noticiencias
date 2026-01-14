@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import os from 'node:os';
 import type { AstroConfig, AstroIntegration } from 'astro';
 
@@ -86,21 +87,21 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
 
           const hasIntegration =
             Array.isArray(cfg?.integrations) &&
-            cfg.integrations?.find((e) => e?.name === '@astrojs/sitemap') !== undefined;
+            cfg.integrations?.some((e) => e?.name === '@astrojs/sitemap');
           const sitemapExists = fs.existsSync(sitemapFile);
 
           if (hasIntegration && sitemapExists) {
-            const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flag: 'a+' });
+            const robotsTxt = fs.readFileSync(fileURLToPath(robotsTxtFile), { encoding: 'utf8', flag: 'a+' });
             const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {
-              fs.writeFileSync(robotsTxtFileInOut, `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
+              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
                 encoding: 'utf8',
                 flag: 'w',
               });
             } else {
-              fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
+              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
                 encoding: 'utf8',
                 flag: 'w',
               });
