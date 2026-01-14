@@ -19,19 +19,19 @@ export const headerData = {
       links: [
         {
           text: 'Editorial',
-          href: getPermalink('/categories/editorial/'),
+          href: getPermalink('/categorias/editorial/'),
         },
         {
           text: 'Salud',
-          href: getPermalink('/categories/salud/'),
+          href: getPermalink('/categorias/salud/'),
         },
         {
           text: 'Ciencia',
-          href: getPermalink('/categories/ciencia/'),
+          href: getPermalink('/categorias/ciencia/'),
         },
         {
           text: 'Tecnología',
-          href: getPermalink('/categories/tecnologia/'),
+          href: getPermalink('/categorias/tecnologia/'),
         }
       ],
     },
@@ -44,10 +44,10 @@ export const footerData = {
     {
       title: 'Secciones',
       links: [
-        { text: 'Editorial', href: getPermalink('/categories/editorial/') },
-        { text: 'Salud', href: getPermalink('/categories/salud/') },
-        { text: 'Ciencia', href: getPermalink('/categories/ciencia/') },
-        { text: 'Tecnología', href: getPermalink('/categories/tecnologia/') },
+        { text: 'Editorial', href: getPermalink('/categorias/editorial/') },
+        { text: 'Salud', href: getPermalink('/categorias/salud/') },
+        { text: 'Ciencia', href: getPermalink('/categorias/ciencia/') },
+        { text: 'Tecnología', href: getPermalink('/categorias/tecnologia/') },
       ],
     },
     {

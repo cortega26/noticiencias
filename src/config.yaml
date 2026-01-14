@@ -27,7 +27,7 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: es
   textDirection: ltr
 
 apps:
@@ -49,13 +49,13 @@ apps:
 
     category:
       isEnabled: true
-      pathname: 'categories' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      pathname: 'categorias' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
         index: true
 
     tag:
       isEnabled: true
-      pathname: 'tags' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: 'temas' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
       robots:
         index: false
 
