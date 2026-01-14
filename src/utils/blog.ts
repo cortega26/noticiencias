@@ -1,7 +1,7 @@
 import type { PaginateFunction } from 'astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '~/types';
+import type { Post, Taxonomy } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
@@ -40,32 +40,38 @@ const generatePermalink = async ({
     .join('/');
 };
 
-const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
+const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
   const { id, data } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
-    publishDate: rawPublishDate = new Date(),
-    updateDate: rawUpdateDate,
+    date: rawPublishDate = new Date(),
     title,
     excerpt,
     image,
+    categories: rawCategories = [],
     tags: rawTags = [],
-    category: rawCategory,
     author,
-    draft = false,
-    metadata = {},
   } = data;
+
+  const draft = false; // Schema does not have draft
+  const rawCategory = undefined; // Schema does not have category
+  const rawUpdateDate = undefined; // Schema does not have updateDate
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
-  const category = rawCategory
+  const metadata = {};
+
+  // Use rawCategory if exists, otherwise use first item from rawCategories
+  const categoryString = rawCategory || (rawCategories && rawCategories.length > 0 ? rawCategories[0] : undefined);
+
+  const category = categoryString
     ? {
-        slug: cleanSlug(rawCategory),
-        title: rawCategory,
-      }
+      slug: cleanSlug(categoryString),
+      title: categoryString,
+    }
     : undefined;
 
   const tags = rawTags.map((tag: string) => ({
@@ -101,7 +107,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('post');
+  const posts = await getCollection('posts');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
@@ -198,7 +204,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = {};
+  const categories: Record<string, Taxonomy> = {};
   posts.map((post) => {
     if (post.category?.slug) {
       categories[post.category?.slug] = post.category;
@@ -222,7 +228,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = {};
+  const tags: Record<string, Taxonomy> = {};
   posts.map((post) => {
     if (Array.isArray(post.tags)) {
       post.tags.map((tag) => {
