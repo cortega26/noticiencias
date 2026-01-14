@@ -40,9 +40,49 @@ const siteDescription = "Traduce la ciencia global en español claro para 580 mi
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">Important: Noticiencias Clone</a>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">Noticiencias</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/about/">Acerca de</a></li>
+                <li><a href="/methodology/">Metodología</a></li>
+                <li><a href="/transparency/">Transparencia</a></li>
+                <li><a href="/buscar/">🔍 Buscar</a></li>
+            </ul>
         </nav>
+        <style>
+             /* Navbar Styles */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .logo a {
+                font-weight: bold;
+                font-size: 1.5rem;
+                color: #333;
+                text-decoration: none;
+            }
+            .nav-links {
+                list-style: none;
+                display: flex;
+                gap: 1.5rem;
+                padding: 0;
+                margin: 0;
+            }
+            .nav-links a {
+                color: #555;
+                font-weight: 500;
+                font-size: 0.95rem;
+            }
+            .nav-links a:hover {
+                color: #000;
+                text-decoration: underline;
+            }
+        </style>
     </header>
     <main>
         <slot />
