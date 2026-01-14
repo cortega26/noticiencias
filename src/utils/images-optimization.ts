@@ -274,8 +274,8 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
 /* ** */
 const calculateDimensions = (
   image: ImageMetadata | string,
-  width?: number | string,
-  height?: number | string,
+  width?: number | string | null,
+  height?: number | string | null,
   aspectRatio?: number | string | null,
   layout?: string
 ) => {
