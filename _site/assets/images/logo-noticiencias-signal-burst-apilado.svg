@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Signal Burst Logo - Apilado -->
+    <g transform="translate(70,5)">
+        <path d="M10 15 L10 55 L18 55 L18 30 L38 48 L46 48 L46 15 L38 15 L38 40 L18 22 L10 15 Z" fill="#0B1B2B"/>
+        <path d="M52 25 L58 23" stroke="#10BCEB" stroke-width="2" stroke-linecap="round"/>
+        <path d="M52 30 L57 30" stroke="#10BCEB" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M52 35 L56 37" stroke="#10BCEB" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="50" cy="30" r="2" fill="#10BCEB"/>
+        <circle cx="50" cy="30" r="1" fill="#0B1B2B"/>
+    </g>
+    <text x="100" y="100" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0B1B2B" text-anchor="middle">Noticiencias</text>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Signal Burst Logo - Favicon Optimizado -->
+    <path d="M12 18 L12 82 L26 82 L26 42 L62 78 L74 78 L74 18 L60 18 L60 58 L24 22 L12 18 Z" fill="#0B1B2B"/>
+    <path d="M82 30 L95 25" stroke="#10BCEB" stroke-width="4" stroke-linecap="round"/>
+    <path d="M82 40 L95 40" stroke="#10BCEB" stroke-width="3" stroke-linecap="round"/>
+    <path d="M82 50 L95 55" stroke="#10BCEB" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="80" cy="40" r="3" fill="#10BCEB"/>
+</svg>

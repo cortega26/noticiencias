@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../noticiencias_news_collector"
+		},
+		{
+			"path": "../_audit_prompts"
+		}
+	],
+	"settings": {}
+}
