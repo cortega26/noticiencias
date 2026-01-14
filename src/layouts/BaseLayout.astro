@@ -1,94 +1,25 @@
 ---
-const { title, description, image } = Astro.props;
-const siteTitle = "Noticiencias";
-const siteDescription = "Traduce la ciencia global en español claro para 580 millones de hispanohablantes.";
+import Layout from '~/layouts/template/Layout.astro';
+import Header from '~/components/template/widgets/Header.astro';
+import Footer from '~/components/template/widgets/Footer.astro';
+import Announcement from '~/components/template/widgets/Announcement.astro';
+
+import { headerData, footerData } from '~/navigation';
+
+const { metadata } = Astro.props;
 ---
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
-    <meta name="description" content={description || siteDescription} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
-    <!-- Open Graph -->
-    <meta property="og:site_name" content={siteTitle} />
-    <meta property="og:title" content={title || siteTitle} />
-    <meta property="og:description" content={description || siteDescription} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_ES" />
-    {image && <meta property="og:image" content={new URL(image, Astro.url)} />}
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@noticiencias" />
-    <meta name="twitter:title" content={title || siteTitle} />
-    <meta name="twitter:description" content={description || siteDescription} />
-    {image && <meta name="twitter:image" content={new URL(image, Astro.url)} />}
-    
-    <!-- Custom CSS (Temporary until design system implemented) -->
-    <style>
-        body { font-family: system-ui, sans-serif; margin: 0; line-height: 1.6; color: #333; }
-        header, footer { background: #f4f4f4; padding: 1rem; }
-        main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        a { color: #0070f3; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="/">Noticiencias</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/about/">Acerca de</a></li>
-                <li><a href="/methodology/">Metodología</a></li>
-                <li><a href="/transparency/">Transparencia</a></li>
-                <li><a href="/buscar/">🔍 Buscar</a></li>
-            </ul>
-        </nav>
-        <style>
-             /* Navbar Styles */
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .logo a {
-                font-weight: bold;
-                font-size: 1.5rem;
-                color: #333;
-                text-decoration: none;
-            }
-            .nav-links {
-                list-style: none;
-                display: flex;
-                gap: 1.5rem;
-                padding: 0;
-                margin: 0;
-            }
-            .nav-links a {
-                color: #555;
-                font-weight: 500;
-                font-size: 0.95rem;
-            }
-            .nav-links a:hover {
-                color: #000;
-                text-decoration: underline;
-            }
-        </style>
-    </header>
-    <main>
-        <slot />
-    </main>
-    <footer>
-        <p>&copy; {new Date().getFullYear()} Noticiencias. Ciencia para todos.</p>
-    </footer>
-</body>
-</html>
+<Layout metadata={metadata}>
+  <slot name="announcement">
+    <Announcement />
+  </slot>
+  <slot name="header">
+    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+  </slot>
+  <main>
+    <slot />
+  </main>
+  <slot name="footer">
+    <Footer {...footerData} />
+  </slot>
+</Layout>
