@@ -41,7 +41,7 @@ const generatePermalink = async ({
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
-  const { id, data } = post;
+  const { id, slug: rawSlug, data } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
@@ -58,7 +58,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   const rawCategory = undefined; // Schema does not have category
   const rawUpdateDate = undefined; // Schema does not have updateDate
 
-  const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
+  const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
