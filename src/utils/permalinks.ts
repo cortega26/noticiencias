@@ -43,11 +43,11 @@ export const getCanonical = (path = ''): string | URL => {
 const PERMALINK_TYPES: Record<string, (slug: string) => string> = {
   home: () => getHomePermalink(),
   blog: () => getBlogPermalink(),
-  asset: (slug) => getAsset(slug),
-  category: (slug) => createPath(CATEGORY_BASE, trimSlash(slug)),
-  tag: (slug) => createPath(TAG_BASE, trimSlash(slug)),
-  post: (slug) => createPath(trimSlash(slug)),
-  page: (slug) => createPath(slug),
+  asset: (slug: string) => getAsset(slug),
+  category: (slug: string) => createPath(CATEGORY_BASE, trimSlash(slug)),
+  tag: (slug: string) => createPath(TAG_BASE, trimSlash(slug)),
+  post: (slug: string) => createPath(trimSlash(slug)),
+  page: (slug: string) => createPath(slug),
 };
 
 export const getPermalink = (slug = '', type = 'page'): string => {

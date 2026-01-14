@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import * as fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import os from 'node:os';
 import type { AstroConfig, AstroIntegration } from 'astro';
@@ -96,12 +96,12 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {
-              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
+              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${String(sitemapUrl)}`, {
                 encoding: 'utf8',
                 flag: 'w',
               });
             } else {
-              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
+              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), robotsTxt.replace(pattern, `Sitemap: ${String(sitemapUrl)}`), {
                 encoding: 'utf8',
                 flag: 'w',
               });
