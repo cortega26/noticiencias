@@ -1,0 +1,51 @@
+---
+import { findLatestPosts } from '~/utils/blog';
+import { getPermalink } from '~/utils/permalinks';
+
+const latestPosts = await findLatestPosts({ count: 5 });
+
+export interface Props {
+    class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<div class={`${className} space-y-8 mt-20`}>
+    <!-- Top Stories -->
+    <div class="bg-white dark:bg-slate-800 rounded-lg p-6 border border-gray-200 dark:border-slate-700 shadow-sm">
+        <h3 class="font-bold uppercase tracking-wider text-xs text-gray-500 mb-6 border-b border-gray-100 dark:border-slate-700 pb-2">
+            Lo más leído
+        </h3>
+        <ul class="space-y-6">
+            {latestPosts.map((post, index) => (
+                <li class="group relative pl-8">
+                    <span class="absolute left-0 top-0 text-3xl font-bold text-gray-200 dark:text-slate-700 font-heading leading-none">
+                        {index + 1}
+                    </span>
+                    <a href={getPermalink(post.permalink, 'post')} class="relative z-10 block font-bold leading-tight text-gray-900 dark:text-gray-100 hover:text-primary transition-colors">
+                        {post.title}
+                    </a>
+                    {post.category && (
+                        <span class="text-xs uppercase tracking-wide text-gray-500 mt-1 block">
+                            {post.category.title}
+                        </span>
+                    )}
+                </li>
+            ))}
+        </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="bg-blue-50 dark:bg-slate-900 rounded-lg p-6 text-center border border-blue-100 dark:border-slate-800">
+        <h3 class="font-bold text-xl mb-2 font-heading">Noticiencias Semanal</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Descubrimientos explicados, directo a tu bandeja.
+        </p>
+        <div class="space-y-2">
+             <input disabled type="email" placeholder="tu@email.com" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-800 dark:border-slate-700 opacity-50 cursor-not-allowed" />
+             <button disabled class="w-full bg-primary text-white py-2 rounded font-bold hover:bg-blue-700 transition opacity-50 cursor-not-allowed">
+                Suscribirse
+             </button>
+             <p class="text-xs text-gray-400 text-left">* Próximamente</p>
+        </div>
+    </div>
+</div>

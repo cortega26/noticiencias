@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  whyItMatters?: string[];
+  factCheck?: { label: string; status: string }[];
+  sources?: { title: string; url: string; publisher?: string; date?: string }[];
+  mode: 'intro' | 'footer';
+}
+
+const { whyItMatters, factCheck, sources, mode } = Astro.props;
+
+const hasIntroContent = (whyItMatters?.length ?? 0) > 0 || (factCheck?.length ?? 0) > 0;
+const hasFooterContent = (sources?.length ?? 0) > 0;
+
+if (mode === 'intro' && !hasIntroContent) return null;
+if (mode === 'footer' && !hasFooterContent) return null;
+---
+
+{mode === 'intro' && (
+  <div class="my-8 bg-blue-50 dark:bg-slate-800 rounded-lg p-6 border-l-4 border-blue-500 shadow-sm relative overflow-hidden">
+    <div class="absolute top-0 right-0 -mt-2 -mr-2 opacity-10">
+      <Icon name="tabler:info-circle" class="w-16 h-16" />
+    </div>
+    
+    {factCheck && factCheck.length > 0 && (
+      <div class="mb-4 flex flex-wrap gap-2">
+        {factCheck.map((check) => (
+          <span class:list={[
+            "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wide",
+            check.status === 'verified' ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" :
+            check.status === 'debunked' ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100" :
+            "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+          ]}>
+            {check.status === 'verified' && <Icon name="tabler:check" class="w-3.5 h-3.5 mr-1" />}
+            {check.status === 'debunked' && <Icon name="tabler:x" class="w-3.5 h-3.5 mr-1" />}
+            {check.label}
+          </span>
+        ))}
+      </div>
+    )}
+
+    {whyItMatters && whyItMatters.length > 0 && (
+      <div>
+        <h3 class="font-bold text-gray-900 dark:text-white uppercase text-xs tracking-wider mb-2 flex items-center">
+            <Icon name="tabler:bulb" class="w-4 h-4 mr-1.5" />
+            Por qué esto importa
+        </h3>
+        <ul class="list-none space-y-2 m-0 p-0">
+          {whyItMatters.map((item) => (
+            <li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-blue-500 before:font-bold text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
+
+{mode === 'footer' && sources && sources.length > 0 && (
+    <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+        <details class="group">
+            <summary class="flex items-center cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                <Icon name="tabler:link" class="w-4 h-4 mr-2" />
+                Fuentes y Referencias
+                <Icon name="tabler:chevron-down" class="w-4 h-4 ml-auto transform group-open:rotate-180 transition-transform" />
+            </summary>
+            <div class="mt-4 pl-6 text-sm">
+                <ul class="space-y-3">
+                    {sources.map(source => (
+                        <li>
+                            <a href={source.url} target="_blank" rel="nofollow noopener" class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-2 -ml-2 rounded transition-colors">
+                                <span class="font-medium text-primary hover:underline break-words">
+                                    {source.title}
+                                    <Icon name="tabler:external-link" class="w-3 h-3 inline ml-1 opacity-50" />
+                                </span>
+                                {(source.publisher || source.date) && (
+                                    <span class="text-xs text-gray-500 mt-1">
+                                        {source.publisher} {source.publisher && source.date && "•"} {source.date}
+                                    </span>
+                                )}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </details>
+    </div>
+)}

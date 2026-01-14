@@ -42,6 +42,11 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+
+  /** Noticiencias extensions */
+  why_it_matters?: string[];
+  fact_check?: { label: string; status: string }[];
+  sources?: { title: string; url: string; publisher?: string; date?: string }[];
 }
 
 export interface Taxonomy {
@@ -278,4 +283,4 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+export interface Contact extends Omit<Headline, 'classes'>, Form, Widget { }

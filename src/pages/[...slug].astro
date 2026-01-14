@@ -22,6 +22,10 @@ export async function getStaticPaths() {
   });
 }
 
+import ArticleSidebar from '~/components/template/blog/ArticleSidebar.astro';
+
+// ... (existing helper logic)
+
 const { post } = Astro.props;
 const { Content } = await post.render();
 
@@ -29,27 +33,36 @@ const metadata = {
   title: post.data.title,
   description: post.data.excerpt,
   image: post.data.image,
-  canonical: post.data.permalink ? undefined : getPermalink(post.slug, 'post'), // Let BaseLayout handle canonical if not explicit
-  // Add other metadata mapping here if needed
+  canonical: post.data.permalink ? undefined : getPermalink(post.slug, 'post'),
 };
 ---
 
 <BaseLayout metadata={metadata}>
-  <SinglePost post={{
-      ...post,
-      category: post.data.categories?.[0]
-        ? { slug: post.data.categories[0], title: post.data.categories[0] }
-        : undefined
-    }} 
-    url={post.data.permalink || getPermalink(post.slug, 'post')}>
-    {post.data.image ? (
-      <img slot="image" src={post.data.image} alt={post.data.image_alt || ""} class="w-full h-auto rounded-lg shadow-lg mb-6" />
-    ) : (
-      <div slot="image" class="h-10"></div>
-    )}
-    
-    <Content />
-  </SinglePost>
+  <div class="container mx-auto px-0 sm:px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <main class="lg:col-span-8">
+        <SinglePost post={{
+            ...post,
+            category: post.data.categories?.[0]
+              ? { slug: post.data.categories[0], title: post.data.categories[0] }
+              : undefined
+          }} 
+          url={post.data.permalink || getPermalink(post.slug, 'post')}>
+          {post.data.image ? (
+            <img slot="image" src={post.data.image} alt={post.data.image_alt || ""} class="w-full h-auto rounded-lg shadow-lg mb-6" />
+          ) : (
+            <div slot="image" class="h-10"></div>
+          )}
+          
+          <Content />
+        </SinglePost>
+      </main>
+      
+      <aside class="hidden lg:block lg:col-span-4">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </div>
 
   <ToBlogLink />
 </BaseLayout>
