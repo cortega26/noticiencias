@@ -38,11 +38,13 @@
     "unpic": "^4.2.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@types/glob": "^8.1.0",
     "@types/node": "^25.0.8",
     "cheerio": "^1.1.2",
     "glob": "^13.0.0",
     "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
     "vitest": "^4.0.17"
   }
 }
