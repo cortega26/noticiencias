@@ -35,7 +35,7 @@ const shouldIgnorePath = (imagePath: string): boolean => {
 };
 
 const resolveImageKey = (imagePath: string): string => {
-  return imagePath.replace('~/', '/src/');
+  return imagePath;
 };
 
 const resolveImageFromCollection = async (

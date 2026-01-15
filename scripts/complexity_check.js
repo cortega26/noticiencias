@@ -33,7 +33,7 @@ async function analyzeComplexity() {
                         complexity++;
                         complexity += getComplexity(child);
                         break;
-                    case ts.SyntaxKind.BinaryExpression:
+                    case ts.SyntaxKind.BinaryExpression: {
                         const binaryExpr = child;
                         if (
                             binaryExpr.operatorToken.kind === ts.SyntaxKind.AmpersandAmpersandToken ||
@@ -43,6 +43,7 @@ async function analyzeComplexity() {
                         }
                         complexity += getComplexity(child);
                         break;
+                    }
                     default:
                         complexity += getComplexity(child);
                 }
