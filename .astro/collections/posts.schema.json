@@ -98,6 +98,9 @@
             "type": "string"
           }
         },
+        "series": {
+          "type": "string"
+        },
         "sources": {
           "type": "array",
           "items": {

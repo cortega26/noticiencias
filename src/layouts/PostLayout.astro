@@ -11,40 +11,11 @@ interface Props {
 const { post, headings } = Astro.props;
 // ... imports
 // Note: imports are already at the top of file, don't duplicate if they exist
-const { title, excerpt: description, date, author, image, tags, categories, confidence } = post.data;
+const { title, excerpt: description, date, author, image, tags, categories, confidence, series } = post.data;
 
 // Logic for Confidence Badge
-const confidenceMap = {
-  alta: { color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300', label: 'Evidencia Robusta', icon: 'tabler:check' },
-  media: { color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300', label: 'Evidencia Preliminar', icon: 'tabler:alert-circle' },
-  baja: { color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300', label: 'Faltan Datos / Debate', icon: 'tabler:help' },
-};
-// Safe access to confidence
-const confidenceBadge = confidence && confidenceMap[confidence.toLowerCase()] ? confidenceMap[confidence.toLowerCase()] : null;
-
-// Estimated reading time (rude approximation)
-const readingTime = Math.ceil(post.body.split(/\s+/).length / 200);
-
-const schema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": title.substring(0, 110),
-  "image": [image],
-  "datePublished": date.toISOString(),
-  "dateModified": date.toISOString(), // Should be modified time if available
-  "author": [{
-      "@type": "Person",
-      "name": author,
-      "url": "https://noticiencias.com/nosotros/"
-  }]
-});
----
-
-<BaseLayout title={title} description={description} image={image}>
-    <script type="application/ld+json" set:html={schema}></script>
-    <article class="post">
-        <header>
-
+// ... (existing logic)
+// ...
             <div class="meta flex flex-wrap gap-4 items-center">
                 <span class="category">{categories?.[0]}</span> • 
                 <span class="date">{date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span> • 
@@ -56,6 +27,15 @@ const schema = JSON.stringify({
                     </span>
                 )}
             </div>
+
+            {series && (
+                <div class="inline-block mt-4 mb-2">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                        Serie: {series}
+                    </span>
+                </div>
+            )}
+
             <h1>{title}</h1>
             {image && <img src={image} alt={post.data.image_alt || title} style="max-width:100%; height:auto;" />}
             <div class="author">

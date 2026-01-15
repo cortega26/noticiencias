@@ -13,7 +13,8 @@ export async function GET(context) {
             description: post.data.excerpt,
             // Use custom permalink if available, else standard slug
             link: post.data.permalink || `/posts/${post.slug}/`,
+            author: "equipo@noticiencias.com (Equipo Noticiencias)",
         })),
-        customData: `<language>es-es</language>`,
+        customData: `<language>es-es</language><copyright>Copyright ${new Date().getFullYear()} Noticiencias</copyright>`,
     });
 }

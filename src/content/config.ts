@@ -27,6 +27,7 @@ const posts = defineCollection({
         })).optional(),
 
         why_it_matters: z.array(z.string()).optional(),
+        series: z.string().optional(),
 
         sources: z.array(z.object({
             title: z.string(),

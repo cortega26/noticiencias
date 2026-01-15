@@ -24,6 +24,7 @@ why_it_matters:
   - >-
     La crisis de opioides requiere soluciones basadas en evidencia y acceso
     equitativo.
+series: Crisis Opioides
 sources:
   - title: CDC - Opioid Data Analysis and Resources
     url: 'https://www.cdc.gov/opioids/data/index.html'
