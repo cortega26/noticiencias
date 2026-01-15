@@ -1,43 +1,80 @@
-# Astro Starter Kit: Minimal
+# 🧪 Noticiencias - Plataforma de Periodismo Científico
 
-```sh
-npm create astro@latest -- --template minimal
-```
+> **"Evidence-first, Spanish-first."**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Noticiencias es una plataforma de noticias científicas diseñada para el público latinoamericano, priorizando la evidencia sobre el sensacionalismo. Este repositorio contiene el frontend moderno construido con **Astro 5**, migrado desde un sitio legacy en Jekyll.
 
-## 🚀 Project Structure
+## 🚀 Stack Tecnológico
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Framework**: [Astro 5.0](https://astro.build) (Content Collections, Server Islands).
+- **Estilos**: [Tailwind CSS](https://tailwindcss.com) + [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin).
+- **Búsqueda**: Lunr.js (lado del cliente).
+- **Despliegue**: GitHub Pages (Static Site Generation).
+- **Integraciones**: `noticiencias_news_collector` (fuente de datos).
+
+## ✨ Características Clave
+
+1.  **Rendimiento Extremo**: HTML estático por defecto, 0kb JS para la mayoría de las páginas.
+2.  **View Transitions**: Navegación fluida estilo SPA sin la complejidad.
+3.  **Diseño "Newsroom"**: Tipografía optimizada para lectura (Inter + Lora), modo oscuro nativo, y componentes de confianza (Trust Signals).
+4.  **Content Collections**: Gestión de tipos segura (TypeScript) para `posts`, `pages`, y `authors`.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
-├── public/
+├── public/             # Assets estáticos (imágenes, favicon, CNAME)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/     # Componentes UI (React/Astro)
+│   │   ├── common/     # Botones, MetaTags, Analytics
+│   │   ├── widgets/    # Hero, Features, Header, Footer
+│   │   └── blog/       # Listas de posts, Grid items
+│   ├── content/        # Colecciones de contenido (Markdown/MDX)
+│   │   ├── post/       # Artículos del blog
+│   │   └── config.ts   # Esquemas de validación Zod
+│   ├── layouts/        # Plantillas de página (PageLayout, PostLayout)
+│   ├── pages/          # Rutas del sitio (File-based routing)
+│   └── utils/          # Helpers (formateo de fechas, permalinks)
+├── task.md             # Checklist de migración y tareas
+└── astro.config.mjs    # Configuración de Astro (sitemap, tailwind, etc.)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Instalación y Uso
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerrequisitos
+- Node.js 18+
+- npm
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Comandos Principales
 
-## 🧞 Commands
+| Comando | Acción |
+| :--- | :--- |
+| `npm install` | Instala las dependencias del proyecto. |
+| `npm run dev` | Inicia el servidor de desarrollo en `localhost:4321`. |
+| `npm run build` | Compila el sitio para producción en `./dist/`. |
+| `npm run preview` | Previsualiza la build de producción localmente. |
+| `npm run lint` | Ejecuta ESLint para verificar calidad de código. |
 
-All commands are run from the root of the project, from a terminal:
+## 📝 Flujo de Trabajo Editorial
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1.  **Contenido**: Los artículos viven en `src/content/post/`.
+2.  **Frontmatter**: Usamos campos estrictos para garantizar calidad.
+    ```yaml
+    title: "Título Impactante pero Honesto"
+    publishDate: 2025-01-15
+    image: "~/assets/images/cover.jpg"
+    category: "Tecnología"
+    tags: ["IA", "Futuro"]
+    author: "noticiencias-ai"
+    trust_score: 0.95  # Nivel de evidencia
+    ```
+3.  **Imágenes**: Astro optimiza automáticamente las imágenes locales importadas.
 
-## 👀 Want to learn more?
+## 🤝 Contribución
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1.  Priorizamos cambios pequeños ("Baby Steps").
+2.  No commitear archivos binarios grandes.
+3.  Usar Conventional Commits (`feat:`, `fix:`, `docs:`).
+
+---
+*Mantenido por el equipo de Noticiencias.*
