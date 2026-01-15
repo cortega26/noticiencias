@@ -3,7 +3,7 @@ title: "El impacto de la IA generativa en la educación superior"
 excerpt: "Universidades de todo el mundo replantean sus currículos ante la omnipresencia de herramientas como ChatGPT y Claude en el aula."
 publishDate: 2025-09-02T14:30:00Z
 date: 2025-09-02T14:30:00Z
-image: ~/assets/images/hero-image.png
+image: /assets/images/hero-image.png
 categories:
   - tecnologia
 tags:
