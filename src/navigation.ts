@@ -3,37 +3,33 @@ import { getPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Acerca de',
-      href: getPermalink('/nosotros/'),
-    },
-    {
-      text: 'Metodología',
-      href: getPermalink('/metodologia/'),
-    },
-    {
-      text: 'Transparencia',
-      href: getPermalink('/transparencia/'),
-    },
-    {
-      text: 'Explorar',
+      text: 'Temas',
       links: [
         {
-          text: 'Editorial',
-          href: getPermalink('/categorias/editorial/'),
+          text: 'Ciencia',
+          href: getPermalink('/categorias/ciencia/'),
         },
         {
           text: 'Salud',
           href: getPermalink('/categorias/salud/'),
         },
         {
-          text: 'Ciencia',
-          href: getPermalink('/categorias/ciencia/'),
-        },
-        {
           text: 'Tecnología',
           href: getPermalink('/categorias/tecnologia/'),
-        }
+        },
+        {
+          text: 'Editorial',
+          href: getPermalink('/categorias/editorial/'),
+        },
       ],
+    },
+    {
+      text: 'Editorial',
+      href: getPermalink('/categorias/editorial/'),
+    },
+    {
+      text: 'Newsletter',
+      href: '#newsletter',
     },
   ],
   actions: [{ text: 'Buscar', href: '/buscar/', icon: 'tabler:search' }],

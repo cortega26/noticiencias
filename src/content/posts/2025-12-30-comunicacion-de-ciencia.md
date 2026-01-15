@@ -1,6 +1,6 @@
 ---
 title: Comunicacion de ciencia para todos
-author: cortega26
+author: Equipo Noticiencias
 date: 2025-12-30T00:00:00.000Z
 excerpt: >-
   La divulgacion cientifica necesita claridad, limites y responsabilidad

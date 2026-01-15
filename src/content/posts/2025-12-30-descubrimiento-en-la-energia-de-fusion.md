@@ -1,6 +1,6 @@
 ---
 title: Descubrimiento en la energia de fusion
-author: cortega26
+author: Equipo Noticiencias
 date: 2025-12-30T00:00:00.000Z
 excerpt: >-
   Un nuevo experimento en fusion reporta ganancia neta y reaviva el debate sobre

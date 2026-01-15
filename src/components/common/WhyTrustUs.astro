@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="my-8 rounded-lg bg-gray-50 dark:bg-slate-800 p-6 border border-gray-100 dark:border-gray-700">
+  <div class="flex items-start gap-4">
+    <div class="flex-shrink-0">
+      <Icon name="tabler:shield-check" class="w-8 h-8 text-primary-600 dark:text-primary-400" />
+    </div>
+    <div class="flex-grow">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-gray-100 mb-2">
+        Por qué confiar en Noticiencias
+      </h3>
+      <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <div>
+          <ul class="space-y-1 mt-0 list-none pl-0">
+            <li class="flex items-center gap-2">
+              <Icon name="tabler:users" class="w-4 h-4" />
+              <span>Investigado por <strong>Equipo Noticiencias</strong></span>
+            </li>
+            <li class="flex items-center gap-2">
+              <Icon name="tabler:scale" class="w-4 h-4" />
+              <a href="/metodologia" class="hover:underline text-primary-600 dark:text-primary-400">
+                Ver nuestra Metodología
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+           <ul class="space-y-1 mt-0 list-none pl-0">
+             <li class="flex items-center gap-2">
+               <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+               <span>Sin conflictos de interés declarados</span>
+             </li>
+             <li class="flex items-center gap-2">
+               <Icon name="tabler:mail" class="w-4 h-4" />
+               <span>¿Error? <a href="/transparencia" class="hover:underline">Repórtalo aquí</a></span>
+             </li>
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

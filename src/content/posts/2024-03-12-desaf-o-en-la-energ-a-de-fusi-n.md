@@ -1,6 +1,6 @@
 ---
 title: Desafío en la energia de fusion
-author: cortega26
+author: Equipo Noticiencias
 date: 2024-03-12T00:00:00.000Z
 excerpt: >-
   El Laboratorio Nacional de Ignicion reporto una segunda ganancia neta en

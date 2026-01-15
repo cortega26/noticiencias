@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { type CollectionEntry } from 'astro:content';
+import WhyTrustUs from '~/components/common/WhyTrustUs.astro';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -58,6 +59,8 @@ const schema = JSON.stringify({
             
             <div class="content">
                 <slot />
+                <hr class="my-8 border-gray-200 dark:border-gray-700" />
+                <WhyTrustUs />
             </div>
         </div>
 
