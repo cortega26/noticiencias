@@ -1,7 +1,7 @@
 ---
 title: "Metodología editorial"
 permalink: /metodologia/
-layout: ../layouts/BaseLayout.astro
+layout: ../layouts/template/MarkdownLayout.astro
 excerpt: "Criterios, flujo y controles para publicar ciencia con rigor y trazabilidad."
 ---
 

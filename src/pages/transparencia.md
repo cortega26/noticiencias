@@ -1,7 +1,7 @@
 ---
 title: "Transparencia"
 permalink: /transparencia/
-layout: ../layouts/BaseLayout.astro
+layout: ../layouts/template/MarkdownLayout.astro
 excerpt: "Compromisos de transparencia, correcciones y conflicto de interés."
 ---
 
