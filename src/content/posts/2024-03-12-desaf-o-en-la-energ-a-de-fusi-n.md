@@ -1,10 +1,10 @@
 ---
-title: Desafío en la energia de fusion
+title: Desafío en la energía de fusión
 author: Equipo Noticiencias
 date: 2024-03-12T00:00:00.000Z
 excerpt: >-
-  El Laboratorio Nacional de Ignicion reporto una segunda ganancia neta en
-  fusion, reforzando la viabilidad de la tecnologia.
+  El Laboratorio Nacional de Ignición reportó una segunda ganancia neta en
+  fusión, reforzando la viabilidad de la tecnología.
 categories:
   - ciencia
   - investigaciones
@@ -13,7 +13,7 @@ tags:
   - energia
   - laboratorio
 image: /assets/images/TODO-destacado1.jpg
-image_alt: Instalacion de laboratorio con equipos de fusion.
+image_alt: Instalación de laboratorio con equipos de fusión.
 translation_method: asistida
 editorial_score: 78
 review_status: en_revision
@@ -21,15 +21,15 @@ confidence: media
 investigation: true
 featured: true
 fact_check:
-  - label: Energia neta reportada
+  - label: Energía neta reportada
     status: verificado
 why_it_matters:
   - >-
-    La fusion nuclear podria aportar energia de baja emision si se vuelve
+    La fusión nuclear podría aportar energía de baja emisión si se vuelve
     escalable.
   - >-
-    Los resultados apoyan nuevas inversiones publicas y privadas en
-    investigacion.
+    Los resultados apoyan nuevas inversiones públicas y privadas en
+    investigación.
 sources:
   - title: National Ignition Facility achieves fusion ignition
     url: >-
@@ -39,4 +39,4 @@ sources:
 permalink: /ciencia/investigaciones/desaf-o-en-la-energ-a-de-fusi-n/
 ---
 
-Un equipo de cientificos del Laboratorio Nacional de Ignicion reporto una nueva ganancia neta en una reaccion de fusion, reforzando la viabilidad de esta fuente de energia estelar en laboratorio. El experimento genero 3,15 megajoules de energia a partir de 2,05 megajoules de energia laser dirigida al objetivo, segun el comunicado institucional.
+Un equipo de científicos del Laboratorio Nacional de Ignición reportó una nueva ganancia neta en una reacción de fusión, reforzando la viabilidad de esta fuente de energía estelar en laboratorio. El experimento generó 3,15 megajoules de energía a partir de 2,05 megajoules de energía láser dirigida al objetivo, según el comunicado institucional.
