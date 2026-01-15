@@ -1,7 +1,6 @@
 import ts from 'typescript';
 import fs from 'fs';
 import { glob } from 'glob';
-import path from 'path';
 
 async function analyzeComplexity() {
     const files = await glob('src/**/*.{ts,tsx}', { ignore: ['**/*.d.ts'] });

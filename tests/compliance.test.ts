@@ -27,7 +27,7 @@ describe('Compliance & Security Suite', () => {
     it('should pass Codacy-style linting', () => {
         try {
             execSync('npm run lint', { stdio: 'ignore' });
-        } catch (error) {
+        } catch {
             throw new Error('Linting failed. Run "npm run lint" to see errors.');
         }
     });

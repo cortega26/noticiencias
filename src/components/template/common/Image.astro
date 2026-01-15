@@ -55,7 +55,8 @@ if (
 } else if (_image) {
     // START PATCH: Handle public/ assets without dimensions
     if (typeof _image === 'string' && _image.startsWith('/')) {
-        const { src: _, ...attributes } = props;
+        const attributes = { ...props };
+        delete attributes.src;
         image = {
             src: getAsset(_image),
             attributes: {

@@ -1,7 +1,7 @@
 ---
 title: "Acerca de Noticiencias"
 permalink: /nosotros/
-layout: ../layouts/BaseLayout.astro
+layout: ../layouts/template/MarkdownLayout.astro
 excerpt: "Noticiencias es un medio de ciencia en español con foco en rigor editorial, trazabilidad y claridad."
 header:
   overlay_color: "#333"

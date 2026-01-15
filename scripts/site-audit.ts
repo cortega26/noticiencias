@@ -47,7 +47,7 @@ export class SiteAuditor {
             const filePath = path.join(this.distPath, file);
             const content = fs.readFileSync(filePath, 'utf-8');
             const $ = cheerio.load(content);
-            const pageUrl = '/' + file;
+            // const pageUrl = '/' + file;
 
             // Check SEO
             this.checkSEO($, file);

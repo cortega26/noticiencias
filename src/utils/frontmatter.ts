@@ -4,12 +4,13 @@ import { visit } from 'unist-util-visit';
 import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
-  return function (tree, file: any) {
+  return function (tree, file: unknown) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
-    if (typeof file?.data?.astro?.frontmatter !== 'undefined') {
-      file.data.astro.frontmatter.readingTime = readingTime;
+    const astroFile = file as { data?: { astro?: { frontmatter?: { readingTime?: number } } } };
+    if (typeof astroFile?.data?.astro?.frontmatter !== 'undefined') {
+      astroFile.data.astro.frontmatter.readingTime = readingTime;
     }
   };
 };
