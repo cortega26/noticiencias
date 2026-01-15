@@ -1,7 +1,7 @@
 ---
 title: 'Detector de Hype: Guía Rápida'
 description: 'Cómo leer noticias científicas sin ser engañado.'
-layout: '~/layouts/PageLayout.astro'
+layout: '~/layouts/BaseLayout.astro'
 ---
 
 # 🕵️ Detector de Hype: Guía de Sobrevivencia
