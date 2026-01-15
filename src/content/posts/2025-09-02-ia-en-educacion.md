@@ -1,5 +1,5 @@
 ---
-title: "El impacto de la IA generativa en la educación superior"
+title: "IA en Educación: Personalización real vs. riesgos de privacidad"
 excerpt: "Universidades de todo el mundo replantean sus currículos ante la omnipresencia de herramientas como ChatGPT y Claude en el aula."
 publishDate: 2025-09-02T14:30:00Z
 date: 2025-09-02T14:30:00Z

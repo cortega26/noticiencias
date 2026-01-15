@@ -1,5 +1,5 @@
 ---
-title: "Nuevas terapias génicas prometen curar enfermedades hereditarias"
+title: "Terapias Génicas: Avances recientes y el problema del costo"
 excerpt: "Un avance revolucionario en la edición genética CRISPR abre la puerta a tratamientos definitivos para condiciones que antes se consideraban incurables."
 publishDate: 2025-09-01T10:00:00Z
 date: 2025-09-01T10:00:00Z

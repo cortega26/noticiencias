@@ -1,5 +1,5 @@
 ---
-title: "Descubren nuevas especies bioluminiscentes en el Atlántico"
+title: "Bioluminiscencia: Nuevas especies halladas en fosas abisales (y por qué importan)"
 excerpt: "Una expedición de aguas profundas revela biodiversidad desconocida en las fosas abisales, iluminando los misterios del océano."
 publishDate: 2025-09-03T09:15:00Z
 date: 2025-09-03T09:15:00Z

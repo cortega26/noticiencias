@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="relative bg-blue-50 dark:bg-slate-800 rounded-2xl p-8 md:p-12 overflow-hidden items-center text-center my-12 border border-blue-100 dark:border-slate-700 shadow-sm">
+  <div class="relative z-10 max-w-2xl mx-auto">
+    <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900 rounded-full mb-6">
+       <Icon name="tabler:mail" class="w-6 h-6 text-blue-600 dark:text-blue-300" />
+    </div>
+    
+    <h2 class="text-3xl font-bold font-heading text-gray-900 dark:text-white mb-4">
+      ¿Cansado del clickbait?
+    </h2>
+    
+    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto">
+      Únete a los lectores que reciben <strong>Noticiencias Semanal</strong>. 
+      Solo evidencia, 0% drama.
+    </p>
+
+    <form 
+      action="https://buttondown.email/api/emails/embed-subscribe/noticiencias" 
+      method="post" 
+      target="popupwindow" 
+      onsubmit="window.open('https://buttondown.email/noticiencias', 'popupwindow')" 
+      class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+    >
+        <input 
+          type="email" 
+          name="email" 
+          id="bd-email"
+          placeholder="tu@email.com" 
+          required
+          class="flex-grow px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
+        />
+        <button 
+          type="submit" 
+          class="px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md transition duration-200 whitespace-nowrap"
+        >
+          Suscribirme
+        </button>
+    </form>
+    
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+      Sin spam. Date de baja cuando quieras.
+    </p>
+  </div>
+  
+  <!-- Background decoration -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-0 opacity-30 dark:opacity-10 pointer-events-none">
+     <div class="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-blue-400 blur-3xl"></div>
+     <div class="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-purple-400 blur-3xl"></div>
+  </div>
+</div>

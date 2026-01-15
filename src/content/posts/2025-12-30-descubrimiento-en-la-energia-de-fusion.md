@@ -1,5 +1,5 @@
 ---
-title: Descubrimiento en la energia de fusion
+title: 'Fusión Nuclear: Ganancia neta confirmada (pero lejos de ser energía comercial)'
 author: Equipo Noticiencias
 date: 2025-12-30T00:00:00.000Z
 excerpt: >-

@@ -1,5 +1,5 @@
 ---
-title: 'Medicinas del futuro y crisis de opioides: promesas y limites'
+title: 'Crisis de Opioides: Nuevas terapias prometen ayuda (pero faltan datos)'
 author: Equipo Noticiencias
 date: 2026-01-01T00:00:00.000Z
 excerpt: >-
@@ -30,7 +30,7 @@ sources:
     publisher: CDC
     date: '2024-03-01'
 permalink: >-
-  /salud/la-revolucion-de-las-medicinas-del-futuro-podemos-erradicar-el-crimen-de-las-drogas-adictivas/
+  /salud/crisis-de-opioides-nuevas-terapias-prometen-ayuda/
 ---
 
 ## Lo que sabemos
