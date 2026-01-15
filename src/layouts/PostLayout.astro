@@ -9,7 +9,18 @@ interface Props {
 }
 
 const { post, headings } = Astro.props;
-const { title, excerpt: description, date, author, image, tags, categories } = post.data;
+// ... imports
+// Note: imports are already at the top of file, don't duplicate if they exist
+const { title, excerpt: description, date, author, image, tags, categories, confidence } = post.data;
+
+// Logic for Confidence Badge
+const confidenceMap = {
+  alta: { color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300', label: 'Evidencia Robusta', icon: 'tabler:check' },
+  media: { color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300', label: 'Evidencia Preliminar', icon: 'tabler:alert-circle' },
+  baja: { color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300', label: 'Faltan Datos / Debate', icon: 'tabler:help' },
+};
+// Safe access to confidence
+const confidenceBadge = confidence && confidenceMap[confidence.toLowerCase()] ? confidenceMap[confidence.toLowerCase()] : null;
 
 // Estimated reading time (rude approximation)
 const readingTime = Math.ceil(post.body.split(/\s+/).length / 200);
@@ -33,14 +44,23 @@ const schema = JSON.stringify({
     <script type="application/ld+json" set:html={schema}></script>
     <article class="post">
         <header>
-            <div class="meta">
+
+            <div class="meta flex flex-wrap gap-4 items-center">
                 <span class="category">{categories?.[0]}</span> • 
                 <span class="date">{date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span> • 
                 <span class="reading-time">{readingTime} min de lectura</span>
+                
+                {confidenceBadge && (
+                    <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${confidenceBadge.color}`}>
+                       {confidenceBadge.label}
+                    </span>
+                )}
             </div>
             <h1>{title}</h1>
             {image && <img src={image} alt={post.data.image_alt || title} style="max-width:100%; height:auto;" />}
-            <div class="author">Por <strong>{author}</strong></div>
+            <div class="author">
+              Por <a href="/nosotros" class="hover:underline font-bold">{author}</a>
+            </div>
         </header>
         
         <div class="content-wrapper">

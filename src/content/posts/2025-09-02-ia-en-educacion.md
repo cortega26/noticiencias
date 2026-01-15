@@ -7,7 +7,7 @@ image: /assets/images/hero-image.png
 categories:
   - tecnologia
 tags:
-  - IA
+  - ia
   - educacion
   - futuro
 metadata:
