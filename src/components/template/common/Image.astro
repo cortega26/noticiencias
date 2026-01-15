@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
+import { getAsset } from '~/utils/permalinks';
 import {
   getImagesOptimized,
   astroAssetsOptimizer,
@@ -56,7 +57,7 @@ if (
     if (typeof _image === 'string' && _image.startsWith('/')) {
         const { src: _, ...attributes } = props;
         image = {
-            src: _image,
+            src: getAsset(_image),
             attributes: {
                 ...attributes,
                 width: props.width,
