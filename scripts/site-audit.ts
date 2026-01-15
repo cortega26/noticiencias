@@ -73,10 +73,12 @@ export class SiteAuditor {
             this.errors.push({ file, type: 'SEO_MISSING', message: 'Missing <title> tag' });
         }
         // Only check meta description if it's not a pagination page (optional rule, but good for integrity)
-        if (!$('meta[name="description"]').attr('content')) {
+        const metaDesc = $('meta[name="description"]').attr('content');
+        if (typeof metaDesc !== 'string' || !metaDesc) {
             this.errors.push({ file, type: 'SEO_MISSING', message: 'Missing meta description' });
         }
-        if (!$('link[rel="canonical"]').attr('href')) {
+        const canonical = $('link[rel="canonical"]').attr('href');
+        if (typeof canonical !== 'string' || !canonical) {
             this.errors.push({ file, type: 'SEO_MISSING', message: 'Missing canonical URL' });
         }
     }

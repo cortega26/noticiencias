@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import os from 'node:os';
+import * as os from 'node:os';
 import type { AstroConfig, AstroIntegration } from 'astro';
 
 import configBuilder, { type Config } from './utils/configBuilder';

@@ -347,8 +347,10 @@ export async function getImagesOptimized(
     .map(({ src, width }) => `${src} ${width}w`)
     .join(', ');
 
+  const isImageMetadata = (img: any): img is { src: string } => typeof img === 'object' && img !== null && 'src' in img;
+
   return {
-    src: typeof image === 'string' ? image : image.src,
+    src: typeof image === 'string' ? image : (isImageMetadata(image) ? image.src : ''),
     attributes: {
       width: width,
       height: height,

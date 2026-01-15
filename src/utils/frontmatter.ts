@@ -4,7 +4,7 @@ import { visit } from 'unist-util-visit';
 import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
-  return function (tree, file) {
+  return function (tree, file: any) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
