@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/template/blog/Headline.astro';
+import { cleanSlug } from '~/utils/permalinks';
+
+const posts = await getCollection('posts');
+const seriesSet = new Set();
+const seriesList = [];
+
+posts.forEach((post) => {
+    if (post.data.series && !seriesSet.has(post.data.series)) {
+        seriesSet.add(post.data.series);
+        seriesList.push(post.data.series);
+    }
+});
+
+const metadata = {
+  title: 'Series de Investigación | Noticiencias',
+  description: 'Cobertura a profundidad sobre los temas más complejos de la ciencia.',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline
+      title="Series de Investigación"
+      subtitle="Reportajes en profundidad, agrupados por tema para una lectura completa."
+    />
+    
+    <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
+        {seriesList.length === 0 ? (
+             <p class="text-center text-gray-500 col-span-full">Próximamente: Nuevas series en desarrollo.</p>
+        ) : (
+            seriesList.map((series) => (
+                <a href={`/series/${cleanSlug(series)}`} class="block group relative p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                     <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {series}
+                     </h3>
+                     <span class="text-sm text-gray-500">
+                        Ver artículos &rarr;
+                     </span>
+                </a>
+            ))
+        )}
+    </div>
+  </section>
+</Layout>

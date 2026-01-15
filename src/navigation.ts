@@ -28,8 +28,12 @@ export const headerData = {
       href: getPermalink('/categorias/editorial/'),
     },
     {
+      text: 'Series',
+      href: getPermalink('/series/'),
+    },
+    {
       text: 'Newsletter',
-      href: '#newsletter',
+      href: getPermalink('/newsletter/'),
     },
   ],
   actions: [{ text: 'Buscar', href: '/buscar/', icon: 'tabler:search' }],

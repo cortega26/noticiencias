@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/template/blog/BlogList.astro';
+import Headline from '~/components/template/blog/Headline.astro';
+import { cleanSlug } from '~/utils/permalinks';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const series = posts.reduce((acc, post) => {
+    const s = post.data.series;
+    if (s) {
+      if (!acc[s]) {
+        acc[s] = [];
+      }
+      acc[s].push(post);
+    }
+    return acc;
+  }, {});
+
+  return Object.keys(series).map((s) => ({
+    params: { series: cleanSlug(s) }, // Ensure slug is URL friendly
+    props: { 
+        seriesName: s,
+        posts: series[s]
+    },
+  }));
+}
+
+const { seriesName, posts } = Astro.props;
+
+const metadata = {
+  title: `Series: ${seriesName} | Noticiencias`,
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline
+      title={`Serie de Investigación: ${seriesName}`}
+      subtitle="Cobertura a profundidad sobre temas complejos. Lectura en orden recomendada."
+    />
+    <BlogList posts={posts} />
+  </section>
+</Layout>

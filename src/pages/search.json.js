@@ -15,6 +15,7 @@ export async function GET() {
             content: post.body, // Full content for better indexing (could be truncated)
             categories: post.data.categories,
             tags: post.data.tags,
+            series: post.data.series,
             date: post.data.date
         };
     });

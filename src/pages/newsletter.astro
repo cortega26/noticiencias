@@ -1,0 +1,52 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Newsletter from '~/components/common/Newsletter.astro';
+
+const metadata = {
+  title: 'Newsletter | Noticiencias',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+  <HeroText
+    tagline="Únete a la resistencia"
+    title="Deja de leer ruido. Empieza a leer ciencia."
+    subtitle="Cada viernes, analizamos las 5 noticias más importantes de la ciencia global. Te decimos qué es verdad, qué es preliminar y qué es mentira."
+  />
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <Newsletter />
+  </div>
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    title="Por qué unirte a 580M+ curiosos exigentes"
+    items={[
+      {
+        title: 'Sin tecnicismos innecesarios',
+        description: 'Explicamos la complejidad con claridad, sin perder el rigor.',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Fuentes siempre enlazadas',
+        description: 'Transparencia radical. Siempre sabrás de dónde viene la información.',
+        icon: 'tabler:link',
+      },
+      {
+        title: '0% Drama, 100% Evidencia',
+        description: ' Filtramos el clickbait para que tú no tengas que hacerlo.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <div class="text-center pb-20 pt-10">
+      <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">
+          🎁 <strong>Regalo de bienvenida:</strong> Al suscribirte, recibirás gratis nuestra guía<br> 
+          <em>"Detector de Hype: Cómo leer noticias científicas sin ser engañado"</em>.
+      </p>
+  </div>
+</Layout>
