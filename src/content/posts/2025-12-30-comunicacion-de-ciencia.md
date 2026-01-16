@@ -27,7 +27,7 @@ why_it_matters:
   - La claridad editorial ayuda a interpretar límites y riesgos.
 sources:
   - title: Nature - Science communication
-    url: 'https://www.nature.com/collections/hkiddbpcbh'
+    url: 'https://www.nature.com/subjects/science-communication'
     publisher: Nature
     date: '2024-06-01'
 permalink: /editorial/investigaciones/comunicacion-de-ciencia/

@@ -27,7 +27,7 @@ why_it_matters:
 series: Crisis Opioides
 sources:
   - title: CDC - Opioid Data Analysis and Resources
-    url: 'https://www.cdc.gov/opioids/data/index.html'
+    url: 'https://www.cdc.gov/overdose-prevention/'
     publisher: CDC
     date: '2024-03-01'
 permalink: >-
