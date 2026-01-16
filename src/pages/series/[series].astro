@@ -1,14 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
+import { fetchPosts } from '~/utils/blog';
+import type { Post } from '~/types';
 import Layout from '~/layouts/BaseLayout.astro';
 import List from '~/components/template/blog/List.astro';
 import Headline from '~/components/template/blog/Headline.astro';
 import { cleanSlug } from '~/utils/permalinks';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  const series = posts.reduce((acc, post) => {
-    const s = post.data.series;
+  const posts = await fetchPosts();
+  const series = posts.reduce((acc: Record<string, Post[]>, post) => {
+    const s = post.series;
     if (s) {
       if (!acc[s]) {
         acc[s] = [];

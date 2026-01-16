@@ -63,7 +63,7 @@ if (
                 ...attributes,
                 width: props.width,
                 height: props.height,
-            }
+            } as HTMLAttributes<'img'> // Explicit cast to satisfy TS
         };
     } else {
         image = await getImagesOptimized(_image, props, astroAssetsOptimizer);

@@ -52,6 +52,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     categories: rawCategories = [],
     tags: rawTags = [],
     author,
+    series,
   } = data;
 
   const draft = false; // Schema does not have draft
@@ -94,6 +95,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     category: category,
     tags: tags,
     author: author,
+    series: series,
 
     draft: draft,
 

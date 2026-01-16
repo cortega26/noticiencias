@@ -44,6 +44,7 @@ export interface Post {
   readingTime?: number;
 
   /** Noticiencias extensions */
+  series?: string;
   why_it_matters?: string[];
   fact_check?: { label: string; status: string }[];
   sources?: { title: string; url: string; publisher?: string; date?: string }[];

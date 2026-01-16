@@ -12,7 +12,7 @@ const { post, headings } = Astro.props;
 const { title, excerpt: description, date, author, image, tags, categories, confidence, series } = post.data;
 
 // Logic for Confidence Badge
-const confidenceMap = {
+const confidenceMap: Record<string, { color: string; label: string; icon: string }> = {
   alta: { color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300', label: 'Evidencia Robusta', icon: 'tabler:check' },
   media: { color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300', label: 'Evidencia Preliminar', icon: 'tabler:alert-circle' },
   baja: { color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300', label: 'Faltan Datos / Debate', icon: 'tabler:help' },
