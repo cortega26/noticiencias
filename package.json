@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:audit": "vitest run",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "validate:content": "astro sync && astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

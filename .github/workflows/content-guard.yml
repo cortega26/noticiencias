@@ -1,0 +1,27 @@
+name: Content Guard
+on:
+  pull_request:
+    paths: ['src/content/**/*.md', 'src/content/**/*.mdx']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: 🔍 Frontmatter & Type Validation
+        run: npm run validate:content
+
+      - name: 🔗 Link Checker
+        uses: lycheeverse/lychee-action@v1.10.0
+        with:
+          args: --no-progress './src/content/**/*.md'
+          fail: true
