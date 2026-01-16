@@ -25,7 +25,11 @@ fact_check:
 why_it_matters:
   - El contexto evita el sensacionalismo y mejora la confianza.
   - La claridad editorial ayuda a interpretar límites y riesgos.
-sources: []
+sources:
+  - title: Nature - Science communication
+    url: 'https://www.nature.com'
+    publisher: Nature
+    date: '2024-06-01'
 permalink: /editorial/investigaciones/comunicacion-de-ciencia/
 ---
 
