@@ -24,6 +24,21 @@ export default defineConfig({
         }),
         astrowind({ config: './src/config.yaml' })
     ],
+    image: {
+        domains: [
+            'news.mit.edu',
+            'news.yale.edu',
+            'scitechdaily.com',
+            'cdn.mos.cms.futurecdn.net',   // Space.com, LiveScience
+            'cdn.vox-cdn.com',             // The Verge
+            'media.wired.com',             // Wired
+            'images.nasa.gov',
+            'www.nasa.gov',
+            'preview.redd.it',
+            'external-preview.redd.it',
+            'upload.wikimedia.org'
+        ]
+    },
     vite: {
         resolve: {
             alias: {
