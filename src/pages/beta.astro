@@ -1,0 +1,81 @@
+---
+import Layout from '~/layouts/template/PageLayout.astro';
+import HeroText from '~/components/template/widgets/HeroText.astro';
+
+const metadata = {
+  title: 'Estado del Proyecto (Beta)',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Transparencia en Desarrollo"
+    title="Estado Beta v0.9"
+    subtitle="Estamos construyendo Noticiencias en público. Aquí te explicamos qué significa esto para tu experiencia."
+  />
+
+  <section class="px-6 py-12 sm:px-6 lg:px-8 max-w-4xl mx-auto align-left text-left">
+    <div class="prose prose-lg dark:prose-invert mx-auto">
+      
+      <h3>¿Qué significa "Beta"?</h3>
+      <p>
+        Noticiencias es un experimento vivo en curaduría de noticias científicas asistida por Inteligencia Artificial. 
+        Significa que nuestros sistemas están operativos pero continúan aprendiendo y siendo calibrados diariamente 
+        por nuestro equipo humano.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 my-10 not-prose">
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+          <h4 class="text-xl font-bold mb-3 text-blue-700 dark:text-blue-300">🟢 Operativo</h4>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li>• Recolección automática de +25 fuentes.</li>
+            <li>• Filtros de seguridad y validación.</li>
+            <li>• Scoring cognitivo ("Sustancia" y "Narrativa").</li>
+            <li>• Publicación diaria de artículos.</li>
+          </ul>
+        </div>
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-lg">
+          <h4 class="text-xl font-bold mb-3 text-yellow-700 dark:text-yellow-300">🚧 En Construcción</h4>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li>• <strong>Estilos Visuales</strong>: Ajustes de tipografía y temas en curso.</li>
+            <li>• <strong>Redes Sociales</strong>: Integración social pendiente.</li>
+            <li>• <strong>Categorización</strong>: Mejorando el etiquetado para reducir el uso de "Other".</li>
+            <li>• <strong>Imágenes</strong>: Solucionando artículos sin imagen destacada.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Limitaciones Conocidas</h3>
+      <ul>
+        <li><strong>Imágenes Faltantes</strong>: Algunos artículos pueden no cargar su imagen original o usar un placeholder.</li>
+        <li><strong>Etiquetas "Other"</strong>: El sistema de clasificación aún está aprendiendo a ubicar ciertos temas de nicho, dejándolos temporalmente en "Other".</li>
+        <li><strong>Traducción</strong>: Utilizamos modelos de lenguaje avanzados para traducir, pero ocasionalmente pueden surgir anglicismos.</li>
+      </ul>
+
+      <h3>Nuestra Política de Transparencia</h3>
+      <p>
+        Creemos en la "Construcción en Público". Todo nuestro código es auditable y nuestras decisiones editoriales 
+        buscan priorizar el rigor científico sobre el clickbait. Si ves una noticia con un puntaje alto, es porque 
+        nuestros algoritmos detectaron alta densidad de datos y relevancia narrativa.
+      </p>
+
+      <hr class="my-10 border-gray-200 dark:border-gray-700" />
+
+      <h3>Tu Feedback es Vital</h3>
+      <p>
+        ¿Encontraste un error? ¿Una traducción extraña? ¿O tienes una idea para mejorar?
+        Escríbenos directamente. Estamos construyendo esto para ti.
+      </p>
+      
+      <div class="mt-8 flex gap-4">
+         <a href="mailto:hola@noticiencias.com" class="btn-primary">
+           Enviar Feedback
+         </a>
+         <a href="/" class="btn-secondary">
+           Volver al Inicio
+         </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
