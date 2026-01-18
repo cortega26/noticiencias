@@ -4,12 +4,15 @@ import Header from '~/components/template/widgets/Header.astro';
 import Footer from '~/components/template/widgets/Footer.astro';
 
 import { headerData, footerData } from '~/navigation';
+import BetaBanner from '~/components/common/BetaBanner.astro';
 
 const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement" />
+  <slot name="announcement">
+    <BetaBanner />
+  </slot>
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
