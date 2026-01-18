@@ -29,7 +29,7 @@ if (typeof title === 'string') {
         // Fallback: just slice outer brackets/quotes if regex fails (single item case)
         title = title.slice(2, -2);
       }
-    } catch (e) {
+    } catch {
       // If regex parsing fails, fall back to simple slice
       title = title.slice(2, -2);
     }
