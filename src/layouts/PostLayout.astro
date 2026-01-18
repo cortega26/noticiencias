@@ -9,7 +9,32 @@ interface Props {
 }
 
 const { post, headings } = Astro.props;
-const { title, excerpt: description, date, author, image, tags, categories, confidence, series } = post.data;
+const { title: rawTitle, excerpt: description, date, author, image, tags, categories, confidence, series } = post.data;
+
+// Robustly sanitize title if it was saved as a stringified list (e.g. "['Title A', 'Title B']")
+let title = rawTitle;
+if (typeof title === 'string') {
+  title = title.trim();
+  if ((title.startsWith("['") && title.endsWith("']")) || (title.startsWith('["') && title.endsWith('"]'))) {
+    try {
+      // Attempt to clean the string representation of the list
+      // 1. Remove outer brackets
+      const inner = title.slice(1, -1);
+      // 2. Simple regex to match the first quoted string: 'Content' or "Content"
+      // matches '...' or "..." at the start
+      const match = inner.match(/^(['"])(.*?)\1/);
+      if (match && match[2]) {
+        title = match[2];
+      } else {
+        // Fallback: just slice outer brackets/quotes if regex fails (single item case)
+        title = title.slice(2, -2);
+      }
+    } catch (e) {
+      // If regex parsing fails, fall back to simple slice
+      title = title.slice(2, -2);
+    }
+  }
+}
 
 // Logic for Confidence Badge
 const confidenceMap: Record<string, { color: string; label: string; icon: string }> = {
