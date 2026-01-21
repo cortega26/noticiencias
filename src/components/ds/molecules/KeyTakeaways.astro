@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  items: string[];
+  title?: string;
+  class?: string;
+}
+
+const { items, title = "Puntos Clave", class: className = '' } = Astro.props;
+---
+
+<div class={`bg-surface-highlight border-l-4 border-primary p-6 my-8 rounded-r-lg ${className}`}>
+  <h3 class="flex items-center text-lg font-bold font-heading mb-4 text-text-heading">
+    <Icon name="tabler:bulb" class="w-6 h-6 mr-2 text-primary" />
+    {title}
+  </h3>
+  <ul class="space-y-3">
+    {items.map(item => (
+      <li class="flex items-start">
+         <Icon name="tabler:check" class="w-5 h-5 mr-3 mt-0.5 text-primary shrink-0" />
+         <span class="text-text-default leading-relaxed text-base">{item}</span>
+      </li>
+    ))}
+  </ul>
+</div>

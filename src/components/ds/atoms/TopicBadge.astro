@@ -24,7 +24,34 @@ const sizes = {
   md: "text-xs px-2 py-1",
 };
 
-const colors = "bg-surface-highlight text-action-primary hover:bg-blue-100 dark:hover:bg-slate-700 border border-transparent";
+const getColors = (t: string) => {
+  const lower = t.toLowerCase();
+  
+  // Health / Medicine -> Teal/Emerald
+  if (lower.includes('salud') || lower.includes('medicin') || lower.includes('bienestar')) {
+    return "bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-900/30 dark:text-teal-300 dark:hover:bg-teal-900/50 border border-teal-200 dark:border-teal-800";
+  }
+  
+  // Tech / AI -> Violet/Purple
+  if (lower.includes('tecnolog') || lower.includes('tech') || lower.includes('ia') || lower.includes('digital')) {
+    return "bg-violet-50 text-violet-700 hover:bg-violet-100 dark:bg-violet-900/30 dark:text-violet-300 dark:hover:bg-violet-900/50 border border-violet-200 dark:border-violet-800";
+  }
+
+  // Science / Space -> Blue/Indigo
+  if (lower.includes('cienci') || lower.includes('espacio') || lower.includes('naturaleza') || lower.includes('fisica')) {
+    return "bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-800";
+  }
+
+  // Editorial -> Gray/Slate
+  if (lower.includes('editor') || lower.includes('opini') || lower.includes('analisis')) {
+    return "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700";
+  }
+
+  // Default
+  return "bg-surface-highlight text-action-primary hover:bg-blue-100 dark:hover:bg-slate-700 border border-transparent";
+};
+
+const colors = getColors(topic);
 ---
 
 {href ? (
