@@ -21,7 +21,7 @@ jobs:
         run: npm run validate:content
 
       - name: 🔗 Link Checker
-        uses: lycheeverse/lychee-action@v1.10.0
+        uses: lycheeverse/lychee-action@v2.0.2
         with:
           args: --no-progress './src/content/**/*.md'
           fail: true
