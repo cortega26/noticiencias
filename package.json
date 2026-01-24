@@ -57,5 +57,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vitest": "^4.0.17"
+  },
+  "overrides": {
+    "lodash": "4.17.23"
   }
 }
