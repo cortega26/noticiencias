@@ -1,167 +1,197 @@
 # AGENTS.md — Noticiencias Front-End (Astro)
 
-> **Audience:** AI agents, front-end engineers, and content maintainers.
-> **Purpose:** Define the "Constitution" of the Front-End repository to ensure quality, performance, and stability during autonomous or assisted evolution.
+> **Audience:** AI agents, front-end engineers, and content maintainers  
+> **Purpose:** Binding constitution for this repository.  
+> **Status:** Non-negotiable. Must be read before any action.
 
 ---
 
-## 0) Architecture Snapshot
+## 0) Mandatory Preflight (NON-NEGOTIABLE)
 
-**Tech Stack:**
+Before performing **any** action (analysis, coding, refactors, suggestions):
 
-- **Framework:** Astro 5.x (SSG Mode)
-- **Styling:** Tailwind CSS 3.x + `@tailwindcss/typography`
-- **Theme Engine:** Astrowind (customized)
-- **Content:** MDX Collections (`src/content/`)
-- **Integration:**
-  - `@astrojs/sitemap`: SEO
-  - `astro-icon`: SVG Management
-  - `vitest`: Unit/Integration Testing
-  - `eslint`: Code Quality
+1. Read this document **entirely**.
+2. Identify which sections apply.
+3. Ensure compliance with:
+   - Architecture
+   - Contracts & schemas
+   - Regression guardrails
+   - Change control
 
-**Directory Structure:**
-
-```
-/
-├── src/
-│   ├── components/  # Atomic UI components
-│   ├── content/     # MDX posts and config.ts (Schema)
-│   ├── layouts/     # Page shells (PageLayout, Metadata)
-│   ├── pages/       # File-based routing (.astro, .md)
-│   ├── styles/      # Global CSS & Tailwind base
-│   └── utils/       # Helpers (permalinks, dates)
-├── public/          # Static assets (favicons, robots.txt)
-└── astro.config.mjs # Core configuration
-```
+Partial solutions, undocumented assumptions, or “temporary fixes” are **forbidden**.
 
 ---
 
-## 1) Shared Contracts & Schemas
+## 1) Architecture Snapshot
 
-### Content Frontmatter (v1)
+### Tech Stack
 
-All posts in `src/content/post/` must adhere to the schema defined in `src/content/config.ts`.
+- Framework: Astro 5.x (SSG only)
+- Styling: Tailwind CSS 3.x + `@tailwindcss/typography`
+- Theme: Astrowind (customized)
+- Content: MDX collections (`src/content/`)
+- Language: TypeScript (strict)
+- Testing: Vitest
+- Linting: ESLint
 
-```yaml
-title: "Article Title"
-description: "SEO Meta Description (150-160chars)"
-publishDate: 2024-01-01T00:00:00Z
-image: "~/assets/images/cover.jpg" # Local optimized asset
-category: "Science"
-tags: ["Space", "NASA"]
-draft: false
-```
+### Directory Structure (Authoritative)
 
-### Component Props
+    /
+    ├── src/
+    │   ├── components/   # Atomic & composable UI components
+    │   ├── content/      # MDX content + config.ts (schemas)
+    │   ├── layouts/      # Page/layout shells
+    │   ├── pages/        # File-based routing
+    │   ├── styles/       # Global styles & Tailwind layers
+    │   └── utils/        # Pure helpers (dates, permalinks, SEO)
+    ├── public/           # Static assets
+    └── astro.config.mjs  # Core configuration
 
-All highly reusable components (Buttons, Cards, Headers) MUST interface via TypeScript interfaces exported or defined in the component frontmatter `---`.
-
----
-
-## 2) Agent Roles & Responsibilities
-
-| Role            | Responsibility                                               | Tools                                                 |
-| :-------------- | :----------------------------------------------------------- | :---------------------------------------------------- |
-| **Architect**   | Config updates, Dependency management, Structure refactoring | `astro.config.mjs`, `package.json`                    |
-| **Designer**    | CSS changes, Tailwind config, Component UI updates           | `tailwind.config.mjs`, `src/components`, `src/styles` |
-| **Content Ops** | Markdown fixes, Broken link resolution, Image optimization   | `src/content`, `public/images`                        |
-| **QA Bot**      | Running audits, Checking SEO, verifying links                | `vitest`, `lighthouse`, `SEO_CHECKLIST.md`            |
+Any deviation requires explicit justification.
 
 ---
 
-## 3) Workflows
+## 2) Contracts & Schemas (STRICT)
 
-### W1: Development
+### 2.1 Content Frontmatter Contract (v1)
 
-```bash
-npm run dev
-```
+All posts in `src/content/post/` must comply with the schema in `src/content/config.ts`.
 
-- Starts local server on `http://localhost:4321`.
-- Hot Module Replacement (HMR) active.
+Example frontmatter:
 
-### W2: Validation (Required before PR)
+    title: "Article Title"
+    description: "SEO meta description (150–160 chars)"
+    publishDate: 2024-01-01T00:00:00Z
+    image: "~/assets/images/cover.jpg"
+    category: "Science"
+    tags: ["Space", "NASA"]
+    draft: false
 
-```bash
-npm run lint          # Check code style
-npm run validate:content # Sync types and check content schemas
-npm run test:audit    # Run Vitest suite
-```
+Rules:
 
-### W3: Production Preview
+- `publishDate` must be valid ISO-8601
+- `image` must exist locally
+- No undocumented fields allowed
 
-```bash
-npm run build && npm run preview
-```
+### 2.2 Component Interfaces
 
-- Generates static files in `dist/`.
-- Serves `dist/` locally to verify final build artifacts.
-
----
-
-## 4) **REGRESSION GUARDRAILS (CORE SECTION)**
-
-### RG1 --- Visual Integrity
-
-- **Rule:** No style change is "safe" until verified on Mobile (375px) and Desktop (1280px).
-- **Enforcement:** Agents must verify layout shift or breakage. If possible, request a snapshot or manual user review for CSS refactors.
-
-### RG2 --- SEO Sanctity
-
-- **Rule:** Breaking SEO metadata is a **Critical Severity** regression.
-- **Mandatory Checks per Page:**
-  - `<title>` exists and is unique.
-  - `<meta name="description">` is populated.
-  - `<link rel="canonical">` points to the absolute production URL.
-  - OpenGraph (`og:image`, `og:title`) tags are present.
-
-### RG3 --- Content Integrity
-
-- **Rule:** No "dead ends".
-- **Checks:**
-  - Internal links must resolve to existing pages.
-  - Images must exist.
-  - Frontmatter `publishDate` must be valid ISO.
-
-### RG4 --- Zero Console Errors
-
-- **Rule:** The build log must be clean of **Warnings** regarding content or types.
-- **Rule:** The browser console in Dev/Preview must be free of Hydration Errors or 404s.
-
-### RG5 --- Asset Optimization
-
-- **Rule:** Do not commit raw MB-sized images.
-- **Action:** Use Astro's `<Image />` component or `optimum` library.
-- **Alt Text:** ALL images require descriptive `alt` text.
+- Reusable components must define explicit TypeScript interfaces
+- No implicit `any`
+- Breaking component contracts is a **high-risk change**
 
 ---
 
-## 5) Change Control & Risk Matrix
+## 3) Agent Roles & Boundaries
 
-| Change Type             | Risk Level | Required Review     | Auto-Approvable? |
-| :---------------------- | :--------- | :------------------ | :--------------- |
-| **Content (Typo/Text)** | Low        | None                | ✅ Yes           |
-| **CSS Refactor**        | High       | Visual Verification | ❌ No            |
-| **Layout Logic**        | High       | Visual + Smoke Test | ❌ No            |
-| **Config/Dependencies** | Critical   | Full Test Suite     | ❌ No            |
-| **New Post**            | Low        | Validator Check     | ✅ Yes           |
+| Role        | Allowed Scope                   |
+| ----------- | ------------------------------- |
+| Architect   | Config, dependencies, structure |
+| Designer    | Tailwind, CSS, UI components    |
+| Content Ops | MDX, links, images, metadata    |
+| QA/Auditor  | Tests, SEO, validation          |
 
----
-
-## 6) Deliverables & Checklists
-
-### New Feature Checklist
-
-- [ ] Responsive on Mobile/Desktop?
-- [ ] Accessible (Colors, Keyboard nav, Alt text)?
-- [ ] No new ESLint errors?
-
-### Refactor Checklist
-
-- [ ] `npm run build` passes?
-- [ ] No regression in Core Web Vitals (LCP/CLS)?
-- [ ] URLs preserved or redirected?
+Operating outside the assigned role requires explicit approval.
 
 ---
 
-**End of AGENTS.md**
+## 4) Workflows (REQUIRED)
+
+### Development
+
+    npm run dev
+
+### Validation (MANDATORY)
+
+    npm run lint
+    npm run validate:content
+    npm run test:audit
+
+All must pass.
+
+### Production Preview
+
+    npm run build
+    npm run preview
+
+---
+
+## 5) Regression Guardrails (CORE)
+
+### RG1 — Visual Integrity
+
+- Mobile (375px) and Desktop (1280px) verification required
+
+### RG2 — SEO Sanctity (CRITICAL)
+
+Each page must include:
+
+- Unique `<title>`
+- `<meta name="description">`
+- Canonical link to production URL
+- OpenGraph tags
+
+### RG3 — Content Integrity
+
+- No broken links
+- No missing images
+- Valid dates only
+
+### RG4 — Zero Console Errors
+
+- No build warnings
+- No hydration errors
+- No 404s
+
+### RG5 — Asset Optimization
+
+- No large raw images
+- Use Astro Image pipeline
+- All images require `alt` text
+
+---
+
+## 6) Change Control Matrix
+
+| Change Type  | Risk     | Requirements        | Auto |
+| ------------ | -------- | ------------------- | ---- |
+| Content typo | Low      | None                | Yes  |
+| New post     | Low      | Schema validation   | Yes  |
+| CSS refactor | High     | Visual verification | No   |
+| Layout logic | High     | Full preview        | No   |
+| Config/deps  | Critical | Full test suite     | No   |
+
+When in doubt, assume higher risk.
+
+---
+
+## 7) Forbidden Anti-Patterns
+
+- “Quick fix”
+- “Temporary workaround”
+- “We’ll clean this later”
+- Silent behavior changes
+- Partial solutions
+
+These invalidate the work.
+
+---
+
+## 8) Deliverables Discipline
+
+Non-trivial changes must include:
+
+- Clear diff scope
+- Regression impact
+- Validation steps performed
+
+---
+
+## 9) Final Authority
+
+- This file is the highest authority for agent behavior
+- Conflicts are resolved in favor of this document
+- Work done without reading this file is invalid
+
+---
+
+END OF AGENTS.md
