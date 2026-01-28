@@ -42,18 +42,19 @@ Noticiencias es una plataforma de noticias científicas diseñada para el públi
 ## 🛠️ Instalación y Uso
 
 ### Prerrequisitos
+
 - Node.js 18+
 - npm
 
 ### Comandos Principales
 
-| Comando | Acción |
-| :--- | :--- |
-| `npm install` | Instala las dependencias del proyecto. |
-| `npm run dev` | Inicia el servidor de desarrollo en `localhost:4321`. |
-| `npm run build` | Compila el sitio para producción en `./dist/`. |
-| `npm run preview` | Previsualiza la build de producción localmente. |
-| `npm run lint` | Ejecuta ESLint para verificar calidad de código. |
+| Comando           | Acción                                                |
+| :---------------- | :---------------------------------------------------- |
+| `npm install`     | Instala las dependencias del proyecto.                |
+| `npm run dev`     | Inicia el servidor de desarrollo en `localhost:4321`. |
+| `npm run build`   | Compila el sitio para producción en `./dist/`.        |
+| `npm run preview` | Previsualiza la build de producción localmente.       |
+| `npm run lint`    | Ejecuta ESLint para verificar calidad de código.      |
 
 ## 📝 Flujo de Trabajo Editorial
 
@@ -66,7 +67,7 @@ Noticiencias es una plataforma de noticias científicas diseñada para el públi
     category: "Tecnología"
     tags: ["IA", "Futuro"]
     author: "noticiencias-ai"
-    trust_score: 0.95  # Nivel de evidencia
+    trust_score: 0.95 # Nivel de evidencia
     ```
 3.  **Imágenes**: Astro optimiza automáticamente las imágenes locales importadas.
 
@@ -76,5 +77,15 @@ Noticiencias es una plataforma de noticias científicas diseñada para el públi
 2.  No commitear archivos binarios grandes.
 3.  Usar Conventional Commits (`feat:`, `fix:`, `docs:`).
 
+> **Note: Split-Brain Component Freeze**
+> To prevent technical debt, the `src/components/template/` directory is **FROZEN**.
+>
+> - **Do not** add new components here.
+> - **Do not** refactor existing ones unless critical.
+> - **All new UI** must go into `src/components/ds/` (Design System).
+>
+> Validated by `npm run validate:content`.
+
 ---
-*Mantenido por el equipo de Noticiencias.*
+
+_Mantenido por el equipo de Noticiencias._
