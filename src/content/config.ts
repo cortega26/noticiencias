@@ -9,7 +9,16 @@ const posts = defineCollection({
         date: z.date(),
         categories: z.array(z.string()).default([]),
         tags: z.array(z.string()).default([]),
-        image: z.string().optional(), // Keeping as string for now (public/assets)
+        // Migration: Support legacy strings but prefer object with dimensions
+        image: z.union([
+            z.string(),
+            z.object({
+                src: z.string(),
+                width: z.number(),
+                height: z.number(),
+                alt: z.string().optional(),
+            })
+        ]).optional(), 
         image_alt: z.string().optional(),
         permalink: z.string().optional(), // For legacy URL compatibility
 

@@ -10,7 +10,8 @@
     "astro": "astro",
     "test:audit": "vitest run",
     "lint": "eslint .",
-    "validate:content": "astro sync && astro check"
+    "check:freeze": "node scripts/freeze-template.js",
+    "validate:content": "astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
