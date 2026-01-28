@@ -45,7 +45,34 @@
           "default": []
         },
         "image": {
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "alt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "src",
+                "width",
+                "height"
+              ],
+              "additionalProperties": false
+            }
+          ]
         },
         "image_alt": {
           "type": "string"
