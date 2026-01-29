@@ -16,7 +16,15 @@ const postUrls = urls.filter(url => {
     if (url.includes('/etiquetas/')) return false;
     if (url.includes('/categorias/')) return false;
     if (url.includes('/assets/')) return false;
-    if (url.endsWith('noticiencias.com/')) return false;
+    // Exclude the site root on noticiencias.com (e.g. "https://noticiencias.com/")
+    try {
+        const parsed = new URL(url);
+        if (parsed.hostname === 'noticiencias.com' && (parsed.pathname === '/' || parsed.pathname === '')) {
+            return false;
+        }
+    } catch {
+        // If the URL cannot be parsed, fall back to treating it as a candidate.
+    }
     // Known pages
     if (url.includes('/about/')) return false;
     if (url.includes('/docs/')) return false;
