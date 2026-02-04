@@ -9,7 +9,7 @@ En el ámbito de Ciencia y Tecnología, es común encontrar términos en inglés
 
 **Regla de Oro: "Cursiva + Explicación"**
 
-1.  **Mantén el anglicismo** si es el término más reconocido por la audiencia técnica/científica.
+1.  **Mantén el anglicismo** si es el término más reconocido por la audiencia técnica/científica **O si no existe una traducción directa que suene natural**.
 2.  **Formato**: Siempre escribe el término en _cursiva_.
 3.  **Primera Mención**: Acompaña la primera aparición del término con una breve definición o contexto entre paréntesis o comas.
 
