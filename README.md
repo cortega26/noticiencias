@@ -1,7 +1,5 @@
 # 🧪 Noticiencias - Plataforma de Periodismo Científico
 
-> **"Evidence-first, Spanish-first."**
-
 [![Content Guard](https://github.com/cortega26/noticiencias/actions/workflows/content-guard.yml/badge.svg)](https://github.com/cortega26/noticiencias/actions/workflows/content-guard.yml) [![Deploy](https://github.com/cortega26/noticiencias/actions/workflows/deploy.yml/badge.svg)](https://github.com/cortega26/noticiencias/actions/workflows/deploy.yml)
 ![Astro](https://img.shields.io/badge/Astro-5.0-AC1452?style=flat&logo=astro&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
 
