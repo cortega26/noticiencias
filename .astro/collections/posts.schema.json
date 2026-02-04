@@ -160,6 +160,7 @@
       },
       "required": [
         "title",
+        "excerpt",
         "date"
       ],
       "additionalProperties": false

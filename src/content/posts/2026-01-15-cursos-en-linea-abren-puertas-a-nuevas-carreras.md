@@ -11,6 +11,7 @@ headlines_variants:
 visual_category: OTHER
 visual_keywords: []
 visual_prompt: ""
+excerpt: "Un curso MicroMasters del MIT impulsó la transformación profesional de un ingeniero hacia la gestión de cadenas de suministro."
 ---
 
 # Cómo un curso en línea de la MIT sobre gestión de cadenas de suministro dio origen a una nueva carrera

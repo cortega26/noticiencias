@@ -4,7 +4,7 @@ const posts = defineCollection({
     type: 'content',
     schema: z.object({
         title: z.string(),
-        excerpt: z.string().optional(),
+        excerpt: z.string(),
         author: z.string().default('Noticiencias'),
         date: z.date(),
         categories: z.array(z.string()).default([]),
