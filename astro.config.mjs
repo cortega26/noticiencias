@@ -36,7 +36,8 @@ export default defineConfig({
             'www.nasa.gov',
             'preview.redd.it',
             'external-preview.redd.it',
-            'upload.wikimedia.org'
+            'upload.wikimedia.org',
+            'static.scientificamerican.com'
         ]
     },
     vite: {
