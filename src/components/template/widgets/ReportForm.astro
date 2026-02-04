@@ -139,7 +139,8 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 </div>
 
 <script>
-  // @ts-nocheck
+  // No explicit @ts-nocheck needed as we use JSDoc
+
   document.addEventListener('astro:page-load', () => {
     initReportForm();
   });
@@ -180,9 +181,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
     // Content
     const contentSnippet = /** @type {HTMLTextAreaElement | null} */ (document.querySelector('#content-snippet'));
     const contentEvidence = /** @type {HTMLInputElement | null} */ (document.querySelector('#content-evidence'));
-    // Tech
-    const techBrowser = document.querySelector('#tech-browser');
-    const techOs = document.querySelector('#tech-os');
+    // Tech inputs are gathered by FormData directly
 
     const updateFormState = () => {
       const type = typeSelect.value;
@@ -315,4 +314,3 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
     });
   }
 </script>
-```
