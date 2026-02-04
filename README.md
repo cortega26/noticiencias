@@ -22,6 +22,20 @@ Noticiencias es una plataforma de noticias científicas diseñada para el públi
 3.  **Diseño "Newsroom"**: Tipografía optimizada para lectura (Inter + Lora), modo oscuro nativo, y componentes de confianza (Trust Signals).
 4.  **Content Collections**: Gestión de tipos segura (TypeScript) para `posts`, `pages`, y `authors`.
 
+## 🏗️ Arquitectura de Contenido
+
+```mermaid
+graph TD
+    A[News Collector] -->|Markdown + Frontmatter| B(src/content/posts)
+    B -->|Content Layer| C{Astro Build}
+    D[Config.yaml] -->|Settings| C
+    C -->|Static Generation| E[./dist]
+    E -->|Deploy| F[GitHub Pages]
+
+    style A fill:#f9f,stroke:#333
+    style C fill:#ff9,stroke:#333
+```
+
 ## 📂 Estructura del Proyecto
 
 ```text
@@ -44,12 +58,21 @@ Noticiencias es una plataforma de noticias científicas diseñada para el públi
 
 ## 🛠️ Instalación y Uso
 
-### Prerrequisitos
+### Quick Start
 
-- Node.js 18+
-- npm
+```bash
+# 1. Instalar dependencias
+npm install
 
-### Comandos Principales
+# 2. Iniciar servidor de desarrollo
+npm run dev
+# >  Local:    http://localhost:4321/
+
+# 3. Verificar calidad de contenido
+npm run validate:content
+```
+
+### Comandos Disponibles
 
 | Comando           | Acción                                                |
 | :---------------- | :---------------------------------------------------- |
