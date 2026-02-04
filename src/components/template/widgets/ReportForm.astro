@@ -137,6 +137,7 @@
 </div>
 
 <script>
+  // @ts-nocheck
   document.addEventListener('astro:page-load', () => {
     initReportForm();
   });
@@ -149,33 +150,33 @@
   }
 
   function initReportForm() {
-    const form = document.querySelector('#report-problem-form') as HTMLFormElement | null;
+    const form = /** @type {HTMLFormElement | null} */ (document.querySelector('#report-problem-form'));
     if (!form) return;
 
-    const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
-    const contentSection = document.querySelector('#section-content') as HTMLDivElement | null;
-    const technicalSection = document.querySelector('#section-technical') as HTMLDivElement | null;
-    const submitBtn = document.querySelector('#submit-btn') as HTMLButtonElement | null;
-    const errorMsg = document.querySelector('#form-error') as HTMLParagraphElement | null;
-    const successMsg = document.querySelector('#form-success') as HTMLParagraphElement | null;
+    const typeSelect = /** @type {HTMLSelectElement | null} */ (document.querySelector('#problem-type'));
+    const contentSection = /** @type {HTMLDivElement | null} */ (document.querySelector('#section-content'));
+    const technicalSection = /** @type {HTMLDivElement | null} */ (document.querySelector('#section-technical'));
+    const submitBtn = /** @type {HTMLButtonElement | null} */ (document.querySelector('#submit-btn'));
+    const errorMsg = /** @type {HTMLParagraphElement | null} */ (document.querySelector('#form-error'));
+    const successMsg = /** @type {HTMLParagraphElement | null} */ (document.querySelector('#form-success'));
 
     if (!typeSelect || !contentSection || !technicalSection || !submitBtn || !errorMsg || !successMsg) {
         return;
     }
 
     // Field references
-    // Using simple selectors for bulk operations, casting individual specific ones when needed values
-    const contentFields = [
+    // Using simple selectors for bulk operations
+    const contentFields = /** @type {HTMLInputElement[]} */ ([
       document.querySelector('#content-url'),
       document.querySelector('#content-snippet'),
       document.querySelector('#content-description'),
       document.querySelector('#content-evidence')
-    ].filter(el => el !== null) as HTMLInputElement[]; // mixed inputs/textareas, but basic props overlap 
+    ].filter(el => el !== null));
 
-    const technicalFields = [
+    const technicalFields = /** @type {HTMLInputElement[]} */ ([
       document.querySelector('#tech-url'),
       document.querySelector('#tech-description')
-    ].filter(el => el !== null) as HTMLInputElement[];
+    ].filter(el => el !== null));
 
     // Helper to toggle visibility and requirements
     const updateFormState = () => {
@@ -224,8 +225,8 @@
       // Logic check for content evidence
       const type = typeSelect.value;
       if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type)) {
-        const evidenceInput = document.querySelector('#content-evidence') as HTMLInputElement | null;
-        const evidence = evidenceInput?.value;
+        const evidenceInput = /** @type {HTMLInputElement | null} */ (document.querySelector('#content-evidence'));
+        const evidence = evidenceInput ? evidenceInput.value : '';
         if (!evidence || !evidence.startsWith('http')) {
            errorMsg.textContent = "Error: Es obligatoria una URL válida de evidencia para reportes de contenido.";
            errorMsg.classList.remove('hidden');
