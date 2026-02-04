@@ -49,6 +49,7 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
+    { text: 'Reportar un problema', href: getPermalink('/reportar-problema') },
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://twitter.com/noticiencias' },

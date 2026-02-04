@@ -1,0 +1,61 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ReportForm from '~/components/template/widgets/ReportForm.astro';
+
+const metadata = {
+  title: 'Reportar un problema',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+---
+
+<BaseLayout metadata={metadata}>
+  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20 mx-auto max-w-4xl">
+    <div class="mb-10 text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-heading mb-4">
+        Reportar un problema
+      </h1>
+      <p class="text-lg text-muted max-w-2xl mx-auto">
+        Canal exclusivo para la corrección factual y técnica. Ayúdenos a mantener la precisión científica.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- What we consider -->
+      <div class="bg-green-50 dark:bg-green-900/10 p-6 rounded-lg border border-green-100 dark:border-green-800">
+        <h2 class="text-lg font-bold text-green-900 dark:text-green-300 mb-4 flex items-center">
+          <span class="mr-2 text-xl">✓</span> Qué consideramos un problema
+        </h2>
+        <ul class="space-y-2 text-sm text-green-800 dark:text-green-200">
+          <li class="flex items-start"><span class="mr-2">•</span> Errores factuales verificables</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Fuentes incorrectas o mal citadas</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Datos, gráficos o cifras mal interpretadas</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Errores de traducción sustanciales</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Enlaces rotos a fuentes primarias</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Fallas técnicas o errores visuales de lectura</li>
+        </ul>
+      </div>
+
+      <!-- What we do NOT consider -->
+      <div class="bg-red-50 dark:bg-red-900/10 p-6 rounded-lg border border-red-100 dark:border-red-800">
+        <h2 class="text-lg font-bold text-red-900 dark:text-red-300 mb-4 flex items-center">
+          <span class="mr-2 text-xl">✕</span> Qué NO será considerado
+        </h2>
+        <ul class="space-y-2 text-sm text-red-800 dark:text-red-200">
+          <li class="flex items-start"><span class="mr-2">•</span> Desacuerdos ideológicos o políticos</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Opiniones personales sobre el tema</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Críticas al enfoque editorial</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Demandas de "equilibrar opiniones"</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Quejas subjetivas</li>
+          <li class="flex items-start"><span class="mr-2">•</span> Feedback general o sugerencias</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <ReportForm />
+    </div>
+  </section>
+</BaseLayout>

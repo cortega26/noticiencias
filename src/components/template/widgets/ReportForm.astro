@@ -1,0 +1,250 @@
+---
+---
+
+<div class="max-w-2xl mx-auto p-6 bg-white dark:bg-slate-900 shadow-md rounded-lg">
+  <form id="report-problem-form" class="space-y-6" novalidate>
+    
+    <!-- Type of Problem -->
+    <div>
+      <label for="problem-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        Tipo de problema <span class="text-red-500">*</span>
+      </label>
+      <select id="problem-type" name="problemType" required
+        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300">
+        <option value="" disabled selected>Seleccione una opción exacta</option>
+        <option value="content_factual">Error verificable en el contenido</option>
+        <option value="content_source">Fuente incorrecta o mal citada</option>
+        <option value="content_interpretation">Dato o gráfico mal interpretado</option>
+        <option value="content_translation">Error de traducción</option>
+        <option value="technical_site">Problema técnico del sitio</option>
+        <option value="technical_visual">Error visual que dificulta la lectura</option>
+      </select>
+      <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        No se aceptan opiniones, sugerencias ni desacuerdos editoriales.
+      </p>
+    </div>
+
+    <!-- Dynamic Sections -->
+    <div id="section-content" class="hidden space-y-4 border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 dark:bg-blue-900/10">
+      <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-200 uppercase tracking-wider">Evidencia Requerida</h3>
+      
+      <div>
+        <label for="content-url" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          URL exacta del artículo <span class="text-red-500">*</span>
+        </label>
+        <input type="url" id="content-url" name="contentUrl"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
+          placeholder="https://noticiencias.com/..." />
+      </div>
+
+      <div>
+        <label for="content-snippet" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Fragmento específico afectado (texto copiado) <span class="text-red-500">*</span>
+        </label>
+        <textarea id="content-snippet" name="contentSnippet" rows="3"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"></textarea>
+      </div>
+
+      <div>
+        <label for="content-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Descripción concreta del error <span class="text-red-500">*</span>
+        </label>
+        <textarea id="content-description" name="contentDescription" rows="3"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"></textarea>
+      </div>
+
+      <div>
+        <label for="content-evidence" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Fuente o evidencia que respalde el reporte (URL) <span class="text-red-500">*</span>
+        </label>
+        <input type="url" id="content-evidence" name="contentEvidence"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
+          placeholder="https://fuente-confiable.org/estudio..." />
+        <p class="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+          Sin evidencia verificable, el reporte será descartado automáticamente.
+        </p>
+      </div>
+    </div>
+
+    <div id="section-technical" class="hidden space-y-4 border-l-4 border-amber-500 pl-4 py-2 bg-amber-50 dark:bg-amber-900/10">
+      <h3 class="text-sm font-semibold text-amber-900 dark:text-amber-200 uppercase tracking-wider">Detalles Técnicos</h3>
+
+      <div>
+        <label for="tech-url" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          URL donde ocurre el problema <span class="text-red-500">*</span>
+        </label>
+        <input type="url" id="tech-url" name="techUrl"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300" />
+      </div>
+
+      <div>
+        <label for="tech-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          Descripción clara del fallo <span class="text-red-500">*</span>
+        </label>
+        <textarea id="tech-description" name="techDescription" rows="3"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <label for="tech-browser" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Navegador (Opcional)
+          </label>
+          <input type="text" id="tech-browser" name="techBrowser"
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300" />
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="tech-os" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Sistema Operativo (Opcional)
+          </label>
+          <input type="text" id="tech-os" name="techOs"
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="rounded-md bg-gray-50 dark:bg-slate-800 p-4 border border-gray-200 dark:border-slate-700">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <!-- Heroicon name: mini/information-circle -->
+          <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3 flex-1 md:flex md:justify-between">
+          <p class="text-sm text-gray-700 dark:text-gray-300 font-semibold">
+            Los reportes sin evidencia verificable o que correspondan a opiniones no serán considerados.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Action -->
+    <div class="pt-2">
+      <button type="submit" id="submit-btn" disabled
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-400 cursor-not-allowed transition-colors duration-200">
+        Enviar reporte verificable
+      </button>
+      <p id="form-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></p>
+      <p id="form-success" class="mt-2 text-sm text-green-600 dark:text-green-400 hidden font-bold">
+        Reporte recibido por el equipo técnico. Gracias por ayudarnos a mantener la precisión.
+      </p>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    initReportForm();
+  });
+
+  // Fallback for non-ViewTransitions pages
+  if (document.readyState === 'complete') {
+     initReportForm();
+  } else {
+    document.addEventListener('DOMContentLoaded', initReportForm);
+  }
+
+  function initReportForm() {
+    const form = document.querySelector('#report-problem-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
+    const contentSection = document.querySelector('#section-content') as HTMLDivElement | null;
+    const technicalSection = document.querySelector('#section-technical') as HTMLDivElement | null;
+    const submitBtn = document.querySelector('#submit-btn') as HTMLButtonElement | null;
+    const errorMsg = document.querySelector('#form-error') as HTMLParagraphElement | null;
+    const successMsg = document.querySelector('#form-success') as HTMLParagraphElement | null;
+
+    if (!typeSelect || !contentSection || !technicalSection || !submitBtn || !errorMsg || !successMsg) {
+        return;
+    }
+
+    // Field references
+    // Using simple selectors for bulk operations, casting individual specific ones when needed values
+    const contentFields = [
+      document.querySelector('#content-url'),
+      document.querySelector('#content-snippet'),
+      document.querySelector('#content-description'),
+      document.querySelector('#content-evidence')
+    ].filter(el => el !== null) as HTMLInputElement[]; // mixed inputs/textareas, but basic props overlap 
+
+    const technicalFields = [
+      document.querySelector('#tech-url'),
+      document.querySelector('#tech-description')
+    ].filter(el => el !== null) as HTMLInputElement[];
+
+    // Helper to toggle visibility and requirements
+    const updateFormState = () => {
+      const type = typeSelect.value;
+      
+      // Default state
+      contentSection.classList.add('hidden');
+      technicalSection.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+      submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+      
+      // Reset requirements
+      contentFields.forEach(f => { f.required = false; });
+      technicalFields.forEach(f => { f.required = false; });
+
+      if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type)) {
+        contentSection.classList.remove('hidden');
+        contentFields.forEach(f => { f.required = true; });
+        submitBtn.disabled = false;
+        submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+      } else if (['technical_site', 'technical_visual'].includes(type)) {
+        technicalSection.classList.remove('hidden');
+        technicalFields.forEach(f => { f.required = true; });
+        submitBtn.disabled = false;
+        submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+      }
+    };
+
+    typeSelect.addEventListener('change', updateFormState);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errorMsg.classList.add('hidden');
+      successMsg.classList.add('hidden');
+
+      // Final strict validation
+      if (!form.checkValidity()) {
+        errorMsg.textContent = "Por favor, complete todos los campos obligatorios y verifique los formatos.";
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
+      // Logic check for content evidence
+      const type = typeSelect.value;
+      if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type)) {
+        const evidenceInput = document.querySelector('#content-evidence') as HTMLInputElement | null;
+        const evidence = evidenceInput?.value;
+        if (!evidence || !evidence.startsWith('http')) {
+           errorMsg.textContent = "Error: Es obligatoria una URL válida de evidencia para reportes de contenido.";
+           errorMsg.classList.remove('hidden');
+           return;
+        }
+      }
+
+      // Simulate API Submission
+      console.log('Reporte válido enviado:', Object.fromEntries(new FormData(form)));
+      
+      // UI Feedback
+      form.reset();
+      updateFormState(); // reset visual state
+      successMsg.classList.remove('hidden');
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMsg.classList.add('hidden');
+      }, 5000);
+    });
+  }
+</script>
