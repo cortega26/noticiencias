@@ -11,6 +11,7 @@ export interface Config {
   };
   ui?: unknown;
   analytics?: unknown;
+  form?: FormConfig;
 };
 
 export interface SiteConfig {
@@ -193,6 +194,17 @@ const getAnalytics = (config: Config) => {
   return merge({}, _default, config.analytics ?? {}) as AnalyticsConfig;
 };
 
+export interface FormConfig {
+  endpoint?: string;
+}
+
+const getFormConfig = (config: Config) => {
+  const _default = {
+    endpoint: '',
+  };
+  return merge({}, _default, config.form ?? {}) as FormConfig;
+};
+
 export default (config: Config) => ({
   SITE: getSite(config),
   I18N: getI18N(config),
@@ -200,4 +212,7 @@ export default (config: Config) => ({
   APP_BLOG: getAppBlog(config),
   UI: getUI(config),
   ANALYTICS: getAnalytics(config),
+  APP_CONFIG: {
+    form: getFormConfig(config),
+  },
 });

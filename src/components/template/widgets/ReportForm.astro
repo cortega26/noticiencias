@@ -1,4 +1,6 @@
 ---
+import { APP_CONFIG } from 'astrowind:config';
+const endpoint = APP_CONFIG?.form?.endpoint || "";
 ---
 
 <div class="max-w-2xl mx-auto p-6 bg-white dark:bg-slate-900 shadow-md rounded-lg relative">
@@ -19,7 +21,7 @@
   </div>
 
   <!-- Main Form -->
-  <form id="report-problem-form" class="space-y-6 transition-opacity duration-300" novalidate>
+  <form id="report-problem-form" class="space-y-6 transition-opacity duration-300" novalidate data-endpoint={endpoint}>
     
     <!-- Type of Problem -->
     <div>
@@ -150,15 +152,18 @@
 
   function initReportForm() {
     // Elements
-    const form = document.querySelector('#report-problem-form');
+    const form = /** @type {HTMLFormElement | null} */ (document.querySelector('#report-problem-form'));
     const successView = document.querySelector('#success-view');
     const resetBtn = document.querySelector('#reset-form-btn');
 
     if (!form || !successView) return;
 
-    const typeSelect = document.querySelector('#problem-type');
+    // Get endpoint from data attribute
+    const endpoint = form.dataset.endpoint;
+
+    const typeSelect = /** @type {HTMLSelectElement | null} */ (document.querySelector('#problem-type'));
     const detailsWrapper = document.querySelector('#details-wrapper');
-    const submitBtn = document.querySelector('#submit-btn');
+    const submitBtn = /** @type {HTMLButtonElement | null} */ (document.querySelector('#submit-btn'));
     const errorMsg = document.querySelector('#form-error');
 
     // Sections
@@ -166,15 +171,15 @@
     const specificTechnical = document.querySelector('#specific-technical');
 
     // Fields
-    const reportUrl = document.querySelector('#report-url');
-    const reportDesc = document.querySelector('#report-description');
+    const reportUrl = /** @type {HTMLInputElement | null} */ (document.querySelector('#report-url'));
+    const reportDesc = /** @type {HTMLTextAreaElement | null} */ (document.querySelector('#report-description'));
     const labelUrl = document.querySelector('#label-url');
     const labelDesc = document.querySelector('#label-description');
     
     // Specific Inputs (Validation targets)
     // Content
-    const contentSnippet = document.querySelector('#content-snippet');
-    const contentEvidence = document.querySelector('#content-evidence');
+    const contentSnippet = /** @type {HTMLTextAreaElement | null} */ (document.querySelector('#content-snippet'));
+    const contentEvidence = /** @type {HTMLInputElement | null} */ (document.querySelector('#content-evidence'));
     // Tech
     const techBrowser = document.querySelector('#tech-browser');
     const techOs = document.querySelector('#tech-os');
@@ -245,7 +250,7 @@
       updateFormState();
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorMsg.classList.add('hidden');
 
@@ -266,13 +271,48 @@
          }
       }
 
-      // Simulate API
-      console.log('Reporte Enviado', Object.fromEntries(new FormData(form)));
+      // Submit Data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-      // Success State UI
-      form.classList.add('hidden');
-      successView.classList.remove('hidden');
-      successView.scrollIntoView({ behavior: 'smooth' });
+      try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+
+        if (!endpoint) {
+             console.warn('Simulación: No se configuró endpoint en config.yaml');
+             console.log('Datos:', data);
+             // Simulate network delay
+             await new Promise(resolve => setTimeout(resolve, 800));
+        } else {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en el envío. Intente nuevamente.");
+            }
+        }
+
+        // Success State UI
+        form.classList.add('hidden');
+        successView.classList.remove('hidden');
+        successView.scrollIntoView({ behavior: 'smooth' });
+
+      } catch (error) {
+        console.error(error);
+        errorMsg.textContent = "Ocurrió un error al enviar el reporte. Por favor intente más tarde.";
+        errorMsg.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar reporte verificable";
+      }
     });
   }
 </script>
+```

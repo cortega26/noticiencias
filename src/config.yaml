@@ -1,29 +1,29 @@
 site:
-  name: 'Noticiencias'
-  site: 'https://noticiencias.com'
-  base: '/'
+  name: "Noticiencias"
+  site: "https://noticiencias.com"
+  base: "/"
   trailingSlash: false
 
-  googleSiteVerificationId: ''
-  
+  googleSiteVerificationId: ""
+
 metadata:
   title:
-    default: 'Noticiencias'
-    template: '%s | Noticiencias'
-  description: 'Traduce la ciencia global en español claro para 580 millones de hispanohablantes.'
+    default: "Noticiencias"
+    template: "%s | Noticiencias"
+  description: "Traduce la ciencia global en español claro para 580 millones de hispanohablantes."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: 'Noticiencias'
+    site_name: "Noticiencias"
     images:
-      - url: '~/assets/images/default.png'
+      - url: "~/assets/images/default.png"
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@noticiencias'
-    site: '@noticiencias'
+    handle: "@noticiencias"
+    site: "@noticiencias"
     cardType: summary_large_image
 
 i18n:
@@ -37,25 +37,25 @@ apps:
 
     post:
       isEnabled: true
-      permalink: '/%category%/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: "/%category%/%slug%" # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: "blog" # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
 
     category:
       isEnabled: true
-      pathname: 'categorias' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      pathname: "categorias" # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
         index: true
 
     tag:
       isEnabled: true
-      pathname: 'temas' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: "temas" # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
       robots:
         index: true
 
@@ -67,5 +67,8 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
+form:
+  endpoint: "" # https://formspree.io/f/your_id_here
+
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: "system" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
