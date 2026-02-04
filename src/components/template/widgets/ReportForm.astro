@@ -139,8 +139,6 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 </div>
 
 <script>
-  // No explicit @ts-nocheck needed as we use JSDoc
-
   document.addEventListener('astro:page-load', () => {
     initReportForm();
   });
@@ -153,35 +151,39 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
   function initReportForm() {
     // Elements
-    const form = /** @type {HTMLFormElement | null} */ (document.querySelector('#report-problem-form'));
-    const successView = document.querySelector('#success-view');
-    const resetBtn = document.querySelector('#reset-form-btn');
+    const form = document.querySelector('#report-problem-form') as HTMLFormElement | null;
+    const successView = document.querySelector('#success-view') as HTMLElement | null;
+    const resetBtn = document.querySelector('#reset-form-btn') as HTMLButtonElement | null;
 
     if (!form || !successView) return;
 
     // Get endpoint from data attribute
     const endpoint = form.dataset.endpoint;
 
-    const typeSelect = /** @type {HTMLSelectElement | null} */ (document.querySelector('#problem-type'));
-    const detailsWrapper = document.querySelector('#details-wrapper');
-    const submitBtn = /** @type {HTMLButtonElement | null} */ (document.querySelector('#submit-btn'));
-    const errorMsg = document.querySelector('#form-error');
+    const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
+    const detailsWrapper = document.querySelector('#details-wrapper') as HTMLElement | null;
+    const submitBtn = document.querySelector('#submit-btn') as HTMLButtonElement | null;
+    const errorMsg = document.querySelector('#form-error') as HTMLElement | null;
 
     // Sections
-    const specificContent = document.querySelector('#specific-content');
-    const specificTechnical = document.querySelector('#specific-technical');
+    const specificContent = document.querySelector('#specific-content') as HTMLElement | null;
+    const specificTechnical = document.querySelector('#specific-technical') as HTMLElement | null;
 
     // Fields
-    const reportUrl = /** @type {HTMLInputElement | null} */ (document.querySelector('#report-url'));
-    const reportDesc = /** @type {HTMLTextAreaElement | null} */ (document.querySelector('#report-description'));
-    const labelUrl = document.querySelector('#label-url');
-    const labelDesc = document.querySelector('#label-description');
+    const reportUrl = document.querySelector('#report-url') as HTMLInputElement | null;
+    const reportDesc = document.querySelector('#report-description') as HTMLTextAreaElement | null;
+    const labelUrl = document.querySelector('#label-url') as HTMLElement | null;
+    const labelDesc = document.querySelector('#label-description') as HTMLElement | null;
     
     // Specific Inputs (Validation targets)
-    // Content
-    const contentSnippet = /** @type {HTMLTextAreaElement | null} */ (document.querySelector('#content-snippet'));
-    const contentEvidence = /** @type {HTMLInputElement | null} */ (document.querySelector('#content-evidence'));
-    // Tech inputs are gathered by FormData directly
+    const contentSnippet = document.querySelector('#content-snippet') as HTMLTextAreaElement | null;
+    const contentEvidence = document.querySelector('#content-evidence') as HTMLInputElement | null;
+
+    // Critical elements check
+    if (!typeSelect || !detailsWrapper || !submitBtn || !errorMsg || !specificContent || !specificTechnical || !reportUrl || !reportDesc || !labelUrl || !labelDesc || !contentSnippet || !contentEvidence) {
+      console.error("ReportForm: Missing critical DOM elements.");
+      return;
+    }
 
     const updateFormState = () => {
       const type = typeSelect.value;
@@ -262,7 +264,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
       // Logic check for evidence URL
       const type = typeSelect.value;
-      if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type)) {
+      if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type) && contentEvidence) {
          if (!contentEvidence.value.startsWith('http')) {
              errorMsg.textContent = "La evidencia debe ser una URL válida (http/https).";
              errorMsg.classList.remove('hidden');
