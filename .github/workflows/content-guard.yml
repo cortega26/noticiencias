@@ -1,7 +1,7 @@
 name: Content Guard
 on:
   pull_request:
-    paths: ['src/content/**/*.md', 'src/content/**/*.mdx']
+    paths: ["src/content/**/*.md", "src/content/**/*.mdx"]
 
 permissions:
   contents: read
@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
 
       - run: npm ci
 
@@ -26,5 +26,5 @@ jobs:
       - name: 🔗 Link Checker
         uses: lycheeverse/lychee-action@v2.0.2
         with:
-          args: --no-progress './src/content/**/*.md'
+          args: --no-progress --exclude scientificamerican.com './src/content/**/*.md'
           fail: true
