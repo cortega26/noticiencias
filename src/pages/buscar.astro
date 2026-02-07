@@ -36,15 +36,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         let index = null;
         let store = {};
 
-        async function initSearch() {
-            const status = document.getElementById('search-status');
+        async function bootSearch() {
+            // Prevent double init on same page load if events overlap
+            // But strict idempotency is handled by checking if we are on the search page
             const input = document.getElementById('search-box') as HTMLInputElement;
+            const status = document.getElementById('search-status');
+            const form = document.getElementById('search-form');
             
-            if (status) status.textContent = 'Cargando índice...';
+            // If we are not on the search page, do nothing
+            if (!input || !status) return;
+
+            // Reset state for new navigation
+            index = null;
+            store = {};
+            
+            status.innerHTML = '<span class="text-gray-500 animate-pulse">Cargando índice de búsqueda...</span>';
+            input.disabled = true;
 
             try {
-                const response = await fetch('/search.json');
+                // Should force-cache to avoid network spam, managed by browser/service worker
+                const response = await fetch('/search.json', { cache: 'force-cache' });
+                
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
                 const documents = await response.json();
+                
+                if (!Array.isArray(documents) || documents.length === 0) {
+                     status.textContent = 'El índice de búsqueda está vacío.';
+                     return;
+                }
                 
                 // Build Index
                 // @ts-expect-error Lunr loaded via CDN script
@@ -71,33 +91,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     });
                 });
 
-                if (status) status.textContent = '';
-                if (input) {
-                    input.disabled = false;
-                    input.focus();
+                status.textContent = '';
+                input.disabled = false;
+                
+                // Attach event listener to form (replaces old ones automatically as DOM is fresh or we re-attach)
+                // Use 'submit' to capture both Enter and Button
+                if (form) {
+                    // Remove old listener if any (safety pattern, though mostly fresh DOM in Astro)
+                    const newForm = form.cloneNode(true) as HTMLElement;
+                    form.parentNode?.replaceChild(newForm, form);
+                    
+                    newForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const currentInput = document.getElementById('search-box') as HTMLInputElement;
+                        if (currentInput) {
+                             runSearch(currentInput.value);
+                        }
+                    });
+                     // Re-acquire input ref after clone
+                     const newInput = document.getElementById('search-box') as HTMLInputElement;
+                     if(newInput) { 
+                        newInput.focus();
+                        // Restore value if needed, but usually empty on fresh load
+                     }
                 }
 
-                // Check URL for existing query
+                // Check URL for existing query and execute immediately
                 const initialQuery = getQueryFromUrl();
-                if (initialQuery && input) {
-                    input.value = initialQuery;
-                    doSearch(initialQuery);
+                const currentInput = document.getElementById('search-box') as HTMLInputElement;
+                if (initialQuery && currentInput) {
+                    currentInput.value = initialQuery;
+                    runSearch(initialQuery);
                 }
 
             } catch (e) {
-                console.error(e);
-                if (status) status.textContent = 'Error cargando el buscador.';
+                console.error("Search init error:", e);
+                status.textContent = 'Error al cargar el buscador. Por favor recarga la página.';
             }
         }
 
-        function doSearch(query) {
+        function runSearch(query) {
             const resultsDiv = document.getElementById('search-results');
+            const status = document.getElementById('search-status');
+            
             if (!resultsDiv) return;
             
             resultsDiv.innerHTML = '';
-
-            if (!query || !query.trim()) {
+            
+             if (!query || !query.trim()) {
                 updateUrlWithQuery('');
+                if(status) status.textContent = '';
                 return;
             }
 
@@ -112,51 +155,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 const results = index.search(`${normalizedQuery}*`);
 
                 if (results.length === 0) {
-                    resultsDiv.innerHTML = '<p class="text-center text-gray-500">No se encontraron resultados.</p>';
+                    if(status) status.textContent = '';
+                    resultsDiv.innerHTML = '<div class="text-center py-8"><p class="text-xl text-gray-500 dark:text-gray-400">No se encontraron resultados para "<b>' + query + '</b>".</p></div>';
                     return;
                 }
 
+                if(status) status.textContent = `Se encontraron ${results.length} resultados.`;
+
                 const ul = document.createElement('ul');
-                ul.className = 'space-y-6';
+                ul.className = 'grid gap-6 md:grid-cols-1';
                 resultsDiv.appendChild(ul);
 
-                results.slice(0, 10).forEach(r => {
+                results.slice(0, 20).forEach(r => {
                     const doc = store[r.ref];
+                    if(!doc) return;
+
                     const li = document.createElement('li');
-                    li.className = 'p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-shadow duration-200';
+                    li.className = 'flex flex-col sm:flex-row bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden';
                     
-                    // Simple highlight (very basic)
+                    let imageHtml = '';
+                    if (doc.image) {
+                         imageHtml = `
+                            <a href="${doc.url}" class="block sm:w-48 h-48 sm:h-auto flex-shrink-0">
+                                <img src="${doc.image}" alt="${doc.title}" class="object-cover w-full h-full" loading="lazy" />
+                            </a>
+                         `;
+                    }
+
                     li.innerHTML = `
-                        <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            <a href="${doc.url}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">${doc.title}</a>
-                        </h3>
-                        <p class="font-normal text-gray-700 dark:text-gray-400">${doc.description || ''}</p>
+                        ${imageHtml}
+                        <div class="flex flex-col p-6 leading-normal">
+                             <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <a href="${doc.url}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">${doc.title}</a>
+                            </h3>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3">${doc.description || ''}</p>
+                            ${doc.tags ? `<div class="mt-auto text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">${doc.tags}</div>` : ''}
+                        </div>
                     `;
                     ul.appendChild(li);
                 });
             } catch (e) {
                 // Lunr query error
                 console.error("Search error:", e);
+                if(status) status.textContent = 'Error al realizar la búsqueda.';
             }
         }
 
-        // Init
+        // Initialize on every page navigation (Astro ViewTransitions / ClientRouter)
+        document.addEventListener('astro:page-load', bootSearch);
+        
+        // Fallback for initial load if astro:page-load doesn't fire (though it should)
+        // or for non-SPA modes.
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('search-form');
-            const input = document.getElementById('search-box') as HTMLInputElement;
-            
-            if (input) input.disabled = true; // Wait for index
-            
-            initSearch();
-
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    if (input) {
-                        doSearch(input.value);
-                    }
-                });
-            }
+            // Check if we are in a state where astro:page-load will NOT fire
+            // But simplest is just to call it, bootstrapping is robust enough to handle checks
+            bootSearch();
         });
+
     </script>
 </BaseLayout>
