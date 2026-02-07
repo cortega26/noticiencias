@@ -16,7 +16,8 @@ export async function GET() {
             categories: post.data.categories,
             tags: post.data.tags,
             series: post.data.series,
-            date: post.data.date
+            date: post.data.date,
+            image: post.data.image
         };
     });
 
