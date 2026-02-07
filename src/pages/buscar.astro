@@ -11,14 +11,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </header>
         
         <div class="search-container mx-auto max-w-3xl">
-            <div class="relative">
+            <form id="search-form" class="relative" role="search">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
                 <input type="text" id="search-box" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe para buscar..." required>
-            </div>
+                <button type="submit" class="absolute right-2.5 bottom-2.5 bg-primary-700 text-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buscar</button>
+            </form>
             
             <p id="search-status" class="text-sm text-gray-500 mt-2 text-center min-h-[1.5rem]"></p>
             
@@ -26,21 +27,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- Load Lunr from CDN or local if preferred, here using simple script tag for client -->
+    <!-- Load Lunr from CDN -->
     <script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
-    <script is:inline>
+    
+    <script>
+        import { updateUrlWithQuery, getQueryFromUrl } from '../utils/search-url';
+
         let index = null;
         let store = {};
 
         async function initSearch() {
             const status = document.getElementById('search-status');
-            status.textContent = 'Cargando índice...';
+            const input = document.getElementById('search-box') as HTMLInputElement;
+            
+            if (status) status.textContent = 'Cargando índice...';
 
             try {
                 const response = await fetch('/search.json');
                 const documents = await response.json();
                 
                 // Build Index
+                // @ts-ignore
                 index = lunr(function () {
                     this.ref('url');
                     this.field('title', { boost: 10 });
@@ -54,24 +61,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     });
                 });
 
-                status.textContent = '';
-                document.getElementById('search-box').disabled = false;
-                document.getElementById('search-box').focus();
+                if (status) status.textContent = '';
+                if (input) {
+                    input.disabled = false;
+                    input.focus();
+                }
+
+                // Check URL for existing query
+                const initialQuery = getQueryFromUrl();
+                if (initialQuery && input) {
+                    input.value = initialQuery;
+                    doSearch(initialQuery);
+                }
 
             } catch (e) {
                 console.error(e);
-                status.textContent = 'Error cargando el buscador.';
+                if (status) status.textContent = 'Error cargando el buscador.';
             }
         }
 
         function doSearch(query) {
             const resultsDiv = document.getElementById('search-results');
+            if (!resultsDiv) return;
+            
             resultsDiv.innerHTML = '';
 
-            if (!query) return;
+            if (!query || !query.trim()) {
+                updateUrlWithQuery('');
+                return;
+            }
+
+            // Update URL
+            updateUrlWithQuery(query);
 
             // Fuzzy matching + wildcard
             try {
+                // @ts-ignore
                 const results = index.search(`${query}*`);
 
                 if (results.length === 0) {
@@ -97,22 +122,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     `;
                     ul.appendChild(li);
                 });
-            } catch {
-                // Lunr query error (e.g. empty)
+            } catch (e) {
+                // Lunr query error
+                console.error("Search error:", e);
             }
         }
 
         // Init
         document.addEventListener('DOMContentLoaded', () => {
-            const input = document.getElementById('search-box');
-            input.disabled = true; // Wait for index
+            const form = document.getElementById('search-form');
+            const input = document.getElementById('search-box') as HTMLInputElement;
+            
+            if (input) input.disabled = true; // Wait for index
             
             initSearch();
 
-            input.addEventListener('input', (e) => {
-                const query = e.target.value;
-                doSearch(query);
-            });
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (input) {
+                        doSearch(input.value);
+                    }
+                });
+            }
         });
     </script>
 </BaseLayout>
