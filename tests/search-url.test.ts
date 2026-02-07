@@ -5,7 +5,7 @@ describe('Search URL Utils', () => {
     
     beforeEach(() => {
         // Mock global window and history
-        const url = new URL('http://localhost/buscar');
+        // const url = new URL('http://localhost/buscar'); // Removed unused var
         
         vi.stubGlobal('window', {
             location: {
@@ -64,6 +64,7 @@ describe('Search URL Utils', () => {
              updateUrlWithQuery('');
              
              // Check that 'q' is gone
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
              const calls = (window.history.pushState as any).mock.calls;
              const newUrl = calls[0][2];
              expect(newUrl).not.toContain('?q=');
@@ -72,6 +73,7 @@ describe('Search URL Utils', () => {
 
         it('should replace spaces with + or %20 (URL encoding)', () => {
             updateUrlWithQuery('black hole');
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const calls = (window.history.pushState as any).mock.calls;
             const newUrl = calls[0][2];
             expect(newUrl).toMatch(/q=black(\+|%20)hole/);

@@ -47,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 const documents = await response.json();
                 
                 // Build Index
-                // @ts-ignore
+                // @ts-expect-error Lunr loaded via CDN script
                 index = lunr(function () {
                     this.ref('url');
                     this.field('title', { boost: 10 });
@@ -96,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             // Fuzzy matching + wildcard
             try {
-                // @ts-ignore
+                // @ts-expect-error Lunr index type not available
                 const results = index.search(`${query}*`);
 
                 if (results.length === 0) {
