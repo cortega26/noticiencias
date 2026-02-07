@@ -32,3 +32,17 @@ export function updateUrlWithQuery(query: string): void {
 
   window.history.pushState({ path: url.toString() }, '', url.toString());
 }
+
+/**
+ * Normalizes a string for search: lowercase, trim, remove diacritics.
+ * @param str - The string to normalize
+ * @returns Normalized string
+ */
+export function normalizeQuery(str: string): string {
+  if (!str) return '';
+  return str
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+}

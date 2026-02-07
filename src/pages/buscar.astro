@@ -31,7 +31,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
     
     <script>
-        import { updateUrlWithQuery, getQueryFromUrl } from '../utils/search-url';
+        import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
 
         let index = null;
         let store = {};
@@ -56,8 +56,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     this.field('tags');
                     
                     documents.forEach(doc => {
-                        this.add(doc);
-                        store[doc.url] = doc;
+                        // Normalize fields for better matching
+                        const normalizedDoc = {
+                            ...doc,
+                            title: normalizeQuery(doc.title),
+                            description: normalizeQuery(doc.description),
+                            content: normalizeQuery(doc.content),
+                            // Tags are array, join then normalize
+                            tags: doc.tags ? normalizeQuery(doc.tags.join(' ')) : ''
+                        };
+
+                        this.add(normalizedDoc);
+                        store[doc.url] = doc; // Store original for display
                     });
                 });
 
@@ -94,10 +104,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             // Update URL
             updateUrlWithQuery(query);
 
+            const normalizedQuery = normalizeQuery(query);
+
             // Fuzzy matching + wildcard
             try {
                 // @ts-expect-error Lunr index type not available
-                const results = index.search(`${query}*`);
+                const results = index.search(`${normalizedQuery}*`);
 
                 if (results.length === 0) {
                     resultsDiv.innerHTML = '<p class="text-center text-gray-500">No se encontraron resultados.</p>';

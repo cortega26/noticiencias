@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { getQueryFromUrl, updateUrlWithQuery } from '../src/utils/search-url.ts';
+import { getQueryFromUrl, updateUrlWithQuery, normalizeQuery } from '../src/utils/search-url.ts';
 
 describe('Search URL Utils', () => {
     
@@ -50,11 +50,10 @@ describe('Search URL Utils', () => {
     describe('updateUrlWithQuery', () => {
         it('should update URL with query param', () => {
             updateUrlWithQuery('nebula');
-            expect(window.history.pushState).toHaveBeenCalledWith(
-                expect.any(Object),
-                '',
-                expect.stringContaining('?q=nebula')
-            );
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const calls = (window.history.pushState as any).mock.calls;
+            const newUrl = calls[0][2];
+            expect(newUrl).toMatch(/q=nebula/);
         });
 
         it('should remove query param if empty', () => {
@@ -77,6 +76,24 @@ describe('Search URL Utils', () => {
             const calls = (window.history.pushState as any).mock.calls;
             const newUrl = calls[0][2];
             expect(newUrl).toMatch(/q=black(\+|%20)hole/);
+        });
+    });
+
+    describe('normalizeQuery', () => {
+        it('should lowercase and trim', () => {
+             expect(normalizeQuery('  HELLO  ')).toBe('hello');
+        });
+
+        it('should remove accents/diacritics', () => {
+             expect(normalizeQuery('Energía Oscura')).toBe('energia oscura');
+             expect(normalizeQuery('Canción')).toBe('cancion');
+             expect(normalizeQuery('Über')).toBe('uber');
+        });
+
+        it('should handle empty strings', () => {
+             expect(normalizeQuery('')).toBe('');
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             expect(normalizeQuery(null as any)).toBe('');
         });
     });
 });
