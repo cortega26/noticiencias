@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { normalizeQuery } from '../src/utils/search-url.ts';
 // We mock Lunr since it's loaded via CDN in the real app, but for tests we want to verify logic.
 // In a real environment we might install lunr as a devDependency.
@@ -33,7 +33,7 @@ describe('Search Integration', () => {
     beforeEach(() => {
         store = {};
         // Simulate Index Building (Logic from buscar.astro)
-        index = lunr(function () {
+        index = lunr(function (this: any) {
             this.ref('url');
             this.field('title', { boost: 10 });
             this.field('description', { boost: 5 });

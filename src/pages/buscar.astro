@@ -33,8 +33,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <script>
         import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
 
-        let index = null;
-        let store = {};
+        // Define expected document structure
+        interface SearchDocument {
+            title: string;
+            url: string;
+            description: string;
+            content: string;
+            tags?: string | string[];
+            image?: string;
+        }
+
+        // Declare lunr since it is loaded via CDN
+        declare const lunr: any;
+
+        let index: any = null;
+        let store: Record<string, SearchDocument> = {};
 
         async function bootSearch() {
             // Prevent double init on same page load if events overlap
@@ -67,15 +80,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 }
                 
                 // Build Index
-                // @ts-expect-error Lunr loaded via CDN script
-                index = lunr(function () {
+                // Lunr loaded via CDN script but declared above
+                index = lunr(function (this: any) {
                     this.ref('url');
                     this.field('title', { boost: 10 });
                     this.field('description', { boost: 5 });
                     this.field('content');
                     this.field('tags');
                     
-                    documents.forEach(doc => {
+                    documents.forEach((doc: SearchDocument) => {
                         // Normalize fields for better matching
                         const normalizedDoc = {
                             ...doc,
@@ -83,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             description: normalizeQuery(doc.description),
                             content: normalizeQuery(doc.content),
                             // Tags are array, join then normalize
-                            tags: doc.tags ? normalizeQuery(doc.tags.join(' ')) : ''
+                            tags: Array.isArray(doc.tags) ? normalizeQuery(doc.tags.join(' ')) : ''
                         };
 
                         this.add(normalizedDoc);
@@ -130,7 +143,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             }
         }
 
-        function runSearch(query) {
+        function runSearch(query: string) {
             const resultsDiv = document.getElementById('search-results');
             const status = document.getElementById('search-status');
             
@@ -138,7 +151,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             
             resultsDiv.innerHTML = '';
             
-             if (!query || !query.trim()) {
+            if (!query || !query.trim()) {
                 updateUrlWithQuery('');
                 if(status) status.textContent = '';
                 return;
@@ -151,7 +164,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             // Fuzzy matching + wildcard
             try {
-                // @ts-expect-error Lunr index type not available
+                // Lunr index type not available fully but implicit any works now
                 const results = index.search(`${normalizedQuery}*`);
 
                 if (results.length === 0) {
@@ -166,7 +179,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 ul.className = 'grid gap-6 md:grid-cols-1';
                 resultsDiv.appendChild(ul);
 
-                results.slice(0, 20).forEach(r => {
+                results.slice(0, 20).forEach((r: any) => {
                     const doc = store[r.ref];
                     if(!doc) return;
 
