@@ -37,7 +37,8 @@ export default defineConfig({
             'preview.redd.it',
             'external-preview.redd.it',
             'upload.wikimedia.org',
-            'static.scientificamerican.com'
+            'static.scientificamerican.com',
+            'images.newscientist.com'
         ]
     },
     vite: {
