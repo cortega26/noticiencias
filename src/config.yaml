@@ -22,8 +22,8 @@ metadata:
         height: 628
     type: website
   twitter:
-    handle: "@noticiencias"
-    site: "@noticiencias"
+    handle: "@noti_ciencias"
+    site: "@noti_ciencias"
     cardType: summary_large_image
 
 i18n:
