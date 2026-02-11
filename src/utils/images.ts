@@ -35,6 +35,9 @@ const shouldIgnorePath = (imagePath: string): boolean => {
 };
 
 const resolveImageKey = (imagePath: string): string => {
+  if (imagePath.startsWith('~/')) {
+    return imagePath.replace('~/', '/src/');
+  }
   return imagePath;
 };
 
