@@ -373,7 +373,6 @@ export async function getImagesOptimized(
         objectPosition: objectPosition,
         layout: layout,
       })}${style ?? ''}`,
-      crossorigin: null as any,
       ...rest,
     },
   };
