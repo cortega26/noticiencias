@@ -1,0 +1,13 @@
+# OWASP Recommended Security Headers
+# Valid for Netlify, Cloudflare Pages, and many static hosts
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  # Content-Security-Policy: default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';
+  # Note: CSP is commented out as it requires strict tuning for your specific analytics/scripts. 
+  # Enable it iteratively.
