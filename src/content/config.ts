@@ -2,20 +2,22 @@ import { defineCollection, z } from 'astro:content';
 
 const posts = defineCollection({
     type: 'content',
+
     schema: z.object({
-        title: z.string(),
-        excerpt: z.string(),
+        title: z.string().min(5, "Title too short"),
+        excerpt: z.string().min(10, "Excerpt too short"),
         author: z.string().default('Noticiencias'),
         date: z.date(),
         categories: z.array(z.string()).default([]),
         tags: z.array(z.string()).default([]),
+
         // Migration: Support legacy strings but prefer object with dimensions
         image: z.union([
-            z.string(),
+            z.string(), // Allow local paths (e.g. /images/...) or URLs
             z.object({
-                src: z.string(),
-                width: z.number(),
-                height: z.number(),
+                src: z.string(), // content/images might use relative paths too
+                width: z.number().int().positive(),
+                height: z.number().int().positive(),
                 alt: z.string().optional(),
             })
         ]).optional(), 
@@ -39,7 +41,7 @@ const posts = defineCollection({
         series: z.string().optional(),
 
         sources: z.array(z.object({
-            title: z.string(),
+            title: z.string().min(1),
             url: z.string().url(),
             publisher: z.string().optional(),
             date: z.string().optional()

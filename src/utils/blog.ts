@@ -41,6 +41,7 @@ const generatePermalink = async ({
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
+
   const { id, slug: rawSlug, data } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);
 
@@ -55,11 +56,20 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     series,
   } = data;
 
+
   const draft = false; // Schema does not have draft
   const rawCategory = undefined; // Schema does not have category
   const rawUpdateDate = undefined; // Schema does not have updateDate
 
+  // FAIL-CLOSED: Critical Data Integrity Check
+  if (!title) {
+      throw new Error(`CRITICAL: Post ${id} has no title. Build aborted to prevent corrupt content.`);
+  }
+
   const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
+  if (!slug) {
+      throw new Error(`CRITICAL: Post ${id} resulted in empty slug. Original: ${rawSlug}`);
+  }
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 
