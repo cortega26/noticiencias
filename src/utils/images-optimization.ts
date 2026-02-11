@@ -223,6 +223,16 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
     return [];
   }
 
+  // Bypass optimization for remote images to avoid build timeouts/errors 
+  // (inferRemoteSize can fail or time out on external URLs)
+  if (typeof image === 'string' && (image.startsWith('http://') || image.startsWith('https://'))) {
+      return breakpoints.map((w) => ({
+          src: image,
+          width: w,
+          height: _height, // May be undefined, which is fine
+      }));
+  }
+
   return Promise.all(
     breakpoints.map(async (w: number) => {
       const result = await getImage({ src: image, width: w, inferSize: true, ...(format ? { format: format } : {}) });
