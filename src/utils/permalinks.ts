@@ -76,7 +76,7 @@ export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
 /** */
 export const getAsset = (path: string): string =>
   '/' +
-  [BASE_PATHNAME, path]
+  [import.meta.env.BASE_URL, path]
     .map((el) => trimSlash(el))
     .filter((el) => !!el)
     .join('/');
