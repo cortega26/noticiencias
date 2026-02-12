@@ -10,7 +10,8 @@
     "strict": true,
     "strictNullChecks": true,
     "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true
   },
   "include": [
     ".astro/types.d.ts",

@@ -27,6 +27,13 @@ function scanDir(dir) {
 
   for (const file of files) {
     const fullPath = path.join(dir, file);
+    
+    // Security: Prevent traversal
+    if (!fullPath.startsWith(DIST_DIR)) {
+        console.error(`${RED}Security Error: Attempted to scan outside DIST_DIR: ${fullPath}${RESET}`);
+        continue;
+    }
+
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory()) {

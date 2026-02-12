@@ -11,8 +11,8 @@ export function safeYamlLoad(content: string): unknown {
     throw new Error("Invalid YAML: empty");
   }
 
-  if (typeof parsed !== "object") {
-    throw new Error("Invalid YAML: expected object");
+  if (typeof parsed !== 'object') {
+    throw new Error(`Invalid YAML: expected object, got ${typeof parsed}`);
   }
 
   return parsed;

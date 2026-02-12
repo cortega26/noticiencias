@@ -1,0 +1,5 @@
+---
+exclude_paths:
+  - "scripts/cleanup_dry_run.js"
+  - "scripts/complexity_check.js"
+  - "scripts/scan_mocks.js"

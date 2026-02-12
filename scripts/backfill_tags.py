@@ -37,7 +37,7 @@ def parse_yaml(fm_str):
             elif val.startswith("[") and val.endswith("]"):
                  try:
                      val = json.loads(val)
-                 except:
+                 except Exception:
                      pass
             data[key] = val
     return data
