@@ -1,0 +1,26 @@
+[
+  {
+    "file": "dummy-editorial.md",
+    "slug": "dummy-editorial",
+    "title": "Nuestra Misión: Periodismo Científico Riguroso",
+    "date": "2026-01-21",
+    "type": "CANDIDATE",
+    "reason": "Missing source_url, sources, and refinery_id"
+  },
+  {
+    "file": "dummy-salud.md",
+    "slug": "dummy-salud",
+    "title": "Innovaciones en Salud Digital: El Futuro de la Medicina Preventiva",
+    "date": "2026-01-21",
+    "type": "CANDIDATE",
+    "reason": "Missing source_url, sources, and refinery_id"
+  },
+  {
+    "file": "dummy-tecnologia.md",
+    "slug": "dummy-tecnologia",
+    "title": "El Impacto de la Computación Cuántica en la Ciberseguridad",
+    "date": "2026-01-21",
+    "type": "CANDIDATE",
+    "reason": "Missing source_url, sources, and refinery_id"
+  }
+]

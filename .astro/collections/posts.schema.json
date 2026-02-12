@@ -11,6 +11,11 @@
             "minLength": "Title too short"
           }
         },
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
         "excerpt": {
           "type": "string",
           "minLength": 10,
