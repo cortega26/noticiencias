@@ -3,14 +3,37 @@ import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
 
+interface AstroData {
+  astro: {
+    frontmatter: {
+      readingTime?: number;
+    };
+  };
+}
+
+function hasAstroData(data: unknown): data is AstroData {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    'astro' in data &&
+    typeof (data as AstroData).astro === 'object' &&
+    (data as AstroData).astro !== null &&
+    'frontmatter' in (data as AstroData).astro
+  );
+}
+
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
   return function (tree, file: unknown) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
-    const astroFile = file as { data?: { astro?: { frontmatter?: { readingTime?: number } } } };
-    if (typeof astroFile?.data?.astro?.frontmatter !== 'undefined') {
-      astroFile.data.astro.frontmatter.readingTime = readingTime;
+    if (
+      typeof file === 'object' &&
+      file !== null &&
+      'data' in file &&
+      hasAstroData((file as { data: unknown }).data)
+    ) {
+      ((file as { data: AstroData }).data).astro.frontmatter.readingTime = readingTime;
     }
   };
 };

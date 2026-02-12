@@ -1,13 +1,28 @@
-import fs from 'node:fs';
+import { safeRead } from '../../utils/safeFs';
 import yaml from 'js-yaml';
 
-const loadConfig = async (configPathOrData: string | object) => {
+
+export function safeYamlLoad(content: string): unknown {
+  const parsed = yaml.load(content, {
+    schema: yaml.FAILSAFE_SCHEMA,
+  });
+
+  if (parsed === null || parsed === undefined) {
+    throw new Error("Invalid YAML: empty");
+  }
+
+  if (typeof parsed !== "object") {
+    throw new Error("Invalid YAML: expected object");
+  }
+
+  return parsed;
+}
+
+const loadConfig = async (configPathOrData: string | object): Promise<unknown> => {
   if (typeof configPathOrData === 'string') {
-    const content = fs.readFileSync(configPathOrData, 'utf8');
+    const content = safeRead(configPathOrData);
     if (configPathOrData.endsWith('.yaml') || configPathOrData.endsWith('.yml')) {
-      // js-yaml v4 deserializes safely by default (supports JSON-compatible YAML only).
-      // We enforce JSON_SCHEMA to be explicitly safe and satisfy security auditors.
-      return yaml.load(content, { schema: yaml.JSON_SCHEMA });
+      return safeYamlLoad(content);
     }
     return content;
   }

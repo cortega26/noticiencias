@@ -1,26 +1,21 @@
+import type { SiteConfig, BlogConfig, AppConfig } from '~/types/config';
 import merge from 'lodash.merge';
 
 import type { MetaData } from '~/types';
 
+// Keep definition of input Config essentially as Partial<AppConfig> or similar
 export interface Config {
   site?: SiteConfig;
   metadata?: MetaDataConfig;
   i18n?: I18NConfig;
   apps?: {
-    blog?: AppBlogConfig;
+    blog?: BlogConfig;
   };
   ui?: unknown;
   analytics?: unknown;
   form?: FormConfig;
-};
-
-export interface SiteConfig {
-  name: string;
-  site?: string;
-  base?: string;
-  trailingSlash?: boolean;
-  googleSiteVerificationId?: string;
 }
+
 export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   title?: {
     default: string;
@@ -32,44 +27,7 @@ export interface I18NConfig {
   textDirection: string;
   dateFormatter?: Intl.DateTimeFormat;
 }
-export interface AppBlogConfig {
-  isEnabled: boolean;
-  postsPerPage: number;
-  isRelatedPostsEnabled: boolean;
-  relatedPostsCount: number;
-  post: {
-    isEnabled: boolean;
-    permalink: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
-  };
-  list: {
-    isEnabled: boolean;
-    pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
-  };
-  category: {
-    isEnabled: boolean;
-    pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
-  };
-  tag: {
-    isEnabled: boolean;
-    pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
-  };
-}
+
 export interface AnalyticsConfig {
   vendors: {
     googleAnalytics: {
@@ -85,20 +43,19 @@ export interface UIConfig {
 
 const DEFAULT_SITE_NAME = 'Website';
 
-const getSite = (config: Config) => {
+const getSite = (config: Config): SiteConfig => {
   const _default = {
     name: DEFAULT_SITE_NAME,
     site: undefined,
     base: '/',
     trailingSlash: false,
-
     googleSiteVerificationId: '',
   };
 
   return merge({}, _default, config.site ?? {}) as SiteConfig;
 };
 
-const getMetadata = (config: Config) => {
+const getMetadata = (config: Config): MetaDataConfig => {
   const siteConfig = getSite(config);
 
   const _default = {
@@ -119,7 +76,7 @@ const getMetadata = (config: Config) => {
   return merge({}, _default, config.metadata ?? {}) as MetaDataConfig;
 };
 
-const getI18N = (config: Config) => {
+const getI18N = (config: Config): I18NConfig => {
   const _default = {
     language: 'en',
     textDirection: 'ltr',
@@ -130,7 +87,7 @@ const getI18N = (config: Config) => {
   return value as I18NConfig;
 };
 
-const getAppBlog = (config: Config) => {
+const getAppBlog = (config: Config): BlogConfig => {
   const _default = {
     isEnabled: false,
     postsPerPage: 6,
@@ -170,7 +127,7 @@ const getAppBlog = (config: Config) => {
     },
   };
 
-  return merge({}, _default, config.apps?.blog ?? {}) as AppBlogConfig;
+  return merge({}, _default, config.apps?.blog ?? {}) as BlogConfig;
 };
 
 const getUI = (config: Config) => {
@@ -181,7 +138,7 @@ const getUI = (config: Config) => {
   return merge({}, _default, config.ui ?? {});
 };
 
-const getAnalytics = (config: Config) => {
+const getAnalytics = (config: Config): AnalyticsConfig => {
   const _default = {
     vendors: {
       googleAnalytics: {
@@ -198,14 +155,14 @@ export interface FormConfig {
   endpoint?: string;
 }
 
-const getFormConfig = (config: Config) => {
+const getFormConfig = (config: Config): FormConfig => {
   const _default = {
     endpoint: '',
   };
   return merge({}, _default, config.form ?? {}) as FormConfig;
 };
 
-export default (config: Config) => ({
+export default (config: Config): AppConfig => ({
   SITE: getSite(config),
   I18N: getI18N(config),
   METADATA: getMetadata(config),

@@ -117,8 +117,12 @@ export const applyGetPermalinks = (menu: MenuItem | MenuItem[] = {}): MenuItem |
     const obj: MenuItem = {};
     for (const key in menu) {
       if (key === 'href') {
-        const processedHref = handleHref(menu[key]);
-        if (processedHref) obj[key] = processedHref;
+        const val = menu[key];
+        if (typeof val === 'string' || (typeof val === 'object' && val !== null && 'type' in val)) {
+           // We cast reasonably here because we checked shape roughly match handleHref expectations
+           const processedHref = handleHref(val as string | { type: string; url?: string });
+           if (processedHref) obj[key] = processedHref;
+        }
       } else {
         const value = menu[key];
         if (key === 'links' && Array.isArray(value)) {

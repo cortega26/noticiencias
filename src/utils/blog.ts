@@ -76,7 +76,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   const metadata = {};
 
   // Use rawCategory if exists, otherwise use first item from rawCategories
-  const categoryString = rawCategory ?? (rawCategories && rawCategories.length > 0 ? rawCategories[0] : undefined);
+  const categoryString = rawCategory ?? (Array.isArray(rawCategories) && rawCategories.length > 0 ? rawCategories[0] : undefined);
 
   const category = categoryString
     ? {
@@ -85,10 +85,10 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     }
     : undefined;
 
-  const tags = rawTags.map((tag: string) => ({
+  const tags = Array.isArray(rawTags) ? rawTags.map((tag: string) => ({
     slug: cleanSlug(tag).toLowerCase(),
     title: tag,
-  }));
+  })) : [];
 
   return {
     id: id,
@@ -161,10 +161,11 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 
   const posts = await fetchPosts();
 
-  return slugs.reduce(function (r: Array<Post>, slug: string) {
-    posts.some(function (post: Post) {
-      return slug === post.slug && r.push(post);
-    });
+  return slugs.reduce((r: Array<Post>, slug: string) => {
+    const post = posts.find((p: Post) => p.slug === slug);
+    if (post) {
+      r.push(post);
+    }
     return r;
   }, []);
 };
@@ -175,10 +176,11 @@ export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> =
 
   const posts = await fetchPosts();
 
-  return ids.reduce(function (r: Array<Post>, id: string) {
-    posts.some(function (post: Post) {
-      return id === post.id && r.push(post);
-    });
+  return ids.reduce((r: Array<Post>, id: string) => {
+    const post = posts.find((p: Post) => p.id === id);
+    if (post) {
+      r.push(post);
+    }
     return r;
   }, []);
 };
