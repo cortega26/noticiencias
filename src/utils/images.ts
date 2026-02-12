@@ -25,18 +25,30 @@ export const fetchLocalImages = async () => {
 };
 
 /** */
+import { normalizeImage } from './normalizeImage';
+
 const shouldIgnorePath = (imagePath: string): boolean => {
-  return (
-    imagePath.startsWith('http://') ||
-    imagePath.startsWith('https://') ||
-    imagePath.startsWith('/') ||
-    !imagePath.startsWith('~/assets/images')
-  );
+  const normalized = normalizeImage(imagePath);
+  if (!normalized) return true;
+  
+  if (normalized.kind === 'remote') return true;
+  
+  // Local paths that are not assets
+  if (normalized.src.startsWith('/')) {
+      // If it starts with /, it's a public asset or root relative. 
+      // The original logic ignored entries starting with /.
+      // check if it's explicitly ~/assets
+      return !normalized.src.startsWith('~/assets/images');
+  }
+  
+  return !normalized.src.startsWith('~/assets/images');
 };
 
 const resolveImageKey = (imagePath: string): string => {
-  if (imagePath.startsWith('~/')) {
-    return imagePath.replace('~/', '/src/');
+  // Use centralized Normalizer first
+  const normalized = normalizeImage(imagePath);
+  if (normalized && normalized.kind === 'local' && normalized.src.startsWith('~/')) {
+      return normalized.src.replace('~/', '/src/');
   }
   return imagePath;
 };

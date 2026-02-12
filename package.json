@@ -11,6 +11,8 @@
     "test:audit": "vitest run",
     "lint": "eslint .",
     "check:freeze": "node scripts/freeze-template.js",
+    "test:dist": "node scripts/dist-sanity.js",
+    "test:deploy": "node scripts/post-deploy-check.js",
     "validate:content": "astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {

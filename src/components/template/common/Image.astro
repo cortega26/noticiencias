@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import { getAsset } from '~/utils/permalinks';
+import { normalizeImage } from '~/utils/normalizeImage';
 import {
   getImagesOptimized,
   astroAssetsOptimizer,
@@ -21,6 +22,27 @@ interface Props extends ImageProps {
 }
 
 const props = Astro.props;
+
+// Normalization Limit
+const normalized = normalizeImage(props.src);
+if (!normalized) {
+    // If src is missing, we can't render an image.
+    // Astro might handle this via slot or just return null.
+}
+// Use Normalized Input as Source of Truth
+const finalSrc = normalized ? normalized.src : (typeof props.src === 'string' ? props.src : '');
+// If props.alt is missing, try normalized alt
+if (props.alt === undefined || props.alt === null) {
+    if (normalized && normalized.alt) {
+        props.alt = normalized.alt;
+    } else {
+        // Fallback to empty string if missing? 
+        // I-03 says explicit empty is better than undefined.
+        // But throwing might be safer for strictness.
+        // Let's keep existing strict check for now.
+        // throw new Error();
+    }
+}
 
 if (props.alt === undefined || props.alt === null) {
   throw new Error();
@@ -42,7 +64,13 @@ if (!props.decoding) {
   props.decoding = 'async';
 }
 
-const _image = await findImage(props.src);
+// Map Normalized Attributes to Props if missing
+if (normalized) {
+    if (!props.width && normalized.width) props.width = normalized.width;
+    if (!props.height && normalized.height) props.height = normalized.height;
+}
+
+const _image = await findImage(finalSrc);
 
 let image: ImageType | undefined = undefined;
 

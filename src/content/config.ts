@@ -5,6 +5,7 @@ const posts = defineCollection({
 
     schema: z.object({
         title: z.string().min(5, "Title too short"),
+        schema_version: z.number().int().min(1).default(1), // Default to 1 for legacy, but we track it now
         excerpt: z.string().min(10, "Excerpt too short"),
         author: z.string().default('Noticiencias'),
         date: z.date(),
