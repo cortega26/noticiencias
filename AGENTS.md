@@ -64,7 +64,7 @@ Example frontmatter:
     publishDate: 2024-01-01T00:00:00Z
     image: "~/assets/images/cover.jpg"
     category: "Science"
-    tags: ["Space", "NASA"]
+    tags: ["space", "nasa"] # Lowercase, strict contract (see docs/tagging.md)
     draft: false
 
 Rules:
