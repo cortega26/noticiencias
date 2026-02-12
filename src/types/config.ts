@@ -1,9 +1,24 @@
+import type { MetaData } from '~/types';
+
 export interface SiteConfig {
   name: string;
   site?: string;
   base?: string;
   trailingSlash?: boolean;
   googleSiteVerificationId?: string;
+}
+
+export interface MetaDataConfig extends Omit<MetaData, 'title'> {
+  title?: {
+    default: string;
+    template: string;
+  };
+}
+
+export interface I18NConfig {
+  language: string;
+  textDirection: string;
+  dateFormatter?: Intl.DateTimeFormat;
 }
 
 export interface BlogConfig {
@@ -45,13 +60,33 @@ export interface BlogConfig {
   };
 }
 
+export interface AnalyticsConfig {
+  vendors: {
+    googleAnalytics: {
+      id?: string;
+      partytown?: boolean;
+    };
+  };
+}
+
+export interface UIConfig {
+  theme: string;
+  classes?: Record<string, string>;
+}
+
+export interface FormConfig {
+  endpoint?: string;
+}
+
 export interface AppConfig {
   SITE: SiteConfig;
   APP_BLOG: BlogConfig;
-  I18N?: any; // To be strictly typed later if needed, but required for configBuilder return match
-  METADATA?: any;
-  UI?: any;
-  ANALYTICS?: any;
-  APP_CONFIG?: any;
+  I18N: I18NConfig;
+  METADATA: MetaDataConfig;
+  UI: UIConfig;
+  ANALYTICS: AnalyticsConfig;
+  APP_CONFIG?: {
+    form: FormConfig;
+  };
   [key: string]: unknown;
 }

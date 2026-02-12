@@ -1,7 +1,7 @@
-import type { SiteConfig, BlogConfig, AppConfig } from '~/types/config';
+import type { SiteConfig, MetaDataConfig, I18NConfig, BlogConfig, AnalyticsConfig, UIConfig, FormConfig, AppConfig } from '~/types/config';
 import merge from 'lodash.merge';
 
-import type { MetaData } from '~/types';
+
 
 // Keep definition of input Config essentially as Partial<AppConfig> or similar
 export interface Config {
@@ -16,30 +16,12 @@ export interface Config {
   form?: FormConfig;
 }
 
-export interface MetaDataConfig extends Omit<MetaData, 'title'> {
-  title?: {
-    default: string;
-    template: string;
-  };
-}
-export interface I18NConfig {
-  language: string;
-  textDirection: string;
-  dateFormatter?: Intl.DateTimeFormat;
-}
 
-export interface AnalyticsConfig {
-  vendors: {
-    googleAnalytics: {
-      id?: string;
-      partytown?: boolean;
-    };
-  };
-}
 
-export interface UIConfig {
-  theme: string;
-}
+
+
+
+
 
 const DEFAULT_SITE_NAME = 'Website';
 
@@ -130,7 +112,7 @@ const getAppBlog = (config: Config): BlogConfig => {
   return merge({}, _default, config.apps?.blog ?? {}) as BlogConfig;
 };
 
-const getUI = (config: Config) => {
+const getUI = (config: Config): UIConfig => {
   const _default = {
     theme: 'system',
   };
@@ -151,9 +133,7 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
   return merge({}, _default, config.analytics ?? {}) as AnalyticsConfig;
 };
 
-export interface FormConfig {
-  endpoint?: string;
-}
+
 
 const getFormConfig = (config: Config): FormConfig => {
   const _default = {

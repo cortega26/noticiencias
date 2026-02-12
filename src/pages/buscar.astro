@@ -43,10 +43,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             image?: string;
         }
 
-        // Declare lunr since it is loaded via CDN
-        declare const lunr: any;
+        // Lunr Types (Simplified)
+        interface LunrResult {
+            ref: string;
+            score: number;
+            matchData: unknown;
+        }
 
-        let index: any = null;
+        interface LunrIndex {
+            search(query: string): LunrResult[];
+        }
+
+        interface LunrBuilder {
+            ref(field: string): void;
+            field(field: string, options?: { boost?: number }): void;
+            add(doc: unknown): void;
+        }
+
+        type LunrStatic = (builder: (this: LunrBuilder) => void) => LunrIndex;
+
+        // Declare lunr since it is loaded via CDN
+        declare const lunr: LunrStatic;
+
+        let index: LunrIndex | null = null;
         let store: Record<string, SearchDocument> = {};
 
         async function bootSearch() {
@@ -81,7 +100,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 
                 // Build Index
                 // Lunr loaded via CDN script but declared above
-                index = lunr(function (this: any) {
+                index = lunr(function (this: LunrBuilder) {
                     this.ref('url');
                     this.field('title', { boost: 10 });
                     this.field('description', { boost: 5 });
@@ -163,6 +182,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const normalizedQuery = normalizeQuery(query);
 
             // Fuzzy matching + wildcard
+            if (!index) return;
             try {
                 // Lunr index type not available fully but implicit any works now
                 const results = index.search(`${normalizedQuery}*`);
@@ -181,7 +201,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 ul.className = 'grid gap-6 md:grid-cols-1';
                 resultsDiv.appendChild(ul);
 
-                results.slice(0, 20).forEach((r: any) => {
+                results.slice(0, 20).forEach((r: LunrResult) => {
                     const doc = store[r.ref];
                     if(!doc) return;
 

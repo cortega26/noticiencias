@@ -88,7 +88,7 @@ export const findImage = async (
 };
 
 /** */
-const optimizeOpenGraphImage = async (image: any, astroSite: URL | undefined) => {
+const optimizeOpenGraphImage = async (image: { url?: string } | undefined, astroSite: URL | undefined) => {
   const defaultWidth = 1200;
   const defaultHeight = 626;
 
@@ -144,7 +144,7 @@ export const adaptOpenGraphImages = async (
 
   const images = openGraph.images;
 
-  const adaptedImages = await Promise.all(images.map(async (image) => optimizeOpenGraphImage(image, astroSite)));
+  const adaptedImages = await Promise.all(images.map(async (image: { url?: string } | undefined) => optimizeOpenGraphImage(image, astroSite)));
 
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
 };

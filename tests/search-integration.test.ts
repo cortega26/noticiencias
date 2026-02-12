@@ -1,14 +1,35 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { normalizeQuery } from '../src/utils/search-url.ts';
+import { normalizeQuery } from '../src/utils/search-url';
 // We mock Lunr since it's loaded via CDN in the real app, but for tests we want to verify logic.
 // In a real environment we might install lunr as a devDependency.
 // For this integration test, we will simulate the logic used in buscar.astro
 
 import lunr from 'lunr';
 
+interface LunrBuilder {
+    ref(field: string): void;
+    field(field: string, options?: { boost?: number }): void;
+    add(doc: unknown): void;
+}
+
+interface LunrResult {
+    ref: string;
+    score: number;
+    matchData: unknown;
+}
+
+interface SearchDocument {
+    title: string;
+    url: string;
+    description: string;
+    content: string;
+    tags?: string[];
+    image?: string;
+}
+
 describe('Search Integration', () => {
-    let index: any;
-    let store: any = {};
+    let index: { search: (q: string) => LunrResult[] };
+    let store: Record<string, SearchDocument> = {};
     
     // Sample Data (Mocking what search.json.js returns)
     const mockDocuments = [
@@ -33,7 +54,7 @@ describe('Search Integration', () => {
     beforeEach(() => {
         store = {};
         // Simulate Index Building (Logic from buscar.astro)
-        index = lunr(function (this: any) {
+        index = lunr(function (this: LunrBuilder) {
             this.ref('url');
             this.field('title', { boost: 10 });
             this.field('description', { boost: 5 });

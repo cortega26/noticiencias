@@ -26,11 +26,9 @@ const normalizeStringImage = (input: string): NormalizedImage => {
 };
 
 const normalizeObjectImage = (input: object): NormalizedImage => {
-  const obj = input as any;
-
   // 2a: NormalizedImage shape (already normalized)
-  if ('kind' in obj && 'src' in obj) {
-    return obj as NormalizedImage;
+  if ('kind' in input && 'src' in input) {
+    return input as NormalizedImage;
   }
 
   const result: NormalizedImage = {
@@ -40,19 +38,23 @@ const normalizeObjectImage = (input: object): NormalizedImage => {
   };
 
   // 2b: Astro ImageMetadata (width, height, src, format)
-  if ('src' in obj && 'width' in obj && 'height' in obj) {
-    result.src = obj.src;
-    result.width = obj.width;
-    result.height = obj.height;
+  if ('src' in input && 'width' in input && 'height' in input) {
+    const src = (input as { src: string }).src;
+    const width = (input as { width: number }).width;
+    const height = (input as { height: number }).height;
+    
+    result.src = src;
+    result.width = width;
+    result.height = height;
     result.kind = 'local'; // Astro imported images are local/bundled
     return result;
   }
 
   // 2c: Backend Object wrapper { src, alt, width, height }
-  if (obj.src) result.src = obj.src;
-  if (obj.alt) result.alt = obj.alt;
-  if (obj.width) result.width = Number(obj.width);
-  if (obj.height) result.height = Number(obj.height);
+  if ('src' in input) result.src = String((input as { src: unknown }).src);
+  if ('alt' in input) result.alt = String((input as { alt: unknown }).alt);
+  if ('width' in input) result.width = Number((input as { width: unknown }).width);
+  if ('height' in input) result.height = Number((input as { height: unknown }).height);
 
   if (result.src.startsWith('~/') || result.src.startsWith('/')) {
     result.kind = 'local';
