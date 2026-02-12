@@ -29,13 +29,13 @@ const subPostsWithImages = await Promise.all(
   {/* Main Lead Story (Left, 8 cols) - Modern "Cover" Layout */}
   {mainPost && (
     <div class="lg:col-span-8 group relative flex flex-col h-full rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-sm border border-border">
-      <a href={getPermalink(mainPost.permalink, 'post')} class="block relative aspect-video lg:aspect-auto lg:flex-1 overflow-hidden">
+      <a href={getPermalink(mainPost.permalink, 'post')} class="block relative w-full h-full overflow-hidden">
         {mainPostImage ? (
             typeof mainPostImage === 'string' ? (
                 <img 
                   src={mainPostImage} 
                   alt={mainPost.title} 
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
                   loading="eager"
                   fetchpriority="high"
                 />
@@ -45,41 +45,44 @@ const subPostsWithImages = await Promise.all(
                   alt={mainPost.title} 
                   width={1200} 
                   height={800} 
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   loading="eager"
                   fetchpriority="high"
                   sizes="(max-width: 1024px) 100vw, 800px"
                 />
             )
         ) : (
-            <div class="w-full h-full bg-surface-highlight flex items-center justify-center">
+            <div class="absolute inset-0 bg-surface-highlight flex items-center justify-center">
                 <span class="text-gray-300 dark:text-gray-700">Sin Imagen</span>
             </div>
         )}
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent pointer-events-none"></div>
+        
+        {/* Gradient Overlay for Text Readability */}
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent pointer-events-none"></div>
+
+        {/* Content Overlay - Glassmorphism Bottom Left */}
+        <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
+             <div class="transform transition-transform duration-300 group-hover:-translate-y-2">
+                 <div class="mb-3">
+                    {mainPost.category && (
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-indigo-500/20 text-indigo-100 backdrop-blur-md border border-indigo-500/30">
+                            {mainPost.category.title}
+                        </span>
+                    )}
+                 </div>
+                 
+                 <h2 class="text-3xl md:text-5xl font-bold font-serif text-white leading-tight tracking-tight mb-4 drop-shadow-md">
+                    {mainPost.title}
+                 </h2>
+
+                 <div class="flex items-center text-sm font-medium text-slate-300 mt-2 gap-3 opacity-90">
+                    <span class="font-bold text-indigo-200">{mainPost.author || 'Noticiencias'}</span>
+                    <span class="w-1 h-1 rounded-full bg-slate-400"></span>
+                    <span>{getFormattedDate(mainPost.publishDate)}</span>
+                 </div>
+             </div>
+        </div>
       </a>
-
-      <div class="p-6 md:p-8 flex flex-col relative">
-         <div class="mb-3">
-            {mainPost.category && (
-                <TopicBadge topic={mainPost.category.title} />
-            )}
-         </div>
-         
-         <h2 class="text-3xl md:text-5xl font-bold font-heading text-text-heading leading-tighter tracking-tighter mb-4 group-hover:text-primary transition-colors">
-            <a href={getPermalink(mainPost.permalink, 'post')} class="hover:text-primary transition-colors duration-200">
-                {mainPost.title}
-            </a>
-         </h2>
-
-
-
-         <div class="text-sm font-medium text-text-muted mt-auto pt-4 border-t border-border flex items-center">
-            <span class="font-bold text-text-default">{mainPost.author || 'Noticiencias'}</span>
-            <span class="mx-2">·</span>
-            {getFormattedDate(mainPost.publishDate)}
-         </div>
-      </div>
     </div>
   )}
 

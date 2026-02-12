@@ -1,6 +1,6 @@
 ---
 import '@fontsource-variable/inter';
-import '@fontsource/merriweather';
+import '@fontsource/playfair-display';
 
 // 'DM Sans'
 // Nunito
@@ -23,52 +23,53 @@ import '@fontsource/merriweather';
 <style is:inline>
   :root {
     --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Merriweather';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-serif: 'Playfair Display';
+    --aw-font-heading: 'Playfair Display';
 
-    --aw-color-primary: rgb(15 23 42);
-    --aw-color-secondary: rgb(30 41 59);
-    --aw-color-accent: rgb(14 165 233);
+    /* Premium Science Palette (Light) */
+    --aw-color-primary: rgb(49 46 129); /* Indigo 900 - Deep Authority */
+    --aw-color-secondary: rgb(15 23 42); /* Slate 900 */
+    --aw-color-accent: rgb(16 185 129); /* Emerald 500 - Bio/Life */
 
     --aw-color-text-heading: rgb(15 23 42);
     --aw-color-text-default: rgb(51 65 85);
     --aw-color-text-muted: rgb(100 116 139);
     --aw-color-bg-page: rgb(255 255 255);
     
-    /* New Semantic Colors */
+    /* Surface Layers for Depth */
     --aw-color-bg-paper: rgb(248 250 252); /* slate-50 */
     --aw-color-bg-highlight: rgb(241 245 249); /* slate-100 */
     --aw-color-border: rgb(226 231 235); /* gray-200 */
 
-    --aw-color-bg-page-dark: rgb(2 6 23);
-
     ::selection {
-      background-color: lavender;
+      background-color: rgb(199 210 254); /* Indigo 200 */
+      color: rgb(30 27 75);
     }
   }
 
   .dark {
     --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Merriweather';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-serif: 'Playfair Display';
+    --aw-font-heading: 'Playfair Display';
 
-    --aw-color-primary: rgb(56 189 248);
-    --aw-color-secondary: rgb(14 165 233);
-    --aw-color-accent: rgb(14 165 233);
+    /* Premium Science Palette (Dark) */
+    --aw-color-primary: rgb(129 140 248); /* Indigo 400 */
+    --aw-color-secondary: rgb(52 211 153); /* Emerald 400 */
+    --aw-color-accent: rgb(56 189 248); /* Sky 400 - Tech/Future */
 
-    --aw-color-text-heading: rgb(247 248 248);
+    --aw-color-text-heading: rgb(241 245 249);
     --aw-color-text-default: rgb(203 213 225);
     --aw-color-text-muted: rgb(148 163 184);
-    --aw-color-bg-page: rgb(2 6 23);
+    --aw-color-bg-page: rgb(2 6 23); /* Slate 950 - Deep Space */
     
-    /* New Semantic Colors (Dark) */
+    /* Surface Layers (Dark) */
     --aw-color-bg-paper: rgb(15 23 42); /* slate-900 */
     --aw-color-bg-highlight: rgb(30 41 59); /* slate-800 */
     --aw-color-border: rgb(51 65 85); /* slate-700 */
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: rgb(67 56 202); /* Indigo 700 */
+      color: white;
     }
   }
 </style>

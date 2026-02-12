@@ -72,89 +72,124 @@ const schema = JSON.stringify({
 
 <BaseLayout title={title} description={description} image={imageSrc}>
     <script is:inline type="application/ld+json" set:html={schema}></script>
-    <article class="post">
-        <header>
+    
+    <main class="container mx-auto px-4 py-12 lg:py-16">
+        <article class="max-w-screen-xl mx-auto">
+            
+            {/* Header Section */}
+            <header class="max-w-4xl mx-auto text-center mb-12">
+                <div class="flex flex-wrap justify-center items-center gap-3 text-sm font-bold tracking-wider uppercase text-slate-500 mb-6">
+                    {categories?.[0] && (
+                        <span class="text-indigo-600 dark:text-indigo-400">{categories[0]}</span>
+                    )}
+                    <span class="text-slate-300">•</span>
+                    <span>{date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span class="text-slate-300">•</span>
+                    <span>{readingTime} min lectura</span>
+                    
+                    {confidenceBadge && (
+                         <span class={`ml-2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold shadow-sm ${confidenceBadge.color}`}>
+                           <iconify-icon icon={confidenceBadge.icon} class="mr-1 text-base"></iconify-icon>
+                           {confidenceBadge.label}
+                        </span>
+                    )}
+                </div>
 
-            <div class="meta flex flex-wrap gap-4 items-center">
-                <span class="category">{categories?.[0]}</span> • 
-                <span class="date">{date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span> • 
-                <span class="reading-time">{readingTime} min de lectura</span>
-                
-                {confidenceBadge && (
-                    <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${confidenceBadge.color}`}>
-                       {confidenceBadge.label}
-                    </span>
+                {series && (
+                    <div class="inline-block mb-6">
+                        <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-violet-100 text-violet-900 dark:bg-violet-900/30 dark:text-violet-300 border border-violet-200 dark:border-violet-800">
+                            Serie: {series}
+                        </span>
+                    </div>
                 )}
-            </div>
 
-            {series && (
-                <div class="inline-block mt-4 mb-2">
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                        Serie: {series}
-                    </span>
+                <h1 class="text-4xl md:text-6xl font-serif font-black text-slate-900 dark:text-white leading-tight mb-8">
+                    {title}
+                </h1>
+
+                <div class="flex items-center justify-center gap-3 text-lg text-slate-600 dark:text-slate-400">
+                    <span>Por</span>
+                    <a href="/nosotros" class="font-bold text-slate-900 dark:text-slate-200 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600">
+                        {author}
+                    </a>
+                </div>
+            </header>
+
+            {/* Featured Image */}
+            {imageSrc && (
+                <div class="mb-16 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 aspect-video md:aspect-[2.39/1] relative">
+                  <Image
+                    src={imageSrc}
+                    class="w-full h-full object-cover"
+                    widths={[400, 900, 1400]}
+                    width={imageWidth}
+                    height={imageHeight}
+                    loading="eager"
+                    decoding="async"
+                    alt={imageAlt}
+                  />
+                  <div class="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/10"></div>
                 </div>
             )}
-
-            <h1>{title}</h1>
-            {imageSrc && (
-              <Image
-                src={imageSrc}
-                class="w-full object-cover mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-                widths={[400, 900]}
-                width={imageWidth}
-                height={imageHeight}
-                loading="eager"
-                decoding="async"
-                alt={imageAlt}
-                aspectRatio="16:9"
-              />
-            )}
-            <div class="author">
-              Por <a href="/nosotros" class="hover:underline font-bold">{author}</a>
-            </div>
-        </header>
         
-        <div class="content-wrapper">
-            {headings.length > 0 && (
-                <aside class="toc">
-                    <h3>En esta página</h3>
-                    <ul>
-                        {headings.filter(h => h.depth <= 3).map(h => (
-                            <li class={`depth-${h.depth}`}>
-                                <a href={`#${h.slug}`}>{h.text}</a>
-                            </li>
-                        ))}
-                    </ul>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                {/* Sidebar / TOC (Left) */}
+                <aside class="hidden lg:block lg:col-span-3">
+                    <div class="sticky top-24 space-y-8">
+                         {headings.length > 0 && (
+                            <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-800">
+                                <h3 class="font-serif font-bold text-lg mb-4 text-slate-900 dark:text-white">En este artículo</h3>
+                                <ul class="space-y-3 text-sm">
+                                    {headings.filter(h => h.depth <= 2).map(h => (
+                                        <li>
+                                            <a href={`#${h.slug}`} class="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block leading-relaxed line-clamp-2">
+                                                {h.text}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-4">Compartir</p>
+                            <div class="flex justify-center gap-2">
+                                {/* Social placeholders */}
+                                <button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-indigo-100 dark:hover:bg-indigo-900 hover:text-indigo-700 transition-colors">
+                                    <iconify-icon icon="tabler:brand-x" class="text-xl"></iconify-icon>
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 transition-colors">
+                                    <iconify-icon icon="tabler:brand-linkedin" class="text-xl"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </aside>
-            )}
-            
-            <div class="content">
-                <slot />
-                <hr class="my-8 border-gray-200 dark:border-gray-700" />
-                <WhyTrustUs />
-            </div>
-        </div>
+                
+                {/* Content (Center-Right) */}
+                <div class="lg:col-span-8 lg:col-start-4">
+                    <div class="prose prose-lg prose-indigo dark:prose-invert max-w-none 
+                        prose-headings:font-serif prose-headings:font-bold prose-headings:tracking-tight
+                        prose-a:text-indigo-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+                        prose-img:rounded-2xl prose-img:shadow-lg
+                        prose-blockquote:border-l-indigo-500 prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-slate-900/50 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+                    ">
+                        <slot />
+                    </div>
 
-        <footer>
-            <div class="tags">
-                {tags.map(tag => <span class="tag">#{tag}</span>)}
+                    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800">
+                        <WhyTrustUs />
+                    </div>
+
+                    <div class="mt-12 flex flex-wrap gap-2">
+                        {tags.map(tag => (
+                            <a href={`/tags/${tag}`} class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-indigo-100 hover:text-indigo-700 transition-colors">
+                                #{tag}
+                            </a>
+                        ))}
+                    </div>
+                </div>
             </div>
-        </footer>
-    </article>
+        </article>
+    </main>
 </BaseLayout>
-
-<style>
-    .post header { margin-bottom: 2rem; }
-    .meta { font-size: 0.9rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
-    .toc { background: #f9f9f9; padding: 1rem; margin-bottom: 2rem; border-left: 4px solid #ddd; }
-    .toc ul { list-style: none; padding: 0; }
-    .toc li { margin-bottom: 0.5rem; }
-    .toc .depth-3 { margin-left: 1rem; font-size: 0.9em; }
-    .tags { margin-top: 2rem; }
-    .tag { background: #eee; padding: 0.2rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; font-size: 0.85rem; }
-    
-    @media (min-width: 768px) {
-        .content-wrapper { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; }
-        .toc { position: sticky; top: 1rem; align-self: start; }
-    }
-</style>

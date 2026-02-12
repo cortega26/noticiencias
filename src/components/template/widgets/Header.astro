@@ -50,12 +50,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none mx-auto w-full border-b border-transparent transition-all ease-in-out duration-300',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
-  <div class="absolute inset-0"></div>
+  <div class="absolute inset-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md"></div>
   <div
     class:list={[
       'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
@@ -86,46 +86,46 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
       >
         {
-            links.map(({ text, href, links }) => (
-                <li class={links?.length ? 'dropdown' : ''}>
-                {links?.length ? (
-                    <>
-                    <button
-                        type="button"
-                        class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
-                    >
-                        {text}{' '}
-                        <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
-                    </button>
-                    <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded lg:absolute pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl">
-                        {links.map(({ text: text2, href: href2 }) => (
-                        <li>
-                            <a
-                            class:list={[
-                                'first:rounded-t last:rounded-b lg:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                                { 'aw-link-active': href2 === currentPath },
-                            ]}
-                            href={href2}
-                            >
-                            {text2}
-                            </a>
-                        </li>
-                        ))}
-                    </ul>
-                    </>
-                ) : (
-                    <a
-                    class:list={[
-                        'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
-                        { 'aw-link-active': href === currentPath },
-                    ]}
-                    href={href}
-                    >
-                    {text}
-                    </a>
-                )}
-                </li>
-            ))
+          links.map(({ text, href, links }) => (
+            <li class={links?.length ? 'dropdown' : ''}>
+              {links?.length ? (
+                <>
+                  <button
+                    type="button"
+                    class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
+                  >
+                    {text}{' '}
+                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
+                  </button>
+                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded lg:absolute pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
+                    {links.map(({ text: text2, href: href2 }) => (
+                      <li>
+                        <a
+                          class:list={[
+                            'first:rounded-t last:rounded-b lg:hover:bg-gray-100 hover:text-primary dark:hover:text-primary dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                            { 'text-primary font-bold': href2 === currentPath },
+                          ]}
+                          href={href2}
+                        >
+                          {text2}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <a
+                  class:list={[
+                    'hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors',
+                    { 'text-primary font-bold': href === currentPath },
+                  ]}
+                  href={href}
+                >
+                  {text}
+                </a>
+              )}
+            </li>
+          ))
         }
       </ul>
     </nav>
@@ -154,7 +154,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto btn-primary" />
               ))}
             </span>
           ) : (
