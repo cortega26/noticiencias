@@ -2,7 +2,7 @@
 title: "Cursos en línea abren puertas a nuevas carreras"
 date: 2026-01-15
 author: "Noticiencias AI"
-image: "https://news.mit.edu/sites/default/files/styles/news_article__cover_image__original/public/images/202512/mit-scm-Kevin-Power-Yassine.JPG?itok=kZnH1fK_"
+image: "~/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg"
 source_url: "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115"
 refinery_id: "135"
 headlines_variants:
