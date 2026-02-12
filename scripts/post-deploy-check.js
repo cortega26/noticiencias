@@ -78,7 +78,11 @@ async function verifySearch() {
     const searchUrl = new URL('/search.json', TARGET_URL).toString();
     console.log(`Checking Search Index: ${searchUrl}...`);
     try {
-        const res = await fetch(searchUrl);
+        const res = await fetch(searchUrl, {
+            headers: {
+                'User-Agent': 'Noticiencias-DeployCheck/1.0 (Mozilla/5.0)'
+            }
+        });
         if (!res.ok) throw new Error(`Status ${res.status}`);
         const json = await res.json();
         
@@ -90,8 +94,8 @@ async function verifySearch() {
         } else {
              // Verify schema of first item
              const item = json[0];
-             if (!item.title || !item.slug) {
-                 throw new Error('Search item missing required fields (title, slug)');
+             if (!item.title || !item.url) {
+                 throw new Error('Search item missing required fields (title, url)');
              }
         }
         console.log(`${GREEN}[PASS] Search Index OK (${json.length} items)${RESET}`);
