@@ -2,7 +2,7 @@
 title: "Nuestra Visión de Salud: Evidencia frente al Ruido"
 excerpt: "En la era de la desinformación médica, Noticiencias se compromete a brindarte análisis de salud basados estrictamente en la evidencia científica más reciente."
 author: "Equipo de Salud"
-date: 2026-02-12
+date: 2026-01-21
 categories: ["Salud", "Ciencia"]
 tags: ["lanzamiento", "salud pública", "medicina basada en evidencia"]
 image: "~/assets/images/default.png"
