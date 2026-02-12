@@ -7,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
-const IGNORE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.css', '.js', '.map', '.json', '.xml'];
 
 // Colors for console output
 const RED = '\x1b[31m';
@@ -44,12 +43,11 @@ function validateHtml(filePath) {
   const $ = load(content);
   const relativePath = path.relative(DIST_DIR, filePath);
 
-  $('img').each((i, el) => {
-    const src = $(el).attr('src') || '';
+  $('img').each((_i, el) => {
+    const src = $(el).attr('src');
     const alt = $(el).attr('alt');
     const width = $(el).attr('width');
     const height = $(el).attr('height');
-    const loading = $(el).attr('loading');
     
     // Invariant 1: No build-time aliases in production source
     if (src.startsWith('~/') || src.startsWith('@/')) {

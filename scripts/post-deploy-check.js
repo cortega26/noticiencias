@@ -11,7 +11,11 @@ console.log(`${YELLOW}Starting Post-Deploy Check against: ${TARGET_URL}${RESET}`
 
 async function fetchHtml(url) {
     try {
-        const res = await fetch(url);
+        const res = await fetch(url, {
+            headers: {
+                'User-Agent': 'Noticiencias-DeployCheck/1.0 (Mozilla/5.0)'
+            }
+        });
         if (!res.ok) throw new Error(`Status ${res.status}`);
         return await res.text();
     } catch (e) {

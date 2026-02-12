@@ -1,6 +1,10 @@
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const POSTS_DIR = path.join(__dirname, '../src/content/posts');
 const OUTPUT_FILE = path.join(__dirname, '../mock_candidates.json');
@@ -14,7 +18,6 @@ function getFrontmatter(content) {
     const fm = match[1];
     const lines = fm.split('\n');
     const data = {};
-    let currentKey = null;
 
     for (let line of lines) {
         line = line.trim();
@@ -33,12 +36,6 @@ function getFrontmatter(content) {
                 value = value.slice(1, -1);
             }
             data[key] = value;
-            currentKey = key;
-        } else if (currentKey && (line.startsWith('- ') || line.startsWith('  '))) {
-             // Continuation or list, simple ignored for source_url/sources check
-             // unless we need to strict parse sources list. 
-             // "sources:" usually followed by object list.
-             // We just check if "sources" key exists.
         }
     }
     return data;
@@ -62,32 +59,19 @@ function scan() {
         const fm = getFrontmatter(content);
 
         if (!fm) {
-            console.warn(`[WARN] No frontmatter found for ${file}`);
             continue;
         }
 
-        // Detection Logic
-        // Mock if missing "source_url" AND "sources" AND "refinery_id"
-        // refinery_id implies it came from the collector, so it might be real even if source_url is missing (edge case?)
-        // User said: "Eliminar artículos mock (sin source)".
         const hasSourceUrl = !!fm.source_url;
-        const hasSources = content.includes('sources:'); // Simple grep in FM block for complex object key
+        const hasSources = content.includes('sources:');
         const hasRefineryId = !!fm.refinery_id;
 
         const isMock = !hasSourceUrl && !hasSources && !hasRefineryId;
 
         if (isMock) {
-            // Further Classification
             let type = 'CANDIDATE';
-            
-            // Check for suspicious internal links (files linking TO this mock)
-            // This is expensive to do exhaustively, so we skip for check 1 or do simple grep
-            // For now, mark as CANDIDATE. Phase 2 (Dry Run) can do deeper analysis? 
-            // Or we check slug usage here.
-            
             const slug = fm.slug || file.replace('.md', '');
             
-            // Heuristic Protection
             if (slug.includes('welcome') || slug.includes('about') || slug === 'hello-world') {
                 type = 'PROTECTED';
             }
@@ -109,7 +93,6 @@ function scan() {
     console.log(`Total Mocks Detected: ${candidates.length}`);
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(candidates, null, 2));
-    console.log(`Candidates saved to ${OUTPUT_FILE}`);
 }
 
 scan();
