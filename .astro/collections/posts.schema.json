@@ -95,6 +95,25 @@
         "permalink": {
           "type": "string"
         },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "refinery_id": {
+          "type": "string"
+        },
+        "headlines_variants": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            },
+            "benefit": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
         "translation_method": {
           "type": "string"
         },

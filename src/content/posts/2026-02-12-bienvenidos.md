@@ -5,7 +5,7 @@ author: "Equipo Editorial"
 date: 2026-02-12
 categories: ["Editorial", "Salud", "Tecnología", "Ciencia"]
 tags: ["lanzamiento", "misión", "periodismo científico"]
-image: "~/assets/images/default.jpg"
+image: "~/assets/images/default.png"
 source_url: "https://noticiencias.com/editorial"
 schema_version: 2
 ---

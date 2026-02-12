@@ -5,7 +5,7 @@ author: "Equipo de Salud"
 date: 2026-02-12
 categories: ["Salud", "Ciencia"]
 tags: ["lanzamiento", "salud pública", "medicina basada en evidencia"]
-image: "~/assets/images/default.jpg"
+image: "~/assets/images/default.png"
 source_url: "https://noticiencias.com/salud"
 schema_version: 2
 ---

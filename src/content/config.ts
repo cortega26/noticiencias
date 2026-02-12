@@ -24,6 +24,14 @@ const posts = defineCollection({
         ]).optional(), 
         image_alt: z.string().optional(),
         permalink: z.string().optional(), // For legacy URL compatibility
+        
+        // Backend/Refinery Fields
+        source_url: z.string().url().optional(),
+        refinery_id: z.string().optional(),
+        headlines_variants: z.object({
+            question: z.string().optional(),
+            benefit: z.string().optional(),
+        }).optional(),
 
         // Custom Noticiencias fields
         translation_method: z.string().optional(),
