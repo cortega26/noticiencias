@@ -6,7 +6,7 @@ date: 2026-01-21
 categories: ["Salud", "Ciencia"]
 tags: ["lanzamiento", "salud pública", "medicina basada en evidencia"]
 image: "~/assets/images/default.png"
-source_url: "https://noticiencias.com/salud"
+source_url: "https://noticiencias.com/categorias/salud"
 schema_version: 2
 ---
 
