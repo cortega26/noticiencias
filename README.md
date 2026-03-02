@@ -54,32 +54,6 @@ graph TD
 └── astro.config.mjs    # Configuración de Astro (sitemap, tailwind, etc.)
 ```
 
-## 🛠️ Instalación y Uso
-
-### Quick Start
-
-```bash
-# 1. Instalar dependencias
-npm install
-
-# 2. Iniciar servidor de desarrollo
-npm run dev
-# >  Local:    http://localhost:4321/
-
-# 3. Verificar calidad de contenido
-npm run validate:content
-```
-
-### Comandos Disponibles
-
-| Comando           | Acción                                                |
-| :---------------- | :---------------------------------------------------- |
-| `npm install`     | Instala las dependencias del proyecto.                |
-| `npm run dev`     | Inicia el servidor de desarrollo en `localhost:4321`. |
-| `npm run build`   | Compila el sitio para producción en `./dist/`.        |
-| `npm run preview` | Previsualiza la build de producción localmente.       |
-| `npm run lint`    | Ejecuta ESLint para verificar calidad de código.      |
-
 ## 📝 Flujo de Trabajo Editorial
 
 1.  **Contenido**: Los artículos viven en `src/content/post/`.
@@ -94,21 +68,6 @@ npm run validate:content
     trust_score: 0.95 # Nivel de evidencia
     ```
 3.  **Imágenes**: Astro optimiza automáticamente las imágenes locales importadas.
-
-## 🤝 Contribución
-
-1.  Priorizamos cambios pequeños ("Baby Steps").
-2.  No commitear archivos binarios grandes.
-3.  Usar Conventional Commits (`feat:`, `fix:`, `docs:`).
-
-> **Note: Split-Brain Component Freeze**
-> To prevent technical debt, the `src/components/template/` directory is **FROZEN**.
->
-> - **Do not** add new components here.
-> - **Do not** refactor existing ones unless critical.
-> - **All new UI** must go into `src/components/ds/` (Design System).
->
-> Validated by `npm run validate:content`.
 
 ---
 
