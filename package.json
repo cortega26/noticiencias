@@ -9,11 +9,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:audit": "vitest run",
-    "lint": "eslint .",
+    "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
+    "lint": "npm run check:frontmatter-dates && eslint .",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
-    "validate:content": "astro sync && astro check && npm run check:freeze"
+    "validate:content": "npm run check:frontmatter-dates && astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
