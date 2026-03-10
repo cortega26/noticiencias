@@ -49,10 +49,6 @@ Al analizar M31-2014-DS1, el equipo también reexaminó NGC 6946-BH1, otro caso 
 
 Este fenómeno no solo cambia nuestra comprensión de cómo mueren las estrellas masivas, sino que también proporciona una nueva perspectiva sobre la formación de agujeros negros en el universo. La convectividad, el movimiento de material caliente desde la zona central hacia la superficie, juega un papel crucial en este proceso. Cuando una estrella masiva se agota de combustible nuclear, su núcleo se contrae debido a la gravedad. Sin embargo, la convectividad puede detener o retrasar este colapso, permitiendo que solo un pequeño porcentaje del material estelar externo alimente al agujero negro, produciendo la luz débil que aún se puede observar hoy en día.
 
-#### Referencia
-
-"Desaparición de una estrella masiva en la Galaxia de Andrómeda debido a la formación de un agujero negro" por Kishalay De, Morgan MacLeod, Jacob E. Jencson, Elizabeth Lovegrove, Andrea Antoni, Erin Kara, Mansi M. Kasliwal, Ryan M. Lau, Abraham Loeb, Megan Masterson, Aaron M. Meisner, Christos Panagiotou, Eliot Quataert y Robert Simcoe, 12 de febrero de 2026, Science. DOI: 10.1126/science.adt4853
-
 Fuente original: [https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/](https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/)
 
 <!-- source_identity: source_id=scitechdaily; source_name=SciTechDaily -->
