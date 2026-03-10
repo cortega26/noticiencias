@@ -1,20 +1,20 @@
 ---
-title: Una estrella masiva desapareció sin explotar, revelando un agujero negro
+title: Un agujero negro se forma sin explotar una estrella masiva
 schema_version: 2
 date: 2026-02-16
 author: Noticiencias AI
 categories:
 - Ciencia
 tags:
-- colapso directo
-- supernova fallida
 - estrella masiva
-excerpt: Una estrella masiva en la Galaxia de Andrómeda desapareció sin una supernova, revelando un agujero negro en un fenómeno poco comprendido
+- agujero negro
+- colapso directo
+excerpt: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
 source_url: https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/
 refinery_id: A Massive Star Suddenly Vanished and Left a Black Hole Behind
 headlines_variants:
-  question: ¿Cómo es posible que una estrella masiva desaparezca sin una supernova?
-  benefit: Descubre el misterio de una estrella masiva que se desvaneció sin explotar, cambiando nuestra comprensión de cómo mueren las estrellas masivas
+  question: ¿Cómo es posible que una estrella masiva se desvanezca sin detonar como una supernova?
+  benefit: Descubre el misterio de cómo se forman agujeros negros sin explotar estrellas masivas
 ---
 
 ### Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar
