@@ -4,11 +4,11 @@ schema_version: 2
 date: 2026-02-16
 author: Noticiencias AI
 categories:
-- Ciencia
+  - Ciencia
 tags:
-- estrella masiva
-- agujero negro
-- colapso directo
+  - estrella masiva
+  - agujero negro
+  - colapso directo
 excerpt: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
 source_url: https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/
 refinery_id: A Massive Star Suddenly Vanished and Left a Black Hole Behind
@@ -19,7 +19,8 @@ headlines_variants:
 
 ### Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar
 
-#### Por Simons Foundation  
+#### Por Simons Foundation
+
 16 de febrero de 2026
 
 Imagina una estrella tan luminosa que podría iluminar todo un cielo distante, desapareciendo en pocos años sin dejar rastro de una espectacular supernova. Ese es precisamente lo que los astrónomos han observado en una estrella ubicada a 2,5 millones de años luz de distancia, en la Galaxia de Andrómeda, nuestra vecina galáctica. En lugar de desaparecer con un destello brillante, esta estrella, conocida como M31-2014-DS1, simplemente se desvaneció, dejando en su lugar lo inimaginable: un agujero negro. Este fenómeno, hasta ahora poco comprendido, está cambiando nuestra comprensión de cómo mueren las estrellas masivas y cómo se forman agujeros negros en el universo.
@@ -51,20 +52,6 @@ Este fenómeno no solo cambia nuestra comprensión de cómo mueren las estrellas
 #### Referencia
 
 "Desaparición de una estrella masiva en la Galaxia de Andrómeda debido a la formación de un agujero negro" por Kishalay De, Morgan MacLeod, Jacob E. Jencson, Elizabeth Lovegrove, Andrea Antoni, Erin Kara, Mansi M. Kasliwal, Ryan M. Lau, Abraham Loeb, Megan Masterson, Aaron M. Meisner, Christos Panagiotou, Eliot Quataert y Robert Simcoe, 12 de febrero de 2026, Science. DOI: 10.1126/science.adt4853
-
-No pierda un avance: Únase a la newsletter de SciTechDaily. Sigános en Google y Google News.  
-Astronomía  
-Astrofísica  
-Agujero Negro  
-Simons Foundation  
-Estrella  
-
-#### Comentarios  
-**KATESISCO** el 16 de febrero de 2026 a las 8:32 am  
-Este análisis sigue basándose en la gravedad y no en la magnetismo. Claramente el componente eléctrico de nuestro universo no puede estar ausente de la formación de 'agujeros negros', con la energía eléctrica formando el enigma de nuestro universo, MAGNETARS.  
-https://esahubble.org/news/heic2504/#:~:text=Las%20capas%20exteriores%20de%20la%20estrella%20caen,así%20también%20se%20forman%20en%20supernovas.  
-**RESPONDER**  
-**GUARDAR MI NOMBRE, CORREO Y SITIO WEB EN ESTE NAVEGADOR PARA LA PRÓXIMA VEZ QUE COMENTE.**
 
 Fuente original: [https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/](https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/)
 
