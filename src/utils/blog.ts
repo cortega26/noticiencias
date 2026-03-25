@@ -150,6 +150,19 @@ export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 export const fetchPosts = async (): Promise<Array<Post>> => {
   if (!_posts) {
     _posts = await load();
+
+    // B-04 / F-0021: Fail-closed on duplicate permalinks
+    const seen = new Map<string, string>();
+    for (const post of _posts) {
+      const existing = seen.get(post.permalink);
+      if (existing) {
+        throw new Error(
+          `CRITICAL: Duplicate permalink "${post.permalink}" detected between ` +
+          `post "${existing}" and post "${post.id}". Build aborted.`
+        );
+      }
+      seen.set(post.permalink, post.id);
+    }
   }
 
   return _posts;

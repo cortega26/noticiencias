@@ -89,6 +89,16 @@ function validateHtml(filePath) {
     }
   });
 
+  // Security Check: innerHTML with template literals (XSS vector)
+  // Scan inline <script> blocks for dangerous patterns
+  $('script').each((_i, el) => {
+    const scriptContent = $(el).html() || '';
+    if (/\.innerHTML\s*=\s*`/.test(scriptContent)) {
+      console.error(`${RED}[FAIL] ${relativePath}: innerHTML with template literal detected in inline script (XSS risk)${RESET}`);
+      errorCount++;
+    }
+  });
+
   // Extra Check: Placeholder content leaking
   if (content.includes('Lorem ipsum') || content.includes('TODO:')) {
      console.error(`${YELLOW}[WARN] ${relativePath}: Potential placeholder content detected.${RESET}`);

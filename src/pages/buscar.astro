@@ -208,25 +208,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     const li = document.createElement('li');
                     li.className = 'flex flex-col sm:flex-row bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden';
                     
-                    let imageHtml = '';
                     if (doc.image) {
-                         imageHtml = `
-                            <a href="${doc.url}" class="block sm:w-48 h-48 sm:h-auto flex-shrink-0">
-                                <img src="${doc.image}" alt="${doc.title}" class="object-cover w-full h-full" loading="lazy" />
-                            </a>
-                         `;
+                        const imgLink = document.createElement('a');
+                        imgLink.href = doc.url;
+                        imgLink.className = 'block sm:w-48 h-48 sm:h-auto flex-shrink-0';
+                        const img = document.createElement('img');
+                        img.src = doc.image;
+                        img.alt = doc.title;
+                        img.className = 'object-cover w-full h-full';
+                        img.loading = 'lazy';
+                        imgLink.appendChild(img);
+                        li.appendChild(imgLink);
                     }
 
-                    li.innerHTML = `
-                        ${imageHtml}
-                        <div class="flex flex-col p-6 leading-normal">
-                             <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="${doc.url}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">${doc.title}</a>
-                            </h3>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3">${doc.description || ''}</p>
-                            ${doc.tags ? `<div class="mt-auto text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">${doc.tags}</div>` : ''}
-                        </div>
-                    `;
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'flex flex-col p-6 leading-normal';
+
+                    const h3 = document.createElement('h3');
+                    h3.className = 'mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white';
+                    const titleLink = document.createElement('a');
+                    titleLink.href = doc.url;
+                    titleLink.className = 'hover:text-primary-600 dark:hover:text-primary-400 transition-colors';
+                    titleLink.textContent = doc.title;
+                    h3.appendChild(titleLink);
+                    contentDiv.appendChild(h3);
+
+                    const desc = document.createElement('p');
+                    desc.className = 'mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3';
+                    desc.textContent = doc.description || '';
+                    contentDiv.appendChild(desc);
+
+                    if (doc.tags) {
+                        const tagsDiv = document.createElement('div');
+                        tagsDiv.className = 'mt-auto text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider';
+                        tagsDiv.textContent = Array.isArray(doc.tags) ? doc.tags.join(', ') : String(doc.tags);
+                        contentDiv.appendChild(tagsDiv);
+                    }
+
+                    li.appendChild(contentDiv);
                     ul.appendChild(li);
                 });
             } catch (e) {
