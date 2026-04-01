@@ -12,6 +12,7 @@ tags:
 - respuesta visual
 - inteligencia documental
 excerpt: Descubre cómo el finetuning con datos no estructurados potencia a los LLM para comprender a fondo tus documentos, extrayendo información clave con IA avanzada.
+image: "~/assets/images/default.png"
 source_url: https://aws.amazon.com/blogs/machine-learning/accelerating-llm-fine-tuning-with-unstructured-data-using-sagemaker-unified-studio-and-s3/
 refinery_id: Accelerating LLM fine-tuning with unstructured data using SageMaker Unified Studio and S3
 headlines_variants:

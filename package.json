@@ -15,7 +15,7 @@
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
-    "validate:content": "npm run check:frontmatter-dates && astro sync && astro check && npm run check:freeze"
+    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

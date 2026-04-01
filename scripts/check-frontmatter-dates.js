@@ -21,12 +21,7 @@ function assertWithinPostsDir(absPath) {
 function walkFiles(dir, results = []) {
   const safeDir = assertWithinPostsDir(dir);
 
-  // Codacy/SAST: path is allowlisted by assertWithinPostsDir and never user-controlled.
-  // eslint-disable-next-line security/detect-non-literal-fs-filename
   if (!fs.existsSync(safeDir)) return results;
-
-  // Codacy/SAST: directory is constrained to REPO_ROOT/src/content/posts.
-  // eslint-disable-next-line security/detect-non-literal-fs-filename
   const entries = fs.readdirSync(safeDir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = assertWithinPostsDir(path.resolve(safeDir, entry.name));
@@ -54,8 +49,6 @@ const files = walkFiles(POSTS_DIR);
 for (const file of files) {
   const safeFile = assertWithinPostsDir(file);
 
-  // Codacy/SAST: file path is enumerated from allowlisted POSTS_DIR only.
-  // eslint-disable-next-line security/detect-non-literal-fs-filename
   const content = fs.readFileSync(safeFile, 'utf8');
   const frontmatter = extractFrontmatter(content);
   if (!frontmatter) continue;
