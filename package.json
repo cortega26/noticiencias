@@ -12,6 +12,7 @@
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
     "lint": "npm run check:frontmatter-dates && npm run check:hero-images && eslint .",
+    "lint-fix": "eslint . --fix",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
