@@ -10,7 +10,7 @@ tags:
   - agujero negro
   - colapso directo
 excerpt: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
-image: "~/assets/images/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.jpg"
+image: "~/assets/images/2026-02-16-677.jpg"
 source_url: https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/
 refinery_id: A Massive Star Suddenly Vanished and Left a Black Hole Behind
 headlines_variants:

@@ -12,15 +12,12 @@ tags:
 - seguridad infantil
 - responsabilidad digital
 excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
+image: "~/assets/images/default.png"
 source_url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
 refinery_id: 'Two verdicts in two days: How American courts are rewriting the rules for Big Tech and children'
 headlines_variants:
   question: ¿Serán las multas millonarias el catalizador para que los gigantes tech rediseñen por la infancia?
   benefit: Cómo las multas millonarias abren la puerta a un internet más seguro para los niños
----
-
-Aquí tienes el artículo, redactado con el enfoque de Editor Científico Senior en Noticiencias:
-
 ---
 
 ## El Verdadero Terremoto Legal: Cuando las Multas Millonarias son un "Error de Redondeo" para los Gigantes Tech

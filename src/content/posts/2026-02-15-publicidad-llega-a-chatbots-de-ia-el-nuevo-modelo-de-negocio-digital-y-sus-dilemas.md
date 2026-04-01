@@ -12,6 +12,7 @@ tags:
 - privacidad
 - monetización
 excerpt: La publicidad irrumpe en chatbots de IA como ChatGPT y Copilot, generando debate sobre monetización, privacidad del usuario y visibilidad de marca.
+image: "~/assets/images/default.png"
 source_url: https://techxplore.com/news/2026-02-world-users-brands-ads-ai.html
 refinery_id: New world for users and brands as ads hit AI chatbots
 headlines_variants:

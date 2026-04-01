@@ -12,6 +12,7 @@ tags:
 - precisión ia
 - honestidad computacional
 excerpt: 'Una paradoja sorprendente: enseñar nuevos hechos a una IA puede aumentar sus ''alucinaciones''. Clave para desarrollar modelos de lenguaje fiables y precisos.'
+image: "~/assets/images/default.png"
 source_url: https://lilianweng.github.io/posts/2024-07-07-hallucination/
 refinery_id: Extrinsic Hallucinations in LLMs
 headlines_variants:
