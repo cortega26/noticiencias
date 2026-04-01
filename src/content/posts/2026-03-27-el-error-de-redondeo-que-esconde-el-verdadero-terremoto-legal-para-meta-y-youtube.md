@@ -12,7 +12,7 @@ tags:
 - seguridad infantil
 - responsabilidad digital
 excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
-image: "~/assets/images/default.png"
+image: "~/assets/images/2026-03-27-el-error-de-redondeo.jpg"
 source_url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
 refinery_id: 'Two verdicts in two days: How American courts are rewriting the rules for Big Tech and children'
 headlines_variants:

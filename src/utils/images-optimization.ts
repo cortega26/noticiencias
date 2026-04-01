@@ -57,7 +57,11 @@ const config = {
     6016, // 6K
   ],
 
-  formats: ['image/webp'],
+  // Primary output format for local images. sharp (required) supports avif, webp, png, jpg.
+  // AVIF is ~30-50% smaller than WebP at equivalent quality.
+  // Browser support: Chrome 85+ (2020), Firefox 86+ (2021), Safari 16+ (2022) — ~96% globally.
+  // Fallback: <img src> carries the original JPEG/PNG for the remaining ~4%.
+  defaultFormat: 'avif' as const,
 };
 
 const computeHeight = (width: number, aspectRatio: number) => {
@@ -217,7 +221,7 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
   breakpoints,
   _width,
   _height,
-  format = undefined
+  format = config.defaultFormat
 ) => {
   if (!image) {
     return [];
