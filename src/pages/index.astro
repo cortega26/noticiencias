@@ -5,6 +5,7 @@ import Grid from '~/components/template/blog/Grid.astro';
 import Features from '~/components/template/widgets/Features.astro';
 import Stats from '~/components/template/widgets/Stats.astro';
 import { findLatestPosts } from '~/utils/blog';
+import { homeSectionItems } from '~/navigation';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('posts');
@@ -44,33 +45,9 @@ const metadata = {
     id="features"
     tagline="Explora"
     title="Nuestras Secciones"
-    subtitle="Ciencia explicada para todos."
-    items={[
-      {
-        title: 'Editorial',
-        description: 'Análisis y opinión sobre el mundo de la ciencia.',
-        icon: 'tabler:news',
-        callToAction: { text: 'Ver sección', href: '/categorias/editorial/' },
-      },
-      {
-        title: 'Salud',
-        description: 'Medicina, bienestar y avances clínicos.',
-        icon: 'tabler:heart-rate-monitor',
-        callToAction: { text: 'Ver sección', href: '/categorias/salud/' },
-      },
-      {
-        title: 'Ciencia',
-        description: 'Descubrimientos fundamentales y naturaleza.',
-        icon: 'tabler:flask',
-        callToAction: { text: 'Ver sección', href: '/categorias/ciencia/' },
-      },
-      {
-        title: 'Tecnología',
-        description: 'Innovación, IA y el futuro digital.',
-        icon: 'tabler:device-laptop',
-        callToAction: { text: 'Ver sección', href: '/categorias/tecnologia/' },
-      },
-    ]}
+    subtitle="Cobertura editorial y disciplinas activas del sitio."
+    items={homeSectionItems}
+    columns={4}
   />
 
   <!-- Stats Widget -->

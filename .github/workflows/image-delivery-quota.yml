@@ -1,0 +1,99 @@
+name: Image Delivery Quota Guard
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Choose auto for quota evaluation, or force a delivery mode.'
+        required: true
+        default: auto
+        type: choice
+        options:
+          - auto
+          - r2
+          - github
+
+permissions:
+  contents: write
+
+concurrency:
+  group: image-delivery-quota-guard
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_ACCOUNT_ANALYTICS_READ_TOKEN: ${{ secrets.CLOUDFLARE_ACCOUNT_ANALYTICS_READ_TOKEN }}
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Evaluate quota and apply image delivery mode
+        env:
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'auto' }}
+          SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
+        run: node scripts/r2-image-quota-guard.js --mode="$REQUESTED_MODE" --write --summary-file="$SUMMARY_FILE"
+
+      - name: Publish workflow summary
+        env:
+          SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+
+          const summaryFile = process.env.SUMMARY_FILE;
+          const summary = JSON.parse(fs.readFileSync(summaryFile, 'utf8'));
+
+          const lines = [
+            '# Image Delivery Quota Guard',
+            '',
+            `- Current mode: \`${summary.currentMode}\``,
+            `- Target mode: \`${summary.targetMode}\``,
+            `- Switch happened: \`${summary.modeChanged ? 'yes' : 'no'}\``,
+            `- Decision: ${summary.reason}`,
+          ];
+
+          if (summary.usage) {
+            lines.push(
+              `- Current usage: ${summary.usage.classBRequests.toLocaleString()} / ${summary.thresholds.freeTierLimit.toLocaleString()} Class B requests (${summary.usage.usagePercent}%)`,
+              `- Warning threshold: ${summary.thresholds.warnRequests.toLocaleString()} requests (${summary.thresholds.warnRatio * 100}%)`,
+              `- Auto-switch threshold: ${summary.thresholds.switchRequests.toLocaleString()} requests (${summary.thresholds.switchRatio * 100}%)`,
+              `- Usage window: ${summary.usage.windowStart} to ${summary.usage.windowEnd}`
+            );
+          } else {
+            lines.push('- Current usage: skipped because a manual mode override was requested.');
+          }
+
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`, 'utf8');
+          EOF
+
+      - name: Commit and push mode update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/image-delivery-mode.json
+          if git diff --cached --quiet; then
+            echo "No mode change to commit."
+            exit 0
+          fi
+          git commit -m "chore: switch image delivery mode"
+          git push origin HEAD:main

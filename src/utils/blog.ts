@@ -40,6 +40,22 @@ const generatePermalink = async ({
     .join('/');
 };
 
+export const resolvePostPermalink = async (
+  post: CollectionEntry<'posts'>
+): Promise<string> => {
+  const { id, slug: rawSlug, data } = post;
+  const rawCategories = Array.isArray(data.categories) ? data.categories : [];
+  const rawCategory = rawCategories.length > 0 ? rawCategories[0] : undefined;
+  const slug = cleanSlug(rawSlug);
+  const publishDate = new Date(data.date ?? new Date());
+  const category = rawCategory ? cleanSlug(rawCategory) : undefined;
+
+  return (
+    data.permalink ||
+    (await generatePermalink({ id, slug, publishDate, category }))
+  );
+};
+
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
 
   const { id, slug: rawSlug, data } = post;
@@ -94,7 +110,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   return {
     id: id,
     slug: slug,
-    permalink: data.permalink || await generatePermalink({ id, slug, publishDate, category: category?.slug }),
+    permalink: await resolvePostPermalink(post),
 
     publishDate: publishDate,
     updateDate: updateDate,

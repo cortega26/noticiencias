@@ -4,7 +4,8 @@ schema_version: 2
 date: 2024-07-07
 author: Noticiencias AI
 categories:
-- Ciencia
+- Tecnología
+permalink: ciencia/2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones
 tags:
 - modelo lenguaje grande
 - alucinación ia

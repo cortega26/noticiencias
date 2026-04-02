@@ -12,6 +12,7 @@
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
     "check:image-derivatives": "node scripts/check-image-derivatives.js",
+    "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
     "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-derivatives && eslint .",
     "lint-fix": "eslint . --fix",

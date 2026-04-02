@@ -1,0 +1,165 @@
+- generic [active] [ref=e1]:
+  - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]:
+        - strong [ref=e6]: Versión Beta v0.9
+        - img [ref=e7]
+        - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
+      - link "Leer más" [ref=e9] [cursor=pointer]:
+        - /url: /beta
+        - text: Leer más →
+    - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
+      - generic [ref=e12]: Ocultar aviso
+      - img [ref=e13]
+  - banner [ref=e15]:
+    - generic [ref=e18]:
+      - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e20]:
+          - img "Noticiencias" [ref=e21]
+          - text: Noticiencias
+      - button "Alternar Menú" [ref=e23] [cursor=pointer]:
+        - generic [ref=e24]: Alternar Menú
+  - main [ref=e28]:
+    - main [ref=e31]:
+      - article [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - link "Editorial" [ref=e36] [cursor=pointer]:
+              - /url: /categorias/editorial/
+            - generic [ref=e37]:
+              - img [ref=e38]
+              - text: 21 ene 2026
+          - 'heading "Nuestra Visión de Salud: Evidencia frente al Ruido" [level=1] [ref=e40]'
+          - paragraph [ref=e41]: En la era de la desinformación médica, Noticiencias se compromete a brindarte análisis de salud basados estrictamente en la evidencia científica más reciente.
+          - generic [ref=e42]:
+            - img [ref=e44]
+            - generic [ref=e46]:
+              - generic [ref=e47]: Equipo de Salud
+              - text: Noticiencias
+          - 'img "Nuestra Visión de Salud: Evidencia frente al Ruido" [ref=e49]'
+        - generic [ref=e50]:
+          - heading "Tu Salud, Nuestra Prioridad" [level=2] [ref=e51]
+          - paragraph [ref=e52]:
+            - text: La sección de
+            - strong [ref=e53]: Salud
+            - text: "de Noticiencias nace con un propósito claro: ser tu filtro de confianza en un mar de consejos médicos no verificados."
+          - heading "¿Qué encontrarás aquí?" [level=3] [ref=e54]
+          - paragraph [ref=e55]: "No busques remedios milagrosos ni dietas de moda. Aquí encontrarás:"
+          - list [ref=e56]:
+            - listitem [ref=e57]:
+              - strong [ref=e58]: Análisis de Nuevos Tratamientos
+              - text: ": Explicaciones claras sobre los medicamentos y terapias que están saliendo de los laboratorios."
+            - listitem [ref=e59]:
+              - strong [ref=e60]: Epidemiología al Día
+              - text: ": Datos reales sobre brotes, virus y tendencias de salud pública, sin alarmismos."
+            - listitem [ref=e61]:
+              - strong [ref=e62]: Bienestar Basado en Datos
+              - text: ": Consejos de estilo de vida que tienen respaldo en estudios clínicos, no en anécdotas."
+          - heading "Nuestro Compromiso" [level=3] [ref=e63]
+          - paragraph [ref=e64]: Cada artículo en esta sección es revisado para asegurar que fidelidad a los estudios originales. Si decimos que algo funciona, te mostraremos la evidencia. Si no hay certeza, te diremos “no sabemos aún”.
+          - paragraph [ref=e65]: "Bienvenidos a una nueva forma de cuidar tu salud: con información."
+        - generic [ref=e66]:
+          - list [ref=e67]:
+            - listitem [ref=e68]:
+              - link "lanzamiento" [ref=e69] [cursor=pointer]:
+                - /url: /temas/lanzamiento/
+            - listitem [ref=e70]:
+              - link "salud pública" [ref=e71] [cursor=pointer]:
+                - /url: /temas/salud-publica/
+            - listitem [ref=e72]:
+              - link "medicina basada en evidencia" [ref=e73] [cursor=pointer]:
+                - /url: /temas/medicina-basada-en-evidencia/
+          - generic [ref=e74]:
+            - text: "Compartir:"
+            - button "Compartir en Twitter" [ref=e75] [cursor=pointer]:
+              - img [ref=e76]
+            - button "Compartir en Facebook" [ref=e78] [cursor=pointer]:
+              - img [ref=e79]
+            - button "Linkedin Share" [ref=e81] [cursor=pointer]:
+              - img [ref=e82]
+            - button "Whatsapp Share" [ref=e84] [cursor=pointer]:
+              - img [ref=e85]
+            - button "Email Share" [ref=e87] [cursor=pointer]:
+              - img [ref=e88]
+    - link "Volver al Blog" [ref=e91] [cursor=pointer]:
+      - /url: /blog/
+      - img [ref=e92]
+      - text: Volver al Blog
+  - contentinfo [ref=e94]:
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - link "Noticiencias" [ref=e99] [cursor=pointer]:
+              - /url: /
+            - text: Beta
+          - generic [ref=e100]:
+            - link "Privacidad" [ref=e101] [cursor=pointer]:
+              - /url: /privacidad/
+            - text: ·
+            - link "RSS" [ref=e102] [cursor=pointer]:
+              - /url: /rss.xml
+            - text: ·
+            - link "Reportar un problema" [ref=e103] [cursor=pointer]:
+              - /url: /reportar-problema/
+        - generic [ref=e104]:
+          - generic [ref=e105]: Secciones
+          - list [ref=e106]:
+            - listitem [ref=e107]:
+              - link "Astronomía" [ref=e108] [cursor=pointer]:
+                - /url: /categorias/astronomia/
+            - listitem [ref=e109]:
+              - link "Salud" [ref=e110] [cursor=pointer]:
+                - /url: /categorias/salud/
+            - listitem [ref=e111]:
+              - link "Tecnología" [ref=e112] [cursor=pointer]:
+                - /url: /categorias/tecnologia/
+            - listitem [ref=e113]:
+              - link "Editorial" [ref=e114] [cursor=pointer]:
+                - /url: /categorias/editorial/
+            - listitem [ref=e115]:
+              - link "Física" [ref=e116] [cursor=pointer]:
+                - /url: /categorias/fisica/
+            - listitem [ref=e117]:
+              - link "Química" [ref=e118] [cursor=pointer]:
+                - /url: /categorias/quimica/
+            - listitem [ref=e119]:
+              - link "Biología" [ref=e120] [cursor=pointer]:
+                - /url: /categorias/biologia/
+            - listitem [ref=e121]:
+              - link "Arqueología" [ref=e122] [cursor=pointer]:
+                - /url: /categorias/arqueologia/
+        - generic [ref=e123]:
+          - generic [ref=e124]: Organización
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "Acerca de" [ref=e127] [cursor=pointer]:
+                - /url: /nosotros/
+            - listitem [ref=e128]:
+              - link "Metodología" [ref=e129] [cursor=pointer]:
+                - /url: /metodologia/
+            - listitem [ref=e130]:
+              - link "Transparencia" [ref=e131] [cursor=pointer]:
+                - /url: /transparencia/
+      - generic [ref=e132]:
+        - list [ref=e133]:
+          - listitem [ref=e134]:
+            - link "X" [ref=e135] [cursor=pointer]:
+              - /url: https://twitter.com/noti_ciencias
+              - img [ref=e136]
+          - listitem [ref=e138]:
+            - link "Instagram" [ref=e139] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e140]
+          - listitem [ref=e142]:
+            - link "LinkedIn" [ref=e143] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e144]
+          - listitem [ref=e146]:
+            - link "Github" [ref=e147] [cursor=pointer]:
+              - /url: https://github.com/cortega26/noticiencias
+              - img [ref=e148]
+        - generic [ref=e150]: © 2026 Noticiencias · Todos los derechos reservados.

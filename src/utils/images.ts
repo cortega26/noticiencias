@@ -2,7 +2,8 @@ import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './image
 import type { ImageMetadata } from 'astro';
 import type { OpenGraph } from '@astrolib/seo';
 import type { ImagesOptimizer } from './images-optimization';
-import type { DerivativeAwareImageMetadata } from './image-derivatives';
+import { selectPreferredVariantSrc, type DerivativeAwareImageMetadata } from './image-derivatives';
+import { getAsset } from './permalinks';
 /** The optimized image shape returned by our ImagesOptimizer */
 type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 
@@ -93,6 +94,37 @@ export const findImage = async (
   const key = resolveImageKey(imagePath);
 
   return resolveImageFromCollection(key, images);
+};
+
+/** */
+export const resolveImageUrl = async (
+  imagePath?: string | ImageMetadata | null,
+  { width = 400, height }: { width?: number; height?: number } = {}
+): Promise<string | null> => {
+  const resolvedImage = await findImage(imagePath);
+
+  if (!resolvedImage) {
+    return null;
+  }
+
+  if (typeof resolvedImage === 'string') {
+    if (resolvedImage.startsWith('/')) {
+      return getAsset(resolvedImage);
+    }
+
+    return resolvedImage;
+  }
+
+  const optimizedImages = await astroAssetsOptimizer(resolvedImage, [width], width, height);
+  const preferredSrc = selectPreferredVariantSrc(
+    optimizedImages.map((image) => ({
+      src: image.src,
+      width: image.width,
+    })),
+    width
+  );
+
+  return preferredSrc ?? resolvedImage.src;
 };
 
 /** */

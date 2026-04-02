@@ -41,17 +41,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure image derivative mode
+      - name: Report image delivery mode
         run: |
-          if [ -n "$R2_ACCESS_KEY_ID" ] && [ -n "$R2_SECRET_ACCESS_KEY" ] && [ -n "$R2_BUCKET_NAME" ] && [ -n "$R2_ENDPOINT" ] && [ -n "$R2_PUBLIC_BASE_URL" ]; then
-            echo "IMAGE_DERIVATIVES_REQUIRE_URL=1" >> "$GITHUB_ENV"
-            echo "IMAGE_DERIVATIVES_STRICT=1" >> "$GITHUB_ENV"
-            echo "::notice::R2 image derivative publishing is configured; CI will require CDN-backed image variants."
-          else
-            echo "IMAGE_DERIVATIVES_REQUIRE_URL=0" >> "$GITHUB_ENV"
-            echo "IMAGE_DERIVATIVES_STRICT=0" >> "$GITHUB_ENV"
-            echo "::notice::R2 image derivative secrets are not configured yet; CI will continue using Astro fallback image optimization."
-          fi
+          node --input-type=module <<'EOF'
+          import { getImageDeliveryMode } from './src/utils/image-delivery-mode.js';
+
+          const mode = getImageDeliveryMode();
+
+          if (mode === 'r2') {
+            console.log('::notice::Image delivery mode is r2; builds will require CDN-backed derivatives when needed.');
+          } else {
+            console.log('::notice::Image delivery mode is github; builds will emit local Astro-managed assets and skip R2 derivative uploads.');
+          }
+          EOF
 
       - name: Build site
         run: npm run build

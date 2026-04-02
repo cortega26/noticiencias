@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { ImageMetadata } from 'astro';
+import { shouldUsePublishedDerivativeUrls } from './image-delivery-mode.js';
 
 export interface ImageDerivativeVariant {
   width: number;
@@ -71,7 +72,7 @@ export function hasPublishedDerivativeUrls(entry: ImageDerivativeEntry | null): 
 }
 
 export function isStrictDerivativeModeEnabled(): boolean {
-  return process.env.IMAGE_DERIVATIVES_STRICT === '1';
+  return shouldUsePublishedDerivativeUrls();
 }
 
 export function resolveDerivativeVariants(

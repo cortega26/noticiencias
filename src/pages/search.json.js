@@ -1,4 +1,7 @@
 import { getCollection } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+import { resolvePostPermalink } from '~/utils/blog';
+import { resolveImageUrl } from '~/utils/images';
 
 
 export async function GET() {
@@ -11,15 +14,14 @@ export async function GET() {
         }
 
         // Transform posts into a lightweight search index
-        const documents = posts.map(post => {
+        const documents = (await Promise.all(posts.map(async post => {
             // Validation: Ensure essential fields exist
             if (!post.data.title || !post.body) {
                 console.warn(`Skipping invalid post: ${post.slug}`);
                 return null;
             }
 
-            // Simple permalink logic (mirroring helper)
-            const url = post.data.permalink || `/posts/${post.slug}/`;
+            const url = getPermalink(await resolvePostPermalink(post), 'post');
 
             return {
                 title: post.data.title,
@@ -30,9 +32,12 @@ export async function GET() {
                 tags: post.data.tags,
                 series: post.data.series,
                 date: post.data.date,
-                image: post.data.image
+                image: await resolveImageUrl(
+                    typeof post.data.image === 'string' ? post.data.image : (post.data.image?.src ?? null),
+                    { width: 400 }
+                )
             };
-        }).filter(doc => doc !== null); // Remove any invalid docs
+        }))).filter(doc => doc !== null); // Remove any invalid docs
 
         if (documents.length === 0) {
              throw new Error("FATAL: All posts failed validation during search index generation.");

@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import sharp from 'sharp';
 import { HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { getImageDeliveryMode, shouldUsePublishedDerivativeUrls } from '../src/utils/image-delivery-mode.js';
 
 import {
   MANIFEST_PATH,
@@ -22,7 +23,9 @@ const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID || '';
 const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY || '';
 const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME || '';
 const R2_ENDPOINT = process.env.R2_ENDPOINT || '';
-const R2_PUBLIC_BASE_URL = process.env.R2_PUBLIC_BASE_URL || '';
+const R2_PUBLIC_BASE_URL =
+  process.env.R2_PUBLIC_BASE_URL || 'https://www.cdn.noticiencias.com';
+const imageDeliveryMode = getImageDeliveryMode();
 
 const hasUploadConfig = Boolean(
   R2_ACCESS_KEY_ID &&
@@ -33,7 +36,7 @@ const hasUploadConfig = Boolean(
 );
 
 function createClient() {
-  if (!hasUploadConfig) {
+  if (!hasUploadConfig || !shouldUsePublishedDerivativeUrls(imageDeliveryMode)) {
     return null;
   }
 
@@ -132,10 +135,14 @@ async function main() {
   }
 
   const changed = writeManifest(nextManifest);
-  const uploadMode = client ? 'upload-enabled' : 'manifest-only';
+  const uploadMode = client
+    ? 'upload-enabled'
+    : imageDeliveryMode === 'github'
+      ? 'github-local-only'
+      : 'manifest-only';
 
   console.log(
-    `Image derivative publish completed for ${sourceKeys.length} source image(s) in ${uploadMode} mode.`
+    `Image derivative publish completed for ${sourceKeys.length} source image(s) in ${uploadMode} mode (delivery=${imageDeliveryMode}).`
   );
 
   if (changed) {
@@ -149,7 +156,9 @@ async function main() {
     console.log(`Dropped ${removedKeys.length} stale manifest entr${removedKeys.length === 1 ? 'y' : 'ies'}.`);
   }
 
-  if (!client) {
+  if (!client && imageDeliveryMode === 'github') {
+    console.warn('GitHub image delivery mode is active; skipping R2 derivative existence checks and uploads.');
+  } else if (!client) {
     console.warn(
       'R2 upload skipped because one or more env vars are missing: R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME, R2_ENDPOINT, R2_PUBLIC_BASE_URL.'
     );

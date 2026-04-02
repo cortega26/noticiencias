@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import { shouldUsePublishedDerivativeUrls } from '../src/utils/image-delivery-mode.js';
 import {
   MANIFEST_PATH,
   collectLocalPostImageSources,
@@ -8,7 +9,7 @@ import {
   loadManifest,
 } from './utils/image-derivatives.js';
 
-const requireUrls = process.env.IMAGE_DERIVATIVES_REQUIRE_URL === '1';
+const requireUrls = shouldUsePublishedDerivativeUrls();
 
 const manifest = loadManifest();
 const errors = [];

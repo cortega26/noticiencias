@@ -2,6 +2,8 @@
 title: "Cursos en línea abren puertas a nuevas carreras"
 date: 2026-01-15
 author: "Noticiencias AI"
+categories: ["Tecnología"]
+permalink: "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras"
 image: "~/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg"
 image_alt: "Cursos en línea abren puertas a nuevas carreras"
 source_url: "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115"

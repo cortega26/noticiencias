@@ -13,6 +13,7 @@ import {
   selectPreferredVariantSrc,
   type DerivativeAwareImageMetadata,
 } from './image-derivatives';
+import { shouldUsePublishedDerivativeUrls } from './image-delivery-mode.js';
 
 type Layout = 'fixed' | 'constrained' | 'fullWidth' | 'cover' | 'responsive' | 'contained';
 
@@ -248,8 +249,12 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
   }
 
   const sourceKey = getDerivativeSourceKey(image);
-  const derivativeEntry = getImageDerivativeEntry(sourceKey);
-  const derivativeVariants = resolveDerivativeVariants(derivativeEntry, breakpoints);
+  const derivativeEntry = shouldUsePublishedDerivativeUrls()
+    ? getImageDerivativeEntry(sourceKey)
+    : null;
+  const derivativeVariants = shouldUsePublishedDerivativeUrls()
+    ? resolveDerivativeVariants(derivativeEntry, breakpoints)
+    : [];
   if (derivativeVariants.length > 0) {
     return derivativeVariants.map((variant) => ({
       src: variant.url || '',

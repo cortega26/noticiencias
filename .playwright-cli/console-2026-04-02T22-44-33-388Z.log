@@ -1,0 +1,2 @@
+[     443ms] [ERROR] Access to image at 'https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif' from origin 'http://127.0.0.1:4173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:4173/salud/2026-02-12-salud-bienvenida/:0
+[     443ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif:0
