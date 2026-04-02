@@ -6,6 +6,7 @@ date: 2026-01-21
 categories: ["Salud", "Ciencia"]
 tags: ["lanzamiento", "salud pública", "medicina basada en evidencia"]
 image: "~/assets/images/default.png"
+image_alt: "Nuestra Visión de Salud: Evidencia frente al Ruido"
 source_url: "https://noticiencias.com/categorias/salud"
 schema_version: 2
 ---

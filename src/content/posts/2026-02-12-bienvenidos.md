@@ -6,6 +6,7 @@ date: 2026-01-21
 categories: ["Editorial", "Salud", "Tecnología", "Ciencia"]
 tags: ["lanzamiento", "misión", "periodismo científico"]
 image: "~/assets/images/default.png"
+image_alt: "Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos"
 source_url: "https://noticiencias.com/categorias/editorial"
 schema_version: 2
 ---

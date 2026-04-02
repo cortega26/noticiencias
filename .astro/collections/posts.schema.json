@@ -188,15 +188,13 @@
             ],
             "additionalProperties": false
           }
-        },
-        "$schema": {
-          "type": "string"
         }
       },
       "required": [
         "title",
         "excerpt",
-        "date"
+        "date",
+        "image"
       ],
       "additionalProperties": false
     }

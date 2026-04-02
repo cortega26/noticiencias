@@ -1,28 +1,30 @@
 /**
- * check-hero-images.js
- *
- * Validates that every article in src/content/posts/ has an `image` field in
- * its frontmatter AND, for local ~/assets/images/ paths, that the referenced
- * file actually exists.  Run as part of the `lint` chain.
+ * Validates post hero-image requirements:
+ * 1. Every article must define `image`
+ * 2. Every article must define alt text (`image_alt` or image.alt)
+ * 3. Local `~/assets/images/*` paths must exist
+ * 4. `default.png` is forbidden unless explicitly allowlisted
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import yaml from 'js-yaml';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '..');
 const POSTS_DIR = path.resolve(REPO_ROOT, 'src', 'content', 'posts');
 const ASSETS_IMAGES_DIR = path.resolve(REPO_ROOT, 'src', 'assets', 'images');
+const ALLOWLIST_PATH = path.resolve(
+  REPO_ROOT,
+  'data',
+  'hero-image-placeholder-allowlist.json'
+);
 const POSTS_DIR_PREFIX = `${POSTS_DIR}${path.sep}`;
 const VALID_EXTENSIONS = new Set(['.md', '.mdx']);
-
-// Matches: image: "~/assets/images/foo.ext"  or  image: ~/assets/images/foo.ext
-const LOCAL_IMAGE_RE = /^image:\s*['"]?(~\/assets\/images\/([^\s'"]+))['"]?\s*$/m;
-
-// Presence check — matches any non-empty image: line (string or object opener)
-const IMAGE_PRESENT_RE = /^image:\s*\S/m;
+const DEFAULT_IMAGE_PATH = '~/assets/images/default.png';
 
 function assertWithinPostsDir(absPath) {
   const normalized = path.resolve(absPath);
@@ -56,36 +58,101 @@ function extractFrontmatter(content) {
   return content.slice(4, endIdx);
 }
 
+function loadPlaceholderAllowlist() {
+  if (!fs.existsSync(ALLOWLIST_PATH)) {
+    return {};
+  }
+
+  const parsed = JSON.parse(fs.readFileSync(ALLOWLIST_PATH, 'utf8'));
+  return parsed.allowedPlaceholders ?? {};
+}
+
+function validateLocalAssetPath(imageSrc, relPath, errors) {
+  const filename = imageSrc.replace(/^~\/assets\/images\//, '');
+  if (
+    filename.includes('..') ||
+    filename.includes('/') ||
+    filename.includes('\\') ||
+    path.basename(filename) !== filename
+  ) {
+    errors.push(`${relPath}: image path contains invalid characters: ${imageSrc}`);
+    return;
+  }
+
+  const absImagePath = path.resolve(ASSETS_IMAGES_DIR, filename);
+  if (!fs.existsSync(absImagePath)) {
+    errors.push(`${relPath}: image file not found: src/assets/images/${filename}`);
+  }
+}
+
 const errors = [];
 const files = walkFiles(POSTS_DIR);
+const allowlist = loadPlaceholderAllowlist();
+const usedAllowlistEntries = new Set();
 
 for (const file of files) {
   const safeFile = assertWithinPostsDir(file);
-
   const content = fs.readFileSync(safeFile, 'utf8');
   const frontmatter = extractFrontmatter(content);
   if (!frontmatter) continue;
 
   const relPath = path.relative(REPO_ROOT, safeFile);
+  const parsed = yaml.load(frontmatter);
 
-  if (!IMAGE_PRESENT_RE.test(frontmatter)) {
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    errors.push(`${relPath}: frontmatter could not be parsed as an object`);
+    continue;
+  }
+
+  const imageValue = parsed.image;
+  if (!imageValue) {
     errors.push(`${relPath}: missing 'image' field in frontmatter`);
     continue;
   }
 
-  const localMatch = LOCAL_IMAGE_RE.exec(frontmatter);
-  if (localMatch) {
-    const filename = localMatch[2];
-    // Guard against path traversal in the filename extracted from the YAML value.
-    if (filename.includes('..') || path.basename(filename) !== filename) {
-      errors.push(`${relPath}: image path contains invalid characters: ${localMatch[1]}`);
-      continue;
-    }
-    const absImagePath = path.resolve(ASSETS_IMAGES_DIR, filename);
-    if (!fs.existsSync(absImagePath)) {
-      errors.push(`${relPath}: image file not found: src/assets/images/${filename}`);
+  const imageSrc =
+    typeof imageValue === 'string'
+      ? imageValue.trim()
+      : typeof imageValue === 'object' && imageValue !== null && typeof imageValue.src === 'string'
+        ? imageValue.src.trim()
+        : '';
+
+  if (!imageSrc) {
+    errors.push(`${relPath}: image field must be a non-empty string or object with src`);
+    continue;
+  }
+
+  const inlineAlt =
+    typeof imageValue === 'object' && imageValue !== null && typeof imageValue.alt === 'string'
+      ? imageValue.alt.trim()
+      : '';
+  const imageAlt = typeof parsed.image_alt === 'string' ? parsed.image_alt.trim() : '';
+  if (!inlineAlt && !imageAlt) {
+    errors.push(`${relPath}: missing 'image_alt' text for hero image`);
+  }
+
+  if (imageSrc === DEFAULT_IMAGE_PATH) {
+    if (!allowlist[relPath]) {
+      errors.push(
+        `${relPath}: placeholder image ${DEFAULT_IMAGE_PATH} is not allowlisted`
+      );
+    } else {
+      usedAllowlistEntries.add(relPath);
     }
   }
+
+  if (imageSrc.startsWith('~/assets/images/')) {
+    validateLocalAssetPath(imageSrc, relPath, errors);
+  }
+}
+
+const staleAllowlistEntries = Object.keys(allowlist).filter(
+  (relPath) => !usedAllowlistEntries.has(relPath)
+);
+for (const relPath of staleAllowlistEntries) {
+  errors.push(
+    `${ALLOWLIST_PATH}: stale allowlist entry for ${relPath}; remove it or restore the placeholder reference`
+  );
 }
 
 if (errors.length > 0) {

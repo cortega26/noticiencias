@@ -1,74 +1,62 @@
-# 🧪 Noticiencias - Plataforma de Periodismo Científico
+# Noticiencias Frontend
 
-[![Content Guard](https://github.com/cortega26/noticiencias/actions/workflows/content-guard.yml/badge.svg)](https://github.com/cortega26/noticiencias/actions/workflows/content-guard.yml) [![Deploy](https://github.com/cortega26/noticiencias/actions/workflows/deploy.yml/badge.svg)](https://github.com/cortega26/noticiencias/actions/workflows/deploy.yml)
-![Astro](https://img.shields.io/badge/Astro-5.0-AC1452?style=flat&logo=astro&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+Frontend repo for `noticiencias.com`.
 
-Noticiencias es una plataforma de noticias científicas diseñada para el público latinoamericano, priorizando la evidencia sobre el sensacionalismo. Este repositorio contiene el frontend moderno construido con **Astro 5**, migrado desde un sitio legacy en Jekyll.
+This repository is a static Astro 5 site with MD/MDX content under `src/content/posts`, a custom Astrowind-derived shell, and a small amount of page-scoped browser behavior. It is the presentation layer of the Noticiencias system; ingestion, scoring, editorial automation, and publication orchestration live in the sibling backend repo `../noticiencias_news_collector`.
 
-## 🚀 Stack Tecnológico
+## Current State
 
-- **Framework**: [Astro 5.0](https://astro.build) (Content Collections, Server Islands).
-- **Estilos**: [Tailwind CSS](https://tailwindcss.com) + [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin).
-- **Búsqueda**: Lunr.js (lado del cliente).
-- **Despliegue**: GitHub Pages (Static Site Generation).
-- **Integraciones**: `noticiencias_news_collector` (fuente de datos).
+- Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/template/Layout.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/layouts/template/Layout.astro).
+- Content contract: the only authoritative post schema is [`src/content/config.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/content/config.ts).
+- Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/config.yaml).
+- Metadata emission: pages pass metadata through layouts into [`src/components/template/common/Metadata.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/components/template/common/Metadata.astro).
+- URL and taxonomy helpers: [`src/utils/permalinks.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/permalinks.ts) and [`src/utils/blog.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/blog.ts).
+- Search: build-time JSON at [`src/pages/search.json.js`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/pages/search.json.js) plus a browser-only Lunr UI on [`src/pages/buscar.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/pages/buscar.astro).
+- Deployment: GitHub Pages via `.github/workflows/deploy.yml`.
 
-## ✨ Características Clave
+## Key Directories
 
-1.  **Rendimiento Extremo**: HTML estático por defecto, 0kb JS para la mayoría de las páginas.
-2.  **View Transitions**: Navegación fluida estilo SPA sin la complejidad.
-3.  **Diseño "Newsroom"**: Tipografía optimizada para lectura (Inter + Lora), modo oscuro nativo, y componentes de confianza (Trust Signals).
-4.  **Content Collections**: Gestión de tipos segura (TypeScript) para `posts`, `pages`, y `authors`.
+- `src/content/posts/`: published articles.
+- `src/pages/`: route entrypoints and static path generation.
+- `src/layouts/`: page shells and metadata plumbing.
+- `src/components/ds/`: Noticiencias design-system primitives.
+- `src/components/template/`: Astrowind-derived shell, blog widgets, and shared template pieces.
+- `src/components/common/`: site-specific reusable fragments that do not fit `ds` or `template`.
+- `src/utils/`: mostly pure data, permalink, search, and image helpers.
+- `src/integration/`: custom integration that exposes `astrowind:config` from `src/config.yaml`.
+- `tests/`: Vitest coverage for search helpers, slug uniqueness, site integrity, and compliance checks.
 
-## 🏗️ Arquitectura de Contenido
+## Development
 
-```mermaid
-graph TD
-    A[News Collector] -->|Markdown + Frontmatter| B(src/content/posts)
-    B -->|Content Layer| C{Astro Build}
-    D[Config.yaml] -->|Settings| C
-    C -->|Static Generation| E[./dist]
-    E -->|Deploy| F[GitHub Pages]
-
-    style A fill:#f9f,stroke:#333
-    style C fill:#ff9,stroke:#333
+```bash
+npm ci
+npm run lint
+npm run validate:content
+npm run build
+npm run test:dist
+npm run test:audit
 ```
 
-## 📂 Estructura del Proyecto
+Useful local commands:
 
-```text
-/
-├── public/             # Assets estáticos (imágenes, favicon, CNAME)
-├── src/
-│   ├── components/     # Componentes UI (React/Astro)
-│   │   ├── common/     # Botones, MetaTags, Analytics
-│   │   ├── widgets/    # Hero, Features, Header, Footer
-│   │   └── blog/       # Listas de posts, Grid items
-│   ├── content/        # Colecciones de contenido (Markdown/MDX)
-│   │   ├── post/       # Artículos del blog
-│   │   └── config.ts   # Esquemas de validación Zod
-│   ├── layouts/        # Plantillas de página (PageLayout, PostLayout)
-│   ├── pages/          # Rutas del sitio (File-based routing)
-│   └── utils/          # Helpers (formateo de fechas, permalinks)
-├── task.md             # Checklist de migración y tareas
-└── astro.config.mjs    # Configuración de Astro (sitemap, tailwind, etc.)
-```
+- `npm run dev`
+- `npm run lint`
+- `npm run validate:content`
+- `npm run build`
+- `npm run test:dist`
+- `npm run test:audit`
+- `npm run test:deploy -- <deployed-url>`
 
-## 📝 Flujo de Trabajo Editorial
+## Governance Docs
 
-1.  **Contenido**: Los artículos viven en `src/content/post/`.
-2.  **Frontmatter**: Usamos campos estrictos para garantizar calidad.
-    ```yaml
-    title: "Título Impactante pero Honesto"
-    publishDate: 2025-01-15
-    image: "~/assets/images/cover.jpg"
-    category: "Tecnología"
-    tags: ["IA", "Futuro"]
-    author: "noticiencias-ai"
-    trust_score: 0.95 # Nivel de evidencia
-    ```
-3.  **Imágenes**: Astro optimiza automáticamente las imágenes locales importadas.
+- [`AGENTS.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/AGENTS.md): binding review and change law for this repo.
+- [`docs/SOURCE_OF_TRUTH.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/SOURCE_OF_TRUTH.md): governance stack, authority model, and repo boundary with the backend.
+- [`docs/ARCHITECTURE.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/ARCHITECTURE.md): actual module boundaries, data flow, and extension rules.
+- [`docs/tagging.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/tagging.md): cross-repo tagging contract.
+- [`docs/audits/2026-04-source-of-truth-audit.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/audits/2026-04-source-of-truth-audit.md): documentation audit for this pass.
+- [`docs/backlog/source-of-truth-backlog.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/backlog/source-of-truth-backlog.md): prioritized follow-up backlog.
 
----
+## Notes
 
-_Mantenido por el equipo de Noticiencias._
+- This repo does not currently use React islands or a separate client framework.
+- Historical migration material under `docs/migration/` and `docs/logs/MIGRATION_LOG.md` is useful context, but it is not the operational source of truth for the current site.

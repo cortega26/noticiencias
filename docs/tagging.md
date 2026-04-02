@@ -1,96 +1,106 @@
-# Tagging Policy & Technical Contract
+# Tagging Contract
 
-> **Status**: APPROVED (v1.0)
-> **Applies to**: All content agents, editors, and backend pipelines.
+Status: Active  
+Scope: Noticiencias backend taxonomy pipeline and frontend published content
 
-This document defines the **schema**, **contracts**, and **policies** for tagging in the Noticiencias ecosystem.
+## Purpose
 
----
+This document defines the current cross-repo tag contract.
 
-## 1. Core Principles
+It exists so frontend contributors, backend contributors, editors, and AI agents use the same rules instead of inventing separate normalization behavior in each repo.
 
-1.  **Repo-Truth**: Tags are defined by usage in the content repository (`src/content/posts`). We do not maintain an external database of valid tags, but we enforce strict formatting.
-2.  **Semantic Value**: Tags must represent **stable concepts** (entities, fields of study, technologies), not transient phrases or clickbait.
-3.  **Flat Hierarchy**: Tags are non-hierarchical. Categories (Science, Technology, Health) are distinct and mutually exclusive.
-4.  **Automated Hygiene**: The pipeline automatically sanitizes input. If it cannot guarantee a valid tag, it flags for human review (`needs_tag_review`).
+## Authority
 
----
+Tagging authority is split across the two repos:
 
-## 2. Technical Contract
+1. Backend canonicalization and validation rules
+   - `../noticiencias_news_collector/news_collector/taxonomy/tags.yml`
+   - `../noticiencias_news_collector/news_collector/taxonomy/orthography.yml`
+   - `../noticiencias_news_collector/news_collector/taxonomy/normalizer.py`
+2. Frontend content schema
+   - `src/content/config.ts`
+3. This document
+   - explains how those rules relate
 
-All tags MUST satisfy the following invariants. Any tag violating these will be either **sanitized automatically** or **rejected**.
+The frontend does not define its own alternate canonical tag registry.
 
-### 2.1 Format & Syntax (The "Sanitizer" Contract)
+## Current Contract
 
-| Constraint        | Rule                               | Example (Bad -> Good)                              |
-| :---------------- | :--------------------------------- | :------------------------------------------------- |
-| **Case**          | Always lowercase.                  | `NASA` -> `nasa`, `SpaceX` -> `spacex`             |
-| **Whitespace**    | Trimmed, single internal spaces.   | `black hole` -> `black hole`                       |
-| **Separators**    | Hyphens/Underscores become spaces. | `dark-energy` -> `dark energy`                     |
-| **Accents**       | Preserved (Spanish grammar rules). | `astronomia` -> `astronomía` (if correction known) |
-| **Length**        | Min 3 chars (unless whitelisted).  | `ai` (whitelist) vs `x` (invalid)                  |
-| **Allowed Chars** | `a-z`, `0-9`, `áéíóúüñ`, space.    | `C++` -> `cpp` (via alias), `user@mail` -> invalid |
+### Frontend Shape
 
-### 2.2 Quantity & Scope
+Published posts store tags as:
 
-- **Min Tags**: 1 per article.
-- **Max Tags**: 8 per article (soft limit), 10 (hard limit).
-- **Stop Tags**: Generic terms are FORBIDDEN.
-  - Forbidden: `other`, `misc`, `varios`, `general`, `news`, `article`.
+```yaml
+tags:
+  - inteligencia artificial
+  - energía oscura
+```
 
-### 2.3 Semantic Aliasing
+In the frontend schema:
 
-We use a `tags.yml` configuration to map known variations to a canonical form:
+- `tags` is an array of strings
+- the frontend currently trusts those strings at render time
+- the frontend does not run a second tag normalizer during build
 
-- **Synonyms**: `ai` -> `inteligencia artificial`
-- **Translations**: `artificial intelligence` -> `inteligencia artificial`
-- **Acronyms**: `llm` -> `grandes modelos de lenguaje` (context dependent, generally prefer expanded unless term is ubiquitous like 'dna'/'adn').
+### Backend Normalization
 
----
+The backend `TagNormalizer` currently performs:
 
-## 3. Workflow & Automation
+1. trim, lowercase, and whitespace cleanup
+2. hyphen and underscore replacement with spaces
+3. orthography correction from `orthography.yml`
+4. semantic alias mapping from `tags.yml`
+5. accent-insensitive deduplication
+6. stop-tag removal
+7. length filtering
+8. truncation to the configured maximum tag count
 
-### 3.1 Content Pipeline (LLM/Editor)
+The backend validator then returns:
 
-The AI Editor is the **first line of defense**. It must:
+- `is_valid`
+- `needs_review`
+- `warnings`
+- `errors`
 
-1.  **Generate** candidate tags based on article content.
-2.  **Consult** the `alias_map` (via injected prompt context if possible, or implicitly).
-3.  **Output** a list of strings that _attempt_ to comply with the contract.
+## Enforced Current Limits
 
-### 3.2 The Sanitizer (Runtime)
+These values come from `news_collector/taxonomy/normalizer.py` and `tags.yml`:
 
-The `TagNormalizer` runs immediately after generation. It performs **idempotent, mechanical fixes**:
+- maximum tags per article: `8`
+- minimum tag length: `3`, unless explicitly whitelisted
+- maximum tag length: `40`
+- allowed character pattern: `^[a-z0-9áéíóúüñ\\s]+$`
 
-- `Strip()` + `Lower()`
-- `Replace('-', ' ')`
-- `Map(Alias)`
-- `Dedupe()` (case-insensitive + accept canonical)
+The backend owns these limits. If they change, this doc and any editorial prompts must be updated.
 
-### 3.3 The Validator (Gatekeeper)
+## Editorial Rules
 
-The `TagValidator` runs after sanitization. It checks the **Final** state:
+- Tags should represent stable concepts, entities, or fields of study.
+- Tags should be normalized before publication; rendering components must not repair them ad hoc.
+- New or edited frontend content should usually carry at least one meaningful tag unless there is a deliberate editorial reason not to.
+- Categories and tags are separate concepts.
+  - `categories` is the editorial section list in frontmatter.
+  - `tags` is the free-form concept list.
+- For new content, prefer one primary category in `categories`, even though the schema still permits an array for legacy compatibility.
 
-- **WARNING**: If count > 8 (we truncate to 8).
-- **ERROR/NEEDS_REVIEW**:
-  - Contains characters outside allowed set (e.g., emojis, punctuation).
-  - Contains "Forbidden" tags (`other`).
-  - Tag length < 2 or > 40.
+## Forbidden Patterns
 
-If validation fails with `needs_tag_review`, the pipeline **must not** publish automatically (fail-closed or flag).
+- frontend-only alias maps
+- component-level tag cleanup
+- route-specific tag slug rules that bypass shared permalink helpers
+- introducing stop-tag or alias rules in prose only without updating the backend taxonomy config
 
----
+## Current Enforcement Reality
 
-## 4. Categories vs. Tags (Clarification)
+What is enforced today:
 
-- **Categories**: EXACTLY ONE of `{Ciencia, Tecnología, Salud, Editorial}`.
-- **Tags**: 0..N concepts.
+- backend normalization and validation when content flows through the backend publisher
+- frontend schema shape through `src/content/config.ts`
+- general content/build checks through `npm run validate:content`
 
-**Never** use a category name as a tag (e.g., do not tag an article "Ciencia").
+What is not fully enforced today:
 
----
+- frontend-only manual edits can still introduce semantically weak or non-normalized tags unless review catches them
+- cross-repo schema parity is tested in the backend repo, but not by a single shared CI pipeline spanning both repos
 
-## 5. Maintenance
-
-- **Config**: `news_collector/taxonomy/tags.yml` is the Source of Truth for aliases and stop tags.
-- **Backfill**: We provide `tools/backfill_tags.py` to retroactively clean content if the contract changes.
+Those gaps are tracked as follow-up work, not as current guarantees.

@@ -13,6 +13,7 @@ tags:
 - monetización
 excerpt: La publicidad irrumpe en chatbots de IA como ChatGPT y Copilot, generando debate sobre monetización, privacidad del usuario y visibilidad de marca.
 image: "~/assets/images/default.png"
+image_alt: "Publicidad llega a chatbots de IA: El nuevo modelo de negocio digital y sus dilemas"
 source_url: https://techxplore.com/news/2026-02-world-users-brands-ads-ai.html
 refinery_id: New world for users and brands as ads hit AI chatbots
 headlines_variants:

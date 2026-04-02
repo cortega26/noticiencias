@@ -21,7 +21,7 @@ const posts = defineCollection({
                 height: z.number().int().positive(),
                 alt: z.string().optional(),
             })
-        ]).optional(), 
+        ]),
         image_alt: z.string().optional(),
         permalink: z.string().optional(), // For legacy URL compatibility
         
@@ -55,6 +55,16 @@ const posts = defineCollection({
             publisher: z.string().optional(),
             date: z.string().optional()
         })).optional(),
+    }).superRefine((data, ctx) => {
+        const objectAlt = typeof data.image === 'object' ? data.image.alt?.trim() : '';
+        const frontmatterAlt = data.image_alt?.trim() ?? '';
+        if (!objectAlt && !frontmatterAlt) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                path: ['image_alt'],
+                message: 'image_alt is required when image does not include inline alt text',
+            });
+        }
     }),
 });
 

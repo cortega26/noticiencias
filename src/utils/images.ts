@@ -8,7 +8,10 @@ type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 const load = async function () {
   let images: Record<string, () => Promise<unknown>> | undefined = undefined;
   try {
-    images = import.meta.glob('~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,avif,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,AVIF,GIF,SVG}');
+    images = import.meta.glob([
+      '~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,avif,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,AVIF,GIF,SVG}',
+      '!~/assets/images/noti-logo.jpg',
+    ]);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     // continue regardless of error
