@@ -222,6 +222,43 @@ function parseCurlMarker(output, marker) {
   };
 }
 
+function parseCurlBlockMarker(output, marker, endMarker) {
+  const markerPrefix = `\n${marker}:`;
+  const startIndex = output.lastIndexOf(markerPrefix);
+
+  if (startIndex === -1) {
+    return null;
+  }
+
+  const valueStart = startIndex + markerPrefix.length;
+  const endIndex = output.indexOf(`\n${endMarker}:`, valueStart);
+  const valueEnd = endIndex === -1 ? output.length : endIndex;
+
+  return {
+    value: output.slice(valueStart, valueEnd),
+    index: startIndex,
+  };
+}
+
+/**
+ * @param {string} output
+ * @param {{ statusMarker: string; headerMarker: string; endMarker: string }} markers
+ */
+export function parseCurlMetadata(output, { statusMarker, headerMarker, endMarker }) {
+  const status = parseCurlMarker(output, statusMarker);
+  const headers = parseCurlBlockMarker(output, headerMarker, endMarker);
+
+  if (!status || !headers) {
+    throw new Error('curl output missing status markers');
+  }
+
+  return {
+    status: Number(status.value),
+    headers: headers.value ? JSON.parse(headers.value) : {},
+    body: output.slice(0, status.index),
+  };
+}
+
 /**
  * @param {string} url
  * @param {{ timeoutMs?: number; userAgent?: string }} [options]
@@ -230,6 +267,7 @@ function parseCurlMarker(output, marker) {
 async function defaultCurlRunner(url, { timeoutMs = 15000, userAgent = DEFAULT_USER_AGENT } = {}) {
   const markerStatus = '__NOTICIENCIAS_CURL_STATUS__';
   const markerHeaders = '__NOTICIENCIAS_CURL_HEADERS__';
+  const markerEnd = '__NOTICIENCIAS_CURL_END__';
 
   try {
     const { stdout } = await execFileAsync(
@@ -249,27 +287,23 @@ async function defaultCurlRunner(url, { timeoutMs = 15000, userAgent = DEFAULT_U
         '-H',
         'Pragma: no-cache',
         '--write-out',
-        `\n${markerStatus}:%{http_code}\n${markerHeaders}:%{header_json}\n`,
+        `\n${markerStatus}:%{http_code}\n${markerHeaders}:%{header_json}\n${markerEnd}:1\n`,
         url,
       ],
       { maxBuffer: 10 * 1024 * 1024 }
     );
 
-    const statusMarker = parseCurlMarker(stdout, markerStatus);
-    const headerMarker = parseCurlMarker(stdout, markerHeaders);
-
-    if (!statusMarker || !headerMarker) {
-      throw new Error('curl output missing status markers');
-    }
-
-    const body = stdout.slice(0, statusMarker.index);
-    const headers = headerMarker.value ? JSON.parse(headerMarker.value) : {};
+    const metadata = parseCurlMetadata(stdout, {
+      statusMarker: markerStatus,
+      headerMarker: markerHeaders,
+      endMarker: markerEnd,
+    });
 
     return {
-      ok: Number(statusMarker.value) >= 200 && Number(statusMarker.value) < 300,
-      status: Number(statusMarker.value),
-      body,
-      headers: headersToObject(headers),
+      ok: metadata.status >= 200 && metadata.status < 300,
+      status: metadata.status,
+      body: metadata.body,
+      headers: headersToObject(metadata.headers),
       transport: 'curl',
       url,
       error: null,

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { probeUrl, runPostDeployCheck } from '../scripts/post-deploy-check-lib.js';
+import { parseCurlMetadata, probeUrl, runPostDeployCheck } from '../scripts/post-deploy-check-lib.js';
 
 const silentLogger = {
   info: vi.fn(),
@@ -234,5 +234,31 @@ describe('Post-deploy deploy checker', () => {
         logger: silentLogger,
       })
     ).rejects.toThrow(/Search index is empty/);
+  });
+
+  it('parses multiline curl header metadata without crashing', () => {
+    const output = [
+      '<html>ok</html>',
+      '__NOTICIENCIAS_CURL_STATUS__:403',
+      '__NOTICIENCIAS_CURL_HEADERS__:{',
+      '"server":["cloudflare"],',
+      '"cf-ray":["abc123-IAD"]',
+      '}',
+      '__NOTICIENCIAS_CURL_END__:1',
+      '',
+    ].join('\n');
+
+    const parsed = parseCurlMetadata(output, {
+      statusMarker: '__NOTICIENCIAS_CURL_STATUS__',
+      headerMarker: '__NOTICIENCIAS_CURL_HEADERS__',
+      endMarker: '__NOTICIENCIAS_CURL_END__',
+    });
+
+    expect(parsed.status).toBe(403);
+    expect(parsed.body).toContain('<html>ok</html>');
+    expect(parsed.headers).toEqual({
+      server: ['cloudflare'],
+      'cf-ray': ['abc123-IAD'],
+    });
   });
 });
