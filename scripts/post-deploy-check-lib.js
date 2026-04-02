@@ -471,6 +471,35 @@ export function verifyArticleHtml(html) {
 }
 
 /**
+ * @param {string} html
+ */
+export function verifyRouteHtml(html) {
+  const $ = load(html);
+  const title = $('title').text();
+
+  if (!title.includes('Noticiencias')) {
+    throw new Error(`Route title missing 'Noticiencias'. Got: "${title}"`);
+  }
+
+  if (html.includes('rocket-loader.min.js')) {
+    throw new Error('HTML includes Cloudflare Rocket Loader. Disable Rocket Loader for Astro client-script routes.');
+  }
+
+  const rewrittenScriptTypes = $('script[type]')
+    .map((_, el) => $(el).attr('type'))
+    .get()
+    .filter((type) => typeof type === 'string' && /^[a-f0-9]{20,}-(?:module|text\/javascript)$/.test(type));
+
+  if (rewrittenScriptTypes.length > 0) {
+    throw new Error('HTML includes Cloudflare-rewritten script types that can defer Astro client scripts.');
+  }
+
+  return {
+    clientRouterScripts: $('script[src*="ClientRouter"]').length,
+  };
+}
+
+/**
  * @param {unknown} json
  */
 export function verifySearchJson(json) {
@@ -488,6 +517,21 @@ export function verifySearchJson(json) {
   }
 
   return { itemCount: json.length };
+}
+
+/**
+ * @param {string} body
+ */
+export function verifyRssXml(body) {
+  if (!body.includes('<rss') && !body.includes('<feed')) {
+    throw new Error('RSS response is not valid XML feed content.');
+  }
+
+  if (!body.includes('Noticiencias')) {
+    throw new Error('RSS feed is missing expected site branding.');
+  }
+
+  return { ok: true };
 }
 
 /**
@@ -532,6 +576,11 @@ export async function runPostDeployCheck(
   warnings.push(...homeResult.warnings);
   logger.info(`${GREEN}[PASS] Home Page OK (${homeResult.articleCount} articles)${RESET}`);
 
+  const homeRouteResult = verifyRouteHtml(homeProbe.result.body);
+  if (homeRouteResult.clientRouterScripts > 0) {
+    logger.info(`${GREEN}[PASS] Home Route HTML OK (${homeRouteResult.clientRouterScripts} ClientRouter script)${RESET}`);
+  }
+
   if (homeResult.articleUrl) {
     logger.info(`Checking Article: ${homeResult.articleUrl}...`);
 
@@ -553,6 +602,27 @@ export async function runPostDeployCheck(
       warnings.push(...articleResult.warnings);
       logger.info(`${GREEN}[PASS] Article Page OK${RESET}`);
     }
+  }
+
+  const searchPageUrl = new URL('/buscar/', targetUrl).toString();
+  logger.info(`Checking Search Page: ${searchPageUrl}...`);
+
+  const searchPageProbe = await probeUrl(searchPageUrl, {
+    mode,
+    fetchImpl,
+    curlRunner,
+    retryDelaysMs,
+    sleep,
+    logger,
+    timeoutMs,
+    userAgent,
+  });
+
+  if (searchPageProbe.outcome === 'warning') {
+    warnings.push(searchPageProbe.warning);
+  } else {
+    verifyRouteHtml(searchPageProbe.result.body);
+    logger.info(`${GREEN}[PASS] Search Page OK${RESET}`);
   }
 
   const searchUrl = new URL('/search.json', targetUrl).toString();
@@ -582,6 +652,27 @@ export async function runPostDeployCheck(
 
     const searchResult = verifySearchJson(json);
     logger.info(`${GREEN}[PASS] Search Index OK (${searchResult.itemCount} items)${RESET}`);
+  }
+
+  const rssUrl = new URL('/rss.xml', targetUrl).toString();
+  logger.info(`Checking RSS Feed: ${rssUrl}...`);
+
+  const rssProbe = await probeUrl(rssUrl, {
+    mode,
+    fetchImpl,
+    curlRunner,
+    retryDelaysMs,
+    sleep,
+    logger,
+    timeoutMs,
+    userAgent,
+  });
+
+  if (rssProbe.outcome === 'warning') {
+    warnings.push(rssProbe.warning);
+  } else {
+    verifyRssXml(rssProbe.result.body);
+    logger.info(`${GREEN}[PASS] RSS Feed OK${RESET}`);
   }
 
   return { success: true, warnings };

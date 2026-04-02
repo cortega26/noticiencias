@@ -1,5 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
-import { parseCurlMetadata, probeUrl, runPostDeployCheck } from '../scripts/post-deploy-check-lib.js';
+import {
+  parseCurlMetadata,
+  probeUrl,
+  runPostDeployCheck,
+  verifyRouteHtml,
+} from '../scripts/post-deploy-check-lib.js';
 
 const silentLogger = {
   info: vi.fn(),
@@ -95,7 +100,21 @@ describe('Post-deploy deploy checker', () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
       htmlResponse(createArticleHtml()),
+      htmlResponse(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <main><h1>Buscador</h1></main>
+            <script type="module" src="/_astro/ClientRouter.js"></script>
+          </body>
+        </html>
+      `),
       jsonResponse([{ title: 'Uno', url: '/ciencia/uno/' }]),
+      new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
+        status: 200,
+        headers: { 'content-type': 'application/xml; charset=utf-8' },
+      }),
     ]);
 
     const result = await runPostDeployCheck('https://noticiencias.com/', {
@@ -108,7 +127,7 @@ describe('Post-deploy deploy checker', () => {
 
     expect(result.success).toBe(true);
     expect(result.warnings).toEqual([]);
-    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(fetchImpl).toHaveBeenCalledTimes(5);
   });
 
   it('retries a transient 503 and succeeds within the retry window', async () => {
@@ -204,7 +223,21 @@ describe('Post-deploy deploy checker', () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
       htmlResponse(createArticleHtml()),
+      htmlResponse(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <main><h1>Buscador</h1></main>
+            <script type="module" src="/_astro/ClientRouter.js"></script>
+          </body>
+        </html>
+      `),
       jsonResponse({ title: 'not-an-array' }),
+      new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
+        status: 200,
+        headers: { 'content-type': 'application/xml; charset=utf-8' },
+      }),
     ]);
 
     await expect(
@@ -222,7 +255,21 @@ describe('Post-deploy deploy checker', () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
       htmlResponse(createArticleHtml()),
+      htmlResponse(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <main><h1>Buscador</h1></main>
+            <script type="module" src="/_astro/ClientRouter.js"></script>
+          </body>
+        </html>
+      `),
       jsonResponse([]),
+      new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
+        status: 200,
+        headers: { 'content-type': 'application/xml; charset=utf-8' },
+      }),
     ]);
 
     await expect(
@@ -260,5 +307,35 @@ describe('Post-deploy deploy checker', () => {
       server: ['cloudflare'],
       'cf-ray': ['abc123-IAD'],
     });
+  });
+
+  it('fails route verification when Rocket Loader is present', () => {
+    expect(() =>
+      verifyRouteHtml(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"></script>
+          </body>
+        </html>
+      `)
+    ).toThrow(/Rocket Loader/);
+  });
+
+  it('fails route verification when Cloudflare rewrites script types', () => {
+    const rewrittenType = `${['bc2a4c55', 'f1a56c2e', 'ad7e5e46'].join('')}-module`;
+
+    expect(() =>
+      verifyRouteHtml(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <script type="${rewrittenType}" src="/_astro/ClientRouter.js"></script>
+          </body>
+        </html>
+      `)
+    ).toThrow(/rewritten script types/);
   });
 });

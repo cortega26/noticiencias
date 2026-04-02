@@ -1,0 +1,260 @@
+- generic [active] [ref=e1]:
+  - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]:
+        - strong [ref=e6]: Versión Beta v0.9
+        - img [ref=e7]
+        - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
+      - link "Leer más" [ref=e9] [cursor=pointer]:
+        - /url: /beta
+        - text: Leer más →
+    - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
+      - generic [ref=e12]: Ocultar aviso
+      - img [ref=e13]
+  - banner [ref=e15]:
+    - generic [ref=e17]:
+      - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e20]:
+          - img "Noticiencias" [ref=e21]
+          - text: Noticiencias
+      - navigation "Main navigation" [ref=e22]:
+        - list [ref=e23]:
+          - listitem [ref=e24]:
+            - link "Astronomía" [ref=e25] [cursor=pointer]:
+              - /url: /categorias/astronomia/
+          - listitem [ref=e26]:
+            - link "Salud" [ref=e27] [cursor=pointer]:
+              - /url: /categorias/salud/
+          - listitem [ref=e28]:
+            - link "Tecnología" [ref=e29] [cursor=pointer]:
+              - /url: /categorias/tecnologia/
+          - listitem [ref=e30]:
+            - link "Editorial" [ref=e31] [cursor=pointer]:
+              - /url: /categorias/editorial/
+          - listitem [ref=e32]:
+            - button "Más" [ref=e33] [cursor=pointer]:
+              - text: Más
+              - img [ref=e34]
+          - listitem [ref=e36]:
+            - link "Series" [ref=e37] [cursor=pointer]:
+              - /url: /series/
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - button "Alternar modo Oscuro/Claro" [ref=e41] [cursor=pointer]:
+            - img [ref=e42]
+          - link "RSS Feed" [ref=e44] [cursor=pointer]:
+            - /url: /rss.xml
+            - img [ref=e45]
+        - link "Buscar" [ref=e48] [cursor=pointer]:
+          - /url: /buscar/
+          - text: Buscar
+          - img [ref=e49]
+  - main [ref=e51]:
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube Tecnología El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube Noticiencias AI 27 mar 2026" [ref=e55] [cursor=pointer]:
+          - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
+          - img "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e56]
+          - generic [ref=e58]:
+            - generic [ref=e60]: Tecnología
+            - heading "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [level=2] [ref=e61]
+            - generic [ref=e62]:
+              - generic [ref=e63]: Noticiencias AI
+              - generic [ref=e65]: 27 mar 2026
+        - generic [ref=e66]:
+          - link "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años Tecnología Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años" [ref=e67] [cursor=pointer]:
+            - /url: /ciencia/2026-02-18-article-849/
+            - img "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años" [ref=e69]
+            - generic [ref=e70]:
+              - generic [ref=e72]: Tecnología
+              - heading "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años" [level=3] [ref=e73]
+          - link "Un ingrediente inesperado puede hacer el pan mucho más saludable Salud Un ingrediente inesperado puede hacer el pan mucho más saludable" [ref=e74] [cursor=pointer]:
+            - /url: /ciencia/2026-02-16-article-677/
+            - img "Un ingrediente inesperado puede hacer el pan mucho más saludable" [ref=e76]
+            - generic [ref=e77]:
+              - generic [ref=e79]: Salud
+              - heading "Un ingrediente inesperado puede hacer el pan mucho más saludable" [level=3] [ref=e80]
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - heading "Lo último" [level=2] [ref=e83]
+          - link "Ver todo el archivo »" [ref=e84] [cursor=pointer]:
+            - /url: /blog
+        - generic [ref=e85]:
+          - article [ref=e86]:
+            - link "Un agujero negro se forma sin explotar una estrella masiva" [ref=e88] [cursor=pointer]:
+              - /url: /ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/
+              - img "Un agujero negro se forma sin explotar una estrella masiva" [ref=e89]
+            - heading "Un agujero negro se forma sin explotar una estrella masiva" [level=3] [ref=e90]:
+              - link "Un agujero negro se forma sin explotar una estrella masiva" [ref=e91] [cursor=pointer]:
+                - /url: /ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/
+          - article [ref=e92]:
+            - link "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida" [ref=e94] [cursor=pointer]:
+              - /url: /salud/2026-02-05-article-657/
+              - img "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida" [ref=e95]
+            - heading "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida" [level=3] [ref=e96]:
+              - link "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida" [ref=e97] [cursor=pointer]:
+                - /url: /salud/2026-02-05-article-657/
+          - article [ref=e98]:
+            - link "Estudio revela menor agrupamiento de galaxias de lo esperado" [ref=e100] [cursor=pointer]:
+              - /url: /ciencia/2026-01-31-article-520/
+              - img "Estudio revela menor agrupamiento de galaxias de lo esperado" [ref=e101]
+            - heading "Estudio revela menor agrupamiento de galaxias de lo esperado" [level=3] [ref=e102]:
+              - link "Estudio revela menor agrupamiento de galaxias de lo esperado" [ref=e103] [cursor=pointer]:
+                - /url: /ciencia/2026-01-31-article-520/
+          - article [ref=e104]:
+            - link "Cómo Claude Code está llevando el vibe coding a todos" [ref=e106] [cursor=pointer]:
+              - /url: /tecnologia/2026-01-31-article-521/
+              - img "Cómo Claude Code está llevando el vibe coding a todos" [ref=e107]
+            - heading "Cómo Claude Code está llevando el vibe coding a todos" [level=3] [ref=e108]:
+              - link "Cómo Claude Code está llevando el vibe coding a todos" [ref=e109] [cursor=pointer]:
+                - /url: /tecnologia/2026-01-31-article-521/
+    - generic [ref=e111]:
+      - generic [ref=e112]:
+        - paragraph [ref=e113]: Explora
+        - heading "Nuestras Secciones" [level=2] [ref=e114]
+        - paragraph [ref=e115]: Cobertura editorial y disciplinas activas del sitio.
+      - generic [ref=e116]:
+        - generic [ref=e118]:
+          - img [ref=e120]
+          - generic [ref=e122]:
+            - heading "Astronomía" [level=3] [ref=e123]
+            - paragraph [ref=e124]: Espacio, cosmología y exploración del universo.
+            - link "Ver sección" [ref=e126] [cursor=pointer]:
+              - /url: /categorias/astronomia/
+        - generic [ref=e128]:
+          - img [ref=e130]
+          - generic [ref=e132]:
+            - heading "Salud" [level=3] [ref=e133]
+            - paragraph [ref=e134]: Medicina, bienestar y avances clínicos con impacto humano.
+            - link "Ver sección" [ref=e136] [cursor=pointer]:
+              - /url: /categorias/salud/
+        - generic [ref=e138]:
+          - img [ref=e140]
+          - generic [ref=e142]:
+            - heading "Tecnología" [level=3] [ref=e143]
+            - paragraph [ref=e144]: Innovación, IA, plataformas y sistemas digitales.
+            - link "Ver sección" [ref=e146] [cursor=pointer]:
+              - /url: /categorias/tecnologia/
+        - generic [ref=e148]:
+          - img [ref=e150]
+          - generic [ref=e152]:
+            - heading "Editorial" [level=3] [ref=e153]
+            - paragraph [ref=e154]: Piezas propias de Noticiencias sobre criterio, enfoque y contexto.
+            - link "Ver sección" [ref=e156] [cursor=pointer]:
+              - /url: /categorias/editorial/
+        - generic [ref=e158]:
+          - img [ref=e160]
+          - generic [ref=e162]:
+            - heading "Física" [level=3] [ref=e163]
+            - paragraph [ref=e164]: Mecánica cuántica, materia y fenómenos físicos fundamentales.
+            - link "Ver sección" [ref=e166] [cursor=pointer]:
+              - /url: /categorias/fisica/
+        - generic [ref=e168]:
+          - img [ref=e170]
+          - generic [ref=e172]:
+            - heading "Química" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Materiales, compuestos, reacciones y catálisis.
+            - link "Ver sección" [ref=e176] [cursor=pointer]:
+              - /url: /categorias/quimica/
+        - generic [ref=e178]:
+          - img [ref=e180]
+          - generic [ref=e182]:
+            - heading "Biología" [level=3] [ref=e183]
+            - paragraph [ref=e184]: Vida no humana, genética, evolución y biodiversidad.
+            - link "Ver sección" [ref=e186] [cursor=pointer]:
+              - /url: /categorias/biologia/
+        - generic [ref=e188]:
+          - img [ref=e190]
+          - generic [ref=e192]:
+            - heading "Arqueología" [level=3] [ref=e193]
+            - paragraph [ref=e194]: Hallazgos materiales y reconstrucciones del pasado humano.
+            - link "Ver sección" [ref=e196] [cursor=pointer]:
+              - /url: /categorias/arqueologia/
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - generic [ref=e201]: "24"
+        - generic [ref=e202]: Artículos
+      - generic [ref=e203]:
+        - generic [ref=e204]: 580M
+        - generic [ref=e205]: Lectores
+      - generic [ref=e206]:
+        - generic [ref=e207]: 100%
+        - generic [ref=e208]: Confianza
+  - contentinfo [ref=e209]:
+    - generic [ref=e210]:
+      - generic [ref=e211]:
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - link "Noticiencias" [ref=e214] [cursor=pointer]:
+              - /url: /
+            - text: Beta
+          - generic [ref=e215]:
+            - link "Privacidad" [ref=e216] [cursor=pointer]:
+              - /url: /privacidad/
+            - text: ·
+            - link "RSS" [ref=e217] [cursor=pointer]:
+              - /url: /rss.xml
+            - text: ·
+            - link "Reportar un problema" [ref=e218] [cursor=pointer]:
+              - /url: /reportar-problema/
+        - generic [ref=e219]:
+          - generic [ref=e220]: Secciones
+          - list [ref=e221]:
+            - listitem [ref=e222]:
+              - link "Astronomía" [ref=e223] [cursor=pointer]:
+                - /url: /categorias/astronomia/
+            - listitem [ref=e224]:
+              - link "Salud" [ref=e225] [cursor=pointer]:
+                - /url: /categorias/salud/
+            - listitem [ref=e226]:
+              - link "Tecnología" [ref=e227] [cursor=pointer]:
+                - /url: /categorias/tecnologia/
+            - listitem [ref=e228]:
+              - link "Editorial" [ref=e229] [cursor=pointer]:
+                - /url: /categorias/editorial/
+            - listitem [ref=e230]:
+              - link "Física" [ref=e231] [cursor=pointer]:
+                - /url: /categorias/fisica/
+            - listitem [ref=e232]:
+              - link "Química" [ref=e233] [cursor=pointer]:
+                - /url: /categorias/quimica/
+            - listitem [ref=e234]:
+              - link "Biología" [ref=e235] [cursor=pointer]:
+                - /url: /categorias/biologia/
+            - listitem [ref=e236]:
+              - link "Arqueología" [ref=e237] [cursor=pointer]:
+                - /url: /categorias/arqueologia/
+        - generic [ref=e238]:
+          - generic [ref=e239]: Organización
+          - list [ref=e240]:
+            - listitem [ref=e241]:
+              - link "Acerca de" [ref=e242] [cursor=pointer]:
+                - /url: /nosotros/
+            - listitem [ref=e243]:
+              - link "Metodología" [ref=e244] [cursor=pointer]:
+                - /url: /metodologia/
+            - listitem [ref=e245]:
+              - link "Transparencia" [ref=e246] [cursor=pointer]:
+                - /url: /transparencia/
+      - generic [ref=e247]:
+        - list [ref=e248]:
+          - listitem [ref=e249]:
+            - link "X" [ref=e250] [cursor=pointer]:
+              - /url: https://twitter.com/noti_ciencias
+              - img [ref=e251]
+          - listitem [ref=e253]:
+            - link "Instagram" [ref=e254] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e255]
+          - listitem [ref=e257]:
+            - link "LinkedIn" [ref=e258] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e259]
+          - listitem [ref=e261]:
+            - link "Github" [ref=e262] [cursor=pointer]:
+              - /url: https://github.com/cortega26/noticiencias
+              - img [ref=e263]
+        - generic [ref=e265]: © 2026 Noticiencias · Todos los derechos reservados.

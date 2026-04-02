@@ -27,10 +27,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- Load Lunr from CDN -->
-    <script is:inline src="https://unpkg.com/lunr/lunr.js"></script>
-    
     <script>
+        import lunr from 'lunr';
         import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
 
         // Define expected document structure
@@ -60,25 +58,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             add(doc: unknown): void;
         }
 
-        type LunrStatic = (builder: (this: LunrBuilder) => void) => LunrIndex;
-
-        // Declare lunr since it is loaded via CDN
-        declare const lunr: LunrStatic;
-
         let index: LunrIndex | null = null;
         let store: Record<string, SearchDocument> = {};
+        let activeInitPath = '';
+
+        interface SearchPageRefs {
+            form: HTMLFormElement;
+            input: HTMLInputElement;
+            status: HTMLElement;
+            results: HTMLElement;
+        }
+
+        function getSearchPageRefs(): SearchPageRefs | null {
+            const form = document.getElementById('search-form');
+            const input = document.getElementById('search-box');
+            const status = document.getElementById('search-status');
+            const results = document.getElementById('search-results');
+
+            if (!(form instanceof HTMLFormElement)) return null;
+            if (!(input instanceof HTMLInputElement)) return null;
+            if (!(status instanceof HTMLElement)) return null;
+            if (!(results instanceof HTMLElement)) return null;
+
+            return { form, input, status, results };
+        }
 
         async function bootSearch() {
-            // Prevent double init on same page load if events overlap
-            // But strict idempotency is handled by checking if we are on the search page
-            const input = document.getElementById('search-box') as HTMLInputElement;
-            const status = document.getElementById('search-status');
-            const form = document.getElementById('search-form');
-            
-            // If we are not on the search page, do nothing
-            if (!input || !status) return;
+            const refs = getSearchPageRefs();
+            if (!refs) return;
 
-            // Reset state for new navigation
+            const { form, input, status } = refs;
+            const currentPath = window.location.pathname;
+
+            if (form.dataset.searchInitialized === currentPath && activeInitPath === currentPath) {
+                return;
+            }
+
+            form.dataset.searchInitialized = currentPath;
+            activeInitPath = currentPath;
+
+            if (form.dataset.searchBound !== 'true') {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    runSearch(input.value);
+                });
+                form.dataset.searchBound = 'true';
+            }
+
             index = null;
             store = {};
             
@@ -98,8 +124,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                      return;
                 }
                 
-                // Build Index
-                // Lunr loaded via CDN script but declared above
                 index = lunr(function (this: LunrBuilder) {
                     this.ref('url');
                     this.field('title', { boost: 10 });
@@ -125,35 +149,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                 status.textContent = '';
                 input.disabled = false;
-                
-                // Attach event listener to form (replaces old ones automatically as DOM is fresh or we re-attach)
-                // Use 'submit' to capture both Enter and Button
-                if (form) {
-                    // Remove old listener if any (safety pattern, though mostly fresh DOM in Astro)
-                    const newForm = form.cloneNode(true) as HTMLElement;
-                    form.parentNode?.replaceChild(newForm, form);
-                    
-                    newForm.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        const currentInput = document.getElementById('search-box') as HTMLInputElement;
-                        if (currentInput) {
-                             runSearch(currentInput.value);
-                        }
-                    });
-                     // Re-acquire input ref after clone
-                     const newInput = document.getElementById('search-box') as HTMLInputElement;
-                     if(newInput) { 
-                        newInput.focus();
-                        // Restore value if needed, but usually empty on fresh load
-                     }
-                }
 
                 // Check URL for existing query and execute immediately
                 const initialQuery = getQueryFromUrl();
-                const currentInput = document.getElementById('search-box') as HTMLInputElement;
-                if (initialQuery && currentInput) {
-                    currentInput.value = initialQuery;
+                if (initialQuery) {
+                    input.value = initialQuery;
                     runSearch(initialQuery);
+                } else {
+                    input.focus();
                 }
 
             } catch (e) {
@@ -163,10 +166,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
 
         function runSearch(query: string) {
-            const resultsDiv = document.getElementById('search-results');
-            const status = document.getElementById('search-status');
-            
-            if (!resultsDiv) return;
+            const refs = getSearchPageRefs();
+            if (!refs) return;
+
+            const { results: resultsDiv, status } = refs;
             
             resultsDiv.innerHTML = '';
             
@@ -255,16 +258,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             }
         }
 
-        // Initialize on every page navigation (Astro ViewTransitions / ClientRouter)
         document.addEventListener('astro:page-load', bootSearch);
-        
-        // Fallback for initial load if astro:page-load doesn't fire (though it should)
-        // or for non-SPA modes.
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if we are in a state where astro:page-load will NOT fire
-            // But simplest is just to call it, bootstrapping is robust enough to handle checks
-            bootSearch();
-        });
+        void bootSearch();
 
     </script>
 </BaseLayout>
