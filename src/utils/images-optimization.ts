@@ -6,6 +6,8 @@ import type { HTMLAttributes } from 'astro/types';
 import {
   getDerivativeSourceKey,
   getImageDerivativeEntry,
+  hasPublishedDerivativeUrls,
+  isStrictDerivativeModeEnabled,
   resolveDerivativeWidths,
   resolveDerivativeVariants,
   selectPreferredVariantSrc,
@@ -254,6 +256,19 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
       width: variant.width,
       height: variant.height,
     }));
+  }
+
+  if (sourceKey && isStrictDerivativeModeEnabled()) {
+    const reason = !derivativeEntry
+      ? 'is missing a manifest entry'
+      : !hasPublishedDerivativeUrls(derivativeEntry)
+        ? 'has no published CDN derivative URLs'
+        : 'has no usable published derivative variants';
+
+    throw new Error(
+      `Strict image derivative mode is enabled, but ${sourceKey} ${reason}. ` +
+        'Run npm run publish:image-derivatives with R2 credentials configured before building.'
+    );
   }
 
   const derivativeWidths = resolveDerivativeWidths(derivativeEntry, breakpoints);

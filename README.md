@@ -54,6 +54,7 @@ Useful local commands:
 - `npm run publish:image-derivatives` scans local post raster images, computes deterministic derivative keys, updates the manifest, and uploads missing AVIF variants when the R2 env vars are present.
 - Required Cloudflare env vars for upload mode: `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_ENDPOINT`, and `R2_PUBLIC_BASE_URL`.
 - Without those env vars, the script still refreshes the manifest metadata locally and the site falls back to Astro image optimization during build.
+- The GitHub Pages deploy workflow auto-enables `IMAGE_DERIVATIVES_REQUIRE_URL=1` and `IMAGE_DERIVATIVES_STRICT=1` once those R2 env vars are configured in CI. At that point, deploy builds stop accepting Astro fallback for post images and require published CDN derivative URLs instead.
 
 ## Governance Docs
 

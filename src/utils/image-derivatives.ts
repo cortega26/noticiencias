@@ -62,6 +62,18 @@ export function getImageDerivativeEntry(sourceKey: string | null): ImageDerivati
   return manifest[sourceKey] ?? null;
 }
 
+export function hasPublishedDerivativeUrls(entry: ImageDerivativeEntry | null): boolean {
+  if (!entry || !Array.isArray(entry.variants) || entry.variants.length === 0) {
+    return false;
+  }
+
+  return entry.variants.some((variant) => typeof variant.url === 'string' && variant.url.length > 0);
+}
+
+export function isStrictDerivativeModeEnabled(): boolean {
+  return process.env.IMAGE_DERIVATIVES_STRICT === '1';
+}
+
 export function resolveDerivativeVariants(
   entry: ImageDerivativeEntry | null,
   requestedBreakpoints: number[]

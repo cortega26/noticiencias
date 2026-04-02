@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  hasPublishedDerivativeUrls,
   resolveDerivativeVariants,
   selectPreferredVariantSrc,
   type ImageDerivativeEntry,
@@ -37,5 +38,15 @@ describe('Image derivative helpers', () => {
         850
       )
     ).toBe('https://cdn.example/900.avif');
+  });
+
+  it('detects when a manifest entry has published derivative URLs', () => {
+    expect(hasPublishedDerivativeUrls(entry)).toBe(true);
+    expect(
+      hasPublishedDerivativeUrls({
+        ...entry,
+        variants: entry.variants.map((variant) => ({ ...variant, url: null })),
+      })
+    ).toBe(false);
   });
 });
