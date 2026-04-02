@@ -68,11 +68,26 @@ export const homeSectionItems = publishedCategorySections.map(
   })
 );
 
+const primaryHeaderLinks = publishedCategorySections
+  .filter(({ showInHeader }) => showInHeader)
+  .map(({ text, href }) => ({ text, href }));
+
+const overflowHeaderLinks = publishedCategorySections
+  .filter(({ showInHeader }) => !showInHeader)
+  .map(({ text, href }) => ({ text, href }));
+
 export const headerData = {
   links: [
-    ...publishedCategorySections
-      .filter(({ showInHeader }) => showInHeader)
-      .map(({ text, href }) => ({ text, href })),
+    ...primaryHeaderLinks,
+    ...(overflowHeaderLinks.length
+      ? [
+          {
+            text: 'Más',
+            ariaLabel: 'Más categorías',
+            links: overflowHeaderLinks,
+          },
+        ]
+      : []),
     {
       text: 'Series',
       href: getPermalink('/series/'),

@@ -87,22 +87,24 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       >
         {
           links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
+            <li class:list={['relative', { dropdown: links?.length }]}>
               {links?.length ? (
                 <>
                   <button
                     type="button"
+                    aria-label={text}
+                    aria-haspopup="true"
                     class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
                   >
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
                   </button>
-                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded lg:absolute pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
+                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b lg:hover:bg-gray-100 hover:text-primary dark:hover:text-primary dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                            'first:rounded-t-md last:rounded-b-md lg:hover:bg-gray-100 hover:text-primary dark:hover:text-primary dark:hover:bg-gray-700 py-2 px-5 block whitespace-nowrap',
                             { 'text-primary font-bold': href2 === currentPath },
                           ]}
                           href={href2}

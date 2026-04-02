@@ -11,6 +11,7 @@
     "test:audit": "vitest run",
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
+    "sync:hero-placeholders": "node scripts/sync-hero-placeholders.js",
     "check:image-derivatives": "node scripts/check-image-derivatives.js",
     "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
