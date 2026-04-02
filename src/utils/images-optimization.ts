@@ -3,6 +3,14 @@ import { transformUrl, parseUrl } from 'unpic';
 
 import type { ImageMetadata } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
+import {
+  getDerivativeSourceKey,
+  getImageDerivativeEntry,
+  resolveDerivativeWidths,
+  resolveDerivativeVariants,
+  selectPreferredVariantSrc,
+  type DerivativeAwareImageMetadata,
+} from './image-derivatives';
 
 type Layout = 'fixed' | 'constrained' | 'fullWidth' | 'cover' | 'responsive' | 'contained';
 
@@ -27,7 +35,7 @@ export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
 }
 
 export type ImagesOptimizer = (
-  image: ImageMetadata | string,
+  image: ImageMetadata | DerivativeAwareImageMetadata | string,
   breakpoints: number[],
   width?: number,
   height?: number,
@@ -237,8 +245,22 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
       }));
   }
 
+  const sourceKey = getDerivativeSourceKey(image);
+  const derivativeEntry = getImageDerivativeEntry(sourceKey);
+  const derivativeVariants = resolveDerivativeVariants(derivativeEntry, breakpoints);
+  if (derivativeVariants.length > 0) {
+    return derivativeVariants.map((variant) => ({
+      src: variant.url || '',
+      width: variant.width,
+      height: variant.height,
+    }));
+  }
+
+  const derivativeWidths = resolveDerivativeWidths(derivativeEntry, breakpoints);
+  const effectiveBreakpoints = derivativeWidths.length > 0 ? derivativeWidths : breakpoints;
+
   return Promise.all(
-    breakpoints.map(async (w: number) => {
+    effectiveBreakpoints.map(async (w: number) => {
       const result = await getImage({ src: image, width: w, inferSize: true, ...(format ? { format: format } : {}) });
 
       return {
@@ -327,7 +349,7 @@ const calculateDimensions = (
 
 /* ** */
 export async function getImagesOptimized(
-  image: ImageMetadata | string,
+  image: ImageMetadata | DerivativeAwareImageMetadata | string,
   {
     src: _,
     width: inputWidth,
@@ -357,14 +379,20 @@ export async function getImagesOptimized(
   let breakpoints = getBreakpoints({ width: width, breakpoints: widths, layout: layout });
   breakpoints = [...new Set(breakpoints)].sort((a, b) => a - b);
 
-  const srcset = (await transform(image, breakpoints, Number(width) || undefined, Number(height) || undefined, format))
-    .map(({ src, width }) => `${src} ${width}w`)
-    .join(', ');
+  const optimizedVariants = await transform(
+    image,
+    breakpoints,
+    Number(width) || undefined,
+    Number(height) || undefined,
+    format
+  );
+  const srcset = optimizedVariants.map(({ src, width }) => `${src} ${width}w`).join(', ');
 
   const isImageMetadata = (img: unknown): img is { src: string } => typeof img === 'object' && img !== null && 'src' in img;
+  const preferredSrc = selectPreferredVariantSrc(optimizedVariants, Number(width) || undefined);
 
   return {
-    src: typeof image === 'string' ? image : (isImageMetadata(image) ? image.src : ''),
+    src: preferredSrc || (typeof image === 'string' ? image : (isImageMetadata(image) ? image.src : '')),
     attributes: {
       width: width,
       height: height,

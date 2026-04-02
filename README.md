@@ -40,12 +40,20 @@ npm run test:audit
 Useful local commands:
 
 - `npm run dev`
+- `npm run publish:image-derivatives`
 - `npm run lint`
 - `npm run validate:content`
 - `npm run build`
 - `npm run test:dist`
 - `npm run test:audit`
 - `npm run test:deploy -- <deployed-url>`
+
+## Image Derivatives
+
+- Post hero images now use a generated manifest at `data/image-derivatives-manifest.json`.
+- `npm run publish:image-derivatives` scans local post raster images, computes deterministic derivative keys, updates the manifest, and uploads missing AVIF variants when the R2 env vars are present.
+- Required Cloudflare env vars for upload mode: `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_ENDPOINT`, and `R2_PUBLIC_BASE_URL`.
+- Without those env vars, the script still refreshes the manifest metadata locally and the site falls back to Astro image optimization during build.
 
 ## Governance Docs
 

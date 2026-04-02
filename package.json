@@ -5,18 +5,20 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run publish:image-derivatives && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "test:audit": "vitest run",
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
-    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && eslint .",
+    "check:image-derivatives": "node scripts/check-image-derivatives.js",
+    "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
+    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-derivatives && eslint .",
     "lint-fix": "eslint . --fix",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
-    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && astro sync && astro check && npm run check:freeze"
+    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-derivatives && astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -25,6 +27,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@astrolib/analytics": "^0.6.1",
     "@astrolib/seo": "^1.0.0-beta.8",
+    "@aws-sdk/client-s3": "^3.1023.0",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/merriweather": "^5.2.11",
     "@fontsource/playfair-display": "^5.2.8",

@@ -2,6 +2,7 @@ import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './image
 import type { ImageMetadata } from 'astro';
 import type { OpenGraph } from '@astrolib/seo';
 import type { ImagesOptimizer } from './images-optimization';
+import type { DerivativeAwareImageMetadata } from './image-derivatives';
 /** The optimized image shape returned by our ImagesOptimizer */
 type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 
@@ -65,7 +66,11 @@ const resolveImageFromCollection = async (
   }
   const module = await images[key]();
   if (typeof module === 'object' && module !== null && 'default' in module) {
-      return (module as { default: ImageMetadata }).default;
+      const image = (module as { default: ImageMetadata }).default;
+      return {
+        ...image,
+        __notiSourceKey: key.replace('/src/', '~/'),
+      } as DerivativeAwareImageMetadata;
   }
   return null;
 };
