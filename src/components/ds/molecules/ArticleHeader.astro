@@ -18,6 +18,11 @@ interface Props {
 }
 
 const { title, excerpt, publishDate, author, category, readingTime, image, imageAlt } = Astro.props;
+const resolvedImageAlt =
+  imageAlt ||
+  (typeof image === 'object' && image && 'alt' in image && typeof image.alt === 'string' && image.alt.trim()
+    ? image.alt
+    : title);
 ---
 
 <header class="mb-8">
@@ -58,7 +63,7 @@ const { title, excerpt, publishDate, author, category, readingTime, image, image
 
   {image && (
     <div class="mb-8 rounded-lg overflow-hidden shadow-lg">
-         <Image src={image} alt={imageAlt || title} width={900} height={506} class="w-full h-auto" layout="cover" loading="eager" fetchpriority="high" />
+         <Image src={image} alt={resolvedImageAlt} width={900} height={506} class="w-full h-auto" layout="cover" loading="eager" fetchpriority="high" />
     </div>
   )}
 </header>
