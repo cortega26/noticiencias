@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import {
   parseCurlMetadata,
+  readDeletedRouteSmokeChecks,
   probeUrl,
   runPostDeployCheck,
   verifyRouteHtml,
@@ -118,6 +119,7 @@ describe('Post-deploy deploy checker', () => {
     ]);
 
     const result = await runPostDeployCheck('https://noticiencias.com/', {
+      deletedRoutes: [],
       mode: 'hybrid',
       fetchImpl,
       retryDelaysMs: [0],
@@ -172,6 +174,7 @@ describe('Post-deploy deploy checker', () => {
     );
 
     const result = await runPostDeployCheck('https://noticiencias.com/', {
+      deletedRoutes: [],
       mode: 'hybrid',
       fetchImpl,
       curlRunner,
@@ -210,6 +213,7 @@ describe('Post-deploy deploy checker', () => {
 
     await expect(
       runPostDeployCheck('https://noticiencias.com/', {
+        deletedRoutes: [],
         mode: 'hybrid',
         fetchImpl,
         retryDelaysMs: [0],
@@ -242,6 +246,7 @@ describe('Post-deploy deploy checker', () => {
 
     await expect(
       runPostDeployCheck('https://noticiencias.com/', {
+        deletedRoutes: [],
         mode: 'hybrid',
         fetchImpl,
         retryDelaysMs: [0],
@@ -274,6 +279,7 @@ describe('Post-deploy deploy checker', () => {
 
     await expect(
       runPostDeployCheck('https://noticiencias.com/', {
+        deletedRoutes: [],
         mode: 'hybrid',
         fetchImpl,
         retryDelaysMs: [0],
@@ -337,5 +343,64 @@ describe('Post-deploy deploy checker', () => {
         </html>
       `)
     ).toThrow(/rewritten script types/);
+  });
+
+  it('loads deleted route smoke checks from disk', async () => {
+    const fs = await import('node:fs');
+    const os = await import('node:os');
+    const path = await import('node:path');
+    const tmpFile = path.join(
+      fs.mkdtempSync(path.join(os.tmpdir(), 'noti-deleted-routes-')),
+      'deleted-route-smoke-checks.json'
+    );
+    fs.writeFileSync(
+      tmpFile,
+      JSON.stringify(
+        {
+          routes: [{ path: '/ciencia/eliminado/', reason: 'Deleted article.' }],
+        },
+        null,
+        2
+      ),
+      'utf8'
+    );
+
+    expect(readDeletedRouteSmokeChecks(tmpFile)).toEqual([
+      { path: '/ciencia/eliminado/', reason: 'Deleted article.', file_name: '' },
+    ]);
+  });
+
+  it('fails when a deleted route still returns 200 after deploy', async () => {
+    const fetchImpl = mockFetchSequence([
+      htmlResponse(createHomeHtml()),
+      htmlResponse(createArticleHtml()),
+      htmlResponse(`
+        <!doctype html>
+        <html>
+          <head><title>Noticiencias | Buscar</title></head>
+          <body>
+            <main><h1>Buscador</h1></main>
+            <script type="module" src="/_astro/ClientRouter.js"></script>
+          </body>
+        </html>
+      `),
+      jsonResponse([{ title: 'Uno', url: '/ciencia/uno/' }]),
+      new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
+        status: 200,
+        headers: { 'content-type': 'application/xml; charset=utf-8' },
+      }),
+      htmlResponse('<html><head><title>Old deleted page</title></head><body>stale</body></html>'),
+    ]);
+
+    await expect(
+      runPostDeployCheck('https://noticiencias.com/', {
+        deletedRoutes: [{ path: '/ciencia/eliminado/' }],
+        mode: 'hybrid',
+        fetchImpl,
+        retryDelaysMs: [0],
+        sleep: async () => {},
+        logger: silentLogger,
+      })
+    ).rejects.toThrow(/Deleted route still resolves successfully/);
   });
 });

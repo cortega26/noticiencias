@@ -1,8 +1,13 @@
 import { execFile } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
 import { promisify } from 'node:util';
+import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
 
 const execFileAsync = promisify(execFile);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * @typedef {{
@@ -42,6 +47,7 @@ const execFileAsync = promisify(execFile);
  *   logger?: DeployCheckLogger;
  *   timeoutMs?: number;
  *   userAgent?: string;
+ *   deletedRoutes?: Array<{ path: string; reason?: string; file_name?: string }>;
  * }} DeployCheckOptions
  */
 
@@ -49,6 +55,12 @@ export const DEFAULT_TARGET_URL = 'http://localhost:4321';
 export const DEFAULT_DEPLOY_CHECK_MODE = 'strict-live';
 export const DEFAULT_USER_AGENT = 'Noticiencias-DeployCheck/2.0 (Mozilla/5.0; GitHub Actions)';
 export const DEFAULT_RETRY_DELAYS_MS = [0, 3000, 7000, 15000, 35000];
+export const DEFAULT_DELETED_ROUTE_SMOKE_CHECKS_PATH = path.resolve(
+  __dirname,
+  '..',
+  'data',
+  'deleted-route-smoke-checks.json'
+);
 
 const RETRYABLE_HTTP_STATUSES = new Set([408, 425, 500, 502, 503, 504, 521, 522, 523, 524]);
 const GREEN = '\x1b[32m';
@@ -534,6 +546,94 @@ export function verifyRssXml(body) {
   return { ok: true };
 }
 
+export function readDeletedRouteSmokeChecks(filePath = DEFAULT_DELETED_ROUTE_SMOKE_CHECKS_PATH) {
+  if (!fs.existsSync(filePath)) {
+    return [];
+  }
+
+  const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const routes = parsed?.routes;
+  if (!Array.isArray(routes)) {
+    return [];
+  }
+
+  return routes
+    .filter((entry) => entry && typeof entry === 'object' && typeof entry.path === 'string')
+    .map((entry) => ({
+      path: entry.path,
+      reason: typeof entry.reason === 'string' ? entry.reason : '',
+      file_name: typeof entry.file_name === 'string' ? entry.file_name : '',
+    }));
+}
+
+async function verifyDeletedRouteUnavailable(
+  routePath,
+  {
+    targetUrl,
+    mode = DEFAULT_DEPLOY_CHECK_MODE,
+    fetchImpl = fetch,
+    curlRunner,
+    retryDelaysMs = DEFAULT_RETRY_DELAYS_MS,
+    sleep = defaultSleep,
+    logger = createLogger(),
+    timeoutMs = 15000,
+    userAgent = DEFAULT_USER_AGENT,
+  } = {}
+) {
+  const normalizedMode = normalizeMode(mode);
+  const routeUrl = new URL(routePath, targetUrl).toString();
+  let lastBlockedWarning = null;
+
+  for (let attemptIndex = 0; attemptIndex < retryDelaysMs.length; attemptIndex += 1) {
+    const delayMs = retryDelaysMs[attemptIndex];
+    if (attemptIndex > 0 && delayMs > 0) {
+      await sleep(delayMs);
+    }
+
+    const fetchResult = await fetchText(routeUrl, { fetchImpl, timeoutMs, userAgent });
+    const fetchClassification = classifyHttpResult(fetchResult);
+
+    if (fetchClassification === 'ok') {
+      throw new Error(
+        `Deleted route still resolves successfully: ${routePath} (${formatStatus(fetchResult.status)})`
+      );
+    }
+
+    if (fetchClassification === 'edge-blocked') {
+      const curlResult = await runCurlFallback(routeUrl, { curlRunner, timeoutMs, userAgent });
+      const curlClassification = classifyHttpResult(curlResult);
+
+      if (curlClassification === 'ok') {
+        throw new Error(
+          `Deleted route still resolves successfully via curl fallback: ${routePath} (${formatStatus(curlResult.status)})`
+        );
+      }
+
+      if (curlClassification === 'edge-blocked') {
+        lastBlockedWarning = `Edge access to deleted route ${routePath} remained blocked (${buildFailureSummary(curlResult)}).`;
+        continue;
+      }
+
+      logger.info(`${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(curlResult.status)})${RESET}`);
+      return;
+    }
+
+    if (fetchClassification === 'transient') {
+      continue;
+    }
+
+    logger.info(`${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(fetchResult.status)})${RESET}`);
+    return;
+  }
+
+  if (lastBlockedWarning && normalizedMode === 'hybrid') {
+    logger.warn(`${YELLOW}[WARN] ${lastBlockedWarning}${RESET}`);
+    return lastBlockedWarning;
+  }
+
+  throw new Error(`Failed to verify deleted route: ${routePath}`);
+}
+
 /**
  * @param {string} targetUrl
  * @param {DeployCheckOptions} [options]
@@ -549,9 +649,13 @@ export async function runPostDeployCheck(
     logger = createLogger(),
     timeoutMs = 15000,
     userAgent = DEFAULT_USER_AGENT,
+    deletedRoutes = null,
   } = {}
 ) {
   const warnings = [];
+  const deletedRouteChecks = Array.isArray(deletedRoutes)
+    ? deletedRoutes
+    : readDeletedRouteSmokeChecks();
 
   logger.info(`${YELLOW}Starting Post-Deploy Check against: ${targetUrl} (mode=${normalizeMode(mode)})${RESET}`);
   logger.info('Checking Home Page...');
@@ -673,6 +777,23 @@ export async function runPostDeployCheck(
   } else {
     verifyRssXml(rssProbe.result.body);
     logger.info(`${GREEN}[PASS] RSS Feed OK${RESET}`);
+  }
+
+  for (const deletedRoute of deletedRouteChecks) {
+    const deletedRouteWarning = await verifyDeletedRouteUnavailable(deletedRoute.path, {
+      targetUrl,
+      mode,
+      fetchImpl,
+      curlRunner,
+      retryDelaysMs,
+      sleep,
+      logger,
+      timeoutMs,
+      userAgent,
+    });
+    if (deletedRouteWarning) {
+      warnings.push(deletedRouteWarning);
+    }
   }
 
   return { success: true, warnings };

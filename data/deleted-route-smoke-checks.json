@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "path": "/ciencia/2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones/",
+      "file_name": "2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones.md",
+      "reason": "Previously merged unpublish must disappear once Pages catches up.",
+      "deleted_at": "2026-04-02T23:38:14Z"
+    },
+    {
+      "path": "/salud/2026-02-12-salud-bienvenida/",
+      "file_name": "2026-02-12-salud-bienvenida.md",
+      "reason": "Previously merged reset must disappear once Pages catches up.",
+      "deleted_at": "2026-04-02T23:44:21Z"
+    }
+  ]
+}

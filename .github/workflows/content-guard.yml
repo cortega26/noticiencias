@@ -1,7 +1,7 @@
 name: Content Guard
 on:
   pull_request:
-    paths: ["src/content/**/*.md", "src/content/**/*.mdx"]
+    branches: [main, master]
 
 permissions:
   contents: read

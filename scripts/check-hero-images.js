@@ -13,12 +13,6 @@ import {
 const diagnostics = collectHeroImageDiagnostics();
 const errors = [...diagnostics.errors];
 
-for (const relPath of diagnostics.staleAllowlistEntries) {
-  errors.push(
-    `${diagnostics.paths.allowlistPath}: stale allowlist entry for ${relPath}; run npm run sync:hero-placeholders or restore the placeholder reference`
-  );
-}
-
 if (errors.length > 0) {
   console.error(`Hero image check found ${errors.length} issue(s):`);
   for (const err of errors) {

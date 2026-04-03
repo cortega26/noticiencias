@@ -35,16 +35,6 @@ const metadata = {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <main class="lg:col-span-8">
         <SinglePost post={post} url={post.permalink || getPermalink(post.slug, 'post')}>
-           {post.image ? (
-            typeof post.image === 'string' ? (
-              <img slot="image" src={post.image} alt={post.title} class="w-full h-auto rounded-lg shadow-lg mb-6" />
-            ) : (
-             <img slot="image" src={post.image.src} alt={post.title} class="w-full h-auto rounded-lg shadow-lg mb-6" />
-            )
-          ) : (
-            <div slot="image" class="h-10"></div>
-          )}
-          
           {post.Content ? <post.Content /> : <Fragment set:html={post.content} />}
         </SinglePost>
       </main>

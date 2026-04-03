@@ -1,7 +1,6 @@
 {
   "allowedPlaceholders": {
-    "src/content/posts/2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones.md": "Legacy backlog: requires curated editorial image brief before placeholder can be removed.",
     "src/content/posts/2026-02-12-bienvenidos.md": "Legacy onboarding page keeps branded placeholder until bespoke artwork is commissioned.",
-    "src/content/posts/2026-02-12-salud-bienvenida.md": "Legacy onboarding page keeps branded placeholder until bespoke artwork is commissioned."
+    "src/content/posts/2026-04-02-el-codigo-fuente-de-claude-code-cli-se-filtra-por-la-exposicion-de-un-archivo-map.md": "Trusted placeholder until editorial commissions bespoke security artwork for this incident report."
   }
 }

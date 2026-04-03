@@ -9,6 +9,8 @@ tags: []
 excerpt: 'Alerta de seguridad: el código fuente completo de Claude Code Cli se filtró por un archivo Map expuesto. Conoce cómo ocurrió y protege tus proyectos.'
 source_url: https://arstechnica.com/ai/2026/03/entire-claude-code-cli-source-code-leaks-thanks-to-exposed-map-file/
 refinery_id: Entire Claude Code Cli Source Code Leaks Thanks To Exposed Map File
+image: "~/assets/images/default.png"
+image_alt: "Ilustración editorial para la filtración del código fuente de Claude Code CLI"
 headlines_variants:
   question: ¿Cómo un simple archivo Map pudo exponer el código fuente completo de Claude Code Cli?
   benefit: Aprende del incidente de Claude Code Cli para proteger tu propio código de archivos Map expuestos.
