@@ -49,13 +49,25 @@ function validateHtml(filePath) {
   const content = fs.readFileSync(filePath, 'utf-8');
   const $ = load(content);
   const relativePath = path.relative(DIST_DIR, filePath);
+  const mainNav = $('nav[aria-label="Main navigation"]').first();
+
+  if (mainNav.length) {
+    const navClasses = mainNav.attr('class') || '';
+    if (navClasses.includes('lg:overflow-x-auto')) {
+      console.error(
+        `${RED}[FAIL] ${relativePath}: Main navigation still uses desktop horizontal auto overflow, which turns open dropdowns into scroll containers.${RESET}`
+      );
+      errorCount++;
+    }
+  }
 
   $('img').each((_i, el) => {
     const src = $(el).attr('src');
     const alt = $(el).attr('alt');
     const width = $(el).attr('width');
     const height = $(el).attr('height');
-    
+    const crossorigin = $(el).attr('crossorigin');
+
     // Invariant 1: No build-time aliases in production source
     if (src.startsWith('~/') || src.startsWith('@/')) {
       console.error(`${RED}[FAIL] ${relativePath}: Image src contains alias: "${src}"${RESET}`);
@@ -86,6 +98,13 @@ function validateHtml(filePath) {
         console.error(`${YELLOW}[WARN] ${relativePath}: Image missing width/height (CLS Risk). Src: "${src}"${RESET}`);
         // errorCount++; // Uncomment to enforce strictly
       }
+    }
+
+    if (crossorigin && src.startsWith('https://www.cdn.noticiencias.com/')) {
+      console.error(
+        `${RED}[FAIL] ${relativePath}: CDN image opts into crossorigin without matching CORS headers, which breaks rendering in the browser. Src: "${src}"${RESET}`
+      );
+      errorCount++;
     }
   });
 

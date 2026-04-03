@@ -79,7 +79,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </div>
     </div>
     <nav
-      class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-y-visible lg:overflow-x-auto lg:justify-self-center"
+      class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-visible lg:justify-self-center"
       aria-label="Main navigation"
     >
       <ul
@@ -99,7 +99,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
                   </button>
-                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
+                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 lg:top-full lg:mt-1 lg:z-50 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
