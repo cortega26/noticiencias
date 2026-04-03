@@ -62,7 +62,7 @@ const subPostsWithImages = await Promise.all(
 
         {/* Content Overlay - Glassmorphism Bottom Left */}
         <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
-             <div class="transform transition-transform duration-300 group-hover:-translate-y-2">
+             <div>
                  <div class="mb-3">
                     {mainPost.category && (
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-indigo-500/20 text-indigo-100 backdrop-blur-md border border-indigo-500/30">
@@ -71,7 +71,7 @@ const subPostsWithImages = await Promise.all(
                     )}
                  </div>
                  
-                 <h2 class="text-3xl md:text-5xl font-bold font-serif text-white leading-tight tracking-tight mb-4 drop-shadow-md">
+                 <h2 class="text-3xl md:text-5xl font-bold font-serif text-white leading-tight mb-4">
                     {mainPost.title}
                  </h2>
 
