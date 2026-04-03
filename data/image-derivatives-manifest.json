@@ -587,6 +587,41 @@
       }
     ]
   },
+  "~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg": {
+    "originalWidth": 2000,
+    "originalHeight": 1333,
+    "hash": "eef630d43925d53f",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.1400.avif"
+      },
+      {
+        "width": 2000,
+        "height": 1333,
+        "format": "avif",
+        "objectKey": "posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.2000.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.eef630d43925d53f.2000.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
