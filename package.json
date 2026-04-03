@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:audit": "vitest run",
+    "check:content-quality": "node scripts/check-content-quality.js",
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
     "check:published-sidecars": "node scripts/check-published-sidecars.js",
@@ -16,12 +17,12 @@
     "check:image-derivatives": "node scripts/check-image-derivatives.js",
     "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
-    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && eslint .",
+    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && npm run check:content-quality && eslint .",
     "lint-fix": "eslint . --fix",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
-    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && astro sync && astro check && npm run check:freeze"
+    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && npm run check:content-quality && astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
