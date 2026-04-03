@@ -7,6 +7,12 @@
       "deleted_at": "2026-04-02T23:38:14Z"
     },
     {
+      "path": "/editorial/2026-02-12-bienvenidos/",
+      "file_name": "2026-02-12-bienvenidos.md",
+      "reason": "Route should disappear after merged unpublish.",
+      "deleted_at": "2026-04-03T00:30:57Z"
+    },
+    {
       "path": "/salud/2026-02-12-salud-bienvenida/",
       "file_name": "2026-02-12-salud-bienvenida.md",
       "reason": "Previously merged reset must disappear once Pages catches up.",
