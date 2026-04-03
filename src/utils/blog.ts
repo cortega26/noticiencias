@@ -1,9 +1,10 @@
-import type { PaginateFunction } from 'astro';
+import type { Page, PaginateFunction } from 'astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post, Taxonomy } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { getConfiguredCategoryTaxonomies } from './categorySections';
 
 const generatePermalink = async ({
   id,
@@ -249,7 +250,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories: Record<string, Taxonomy> = {};
+  const categories: Record<string, Taxonomy> = getConfiguredCategoryTaxonomies();
   posts.map((post) => {
     if (post.category?.slug) {
       categories[post.category?.slug] = post.category;
@@ -257,14 +258,47 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   });
 
   return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
-    paginate(
-      posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
-      {
-        params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
+    {
+      const categoryPosts = posts.filter(
+        (post) => post.category?.slug && categorySlug === post.category?.slug
+      );
+
+      if (categoryPosts.length === 0) {
+        const currentPath = `/${CATEGORY_BASE}/${categorySlug}/`;
+        const emptyCategoryPage: Page<Post> = {
+          data: [],
+          start: 0,
+          end: 0,
+          total: 0,
+          currentPage: 1,
+          size: blogPostsPerPage,
+          lastPage: 1,
+          url: {
+            current: currentPath,
+            prev: undefined,
+            next: undefined,
+            first: undefined,
+            last: undefined,
+          },
+        };
+
+        return [
+          {
+            params: { category: categorySlug, page: undefined },
+            props: {
+              category: categories[categorySlug],
+              page: emptyCategoryPage,
+            },
+          },
+        ];
+      }
+
+      return paginate(categoryPosts, {
+        params: { category: categorySlug },
         pageSize: blogPostsPerPage,
         props: { category: categories[categorySlug] },
-      }
-    )
+      });
+    }
   );
 };
 

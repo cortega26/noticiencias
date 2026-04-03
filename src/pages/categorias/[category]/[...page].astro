@@ -4,10 +4,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Headline from '~/components/template/blog/Headline.astro';
 import BlogList from '~/components/template/blog/List.astro';
 import Pagination from '~/components/template/blog/Pagination.astro';
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
-export const getStaticPaths = getStaticPathsBlogCategory;
+export const getStaticPaths = getStaticPathsBlogCategory satisfies GetStaticPaths;
 
-const { page, category } = Astro.props;
+const { page, category } = Astro.props as InferGetStaticPropsType<typeof getStaticPaths>;
 
 const metadata = {
   title: `Categoría: ${category?.title || ''}`,
@@ -24,7 +25,13 @@ const metadata = {
         Categoría: <span class="capitalize">{category?.title}</span>
     </Headline>
     
-    <BlogList posts={page.data} />
+    {page.data.length > 0 ? (
+      <BlogList posts={page.data} />
+    ) : (
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 p-8 text-center text-slate-600 dark:text-slate-300">
+        Esta sección no tiene artículos publicados por ahora.
+      </div>
+    )}
     
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>

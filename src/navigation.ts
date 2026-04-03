@@ -1,63 +1,15 @@
 import { getPermalink, getAsset } from './utils/permalinks';
+import { configuredCategorySections } from './utils/categorySections';
 
-const publishedCategorySections = [
-  {
-    text: 'Astronomía',
-    href: getPermalink('/categorias/astronomia/'),
-    description: 'Espacio, cosmología y exploración del universo.',
-    icon: 'tabler:telescope',
-    showInHeader: true,
-  },
-  {
-    text: 'Salud',
-    href: getPermalink('/categorias/salud/'),
-    description: 'Medicina, bienestar y avances clínicos con impacto humano.',
-    icon: 'tabler:heart-rate-monitor',
-    showInHeader: true,
-  },
-  {
-    text: 'Tecnología',
-    href: getPermalink('/categorias/tecnologia/'),
-    description: 'Innovación, IA, plataformas y sistemas digitales.',
-    icon: 'tabler:device-laptop',
-    showInHeader: true,
-  },
-  {
-    text: 'Editorial',
-    href: getPermalink('/categorias/editorial/'),
-    description: 'Piezas propias de Noticiencias sobre criterio, enfoque y contexto.',
-    icon: 'tabler:news',
-    showInHeader: true,
-  },
-  {
-    text: 'Física',
-    href: getPermalink('/categorias/fisica/'),
-    description: 'Mecánica cuántica, materia y fenómenos físicos fundamentales.',
-    icon: 'tabler:atom-2',
-    showInHeader: false,
-  },
-  {
-    text: 'Química',
-    href: getPermalink('/categorias/quimica/'),
-    description: 'Materiales, compuestos, reacciones y catálisis.',
-    icon: 'tabler:flask',
-    showInHeader: false,
-  },
-  {
-    text: 'Biología',
-    href: getPermalink('/categorias/biologia/'),
-    description: 'Vida no humana, genética, evolución y biodiversidad.',
-    icon: 'tabler:dna-2',
-    showInHeader: false,
-  },
-  {
-    text: 'Arqueología',
-    href: getPermalink('/categorias/arqueologia/'),
-    description: 'Hallazgos materiales y reconstrucciones del pasado humano.',
-    icon: 'tabler:brush',
-    showInHeader: false,
-  },
-];
+const publishedCategorySections = configuredCategorySections.map(
+  ({ title, slug, description, icon, showInHeader }) => ({
+    text: title,
+    href: getPermalink(slug, 'category'),
+    description,
+    icon,
+    showInHeader,
+  })
+);
 
 export const homeSectionItems = publishedCategorySections.map(
   ({ text, href, description, icon }) => ({
