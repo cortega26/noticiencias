@@ -26,6 +26,15 @@ jobs:
       - name: 🔍 Frontmatter & Type Validation
         run: npm run validate:content
 
+      - name: 🏗️ Build Frontend
+        run: npm run build
+
+      - name: 🧪 Dist Sanity
+        run: npm run test:dist
+
+      - name: ✅ Audit Suite
+        run: npm run test:audit
+
       - name: 🔗 Link Checker
         uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
         with:

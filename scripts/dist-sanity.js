@@ -1,12 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import { load } from 'cheerio';
+import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
+const POSTS_DIR = path.resolve(__dirname, '../src/content/posts');
+const DEFAULT_HERO_IMAGE = '~/assets/images/default.png';
 
 // Colors for console output
 const RED = '\x1b[31m';
@@ -16,6 +19,70 @@ const RESET = '\x1b[0m';
 
 let errorCount = 0;
 let fileCount = 0;
+
+function slugifySegment(value) {
+  return String(value)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function resolvePostRoute(fileName, data) {
+  const permalink = typeof data.permalink === 'string' ? data.permalink.trim() : '';
+  if (permalink) {
+    return `/${permalink.replace(/^\/+|\/+$/g, '')}/`;
+  }
+
+  const categories = Array.isArray(data.categories) ? data.categories : [];
+  const firstCategory = typeof categories[0] === 'string' ? categories[0].trim() : '';
+  if (!firstCategory) {
+    return null;
+  }
+
+  return `/${slugifySegment(firstCategory)}/${path.basename(fileName, path.extname(fileName))}/`;
+}
+
+function getFrontmatterImageSource(data) {
+  if (typeof data.image === 'string') {
+    return data.image.trim();
+  }
+  if (
+    data.image &&
+    typeof data.image === 'object' &&
+    typeof data.image.src === 'string'
+  ) {
+    return data.image.src.trim();
+  }
+  return '';
+}
+
+function isAliasPath(src = '') {
+  return src.startsWith('~/') || src.startsWith('@/');
+}
+
+function isResolvableImageSrc(src = '') {
+  return Boolean(src) && !isAliasPath(src) && (
+    src.startsWith('/') ||
+    src.startsWith('http://') ||
+    src.startsWith('https://') ||
+    src.startsWith('data:')
+  );
+}
+
+function isAvifUrl(src = '') {
+  return /\.avif(?:[?#].*)?$/i.test(src);
+}
+
+function isDefaultRenderedImageUrl(src = '') {
+  const value = String(src).toLowerCase();
+  return (
+    value.includes('/default.') ||
+    value.endsWith('/default.png') ||
+    value.includes('posts/default.')
+  );
+}
 
 function scanDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -124,8 +191,84 @@ function validateHtml(filePath) {
   }
 }
 
+function auditBuiltArticleHeroes() {
+  if (!fs.existsSync(POSTS_DIR)) {
+    return;
+  }
+
+  const postFiles = fs
+    .readdirSync(POSTS_DIR)
+    .filter((fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'));
+
+  for (const fileName of postFiles) {
+    const postPath = path.join(POSTS_DIR, fileName);
+    const { data } = matter(fs.readFileSync(postPath, 'utf8'));
+    const imageSource = getFrontmatterImageSource(data);
+
+    if (!imageSource) {
+      continue;
+    }
+
+    const route = resolvePostRoute(fileName, data);
+    if (!route) {
+      console.error(`${RED}[FAIL] ${fileName}: Unable to resolve built route for hero audit.${RESET}`);
+      errorCount++;
+      continue;
+    }
+
+    const htmlPath = path.join(DIST_DIR, route.replace(/^\/+|\/+$/g, ''), 'index.html');
+    if (!fs.existsSync(htmlPath)) {
+      console.error(`${RED}[FAIL] ${fileName}: Built article missing at ${htmlPath}.${RESET}`);
+      errorCount++;
+      continue;
+    }
+
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    const $ = load(html);
+    const headerImage = $('main article header img').first();
+
+    if (headerImage.length === 0) {
+      console.error(`${RED}[FAIL] ${fileName}: Article header hero image missing in built HTML.${RESET}`);
+      errorCount++;
+      continue;
+    }
+
+    const headerSrc = (headerImage.attr('src') || '').trim();
+    const headerWidth = (headerImage.attr('width') || '').trim();
+    const headerHeight = (headerImage.attr('height') || '').trim();
+
+    if (!isResolvableImageSrc(headerSrc)) {
+      console.error(`${RED}[FAIL] ${fileName}: Article header hero src is not resolvable: "${headerSrc}".${RESET}`);
+      errorCount++;
+    }
+
+    if (!headerWidth || !headerHeight) {
+      console.error(`${RED}[FAIL] ${fileName}: Article header hero is missing width/height.${RESET}`);
+      errorCount++;
+    }
+
+    const avifSource = $('main article header picture source[type="image/avif"]').first();
+    if (avifSource.length > 0 && isAvifUrl(headerSrc)) {
+      console.error(`${RED}[FAIL] ${fileName}: AVIF hero is missing a non-AVIF img fallback.${RESET}`);
+      errorCount++;
+    }
+
+    const ogImage = ($('meta[property="og:image"]').attr('content') || '').trim();
+    if (imageSource !== DEFAULT_HERO_IMAGE) {
+      if (!ogImage) {
+        console.error(`${RED}[FAIL] ${fileName}: Article-specific hero is missing og:image metadata.${RESET}`);
+        errorCount++;
+      } else if (isDefaultRenderedImageUrl(ogImage)) {
+        console.error(`${RED}[FAIL] ${fileName}: og:image points at the default placeholder for an article-specific hero.${RESET}`);
+        errorCount++;
+      }
+    }
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 scanDir(DIST_DIR);
+auditBuiltArticleHeroes();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);

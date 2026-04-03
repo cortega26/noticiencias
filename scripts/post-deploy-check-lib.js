@@ -105,6 +105,29 @@ function formatHeadersForLog(headers = {}) {
   return [server, cfRay].filter(Boolean).join(', ');
 }
 
+function isResolvableUrlLike(value = '') {
+  return (
+    Boolean(value) &&
+    (value.startsWith('/') ||
+      value.startsWith('http://') ||
+      value.startsWith('https://') ||
+      value.startsWith('data:'))
+  );
+}
+
+function isAvifUrl(value = '') {
+  return /\.avif(?:[?#].*)?$/i.test(String(value));
+}
+
+function isDefaultHeroUrl(value = '') {
+  const normalized = String(value).toLowerCase();
+  return (
+    normalized.includes('/default.') ||
+    normalized.endsWith('/default.png') ||
+    normalized.includes('posts/default.')
+  );
+}
+
 function hasEdgeMarkers(url, headers = {}, body = '') {
   if (!isCustomDomain(url)) return false;
 
@@ -446,17 +469,41 @@ export function verifyHomeHtml(html, targetUrl) {
     throw new Error(`Home page has fewer than 3 articles. Found: ${articles.length}`);
   }
 
-  const firstArticleLink = articles.first().find('a[href]').attr('href');
-  if (!firstArticleLink) {
+  const articleUrls = [];
+  const seenArticleUrls = new Set();
+
+  articles.each((_, article) => {
+    if (articleUrls.length >= 3) {
+      return false;
+    }
+
+    const href = $(article).find('a[href]').first().attr('href');
+    if (!href) {
+      return undefined;
+    }
+
+    const resolvedUrl = new URL(href, targetUrl).toString();
+    if (seenArticleUrls.has(resolvedUrl)) {
+      return undefined;
+    }
+
+    seenArticleUrls.add(resolvedUrl);
+    articleUrls.push(resolvedUrl);
+    return undefined;
+  });
+
+  if (articleUrls.length === 0) {
     return {
       articleUrl: null,
+      articleUrls: [],
       warnings: ['No article link found on the home page; skipping article detail verification.'],
       articleCount: articles.length,
     };
   }
 
   return {
-    articleUrl: new URL(firstArticleLink, targetUrl).toString(),
+    articleUrl: articleUrls[0],
+    articleUrls,
     warnings: [],
     articleCount: articles.length,
   };
@@ -464,22 +511,52 @@ export function verifyHomeHtml(html, targetUrl) {
 
 /**
  * @param {string} html
+ * @param {string} articleUrl
  */
-export function verifyArticleHtml(html) {
+export function verifyArticleHtml(html, articleUrl) {
   const $ = load(html);
   const title = $('title').text();
   const h1 = $('h1').text();
-  const warnings = [];
 
   if (h1.includes('404') || title.includes('404')) {
     throw new Error('Article page appears to be a 404.');
   }
 
-  if ($('img').length === 0) {
-    warnings.push('Article has no images.');
+  const headerImage = $('main article header img').first();
+  if (headerImage.length === 0) {
+    throw new Error('Article header hero image missing.');
   }
 
-  return { warnings };
+  const headerSrc = (headerImage.attr('src') || '').trim();
+  if (!isResolvableUrlLike(headerSrc)) {
+    throw new Error(`Article header hero src is not resolvable: ${headerSrc || '<empty>'}`);
+  }
+
+  if (!headerImage.attr('width') || !headerImage.attr('height')) {
+    throw new Error('Article header hero image is missing width/height.');
+  }
+
+  const avifSource = $('main article header picture source[type="image/avif"]').first();
+  if (avifSource.length > 0 && isAvifUrl(headerSrc)) {
+    throw new Error('Article AVIF hero is missing a non-AVIF img fallback.');
+  }
+
+  const resolvedHeroImageUrl = new URL(headerSrc, articleUrl).toString();
+  const ogImage = ($('meta[property="og:image"]').attr('content') || '').trim();
+
+  if (!isDefaultHeroUrl(resolvedHeroImageUrl)) {
+    if (!ogImage) {
+      throw new Error('Article-specific hero is missing og:image metadata.');
+    }
+    if (isDefaultHeroUrl(ogImage)) {
+      throw new Error('Article og:image points at the default placeholder while the article hero is specific.');
+    }
+  }
+
+  return {
+    warnings: [],
+    heroImageUrl: resolvedHeroImageUrl,
+  };
 }
 
 /**
@@ -685,10 +762,10 @@ export async function runPostDeployCheck(
     logger.info(`${GREEN}[PASS] Home Route HTML OK (${homeRouteResult.clientRouterScripts} ClientRouter script)${RESET}`);
   }
 
-  if (homeResult.articleUrl) {
-    logger.info(`Checking Article: ${homeResult.articleUrl}...`);
+  for (const articleUrl of homeResult.articleUrls) {
+    logger.info(`Checking Article: ${articleUrl}...`);
 
-    const articleProbe = await probeUrl(homeResult.articleUrl, {
+    const articleProbe = await probeUrl(articleUrl, {
       mode,
       fetchImpl,
       curlRunner,
@@ -702,8 +779,28 @@ export async function runPostDeployCheck(
     if (articleProbe.outcome === 'warning') {
       warnings.push(articleProbe.warning);
     } else {
-      const articleResult = verifyArticleHtml(articleProbe.result.body);
+      const articleResult = verifyArticleHtml(articleProbe.result.body, articleUrl);
       warnings.push(...articleResult.warnings);
+
+      if (articleResult.heroImageUrl) {
+        const heroImageProbe = await probeUrl(articleResult.heroImageUrl, {
+          mode,
+          fetchImpl,
+          curlRunner,
+          retryDelaysMs,
+          sleep,
+          logger,
+          timeoutMs,
+          userAgent,
+        });
+
+        if (heroImageProbe.outcome === 'warning') {
+          warnings.push(heroImageProbe.warning);
+        } else {
+          logger.info(`${GREEN}[PASS] Article Hero OK (${articleResult.heroImageUrl})${RESET}`);
+        }
+      }
+
       logger.info(`${GREEN}[PASS] Article Page OK${RESET}`);
     }
   }

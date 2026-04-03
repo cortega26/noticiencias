@@ -21,12 +21,26 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const metadataImage = (() => {
+  if (!post.image) {
+    return [];
+  }
+
+  if (typeof post.image === 'string') {
+    return [{ url: post.image }];
+  }
+
+  return post.image.src ? [{ url: post.image.src }] : [];
+})();
 
 const metadata = {
   title: post.title,
   description: post.excerpt,
-  image: post.image,
   canonical: post.metadata?.canonical || (post.permalink ? undefined : getPermalink(post.slug, 'post')),
+  openGraph: {
+    type: 'article',
+    images: metadataImage,
+  },
 };
 ---
 

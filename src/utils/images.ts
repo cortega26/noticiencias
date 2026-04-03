@@ -140,6 +140,12 @@ const optimizeOpenGraphImage = async (image: { url?: string } | undefined, astro
       };
     }
 
+    if (typeof resolvedImage === 'string' && resolvedImage.startsWith('/')) {
+      return {
+        url: String(new URL(getAsset(resolvedImage), astroSite)),
+      };
+    }
+
     let _image: OptimizedImage | undefined;
 
     if (

@@ -8,6 +8,7 @@ import { describe, expect, it } from 'vitest';
 const repoRoot = path.join(__dirname, '..');
 const distDir = path.join(repoRoot, 'dist');
 const postsDir = path.join(repoRoot, 'src', 'content', 'posts');
+const DEFAULT_HERO_IMAGE = '~/assets/images/default.png';
 
 function slugifySegment(value: string): string {
   return value
@@ -31,6 +32,41 @@ function resolvePostRoute(fileName: string, data: Record<string, unknown>): stri
   }
 
   return `/${slugifySegment(firstCategory)}/${path.basename(fileName, '.md')}/`;
+}
+
+function getFrontmatterImageSource(data: Record<string, unknown>): string {
+  if (typeof data.image === 'string') {
+    return data.image.trim();
+  }
+
+  if (
+    data.image &&
+    typeof data.image === 'object' &&
+    'src' in data.image &&
+    typeof (data.image as { src?: unknown }).src === 'string'
+  ) {
+    return ((data.image as { src: string }).src || '').trim();
+  }
+
+  return '';
+}
+
+function isDefaultRenderedImageUrl(value: string): boolean {
+  const normalized = value.toLowerCase();
+  return (
+    normalized.includes('/default.') ||
+    normalized.endsWith('/default.png') ||
+    normalized.includes('posts/default.')
+  );
+}
+
+function isResolvableImageSrc(value: string): boolean {
+  return Boolean(value) && !value.startsWith('~/') && !value.startsWith('@/') && (
+    value.startsWith('/') ||
+    value.startsWith('http://') ||
+    value.startsWith('https://') ||
+    value.startsWith('data:')
+  );
 }
 
 describe('article hero rendering', () => {
@@ -74,6 +110,24 @@ describe('article hero rendering', () => {
         expect(
           fallbackSrc.endsWith('.avif'),
           `AVIF hero in ${fileName} must include a non-AVIF img fallback`
+        ).toBe(false);
+      }
+
+      const fallbackSrc = headerImage.first().attr('src') ?? '';
+      expect(
+        isResolvableImageSrc(fallbackSrc),
+        `Hero fallback src in ${fileName} must be resolvable`
+      ).toBe(true);
+      expect(headerImage.first().attr('width'), `Hero fallback width missing in ${fileName}`).toBeTruthy();
+      expect(headerImage.first().attr('height'), `Hero fallback height missing in ${fileName}`).toBeTruthy();
+
+      const imageSource = getFrontmatterImageSource(data);
+      const ogImage = $('meta[property="og:image"]').attr('content') ?? '';
+      if (imageSource && imageSource !== DEFAULT_HERO_IMAGE) {
+        expect(ogImage, `og:image missing in ${fileName}`).toBeTruthy();
+        expect(
+          isDefaultRenderedImageUrl(ogImage),
+          `og:image in ${fileName} must not point at the default placeholder`
         ).toBe(false);
       }
     }
