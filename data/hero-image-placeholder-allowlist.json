@@ -1,6 +1,5 @@
 {
   "allowedPlaceholders": {
-    "src/content/posts/2026-02-12-bienvenidos.md": "Legacy onboarding page keeps branded placeholder until bespoke artwork is commissioned.",
-    "src/content/posts/2026-04-02-el-codigo-fuente-de-claude-code-cli-se-filtra-por-la-exposicion-de-un-archivo-map.md": "Editorial placeholder remains until a source-safe custom hero is prepared for the Claude Code leak article."
+    "src/content/posts/2026-02-12-bienvenidos.md": "Legacy onboarding page keeps branded placeholder until bespoke artwork is commissioned."
   }
 }
