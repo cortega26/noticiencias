@@ -62,10 +62,20 @@ describe('article hero rendering', () => {
 
       const html = fs.readFileSync(htmlPath, 'utf8');
       const $ = load(html);
+      const headerImage = $('main article header img');
       expect(
-        $('main article header img').length,
+        headerImage.length,
         `Hero image missing in built article ${fileName}`
       ).toBeGreaterThan(0);
+
+      const avifSource = $('main article header picture source[type="image/avif"]');
+      if (avifSource.length > 0) {
+        const fallbackSrc = headerImage.first().attr('src') ?? '';
+        expect(
+          fallbackSrc.endsWith('.avif'),
+          `AVIF hero in ${fileName} must include a non-AVIF img fallback`
+        ).toBe(false);
+      }
     }
   });
 });
