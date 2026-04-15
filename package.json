@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "license": "UNLICENSED",
   "engines": {
-    "node": ">=22.20.0 <23"
+    "node": ">=24.0.0 <25"
   },
   "scripts": {
     "dev": "astro dev",
@@ -85,6 +85,7 @@
     "vitest": "^4.0.17"
   },
   "overrides": {
-    "lodash": "4.17.23"
+    "lodash": "4.17.23",
+    "yaml": ">=2.8.3"
   }
 }
