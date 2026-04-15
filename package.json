@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.1.0",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.20.0 <23"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "npm run publish:image-derivatives && astro build",
@@ -18,8 +21,10 @@
     "check:image-derivatives": "node scripts/check-image-derivatives.js",
     "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
-    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && npm run check:content-quality && eslint .",
-    "lint-fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-derivatives && npm run check:content-quality && npm run format:check && eslint .",
+    "lint-fix": "prettier --write . && eslint . --fix",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
     "test:deploy": "node scripts/post-deploy-check.js",
@@ -66,16 +71,18 @@
     "@types/node": "^25.0.8",
     "@typescript-eslint/eslint-plugin": "^8.53.0",
     "@typescript-eslint/parser": "^8.53.0",
+    "@vitest/coverage-v8": "4.0.18",
     "cheerio": "^1.1.2",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-no-secrets": "^2.2.1",
     "eslint-plugin-security": "^3.0.1",
     "glob": "^13.0.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17",
-    "@vitest/coverage-v8": "4.0.18"
+    "vitest": "^4.0.17"
   },
   "overrides": {
     "lodash": "4.17.23"

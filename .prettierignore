@@ -1,0 +1,11 @@
+dist/
+.astro/
+node_modules/
+public/
+reports/
+output/
+data/
+archive/
+backup/
+vendor/
+pnpm-lock.yaml
