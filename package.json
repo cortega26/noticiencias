@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "test:audit": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "check:content-quality": "node scripts/check-content-quality.js",
     "check:frontmatter-dates": "node scripts/check-frontmatter-dates.js",
     "check:hero-images": "node scripts/check-hero-images.js",
@@ -73,7 +74,8 @@
     "glob": "^13.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.17",
+    "@vitest/coverage-v8": "4.0.18"
   },
   "overrides": {
     "lodash": "4.17.23"
