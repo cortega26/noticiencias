@@ -65,6 +65,17 @@ Useful local commands:
 - [`docs/audits/2026-04-source-of-truth-audit.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/audits/2026-04-source-of-truth-audit.md): documentation audit for this pass.
 - [`docs/backlog/source-of-truth-backlog.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/backlog/source-of-truth-backlog.md): prioritized follow-up backlog.
 
+## Back-End System
+
+Content is collected, enriched, and published by the companion back-end repo
+[`noticiencias_news_collector`](../noticiencias_news_collector/).
+
+Key references for understanding the full system:
+
+- [`../noticiencias_news_collector/docs/PRODUCT_FLOW.md`](../noticiencias_news_collector/docs/PRODUCT_FLOW.md): end-to-end product flow from RSS article to live page.
+- [`../noticiencias_news_collector/docs/PIPELINE_CONTRACTS.md`](../noticiencias_news_collector/docs/PIPELINE_CONTRACTS.md): cross-repo contract shapes and failure semantics.
+- [`../noticiencias_news_collector/docs/RUNBOOK_LOCAL_DEV.md`](../noticiencias_news_collector/docs/RUNBOOK_LOCAL_DEV.md): local bootstrap guide for both repos.
+
 ## Notes
 
 - This repo does not currently use React islands or a separate client framework.
