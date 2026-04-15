@@ -2,14 +2,14 @@
 
 ## Prerequisites
 
-- Node.js 20 LTS
-- pnpm 9 (`npm install -g pnpm`)
+- Node.js 22.x (`nvm use` picks the right version from `.nvmrc`; CI uses Node 24)
+- npm (bundled with Node.js — do **not** use pnpm or yarn; see `docs/adr/0004-npm-over-pnpm.md`)
 - Optional: Cloudflare R2 credentials for CDN image mode (see `.env.example`)
 
 ## First-time setup
 
 ```bash
-pnpm install          # install all deps from lockfile
+npm ci                # install exact deps from package-lock.json
 cp .env.example .env  # fill in any overrides you need locally
 ```
 
