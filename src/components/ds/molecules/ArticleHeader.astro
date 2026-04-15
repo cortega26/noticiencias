@@ -20,50 +20,61 @@ interface Props {
 const { title, excerpt, publishDate, author, category, readingTime, image, imageAlt } = Astro.props;
 const resolvedImageAlt =
   imageAlt ||
-  (typeof image === 'object' && image && 'alt' in image && typeof image.alt === 'string' && image.alt.trim()
+  (typeof image === 'object' &&
+  image &&
+  'alt' in image &&
+  typeof image.alt === 'string' &&
+  image.alt.trim()
     ? image.alt
     : title);
 ---
 
 <header class="mb-8">
   <div class="flex flex-wrap items-center gap-3 mb-4 text-sm text-text-muted">
-     {category && (
+    {
+      category && (
         <TopicBadge topic={category.title} href={getPermalink(category.slug, 'category')} />
-     )}
-     <span class="flex items-center">
-        <Icon name="tabler:clock" class="w-4 h-4 mr-1" />
-        {getFormattedDate(publishDate)}
-     </span>
-     {readingTime && (
-        <span class="flex items-center">
-             · {readingTime} min lectura
-        </span>
-     )}
+      )
+    }
+    <span class="flex items-center">
+      <Icon name="tabler:clock" class="w-4 h-4 mr-1" />
+      {getFormattedDate(publishDate)}
+    </span>
+    {readingTime && <span class="flex items-center">· {readingTime} min lectura</span>}
   </div>
 
-  <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight font-heading text-text-heading mb-6">
+  <h1
+    class="text-4xl md:text-5xl font-bold leading-tight tracking-tight font-heading text-text-heading mb-6"
+  >
     {title}
   </h1>
 
-  {excerpt && (
-    <p class="text-xl md:text-2xl text-text-muted leading-relaxed mb-8">
-        {excerpt}
-    </p>
-  )}
+  {excerpt && <p class="text-xl md:text-2xl text-text-muted leading-relaxed mb-8">{excerpt}</p>}
 
   <div class="flex items-center gap-3 py-4 border-y border-border-subtle mb-8">
     <Avatar size="md" />
     <div>
-        <span class="block text-sm font-bold text-text-body uppercase tracking-wide">
-            {author || 'Equipo Editorial'}
-        </span>
-        <span class="text-xs text-text-muted">Noticiencias</span>
+      <span class="block text-sm font-bold text-text-body uppercase tracking-wide">
+        {author || 'Equipo Editorial'}
+      </span>
+      <span class="text-xs text-text-muted">Noticiencias</span>
     </div>
   </div>
 
-  {image && (
-    <div class="mb-8 rounded-lg overflow-hidden shadow-lg">
-         <Image src={image} alt={resolvedImageAlt} width={900} height={506} class="w-full h-auto" layout="cover" loading="eager" fetchpriority="high" />
-    </div>
-  )}
+  {
+    image && (
+      <div class="mb-8 rounded-lg overflow-hidden shadow-lg">
+        <Image
+          src={image}
+          alt={resolvedImageAlt}
+          width={900}
+          height={506}
+          class="w-full h-auto"
+          layout="cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    )
+  }
 </header>

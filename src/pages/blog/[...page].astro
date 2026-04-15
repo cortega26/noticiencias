@@ -5,7 +5,7 @@ import Headline from '~/components/template/blog/Headline.astro';
 import BlogList from '~/components/template/blog/List.astro';
 import Pagination from '~/components/template/blog/Pagination.astro';
 
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await fetchPosts();
@@ -29,12 +29,10 @@ const metadata = {
 
 <BaseLayout metadata={metadata}>
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline>
-        Últimas Publicaciones
-    </Headline>
-    
+    <Headline> Últimas Publicaciones </Headline>
+
     <BlogList posts={page.data} />
-    
+
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
 </BaseLayout>

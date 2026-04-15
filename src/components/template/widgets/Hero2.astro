@@ -77,7 +77,7 @@ const {
           image && (
             <div class="relative m-auto max-w-5xl intersect-once intersect-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
               {typeof image === 'string' ? (
-                (image.startsWith('http') || image.startsWith('/') || image.startsWith('~')) ? (
+                image.startsWith('http') || image.startsWith('/') || image.startsWith('~') ? (
                   <Image
                     class="mx-auto rounded-md w-full"
                     widths={[400, 768, 1024, 2040]}

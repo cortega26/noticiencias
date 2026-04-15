@@ -53,8 +53,8 @@ backend; may be added with `optional()` without backend coordination):
 
 ## Alternatives Rejected
 
-| Option | Reason rejected |
-|--------|-----------------|
-| Separate front-end schema layer | Requires dual-parsing every article at build time; adds complexity for no build-time benefit |
-| Loose schema with runtime validation | Static builds cannot surface missing-field errors at the point of rendering failure |
-| Per-field versioning | Overly granular; `schema_version` on the document is sufficient for coordinated migration |
+| Option                               | Reason rejected                                                                              |
+| ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Separate front-end schema layer      | Requires dual-parsing every article at build time; adds complexity for no build-time benefit |
+| Loose schema with runtime validation | Static builds cannot surface missing-field errors at the point of rendering failure          |
+| Per-field versioning                 | Overly granular; `schema_version` on the document is sufficient for coordinated migration    |

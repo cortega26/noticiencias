@@ -73,7 +73,7 @@ const {
           image && (
             <div class="relative m-auto max-w-4xl">
               {typeof image === 'string' ? (
-                (image.startsWith('http') || image.startsWith('/') || image.startsWith('~')) ? (
+                image.startsWith('http') || image.startsWith('/') || image.startsWith('~') ? (
                   <Image
                     class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
                     width={500}
@@ -82,7 +82,7 @@ const {
                     sizes="(max-width: 768px) 100vw, 432px"
                     layout="responsive"
                     src={image}
-                    alt="" 
+                    alt=""
                   />
                 ) : (
                   <Fragment set:html={image} />

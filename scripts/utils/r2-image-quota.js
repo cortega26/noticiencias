@@ -56,11 +56,7 @@ export function summarizeClassBUsage(groups) {
   };
 }
 
-export function decideImageDeliveryMode({
-  currentMode,
-  usageRatio,
-  manualMode = 'auto',
-}) {
+export function decideImageDeliveryMode({ currentMode, usageRatio, manualMode = 'auto' }) {
   const normalizedCurrentMode = parseImageDeliveryMode(currentMode);
 
   if (manualMode !== 'auto') {

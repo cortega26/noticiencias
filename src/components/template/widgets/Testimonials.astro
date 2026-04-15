@@ -19,7 +19,12 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`}
+  bg={bg}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -41,7 +46,7 @@ const {
                 {image && (
                   <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
                     {typeof image === 'string' ? (
-                      (image.startsWith('http') || image.startsWith('/') || image.startsWith('~')) ? (
+                      image.startsWith('http') || image.startsWith('/') || image.startsWith('~') ? (
                         <Image
                           class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-[40px]"
                           width={40}
@@ -49,7 +54,7 @@ const {
                           widths={[400, 768]}
                           layout="fixed"
                           src={image}
-                          alt="" 
+                          alt=""
                         />
                       ) : (
                         <Fragment set:html={image} />

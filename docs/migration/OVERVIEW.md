@@ -1,6 +1,7 @@
 # Jekyll + Minimal Mistakes → Astro Migration Plan for noticiencias.com
 
 ## Goal
+
 Migrate the site from Jekyll + Minimal Mistakes to Astro with zero broken URLs, preserved SEO, improved UX, GitHub Pages deployment via GitHub Actions, and clean documented architecture.
 
 ---
@@ -8,7 +9,9 @@ Migrate the site from Jekyll + Minimal Mistakes to Astro with zero broken URLs, 
 ## Phase 0 – Discovery & Freeze
 
 ### Repository Audit
+
 Inventory:
+
 - `_posts/**/*.md`
 - `_layouts`, `_includes`, `_data`
 - `_config.yml` (SEO, permalinks, metadata)
@@ -18,6 +21,7 @@ Inventory:
 - `feed.xml`, `sitemap.xml`
 
 ### Lock URLs
+
 - Build site with Jekyll.
 - Crawl sitemap and export all live URLs.
 - Save as `URL_PARITY_REPORT.csv`.
@@ -40,13 +44,17 @@ Enable integrations in `astro.config.mjs`.
 ## Phase 2 – Content Migration
 
 ### Move posts
+
 Copy `_posts` → `src/content/posts`.
 
 ### Normalize front‑matter
+
 Keep:
+
 - title, date, categories, tags, author, image, permalink.
 
 ### Define collection
+
 `src/content/config.ts` with Zod schema for posts.
 
 ---
@@ -60,10 +68,12 @@ Implement dynamic routes in `src/pages/[...slug].astro` using `getStaticPaths()`
 ## Phase 4 – Layouts & IA
 
 Create:
+
 - `BaseLayout.astro`
 - `PostLayout.astro`
 
 Features:
+
 - Reading time
 - Author profile block
 - TOC
@@ -75,6 +85,7 @@ Features:
 ## Phase 5 – Homepage Redesign
 
 Sections:
+
 - Lead story
 - Trending categories
 - Latest posts
@@ -107,6 +118,7 @@ Create client‑side search UI.
 ## Phase 9 – GitHub Pages Deployment
 
 Create `.github/workflows/deploy.yml`:
+
 - Build Astro
 - Push `/dist` to `gh-pages`
 
@@ -115,6 +127,7 @@ Create `.github/workflows/deploy.yml`:
 ## Phase 10 – Validation
 
 Checklist:
+
 - All legacy URLs reachable
 - Lighthouse > 90 mobile
 - RSS valid

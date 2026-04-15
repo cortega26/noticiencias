@@ -28,7 +28,7 @@ lockfile. `pnpm-lock.yaml` has been deleted. CI already enforces this via the
 
 ## Alternatives considered
 
-| Option | Reason rejected |
-|--------|-----------------|
-| Switch fully to pnpm | Would require updating CI cache keys, Node setup, and all workflow install steps without a material benefit |
-| Keep both lockfiles and pick by convention | Ongoing divergence risk; violates the principle that one canonical tool owns the lockfile |
+| Option                                     | Reason rejected                                                                                             |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Switch fully to pnpm                       | Would require updating CI cache keys, Node setup, and all workflow install steps without a material benefit |
+| Keep both lockfiles and pick by convention | Ongoing divergence risk; violates the principle that one canonical tool owns the lockfile                   |

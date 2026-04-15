@@ -209,7 +209,10 @@ function buildFailureSummary(result) {
  * @param {{ fetchImpl?: FetchLike; timeoutMs?: number; userAgent?: string }} [options]
  * @returns {Promise<ProbeResult>}
  */
-async function fetchText(url, { fetchImpl = fetch, timeoutMs = 15000, userAgent = DEFAULT_USER_AGENT } = {}) {
+async function fetchText(
+  url,
+  { fetchImpl = fetch, timeoutMs = 15000, userAgent = DEFAULT_USER_AGENT } = {}
+) {
   try {
     const response = await fetchImpl(url, {
       headers: buildFetchHeaders(userAgent),
@@ -390,7 +393,9 @@ export async function probeUrl(
     const delayMs = retryDelaysMs[attemptIndex];
 
     if (attemptIndex > 0 && delayMs > 0) {
-      logger.info(`Retrying ${url} in ${Math.ceil(delayMs / 1000)}s (${attemptIndex + 1}/${retryDelaysMs.length})...`);
+      logger.info(
+        `Retrying ${url} in ${Math.ceil(delayMs / 1000)}s (${attemptIndex + 1}/${retryDelaysMs.length})...`
+      );
       await sleep(delayMs);
     }
 
@@ -398,7 +403,9 @@ export async function probeUrl(
     const fetchClassification = classifyHttpResult(fetchResult);
 
     if (fetchClassification === 'ok') {
-      logger.info(`${GREEN}[PASS] ${url} reachable via fetch (${formatStatus(fetchResult.status)})${RESET}`);
+      logger.info(
+        `${GREEN}[PASS] ${url} reachable via fetch (${formatStatus(fetchResult.status)})${RESET}`
+      );
       return { outcome: 'success', result: fetchResult };
     }
 
@@ -411,7 +418,9 @@ export async function probeUrl(
       const curlClassification = classifyHttpResult(curlResult);
 
       if (curlClassification === 'ok') {
-        logger.info(`${GREEN}[PASS] ${url} reachable via curl fallback (${formatStatus(curlResult.status)})${RESET}`);
+        logger.info(
+          `${GREEN}[PASS] ${url} reachable via curl fallback (${formatStatus(curlResult.status)})${RESET}`
+        );
         return { outcome: 'success', result: curlResult };
       }
 
@@ -549,7 +558,9 @@ export function verifyArticleHtml(html, articleUrl) {
       throw new Error('Article-specific hero is missing og:image metadata.');
     }
     if (isDefaultHeroUrl(ogImage)) {
-      throw new Error('Article og:image points at the default placeholder while the article hero is specific.');
+      throw new Error(
+        'Article og:image points at the default placeholder while the article hero is specific.'
+      );
     }
   }
 
@@ -571,16 +582,22 @@ export function verifyRouteHtml(html) {
   }
 
   if (html.includes('rocket-loader.min.js')) {
-    throw new Error('HTML includes Cloudflare Rocket Loader. Disable Rocket Loader for Astro client-script routes.');
+    throw new Error(
+      'HTML includes Cloudflare Rocket Loader. Disable Rocket Loader for Astro client-script routes.'
+    );
   }
 
   const rewrittenScriptTypes = $('script[type]')
     .map((_, el) => $(el).attr('type'))
     .get()
-    .filter((type) => typeof type === 'string' && /^[a-f0-9]{20,}-(?:module|text\/javascript)$/.test(type));
+    .filter(
+      (type) => typeof type === 'string' && /^[a-f0-9]{20,}-(?:module|text\/javascript)$/.test(type)
+    );
 
   if (rewrittenScriptTypes.length > 0) {
-    throw new Error('HTML includes Cloudflare-rewritten script types that can defer Astro client scripts.');
+    throw new Error(
+      'HTML includes Cloudflare-rewritten script types that can defer Astro client scripts.'
+    );
   }
 
   return {
@@ -691,7 +708,9 @@ async function verifyDeletedRouteUnavailable(
         continue;
       }
 
-      logger.info(`${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(curlResult.status)})${RESET}`);
+      logger.info(
+        `${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(curlResult.status)})${RESET}`
+      );
       return;
     }
 
@@ -699,7 +718,9 @@ async function verifyDeletedRouteUnavailable(
       continue;
     }
 
-    logger.info(`${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(fetchResult.status)})${RESET}`);
+    logger.info(
+      `${GREEN}[PASS] Deleted route unavailable: ${routePath} (${formatStatus(fetchResult.status)})${RESET}`
+    );
     return;
   }
 
@@ -734,7 +755,9 @@ export async function runPostDeployCheck(
     ? deletedRoutes
     : readDeletedRouteSmokeChecks();
 
-  logger.info(`${YELLOW}Starting Post-Deploy Check against: ${targetUrl} (mode=${normalizeMode(mode)})${RESET}`);
+  logger.info(
+    `${YELLOW}Starting Post-Deploy Check against: ${targetUrl} (mode=${normalizeMode(mode)})${RESET}`
+  );
   logger.info('Checking Home Page...');
 
   const homeProbe = await probeUrl(targetUrl, {
@@ -759,7 +782,9 @@ export async function runPostDeployCheck(
 
   const homeRouteResult = verifyRouteHtml(homeProbe.result.body);
   if (homeRouteResult.clientRouterScripts > 0) {
-    logger.info(`${GREEN}[PASS] Home Route HTML OK (${homeRouteResult.clientRouterScripts} ClientRouter script)${RESET}`);
+    logger.info(
+      `${GREEN}[PASS] Home Route HTML OK (${homeRouteResult.clientRouterScripts} ClientRouter script)${RESET}`
+    );
   }
 
   for (const articleUrl of homeResult.articleUrls) {

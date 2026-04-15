@@ -19,66 +19,90 @@ if (mode === 'intro' && !hasIntroContent) return null;
 if (mode === 'footer' && !hasFooterContent) return null;
 ---
 
-{mode === 'intro' && (
-  <DataBox variant="info" icon="tabler:info-circle">
-    {factCheck && factCheck.length > 0 && (
-      <div class="mb-4 flex flex-wrap gap-2">
-        {factCheck.map((check) => (
-          <Badge 
-            variant={check.status === 'verified' ? 'success' : check.status === 'debunked' ? 'error' : 'info'}
-            icon={check.status === 'verified' ? 'tabler:check' : check.status === 'debunked' ? 'tabler:x' : undefined}
-          >
-            {check.label}
-          </Badge>
-        ))}
-      </div>
-    )}
+{
+  mode === 'intro' && (
+    <DataBox variant="info" icon="tabler:info-circle">
+      {factCheck && factCheck.length > 0 && (
+        <div class="mb-4 flex flex-wrap gap-2">
+          {factCheck.map((check) => (
+            <Badge
+              variant={
+                check.status === 'verified'
+                  ? 'success'
+                  : check.status === 'debunked'
+                    ? 'error'
+                    : 'info'
+              }
+              icon={
+                check.status === 'verified'
+                  ? 'tabler:check'
+                  : check.status === 'debunked'
+                    ? 'tabler:x'
+                    : undefined
+              }
+            >
+              {check.label}
+            </Badge>
+          ))}
+        </div>
+      )}
 
-    {whyItMatters && whyItMatters.length > 0 && (
-      <div>
-        <h3 class="font-bold text-text-body uppercase text-xs tracking-wider mb-2 flex items-center">
+      {whyItMatters && whyItMatters.length > 0 && (
+        <div>
+          <h3 class="font-bold text-text-body uppercase text-xs tracking-wider mb-2 flex items-center">
             <Icon name="tabler:bulb" class="w-4 h-4 mr-1.5" />
             Por qué esto importa
-        </h3>
-        <ul class="list-none space-y-2 m-0 p-0">
-          {whyItMatters.map((item) => (
-            <li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-action-primary before:font-bold text-sm md:text-base leading-relaxed text-text-body">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-  </DataBox>
-)}
+          </h3>
+          <ul class="list-none space-y-2 m-0 p-0">
+            {whyItMatters.map((item) => (
+              <li class="relative pl-5 before:content-['•'] before:absolute before:left-0 before:text-action-primary before:font-bold text-sm md:text-base leading-relaxed text-text-body">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </DataBox>
+  )
+}
 
-{mode === 'footer' && sources && sources.length > 0 && (
+{
+  mode === 'footer' && sources && sources.length > 0 && (
     <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <details class="group">
-            <summary class="flex items-center cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
-                <Icon name="tabler:link" class="w-4 h-4 mr-2" />
-                Fuentes y Referencias
-                <Icon name="tabler:chevron-down" class="w-4 h-4 ml-auto transform group-open:rotate-180 transition-transform" />
-            </summary>
-            <div class="mt-4 pl-6 text-sm">
-                <ul class="space-y-3">
-                    {sources.map(source => (
-                        <li>
-                            <a href={source.url} target="_blank" rel="nofollow noopener" class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-2 -ml-2 rounded transition-colors">
-                                <span class="font-medium text-primary hover:underline break-words">
-                                    {source.title}
-                                    <Icon name="tabler:external-link" class="w-3 h-3 inline ml-1 opacity-50" />
-                                </span>
-                                {(source.publisher || source.date) && (
-                                    <span class="text-xs text-gray-500 mt-1">
-                                        {source.publisher} {source.publisher && source.date && "•"} {source.date}
-                                    </span>
-                                )}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </details>
+      <details class="group">
+        <summary class="flex items-center cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+          <Icon name="tabler:link" class="w-4 h-4 mr-2" />
+          Fuentes y Referencias
+          <Icon
+            name="tabler:chevron-down"
+            class="w-4 h-4 ml-auto transform group-open:rotate-180 transition-transform"
+          />
+        </summary>
+        <div class="mt-4 pl-6 text-sm">
+          <ul class="space-y-3">
+            {sources.map((source) => (
+              <li>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="nofollow noopener"
+                  class="group flex flex-col hover:bg-gray-50 dark:hover:bg-gray-800 p-2 -ml-2 rounded transition-colors"
+                >
+                  <span class="font-medium text-primary hover:underline break-words">
+                    {source.title}
+                    <Icon name="tabler:external-link" class="w-3 h-3 inline ml-1 opacity-50" />
+                  </span>
+                  {(source.publisher || source.date) && (
+                    <span class="text-xs text-gray-500 mt-1">
+                      {source.publisher} {source.publisher && source.date && '•'} {source.date}
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
     </div>
-)}
+  )
+}

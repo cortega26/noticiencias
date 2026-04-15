@@ -21,23 +21,22 @@ const metadata = {
 ---
 
 <BaseLayout metadata={metadata}>
-  
   <div class="container mx-auto px-4 py-8">
-     {/* Hero Grid Section */}
-     <HeroGrid posts={heroPosts} />
+    {/* Hero Grid Section */}
+    <HeroGrid posts={heroPosts} />
 
-     {/* Latest News Section */}
-     <div class="mb-12">
-        <div class="flex items-center justify-between mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">
-            <h2 class="text-2xl font-bold font-heading text-text-body">
-                Lo último
-            </h2>
-            <a href="/blog" class="text-sm font-medium text-action-primary hover:underline">
-                Ver todo el archivo &raquo;
-            </a>
-        </div>
-        <Grid posts={morePosts} />
-     </div>
+    {/* Latest News Section */}
+    <div class="mb-12">
+      <div
+        class="flex items-center justify-between mb-6 border-b border-gray-200 dark:border-gray-700 pb-2"
+      >
+        <h2 class="text-2xl font-bold font-heading text-text-body">Lo último</h2>
+        <a href="/blog" class="text-sm font-medium text-action-primary hover:underline">
+          Ver todo el archivo &raquo;
+        </a>
+      </div>
+      <Grid posts={morePosts} />
+    </div>
   </div>
 
   <!-- Categories (Features Widget) -->
@@ -58,5 +57,4 @@ const metadata = {
       { title: 'Confianza', amount: '100%' },
     ]}
   />
-
 </BaseLayout>

@@ -11,42 +11,52 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://noticiencias.com',
-    prefetch: false,
-    integrations: [
-        tailwind({ applyBaseStyles: false }),
-        sitemap(),
-        mdx(),
-        icon({
-            include: {
-                tabler: ['*'],
-                'flat-color-icons': ['template', 'gallery', 'approval', 'document', 'advertising', 'currency-exchange', 'voice-presentation', 'business-contact', 'database']
-            }
-        }),
-        astrowind({ config: './src/config.yaml' })
+  site: 'https://noticiencias.com',
+  prefetch: false,
+  integrations: [
+    tailwind({ applyBaseStyles: false }),
+    sitemap(),
+    mdx(),
+    icon({
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
+      },
+    }),
+    astrowind({ config: './src/config.yaml' }),
+  ],
+  image: {
+    domains: [
+      'news.mit.edu',
+      'news.yale.edu',
+      'scitechdaily.com',
+      'cdn.mos.cms.futurecdn.net', // Space.com, LiveScience
+      'cdn.vox-cdn.com', // The Verge
+      'media.wired.com', // Wired
+      'images.nasa.gov',
+      'www.nasa.gov',
+      'preview.redd.it',
+      'external-preview.redd.it',
+      'upload.wikimedia.org',
+      'static.scientificamerican.com',
+      'images.newscientist.com',
     ],
-    image: {
-        domains: [
-            'news.mit.edu',
-            'news.yale.edu',
-            'scitechdaily.com',
-            'cdn.mos.cms.futurecdn.net',   // Space.com, LiveScience
-            'cdn.vox-cdn.com',             // The Verge
-            'media.wired.com',             // Wired
-            'images.nasa.gov',
-            'www.nasa.gov',
-            'preview.redd.it',
-            'external-preview.redd.it',
-            'upload.wikimedia.org',
-            'static.scientificamerican.com',
-            'images.newscientist.com'
-        ]
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
     },
-    vite: {
-        resolve: {
-            alias: {
-                '~': path.resolve(__dirname, './src'),
-            },
-        },
-    },
+  },
 });

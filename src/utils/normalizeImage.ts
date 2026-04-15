@@ -1,4 +1,3 @@
-
 export interface NormalizedImage {
   src: string;
   alt: string;
@@ -42,7 +41,7 @@ const normalizeObjectImage = (input: object): NormalizedImage => {
     const src = (input as { src: string }).src;
     const width = (input as { width: number }).width;
     const height = (input as { height: number }).height;
-    
+
     result.src = src;
     result.width = width;
     result.height = height;

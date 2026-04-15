@@ -3,7 +3,14 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post, Taxonomy } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
-import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import {
+  cleanSlug,
+  trimSlash,
+  BLOG_BASE,
+  POST_PERMALINK_PATTERN,
+  CATEGORY_BASE,
+  TAG_BASE,
+} from './permalinks';
 import { getConfiguredCategoryTaxonomies } from './categorySections';
 
 const generatePermalink = async ({
@@ -41,9 +48,7 @@ const generatePermalink = async ({
     .join('/');
 };
 
-export const resolvePostPermalink = async (
-  post: CollectionEntry<'posts'>
-): Promise<string> => {
+export const resolvePostPermalink = async (post: CollectionEntry<'posts'>): Promise<string> => {
   const { id, slug: rawSlug, data } = post;
   const rawCategories = Array.isArray(data.categories) ? data.categories : [];
   const rawCategory = rawCategories.length > 0 ? rawCategories[0] : undefined;
@@ -51,14 +56,10 @@ export const resolvePostPermalink = async (
   const publishDate = new Date(data.date ?? new Date());
   const category = rawCategory ? cleanSlug(rawCategory) : undefined;
 
-  return (
-    data.permalink ||
-    (await generatePermalink({ id, slug, publishDate, category }))
-  );
+  return data.permalink || (await generatePermalink({ id, slug, publishDate, category }));
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
-
   const { id, slug: rawSlug, data } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);
 
@@ -74,19 +75,18 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     series,
   } = data;
 
-
   const draft = false; // Schema does not have draft
   const rawCategory = undefined; // Schema does not have category
   const rawUpdateDate = undefined; // Schema does not have updateDate
 
   // FAIL-CLOSED: Critical Data Integrity Check
   if (!title) {
-      throw new Error(`CRITICAL: Post ${id} has no title. Build aborted to prevent corrupt content.`);
+    throw new Error(`CRITICAL: Post ${id} has no title. Build aborted to prevent corrupt content.`);
   }
 
   const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
   if (!slug) {
-      throw new Error(`CRITICAL: Post ${id} resulted in empty slug. Original: ${rawSlug}`);
+    throw new Error(`CRITICAL: Post ${id} resulted in empty slug. Original: ${rawSlug}`);
   }
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
@@ -94,19 +94,23 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   const metadata = {};
 
   // Use rawCategory if exists, otherwise use first item from rawCategories
-  const categoryString = rawCategory ?? (Array.isArray(rawCategories) && rawCategories.length > 0 ? rawCategories[0] : undefined);
+  const categoryString =
+    rawCategory ??
+    (Array.isArray(rawCategories) && rawCategories.length > 0 ? rawCategories[0] : undefined);
 
   const category = categoryString
     ? {
-      slug: cleanSlug(categoryString),
-      title: categoryString,
-    }
+        slug: cleanSlug(categoryString),
+        title: categoryString,
+      }
     : undefined;
 
-  const tags = Array.isArray(rawTags) ? rawTags.map((tag: string) => ({
-    slug: cleanSlug(tag).toLowerCase(),
-    title: tag,
-  })) : [];
+  const tags = Array.isArray(rawTags)
+    ? rawTags.map((tag: string) => ({
+        slug: cleanSlug(tag).toLowerCase(),
+        title: tag,
+      }))
+    : [];
 
   return {
     id: id,
@@ -177,7 +181,7 @@ export const fetchPosts = async (): Promise<Array<Post>> => {
       if (existing) {
         throw new Error(
           `CRITICAL: Duplicate permalink "${post.permalink}" detected between ` +
-          `post "${existing}" and post "${post.id}". Build aborted.`
+            `post "${existing}" and post "${post.id}". Build aborted.`
         );
       }
       seen.set(post.permalink, post.id);
@@ -257,49 +261,47 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
     }
   });
 
-  return Array.from(Object.keys(categories)).flatMap((categorySlug) =>
-    {
-      const categoryPosts = posts.filter(
-        (post) => post.category?.slug && categorySlug === post.category?.slug
-      );
+  return Array.from(Object.keys(categories)).flatMap((categorySlug) => {
+    const categoryPosts = posts.filter(
+      (post) => post.category?.slug && categorySlug === post.category?.slug
+    );
 
-      if (categoryPosts.length === 0) {
-        const currentPath = `/${CATEGORY_BASE}/${categorySlug}/`;
-        const emptyCategoryPage: Page<Post> = {
-          data: [],
-          start: 0,
-          end: 0,
-          total: 0,
-          currentPage: 1,
-          size: blogPostsPerPage,
-          lastPage: 1,
-          url: {
-            current: currentPath,
-            prev: undefined,
-            next: undefined,
-            first: undefined,
-            last: undefined,
+    if (categoryPosts.length === 0) {
+      const currentPath = `/${CATEGORY_BASE}/${categorySlug}/`;
+      const emptyCategoryPage: Page<Post> = {
+        data: [],
+        start: 0,
+        end: 0,
+        total: 0,
+        currentPage: 1,
+        size: blogPostsPerPage,
+        lastPage: 1,
+        url: {
+          current: currentPath,
+          prev: undefined,
+          next: undefined,
+          first: undefined,
+          last: undefined,
+        },
+      };
+
+      return [
+        {
+          params: { category: categorySlug, page: undefined },
+          props: {
+            category: categories[categorySlug],
+            page: emptyCategoryPage,
           },
-        };
-
-        return [
-          {
-            params: { category: categorySlug, page: undefined },
-            props: {
-              category: categories[categorySlug],
-              page: emptyCategoryPage,
-            },
-          },
-        ];
-      }
-
-      return paginate(categoryPosts, {
-        params: { category: categorySlug },
-        pageSize: blogPostsPerPage,
-        props: { category: categories[categorySlug] },
-      });
+        },
+      ];
     }
-  );
+
+    return paginate(categoryPosts, {
+      params: { category: categorySlug },
+      pageSize: blogPostsPerPage,
+      props: { category: categories[categorySlug] },
+    });
+  });
 };
 
 /** */
@@ -318,7 +320,9 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 
   return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
     paginate(
-      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
+      posts.filter(
+        (post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)
+      ),
       {
         params: { tag: tagSlug, blog: TAG_BASE || undefined },
         pageSize: blogPostsPerPage,
@@ -331,27 +335,36 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
-  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
+  const originalTagsSet = new Set(
+    originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []
+  );
 
-  const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
-    if (iteratedPost.slug === originalPost.slug) return acc;
+  const postsWithScores = allPosts.reduce(
+    (acc: { post: Post; score: number }[], iteratedPost: Post) => {
+      if (iteratedPost.slug === originalPost.slug) return acc;
 
-    let score = 0;
-    if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
-      score += 5;
-    }
+      let score = 0;
+      if (
+        iteratedPost.category &&
+        originalPost.category &&
+        iteratedPost.category.slug === originalPost.category.slug
+      ) {
+        score += 5;
+      }
 
-    if (iteratedPost.tags) {
-      iteratedPost.tags.forEach((tag) => {
-        if (originalTagsSet.has(tag.slug)) {
-          score += 1;
-        }
-      });
-    }
+      if (iteratedPost.tags) {
+        iteratedPost.tags.forEach((tag) => {
+          if (originalTagsSet.has(tag.slug)) {
+            score += 1;
+          }
+        });
+      }
 
-    acc.push({ post: iteratedPost, score });
-    return acc;
-  }, []);
+      acc.push({ post: iteratedPost, score });
+      return acc;
+    },
+    []
+  );
 
   postsWithScores.sort((a, b) => b.score - a.score);
 

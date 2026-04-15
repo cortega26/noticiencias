@@ -6,9 +6,7 @@
  * 4. `default.png` is forbidden unless explicitly allowlisted
  */
 
-import {
-  collectHeroImageDiagnostics,
-} from './utils/hero-placeholders.js';
+import { collectHeroImageDiagnostics } from './utils/hero-placeholders.js';
 
 const diagnostics = collectHeroImageDiagnostics();
 const errors = [...diagnostics.errors];

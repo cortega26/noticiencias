@@ -1,217 +1,217 @@
 - generic [active] [ref=e1]:
-  - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
-    - /url: "#main-content"
-  - generic [ref=e3]:
-    - generic [ref=e4]:
-      - paragraph [ref=e5]:
-        - strong [ref=e6]: Versión Beta v0.9
-        - img [ref=e7]
-        - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
-      - link "Leer más" [ref=e9] [cursor=pointer]:
-        - /url: /beta
-        - text: Leer más →
-    - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
-      - generic [ref=e12]: Ocultar aviso
-      - img [ref=e13]
-  - banner [ref=e15]:
-    - generic [ref=e17]:
-      - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
-        - /url: /
-        - generic [ref=e20]:
-          - img "Noticiencias" [ref=e21]
-          - text: Noticiencias
-      - navigation "Main navigation" [ref=e22]:
-        - list [ref=e23]:
-          - listitem [ref=e24]:
-            - link "Ciencia" [ref=e25] [cursor=pointer]:
-              - /url: /categorias/ciencia/
-          - listitem [ref=e26]:
-            - link "Salud" [ref=e27] [cursor=pointer]:
-              - /url: /categorias/salud/
-          - listitem [ref=e28]:
-            - link "Tecnología" [ref=e29] [cursor=pointer]:
-              - /url: /categorias/tecnologia/
-          - listitem [ref=e30]:
-            - link "Editorial" [ref=e31] [cursor=pointer]:
-              - /url: /categorias/editorial/
-          - listitem [ref=e32]:
-            - link "Series" [ref=e33] [cursor=pointer]:
-              - /url: /series/
-      - generic [ref=e35]:
-        - generic [ref=e36]:
-          - button "Alternar modo Oscuro/Claro" [ref=e37] [cursor=pointer]:
-            - img [ref=e38]
-          - link "RSS Feed" [ref=e40] [cursor=pointer]:
-            - /url: /rss.xml
-            - img [ref=e41]
-        - link "Buscar" [ref=e44] [cursor=pointer]:
-          - /url: /buscar/
-          - text: Buscar
-          - img [ref=e45]
-  - main [ref=e47]:
-    - generic [ref=e49]:
-      - main [ref=e50]:
-        - article [ref=e52]:
-          - generic [ref=e53]:
-            - generic [ref=e54]:
-              - link "Ciencia" [ref=e55] [cursor=pointer]:
-                - /url: /categorias/ciencia/
-              - generic [ref=e56]:
-                - img [ref=e57]
-                - text: 16 feb 2026
-            - heading "Un agujero negro se forma sin explotar una estrella masiva" [level=1] [ref=e59]
-            - paragraph [ref=e60]: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
-            - generic [ref=e61]:
-              - img [ref=e63]
-              - generic [ref=e65]:
-                - generic [ref=e66]: Noticiencias AI
-                - text: Noticiencias
-            - img "Ilustracion de una estrella masiva colapsando en un agujero negro rodeado de gas y polvo" [ref=e68]
-          - generic [ref=e69]:
-            - 'heading "Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar" [level=3] [ref=e70]'
-            - heading "Por Simons Foundation" [level=4] [ref=e71]
-            - paragraph [ref=e72]: 16 de febrero de 2026
-            - paragraph [ref=e73]: "Imagina una estrella tan luminosa que podría iluminar todo un cielo distante, desapareciendo en pocos años sin dejar rastro de una espectacular supernova. Ese es precisamente lo que los astrónomos han observado en una estrella ubicada a 2,5 millones de años luz de distancia, en la Galaxia de Andrómeda, nuestra vecina galáctica. En lugar de desaparecer con un destello brillante, esta estrella, conocida como M31-2014-DS1, simplemente se desvaneció, dejando en su lugar lo inimaginable: un agujero negro. Este fenómeno, hasta ahora poco comprendido, está cambiando nuestra comprensión de cómo mueren las estrellas masivas y cómo se forman agujeros negros en el universo."
-            - heading "Un Problema de Masa Estelar" [level=4] [ref=e74]
-            - paragraph [ref=e75]: Las estrellas masivas, aquellas con al menos una vez diez la masa de nuestro Sol, terminan sus vidas de manera espectacular, generalmente explotando en supernovas que dispersan su material en todo el espacio. Sin embargo, algunos astrónomos han sospechado de que algunas estrellas masivas podrían colapsar directamente en agujeros negros sin explotar. Este proceso, conocido como una supernova fallida o colapso directo, es un misterio en astrofísica.
-            - heading "Un Descubrimiento Inesperado" [level=4] [ref=e76]
-            - paragraph [ref=e77]: La estrella M31-2014-DS1 se destacó en los archivos de observación de la misión NEOWISE de NASA y otros telescopios terrestres y espaciales entre 2005 y 2023. Los datos recopilados mostraron que la estrella comenzó a brillar en luz infrarroja en 2014, un fenómeno que inicialmente parecía un cambio en su actividad normal. Sin embargo, en 2016, el brillo de la estrella disminuyó drásticamente, desvaneciéndose por debajo de su nivel original en menos de un año. Las observaciones posteriores revelaron que la estrella había casi desaparecido en las longitudes de onda visibles y cercana a la infrarroja, atenuándose a solo una diezmilésima de su brillo original en esos espectros. De hecho, lo que quedaba de la estrella era detectable solo en luz infrarroja media, brillando a aproximadamente un décimo de su intensidad anterior.
-            - heading "Un Cambio Revolucionario" [level=4] [ref=e78]
-            - paragraph [ref=e79]: "Kishalay De, un investigador asociado en el Institute Flatiron de la Fundación Simons y autor principal del nuevo estudio, explica la importancia de este fenómeno: “Esta estrella solía ser una de las más luminosas de la Galaxia de Andrómeda, y ahora no se veía. Imagina si la estrella Betelgeuse desapareciera. ¡Todos se quedarían sin la cuenta! Lo mismo estaba ocurriendo con esta estrella en la Galaxia de Andrómeda”. Cuando el equipo comparó el desvanecimiento dramático con las predicciones teóricas, concluyeron que la disminución extrema en su brillo total indica fuertemente que su núcleo colapsó en un agujero negro."
-            - heading "¿Qué Ocurre Dentro de un Agujero Negro?" [level=4] [ref=e80]
-            - paragraph [ref=e81]: Cuando una estrella masiva se colapsa en un agujero negro, el gas que la rodea sigue moviéndose en órbitas alrededor del agujero negro debido a su momento angular. Este gas puede tardar décadas en ser absorbido por el agujero negro, en lugar de caer directamente. Esto explica por qué la estrella M31-2014-DS1 se desvaneció gradualmente en lugar de desaparecer repentinamente. La luz del polvo desechado que rodea al nuevo agujero negro, según De, “será visible durante décadas a la sensibilidad de telescopios como el Telescopio Espacial James Webb, permitiendo a los astrónomos seguir estudiando este fenómeno fascinante”.
-            - heading "Una Clase Creciente de Supernovas Fallidas" [level=4] [ref=e82]
-            - paragraph [ref=e83]: Al analizar M31-2014-DS1, el equipo también reexaminó NGC 6946-BH1, otro caso sospechoso de colapso directo. El nuevo estudio presenta fuertes evidencias que explican por qué esa estrella siguió un camino similar. M31-2014-DS1 inicialmente se destacaba como un “caso peculiar”, dice De, pero ahora parece ser uno de los ejemplos de una clase de objetos que incluye NGC 6946-BH1. Esta descubrimiento indica que la formación de agujeros negros a través del colapso directo de estrellas masivas podría ser más común de lo que se pensaba hasta ahora.
-            - heading "La Importancia del Conocimiento" [level=4] [ref=e84]
-            - paragraph [ref=e85]: Este fenómeno no solo cambia nuestra comprensión de cómo mueren las estrellas masivas, sino que también proporciona una nueva perspectiva sobre la formación de agujeros negros en el universo. La convectividad, el movimiento de material caliente desde la zona central hacia la superficie, juega un papel crucial en este proceso. Cuando una estrella masiva se agota de combustible nuclear, su núcleo se contrae debido a la gravedad. Sin embargo, la convectividad puede detener o retrasar este colapso, permitiendo que solo un pequeño porcentaje del material estelar externo alimente al agujero negro, produciendo la luz débil que aún se puede observar hoy en día.
-            - paragraph [ref=e86]:
-              - text: "Fuente original:"
-              - link "https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/" [ref=e87] [cursor=pointer]:
-                - /url: https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/
-          - generic [ref=e88]:
-            - list [ref=e89]:
-              - listitem [ref=e90]:
-                - link "estrella masiva" [ref=e91] [cursor=pointer]:
-                  - /url: /temas/estrella-masiva/
-              - listitem [ref=e92]:
-                - link "agujero negro" [ref=e93] [cursor=pointer]:
-                  - /url: /temas/agujero-negro/
-              - listitem [ref=e94]:
-                - link "colapso directo" [ref=e95] [cursor=pointer]:
-                  - /url: /temas/colapso-directo/
-            - generic [ref=e96]:
-              - text: "Compartir:"
-              - button "Compartir en Twitter" [ref=e97] [cursor=pointer]:
-                - img [ref=e98]
-              - button "Compartir en Facebook" [ref=e100] [cursor=pointer]:
-                - img [ref=e101]
-              - button "Linkedin Share" [ref=e103] [cursor=pointer]:
-                - img [ref=e104]
-              - button "Whatsapp Share" [ref=e106] [cursor=pointer]:
-                - img [ref=e107]
-              - button "Email Share" [ref=e109] [cursor=pointer]:
-                - img [ref=e110]
-      - complementary [ref=e112]:
-        - generic [ref=e113]:
-          - generic [ref=e114]:
-            - heading "Lo más leído" [level=3] [ref=e115]
-            - list [ref=e116]:
-              - listitem [ref=e117]:
-                - generic [ref=e118]: "1"
-                - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e119] [cursor=pointer]:
-                  - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
-                - generic [ref=e120]: Ciencia
-              - listitem [ref=e121]:
-                - generic [ref=e122]: "2"
-                - 'link "Cómo los LLM aprenden a dominar tus documentos: La clave está en el finetuning con datos no estructurados." [ref=e123] [cursor=pointer]':
-                  - /url: /ciencia/2026-03-26-como-los-llm-aprenden-a-dominar-tus-documentos-la-clave-esta-en-el-finetuning-con-datos-no-estructurados/
-                - generic [ref=e124]: Ciencia
-              - listitem [ref=e125]:
-                - generic [ref=e126]: "3"
-                - link "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años" [ref=e127] [cursor=pointer]:
-                  - /url: /ciencia/2026-02-18-article-849/
-                - generic [ref=e128]: Ciencia
-              - listitem [ref=e129]:
-                - generic [ref=e130]: "4"
-                - link "Un ingrediente inesperado puede hacer el pan mucho más saludable" [ref=e131] [cursor=pointer]:
-                  - /url: /ciencia/2026-02-16-article-677/
-                - generic [ref=e132]: Ciencia
-              - listitem [ref=e133]:
-                - generic [ref=e134]: "5"
-                - link "Un agujero negro se forma sin explotar una estrella masiva" [ref=e135] [cursor=pointer]:
-                  - /url: /ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/
-                - generic [ref=e136]: Ciencia
-          - generic [ref=e137]:
-            - heading "Noticiencias Semanal" [level=3] [ref=e138]
-            - paragraph [ref=e139]: Descubrimientos explicados, directo a tu bandeja.
-            - generic [ref=e140]:
-              - textbox "tu@email.com" [ref=e141]
-              - button "Suscribirse" [ref=e142] [cursor=pointer]
-              - paragraph [ref=e143]: Sin spam. 0% drama.
-    - link "Volver al Blog" [ref=e145] [cursor=pointer]:
-      - /url: /blog/
-      - img [ref=e146]
-      - text: Volver al Blog
-  - contentinfo [ref=e148]:
-    - generic [ref=e149]:
-      - generic [ref=e150]:
-        - generic [ref=e151]:
-          - generic [ref=e152]:
-            - link "Noticiencias" [ref=e153] [cursor=pointer]:
-              - /url: /
-            - text: Beta
-          - generic [ref=e154]:
-            - link "Privacidad" [ref=e155] [cursor=pointer]:
-              - /url: /privacidad/
-            - text: ·
-            - link "RSS" [ref=e156] [cursor=pointer]:
-              - /url: /rss.xml
-            - text: ·
-            - link "Reportar un problema" [ref=e157] [cursor=pointer]:
-              - /url: /reportar-problema/
-        - generic [ref=e158]:
-          - generic [ref=e159]: Secciones
-          - list [ref=e160]:
-            - listitem [ref=e161]:
-              - link "Editorial" [ref=e162] [cursor=pointer]:
-                - /url: /categorias/editorial/
-            - listitem [ref=e163]:
-              - link "Salud" [ref=e164] [cursor=pointer]:
-                - /url: /categorias/salud/
-            - listitem [ref=e165]:
-              - link "Ciencia" [ref=e166] [cursor=pointer]:
-                - /url: /categorias/ciencia/
-            - listitem [ref=e167]:
-              - link "Tecnología" [ref=e168] [cursor=pointer]:
-                - /url: /categorias/tecnologia/
-        - generic [ref=e169]:
-          - generic [ref=e170]: Organización
-          - list [ref=e171]:
-            - listitem [ref=e172]:
-              - link "Acerca de" [ref=e173] [cursor=pointer]:
-                - /url: /nosotros/
-            - listitem [ref=e174]:
-              - link "Metodología" [ref=e175] [cursor=pointer]:
-                - /url: /metodologia/
-            - listitem [ref=e176]:
-              - link "Transparencia" [ref=e177] [cursor=pointer]:
-                - /url: /transparencia/
-      - generic [ref=e178]:
-        - list [ref=e179]:
-          - listitem [ref=e180]:
-            - link "X" [ref=e181] [cursor=pointer]:
-              - /url: https://twitter.com/noti_ciencias
-              - img [ref=e182]
-          - listitem [ref=e184]:
-            - link "Instagram" [ref=e185] [cursor=pointer]:
-              - /url: "#"
-              - img [ref=e186]
-          - listitem [ref=e188]:
-            - link "LinkedIn" [ref=e189] [cursor=pointer]:
-              - /url: "#"
-              - img [ref=e190]
-          - listitem [ref=e192]:
-            - link "Github" [ref=e193] [cursor=pointer]:
-              - /url: https://github.com/cortega26/noticiencias
-              - img [ref=e194]
-        - generic [ref=e196]: © 2026 Noticiencias · Todos los derechos reservados.
+    - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
+        - /url: '#main-content'
+    - generic [ref=e3]:
+        - generic [ref=e4]:
+            - paragraph [ref=e5]:
+                - strong [ref=e6]: Versión Beta v0.9
+                - img [ref=e7]
+                - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
+            - link "Leer más" [ref=e9] [cursor=pointer]:
+                - /url: /beta
+                - text: Leer más →
+        - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
+            - generic [ref=e12]: Ocultar aviso
+            - img [ref=e13]
+    - banner [ref=e15]:
+        - generic [ref=e17]:
+            - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e20]:
+                    - img "Noticiencias" [ref=e21]
+                    - text: Noticiencias
+            - navigation "Main navigation" [ref=e22]:
+                - list [ref=e23]:
+                    - listitem [ref=e24]:
+                        - link "Ciencia" [ref=e25] [cursor=pointer]:
+                            - /url: /categorias/ciencia/
+                    - listitem [ref=e26]:
+                        - link "Salud" [ref=e27] [cursor=pointer]:
+                            - /url: /categorias/salud/
+                    - listitem [ref=e28]:
+                        - link "Tecnología" [ref=e29] [cursor=pointer]:
+                            - /url: /categorias/tecnologia/
+                    - listitem [ref=e30]:
+                        - link "Editorial" [ref=e31] [cursor=pointer]:
+                            - /url: /categorias/editorial/
+                    - listitem [ref=e32]:
+                        - link "Series" [ref=e33] [cursor=pointer]:
+                            - /url: /series/
+            - generic [ref=e35]:
+                - generic [ref=e36]:
+                    - button "Alternar modo Oscuro/Claro" [ref=e37] [cursor=pointer]:
+                        - img [ref=e38]
+                    - link "RSS Feed" [ref=e40] [cursor=pointer]:
+                        - /url: /rss.xml
+                        - img [ref=e41]
+                - link "Buscar" [ref=e44] [cursor=pointer]:
+                    - /url: /buscar/
+                    - text: Buscar
+                    - img [ref=e45]
+    - main [ref=e47]:
+        - generic [ref=e49]:
+            - main [ref=e50]:
+                - article [ref=e52]:
+                    - generic [ref=e53]:
+                        - generic [ref=e54]:
+                            - link "Ciencia" [ref=e55] [cursor=pointer]:
+                                - /url: /categorias/ciencia/
+                            - generic [ref=e56]:
+                                - img [ref=e57]
+                                - text: 16 feb 2026
+                        - heading "Un agujero negro se forma sin explotar una estrella masiva" [level=1] [ref=e59]
+                        - paragraph [ref=e60]: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
+                        - generic [ref=e61]:
+                            - img [ref=e63]
+                            - generic [ref=e65]:
+                                - generic [ref=e66]: Noticiencias AI
+                                - text: Noticiencias
+                        - img "Ilustracion de una estrella masiva colapsando en un agujero negro rodeado de gas y polvo" [ref=e68]
+                    - generic [ref=e69]:
+                        - 'heading "Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar" [level=3] [ref=e70]'
+                        - heading "Por Simons Foundation" [level=4] [ref=e71]
+                        - paragraph [ref=e72]: 16 de febrero de 2026
+                        - paragraph [ref=e73]: 'Imagina una estrella tan luminosa que podría iluminar todo un cielo distante, desapareciendo en pocos años sin dejar rastro de una espectacular supernova. Ese es precisamente lo que los astrónomos han observado en una estrella ubicada a 2,5 millones de años luz de distancia, en la Galaxia de Andrómeda, nuestra vecina galáctica. En lugar de desaparecer con un destello brillante, esta estrella, conocida como M31-2014-DS1, simplemente se desvaneció, dejando en su lugar lo inimaginable: un agujero negro. Este fenómeno, hasta ahora poco comprendido, está cambiando nuestra comprensión de cómo mueren las estrellas masivas y cómo se forman agujeros negros en el universo.'
+                        - heading "Un Problema de Masa Estelar" [level=4] [ref=e74]
+                        - paragraph [ref=e75]: Las estrellas masivas, aquellas con al menos una vez diez la masa de nuestro Sol, terminan sus vidas de manera espectacular, generalmente explotando en supernovas que dispersan su material en todo el espacio. Sin embargo, algunos astrónomos han sospechado de que algunas estrellas masivas podrían colapsar directamente en agujeros negros sin explotar. Este proceso, conocido como una supernova fallida o colapso directo, es un misterio en astrofísica.
+                        - heading "Un Descubrimiento Inesperado" [level=4] [ref=e76]
+                        - paragraph [ref=e77]: La estrella M31-2014-DS1 se destacó en los archivos de observación de la misión NEOWISE de NASA y otros telescopios terrestres y espaciales entre 2005 y 2023. Los datos recopilados mostraron que la estrella comenzó a brillar en luz infrarroja en 2014, un fenómeno que inicialmente parecía un cambio en su actividad normal. Sin embargo, en 2016, el brillo de la estrella disminuyó drásticamente, desvaneciéndose por debajo de su nivel original en menos de un año. Las observaciones posteriores revelaron que la estrella había casi desaparecido en las longitudes de onda visibles y cercana a la infrarroja, atenuándose a solo una diezmilésima de su brillo original en esos espectros. De hecho, lo que quedaba de la estrella era detectable solo en luz infrarroja media, brillando a aproximadamente un décimo de su intensidad anterior.
+                        - heading "Un Cambio Revolucionario" [level=4] [ref=e78]
+                        - paragraph [ref=e79]: 'Kishalay De, un investigador asociado en el Institute Flatiron de la Fundación Simons y autor principal del nuevo estudio, explica la importancia de este fenómeno: “Esta estrella solía ser una de las más luminosas de la Galaxia de Andrómeda, y ahora no se veía. Imagina si la estrella Betelgeuse desapareciera. ¡Todos se quedarían sin la cuenta! Lo mismo estaba ocurriendo con esta estrella en la Galaxia de Andrómeda”. Cuando el equipo comparó el desvanecimiento dramático con las predicciones teóricas, concluyeron que la disminución extrema en su brillo total indica fuertemente que su núcleo colapsó en un agujero negro.'
+                        - heading "¿Qué Ocurre Dentro de un Agujero Negro?" [level=4] [ref=e80]
+                        - paragraph [ref=e81]: Cuando una estrella masiva se colapsa en un agujero negro, el gas que la rodea sigue moviéndose en órbitas alrededor del agujero negro debido a su momento angular. Este gas puede tardar décadas en ser absorbido por el agujero negro, en lugar de caer directamente. Esto explica por qué la estrella M31-2014-DS1 se desvaneció gradualmente en lugar de desaparecer repentinamente. La luz del polvo desechado que rodea al nuevo agujero negro, según De, “será visible durante décadas a la sensibilidad de telescopios como el Telescopio Espacial James Webb, permitiendo a los astrónomos seguir estudiando este fenómeno fascinante”.
+                        - heading "Una Clase Creciente de Supernovas Fallidas" [level=4] [ref=e82]
+                        - paragraph [ref=e83]: Al analizar M31-2014-DS1, el equipo también reexaminó NGC 6946-BH1, otro caso sospechoso de colapso directo. El nuevo estudio presenta fuertes evidencias que explican por qué esa estrella siguió un camino similar. M31-2014-DS1 inicialmente se destacaba como un “caso peculiar”, dice De, pero ahora parece ser uno de los ejemplos de una clase de objetos que incluye NGC 6946-BH1. Esta descubrimiento indica que la formación de agujeros negros a través del colapso directo de estrellas masivas podría ser más común de lo que se pensaba hasta ahora.
+                        - heading "La Importancia del Conocimiento" [level=4] [ref=e84]
+                        - paragraph [ref=e85]: Este fenómeno no solo cambia nuestra comprensión de cómo mueren las estrellas masivas, sino que también proporciona una nueva perspectiva sobre la formación de agujeros negros en el universo. La convectividad, el movimiento de material caliente desde la zona central hacia la superficie, juega un papel crucial en este proceso. Cuando una estrella masiva se agota de combustible nuclear, su núcleo se contrae debido a la gravedad. Sin embargo, la convectividad puede detener o retrasar este colapso, permitiendo que solo un pequeño porcentaje del material estelar externo alimente al agujero negro, produciendo la luz débil que aún se puede observar hoy en día.
+                        - paragraph [ref=e86]:
+                            - text: 'Fuente original:'
+                            - link "https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/" [ref=e87] [cursor=pointer]:
+                                - /url: https://scitechdaily.com/a-massive-star-suddenly-vanished-and-left-a-black-hole-behind/
+                    - generic [ref=e88]:
+                        - list [ref=e89]:
+                            - listitem [ref=e90]:
+                                - link "estrella masiva" [ref=e91] [cursor=pointer]:
+                                    - /url: /temas/estrella-masiva/
+                            - listitem [ref=e92]:
+                                - link "agujero negro" [ref=e93] [cursor=pointer]:
+                                    - /url: /temas/agujero-negro/
+                            - listitem [ref=e94]:
+                                - link "colapso directo" [ref=e95] [cursor=pointer]:
+                                    - /url: /temas/colapso-directo/
+                        - generic [ref=e96]:
+                            - text: 'Compartir:'
+                            - button "Compartir en Twitter" [ref=e97] [cursor=pointer]:
+                                - img [ref=e98]
+                            - button "Compartir en Facebook" [ref=e100] [cursor=pointer]:
+                                - img [ref=e101]
+                            - button "Linkedin Share" [ref=e103] [cursor=pointer]:
+                                - img [ref=e104]
+                            - button "Whatsapp Share" [ref=e106] [cursor=pointer]:
+                                - img [ref=e107]
+                            - button "Email Share" [ref=e109] [cursor=pointer]:
+                                - img [ref=e110]
+            - complementary [ref=e112]:
+                - generic [ref=e113]:
+                    - generic [ref=e114]:
+                        - heading "Lo más leído" [level=3] [ref=e115]
+                        - list [ref=e116]:
+                            - listitem [ref=e117]:
+                                - generic [ref=e118]: '1'
+                                - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e119] [cursor=pointer]:
+                                    - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
+                                - generic [ref=e120]: Ciencia
+                            - listitem [ref=e121]:
+                                - generic [ref=e122]: '2'
+                                - 'link "Cómo los LLM aprenden a dominar tus documentos: La clave está en el finetuning con datos no estructurados." [ref=e123] [cursor=pointer]':
+                                    - /url: /ciencia/2026-03-26-como-los-llm-aprenden-a-dominar-tus-documentos-la-clave-esta-en-el-finetuning-con-datos-no-estructurados/
+                                - generic [ref=e124]: Ciencia
+                            - listitem [ref=e125]:
+                                - generic [ref=e126]: '3'
+                                - link "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años" [ref=e127] [cursor=pointer]:
+                                    - /url: /ciencia/2026-02-18-article-849/
+                                - generic [ref=e128]: Ciencia
+                            - listitem [ref=e129]:
+                                - generic [ref=e130]: '4'
+                                - link "Un ingrediente inesperado puede hacer el pan mucho más saludable" [ref=e131] [cursor=pointer]:
+                                    - /url: /ciencia/2026-02-16-article-677/
+                                - generic [ref=e132]: Ciencia
+                            - listitem [ref=e133]:
+                                - generic [ref=e134]: '5'
+                                - link "Un agujero negro se forma sin explotar una estrella masiva" [ref=e135] [cursor=pointer]:
+                                    - /url: /ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/
+                                - generic [ref=e136]: Ciencia
+                    - generic [ref=e137]:
+                        - heading "Noticiencias Semanal" [level=3] [ref=e138]
+                        - paragraph [ref=e139]: Descubrimientos explicados, directo a tu bandeja.
+                        - generic [ref=e140]:
+                            - textbox "tu@email.com" [ref=e141]
+                            - button "Suscribirse" [ref=e142] [cursor=pointer]
+                            - paragraph [ref=e143]: Sin spam. 0% drama.
+        - link "Volver al Blog" [ref=e145] [cursor=pointer]:
+            - /url: /blog/
+            - img [ref=e146]
+            - text: Volver al Blog
+    - contentinfo [ref=e148]:
+        - generic [ref=e149]:
+            - generic [ref=e150]:
+                - generic [ref=e151]:
+                    - generic [ref=e152]:
+                        - link "Noticiencias" [ref=e153] [cursor=pointer]:
+                            - /url: /
+                        - text: Beta
+                    - generic [ref=e154]:
+                        - link "Privacidad" [ref=e155] [cursor=pointer]:
+                            - /url: /privacidad/
+                        - text: ·
+                        - link "RSS" [ref=e156] [cursor=pointer]:
+                            - /url: /rss.xml
+                        - text: ·
+                        - link "Reportar un problema" [ref=e157] [cursor=pointer]:
+                            - /url: /reportar-problema/
+                - generic [ref=e158]:
+                    - generic [ref=e159]: Secciones
+                    - list [ref=e160]:
+                        - listitem [ref=e161]:
+                            - link "Editorial" [ref=e162] [cursor=pointer]:
+                                - /url: /categorias/editorial/
+                        - listitem [ref=e163]:
+                            - link "Salud" [ref=e164] [cursor=pointer]:
+                                - /url: /categorias/salud/
+                        - listitem [ref=e165]:
+                            - link "Ciencia" [ref=e166] [cursor=pointer]:
+                                - /url: /categorias/ciencia/
+                        - listitem [ref=e167]:
+                            - link "Tecnología" [ref=e168] [cursor=pointer]:
+                                - /url: /categorias/tecnologia/
+                - generic [ref=e169]:
+                    - generic [ref=e170]: Organización
+                    - list [ref=e171]:
+                        - listitem [ref=e172]:
+                            - link "Acerca de" [ref=e173] [cursor=pointer]:
+                                - /url: /nosotros/
+                        - listitem [ref=e174]:
+                            - link "Metodología" [ref=e175] [cursor=pointer]:
+                                - /url: /metodologia/
+                        - listitem [ref=e176]:
+                            - link "Transparencia" [ref=e177] [cursor=pointer]:
+                                - /url: /transparencia/
+            - generic [ref=e178]:
+                - list [ref=e179]:
+                    - listitem [ref=e180]:
+                        - link "X" [ref=e181] [cursor=pointer]:
+                            - /url: https://twitter.com/noti_ciencias
+                            - img [ref=e182]
+                    - listitem [ref=e184]:
+                        - link "Instagram" [ref=e185] [cursor=pointer]:
+                            - /url: '#'
+                            - img [ref=e186]
+                    - listitem [ref=e188]:
+                        - link "LinkedIn" [ref=e189] [cursor=pointer]:
+                            - /url: '#'
+                            - img [ref=e190]
+                    - listitem [ref=e192]:
+                        - link "Github" [ref=e193] [cursor=pointer]:
+                            - /url: https://github.com/cortega26/noticiencias
+                            - img [ref=e194]
+                - generic [ref=e196]: © 2026 Noticiencias · Todos los derechos reservados.

@@ -5,19 +5,19 @@
  */
 export function getQueryFromUrl(searchString?: string): string {
   if (typeof window === 'undefined' && !searchString) {
-      return '';
+    return '';
   }
-  
+
   const search = searchString || window.location.search;
   const params = new URLSearchParams(search);
   return (params.get('q') || '').trim();
 }
 
 /**
-* Updates the browser URL with the search query without reloading.
-* If query is empty, removes the parameter.
-* @param query - The search term
-*/
+ * Updates the browser URL with the search query without reloading.
+ * If query is empty, removes the parameter.
+ * @param query - The search term
+ */
 export function updateUrlWithQuery(query: string): void {
   if (typeof window === 'undefined') return;
 
@@ -25,9 +25,9 @@ export function updateUrlWithQuery(query: string): void {
   const term = query.trim();
 
   if (term) {
-      url.searchParams.set('q', term);
+    url.searchParams.set('q', term);
   } else {
-      url.searchParams.delete('q');
+    url.searchParams.delete('q');
   }
 
   window.history.pushState({ path: url.toString() }, '', url.toString());
@@ -43,6 +43,6 @@ export function normalizeQuery(str: string): string {
   return str
     .trim()
     .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "");
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
 }

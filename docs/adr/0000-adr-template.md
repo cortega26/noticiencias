@@ -18,5 +18,5 @@ What becomes easier? What becomes harder or constrained?
 ## Alternatives considered
 
 | Option | Reason rejected |
-|--------|-----------------|
+| ------ | --------------- |
 | …      | …               |

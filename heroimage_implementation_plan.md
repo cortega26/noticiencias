@@ -13,14 +13,17 @@ Added `image: "~/assets/images/default.png"` after the `excerpt` field.
 
 **Article 3** (wrong image filename):
 Changed the `image` path from the non-existent verbose filename to the actual asset on disk:
+
 ```diff
 - image: "~/assets/images/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.jpg"
 + image: "~/assets/images/2026-02-16-677.jpg"
 ```
+
 - `src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md`
 
 **Article 4 bonus** (leaked LLM preamble in body):
 Removed the leaked meta-instruction text and the stray `---` separator that followed it:
+
 ```diff
 - Aquí tienes el artículo, redactado con el enfoque de Editor Científico Senior en Noticiencias:
 -
@@ -34,12 +37,14 @@ Removed the leaked meta-instruction text and the stray `---` separator that foll
 Created `scripts/check-hero-images.js` — mirrors the structure of the existing `check-frontmatter-dates.js` for consistency.
 
 **What it checks:**
+
 1. Every article has a non-empty `image` field in frontmatter
 2. For `~/assets/images/` paths, the referenced file actually exists in `src/assets/images/`
 3. Public `/images/` paths and remote URLs are accepted as-is (file existence for public/ is deferred to build-time)
 4. Path traversal in the extracted filename is rejected
 
 **What it does NOT check** (out of scope / handled elsewhere):
+
 - Whether the image dimensions are appropriate
 - Whether the image has alt text (tracked as low-priority follow-up)
 - Public `/images/` path existence (requires a built `dist/`, handled by `test:audit`)
@@ -47,6 +52,7 @@ Created `scripts/check-hero-images.js` — mirrors the structure of the existing
 ### Step 3 — Package.json wiring
 
 Added the new check script and included it in the `lint` chain:
+
 ```diff
 +   "check:hero-images": "node scripts/check-hero-images.js",
 -   "lint": "npm run check:frontmatter-dates && eslint .",
@@ -58,6 +64,7 @@ Added the new check script and included it in the `lint` chain:
 ## Justification for Default Image
 
 `~/assets/images/default.png` is used for the three articles lacking a specific image because:
+
 - No thematically appropriate image exists in `src/assets/images/` for these articles
 - The image is already present in the asset pipeline
 - It renders a visible hero image, which is better than a blank section

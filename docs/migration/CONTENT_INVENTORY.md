@@ -1,7 +1,9 @@
 # Content Inventory
 
 ## Collections
+
 ### `posts`
+
 - **Location**: `src/content/posts`
 - **File Type**: Markdown (`.md`)
 - **Volume**: ~7 posts (based on initial scan)
@@ -24,9 +26,11 @@
   - `permalink`: String (CRITICAL: Used for routing)
 
 ## Taxonomies
+
 - **Categories**: editorial, salud, tecnologia, ciencia (inferred from `dist` folders)
 - **Tags**: noticiencias, editorial (inferred from frontmatter)
 
 ## Pages
+
 - `src/pages/index.astro` (Assumption: Home)
 - `src/pages/about.md` or similar (Need to verify static pages)

@@ -1,7 +1,14 @@
-import type { SiteConfig, MetaDataConfig, I18NConfig, BlogConfig, AnalyticsConfig, UIConfig, FormConfig, AppConfig } from '~/types/config';
+import type {
+  SiteConfig,
+  MetaDataConfig,
+  I18NConfig,
+  BlogConfig,
+  AnalyticsConfig,
+  UIConfig,
+  FormConfig,
+  AppConfig,
+} from '~/types/config';
 import merge from 'lodash.merge';
-
-
 
 // Keep definition of input Config essentially as Partial<AppConfig> or similar
 export interface Config {
@@ -15,13 +22,6 @@ export interface Config {
   analytics?: unknown;
   form?: FormConfig;
 }
-
-
-
-
-
-
-
 
 const DEFAULT_SITE_NAME = 'Website';
 
@@ -132,8 +132,6 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
 
   return merge({}, _default, config.analytics ?? {}) as AnalyticsConfig;
 };
-
-
 
 const getFormConfig = (config: Config): FormConfig => {
   const _default = {

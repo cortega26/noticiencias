@@ -4,12 +4,12 @@
 
 Four articles were found with hero image issues (three missing images + one bonus preamble leak):
 
-| # | File | Issue | Status |
-|---|------|-------|--------|
-| 1 | `src/content/posts/2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones.md` | `image` field missing entirely | Fixed |
-| 2 | `src/content/posts/2026-02-15-publicidad-llega-a-chatbots-de-ia-el-nuevo-modelo-de-negocio-digital-y-sus-dilemas.md` | `image` field missing entirely | Fixed |
-| 3 | `src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md` | `image` field present but points to non-existent filename | Fixed |
-| 4 | `src/content/posts/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md` | `image` field missing + leaked LLM preamble in body | Fixed |
+| #   | File                                                                                                                             | Issue                                                     | Status |
+| --- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------ |
+| 1   | `src/content/posts/2024-07-07-la-paradoja-inesperada-actualizar-una-ia-con-nuevos-datos-puede-intensificar-sus-alucinaciones.md` | `image` field missing entirely                            | Fixed  |
+| 2   | `src/content/posts/2026-02-15-publicidad-llega-a-chatbots-de-ia-el-nuevo-modelo-de-negocio-digital-y-sus-dilemas.md`             | `image` field missing entirely                            | Fixed  |
+| 3   | `src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md`                                     | `image` field present but points to non-existent filename | Fixed  |
+| 4   | `src/content/posts/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md`              | `image` field missing + leaked LLM preamble in body       | Fixed  |
 
 > Note: the task described "two remaining affected articles"; investigation found four. Article 3 had an `image` field but the referenced file did not exist. Article 4 was caught by the new guardrail script and also had the leaked preamble that was separately flagged by the Codex bot (whose PR was blocked by CI being offline).
 

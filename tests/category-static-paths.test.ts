@@ -85,15 +85,20 @@ describe('category static paths', () => {
       },
     ]);
 
-    const paginate = vi.fn((data: unknown[], args?: { params?: { category?: string }; props?: { category?: unknown } }) => [
-      {
-        params: { category: args?.params?.category, page: undefined },
-        props: {
-          category: args?.props?.category,
-          page: createPaginatedPage(data, `/categorias/${args?.params?.category}/`),
+    const paginate = vi.fn(
+      (
+        data: unknown[],
+        args?: { params?: { category?: string }; props?: { category?: unknown } }
+      ) => [
+        {
+          params: { category: args?.params?.category, page: undefined },
+          props: {
+            category: args?.props?.category,
+            page: createPaginatedPage(data, `/categorias/${args?.params?.category}/`),
+          },
         },
-      },
-    ]);
+      ]
+    );
 
     const { getStaticPathsBlogCategory } = await import('../src/utils/blog');
     const paths = await getStaticPathsBlogCategory({ paginate } as never);

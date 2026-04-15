@@ -27,7 +27,8 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
         const rawJsonConfig = (await loadConfig(_themeConfig)) as Config;
-        const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS, APP_CONFIG } = configBuilder(rawJsonConfig);
+        const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS, APP_CONFIG } =
+          configBuilder(rawJsonConfig);
 
         updateConfig({
           site: SITE.site,
@@ -92,20 +93,31 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
           const sitemapExists = fs.existsSync(sitemapFile);
 
           if (hasIntegration && sitemapExists) {
-            const robotsTxt = fs.readFileSync(fileURLToPath(robotsTxtFile), { encoding: 'utf8', flag: 'a+' });
+            const robotsTxt = fs.readFileSync(fileURLToPath(robotsTxtFile), {
+              encoding: 'utf8',
+              flag: 'a+',
+            });
             const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {
-              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${String(sitemapUrl)}`, {
-                encoding: 'utf8',
-                flag: 'w',
-              });
+              fs.writeFileSync(
+                fileURLToPath(robotsTxtFileInOut),
+                `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${String(sitemapUrl)}`,
+                {
+                  encoding: 'utf8',
+                  flag: 'w',
+                }
+              );
             } else {
-              fs.writeFileSync(fileURLToPath(robotsTxtFileInOut), robotsTxt.replace(pattern, `Sitemap: ${String(sitemapUrl)}`), {
-                encoding: 'utf8',
-                flag: 'w',
-              });
+              fs.writeFileSync(
+                fileURLToPath(robotsTxtFileInOut),
+                robotsTxt.replace(pattern, `Sitemap: ${String(sitemapUrl)}`),
+                {
+                  encoding: 'utf8',
+                  flag: 'w',
+                }
+              );
             }
           }
           // eslint-disable-next-line @typescript-eslint/no-unused-vars

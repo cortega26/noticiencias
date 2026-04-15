@@ -36,9 +36,9 @@
 
 ## Remaining Risks
 
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| Future articles generated without `image` field | Medium | Guardrail in `npm run lint` now catches this before commit |
-| `default.png` used permanently instead of being replaced | Low | Track as content backlog item; visible in frontmatter |
-| LLM preamble leak recurs in future articles | Low | Fixed in news_collector `_extract_markdown_content()` in same session |
-| Public `/images/` path typos not caught by guardrail | Low | Caught by `npm run test:audit` (vitest site-integrity suite) |
+| Risk                                                     | Likelihood | Mitigation                                                            |
+| -------------------------------------------------------- | ---------- | --------------------------------------------------------------------- |
+| Future articles generated without `image` field          | Medium     | Guardrail in `npm run lint` now catches this before commit            |
+| `default.png` used permanently instead of being replaced | Low        | Track as content backlog item; visible in frontmatter                 |
+| LLM preamble leak recurs in future articles              | Low        | Fixed in news_collector `_extract_markdown_content()` in same session |
+| Public `/images/` path typos not caught by guardrail     | Low        | Caught by `npm run test:audit` (vitest site-integrity suite)          |

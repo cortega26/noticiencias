@@ -263,13 +263,13 @@ Before considering a change complete, verify:
 
 ## 9) Change Matrix
 
-| Change type | Risk | Minimum requirement |
-| --- | --- | --- |
-| Content typo or metadata-only post fix | Low | `npm run lint && npm run validate:content` |
-| New post or taxonomy/content update | Medium | Baseline validation and permalink/metadata sanity check |
-| Component or page markup change | High | Full validation plus mobile and desktop verification |
-| Shared layout, metadata, search, or script change | High | Full validation and regression check on affected routes |
-| Content schema, config, or dependency change | Critical | Full validation; treat as cross-repo contract change |
+| Change type                                       | Risk     | Minimum requirement                                     |
+| ------------------------------------------------- | -------- | ------------------------------------------------------- |
+| Content typo or metadata-only post fix            | Low      | `npm run lint && npm run validate:content`              |
+| New post or taxonomy/content update               | Medium   | Baseline validation and permalink/metadata sanity check |
+| Component or page markup change                   | High     | Full validation plus mobile and desktop verification    |
+| Shared layout, metadata, search, or script change | High     | Full validation and regression check on affected routes |
+| Content schema, config, or dependency change      | Critical | Full validation; treat as cross-repo contract change    |
 
 When in doubt, choose the higher risk class.
 

@@ -1,14 +1,13 @@
 import { safeRead } from '../../utils/safeFs';
 import yaml from 'js-yaml';
 
-
 export function safeYamlLoad(content: string): unknown {
   const parsed = yaml.load(content, {
     schema: yaml.FAILSAFE_SCHEMA,
   });
 
   if (parsed === null || parsed === undefined) {
-    throw new Error("Invalid YAML: empty");
+    throw new Error('Invalid YAML: empty');
   }
 
   if (typeof parsed !== 'object') {

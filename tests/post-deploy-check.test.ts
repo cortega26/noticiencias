@@ -128,11 +128,26 @@ describe('Post-deploy deploy checker', () => {
   it('passes on an immediate healthy deployment', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/uno.jpg', ogImage: 'https://noticiencias.com/images/uno.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/uno.jpg',
+          ogImage: 'https://noticiencias.com/images/uno.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/dos.jpg', ogImage: 'https://noticiencias.com/images/dos.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/dos.jpg',
+          ogImage: 'https://noticiencias.com/images/dos.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/tres.jpg', ogImage: 'https://noticiencias.com/images/tres.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/tres.jpg',
+          ogImage: 'https://noticiencias.com/images/tres.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
       htmlResponse(`
         <!doctype html>
@@ -185,7 +200,9 @@ describe('Post-deploy deploy checker', () => {
 
   it('uses curl fallback to recover from a Cloudflare-style 403', async () => {
     const fetchImpl = mockFetchSequence([edgeBlockedResponse()]);
-    const curlRunner = vi.fn(async () => curlResult(createHomeHtml(), 200, { server: 'cloudflare' }));
+    const curlRunner = vi.fn(async () =>
+      curlResult(createHomeHtml(), 200, { server: 'cloudflare' })
+    );
 
     const result = await probeUrl('https://noticiencias.com/', {
       mode: 'hybrid',
@@ -203,7 +220,10 @@ describe('Post-deploy deploy checker', () => {
   it('warns and passes in hybrid mode when Cloudflare-style 403 persists', async () => {
     const fetchImpl = mockFetchSequence([edgeBlockedResponse(), edgeBlockedResponse()]);
     const curlRunner = vi.fn(async () =>
-      curlResult('<html>Attention Required</html>', 403, { server: 'cloudflare', 'cf-ray': 'abc123' })
+      curlResult('<html>Attention Required</html>', 403, {
+        server: 'cloudflare',
+        'cf-ray': 'abc123',
+      })
     );
 
     const result = await runPostDeployCheck('https://noticiencias.com/', {
@@ -224,7 +244,10 @@ describe('Post-deploy deploy checker', () => {
   it('fails in strict-live mode when Cloudflare-style 403 persists', async () => {
     const fetchImpl = mockFetchSequence([edgeBlockedResponse(), edgeBlockedResponse()]);
     const curlRunner = vi.fn(async () =>
-      curlResult('<html>Attention Required</html>', 403, { server: 'cloudflare', 'cf-ray': 'abc123' })
+      curlResult('<html>Attention Required</html>', 403, {
+        server: 'cloudflare',
+        'cf-ray': 'abc123',
+      })
     );
 
     await expect(
@@ -241,7 +264,9 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails on invalid homepage HTML invariants', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse('<html><head><title>Wrong Site</title></head><body><article>One</article></body></html>'),
+      htmlResponse(
+        '<html><head><title>Wrong Site</title></head><body><article>One</article></body></html>'
+      ),
     ]);
 
     await expect(
@@ -259,11 +284,26 @@ describe('Post-deploy deploy checker', () => {
   it('fails when search.json is invalid', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/uno.jpg', ogImage: 'https://noticiencias.com/images/uno.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/uno.jpg',
+          ogImage: 'https://noticiencias.com/images/uno.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/dos.jpg', ogImage: 'https://noticiencias.com/images/dos.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/dos.jpg',
+          ogImage: 'https://noticiencias.com/images/dos.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/tres.jpg', ogImage: 'https://noticiencias.com/images/tres.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/tres.jpg',
+          ogImage: 'https://noticiencias.com/images/tres.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
       htmlResponse(`
         <!doctype html>
@@ -297,11 +337,26 @@ describe('Post-deploy deploy checker', () => {
   it('fails when search.json is empty', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/uno.jpg', ogImage: 'https://noticiencias.com/images/uno.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/uno.jpg',
+          ogImage: 'https://noticiencias.com/images/uno.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/dos.jpg', ogImage: 'https://noticiencias.com/images/dos.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/dos.jpg',
+          ogImage: 'https://noticiencias.com/images/dos.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/tres.jpg', ogImage: 'https://noticiencias.com/images/tres.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/tres.jpg',
+          ogImage: 'https://noticiencias.com/images/tres.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
       htmlResponse(`
         <!doctype html>
@@ -416,11 +471,26 @@ describe('Post-deploy deploy checker', () => {
   it('fails when a deleted route still returns 200 after deploy', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/uno.jpg', ogImage: 'https://noticiencias.com/images/uno.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/uno.jpg',
+          ogImage: 'https://noticiencias.com/images/uno.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/dos.jpg', ogImage: 'https://noticiencias.com/images/dos.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/dos.jpg',
+          ogImage: 'https://noticiencias.com/images/dos.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/tres.jpg', ogImage: 'https://noticiencias.com/images/tres.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/tres.jpg',
+          ogImage: 'https://noticiencias.com/images/tres.jpg',
+        })
+      ),
       new Response('ok', { status: 200, headers: { 'content-type': 'image/jpeg' } }),
       htmlResponse(`
         <!doctype html>
@@ -479,7 +549,12 @@ describe('Post-deploy deploy checker', () => {
   it('fails when an article hero probe does not return 2xx', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(createHomeHtml()),
-      htmlResponse(createArticleHtml({ heroSrc: '/images/uno.jpg', ogImage: 'https://noticiencias.com/images/uno.jpg' })),
+      htmlResponse(
+        createArticleHtml({
+          heroSrc: '/images/uno.jpg',
+          ogImage: 'https://noticiencias.com/images/uno.jpg',
+        })
+      ),
       new Response('broken', { status: 404, headers: { 'content-type': 'text/plain' } }),
     ]);
 
@@ -492,7 +567,9 @@ describe('Post-deploy deploy checker', () => {
         sleep: async () => {},
         logger: silentLogger,
       })
-    ).rejects.toThrow(/Failed to fetch https:\/\/noticiencias.com\/images\/uno.jpg: fetch HTTP 404/);
+    ).rejects.toThrow(
+      /Failed to fetch https:\/\/noticiencias.com\/images\/uno.jpg: fetch HTTP 404/
+    );
   });
 
   it('fails when article og:image falls back to the default placeholder', async () => {

@@ -3,263 +3,289 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Buscar Noticias">
-    <section class="px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-        <header>
-            <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8 font-heading text-center">
-                Buscador
-            </h1>
-        </header>
-        
-        <div class="search-container mx-auto max-w-3xl">
-            <form id="search-form" class="relative" role="search">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
-                </div>
-                <input type="text" id="search-box" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe para buscar..." required>
-                <button type="submit" class="absolute right-2.5 bottom-2.5 bg-primary-700 text-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Buscar</button>
-            </form>
-            
-            <p id="search-status" class="text-sm text-gray-500 mt-2 text-center min-h-[1.5rem]"></p>
-            
-            <div id="search-results" class="mt-8"></div>
+  <section class="px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <header>
+      <h1
+        class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8 font-heading text-center"
+      >
+        Buscador
+      </h1>
+    </header>
+
+    <div class="search-container mx-auto max-w-3xl">
+      <form id="search-form" class="relative" role="search">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg
+            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+          </svg>
         </div>
-    </section>
+        <input
+          type="text"
+          id="search-box"
+          class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          placeholder="Escribe para buscar..."
+          required
+        />
+        <button
+          type="submit"
+          class="absolute right-2.5 bottom-2.5 bg-primary-700 text-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >Buscar</button
+        >
+      </form>
 
-    <script>
-        import lunr from 'lunr';
-        import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
+      <p id="search-status" class="text-sm text-gray-500 mt-2 text-center min-h-[1.5rem]"></p>
 
-        // Define expected document structure
-        interface SearchDocument {
-            title: string;
-            url: string;
-            description: string;
-            content: string;
-            tags?: string | string[];
-            image?: string;
+      <div id="search-results" class="mt-8"></div>
+    </div>
+  </section>
+
+  <script>
+    import lunr from 'lunr';
+    import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
+
+    // Define expected document structure
+    interface SearchDocument {
+      title: string;
+      url: string;
+      description: string;
+      content: string;
+      tags?: string | string[];
+      image?: string;
+    }
+
+    // Lunr Types (Simplified)
+    interface LunrResult {
+      ref: string;
+      score: number;
+      matchData: unknown;
+    }
+
+    interface LunrIndex {
+      search(query: string): LunrResult[];
+    }
+
+    interface LunrBuilder {
+      ref(field: string): void;
+      field(field: string, options?: { boost?: number }): void;
+      add(doc: unknown): void;
+    }
+
+    let index: LunrIndex | null = null;
+    let store: Record<string, SearchDocument> = {};
+    let activeInitPath = '';
+
+    interface SearchPageRefs {
+      form: HTMLFormElement;
+      input: HTMLInputElement;
+      status: HTMLElement;
+      results: HTMLElement;
+    }
+
+    function getSearchPageRefs(): SearchPageRefs | null {
+      const form = document.getElementById('search-form');
+      const input = document.getElementById('search-box');
+      const status = document.getElementById('search-status');
+      const results = document.getElementById('search-results');
+
+      if (!(form instanceof HTMLFormElement)) return null;
+      if (!(input instanceof HTMLInputElement)) return null;
+      if (!(status instanceof HTMLElement)) return null;
+      if (!(results instanceof HTMLElement)) return null;
+
+      return { form, input, status, results };
+    }
+
+    async function bootSearch() {
+      const refs = getSearchPageRefs();
+      if (!refs) return;
+
+      const { form, input, status } = refs;
+      const currentPath = window.location.pathname;
+
+      if (form.dataset.searchInitialized === currentPath && activeInitPath === currentPath) {
+        return;
+      }
+
+      form.dataset.searchInitialized = currentPath;
+      activeInitPath = currentPath;
+
+      if (form.dataset.searchBound !== 'true') {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          runSearch(input.value);
+        });
+        form.dataset.searchBound = 'true';
+      }
+
+      index = null;
+      store = {};
+
+      status.innerHTML =
+        '<span class="text-gray-500 animate-pulse">Cargando índice de búsqueda...</span>';
+      input.disabled = true;
+
+      try {
+        // Should force-cache to avoid network spam, managed by browser/service worker
+        const response = await fetch('/search.json', { cache: 'force-cache' });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const documents = await response.json();
+
+        if (!Array.isArray(documents) || documents.length === 0) {
+          status.textContent = 'El índice de búsqueda está vacío.';
+          return;
         }
 
-        // Lunr Types (Simplified)
-        interface LunrResult {
-            ref: string;
-            score: number;
-            matchData: unknown;
+        index = lunr(function (this: LunrBuilder) {
+          this.ref('url');
+          this.field('title', { boost: 10 });
+          this.field('description', { boost: 5 });
+          this.field('content');
+          this.field('tags');
+
+          documents.forEach((doc: SearchDocument) => {
+            // Normalize fields for better matching
+            const normalizedDoc = {
+              ...doc,
+              title: normalizeQuery(doc.title),
+              description: normalizeQuery(doc.description),
+              content: normalizeQuery(doc.content),
+              // Tags are array, join then normalize
+              tags: Array.isArray(doc.tags) ? normalizeQuery(doc.tags.join(' ')) : '',
+            };
+
+            this.add(normalizedDoc);
+            store[doc.url] = doc; // Store original for display
+          });
+        });
+
+        status.textContent = '';
+        input.disabled = false;
+
+        // Check URL for existing query and execute immediately
+        const initialQuery = getQueryFromUrl();
+        if (initialQuery) {
+          input.value = initialQuery;
+          runSearch(initialQuery);
+        } else {
+          input.focus();
+        }
+      } catch (e) {
+        console.error('Search init error:', e);
+        status.textContent = 'Error al cargar el buscador. Por favor recarga la página.';
+      }
+    }
+
+    function runSearch(query: string) {
+      const refs = getSearchPageRefs();
+      if (!refs) return;
+
+      const { results: resultsDiv, status } = refs;
+
+      resultsDiv.innerHTML = '';
+
+      if (!query || !query.trim()) {
+        updateUrlWithQuery('');
+        if (status) status.textContent = '';
+        return;
+      }
+
+      // Update URL
+      updateUrlWithQuery(query);
+
+      const normalizedQuery = normalizeQuery(query);
+
+      // Fuzzy matching + wildcard
+      if (!index) return;
+      try {
+        // Lunr index type not available fully but implicit any works now
+        const results = index.search(`${normalizedQuery}*`);
+
+        if (results.length === 0) {
+          if (status) status.textContent = '';
+          resultsDiv.innerHTML =
+            '<div class="text-center py-8"><p class="text-xl text-gray-500 dark:text-gray-400">No se encontraron resultados para <b id="no-results-query"></b>.</p></div>';
+          const querySpan = document.getElementById('no-results-query');
+          if (querySpan) querySpan.textContent = query;
+          return;
         }
 
-        interface LunrIndex {
-            search(query: string): LunrResult[];
-        }
+        if (status) status.textContent = `Se encontraron ${results.length} resultados.`;
 
-        interface LunrBuilder {
-            ref(field: string): void;
-            field(field: string, options?: { boost?: number }): void;
-            add(doc: unknown): void;
-        }
+        const ul = document.createElement('ul');
+        ul.className = 'grid gap-6 md:grid-cols-1';
+        resultsDiv.appendChild(ul);
 
-        let index: LunrIndex | null = null;
-        let store: Record<string, SearchDocument> = {};
-        let activeInitPath = '';
+        results.slice(0, 20).forEach((r: LunrResult) => {
+          const doc = store[r.ref];
+          if (!doc) return;
 
-        interface SearchPageRefs {
-            form: HTMLFormElement;
-            input: HTMLInputElement;
-            status: HTMLElement;
-            results: HTMLElement;
-        }
+          const li = document.createElement('li');
+          li.className =
+            'flex flex-col sm:flex-row bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden';
 
-        function getSearchPageRefs(): SearchPageRefs | null {
-            const form = document.getElementById('search-form');
-            const input = document.getElementById('search-box');
-            const status = document.getElementById('search-status');
-            const results = document.getElementById('search-results');
+          if (doc.image) {
+            const imgLink = document.createElement('a');
+            imgLink.href = doc.url;
+            imgLink.className = 'block sm:w-48 h-48 sm:h-auto flex-shrink-0';
+            const img = document.createElement('img');
+            img.src = doc.image;
+            img.alt = doc.title;
+            img.className = 'object-cover w-full h-full';
+            img.loading = 'lazy';
+            imgLink.appendChild(img);
+            li.appendChild(imgLink);
+          }
 
-            if (!(form instanceof HTMLFormElement)) return null;
-            if (!(input instanceof HTMLInputElement)) return null;
-            if (!(status instanceof HTMLElement)) return null;
-            if (!(results instanceof HTMLElement)) return null;
+          const contentDiv = document.createElement('div');
+          contentDiv.className = 'flex flex-col p-6 leading-normal';
 
-            return { form, input, status, results };
-        }
+          const h3 = document.createElement('h3');
+          h3.className = 'mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white';
+          const titleLink = document.createElement('a');
+          titleLink.href = doc.url;
+          titleLink.className =
+            'hover:text-primary-600 dark:hover:text-primary-400 transition-colors';
+          titleLink.textContent = doc.title;
+          h3.appendChild(titleLink);
+          contentDiv.appendChild(h3);
 
-        async function bootSearch() {
-            const refs = getSearchPageRefs();
-            if (!refs) return;
+          const desc = document.createElement('p');
+          desc.className = 'mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3';
+          desc.textContent = doc.description || '';
+          contentDiv.appendChild(desc);
 
-            const { form, input, status } = refs;
-            const currentPath = window.location.pathname;
+          if (doc.tags) {
+            const tagsDiv = document.createElement('div');
+            tagsDiv.className =
+              'mt-auto text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider';
+            tagsDiv.textContent = Array.isArray(doc.tags) ? doc.tags.join(', ') : String(doc.tags);
+            contentDiv.appendChild(tagsDiv);
+          }
 
-            if (form.dataset.searchInitialized === currentPath && activeInitPath === currentPath) {
-                return;
-            }
+          li.appendChild(contentDiv);
+          ul.appendChild(li);
+        });
+      } catch (e) {
+        // Lunr query error
+        console.error('Search error:', e);
+        if (status) status.textContent = 'Error al realizar la búsqueda.';
+      }
+    }
 
-            form.dataset.searchInitialized = currentPath;
-            activeInitPath = currentPath;
-
-            if (form.dataset.searchBound !== 'true') {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    runSearch(input.value);
-                });
-                form.dataset.searchBound = 'true';
-            }
-
-            index = null;
-            store = {};
-            
-            status.innerHTML = '<span class="text-gray-500 animate-pulse">Cargando índice de búsqueda...</span>';
-            input.disabled = true;
-
-            try {
-                // Should force-cache to avoid network spam, managed by browser/service worker
-                const response = await fetch('/search.json', { cache: 'force-cache' });
-                
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
-                const documents = await response.json();
-                
-                if (!Array.isArray(documents) || documents.length === 0) {
-                     status.textContent = 'El índice de búsqueda está vacío.';
-                     return;
-                }
-                
-                index = lunr(function (this: LunrBuilder) {
-                    this.ref('url');
-                    this.field('title', { boost: 10 });
-                    this.field('description', { boost: 5 });
-                    this.field('content');
-                    this.field('tags');
-                    
-                    documents.forEach((doc: SearchDocument) => {
-                        // Normalize fields for better matching
-                        const normalizedDoc = {
-                            ...doc,
-                            title: normalizeQuery(doc.title),
-                            description: normalizeQuery(doc.description),
-                            content: normalizeQuery(doc.content),
-                            // Tags are array, join then normalize
-                            tags: Array.isArray(doc.tags) ? normalizeQuery(doc.tags.join(' ')) : ''
-                        };
-
-                        this.add(normalizedDoc);
-                        store[doc.url] = doc; // Store original for display
-                    });
-                });
-
-                status.textContent = '';
-                input.disabled = false;
-
-                // Check URL for existing query and execute immediately
-                const initialQuery = getQueryFromUrl();
-                if (initialQuery) {
-                    input.value = initialQuery;
-                    runSearch(initialQuery);
-                } else {
-                    input.focus();
-                }
-
-            } catch (e) {
-                console.error("Search init error:", e);
-                status.textContent = 'Error al cargar el buscador. Por favor recarga la página.';
-            }
-        }
-
-        function runSearch(query: string) {
-            const refs = getSearchPageRefs();
-            if (!refs) return;
-
-            const { results: resultsDiv, status } = refs;
-            
-            resultsDiv.innerHTML = '';
-            
-            if (!query || !query.trim()) {
-                updateUrlWithQuery('');
-                if(status) status.textContent = '';
-                return;
-            }
-
-            // Update URL
-            updateUrlWithQuery(query);
-
-            const normalizedQuery = normalizeQuery(query);
-
-            // Fuzzy matching + wildcard
-            if (!index) return;
-            try {
-                // Lunr index type not available fully but implicit any works now
-                const results = index.search(`${normalizedQuery}*`);
-
-                if (results.length === 0) {
-                    if(status) status.textContent = '';
-                    resultsDiv.innerHTML = '<div class="text-center py-8"><p class="text-xl text-gray-500 dark:text-gray-400">No se encontraron resultados para <b id="no-results-query"></b>.</p></div>';
-                    const querySpan = document.getElementById('no-results-query');
-                    if (querySpan) querySpan.textContent = query;
-                    return;
-                }
-
-                if(status) status.textContent = `Se encontraron ${results.length} resultados.`;
-
-                const ul = document.createElement('ul');
-                ul.className = 'grid gap-6 md:grid-cols-1';
-                resultsDiv.appendChild(ul);
-
-                results.slice(0, 20).forEach((r: LunrResult) => {
-                    const doc = store[r.ref];
-                    if(!doc) return;
-
-                    const li = document.createElement('li');
-                    li.className = 'flex flex-col sm:flex-row bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden';
-                    
-                    if (doc.image) {
-                        const imgLink = document.createElement('a');
-                        imgLink.href = doc.url;
-                        imgLink.className = 'block sm:w-48 h-48 sm:h-auto flex-shrink-0';
-                        const img = document.createElement('img');
-                        img.src = doc.image;
-                        img.alt = doc.title;
-                        img.className = 'object-cover w-full h-full';
-                        img.loading = 'lazy';
-                        imgLink.appendChild(img);
-                        li.appendChild(imgLink);
-                    }
-
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'flex flex-col p-6 leading-normal';
-
-                    const h3 = document.createElement('h3');
-                    h3.className = 'mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white';
-                    const titleLink = document.createElement('a');
-                    titleLink.href = doc.url;
-                    titleLink.className = 'hover:text-primary-600 dark:hover:text-primary-400 transition-colors';
-                    titleLink.textContent = doc.title;
-                    h3.appendChild(titleLink);
-                    contentDiv.appendChild(h3);
-
-                    const desc = document.createElement('p');
-                    desc.className = 'mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3';
-                    desc.textContent = doc.description || '';
-                    contentDiv.appendChild(desc);
-
-                    if (doc.tags) {
-                        const tagsDiv = document.createElement('div');
-                        tagsDiv.className = 'mt-auto text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider';
-                        tagsDiv.textContent = Array.isArray(doc.tags) ? doc.tags.join(', ') : String(doc.tags);
-                        contentDiv.appendChild(tagsDiv);
-                    }
-
-                    li.appendChild(contentDiv);
-                    ul.appendChild(li);
-                });
-            } catch (e) {
-                // Lunr query error
-                console.error("Search error:", e);
-                if(status) status.textContent = 'Error al realizar la búsqueda.';
-            }
-        }
-
-        document.addEventListener('astro:page-load', bootSearch);
-        void bootSearch();
-
-    </script>
+    document.addEventListener('astro:page-load', bootSearch);
+    void bootSearch();
+  </script>
 </BaseLayout>

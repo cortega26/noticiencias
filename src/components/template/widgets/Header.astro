@@ -70,7 +70,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       },
     ]}
   >
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
+    <div
+      class:list={[
+        { 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' },
+        'flex justify-between',
+      ]}
+    >
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
@@ -97,7 +102,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
                   >
                     {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
+                    <Icon
+                      name="tabler:chevron-down"
+                      class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline"
+                    />
                   </button>
                   <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 lg:top-full lg:mt-1 lg:z-50 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
                     {links.map(({ text: text2, href: href2 }) => (
@@ -156,7 +164,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto btn-primary" />
+                <Button
+                  {...btnProps}
+                  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto btn-primary"
+                />
               ))}
             </span>
           ) : (

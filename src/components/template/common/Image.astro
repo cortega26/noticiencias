@@ -11,7 +11,6 @@ import {
   type ImageProps,
 } from '~/utils/images-optimization';
 
-
 type ImageType = {
   src: string;
   attributes: HTMLAttributes<'img'>;
@@ -26,22 +25,22 @@ const props = Astro.props;
 // Normalization Limit
 const normalized = normalizeImage(props.src);
 if (!normalized) {
-    // If src is missing, we can't render an image.
-    // Astro might handle this via slot or just return null.
+  // If src is missing, we can't render an image.
+  // Astro might handle this via slot or just return null.
 }
 // Use Normalized Input as Source of Truth
-const finalSrc = normalized ? normalized.src : (typeof props.src === 'string' ? props.src : '');
+const finalSrc = normalized ? normalized.src : typeof props.src === 'string' ? props.src : '';
 // If props.alt is missing, try normalized alt
 if (props.alt === undefined || props.alt === null) {
-    if (normalized && normalized.alt) {
-        props.alt = normalized.alt;
-    } else {
-        // Fallback to empty string if missing? 
-        // I-03 says explicit empty is better than undefined.
-        // But throwing might be safer for strictness.
-        // Let's keep existing strict check for now.
-        // throw new Error();
-    }
+  if (normalized && normalized.alt) {
+    props.alt = normalized.alt;
+  } else {
+    // Fallback to empty string if missing?
+    // I-03 says explicit empty is better than undefined.
+    // But throwing might be safer for strictness.
+    // Let's keep existing strict check for now.
+    // throw new Error();
+  }
 }
 
 if (props.alt === undefined || props.alt === null) {
@@ -66,8 +65,8 @@ if (!props.decoding) {
 
 // Map Normalized Attributes to Props if missing
 if (normalized) {
-    if (!props.width && normalized.width) props.width = normalized.width;
-    if (!props.height && normalized.height) props.height = normalized.height;
+  if (!props.width && normalized.width) props.width = normalized.width;
+  if (!props.height && normalized.height) props.height = normalized.height;
 }
 
 const _image = await findImage(finalSrc);
@@ -88,37 +87,37 @@ if (
 ) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);
 } else if (_image) {
-    // START PATCH: Handle public/ assets without dimensions
-    if (typeof _image === 'string' && _image.startsWith('/')) {
-        const attributes = { ...props };
-        delete attributes.src;
-        image = {
-            src: getAsset(_image),
-            attributes: {
-                ...attributes,
-                width: props.width,
-                height: props.height,
-            } as HTMLAttributes<'img'> // Explicit cast to satisfy TS
-        };
-    } else {
-        image = await getImagesOptimized(_image, props, astroAssetsOptimizer);
+  // START PATCH: Handle public/ assets without dimensions
+  if (typeof _image === 'string' && _image.startsWith('/')) {
+    const attributes = { ...props };
+    delete attributes.src;
+    image = {
+      src: getAsset(_image),
+      attributes: {
+        ...attributes,
+        width: props.width,
+        height: props.height,
+      } as HTMLAttributes<'img'>, // Explicit cast to satisfy TS
+    };
+  } else {
+    image = await getImagesOptimized(_image, props, astroAssetsOptimizer);
 
-        if (
-          typeof _image === 'object' &&
-          _image !== null &&
-          typeof _image.src === 'string' &&
-          typeof image.attributes.srcset === 'string' &&
-          image.attributes.srcset.length > 0 &&
-          (props.format ?? 'avif') === 'avif'
-        ) {
-          avifSource = {
-            srcset: image.attributes.srcset,
-            sizes: typeof image.attributes.sizes === 'string' ? image.attributes.sizes : undefined,
-            fallbackSrc: _image.src,
-          };
-        }
+    if (
+      typeof _image === 'object' &&
+      _image !== null &&
+      typeof _image.src === 'string' &&
+      typeof image.attributes.srcset === 'string' &&
+      image.attributes.srcset.length > 0 &&
+      (props.format ?? 'avif') === 'avif'
+    ) {
+      avifSource = {
+        srcset: image.attributes.srcset,
+        sizes: typeof image.attributes.sizes === 'string' ? image.attributes.sizes : undefined,
+        fallbackSrc: _image.src,
+      };
     }
-    // END PATCH
+  }
+  // END PATCH
 }
 
 const fallbackAttributes = image ? { ...image.attributes } : undefined;

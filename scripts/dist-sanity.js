@@ -48,11 +48,7 @@ function getFrontmatterImageSource(data) {
   if (typeof data.image === 'string') {
     return data.image.trim();
   }
-  if (
-    data.image &&
-    typeof data.image === 'object' &&
-    typeof data.image.src === 'string'
-  ) {
+  if (data.image && typeof data.image === 'object' && typeof data.image.src === 'string') {
     return data.image.src.trim();
   }
   return '';
@@ -63,11 +59,13 @@ function isAliasPath(src = '') {
 }
 
 function isResolvableImageSrc(src = '') {
-  return Boolean(src) && !isAliasPath(src) && (
-    src.startsWith('/') ||
-    src.startsWith('http://') ||
-    src.startsWith('https://') ||
-    src.startsWith('data:')
+  return (
+    Boolean(src) &&
+    !isAliasPath(src) &&
+    (src.startsWith('/') ||
+      src.startsWith('http://') ||
+      src.startsWith('https://') ||
+      src.startsWith('data:'))
   );
 }
 
@@ -86,7 +84,9 @@ function isDefaultRenderedImageUrl(src = '') {
 
 function scanDir(dir) {
   if (!fs.existsSync(dir)) {
-    console.error(`${RED}Error: dist directory not found at ${dir}. Run 'npm run build' first.${RESET}`);
+    console.error(
+      `${RED}Error: dist directory not found at ${dir}. Run 'npm run build' first.${RESET}`
+    );
     process.exit(1);
   }
 
@@ -94,11 +94,13 @@ function scanDir(dir) {
 
   for (const file of files) {
     const fullPath = path.join(dir, file);
-    
+
     // Security: Prevent traversal
     if (!fullPath.startsWith(DIST_DIR)) {
-        console.error(`${RED}Security Error: Attempted to scan outside DIST_DIR: ${fullPath}${RESET}`);
-        continue;
+      console.error(
+        `${RED}Security Error: Attempted to scan outside DIST_DIR: ${fullPath}${RESET}`
+      );
+      continue;
     }
 
     const stat = fs.statSync(fullPath);
@@ -143,17 +145,21 @@ function validateHtml(filePath) {
 
     // Invariant 2: Accessibility
     if (alt === undefined || alt === null) {
-       // Check for aria-hidden="true" which makes missing alt acceptable (though empty alt is preferred)
-       if ($(el).attr('aria-hidden') !== 'true') {
-          console.error(`${RED}[FAIL] ${relativePath}: Image missing 'alt' attribute. Src: "${src}"${RESET}`);
-          errorCount++;
-       }
+      // Check for aria-hidden="true" which makes missing alt acceptable (though empty alt is preferred)
+      if ($(el).attr('aria-hidden') !== 'true') {
+        console.error(
+          `${RED}[FAIL] ${relativePath}: Image missing 'alt' attribute. Src: "${src}"${RESET}`
+        );
+        errorCount++;
+      }
     } else if (alt === 'alt' || alt === 'undefined' || alt === 'null' || alt.trim() === '') {
-       // Empty alt is fine for decorative images, but "alt" or "undefined" is likely a bug
-       if (alt !== '') { 
-          console.error(`${RED}[FAIL] ${relativePath}: Image has invalid 'alt' value: "${alt}". Src: "${src}"${RESET}`);
-          errorCount++;
-       }
+      // Empty alt is fine for decorative images, but "alt" or "undefined" is likely a bug
+      if (alt !== '') {
+        console.error(
+          `${RED}[FAIL] ${relativePath}: Image has invalid 'alt' value: "${alt}". Src: "${src}"${RESET}`
+        );
+        errorCount++;
+      }
     }
 
     // Invariant 3: Layout Shift (CLS) - Excluding SVGs often used as icons
@@ -162,7 +168,9 @@ function validateHtml(filePath) {
         // Warning for now, or Error if strict. Risk map said "High" impact.
         // Let's make it an error as per the user's "Stability Hardening" goal.
         // CHECK: Astro's optimized images usually add width/height.
-        console.error(`${YELLOW}[WARN] ${relativePath}: Image missing width/height (CLS Risk). Src: "${src}"${RESET}`);
+        console.error(
+          `${YELLOW}[WARN] ${relativePath}: Image missing width/height (CLS Risk). Src: "${src}"${RESET}`
+        );
         // errorCount++; // Uncomment to enforce strictly
       }
     }
@@ -180,14 +188,18 @@ function validateHtml(filePath) {
   $('script').each((_i, el) => {
     const scriptContent = $(el).html() || '';
     if (/\.innerHTML\s*=\s*`/.test(scriptContent)) {
-      console.error(`${RED}[FAIL] ${relativePath}: innerHTML with template literal detected in inline script (XSS risk)${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${relativePath}: innerHTML with template literal detected in inline script (XSS risk)${RESET}`
+      );
       errorCount++;
     }
   });
 
   // Extra Check: Placeholder content leaking
   if (content.includes('Lorem ipsum') || content.includes('TODO:')) {
-     console.error(`${YELLOW}[WARN] ${relativePath}: Potential placeholder content detected.${RESET}`);
+    console.error(
+      `${YELLOW}[WARN] ${relativePath}: Potential placeholder content detected.${RESET}`
+    );
   }
 }
 
@@ -211,7 +223,9 @@ function auditBuiltArticleHeroes() {
 
     const route = resolvePostRoute(fileName, data);
     if (!route) {
-      console.error(`${RED}[FAIL] ${fileName}: Unable to resolve built route for hero audit.${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${fileName}: Unable to resolve built route for hero audit.${RESET}`
+      );
       errorCount++;
       continue;
     }
@@ -228,7 +242,9 @@ function auditBuiltArticleHeroes() {
     const headerImage = $('main article header img').first();
 
     if (headerImage.length === 0) {
-      console.error(`${RED}[FAIL] ${fileName}: Article header hero image missing in built HTML.${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${fileName}: Article header hero image missing in built HTML.${RESET}`
+      );
       errorCount++;
       continue;
     }
@@ -238,28 +254,38 @@ function auditBuiltArticleHeroes() {
     const headerHeight = (headerImage.attr('height') || '').trim();
 
     if (!isResolvableImageSrc(headerSrc)) {
-      console.error(`${RED}[FAIL] ${fileName}: Article header hero src is not resolvable: "${headerSrc}".${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${fileName}: Article header hero src is not resolvable: "${headerSrc}".${RESET}`
+      );
       errorCount++;
     }
 
     if (!headerWidth || !headerHeight) {
-      console.error(`${RED}[FAIL] ${fileName}: Article header hero is missing width/height.${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${fileName}: Article header hero is missing width/height.${RESET}`
+      );
       errorCount++;
     }
 
     const avifSource = $('main article header picture source[type="image/avif"]').first();
     if (avifSource.length > 0 && isAvifUrl(headerSrc)) {
-      console.error(`${RED}[FAIL] ${fileName}: AVIF hero is missing a non-AVIF img fallback.${RESET}`);
+      console.error(
+        `${RED}[FAIL] ${fileName}: AVIF hero is missing a non-AVIF img fallback.${RESET}`
+      );
       errorCount++;
     }
 
     const ogImage = ($('meta[property="og:image"]').attr('content') || '').trim();
     if (imageSource !== DEFAULT_HERO_IMAGE) {
       if (!ogImage) {
-        console.error(`${RED}[FAIL] ${fileName}: Article-specific hero is missing og:image metadata.${RESET}`);
+        console.error(
+          `${RED}[FAIL] ${fileName}: Article-specific hero is missing og:image metadata.${RESET}`
+        );
         errorCount++;
       } else if (isDefaultRenderedImageUrl(ogImage)) {
-        console.error(`${RED}[FAIL] ${fileName}: og:image points at the default placeholder for an article-specific hero.${RESET}`);
+        console.error(
+          `${RED}[FAIL] ${fileName}: og:image points at the default placeholder for an article-specific hero.${RESET}`
+        );
         errorCount++;
       }
     }

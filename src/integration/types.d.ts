@@ -1,5 +1,13 @@
 declare module 'astrowind:config' {
-  import type { SiteConfig, I18NConfig, MetaDataConfig, AppBlogConfig, UIConfig, AnalyticsConfig, FormConfig } from './utils/configBuilder';
+  import type {
+    SiteConfig,
+    I18NConfig,
+    MetaDataConfig,
+    AppBlogConfig,
+    UIConfig,
+    AnalyticsConfig,
+    FormConfig,
+  } from './utils/configBuilder';
 
   export const SITE: SiteConfig;
   export const I18N: I18NConfig;

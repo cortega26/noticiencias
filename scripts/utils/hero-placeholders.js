@@ -18,21 +18,14 @@ export function resolveHeroPlaceholderPaths(repoRoot = DEFAULT_REPO_ROOT) {
     repoRoot: resolvedRepoRoot,
     postsDir,
     assetsImagesDir: path.resolve(resolvedRepoRoot, 'src', 'assets', 'images'),
-    allowlistPath: path.resolve(
-      resolvedRepoRoot,
-      'data',
-      'hero-image-placeholder-allowlist.json'
-    ),
+    allowlistPath: path.resolve(resolvedRepoRoot, 'data', 'hero-image-placeholder-allowlist.json'),
     postsDirPrefix: `${postsDir}${path.sep}`,
   };
 }
 
 export function assertWithinPostsDir(absPath, paths) {
   const normalized = path.resolve(absPath);
-  if (
-    normalized !== paths.postsDir &&
-    !normalized.startsWith(paths.postsDirPrefix)
-  ) {
+  if (normalized !== paths.postsDir && !normalized.startsWith(paths.postsDirPrefix)) {
     throw new Error(`Path escapes posts directory boundary: ${normalized}`);
   }
   return normalized;
@@ -83,9 +76,7 @@ export function serializePlaceholderAllowlist(allowedPlaceholders) {
 function getImageSource(imageValue) {
   return typeof imageValue === 'string'
     ? imageValue.trim()
-    : typeof imageValue === 'object' &&
-        imageValue !== null &&
-        typeof imageValue.src === 'string'
+    : typeof imageValue === 'object' && imageValue !== null && typeof imageValue.src === 'string'
       ? imageValue.src.trim()
       : '';
 }
@@ -143,13 +134,10 @@ export function collectHeroImageDiagnostics(options = {}) {
     }
 
     const inlineAlt =
-      typeof imageValue === 'object' &&
-      imageValue !== null &&
-      typeof imageValue.alt === 'string'
+      typeof imageValue === 'object' && imageValue !== null && typeof imageValue.alt === 'string'
         ? imageValue.alt.trim()
         : '';
-    const imageAlt =
-      typeof parsed.image_alt === 'string' ? parsed.image_alt.trim() : '';
+    const imageAlt = typeof parsed.image_alt === 'string' ? parsed.image_alt.trim() : '';
     if (!inlineAlt && !imageAlt) {
       errors.push(`${relPath}: missing 'image_alt' text for hero image`);
     }
@@ -176,9 +164,7 @@ export function collectHeroImageDiagnostics(options = {}) {
     .filter((relPath) => !usedAllowlistEntries.has(relPath))
     .sort((a, b) => a.localeCompare(b));
   const orderedNextAllowlist = Object.fromEntries(
-    Object.entries(nextAllowedPlaceholders).sort(([left], [right]) =>
-      left.localeCompare(right)
-    )
+    Object.entries(nextAllowedPlaceholders).sort(([left], [right]) => left.localeCompare(right))
   );
 
   return {
@@ -193,9 +179,7 @@ export function collectHeroImageDiagnostics(options = {}) {
 
 export function syncHeroPlaceholderAllowlist(options = {}) {
   const diagnostics = collectHeroImageDiagnostics(options);
-  const nextContents = serializePlaceholderAllowlist(
-    diagnostics.nextAllowedPlaceholders
-  );
+  const nextContents = serializePlaceholderAllowlist(diagnostics.nextAllowedPlaceholders);
   const previousContents = fs.existsSync(diagnostics.paths.allowlistPath)
     ? fs.readFileSync(diagnostics.paths.allowlistPath, 'utf8')
     : '';

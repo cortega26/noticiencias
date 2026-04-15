@@ -36,7 +36,8 @@ const metadataImage = (() => {
 const metadata = {
   title: post.title,
   description: post.excerpt,
-  canonical: post.metadata?.canonical || (post.permalink ? undefined : getPermalink(post.slug, 'post')),
+  canonical:
+    post.metadata?.canonical || (post.permalink ? undefined : getPermalink(post.slug, 'post')),
   openGraph: {
     type: 'article',
     images: metadataImage,
@@ -52,7 +53,7 @@ const metadata = {
           {post.Content ? <post.Content /> : <Fragment set:html={post.content} />}
         </SinglePost>
       </main>
-      
+
       <aside class="hidden lg:block lg:col-span-4">
         <ArticleSidebar />
       </aside>

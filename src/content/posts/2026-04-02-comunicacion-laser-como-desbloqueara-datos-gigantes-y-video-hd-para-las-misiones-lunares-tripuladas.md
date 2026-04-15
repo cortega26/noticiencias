@@ -4,13 +4,13 @@ schema_version: 2
 date: 2026-04-02
 author: Noticiencias AI
 categories:
-- Tecnología
+  - Tecnología
 tags:
-- comunicación láser
-- misión lunar
-- artemis ii
-- exploración espacial
-- telemedicina
+  - comunicación láser
+  - misión lunar
+  - artemis ii
+  - exploración espacial
+  - telemedicina
 excerpt: La comunicación láser revoluciona las misiones lunares tripuladas. Permite video HD y terabytes de datos, crucial para Artemis II y futuras exploraciones.
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
 image_alt: Imagen editorial de Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission

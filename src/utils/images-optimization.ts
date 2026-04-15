@@ -123,7 +123,7 @@ export const getSizes = (width?: number, layout?: Layout): string | undefined =>
   }
 };
 
-const pixelate = (value?: number) => (value ?? value === 0 ? `${value}px` : undefined);
+const pixelate = (value?: number) => ((value ?? value === 0) ? `${value}px` : undefined);
 
 const getStyle = ({
   width,
@@ -148,7 +148,11 @@ const getStyle = ({
   ];
 
   // If background is a URL, set it to cover the image and not repeat
-  if ((background?.startsWith('https:') ?? background?.startsWith('http:')) ?? background?.startsWith('data:')) {
+  if (
+    background?.startsWith('https:') ??
+    background?.startsWith('http:') ??
+    background?.startsWith('data:')
+  ) {
     styleEntries.push(['background-image', `url(${background})`]);
     styleEntries.push(['background-size', 'cover']);
     styleEntries.push(['background-repeat', 'no-repeat']);
@@ -203,7 +207,12 @@ const getBreakpoints = ({
   breakpoints?: number[];
   layout: Layout;
 }): number[] => {
-  if (layout === 'fullWidth' || layout === 'cover' || layout === 'responsive' || layout === 'contained') {
+  if (
+    layout === 'fullWidth' ||
+    layout === 'cover' ||
+    layout === 'responsive' ||
+    layout === 'contained'
+  ) {
     return breakpoints ?? config.deviceSizes;
   }
   if (!width) {
@@ -238,14 +247,14 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
     return [];
   }
 
-  // Bypass optimization for remote images to avoid build timeouts/errors 
+  // Bypass optimization for remote images to avoid build timeouts/errors
   // (inferRemoteSize can fail or time out on external URLs)
   if (typeof image === 'string' && (image.startsWith('http://') || image.startsWith('https://'))) {
-      return breakpoints.map((w) => ({
-          src: image,
-          width: w,
-          height: _height, // May be undefined, which is fine
-      }));
+    return breakpoints.map((w) => ({
+      src: image,
+      width: w,
+      height: _height, // May be undefined, which is fine
+    }));
   }
 
   const sourceKey = getDerivativeSourceKey(image);
@@ -281,7 +290,12 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
 
   return Promise.all(
     effectiveBreakpoints.map(async (w: number) => {
-      const result = await getImage({ src: image, width: w, inferSize: true, ...(format ? { format: format } : {}) });
+      const result = await getImage({
+        src: image,
+        width: w,
+        inferSize: true,
+        ...(format ? { format: format } : {}),
+      });
 
       return {
         src: result?.src,
@@ -297,7 +311,13 @@ export const isUnpicCompatible = (image: string) => {
 };
 
 /* ** */
-export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width, height, format = undefined) => {
+export const unpicOptimizer: ImagesOptimizer = async (
+  image,
+  breakpoints,
+  width,
+  height,
+  format = undefined
+) => {
   if (!image || typeof image !== 'string') {
     return [];
   }
@@ -342,7 +362,8 @@ const calculateDimensions = (
   // Inferred from image metadata if not string
   if (typeof image !== 'string') {
     _width ||= Number(image.width) || undefined;
-    _height ||= typeof _width === 'number' ? computeHeight(_width, image.width / image.height) : undefined;
+    _height ||=
+      typeof _width === 'number' ? computeHeight(_width, image.width / image.height) : undefined;
   }
 
   // Calculate dimensions from aspect ratio
@@ -408,11 +429,13 @@ export async function getImagesOptimized(
   );
   const srcset = optimizedVariants.map(({ src, width }) => `${src} ${width}w`).join(', ');
 
-  const isImageMetadata = (img: unknown): img is { src: string } => typeof img === 'object' && img !== null && 'src' in img;
+  const isImageMetadata = (img: unknown): img is { src: string } =>
+    typeof img === 'object' && img !== null && 'src' in img;
   const preferredSrc = selectPreferredVariantSrc(optimizedVariants, Number(width) || undefined);
 
   return {
-    src: preferredSrc || (typeof image === 'string' ? image : (isImageMetadata(image) ? image.src : '')),
+    src:
+      preferredSrc || (typeof image === 'string' ? image : isImageMetadata(image) ? image.src : ''),
     attributes: {
       width: width,
       height: height,

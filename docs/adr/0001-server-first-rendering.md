@@ -27,8 +27,8 @@ tightly-scoped `<script>` tag attached to the owning component.
 
 ## Alternatives considered
 
-| Option | Reason rejected |
-|--------|-----------------|
-| React-first SPA | SEO and Core Web Vitals penalty; no benefit for editorial content |
-| Vue islands by default | Adds a framework dependency without a current use case |
+| Option                   | Reason rejected                                                               |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| React-first SPA          | SEO and Core Web Vitals penalty; no benefit for editorial content             |
+| Vue islands by default   | Adds a framework dependency without a current use case                        |
 | Astro hybrid (SSR + SSG) | Cloudflare Pages deployment cost; all content is fully static at publish time |

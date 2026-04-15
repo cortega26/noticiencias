@@ -35,17 +35,17 @@ import { normalizeImage } from './normalizeImage';
 const shouldIgnorePath = (imagePath: string): boolean => {
   const normalized = normalizeImage(imagePath);
   if (!normalized) return true;
-  
+
   if (normalized.kind === 'remote') return true;
-  
+
   // Local paths that are not assets
   if (normalized.src.startsWith('/')) {
-      // If it starts with /, it's a public asset or root relative. 
-      // The original logic ignored entries starting with /.
-      // check if it's explicitly ~/assets
-      return !normalized.src.startsWith('~/assets/images');
+    // If it starts with /, it's a public asset or root relative.
+    // The original logic ignored entries starting with /.
+    // check if it's explicitly ~/assets
+    return !normalized.src.startsWith('~/assets/images');
   }
-  
+
   return !normalized.src.startsWith('~/assets/images');
 };
 
@@ -53,7 +53,7 @@ const resolveImageKey = (imagePath: string): string => {
   // Use centralized Normalizer first
   const normalized = normalizeImage(imagePath);
   if (normalized && normalized.kind === 'local' && normalized.src.startsWith('~/')) {
-      return normalized.src.replace('~/', '/src/');
+    return normalized.src.replace('~/', '/src/');
   }
   return imagePath;
 };
@@ -67,11 +67,11 @@ const resolveImageFromCollection = async (
   }
   const module = await images[key]();
   if (typeof module === 'object' && module !== null && 'default' in module) {
-      const image = (module as { default: ImageMetadata }).default;
-      return {
-        ...image,
-        __notiSourceKey: key.replace('/src/', '~/'),
-      } as DerivativeAwareImageMetadata;
+    const image = (module as { default: ImageMetadata }).default;
+    return {
+      ...image,
+      __notiSourceKey: key.replace('/src/', '~/'),
+    } as DerivativeAwareImageMetadata;
   }
   return null;
 };
@@ -128,7 +128,10 @@ export const resolveImageUrl = async (
 };
 
 /** */
-const optimizeOpenGraphImage = async (image: { url?: string } | undefined, astroSite: URL | undefined) => {
+const optimizeOpenGraphImage = async (
+  image: { url?: string } | undefined,
+  astroSite: URL | undefined
+) => {
   const defaultWidth = 1200;
   const defaultHeight = 626;
 
@@ -153,18 +156,31 @@ const optimizeOpenGraphImage = async (image: { url?: string } | undefined, astro
       (resolvedImage.startsWith('http://') || resolvedImage.startsWith('https://')) &&
       isUnpicCompatible(resolvedImage)
     ) {
-      _image = (await unpicOptimizer(resolvedImage, [defaultWidth], defaultWidth, defaultHeight, 'jpg'))[0];
+      _image = (
+        await unpicOptimizer(resolvedImage, [defaultWidth], defaultWidth, defaultHeight, 'jpg')
+      )[0];
     } else if (resolvedImage) {
       const dimensions =
         typeof resolvedImage !== 'string' && resolvedImage?.width <= defaultWidth
           ? [resolvedImage?.width, resolvedImage?.height]
           : [defaultWidth, defaultHeight];
-      _image = (await astroAssetsOptimizer(resolvedImage, [dimensions[0]], dimensions[0], dimensions[1], 'jpg'))[0];
+      _image = (
+        await astroAssetsOptimizer(
+          resolvedImage,
+          [dimensions[0]],
+          dimensions[0],
+          dimensions[1],
+          'jpg'
+        )
+      )[0];
     }
 
     if (typeof _image === 'object') {
       return {
-        url: 'src' in _image && typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : '',
+        url:
+          'src' in _image && typeof _image.src === 'string'
+            ? String(new URL(_image.src, astroSite))
+            : '',
         width: 'width' in _image && typeof _image.width === 'number' ? _image.width : undefined,
         height: 'height' in _image && typeof _image.height === 'number' ? _image.height : undefined,
       };
@@ -190,7 +206,11 @@ export const adaptOpenGraphImages = async (
 
   const images = openGraph.images;
 
-  const adaptedImages = await Promise.all(images.map(async (image: { url?: string } | undefined) => optimizeOpenGraphImage(image, astroSite)));
+  const adaptedImages = await Promise.all(
+    images.map(async (image: { url?: string } | undefined) =>
+      optimizeOpenGraphImage(image, astroSite)
+    )
+  );
 
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
 };

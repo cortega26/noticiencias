@@ -32,8 +32,8 @@ prevents circular coupling.
 
 ## Alternatives considered
 
-| Option | Reason rejected |
-|--------|-----------------|
-| Single flat `components/` directory | Loses the boundary; template and editorial styles bleed into each other |
-| Replace Astrowind entirely | Too large a scope; Astrowind provides the site shell with minimal maintenance cost |
-| Monorepo package per layer | Overhead not justified by current team size |
+| Option                              | Reason rejected                                                                    |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| Single flat `components/` directory | Loses the boundary; template and editorial styles bleed into each other            |
+| Replace Astrowind entirely          | Too large a scope; Astrowind provides the site shell with minimal maintenance cost |
+| Monorepo package per layer          | Overhead not justified by current team size                                        |

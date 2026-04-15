@@ -1,170 +1,170 @@
 - generic [ref=e1]:
-  - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
-    - /url: "#main-content"
-  - generic [ref=e3]:
-    - generic [ref=e4]:
-      - paragraph [ref=e5]:
-        - strong [ref=e6]: Versión Beta v0.9
-        - img [ref=e7]
-        - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
-      - link "Leer más" [ref=e9] [cursor=pointer]:
-        - /url: /beta
-        - text: Leer más →
-    - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
-      - generic [ref=e12]: Ocultar aviso
-      - img [ref=e13]
-  - banner [ref=e15]:
-    - generic [ref=e17]:
-      - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
-        - /url: /
-        - generic [ref=e20]:
-          - img "Noticiencias" [ref=e21]
-          - text: Noticiencias
-      - navigation "Main navigation" [ref=e22]:
-        - list [ref=e23]:
-          - listitem [ref=e24]:
-            - link "Astronomía" [ref=e25] [cursor=pointer]:
-              - /url: /categorias/astronomia/
-          - listitem [ref=e26]:
-            - link "Salud" [ref=e27] [cursor=pointer]:
-              - /url: /categorias/salud/
-          - listitem [ref=e28]:
-            - link "Tecnología" [ref=e29] [cursor=pointer]:
-              - /url: /categorias/tecnologia/
-          - listitem [ref=e30]:
-            - link "Editorial" [ref=e31] [cursor=pointer]:
-              - /url: /categorias/editorial/
-          - listitem [ref=e32]:
-            - button "Más" [ref=e33] [cursor=pointer]:
-              - text: Más
-              - img [ref=e34]
-          - listitem [ref=e36]:
-            - link "Series" [ref=e37] [cursor=pointer]:
-              - /url: /series/
-      - generic [ref=e39]:
-        - generic [ref=e40]:
-          - button "Alternar modo Oscuro/Claro" [ref=e41] [cursor=pointer]:
-            - img [ref=e42]
-          - link "RSS Feed" [ref=e44] [cursor=pointer]:
-            - /url: /rss.xml
-            - img [ref=e45]
-        - link "Buscar" [ref=e48] [cursor=pointer]:
-          - /url: /buscar/
-          - text: Buscar
-          - img [ref=e49]
-  - main [ref=e51]:
-    - generic [ref=e52]:
-      - heading "Buscador" [level=1] [ref=e54]
-      - generic [ref=e55]:
-        - search [ref=e56]:
-          - generic:
-            - img
-          - textbox "Escribe para buscar..." [ref=e57]: meta
-          - button "Buscar" [active] [ref=e58] [cursor=pointer]
-        - paragraph [ref=e59]: Se encontraron 3 resultados.
-        - list [ref=e118]:
-          - listitem [ref=e119]:
-            - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e120] [cursor=pointer]:
-              - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
-              - img "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e121]
-            - generic [ref=e122]:
-              - heading "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [level=3] [ref=e123]:
-                - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e124] [cursor=pointer]:
-                  - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
-              - paragraph [ref=e125]: "Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?"
-              - generic [ref=e126]: meta, youtube, sección 230, seguridad infantil, responsabilidad digital
-          - listitem [ref=e127]:
-            - link "Conoce a los misteriosos electridos" [ref=e128] [cursor=pointer]:
-              - /url: /ciencia/2026-01-27-article-206/
-              - img "Conoce a los misteriosos electridos" [ref=e129]
-            - generic [ref=e130]:
-              - heading "Conoce a los misteriosos electridos" [level=3] [ref=e131]:
-                - link "Conoce a los misteriosos electridos" [ref=e132] [cursor=pointer]:
-                  - /url: /ciencia/2026-01-27-article-206/
-              - paragraph [ref=e133]: "Electridos: materiales con propiedades únicas que podrían revolucionar la química"
-              - generic [ref=e134]: electridos, catalizadores, núcleo terrestre, física, química
-          - listitem [ref=e135]:
-            - link "Investigadores logran la superposición cuántica más grande registrada" [ref=e136] [cursor=pointer]:
-              - /url: /ciencia/2026-01-25-article-87/
-              - img "Investigadores logran la superposición cuántica más grande registrada" [ref=e137]
-            - generic [ref=e138]:
-              - heading "Investigadores logran la superposición cuántica más grande registrada" [level=3] [ref=e139]:
-                - link "Investigadores logran la superposición cuántica más grande registrada" [ref=e140] [cursor=pointer]:
-                  - /url: /ciencia/2026-01-25-article-87/
-              - paragraph [ref=e141]: "Superposición cuántica récord: 7.000 átomos en estado de onda y partícula"
-              - generic [ref=e142]: física cuántica, superposición, ordenadores cuánticos
-  - contentinfo [ref=e60]:
-    - generic [ref=e61]:
-      - generic [ref=e62]:
-        - generic [ref=e63]:
-          - generic [ref=e64]:
-            - link "Noticiencias" [ref=e65] [cursor=pointer]:
-              - /url: /
-            - text: Beta
-          - generic [ref=e66]:
-            - link "Privacidad" [ref=e67] [cursor=pointer]:
-              - /url: /privacidad/
-            - text: ·
-            - link "RSS" [ref=e68] [cursor=pointer]:
-              - /url: /rss.xml
-            - text: ·
-            - link "Reportar un problema" [ref=e69] [cursor=pointer]:
-              - /url: /reportar-problema/
-        - generic [ref=e70]:
-          - generic [ref=e71]: Secciones
-          - list [ref=e72]:
-            - listitem [ref=e73]:
-              - link "Astronomía" [ref=e74] [cursor=pointer]:
-                - /url: /categorias/astronomia/
-            - listitem [ref=e75]:
-              - link "Salud" [ref=e76] [cursor=pointer]:
-                - /url: /categorias/salud/
-            - listitem [ref=e77]:
-              - link "Tecnología" [ref=e78] [cursor=pointer]:
-                - /url: /categorias/tecnologia/
-            - listitem [ref=e79]:
-              - link "Editorial" [ref=e80] [cursor=pointer]:
-                - /url: /categorias/editorial/
-            - listitem [ref=e81]:
-              - link "Física" [ref=e82] [cursor=pointer]:
-                - /url: /categorias/fisica/
-            - listitem [ref=e83]:
-              - link "Química" [ref=e84] [cursor=pointer]:
-                - /url: /categorias/quimica/
-            - listitem [ref=e85]:
-              - link "Biología" [ref=e86] [cursor=pointer]:
-                - /url: /categorias/biologia/
-            - listitem [ref=e87]:
-              - link "Arqueología" [ref=e88] [cursor=pointer]:
-                - /url: /categorias/arqueologia/
-        - generic [ref=e89]:
-          - generic [ref=e90]: Organización
-          - list [ref=e91]:
-            - listitem [ref=e92]:
-              - link "Acerca de" [ref=e93] [cursor=pointer]:
-                - /url: /nosotros/
-            - listitem [ref=e94]:
-              - link "Metodología" [ref=e95] [cursor=pointer]:
-                - /url: /metodologia/
-            - listitem [ref=e96]:
-              - link "Transparencia" [ref=e97] [cursor=pointer]:
-                - /url: /transparencia/
-      - generic [ref=e98]:
-        - list [ref=e99]:
-          - listitem [ref=e100]:
-            - link "X" [ref=e101] [cursor=pointer]:
-              - /url: https://twitter.com/noti_ciencias
-              - img [ref=e102]
-          - listitem [ref=e104]:
-            - link "Instagram" [ref=e105] [cursor=pointer]:
-              - /url: "#"
-              - img [ref=e106]
-          - listitem [ref=e108]:
-            - link "LinkedIn" [ref=e109] [cursor=pointer]:
-              - /url: "#"
-              - img [ref=e110]
-          - listitem [ref=e112]:
-            - link "Github" [ref=e113] [cursor=pointer]:
-              - /url: https://github.com/cortega26/noticiencias
-              - img [ref=e114]
-        - generic [ref=e116]: © 2026 Noticiencias · Todos los derechos reservados.
+    - link "Saltar al contenido principal" [ref=e2] [cursor=pointer]:
+        - /url: '#main-content'
+    - generic [ref=e3]:
+        - generic [ref=e4]:
+            - paragraph [ref=e5]:
+                - strong [ref=e6]: Versión Beta v0.9
+                - img [ref=e7]
+                - text: Estás navegando una versión en desarrollo. Estamos refinando nuestros algoritmos de selección y traducción.
+            - link "Leer más" [ref=e9] [cursor=pointer]:
+                - /url: /beta
+                - text: Leer más →
+        - button "Ocultar aviso" [ref=e11] [cursor=pointer]:
+            - generic [ref=e12]: Ocultar aviso
+            - img [ref=e13]
+    - banner [ref=e15]:
+        - generic [ref=e17]:
+            - link "Noticiencias Noticiencias" [ref=e19] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e20]:
+                    - img "Noticiencias" [ref=e21]
+                    - text: Noticiencias
+            - navigation "Main navigation" [ref=e22]:
+                - list [ref=e23]:
+                    - listitem [ref=e24]:
+                        - link "Astronomía" [ref=e25] [cursor=pointer]:
+                            - /url: /categorias/astronomia/
+                    - listitem [ref=e26]:
+                        - link "Salud" [ref=e27] [cursor=pointer]:
+                            - /url: /categorias/salud/
+                    - listitem [ref=e28]:
+                        - link "Tecnología" [ref=e29] [cursor=pointer]:
+                            - /url: /categorias/tecnologia/
+                    - listitem [ref=e30]:
+                        - link "Editorial" [ref=e31] [cursor=pointer]:
+                            - /url: /categorias/editorial/
+                    - listitem [ref=e32]:
+                        - button "Más" [ref=e33] [cursor=pointer]:
+                            - text: Más
+                            - img [ref=e34]
+                    - listitem [ref=e36]:
+                        - link "Series" [ref=e37] [cursor=pointer]:
+                            - /url: /series/
+            - generic [ref=e39]:
+                - generic [ref=e40]:
+                    - button "Alternar modo Oscuro/Claro" [ref=e41] [cursor=pointer]:
+                        - img [ref=e42]
+                    - link "RSS Feed" [ref=e44] [cursor=pointer]:
+                        - /url: /rss.xml
+                        - img [ref=e45]
+                - link "Buscar" [ref=e48] [cursor=pointer]:
+                    - /url: /buscar/
+                    - text: Buscar
+                    - img [ref=e49]
+    - main [ref=e51]:
+        - generic [ref=e52]:
+            - heading "Buscador" [level=1] [ref=e54]
+            - generic [ref=e55]:
+                - search [ref=e56]:
+                    - generic:
+                        - img
+                    - textbox "Escribe para buscar..." [ref=e57]: meta
+                    - button "Buscar" [active] [ref=e58] [cursor=pointer]
+                - paragraph [ref=e59]: Se encontraron 3 resultados.
+                - list [ref=e118]:
+                    - listitem [ref=e119]:
+                        - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e120] [cursor=pointer]:
+                            - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
+                            - img "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e121]
+                        - generic [ref=e122]:
+                            - heading "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [level=3] [ref=e123]:
+                                - link "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube" [ref=e124] [cursor=pointer]:
+                                    - /url: /ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/
+                            - paragraph [ref=e125]: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
+                            - generic [ref=e126]: meta, youtube, sección 230, seguridad infantil, responsabilidad digital
+                    - listitem [ref=e127]:
+                        - link "Conoce a los misteriosos electridos" [ref=e128] [cursor=pointer]:
+                            - /url: /ciencia/2026-01-27-article-206/
+                            - img "Conoce a los misteriosos electridos" [ref=e129]
+                        - generic [ref=e130]:
+                            - heading "Conoce a los misteriosos electridos" [level=3] [ref=e131]:
+                                - link "Conoce a los misteriosos electridos" [ref=e132] [cursor=pointer]:
+                                    - /url: /ciencia/2026-01-27-article-206/
+                            - paragraph [ref=e133]: 'Electridos: materiales con propiedades únicas que podrían revolucionar la química'
+                            - generic [ref=e134]: electridos, catalizadores, núcleo terrestre, física, química
+                    - listitem [ref=e135]:
+                        - link "Investigadores logran la superposición cuántica más grande registrada" [ref=e136] [cursor=pointer]:
+                            - /url: /ciencia/2026-01-25-article-87/
+                            - img "Investigadores logran la superposición cuántica más grande registrada" [ref=e137]
+                        - generic [ref=e138]:
+                            - heading "Investigadores logran la superposición cuántica más grande registrada" [level=3] [ref=e139]:
+                                - link "Investigadores logran la superposición cuántica más grande registrada" [ref=e140] [cursor=pointer]:
+                                    - /url: /ciencia/2026-01-25-article-87/
+                            - paragraph [ref=e141]: 'Superposición cuántica récord: 7.000 átomos en estado de onda y partícula'
+                            - generic [ref=e142]: física cuántica, superposición, ordenadores cuánticos
+    - contentinfo [ref=e60]:
+        - generic [ref=e61]:
+            - generic [ref=e62]:
+                - generic [ref=e63]:
+                    - generic [ref=e64]:
+                        - link "Noticiencias" [ref=e65] [cursor=pointer]:
+                            - /url: /
+                        - text: Beta
+                    - generic [ref=e66]:
+                        - link "Privacidad" [ref=e67] [cursor=pointer]:
+                            - /url: /privacidad/
+                        - text: ·
+                        - link "RSS" [ref=e68] [cursor=pointer]:
+                            - /url: /rss.xml
+                        - text: ·
+                        - link "Reportar un problema" [ref=e69] [cursor=pointer]:
+                            - /url: /reportar-problema/
+                - generic [ref=e70]:
+                    - generic [ref=e71]: Secciones
+                    - list [ref=e72]:
+                        - listitem [ref=e73]:
+                            - link "Astronomía" [ref=e74] [cursor=pointer]:
+                                - /url: /categorias/astronomia/
+                        - listitem [ref=e75]:
+                            - link "Salud" [ref=e76] [cursor=pointer]:
+                                - /url: /categorias/salud/
+                        - listitem [ref=e77]:
+                            - link "Tecnología" [ref=e78] [cursor=pointer]:
+                                - /url: /categorias/tecnologia/
+                        - listitem [ref=e79]:
+                            - link "Editorial" [ref=e80] [cursor=pointer]:
+                                - /url: /categorias/editorial/
+                        - listitem [ref=e81]:
+                            - link "Física" [ref=e82] [cursor=pointer]:
+                                - /url: /categorias/fisica/
+                        - listitem [ref=e83]:
+                            - link "Química" [ref=e84] [cursor=pointer]:
+                                - /url: /categorias/quimica/
+                        - listitem [ref=e85]:
+                            - link "Biología" [ref=e86] [cursor=pointer]:
+                                - /url: /categorias/biologia/
+                        - listitem [ref=e87]:
+                            - link "Arqueología" [ref=e88] [cursor=pointer]:
+                                - /url: /categorias/arqueologia/
+                - generic [ref=e89]:
+                    - generic [ref=e90]: Organización
+                    - list [ref=e91]:
+                        - listitem [ref=e92]:
+                            - link "Acerca de" [ref=e93] [cursor=pointer]:
+                                - /url: /nosotros/
+                        - listitem [ref=e94]:
+                            - link "Metodología" [ref=e95] [cursor=pointer]:
+                                - /url: /metodologia/
+                        - listitem [ref=e96]:
+                            - link "Transparencia" [ref=e97] [cursor=pointer]:
+                                - /url: /transparencia/
+            - generic [ref=e98]:
+                - list [ref=e99]:
+                    - listitem [ref=e100]:
+                        - link "X" [ref=e101] [cursor=pointer]:
+                            - /url: https://twitter.com/noti_ciencias
+                            - img [ref=e102]
+                    - listitem [ref=e104]:
+                        - link "Instagram" [ref=e105] [cursor=pointer]:
+                            - /url: '#'
+                            - img [ref=e106]
+                    - listitem [ref=e108]:
+                        - link "LinkedIn" [ref=e109] [cursor=pointer]:
+                            - /url: '#'
+                            - img [ref=e110]
+                    - listitem [ref=e112]:
+                        - link "Github" [ref=e113] [cursor=pointer]:
+                            - /url: https://github.com/cortega26/noticiencias
+                            - img [ref=e114]
+                - generic [ref=e116]: © 2026 Noticiencias · Todos los derechos reservados.

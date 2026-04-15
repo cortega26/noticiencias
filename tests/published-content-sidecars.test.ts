@@ -89,9 +89,7 @@ describe('published content sidecars', () => {
     expect(diagnostics.staleManifestEntries).toEqual([
       { articleId: 'deleted', fileName: '2026-04-02-deleted.md' },
     ]);
-    expect(diagnostics.staleAllowlistEntries).toEqual([
-      'src/content/posts/2026-04-02-deleted.md',
-    ]);
+    expect(diagnostics.staleAllowlistEntries).toEqual(['src/content/posts/2026-04-02-deleted.md']);
   });
 
   it('passes when sidecars only reference existing posts', () => {

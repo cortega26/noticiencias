@@ -33,7 +33,7 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
       'data' in file &&
       hasAstroData((file as { data: unknown }).data)
     ) {
-      ((file as { data: AstroData }).data).astro.frontmatter.readingTime = readingTime;
+      (file as { data: AstroData }).data.astro.frontmatter.readingTime = readingTime;
     }
   };
 };

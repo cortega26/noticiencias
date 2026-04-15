@@ -8,11 +8,13 @@ export const MIN_CONTENT_QUALITY_WORDS = 80;
 export const BLOCKED_CONTENT_PATTERNS = [
   {
     id: 'placeholder-language',
-    pattern: /ilegible\s+y\s+corrupt|impidiendo\s+la\s+elaboraci[oó]n\s+de\s+un\s+texto|no\s+se\s+pudo\s+(?:elaborar|construir|redactar)\s+un\s+art[ií]culo/i,
+    pattern:
+      /ilegible\s+y\s+corrupt|impidiendo\s+la\s+elaboraci[oó]n\s+de\s+un\s+texto|no\s+se\s+pudo\s+(?:elaborar|construir|redactar)\s+un\s+art[ií]culo/i,
   },
   {
     id: 'unreadable-source',
-    pattern: /source\s+(?:was|is)\s+unreadable|content\s+provided\s+for\s+this\s+article\s+is\s+unreadable/i,
+    pattern:
+      /source\s+(?:was|is)\s+unreadable|content\s+provided\s+for\s+this\s+article\s+is\s+unreadable/i,
   },
 ];
 

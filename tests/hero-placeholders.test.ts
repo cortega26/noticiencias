@@ -31,10 +31,7 @@ function makeRepo(): string {
 function writePost(
   repoRoot: string,
   filename: string,
-  {
-    image = DEFAULT_IMAGE_PATH,
-    imageAlt = 'alt text',
-  }: { image?: string; imageAlt?: string } = {}
+  { image = DEFAULT_IMAGE_PATH, imageAlt = 'alt text' }: { image?: string; imageAlt?: string } = {}
 ): void {
   fs.writeFileSync(
     path.join(repoRoot, 'src', 'content', 'posts', filename),
@@ -58,15 +55,8 @@ Body
   );
 }
 
-function writeAllowlist(
-  repoRoot: string,
-  entries: Record<string, string>
-): string {
-  const allowlistPath = path.join(
-    repoRoot,
-    'data',
-    'hero-image-placeholder-allowlist.json'
-  );
+function writeAllowlist(repoRoot: string, entries: Record<string, string>): string {
+  const allowlistPath = path.join(repoRoot, 'data', 'hero-image-placeholder-allowlist.json');
   fs.writeFileSync(
     allowlistPath,
     `${JSON.stringify({ allowedPlaceholders: entries }, null, 2)}\n`,
@@ -94,9 +84,7 @@ describe('hero placeholder sync', () => {
     const synced = JSON.parse(fs.readFileSync(allowlistPath, 'utf8'));
 
     expect(result.changed).toBe(true);
-    expect(result.staleAllowlistEntries).toEqual([
-      'src/content/posts/2026-04-02-deleted.md',
-    ]);
+    expect(result.staleAllowlistEntries).toEqual(['src/content/posts/2026-04-02-deleted.md']);
     expect(synced.allowedPlaceholders).toEqual({
       'src/content/posts/2026-04-02-active.md': 'Keep this placeholder.',
     });
@@ -120,9 +108,7 @@ describe('hero placeholder sync', () => {
     const synced = JSON.parse(fs.readFileSync(allowlistPath, 'utf8'));
 
     expect(result.changed).toBe(true);
-    expect(result.staleAllowlistEntries).toEqual([
-      'src/content/posts/2026-04-02-real-image.md',
-    ]);
+    expect(result.staleAllowlistEntries).toEqual(['src/content/posts/2026-04-02-real-image.md']);
     expect(synced.allowedPlaceholders).toEqual({});
   });
 

@@ -13,18 +13,40 @@ describe('Image derivative helpers', () => {
     originalHeight: 900,
     hash: 'abc123',
     variants: [
-      { width: 400, height: 225, format: 'avif', objectKey: 'a', url: 'https://cdn.example/400.avif' },
-      { width: 900, height: 506, format: 'avif', objectKey: 'b', url: 'https://cdn.example/900.avif' },
-      { width: 1400, height: 788, format: 'avif', objectKey: 'c', url: 'https://cdn.example/1400.avif' },
+      {
+        width: 400,
+        height: 225,
+        format: 'avif',
+        objectKey: 'a',
+        url: 'https://cdn.example/400.avif',
+      },
+      {
+        width: 900,
+        height: 506,
+        format: 'avif',
+        objectKey: 'b',
+        url: 'https://cdn.example/900.avif',
+      },
+      {
+        width: 1400,
+        height: 788,
+        format: 'avif',
+        objectKey: 'c',
+        url: 'https://cdn.example/1400.avif',
+      },
     ],
   };
 
   it('returns only variants up to the requested max width', () => {
-    expect(resolveDerivativeVariants(entry, [400, 900]).map((variant) => variant.width)).toEqual([400, 900]);
+    expect(resolveDerivativeVariants(entry, [400, 900]).map((variant) => variant.width)).toEqual([
+      400, 900,
+    ]);
   });
 
   it('falls back to all variants when breakpoints are smaller than the smallest asset', () => {
-    expect(resolveDerivativeVariants(entry, [200]).map((variant) => variant.width)).toEqual([400, 900, 1400]);
+    expect(resolveDerivativeVariants(entry, [200]).map((variant) => variant.width)).toEqual([
+      400, 900, 1400,
+    ]);
   });
 
   it('selects the closest preferred src for the requested width', () => {

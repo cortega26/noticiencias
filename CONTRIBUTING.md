@@ -42,16 +42,16 @@ npm run test:dist         # dist sanity checks (run after build)
 
 ## Key directories
 
-| Path | Purpose |
-|------|---------|
-| `src/content/posts/` | Content source of truth (MDX articles) |
-| `src/content/config.ts` | Frontmatter schema — do not change without reading LAW-F1 |
-| `src/pages/` | Route entrypoints and `getStaticPaths` |
-| `src/layouts/` | Page chrome and metadata plumbing |
-| `src/components/ds/` | Noticiencias design-system primitives |
-| `src/components/template/` | Astrowind shell and legacy widgets |
-| `src/utils/` | Pure data and URL helpers |
-| `docs/` | Architecture, editorial policy, decision records |
+| Path                       | Purpose                                                   |
+| -------------------------- | --------------------------------------------------------- |
+| `src/content/posts/`       | Content source of truth (MDX articles)                    |
+| `src/content/config.ts`    | Frontmatter schema — do not change without reading LAW-F1 |
+| `src/pages/`               | Route entrypoints and `getStaticPaths`                    |
+| `src/layouts/`             | Page chrome and metadata plumbing                         |
+| `src/components/ds/`       | Noticiencias design-system primitives                     |
+| `src/components/template/` | Astrowind shell and legacy widgets                        |
+| `src/utils/`               | Pure data and URL helpers                                 |
+| `docs/`                    | Architecture, editorial policy, decision records          |
 
 ## Env vars
 

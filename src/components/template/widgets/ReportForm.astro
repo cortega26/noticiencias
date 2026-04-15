@@ -1,35 +1,56 @@
 ---
 import { APP_CONFIG } from 'astrowind:config';
-const endpoint = APP_CONFIG?.form?.endpoint || "";
+const endpoint = APP_CONFIG?.form?.endpoint || '';
 ---
 
 <div class="max-w-2xl mx-auto p-6 bg-white dark:bg-slate-900 shadow-md rounded-lg relative">
   <!-- Success View (Hidden by default) -->
   <div id="success-view" class="hidden text-center py-10">
-    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-6">
-      <svg class="h-10 w-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    <div
+      class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-6"
+    >
+      <svg
+        class="h-10 w-10 text-green-600 dark:text-green-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
+        ></path>
       </svg>
     </div>
     <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Reporte Recibido</h3>
     <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-      Gracias por ayudarnos a mantener la precisión de Noticiencias. Su reporte ha sido enviado al equipo editorial para revisión.
+      Gracias por ayudarnos a mantener la precisión de Noticiencias. Su reporte ha sido enviado al
+      equipo editorial para revisión.
     </p>
-    <button type="button" id="reset-form-btn" class="mt-8 text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium">
+    <button
+      type="button"
+      id="reset-form-btn"
+      class="mt-8 text-blue-600 hover:text-blue-800 dark:text-blue-400 font-medium"
+    >
       Enviar otro reporte
     </button>
   </div>
 
   <!-- Main Form -->
-  <form id="report-problem-form" class="space-y-6 transition-opacity duration-300" novalidate data-endpoint={endpoint}>
-    
+  <form
+    id="report-problem-form"
+    class="space-y-6 transition-opacity duration-300"
+    novalidate
+    data-endpoint={endpoint}
+  >
     <!-- Type of Problem -->
     <div>
       <label for="problem-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
         Tipo de problema <span class="text-red-500">*</span>
       </label>
-      <select id="problem-type" name="problemType" required
-        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300">
+      <select
+        id="problem-type"
+        name="problemType"
+        required
+        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
+      >
         <option value="" disabled selected>Seleccione una opción para comenzar</option>
         <option value="content_factual">Error verificable en el contenido</option>
         <option value="content_source">Fuente incorrecta o mal citada</option>
@@ -42,80 +63,145 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
     <!-- Unified Details Section -->
     <!-- "Ghost State": Opacity reduced until type is selected -->
-    <div id="details-wrapper" class="space-y-4 opacity-50 pointer-events-none transition-all duration-300">
-      
+    <div
+      id="details-wrapper"
+      class="space-y-4 opacity-50 pointer-events-none transition-all duration-300"
+    >
       <!-- Shared Fields -->
       <div>
-        <label for="report-url" id="label-url" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          for="report-url"
+          id="label-url"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           URL afectada <span class="text-red-500">*</span>
         </label>
-        <input type="url" id="report-url" name="reportUrl" disabled
+        <input
+          type="url"
+          id="report-url"
+          name="reportUrl"
+          disabled
           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
-          placeholder="https://noticiencias.com/..." />
+          placeholder="https://noticiencias.com/..."
+        />
       </div>
 
       <div>
-        <label for="report-description" id="label-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          for="report-description"
+          id="label-description"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Descripción del problema <span class="text-red-500">*</span>
         </label>
-        <textarea id="report-description" name="reportDescription" rows="4" disabled
+        <textarea
+          id="report-description"
+          name="reportDescription"
+          rows="4"
+          disabled
           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
-          placeholder="Seleccione un tipo de problema arriba para habilitar este campo..."></textarea>
+          placeholder="Seleccione un tipo de problema arriba para habilitar este campo..."
+        ></textarea>
       </div>
 
       <!-- Content Specific Fields -->
       <div id="specific-content" class="hidden space-y-4 border-l-2 border-blue-500 pl-4 py-2 mt-2">
-        <h4 class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-2">Evidencia</h4>
-        
+        <h4
+          class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-2"
+        >
+          Evidencia
+        </h4>
+
         <div>
-           <label for="content-snippet" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            for="content-snippet"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Fragmento de texto (Copia exacta) <span class="text-red-500">*</span>
           </label>
-          <textarea id="content-snippet" name="contentSnippet" rows="2"
-            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"></textarea>
+          <textarea
+            id="content-snippet"
+            name="contentSnippet"
+            rows="2"
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
+          ></textarea>
         </div>
 
         <div>
-          <label for="content-evidence" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            for="content-evidence"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             URL de evidencia/fuente correcta <span class="text-red-500">*</span>
           </label>
-          <input type="url" id="content-evidence" name="contentEvidence"
+          <input
+            type="url"
+            id="content-evidence"
+            name="contentEvidence"
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
-            placeholder="https://fuente-confiable.org/..." />
+            placeholder="https://fuente-confiable.org/..."
+          />
         </div>
       </div>
 
       <!-- Technical Specific Fields -->
-      <div id="specific-technical" class="hidden space-y-4 border-l-2 border-amber-500 pl-4 py-2 mt-2">
-         <h4 class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">Entorno</h4>
-         <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+      <div
+        id="specific-technical"
+        class="hidden space-y-4 border-l-2 border-amber-500 pl-4 py-2 mt-2"
+      >
+        <h4
+          class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2"
+        >
+          Entorno
+        </h4>
+        <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
           <div>
-            <label for="tech-browser" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              for="tech-browser"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Navegador
             </label>
-            <input type="text" id="tech-browser" name="techBrowser"
-              class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300" 
-              placeholder="Ej: Chrome, Safari" />
+            <input
+              type="text"
+              id="tech-browser"
+              name="techBrowser"
+              class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
+              placeholder="Ej: Chrome, Safari"
+            />
           </div>
           <div>
             <label for="tech-os" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Sistema Operativo
             </label>
-            <input type="text" id="tech-os" name="techOs"
+            <input
+              type="text"
+              id="tech-os"
+              name="techOs"
               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-amber-500 focus:border-amber-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
-              placeholder="Ej: Windows, iOS" />
+              placeholder="Ej: Windows, iOS"
+            />
           </div>
         </div>
       </div>
-
-    </div> 
+    </div>
 
     <!-- Disclaimer -->
-    <div class="rounded-md bg-gray-50 dark:bg-slate-800 p-4 border border-gray-200 dark:border-slate-700">
+    <div
+      class="rounded-md bg-gray-50 dark:bg-slate-800 p-4 border border-gray-200 dark:border-slate-700"
+    >
       <div class="flex">
         <div class="flex-shrink-0">
-          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          <svg
+            class="h-5 w-5 text-gray-400"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
           </svg>
         </div>
         <div class="ml-3 flex-1 md:flex md:justify-between">
@@ -128,13 +214,16 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
     <!-- Submit Action -->
     <div class="pt-2">
-      <button type="submit" id="submit-btn" disabled
-        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-400 cursor-not-allowed transition-colors duration-200">
+      <button
+        type="submit"
+        id="submit-btn"
+        disabled
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-400 cursor-not-allowed transition-colors duration-200"
+      >
         Completar formulario para enviar
       </button>
       <p id="form-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></p>
     </div>
-
   </form>
 </div>
 
@@ -144,7 +233,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
   });
 
   if (document.readyState === 'complete') {
-     initReportForm();
+    initReportForm();
   } else {
     document.addEventListener('DOMContentLoaded', initReportForm);
   }
@@ -174,20 +263,38 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
     const reportDesc = document.querySelector('#report-description') as HTMLTextAreaElement | null;
     const labelUrl = document.querySelector('#label-url') as HTMLElement | null;
     const labelDesc = document.querySelector('#label-description') as HTMLElement | null;
-    
+
     // Specific Inputs (Validation targets)
     const contentSnippet = document.querySelector('#content-snippet') as HTMLTextAreaElement | null;
     const contentEvidence = document.querySelector('#content-evidence') as HTMLInputElement | null;
 
     // Critical elements check
-    if (!typeSelect || !detailsWrapper || !submitBtn || !errorMsg || !specificContent || !specificTechnical || !reportUrl || !reportDesc || !labelUrl || !labelDesc || !contentSnippet || !contentEvidence) {
-      console.error("ReportForm: Missing critical DOM elements.");
+    if (
+      !typeSelect ||
+      !detailsWrapper ||
+      !submitBtn ||
+      !errorMsg ||
+      !specificContent ||
+      !specificTechnical ||
+      !reportUrl ||
+      !reportDesc ||
+      !labelUrl ||
+      !labelDesc ||
+      !contentSnippet ||
+      !contentEvidence
+    ) {
+      console.error('ReportForm: Missing critical DOM elements.');
       return;
     }
 
     const updateFormState = () => {
       const type = typeSelect.value;
-      const isContent = ['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type);
+      const isContent = [
+        'content_factual',
+        'content_source',
+        'content_interpretation',
+        'content_translation',
+      ].includes(type);
       const isTechnical = ['technical_site', 'technical_visual'].includes(type);
       const hasSelection = isContent || isTechnical;
 
@@ -197,11 +304,11 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
         submitBtn.disabled = true;
         submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
         submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-        
+
         // Disable inputs
         reportUrl.disabled = true;
         reportDesc.disabled = true;
-        
+
         specificContent.classList.add('hidden');
         specificTechnical.classList.add('hidden');
         return;
@@ -214,7 +321,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
       submitBtn.disabled = false;
       submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
       submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-      submitBtn.textContent = "Enviar reporte verificable";
+      submitBtn.textContent = 'Enviar reporte verificable';
 
       // Toggle Specifics & Update Labels/Placeholders
       specificContent.classList.add('hidden');
@@ -229,11 +336,10 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
         labelUrl.innerHTML = 'URL exacta del artículo <span class="text-red-500">*</span>';
         labelDesc.innerHTML = 'Descripción del error factual <span class="text-red-500">*</span>';
         reportDesc.placeholder = 'Explique exactamente qué dato es incorrecto y por qué...';
-        
+
         contentSnippet.required = true;
         contentEvidence.required = true;
-      } 
-      else if (isTechnical) {
+      } else if (isTechnical) {
         specificTechnical.classList.remove('hidden');
         labelUrl.innerHTML = 'URL donde ocurre el problema <span class="text-red-500">*</span>';
         labelDesc.innerHTML = 'Descripción del fallo técnico <span class="text-red-500">*</span>';
@@ -257,19 +363,27 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
       // Custom validation check
       if (!form.checkValidity()) {
-         errorMsg.textContent = "Por favor complete todos los campos obligatorios.";
-         errorMsg.classList.remove('hidden');
-         return;
+        errorMsg.textContent = 'Por favor complete todos los campos obligatorios.';
+        errorMsg.classList.remove('hidden');
+        return;
       }
 
       // Logic check for evidence URL
       const type = typeSelect.value;
-      if (['content_factual', 'content_source', 'content_interpretation', 'content_translation'].includes(type) && contentEvidence) {
-         if (!contentEvidence.value.startsWith('http')) {
-             errorMsg.textContent = "La evidencia debe ser una URL válida (http/https).";
-             errorMsg.classList.remove('hidden');
-             return;
-         }
+      if (
+        [
+          'content_factual',
+          'content_source',
+          'content_interpretation',
+          'content_translation',
+        ].includes(type) &&
+        contentEvidence
+      ) {
+        if (!contentEvidence.value.startsWith('http')) {
+          errorMsg.textContent = 'La evidencia debe ser una URL válida (http/https).';
+          errorMsg.classList.remove('hidden');
+          return;
+        }
       }
 
       // Submit Data
@@ -278,40 +392,40 @@ const endpoint = APP_CONFIG?.form?.endpoint || "";
 
       try {
         submitBtn.disabled = true;
-        submitBtn.textContent = "Enviando...";
+        submitBtn.textContent = 'Enviando...';
 
         if (!endpoint) {
-             console.warn('Simulación: No se configuró endpoint en config.yaml');
-             console.log('Datos:', data);
-             // Simulate network delay
-             await new Promise(resolve => setTimeout(resolve, 800));
+          console.warn('Simulación: No se configuró endpoint en config.yaml');
+          console.log('Datos:', data);
+          // Simulate network delay
+          await new Promise((resolve) => setTimeout(resolve, 800));
         } else {
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
 
-            if (!response.ok) {
-                throw new Error("Error en el envío. Intente nuevamente.");
-            }
+          if (!response.ok) {
+            throw new Error('Error en el envío. Intente nuevamente.');
+          }
         }
 
         // Success State UI
         form.classList.add('hidden');
         successView.classList.remove('hidden');
         successView.scrollIntoView({ behavior: 'smooth' });
-
       } catch (error) {
         console.error(error);
-        errorMsg.textContent = "Ocurrió un error al enviar el reporte. Por favor intente más tarde.";
+        errorMsg.textContent =
+          'Ocurrió un error al enviar el reporte. Por favor intente más tarde.';
         errorMsg.classList.remove('hidden');
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar reporte verificable";
+        submitBtn.textContent = 'Enviar reporte verificable';
       }
     });
   }

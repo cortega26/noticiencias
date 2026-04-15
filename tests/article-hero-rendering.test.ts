@@ -61,11 +61,14 @@ function isDefaultRenderedImageUrl(value: string): boolean {
 }
 
 function isResolvableImageSrc(value: string): boolean {
-  return Boolean(value) && !value.startsWith('~/') && !value.startsWith('@/') && (
-    value.startsWith('/') ||
-    value.startsWith('http://') ||
-    value.startsWith('https://') ||
-    value.startsWith('data:')
+  return (
+    Boolean(value) &&
+    !value.startsWith('~/') &&
+    !value.startsWith('@/') &&
+    (value.startsWith('/') ||
+      value.startsWith('http://') ||
+      value.startsWith('https://') ||
+      value.startsWith('data:'))
   );
 }
 
@@ -75,9 +78,7 @@ describe('article hero rendering', () => {
   }
 
   it('renders a hero image inside each built article with frontmatter image data', () => {
-    const postFiles = fs
-      .readdirSync(postsDir)
-      .filter((fileName) => fileName.endsWith('.md'));
+    const postFiles = fs.readdirSync(postsDir).filter((fileName) => fileName.endsWith('.md'));
 
     for (const fileName of postFiles) {
       const raw = fs.readFileSync(path.join(postsDir, fileName), 'utf8');
@@ -89,20 +90,15 @@ describe('article hero rendering', () => {
       const route = resolvePostRoute(fileName, data);
       expect(route, `Unable to resolve built route for ${fileName}`).toBeTruthy();
 
-      const htmlPath = path.join(
-        distDir,
-        route!.replace(/^\/+|\/+$/g, ''),
-        'index.html'
-      );
+      const htmlPath = path.join(distDir, route!.replace(/^\/+|\/+$/g, ''), 'index.html');
       expect(fs.existsSync(htmlPath), `Built article missing for ${fileName}`).toBe(true);
 
       const html = fs.readFileSync(htmlPath, 'utf8');
       const $ = load(html);
       const headerImage = $('main article header img');
-      expect(
-        headerImage.length,
-        `Hero image missing in built article ${fileName}`
-      ).toBeGreaterThan(0);
+      expect(headerImage.length, `Hero image missing in built article ${fileName}`).toBeGreaterThan(
+        0
+      );
 
       const avifSource = $('main article header picture source[type="image/avif"]');
       if (avifSource.length > 0) {
@@ -118,8 +114,14 @@ describe('article hero rendering', () => {
         isResolvableImageSrc(fallbackSrc),
         `Hero fallback src in ${fileName} must be resolvable`
       ).toBe(true);
-      expect(headerImage.first().attr('width'), `Hero fallback width missing in ${fileName}`).toBeTruthy();
-      expect(headerImage.first().attr('height'), `Hero fallback height missing in ${fileName}`).toBeTruthy();
+      expect(
+        headerImage.first().attr('width'),
+        `Hero fallback width missing in ${fileName}`
+      ).toBeTruthy();
+      expect(
+        headerImage.first().attr('height'),
+        `Hero fallback height missing in ${fileName}`
+      ).toBeTruthy();
 
       const imageSource = getFrontmatterImageSource(data);
       const ogImage = $('meta[property="og:image"]').attr('content') ?? '';

@@ -93,7 +93,9 @@ interface MenuItem {
   [key: string]: unknown;
 }
 
-const handleHref = (href: string | { type: string; url?: string } | undefined): string | undefined => {
+const handleHref = (
+  href: string | { type: string; url?: string } | undefined
+): string | undefined => {
   if (typeof href === 'string') {
     return getPermalink(href);
   } else if (typeof href === 'object' && href !== null) {
@@ -119,9 +121,9 @@ export const applyGetPermalinks = (menu: MenuItem | MenuItem[] = {}): MenuItem |
       if (key === 'href') {
         const val = menu[key];
         if (typeof val === 'string' || (typeof val === 'object' && val !== null && 'type' in val)) {
-           // We cast reasonably here because we checked shape roughly match handleHref expectations
-           const processedHref = handleHref(val as string | { type: string; url?: string });
-           if (processedHref) obj[key] = processedHref;
+          // We cast reasonably here because we checked shape roughly match handleHref expectations
+          const processedHref = handleHref(val as string | { type: string; url?: string });
+          if (processedHref) obj[key] = processedHref;
         }
       } else {
         const value = menu[key];

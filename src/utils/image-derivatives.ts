@@ -68,7 +68,9 @@ export function hasPublishedDerivativeUrls(entry: ImageDerivativeEntry | null): 
     return false;
   }
 
-  return entry.variants.some((variant) => typeof variant.url === 'string' && variant.url.length > 0);
+  return entry.variants.some(
+    (variant) => typeof variant.url === 'string' && variant.url.length > 0
+  );
 }
 
 export function isStrictDerivativeModeEnabled(): boolean {

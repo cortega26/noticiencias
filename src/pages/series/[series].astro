@@ -21,9 +21,9 @@ export async function getStaticPaths() {
 
   return Object.keys(series).map((s) => ({
     params: { series: cleanSlug(s) }, // Ensure slug is URL friendly
-    props: { 
-        seriesName: s,
-        posts: series[s]
+    props: {
+      seriesName: s,
+      posts: series[s],
     },
   }));
 }
