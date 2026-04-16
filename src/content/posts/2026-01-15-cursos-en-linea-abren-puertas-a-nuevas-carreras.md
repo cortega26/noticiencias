@@ -17,7 +17,7 @@ tags:
     'cadenas de suministro',
     "gesti\u00f3n empresarial",
     "cursos en l\u00ednea",
-    " transformaci\u00f3n profesional",
+    "transformaci\u00f3n profesional",
   ]
 ---
 

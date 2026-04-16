@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Node.js 22.x (`nvm use` picks the right version from `.nvmrc`; CI uses Node 24)
+- Node.js 24.x (`nvm use` picks the right version from `.nvmrc`)
 - npm (bundled with Node.js — do **not** use pnpm or yarn; see `docs/adr/0004-npm-over-pnpm.md`)
 - Optional: Cloudflare R2 credentials for CDN image mode (see `.env.example`)
 

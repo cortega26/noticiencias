@@ -1,0 +1,52 @@
+{
+  "name": "Noticiencias Front-End",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+
+  // Install project dependencies after the container is created.
+  "postCreateCommand": "npm ci",
+
+  // Start the Astro dev server when the container is attached.
+  "postAttachCommand": {
+    "dev-server": "npm run dev"
+  },
+
+  "forwardPorts": [4321],
+  "portsAttributes": {
+    "4321": {
+      "label": "Astro Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      }
+    }
+  },
+
+  // Mount the sibling back-end repo as a read-only workspace so that
+  // check:contract-sync can access news_collector/contracts/frontend_schema.py
+  // without a network round-trip.  Adjust the host path if your repos are not
+  // checked out under the same parent directory.
+  "mounts": [
+    "source=${localWorkspaceFolder}/../noticiencias_news_collector,target=/workspaces/noticiencias_news_collector,type=bind,consistency=cached,readonly"
+  ],
+
+  "remoteEnv": {
+    // The local mount removes the need for a network clone in check:contract-sync.
+    "BACKEND_SCHEMA_PATH": "/workspaces/noticiencias_news_collector/news_collector/contracts/frontend_schema.py"
+  }
+}

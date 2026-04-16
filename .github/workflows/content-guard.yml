@@ -35,6 +35,20 @@ jobs:
       - name: ✅ Audit Suite
         run: npm run test:audit
 
+      - name: Checkout back-end schema (sparse)
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: cortega26/noticiencias_news_collector
+          path: _backend_sparse
+          sparse-checkout: |
+            news_collector/contracts/frontend_schema.py
+          sparse-checkout-cone-mode: false
+
+      - name: 🔗 Contract Parity Gate
+        run: npm run check:contract-sync
+        env:
+          BACKEND_SCHEMA_PATH: _backend_sparse/news_collector/contracts/frontend_schema.py
+
       - name: 🔗 Link Checker
         uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
         with:
