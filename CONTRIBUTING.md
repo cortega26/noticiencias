@@ -64,3 +64,25 @@ credentials the site falls back to Astro's built-in image optimization.
 - `docs/ARCHITECTURE.md` — per-layer responsibilities and dependency rules
 - `docs/SOURCE_OF_TRUTH.md` — which files win when docs and code disagree
 - `docs/adr/` — architecture decision records explaining major trade-offs
+
+## Full system setup
+
+This repository is the front-end of a two-repo product. To run the complete system
+locally — including the collection pipeline and Refinery editorial UI — follow the
+unified setup guide in the back-end repo:
+
+**[`../noticiencias_news_collector/docs/RUNBOOK_LOCAL_DEV.md`](../noticiencias_news_collector/docs/RUNBOOK_LOCAL_DEV.md)**
+
+That document covers:
+
+- back-end bootstrap (`make bootstrap`) and `.env` configuration
+- front-end bootstrap (`npm ci`)
+- collector dry-run to verify connectivity without side effects
+- Refinery UI launch (`make refinery`)
+- validation commands by change type (including cross-repo schema changes)
+- common failure modes and their fixes
+
+If you are working on front-end content, layout, or components only, the setup steps
+in this file are sufficient. If your change touches the publication contract, frontmatter
+schema, permalink helpers, category/tag taxonomy, or any cross-repo behavior, use the
+full runbook and run validation in both repos.
