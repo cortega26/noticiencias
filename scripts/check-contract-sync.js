@@ -63,7 +63,7 @@ function extractPythonFields(source) {
   const fields = new Set();
   // Match 4-space-indented type-annotated lines that are NOT methods/validators
   const re =
-    /^    (\w+)\s*:\s*(?:Optional|Union|List|str|int|float|bool|dt_date|dt_datetime|HttpUrl)/gm;
+    /^ {4}(\w+)\s*:\s*(?:Optional|Union|List|str|int|float|bool|dt_date|dt_datetime|HttpUrl)/gm;
   let m;
   while ((m = re.exec(body)) !== null) {
     const name = m[1];
@@ -86,7 +86,7 @@ function extractTypeScriptFields(source) {
   // Match 6-space-indented top-level Zod fields. The value may be:
   //   fieldName: z.string()...   (inline)
   //   fieldName: z               (multiline, z is followed by newline then chain)
-  const re = /^      (\w+)\s*:\s*z(?:\.|$)/gm;
+  const re = /^ {6}(\w+)\s*:\s*z(?:\.|$)/gm;
   let m;
   while ((m = re.exec(source)) !== null) {
     fields.add(m[1]);
