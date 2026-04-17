@@ -280,3 +280,12 @@ This file governs agent and reviewer behavior for this repository.
 - Work that ignores these rules is incomplete.
 - Convenience does not override architectural boundaries.
 - Future changes must make the repo easier to reason about, not merely easier to patch.
+
+
+<claude-mem-context>
+# Memory Context
+
+# [noticiencias] recent context, 2026-04-17 5:24pm GMT-4
+
+No previous sessions found.
+</claude-mem-context>

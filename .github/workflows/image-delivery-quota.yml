@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: image-delivery-quota-guard
@@ -24,6 +25,7 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  AUTOMATION_BRANCH: automation/image-delivery-mode
   R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   CLOUDFLARE_ACCOUNT_ANALYTICS_READ_TOKEN: ${{ secrets.CLOUDFLARE_ACCOUNT_ANALYTICS_READ_TOKEN }}
@@ -36,7 +38,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
-          ref: main
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Setup Node
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
@@ -48,12 +50,15 @@ jobs:
         run: npm ci
 
       - name: Evaluate quota and apply image delivery mode
+        id: evaluate
         env:
           REQUESTED_MODE: ${{ github.event.inputs.mode || 'auto' }}
           SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
         run: node scripts/r2-image-quota-guard.js --mode="$REQUESTED_MODE" --write --summary-file="$SUMMARY_FILE"
 
-      - name: Publish workflow summary
+      - name: Read quota guard summary
+        id: quota_summary
+        if: always()
         env:
           SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
         run: |
@@ -61,16 +66,128 @@ jobs:
           import fs from 'node:fs';
 
           const summaryFile = process.env.SUMMARY_FILE;
-          const summary = JSON.parse(fs.readFileSync(summaryFile, 'utf8'));
+          if (!fs.existsSync(summaryFile)) {
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'status=missing_summary\n', 'utf8');
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'mode_changed=false\n', 'utf8');
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'target_mode=\n', 'utf8');
+            process.exit(0);
+          }
 
+          const summary = JSON.parse(fs.readFileSync(summaryFile, 'utf8'));
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `status=${summary.status}\n`, 'utf8');
+          fs.appendFileSync(
+            process.env.GITHUB_OUTPUT,
+            `mode_changed=${summary.modeChanged ? 'true' : 'false'}\n`,
+            'utf8'
+          );
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `target_mode=${summary.targetMode}\n`, 'utf8');
+          EOF
+
+      - name: Commit mode update to automation branch
+        if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
+        env:
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git checkout -B "$AUTOMATION_BRANCH" "origin/$BASE_BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/image-delivery-mode.json
+          if git diff --cached --quiet; then
+            echo "No mode change to commit."
+            exit 0
+          fi
+          git commit -m "chore: switch image delivery mode to ${{ steps.quota_summary.outputs.target_mode }}"
+          git push --force-with-lease origin "HEAD:$AUTOMATION_BRANCH"
+
+      - name: Create or update pull request
+        id: create_pr
+        if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'auto' }}
+        run: |
+          existing_pr_number="$(gh pr list --base "$BASE_BRANCH" --head "$AUTOMATION_BRANCH" --state open --json number --jq '.[0].number // empty')"
+          pr_title="chore: switch image delivery mode to ${{ steps.quota_summary.outputs.target_mode }}"
+          pr_body="$(cat <<EOF
+          ## Summary
+
+          - Requested mode: \`$REQUESTED_MODE\`
+          - Target mode: \`${{ steps.quota_summary.outputs.target_mode }}\`
+          - Trigger: \`${{ github.event_name }}\`
+
+          This PR was created by the Image Delivery Quota Guard workflow after evaluating the current delivery mode.
+          EOF
+          )"
+
+          if [ -n "$existing_pr_number" ]; then
+            gh pr edit "$existing_pr_number" --title "$pr_title" --body "$pr_body"
+            pr_url="$(gh pr view "$existing_pr_number" --json url --jq '.url')"
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          pr_url="$(gh pr create --base "$BASE_BRANCH" --head "$AUTOMATION_BRANCH" --title "$pr_title" --body "$pr_body")"
+          echo "created=true" >> "$GITHUB_OUTPUT"
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Update quota guard summary with PR details
+        if: always()
+        env:
+          SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
+          PR_CREATED: ${{ steps.create_pr.outputs.created || 'false' }}
+          PR_URL: ${{ steps.create_pr.outputs.url || '' }}
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+
+          const summaryFile = process.env.SUMMARY_FILE;
+          if (!fs.existsSync(summaryFile)) {
+            process.exit(0);
+          }
+
+          const summary = JSON.parse(fs.readFileSync(summaryFile, 'utf8'));
+          summary.prCreated = process.env.PR_CREATED === 'true';
+          summary.pullRequestUrl = process.env.PR_URL || null;
+          fs.writeFileSync(summaryFile, `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
+          EOF
+
+      - name: Publish workflow summary
+        if: always()
+        env:
+          SUMMARY_FILE: ${{ runner.temp }}/image-delivery-quota-summary.json
+          EVALUATE_OUTCOME: ${{ steps.evaluate.outcome }}
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'node:fs';
+
+          const summaryFile = process.env.SUMMARY_FILE;
+          if (!fs.existsSync(summaryFile)) {
+            fs.appendFileSync(
+              process.env.GITHUB_STEP_SUMMARY,
+              `# Image Delivery Quota Guard\n\n- Workflow outcome: \`${process.env.EVALUATE_OUTCOME}\`\n- No summary file was produced.\n`,
+              'utf8'
+            );
+            process.exit(0);
+          }
+
+          const summary = JSON.parse(fs.readFileSync(summaryFile, 'utf8'));
           const lines = [
             '# Image Delivery Quota Guard',
             '',
+            `- Status: \`${summary.status}\``,
             `- Current mode: \`${summary.currentMode}\``,
             `- Target mode: \`${summary.targetMode}\``,
             `- Switch happened: \`${summary.modeChanged ? 'yes' : 'no'}\``,
+            `- Missing config: \`${summary.missingConfig ? 'yes' : 'no'}\``,
+            `- Pull request created: \`${summary.prCreated ? 'yes' : 'no'}\``,
             `- Decision: ${summary.reason}`,
           ];
+
+          if (summary.pullRequestUrl) {
+            lines.push(`- Pull request: ${summary.pullRequestUrl}`);
+          }
 
           if (summary.usage) {
             lines.push(
@@ -79,21 +196,11 @@ jobs:
               `- Auto-switch threshold: ${summary.thresholds.switchRequests.toLocaleString()} requests (${summary.thresholds.switchRatio * 100}%)`,
               `- Usage window: ${summary.usage.windowStart} to ${summary.usage.windowEnd}`
             );
-          } else {
+          } else if (summary.status === 'manual_override') {
             lines.push('- Current usage: skipped because a manual mode override was requested.');
+          } else if (summary.status === 'skipped_missing_config') {
+            lines.push('- Current usage: skipped because the required Cloudflare quota configuration is not available.');
           }
 
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`, 'utf8');
           EOF
-
-      - name: Commit and push mode update
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/image-delivery-mode.json
-          if git diff --cached --quiet; then
-            echo "No mode change to commit."
-            exit 0
-          fi
-          git commit -m "chore: switch image delivery mode"
-          git push origin HEAD:main

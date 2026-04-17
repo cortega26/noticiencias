@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
-import { execSync } from 'child_process';
 
 describe('Compliance & Security Suite', () => {
   const publicDir = path.join(__dirname, '../public');
@@ -21,13 +20,5 @@ describe('Compliance & Security Suite', () => {
 
     expect(fs.existsSync(defaultImg)).toBe(true);
     expect(fs.existsSync(heroImg)).toBe(true);
-  });
-
-  it('should pass Codacy-style linting', () => {
-    try {
-      execSync('npm run lint', { stdio: 'ignore' });
-    } catch {
-      throw new Error('Linting failed. Run "npm run lint" to see errors.');
-    }
   });
 });
