@@ -11,6 +11,9 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  BACKEND_CONTRACT_REPOSITORY: cortega26/noticiencias_news_collector
+  BACKEND_CONTRACT_REF: main
+  BACKEND_CONTRACT_SCHEMA_PATH: news_collector/contracts/frontend_schema.py
 
 jobs:
   validate:
@@ -33,16 +36,33 @@ jobs:
       - name: 🔍 Frontmatter & Type Validation
         run: npm run validate:content
 
+      - name: Skip cross-repo contract parity on forked pull requests
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
+        run: |
+          echo "::notice::Skipping cross-repo contract parity gate for forked pull requests because repository secrets are not available."
+
+      - name: Verify back-end contract checkout access
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
+        run: |
+          if [ -z "${{ secrets.NOTICIENCIAS_BACKEND_READ_TOKEN }}" ]; then
+            echo "::error::Missing NOTICIENCIAS_BACKEND_READ_TOKEN secret with read access to $BACKEND_CONTRACT_REPOSITORY."
+            exit 1
+          fi
+
       - name: Checkout back-end schema (sparse)
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          repository: cortega26/noticiencias_news_collector
+          repository: ${{ env.BACKEND_CONTRACT_REPOSITORY }}
+          ref: ${{ env.BACKEND_CONTRACT_REF }}
+          token: ${{ secrets.NOTICIENCIAS_BACKEND_READ_TOKEN }}
           path: _backend_sparse
           sparse-checkout: |
             news_collector/contracts/frontend_schema.py
           sparse-checkout-cone-mode: false
 
       - name: 🔗 Contract Parity Gate
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
         run: npm run check:contract-sync
         env:
           BACKEND_SCHEMA_PATH: _backend_sparse/news_collector/contracts/frontend_schema.py
