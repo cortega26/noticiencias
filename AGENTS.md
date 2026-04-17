@@ -281,7 +281,6 @@ This file governs agent and reviewer behavior for this repository.
 - Convenience does not override architectural boundaries.
 - Future changes must make the repo easier to reason about, not merely easier to patch.
 
-
 <claude-mem-context>
 # Memory Context
 

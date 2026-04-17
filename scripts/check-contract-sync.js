@@ -21,9 +21,7 @@ import { resolve } from 'path';
 
 const [, , pyPathArg, tsPathArg] = process.argv;
 if (!pyPathArg || !tsPathArg) {
-  console.error(
-    'Usage: node scripts/check-contract-sync.js <frontend_schema.py> <config.ts>'
-  );
+  console.error('Usage: node scripts/check-contract-sync.js <frontend_schema.py> <config.ts>');
   process.exit(2);
 }
 
@@ -64,7 +62,8 @@ function extractPythonFields(source) {
   const body = source.slice(classStart);
   const fields = new Set();
   // Match 4-space-indented type-annotated lines that are NOT methods/validators
-  const re = /^    (\w+)\s*:\s*(?:Optional|Union|List|str|int|float|bool|dt_date|dt_datetime|HttpUrl)/gm;
+  const re =
+    /^    (\w+)\s*:\s*(?:Optional|Union|List|str|int|float|bool|dt_date|dt_datetime|HttpUrl)/gm;
   let m;
   while ((m = re.exec(body)) !== null) {
     const name = m[1];
