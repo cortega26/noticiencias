@@ -20,35 +20,35 @@ headlines_variants:
   benefit: Descubre el misterio de cómo se forman agujeros negros sin explotar estrellas masivas
 ---
 
-### Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar
+## Un Enigma Cósmico: Una Estrella Masiva Se Desvaneció Sin Explotar
 
-#### Por Simons Foundation
+**Por Simons Foundation**
 
 16 de febrero de 2026
 
 Imagina una estrella tan luminosa que podría iluminar todo un cielo distante, desapareciendo en pocos años sin dejar rastro de una espectacular supernova. Ese es precisamente lo que los astrónomos han observado en una estrella ubicada a 2,5 millones de años luz de distancia, en la Galaxia de Andrómeda, nuestra vecina galáctica. En lugar de desaparecer con un destello brillante, esta estrella, conocida como M31-2014-DS1, simplemente se desvaneció, dejando en su lugar lo inimaginable: un agujero negro. Este fenómeno, hasta ahora poco comprendido, está cambiando nuestra comprensión de cómo mueren las estrellas masivas y cómo se forman agujeros negros en el universo.
 
-#### Un Problema de Masa Estelar
+## Un Problema de Masa Estelar
 
 Las estrellas masivas, aquellas con al menos una vez diez la masa de nuestro Sol, terminan sus vidas de manera espectacular, generalmente explotando en supernovas que dispersan su material en todo el espacio. Sin embargo, algunos astrónomos han sospechado de que algunas estrellas masivas podrían colapsar directamente en agujeros negros sin explotar. Este proceso, conocido como una supernova fallida o colapso directo, es un misterio en astrofísica.
 
-#### Un Descubrimiento Inesperado
+## Un Descubrimiento Inesperado
 
 La estrella M31-2014-DS1 se destacó en los archivos de observación de la misión NEOWISE de NASA y otros telescopios terrestres y espaciales entre 2005 y 2023. Los datos recopilados mostraron que la estrella comenzó a brillar en luz infrarroja en 2014, un fenómeno que inicialmente parecía un cambio en su actividad normal. Sin embargo, en 2016, el brillo de la estrella disminuyó drásticamente, desvaneciéndose por debajo de su nivel original en menos de un año. Las observaciones posteriores revelaron que la estrella había casi desaparecido en las longitudes de onda visibles y cercana a la infrarroja, atenuándose a solo una diezmilésima de su brillo original en esos espectros. De hecho, lo que quedaba de la estrella era detectable solo en luz infrarroja media, brillando a aproximadamente un décimo de su intensidad anterior.
 
-#### Un Cambio Revolucionario
+## Un Cambio Revolucionario
 
 Kishalay De, un investigador asociado en el Institute Flatiron de la Fundación Simons y autor principal del nuevo estudio, explica la importancia de este fenómeno: "Esta estrella solía ser una de las más luminosas de la Galaxia de Andrómeda, y ahora no se veía. Imagina si la estrella Betelgeuse desapareciera. ¡Todos se quedarían sin la cuenta! Lo mismo estaba ocurriendo con esta estrella en la Galaxia de Andrómeda". Cuando el equipo comparó el desvanecimiento dramático con las predicciones teóricas, concluyeron que la disminución extrema en su brillo total indica fuertemente que su núcleo colapsó en un agujero negro.
 
-#### ¿Qué Ocurre Dentro de un Agujero Negro?
+## ¿Qué Ocurre Dentro de un Agujero Negro?
 
 Cuando una estrella masiva se colapsa en un agujero negro, el gas que la rodea sigue moviéndose en órbitas alrededor del agujero negro debido a su momento angular. Este gas puede tardar décadas en ser absorbido por el agujero negro, en lugar de caer directamente. Esto explica por qué la estrella M31-2014-DS1 se desvaneció gradualmente en lugar de desaparecer repentinamente. La luz del polvo desechado que rodea al nuevo agujero negro, según De, "será visible durante décadas a la sensibilidad de telescopios como el Telescopio Espacial James Webb, permitiendo a los astrónomos seguir estudiando este fenómeno fascinante".
 
-#### Una Clase Creciente de Supernovas Fallidas
+## Una Clase Creciente de Supernovas Fallidas
 
 Al analizar M31-2014-DS1, el equipo también reexaminó NGC 6946-BH1, otro caso sospechoso de colapso directo. El nuevo estudio presenta fuertes evidencias que explican por qué esa estrella siguió un camino similar. M31-2014-DS1 inicialmente se destacaba como un "caso peculiar", dice De, pero ahora parece ser uno de los ejemplos de una clase de objetos que incluye NGC 6946-BH1. Esta descubrimiento indica que la formación de agujeros negros a través del colapso directo de estrellas masivas podría ser más común de lo que se pensaba hasta ahora.
 
-#### La Importancia del Conocimiento
+## La Importancia del Conocimiento
 
 Este fenómeno no solo cambia nuestra comprensión de cómo mueren las estrellas masivas, sino que también proporciona una nueva perspectiva sobre la formación de agujeros negros en el universo. La convectividad, el movimiento de material caliente desde la zona central hacia la superficie, juega un papel crucial en este proceso. Cuando una estrella masiva se agota de combustible nuclear, su núcleo se contrae debido a la gravedad. Sin embargo, la convectividad puede detener o retrasar este colapso, permitiendo que solo un pequeño porcentaje del material estelar externo alimente al agujero negro, produciendo la luz débil que aún se puede observar hoy en día.
 

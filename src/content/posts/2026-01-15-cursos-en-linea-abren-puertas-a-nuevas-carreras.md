@@ -21,7 +21,7 @@ tags:
   ]
 ---
 
-# Cómo un curso en línea de la MIT sobre gestión de cadenas de suministro dio origen a una nueva carrera
+## Cómo un curso en línea de la MIT sobre gestión de cadenas de suministro dio origen a una nueva carrera
 
 El aprendizaje de los cursos MicroMasters de la Massachusetts Institute of Technology (MIT) llevó a Kevin Power, ingeniero, a tomar el paso definitivo hacia la universidad, y allí encontró un programa que cambiaría su vida. El módulo sobre gestión de cadenas de suministro del programa se convirtió en la base para una transformación profesional.
 
