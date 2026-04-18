@@ -284,7 +284,22 @@ This file governs agent and reviewer behavior for this repository.
 <claude-mem-context>
 # Memory Context
 
-# [noticiencias] recent context, 2026-04-17 9:50pm GMT-4
+# [noticiencias] recent context, 2026-04-18 8:44am GMT-4
 
-No previous sessions found.
+Legend: 🎯session 🔴bugfix 🟣feature 🔄refactor ✅change 🔵discovery ⚖️decision
+Format: ID TIME TYPE TITLE
+Fetch details: get_observations([IDs]) | Search: mem-search skill
+
+Stats: 7 obs (3,202t read) | 160,259t work | 98% savings
+
+### Apr 18, 2026
+2 8:34a 🔵 Two P1 PR Violations Found in Dark Matter Article Push
+4 8:38a 🔵 Two P1 Lint Gate Failures on Dark Matter Article PR — Root Causes Identified
+5 8:40a 🔵 Dark Matter PR Image Exists Only in Feature Branch, Not in Main
+6 " 🔵 H3 Heading Violation Is Systemic — Root Caused to prompts.yaml Template
+12 8:41a ⚖️ Frontend Auto-Sync Chosen as Strategy to Prevent Recurring Missing Derivative Manifest Entries
+15 " 🔵 Backend Content Branch Naming Pattern Is Deterministic and Filterable
+16 8:43a 🔵 Existing `image-delivery-quota.yml` Workflow Is the Template for the New Derivative Manifest Auto-Sync
+
+Access 160k tokens of past work via get_observations([IDs]) or mem-search skill.
 </claude-mem-context>

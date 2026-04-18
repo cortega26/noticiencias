@@ -19,9 +19,37 @@ export const BLOCKED_CONTENT_PATTERNS = [
 ];
 
 const WORD_RE = /\b[\p{L}\p{N}'-]+\b/gu;
+const FENCE_DELIMITER_RE = /^\s*(```+|~~~+)/;
+const HEADING_RE = /^\s{0,3}(#{1,6})\s+(.*\S)\s*$/;
+
+function stripFencedCodeBlocks(body) {
+  const lines = body.split('\n');
+  const strippedLines = [];
+  let activeFence = null;
+
+  for (const line of lines) {
+    const fenceMatch = line.match(FENCE_DELIMITER_RE);
+    if (fenceMatch) {
+      const fenceToken = fenceMatch[1];
+      const fenceChar = fenceToken[0];
+      if (!activeFence) {
+        activeFence = fenceChar;
+      } else if (activeFence === fenceChar) {
+        activeFence = null;
+      }
+      continue;
+    }
+
+    if (!activeFence) {
+      strippedLines.push(line);
+    }
+  }
+
+  return strippedLines.join('\n');
+}
 
 function normalizeBody(body) {
-  return body
+  return stripFencedCodeBlocks(body)
     .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/^\s*Fuente original:\s*\[[^\]]+\]\([^)]+\)\s*$/gim, ' ')
     .trim();
@@ -61,6 +89,36 @@ function countWords(text) {
   return text.match(WORD_RE)?.length ?? 0;
 }
 
+function collectHeadingStructureDiagnostics(body) {
+  const diagnostics = [];
+  const lines = normalizeBody(body).split('\n');
+  let previousLevel = 1;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const headingMatch = line.match(HEADING_RE);
+    if (!headingMatch) continue;
+
+    const level = headingMatch[1].length;
+    const headingText = headingMatch[2].trim();
+    const lineNumber = index + 1;
+
+    if (level === 1) {
+      diagnostics.push(
+        `article body heading must not use H1 at line ${lineNumber} ("${headingText}")`
+      );
+    } else if (level > previousLevel + 1) {
+      diagnostics.push(
+        `article body heading skips from H${previousLevel} to H${level} at line ${lineNumber} ("${headingText}")`
+      );
+    }
+
+    previousLevel = level;
+  }
+
+  return diagnostics;
+}
+
 export function collectContentQualityDiagnostics({
   repoRoot = process.cwd(),
   postsGlob = 'src/content/posts/*.md',
@@ -86,6 +144,10 @@ export function collectContentQualityDiagnostics({
       if (pattern.test(normalizedBody)) {
         errors.push(`${relativePath}: blocked content-quality pattern detected (${id})`);
       }
+    }
+
+    for (const diagnostic of collectHeadingStructureDiagnostics(parsed.content)) {
+      errors.push(`${relativePath}: ${diagnostic}`);
     }
 
     if (wordCount < MIN_CONTENT_QUALITY_WORDS && blockCount <= 2) {
