@@ -622,6 +622,41 @@
       }
     ]
   },
+  "~/assets/images/2026-04-06-experiments-refute-dark-matter-claim.png": {
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "hash": "5a6cbc0a5748a3be",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1400.avif"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "format": "avif",
+        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1920.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1920.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
