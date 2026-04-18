@@ -293,6 +293,7 @@ Fetch details: get_observations([IDs]) | Search: mem-search skill
 Stats: 7 obs (3,202t read) | 160,259t work | 98% savings
 
 ### Apr 18, 2026
+
 2 8:34a 🔵 Two P1 PR Violations Found in Dark Matter Article Push
 4 8:38a 🔵 Two P1 Lint Gate Failures on Dark Matter Article PR — Root Causes Identified
 5 8:40a 🔵 Dark Matter PR Image Exists Only in Feature Branch, Not in Main
