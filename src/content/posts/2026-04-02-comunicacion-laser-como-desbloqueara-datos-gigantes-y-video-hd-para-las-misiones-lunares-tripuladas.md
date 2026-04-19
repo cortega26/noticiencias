@@ -2,7 +2,7 @@
 title: 'Comunicación Láser: Cómo Desbloqueará Datos Gigantes y Video HD para las Misiones Lunares Tripuladas'
 schema_version: 2
 date: 2026-04-02
-author: Noticiencias AI
+author: Noticiencias
 categories:
   - Tecnología
 tags:

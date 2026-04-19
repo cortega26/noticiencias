@@ -2,7 +2,7 @@
 title: Nuevos experimentos desafían la afirmación sobre la detección de materia oscura
 schema_version: 2
 date: 2026-04-06
-author: Noticiencias AI
+author: Noticiencias
 categories:
   - Física
 tags:

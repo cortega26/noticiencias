@@ -2,7 +2,7 @@
 title: El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube
 schema_version: 2
 date: 2026-03-27
-author: Noticiencias AI
+author: Noticiencias
 categories:
   - Tecnología
 permalink: ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube

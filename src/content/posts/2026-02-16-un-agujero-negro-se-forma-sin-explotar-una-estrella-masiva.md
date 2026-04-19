@@ -2,7 +2,7 @@
 title: Un agujero negro se forma sin explotar una estrella masiva
 schema_version: 2
 date: 2026-02-16
-author: Noticiencias AI
+author: Noticiencias
 categories:
   - Astronomía
 permalink: ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva

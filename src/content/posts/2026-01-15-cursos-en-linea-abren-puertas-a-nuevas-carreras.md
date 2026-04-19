@@ -1,7 +1,7 @@
 ---
 title: 'Cursos en línea abren puertas a nuevas carreras'
 date: 2026-01-15
-author: 'Noticiencias AI'
+author: Noticiencias
 categories: ['Tecnología']
 permalink: '2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras'
 image: '~/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg'
