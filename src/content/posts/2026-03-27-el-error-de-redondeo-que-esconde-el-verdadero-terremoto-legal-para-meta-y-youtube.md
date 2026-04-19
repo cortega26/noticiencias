@@ -1,8 +1,9 @@
 ---
 title: El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube
 schema_version: 2
-date: 2026-03-27
+excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
 author: Noticiencias
+date: 2026-03-27
 categories:
   - Tecnología
 permalink: ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube
@@ -12,7 +13,6 @@ tags:
   - sección 230
   - seguridad infantil
   - responsabilidad digital
-excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
 image: '~/assets/images/2026-03-27-el-error-de-redondeo.jpg'
 image_alt: "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube"
 source_url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
@@ -20,6 +20,8 @@ refinery_id: 'Two verdicts in two days: How American courts are rewriting the ru
 headlines_variants:
   question: ¿Serán las multas millonarias el catalizador para que los gigantes tech rediseñen por la infancia?
   benefit: Cómo las multas millonarias abren la puerta a un internet más seguro para los niños
+investigation: false
+featured: false
 ---
 
 ## El Verdadero Terremoto Legal: Cuando las Multas Millonarias son un "Error de Redondeo" para los Gigantes Tech

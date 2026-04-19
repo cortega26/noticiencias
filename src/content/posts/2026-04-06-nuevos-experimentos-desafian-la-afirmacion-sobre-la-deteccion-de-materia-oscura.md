@@ -1,15 +1,15 @@
 ---
 title: Nuevos experimentos desafían la afirmación sobre la detección de materia oscura
 schema_version: 2
-date: 2026-04-06
+excerpt: Dos nuevos experimentos, ANAIS-112 y COSINE-100, resuelven el dilema sobre la detección de materia oscura, cuestionando los resultados del experimento DAMA/NaI.
 author: Noticiencias
+date: 2026-04-06
 categories:
   - Física
 tags:
   - materia oscura
   - experimento
   - deteccion
-excerpt: Dos nuevos experimentos, ANAIS-112 y COSINE-100, resuelven el dilema sobre la detección de materia oscura, cuestionando los resultados del experimento DAMA/NaI.
 image: ~/assets/images/2026-04-06-experiments-refute-dark-matter-claim.png
 image_alt: Imagen editorial de Experiments refute dark matter claim
 source_url: https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim
@@ -17,6 +17,8 @@ refinery_id: Experiments refute dark matter claim
 headlines_variants:
   question: ¿Los nuevos experimentos han resuelto la misteriosa señal de materia oscura?
   benefit: Entendimiento más preciso sobre la materia oscura gracias a nuevos experimentos
+investigation: false
+featured: false
 ---
 
 **Experimentos Refutan la Afirmación sobre la Materia Oscura | Laboratorio Wright de Yale**

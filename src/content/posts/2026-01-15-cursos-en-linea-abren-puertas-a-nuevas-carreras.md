@@ -1,9 +1,17 @@
 ---
 title: 'Cursos en línea abren puertas a nuevas carreras'
-date: 2026-01-15
+schema_version: 2
+excerpt: 'Un curso MicroMasters del MIT impulsó la transformación profesional de un ingeniero hacia la gestión de cadenas de suministro.'
 author: Noticiencias
-categories: ['Tecnología']
+date: 2026-01-15
+categories:
+  - 'Tecnología'
 permalink: '2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras'
+tags:
+  - 'cadenas de suministro'
+  - 'gestión empresarial'
+  - 'cursos en línea'
+  - 'transformación profesional'
 image: '~/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg'
 image_alt: 'Cursos en línea abren puertas a nuevas carreras'
 source_url: 'https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115'
@@ -11,14 +19,8 @@ refinery_id: '135'
 headlines_variants:
   question: '¿Cómo un curso en línea puede cambiar tu vida?'
   benefit: 'Transformación profesional a través de la experiencia práctica adquirida'
-excerpt: 'Un curso MicroMasters del MIT impulsó la transformación profesional de un ingeniero hacia la gestión de cadenas de suministro.'
-tags:
-  [
-    'cadenas de suministro',
-    "gesti\u00f3n empresarial",
-    "cursos en l\u00ednea",
-    "transformaci\u00f3n profesional",
-  ]
+investigation: false
+featured: false
 ---
 
 ## Cómo un curso en línea de la MIT sobre gestión de cadenas de suministro dio origen a una nueva carrera

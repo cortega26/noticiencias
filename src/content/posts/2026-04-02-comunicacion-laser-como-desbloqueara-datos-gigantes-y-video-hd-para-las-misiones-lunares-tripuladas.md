@@ -1,8 +1,9 @@
 ---
 title: 'Comunicación Láser: Cómo Desbloqueará Datos Gigantes y Video HD para las Misiones Lunares Tripuladas'
 schema_version: 2
-date: 2026-04-02
+excerpt: La comunicación láser revoluciona las misiones lunares tripuladas. Permite video HD y terabytes de datos, crucial para Artemis II y futuras exploraciones.
 author: Noticiencias
+date: 2026-04-02
 categories:
   - Tecnología
 tags:
@@ -11,7 +12,6 @@ tags:
   - artemis ii
   - exploración espacial
   - telemedicina
-excerpt: La comunicación láser revoluciona las misiones lunares tripuladas. Permite video HD y terabytes de datos, crucial para Artemis II y futuras exploraciones.
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
 image_alt: Imagen editorial de Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
 source_url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
@@ -19,6 +19,8 @@ refinery_id: Lincoln Laboratory laser communications terminal launches on histor
 headlines_variants:
   question: ¿Cómo Superará la Comunicación Láser los Límites de Datos para las Misiones Tripuladas a la Luna?
   benefit: 'Conexión Lunar sin Precedentes: La Comunicación Láser Permitirá Experiencias Inmersivas y Telemedicina en Tiempo Real'
+investigation: false
+featured: false
 ---
 
 ## Un Salto de Luz para la Humanidad: Así Revolucionará la Comunicación Láser las Misiones Tripuladas a la Luna
