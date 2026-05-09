@@ -6,7 +6,7 @@ export async function GET(context) {
   return rss({
     title: 'Noticiencias',
     description:
-      'Traduce la ciencia global en español claro para 580 millones de hispanohablantes.',
+      'Traduce ciencia, tecnología e internet de interés público a un español claro para 580 millones de hispanohablantes.',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

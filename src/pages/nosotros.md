@@ -2,20 +2,21 @@
 title: 'Acerca de Noticiencias'
 permalink: /nosotros/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Noticiencias es un medio de ciencia en español con foco en rigor editorial, trazabilidad y claridad.'
+excerpt: 'Noticiencias es un medio de ciencia y tecnología en español con foco en rigor editorial, trazabilidad y claridad.'
 header:
   overlay_color: '#333'
 ---
 
 ## Misión editorial
 
-Noticiencias traduce ciencia global a un español claro, responsable y verificable. Priorizamos evidencia primaria, contexto y límites para evitar el hype.
+Noticiencias traduce ciencia, tecnología e internet de interés público a un español claro, responsable y verificable. Priorizamos evidencia primaria, contexto y límites para evitar el hype.
 
 ## Qué cubrimos
 
-- Ciencia y tecnología con impacto social real.
-- Salud pública y evidencia clínica relevante.
-- Investigaciones originales y revisiones críticas.
+- Ciencia, clima, energía y materiales con impacto social real.
+- Tecnología, IA, internet, software y plataformas que cambian cómo vivimos.
+- Salud pública, evidencia clínica y hallazgos biomédicos relevantes.
+- Investigaciones originales, contexto crítico y descubrimientos con consecuencias concretas.
 
 ## Cómo trabajamos
 
@@ -23,11 +24,11 @@ Cada pieza incluye fuentes enlazadas, método de traducción y nivel de confianz
 
 ## Nuestra Misión
 
-Seleccionamos y clasificamos noticias de diversas fuentes en inglés, las traducimos y adaptamos para que la ciencia sea accesible a todo el público hispanohablante.
+Seleccionamos y clasificamos noticias de diversas fuentes en español e inglés, las traducimos y adaptamos para que la ciencia, la tecnología y la innovación sean accesibles a todo el público hispanohablante.
 
 ## Metodología
 
-Nuestro proceso se basa en la agregación, curaduría y traducción de contenido científico de alto impacto.
+Nuestro proceso se basa en la agregación, curaduría y traducción de contenido científico y tecnológico de alto impacto.
 
 ## Contacto
 

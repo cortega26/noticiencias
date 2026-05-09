@@ -1,6 +1,6 @@
 ---
 title: 'Detector de Hype: Guía Rápida'
-description: 'Cómo leer noticias científicas sin ser engañado.'
+description: 'Cómo leer noticias científicas y tecnológicas sin ser engañado.'
 layout: '~/layouts/BaseLayout.astro'
 ---
 
@@ -8,7 +8,7 @@ layout: '~/layouts/BaseLayout.astro'
 
 _Edición Noticiencias_
 
-Las noticias científicas a menudo exageran. Usa esta lista de verificación rápida cada vez que leas un titular "revolucionario".
+Las noticias científicas y tecnológicas a menudo exageran. Usa esta lista de verificación rápida cada vez que leas un titular "revolucionario".
 
 ---
 
