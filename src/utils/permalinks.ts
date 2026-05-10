@@ -111,30 +111,3 @@ const handleHref = (
   }
   return undefined;
 };
-
-export const applyGetPermalinks = (menu: MenuItem | MenuItem[] = {}): MenuItem | MenuItem[] => {
-  if (Array.isArray(menu)) {
-    return menu.map((item) => applyGetPermalinks(item) as MenuItem);
-  } else if (typeof menu === 'object' && menu !== null) {
-    const obj: MenuItem = {};
-    for (const key in menu) {
-      if (key === 'href') {
-        const val = menu[key];
-        if (typeof val === 'string' || (typeof val === 'object' && val !== null && 'type' in val)) {
-          // We cast reasonably here because we checked shape roughly match handleHref expectations
-          const processedHref = handleHref(val as string | { type: string; url?: string });
-          if (processedHref) obj[key] = processedHref;
-        }
-      } else {
-        const value = menu[key];
-        if (key === 'links' && Array.isArray(value)) {
-          obj[key] = applyGetPermalinks(value) as MenuItem[];
-        } else {
-          obj[key] = value;
-        }
-      }
-    }
-    return obj;
-  }
-  return menu;
-};
