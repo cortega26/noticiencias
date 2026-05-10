@@ -1,6 +1,7 @@
 # build output
 dist/
 /public/CNAME
+.playwright-cli/
 
 # dependencies
 node_modules/
@@ -24,3 +25,6 @@ pnpm-debug.log*
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# local development data
+data/metrics/development/*.db

@@ -51,8 +51,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import lunr from 'lunr';
-    import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '../utils/search-url';
+    import { updateUrlWithQuery, getQueryFromUrl, normalizeQuery } from '~/utils/search-url';
 
     // Define expected document structure
     interface SearchDocument {
@@ -136,6 +135,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       input.disabled = true;
 
       try {
+        // Lazy-load lunr — Vite code-splits this into a separate chunk (~40 KB)
+        const lunrModule = await import('lunr');
+        const lunr = lunrModule.default;
+
         // Should force-cache to avoid network spam, managed by browser/service worker
         const response = await fetch('/search.json', { cache: 'force-cache' });
 

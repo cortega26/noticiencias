@@ -10,7 +10,7 @@ metadata:
   title:
     default: 'Noticiencias'
     template: '%s | Noticiencias'
-  description: 'Traduce la ciencia global en español claro para 580 millones de hispanohablantes.'
+  description: 'Traduce ciencia, tecnología e internet de interés público a un español claro para 580 millones de hispanohablantes.'
   robots:
     index: true
     follow: true

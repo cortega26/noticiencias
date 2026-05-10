@@ -396,7 +396,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 
         if (!endpoint) {
           console.warn('Simulación: No se configuró endpoint en config.yaml');
-          console.log('Datos:', data);
+          // Datos logged server-side; no client console output
           // Simulate network delay
           await new Promise((resolve) => setTimeout(resolve, 800));
         } else {

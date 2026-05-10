@@ -10,6 +10,14 @@ export interface CategorySection {
 
 export const configuredCategorySections: CategorySection[] = [
   {
+    slug: 'ciencia',
+    title: 'Ciencia',
+    description:
+      'Investigación, clima, energía, materiales, ambiente y descubrimientos con impacto público.',
+    icon: 'tabler:microscope',
+    showInHeader: true,
+  },
+  {
     slug: 'astronomia',
     title: 'Astronomía',
     description: 'Espacio, cosmología y exploración del universo.',
@@ -26,7 +34,8 @@ export const configuredCategorySections: CategorySection[] = [
   {
     slug: 'tecnologia',
     title: 'Tecnología',
-    description: 'Innovación, IA, plataformas y sistemas digitales.',
+    description:
+      'IA, software, dispositivos, plataformas de internet, ciberseguridad e infraestructura digital.',
     icon: 'tabler:device-laptop',
     showInHeader: true,
   },
