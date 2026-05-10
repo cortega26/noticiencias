@@ -1,32 +1,31 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const posts = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
   schema: z
     .object({
       title: z.string().min(5, 'Title too short'),
-      schema_version: z.number().int().min(1).default(1), // Default to 1 for legacy, but we track it now
+      schema_version: z.number().int().min(1).default(1),
       excerpt: z.string().min(10, 'Excerpt too short'),
       author: z.string().default('Noticiencias'),
       date: z.date(),
       categories: z.array(z.string()).default([]),
       tags: z.array(z.string()).default([]),
 
-      // Migration: Support legacy strings but prefer object with dimensions
       image: z.union([
-        z.string(), // Allow local paths (e.g. /images/...) or URLs
+        z.string(),
         z.object({
-          src: z.string(), // content/images might use relative paths too
+          src: z.string(),
           width: z.number().int().positive(),
           height: z.number().int().positive(),
           alt: z.string().optional(),
         }),
       ]),
       image_alt: z.string().optional(),
-      permalink: z.string().optional(), // For legacy URL compatibility
+      permalink: z.string().optional(),
 
-      // Backend/Refinery Fields
       source_url: z.string().url().optional(),
       refinery_id: z.string().optional(),
       headlines_variants: z
@@ -36,7 +35,6 @@ const posts = defineCollection({
         })
         .optional(),
 
-      // Custom Noticiencias fields
       translation_method: z.string().optional(),
       editorial_score: z.number().optional(),
       review_status: z.string().optional(),

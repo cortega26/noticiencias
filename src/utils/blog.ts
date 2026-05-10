@@ -49,10 +49,12 @@ const generatePermalink = async ({
 };
 
 export const resolvePostPermalink = async (post: CollectionEntry<'posts'>): Promise<string> => {
-  const { id, slug: rawSlug, data } = post;
+  const { id, data } = post;
   const rawCategories = Array.isArray(data.categories) ? data.categories : [];
   const rawCategory = rawCategories.length > 0 ? rawCategories[0] : undefined;
-  const slug = cleanSlug(rawSlug);
+  // Astro 6 glob() loader does not expose slug; derive from id
+  const effectiveSlug = id.replace(/\.(md|mdx)$/, '');
+  const slug = cleanSlug(effectiveSlug);
   const publishDate = new Date(data.date ?? new Date());
   const category = rawCategory ? cleanSlug(rawCategory) : undefined;
 
@@ -60,7 +62,9 @@ export const resolvePostPermalink = async (post: CollectionEntry<'posts'>): Prom
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
-  const { id, slug: rawSlug, data } = post;
+  const { id, data } = post;
+  // Astro 6 glob() loader does not expose slug; derive from id
+  const effectiveSlug = id.replace(/\.(md|mdx)$/, '');
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
@@ -84,9 +88,9 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     throw new Error(`CRITICAL: Post ${id} has no title. Build aborted to prevent corrupt content.`);
   }
 
-  const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
+  const slug = cleanSlug(effectiveSlug); // cleanSlug(rawSlug.split('/').pop());
   if (!slug) {
-    throw new Error(`CRITICAL: Post ${id} resulted in empty slug. Original: ${rawSlug}`);
+    throw new Error(`CRITICAL: Post ${id} resulted in empty slug. Original: ${effectiveSlug}`);
   }
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
