@@ -1,203 +1,181 @@
 {
-  "$ref": "#/definitions/posts",
-  "definitions": {
-    "posts": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "minLength": 5,
-          "errorMessage": {
-            "minLength": "Title too short"
-          }
-        },
-        "schema_version": {
-          "type": "integer",
-          "minimum": 1,
-          "default": 1
-        },
-        "excerpt": {
-          "type": "string",
-          "minLength": 10,
-          "errorMessage": {
-            "minLength": "Excerpt too short"
-          }
-        },
-        "author": {
-          "type": "string",
-          "default": "Noticiencias"
-        },
-        "date": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "type": "integer",
-              "format": "unix-time"
-            }
-          ]
-        },
-        "categories": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
-        "image": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "src": {
-                  "type": "string"
-                },
-                "width": {
-                  "type": "integer",
-                  "exclusiveMinimum": 0
-                },
-                "height": {
-                  "type": "integer",
-                  "exclusiveMinimum": 0
-                },
-                "alt": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "src",
-                "width",
-                "height"
-              ],
-              "additionalProperties": false
-            }
-          ]
-        },
-        "image_alt": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "schema_version": {
+      "default": 1,
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "excerpt": {
+      "type": "string",
+      "minLength": 10
+    },
+    "author": {
+      "default": "Noticiencias",
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "categories": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "image": {
+      "anyOf": [
+        {
           "type": "string"
         },
-        "permalink": {
-          "type": "string"
-        },
-        "source_url": {
-          "type": "string",
-          "format": "uri"
-        },
-        "refinery_id": {
-          "type": "string"
-        },
-        "headlines_variants": {
+        {
           "type": "object",
           "properties": {
-            "question": {
+            "src": {
               "type": "string"
             },
-            "benefit": {
+            "width": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "height": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "alt": {
               "type": "string"
             }
           },
-          "additionalProperties": false
-        },
-        "translation_method": {
+          "required": [
+            "src",
+            "width",
+            "height"
+          ]
+        }
+      ]
+    },
+    "image_alt": {
+      "type": "string"
+    },
+    "permalink": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "refinery_id": {
+      "type": "string"
+    },
+    "headlines_variants": {
+      "type": "object",
+      "properties": {
+        "question": {
           "type": "string"
         },
-        "editorial_score": {
-          "type": "number"
-        },
-        "review_status": {
+        "benefit": {
           "type": "string"
-        },
-        "confidence": {
-          "type": "string"
-        },
-        "investigation": {
-          "type": "boolean",
-          "default": false
-        },
-        "featured": {
-          "type": "boolean",
-          "default": false
-        },
-        "fact_check": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "label": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "label",
-              "status"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "why_it_matters": {
-          "type": "array",
-          "items": {
+        }
+      }
+    },
+    "translation_method": {
+      "type": "string"
+    },
+    "editorial_score": {
+      "type": "number"
+    },
+    "review_status": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "investigation": {
+      "default": false,
+      "type": "boolean"
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "fact_check": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "status": {
             "type": "string"
           }
         },
-        "series": {
-          "type": "string"
-        },
-        "sources": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string",
-                "minLength": 1
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              },
-              "publisher": {
-                "type": "string"
-              },
-              "date": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "title",
-              "url"
-            ],
-            "additionalProperties": false
+        "required": [
+          "label",
+          "status"
+        ]
+      }
+    },
+    "why_it_matters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "series": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
           }
-        }
-      },
-      "required": [
-        "title",
-        "excerpt",
-        "date",
-        "image"
-      ],
-      "additionalProperties": false
+        },
+        "required": [
+          "title",
+          "url"
+        ]
+      }
+    },
+    "$schema": {
+      "type": "string"
     }
   },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  "required": [
+    "title",
+    "excerpt",
+    "date",
+    "image"
+  ]
 }
