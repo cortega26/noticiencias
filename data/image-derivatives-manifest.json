@@ -657,6 +657,41 @@
       }
     ]
   },
+  "~/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg": {
+    "originalWidth": 2500,
+    "originalHeight": 1666,
+    "hash": "501ef85c7eef38dd",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.1400.avif"
+      },
+      {
+        "width": 2500,
+        "height": 1666,
+        "format": "avif",
+        "objectKey": "posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.2500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.501ef85c7eef38dd.2500.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
