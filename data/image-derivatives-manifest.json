@@ -692,6 +692,34 @@
       }
     ]
   },
+  "~/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg": {
+    "originalWidth": 1200,
+    "originalHeight": 630,
+    "hash": "848415bd8cb164b7",
+    "variants": [
+      {
+        "width": 400,
+        "height": 210,
+        "format": "avif",
+        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 473,
+        "format": "avif",
+        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.900.avif"
+      },
+      {
+        "width": 1200,
+        "height": 630,
+        "format": "avif",
+        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.1200.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.1200.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
