@@ -38,7 +38,7 @@ export default {
       },
 
       animation: {
-        fade: 'fadeInUp 1s both',
+        fade: 'fadeInUp 300ms both',
       },
 
       keyframes: {

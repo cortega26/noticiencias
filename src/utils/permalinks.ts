@@ -83,31 +83,3 @@ export const getAsset = (path: string): string =>
 
 /** */
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
-
-/** */
-
-interface MenuItem {
-  text?: string;
-  href?: string | { type: string; url?: string };
-  links?: MenuItem[];
-  [key: string]: unknown;
-}
-
-const handleHref = (
-  href: string | { type: string; url?: string } | undefined
-): string | undefined => {
-  if (typeof href === 'string') {
-    return getPermalink(href);
-  } else if (typeof href === 'object' && href !== null) {
-    if (href.type === 'home') {
-      return getHomePermalink();
-    } else if (href.type === 'blog') {
-      return getBlogPermalink();
-    } else if (href.type === 'asset' && href.url) {
-      return getAsset(href.url);
-    } else if (href.url) {
-      return getPermalink(href.url, href.type);
-    }
-  }
-  return undefined;
-};

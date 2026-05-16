@@ -2,6 +2,9 @@
 dist/
 /public/CNAME
 .playwright-cli/
+output/
+reports/
+.coverage
 
 # dependencies
 node_modules/

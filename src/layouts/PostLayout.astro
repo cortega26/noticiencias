@@ -1,7 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Image from '~/components/template/common/Image.astro';
-import { type CollectionEntry } from 'astro:content';
+import { getPermalink, getCanonical } from '~/utils/permalinks';
+import type { CollectionEntry } from 'astro:content';
 import WhyTrustUs from '~/components/common/WhyTrustUs.astro';
 
 interface Props {
@@ -26,33 +27,11 @@ const imageSrc = typeof rawImage === 'string' ? rawImage : rawImage?.src;
 const imageWidth = typeof rawImage === 'object' ? rawImage.width : 900;
 const imageHeight = typeof rawImage === 'object' ? rawImage.height : 506;
 
-// Robustly sanitize title if it was saved as a stringified list (e.g. "['Title A', 'Title B']")
-let title = rawTitle;
-if (typeof title === 'string') {
-  title = title.trim();
-  if (
-    (title.startsWith("['") && title.endsWith("']")) ||
-    (title.startsWith('["') && title.endsWith('"]'))
-  ) {
-    try {
-      // Attempt to clean the string representation of the list
-      // 1. Remove outer brackets
-      const inner = title.slice(1, -1);
-      // 2. Simple regex to match the first quoted string: 'Content' or "Content"
-      // matches '...' or "..." at the start
-      const match = inner.match(/^(['"])(.*?)\1/);
-      if (match && match[2]) {
-        title = match[2];
-      } else {
-        // Fallback: just slice outer brackets/quotes if regex fails (single item case)
-        title = title.slice(2, -2);
-      }
-    } catch {
-      // If regex parsing fails, fall back to simple slice
-      title = title.slice(2, -2);
-    }
-  }
-}
+const title = rawTitle.trim();
+
+// Social share URLs
+const shareUrl = encodeURIComponent(String(getCanonical(Astro.url.pathname)));
+const shareText = encodeURIComponent(post.data.title);
 
 // Logic for Confidence Badge
 const confidenceMap: Record<string, { color: string; label: string; icon: string }> = {
@@ -218,17 +197,24 @@ const schema = JSON.stringify({
                 Compartir
               </p>
               <div class="flex justify-center gap-2">
-                {/* Social placeholders */}
-                <button
+                <a
+                  href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-indigo-100 dark:hover:bg-indigo-900 hover:text-indigo-700 transition-colors"
+                  aria-label="Compartir en X (Twitter)"
                 >
                   <iconify-icon icon="tabler:brand-x" class="text-xl"></iconify-icon>
-                </button>
-                <button
+                </a>
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 transition-colors"
+                  aria-label="Compartir en LinkedIn"
                 >
                   <iconify-icon icon="tabler:brand-linkedin" class="text-xl"></iconify-icon>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -254,7 +240,7 @@ const schema = JSON.stringify({
             {
               tags.map((tag) => (
                 <a
-                  href={`/tags/${tag}`}
+                  href={getPermalink(tag, 'tag')}
                   class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-indigo-100 hover:text-indigo-700 transition-colors"
                 >
                   #{tag}

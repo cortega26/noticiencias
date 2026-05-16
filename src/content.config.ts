@@ -1,3 +1,6 @@
+// z must come from astro:content, not zod — astro:content patches the zod
+// types so that ZodEffects (from superRefine) is assignable to the schema
+// type that defineCollection expects.
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
