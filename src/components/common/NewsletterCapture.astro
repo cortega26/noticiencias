@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'Recibe el resumen semanal de Noticiencias',
-  description = 'Una selección breve de ciencia y tecnología, con contexto y fuentes, pensada para leerse sin ruido.',
+  title = 'Boletín Noticiencias',
+  description = 'Una edición semanal con hallazgos, fuentes y temas para guardar.',
   class: className = '',
 } = Astro.props;
 
@@ -50,7 +50,7 @@ const isEnabled = endpoint.length > 0;
       <p class="text-xs text-text-muted sm:col-span-2" role="status">
         {
           isEnabled
-            ? 'Sin spam. Solo contexto útil.'
+            ? 'Una entrega semanal. Baja inmediata desde cada correo.'
             : 'La captura de correos se activará al configurar el endpoint del formulario.'
         }
       </p>

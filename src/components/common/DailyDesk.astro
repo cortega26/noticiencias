@@ -2,7 +2,8 @@
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
 import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
-import { getPermalink } from '~/utils/permalinks';
+import TopicStrip from '~/components/common/TopicStrip.astro';
+import { getAsset, getPermalink } from '~/utils/permalinks';
 import type { CategoryRail, TopicFrequency } from '~/utils/hub';
 import type { Post } from '~/types';
 
@@ -20,15 +21,22 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
   <header class="mb-8 border-b border-border-subtle pb-5">
-    <p class="mb-2 text-sm font-semibold text-primary">Noticiencias Daily Desk</p>
+    <p class="mb-2 text-sm font-semibold text-primary">Portada</p>
     <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
-      Ciencia y tecnología para entender qué cambió hoy.
+      La ciencia que conviene seguir hoy.
     </h1>
     <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
-      Una portada editorial en español para seguir descubrimientos, evidencia y contexto sin
-      perderse en el ruido.
+      Una edición en español para entrar rápido en los hallazgos, las dudas y las consecuencias de
+      cada historia.
     </p>
   </header>
+
+  <TopicStrip
+    topics={topicRadar}
+    showCounts
+    class="mb-8"
+    description="Los temas que más se repiten en la edición reciente."
+  />
 
   {
     leadPost && (
@@ -47,25 +55,33 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
 
   <section class="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
     <div>
-      <SectionHeading title="Últimas historias" href="/blog/" linkText="Archivo completo" />
+      <SectionHeading title="Última edición" href="/blog/" linkText="Archivo completo" />
       <div class="mt-6 grid gap-6 md:grid-cols-2">
         {latestPosts.map((post) => <ArticleCard post={post} variant="standard" />)}
       </div>
     </div>
 
     <aside class="lg:border-l lg:border-border-subtle lg:pl-8">
-      <SectionHeading title="Radar de temas" level={2} />
-      <div class="mt-5 flex flex-wrap gap-2">
-        {
-          topicRadar.map((topic) => (
-            <a
-              href={getPermalink(topic.slug, 'tag')}
-              class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
-            >
-              {topic.title} <span class="text-xs">({topic.count})</span>
-            </a>
-          ))
-        }
+      <SectionHeading title="Vías de regreso" level={2} />
+      <div class="mt-5 grid gap-4 text-sm leading-relaxed text-text-muted">
+        <p>
+          El boletín semanal reúne las piezas que vale la pena guardar. El RSS mantiene la edición
+          abierta para lectores y agregadores.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/newsletter/"
+            class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+          >
+            Boletín
+          </a>
+          <a
+            href={getAsset('/rss.xml')}
+            class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+          >
+            RSS
+          </a>
+        </div>
       </div>
     </aside>
   </section>
@@ -74,8 +90,8 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
     contextPosts.length > 0 && (
       <section class="mt-12">
         <SectionHeading
-          title="Por qué importa"
-          description="Historias recientes con una consecuencia clara para entender el panorama."
+          title="Qué cambia"
+          description="Historias recientes que dejan una consecuencia clara sobre la mesa."
         />
         <div class="mt-6 grid gap-6 md:grid-cols-3">
           {contextPosts.map((post) => (
@@ -89,7 +105,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
   <section class="mt-12">
     <SectionHeading
       title="Secciones"
-      description="La portada se ordena por áreas para que puedas seguir una línea de curiosidad."
+      description="La portada también se puede leer por área, de la actualidad al archivo."
     />
     <div class="mt-6 grid gap-8 lg:grid-cols-2">
       {
@@ -114,6 +130,46 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
       }
     </div>
   </section>
+
+  <section class="mt-12 border-t border-border-subtle pt-5">
+    <SectionHeading
+      title="Guías de lectura"
+      description="Piezas para volver cuando una noticia científica llega demasiado vestida de promesa."
+    />
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
+      <a
+        href="/recursos/detector-de-hype/"
+        class="border-t border-border-subtle pt-4 text-text-body hover:text-primary"
+      >
+        <h3 class="font-heading text-xl font-bold">Detector de hype</h3>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          Una guía breve para leer promesas científicas con mejores preguntas.
+        </p>
+      </a>
+      <a
+        href="/metodologia/"
+        class="border-t border-border-subtle pt-4 text-text-body hover:text-primary"
+      >
+        <h3 class="font-heading text-xl font-bold">Cómo trabajamos</h3>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          El recorrido editorial desde la fuente original hasta la publicación.
+        </p>
+      </a>
+      <a
+        href="/buscar/"
+        class="border-t border-border-subtle pt-4 text-text-body hover:text-primary"
+      >
+        <h3 class="font-heading text-xl font-bold">Buscar en el archivo</h3>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          Encuentra temas, categorías y fuentes ya publicadas por Noticiencias.
+        </p>
+      </a>
+    </div>
+  </section>
 </div>
 
-<NewsletterCapture class="mt-4" />
+<NewsletterCapture
+  title="Boletín Noticiencias"
+  description="Una edición semanal con hallazgos, fuentes y temas para guardar."
+  class="mt-4"
+/>

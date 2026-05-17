@@ -41,7 +41,7 @@ A los efectos de esta Política de Privacidad:
 
 Mientras utiliza Nuestro Servicio, es posible que le pidamos que nos proporcione cierta información de identificación personal que se puede utilizar para contactarlo o identificarlo. La información de identificación personal puede incluir, pero no se limita a:
 
-- Dirección de correo electrónico (para el Newsletter)
+- Dirección de correo electrónico (para el boletín)
 - Datos de Uso
 
 #### Datos de Uso
@@ -63,7 +63,7 @@ La Compañía puede utilizar los Datos Personales para los siguientes propósito
 - **Para proporcionar y mantener nuestro Servicio**, incluido el control del uso de nuestro Servicio.
 - **Para gestionar su Cuenta:** gestionar su registro como usuario del Servicio (si aplica).
 - **Para contactarlo:** Para contactarlo por correo electrónico con respecto a actualizaciones o comunicaciones informativas relacionadas con las funcionalidades, productos o servicios contratados, incluidas las actualizaciones de seguridad, cuando sea necesario o razonable para su implementación.
-- **Para proporcionarle** noticias, ofertas especiales e información general sobre otros bienes, servicios y eventos que ofrecemos (Newsletter), a menos que haya optado por no recibir dicha información.
+- **Para enviarle** el boletín y comunicaciones editoriales relacionadas con Noticiencias, a menos que haya optado por no recibir dicha información.
 
 ## Retención de sus Datos Personales
 
@@ -75,7 +75,7 @@ Su información, incluidos los Datos Personales, se procesa en las oficinas oper
 
 ## Eliminación de sus Datos Personales
 
-Usted tiene derecho a eliminar o solicitar que lo ayudemos a eliminar los Datos Personales que hemos recopilado sobre usted. Puede darse de baja de nuestro Newsletter en cualquier momento utilizando el enlace "Unsubscribe" en el pie de página de nuestros correos electrónicos.
+Usted tiene derecho a eliminar o solicitar que lo ayudemos a eliminar los Datos Personales que hemos recopilado sobre usted. Puede darse de baja de nuestro boletín en cualquier momento utilizando el enlace "Unsubscribe" en el pie de página de nuestros correos electrónicos.
 
 ## Seguridad de sus Datos Personales
 

@@ -1,6 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
 import RelatedReading from '~/components/common/RelatedReading.astro';
+import TopicStrip from '~/components/common/TopicStrip.astro';
 import TrustPanel from '~/components/common/TrustPanel.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
@@ -19,11 +20,19 @@ const { post, relatedPosts = [], url } = Astro.props;
 const image = (await findImage(post.image)) ?? post.image;
 const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
 const imageAlt = post.image_alt || post.title;
+const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
+  ? 'Equipo Noticiencias'
+  : post.author || 'Noticiencias';
 const summaryPoints = post.summary_points?.length
   ? post.summary_points
   : post.excerpt
     ? [post.excerpt]
     : [];
+const articleTopics = (post.tags ?? []).map((tag) => ({
+  slug: tag.slug,
+  title: tag.title,
+  count: 1,
+}));
 const sourceFallback =
   post.sources?.length || !post.source_url
     ? post.sources
@@ -54,7 +63,7 @@ const schema = JSON.stringify({
   author: [
     {
       '@type': 'Organization',
-      name: post.author || 'Noticiencias',
+      name: displayAuthor,
       url: 'https://noticiencias.com/nosotros/',
     },
   ],
@@ -87,7 +96,7 @@ const schema = JSON.stringify({
 
       <p class="mt-6 text-sm font-medium text-text-muted">
         Por <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline"
-          >{post.author || 'Noticiencias'}</a
+          >{displayAuthor}</a
         >
       </p>
 
@@ -116,8 +125,8 @@ const schema = JSON.stringify({
     <div class="mx-auto mt-10 grid max-w-5xl gap-10 lg:grid-cols-[220px_1fr]">
       <aside class="hidden lg:block">
         <div class="sticky top-24 border-t border-border-subtle pt-4 text-sm text-text-muted">
-          <p class="font-semibold text-text-body">Lectura guiada</p>
-          <p class="mt-2">Resumen, contexto editorial y fuentes dentro del flujo de lectura.</p>
+          <p class="font-semibold text-text-body">Edición</p>
+          <p class="mt-2">Resumen, alcance, fuentes y lecturas relacionadas.</p>
         </div>
       </aside>
 
@@ -125,7 +134,7 @@ const schema = JSON.stringify({
         {
           summaryPoints.length > 0 && (
             <section class="not-prose mb-8 rounded-md border border-border-subtle bg-surface-paper p-5">
-              <h2 class="font-heading text-xl font-bold text-text-body">En simple</h2>
+              <h2 class="font-heading text-xl font-bold text-text-body">En breve</h2>
               <ul class="mt-3 grid gap-2 text-text-muted">
                 {summaryPoints.map((point) => (
                   <li class="pl-4 [text-indent:-1rem]">
@@ -140,7 +149,7 @@ const schema = JSON.stringify({
         {
           post.why_it_matters && post.why_it_matters.length > 0 && (
             <section class="not-prose mb-8 border-l-4 border-primary bg-surface-paper p-5">
-              <h2 class="font-heading text-xl font-bold text-text-body">Por qué importa</h2>
+              <h2 class="font-heading text-xl font-bold text-text-body">Qué cambia</h2>
               <ul class="mt-3 grid gap-2 text-text-muted">
                 {post.why_it_matters.map((item) => (
                   <li>{item}</li>
@@ -181,20 +190,12 @@ const schema = JSON.stringify({
           reviewStatus={post.review_status}
         />
 
-        {
-          post.tags && post.tags.length > 0 && (
-            <footer class="not-prose mt-8 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <a
-                  href={getPermalink(tag.slug, 'tag')}
-                  class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
-                >
-                  #{tag.title}
-                </a>
-              ))}
-            </footer>
-          )
-        }
+        <TopicStrip
+          topics={articleTopics}
+          title="Seguir temas"
+          description="Más historias conectadas con esta lectura."
+          class="not-prose mt-8"
+        />
 
         <RelatedReading posts={relatedPosts} />
       </div>

@@ -9,10 +9,7 @@ interface Props {
 
 const { topic, href, size = 'md', class: className = '', ...rest } = Astro.props;
 
-// Simple hash function to generate stable colors for topics if needed in the future
-// Currently using a neutral style that fits the new DS
-const baseStyles =
-  'inline-flex items-center font-bold uppercase tracking-wider rounded-sm transition-colors';
+const baseStyles = 'inline-flex items-center font-bold rounded-sm transition-colors';
 
 const sizes = {
   sm: 'text-[10px] px-1.5 py-0.5',

@@ -99,6 +99,10 @@ describe('hub curation helpers', () => {
     ]);
   });
 
+  it('returns an empty topic list when recent posts have no tags', () => {
+    expect(getTopicFrequency([post({ id: 'untagged', tags: [] })], 5)).toEqual([]);
+  });
+
   it('builds category rails from matching posts', () => {
     const posts = [
       post({ id: 'ciencia', category: { slug: 'ciencia', title: 'Ciencia' } }),

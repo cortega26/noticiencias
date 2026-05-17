@@ -31,5 +31,23 @@ const metadata = {
     </div>
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+
+    <aside class="mt-10 border-t border-border-subtle pt-5">
+      <h2 class="font-heading text-xl font-bold text-text-body">Volver a este tema</h2>
+      <div class="mt-4 flex flex-wrap gap-3 text-sm">
+        <a
+          href="/newsletter/"
+          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+        >
+          Boletín
+        </a>
+        <a
+          href="/rss.xml"
+          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+        >
+          RSS
+        </a>
+      </div>
+    </aside>
   </section>
 </BaseLayout>

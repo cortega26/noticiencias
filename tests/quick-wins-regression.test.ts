@@ -127,6 +127,70 @@ describe('quick wins regression coverage', () => {
     expect(searchComponent).toContain("from '~/utils/browser/search-url'");
   });
 
+  it('keeps public UI copy away from generic AI-magazine phrasing', () => {
+    const uiFiles = collectFiles(srcDir, (filePath) => {
+      const relative = path.relative(srcDir, filePath);
+      return (
+        /\.(astro|ts)$/.test(filePath) &&
+        /^(components|layouts|pages|navigation\.ts)/.test(relative)
+      );
+    });
+
+    const bannedPhrases = [
+      'Noticiencias Daily Desk',
+      'Radar de temas',
+      'Por qué importa',
+      'En simple',
+      'Contexto editorial',
+      'Nivel de confianza',
+      'Seguir leyendo',
+      'sin ruido',
+      'sin spam',
+      'contexto útil',
+      'Lectura guiada',
+    ];
+
+    const violations = uiFiles.flatMap((filePath) => {
+      const source = fs.readFileSync(filePath, 'utf8');
+      return bannedPhrases
+        .filter((phrase) => source.includes(phrase))
+        .map((phrase) => `${path.relative(repoRoot, filePath)}: ${phrase}`);
+    });
+
+    expect(violations).toEqual([]);
+  });
+
+  it('keeps Xataka-inspired retention separate from commerce modules', () => {
+    const scannedFiles = collectFiles(srcDir, (filePath) => {
+      const relative = path.relative(srcDir, filePath);
+      if (!/\.(astro|ts|md)$/.test(filePath)) return false;
+      if (relative === path.join('pages', 'privacidad.md')) return false;
+      if (relative === path.join('pages', 'terminos.md')) return false;
+      return /^(components|layouts|pages|navigation\.ts)/.test(relative);
+    });
+
+    const commerceTerms = [
+      'Xataka Selección',
+      'afiliad',
+      'affiliate',
+      'oferta',
+      'descuento',
+      'shopping',
+      'deals',
+      'chollos',
+      'compras',
+    ];
+
+    const violations = scannedFiles.flatMap((filePath) => {
+      const source = fs.readFileSync(filePath, 'utf8').toLowerCase();
+      return commerceTerms
+        .filter((term) => source.includes(term.toLowerCase()))
+        .map((term) => `${path.relative(repoRoot, filePath)}: ${term}`);
+    });
+
+    expect(violations).toEqual([]);
+  });
+
   it('renders Hub V1 public surfaces with canonical metadata after build', () => {
     for (const route of [
       '/',
@@ -141,5 +205,27 @@ describe('quick wins regression coverage', () => {
       expect(page('title').text()).toContain('Noticiencias');
       expect(canonical).toMatch(/^https:\/\/noticiencias\.com/);
     }
+  });
+
+  it('renders the En seguimiento habit loop on hub surfaces', () => {
+    for (const route of [
+      '/',
+      '/blog/',
+      '/categorias/ciencia/',
+      '/temas/materia-oscura/',
+      '/ciencia/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas/',
+    ]) {
+      const page = load(readDistHtml(route));
+      expect(page('[data-retention-topic-strip]').length, route).toBeGreaterThan(0);
+    }
+  });
+
+  it('keeps the newsletter capture accessible when no provider endpoint is configured', () => {
+    const page = load(readDistHtml('/newsletter/'));
+    const form = page('form[aria-label="Suscripción al boletín"]');
+    expect(form.length).toBe(1);
+    expect(form.find('input[type="email"]').attr('disabled')).toBeDefined();
+    expect(form.find('button[type="submit"]').attr('disabled')).toBeDefined();
+    expect(page.text()).toContain('La captura de correos se activará');
   });
 });

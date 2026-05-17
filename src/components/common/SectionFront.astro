@@ -1,6 +1,7 @@
 ---
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import TopicStrip from '~/components/common/TopicStrip.astro';
 import { getPermalink } from '~/utils/permalinks';
 import type { Post, Taxonomy } from '~/types';
 import type { TopicFrequency } from '~/utils/hub';
@@ -55,19 +56,30 @@ const [leadPost, ...restPosts] = posts;
 
   {
     topics.length > 0 && (
-      <aside class="mt-10">
-        <SectionHeading title="Temas relacionados" level={2} />
-        <div class="mt-4 flex flex-wrap gap-2">
-          {topics.map((topic) => (
-            <a
-              href={getPermalink(topic.slug, 'tag')}
-              class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
-            >
-              {topic.title}
-            </a>
-          ))}
-        </div>
-      </aside>
+      <TopicStrip
+        topics={topics}
+        title="En seguimiento"
+        description="Temas frecuentes dentro de esta sección."
+        class="mt-10"
+      />
     )
   }
+
+  <aside class="mt-10 border-t border-border-subtle pt-5">
+    <SectionHeading title="Volver a esta sección" level={2} />
+    <div class="mt-4 flex flex-wrap gap-3 text-sm">
+      <a
+        href="/newsletter/"
+        class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+      >
+        Boletín
+      </a>
+      <a
+        href="/rss.xml"
+        class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+      >
+        RSS
+      </a>
+    </div>
+  </aside>
 </section>

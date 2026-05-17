@@ -13,10 +13,7 @@ const { posts } = Astro.props;
 {
   posts.length > 0 && (
     <section class="mt-14 border-t border-border-subtle pt-8">
-      <SectionHeading
-        title="Seguir leyendo"
-        description="Más contexto para entender esta historia."
-      />
+      <SectionHeading title="Relacionado" description="Lecturas conectadas para seguir el hilo." />
       <div class="mt-6 grid gap-6 md:grid-cols-2">
         {posts.map((post) => (
           <ArticleCard post={post} variant="compact" />

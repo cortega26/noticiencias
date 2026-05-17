@@ -40,14 +40,14 @@ if (!hasContent) return null;
 <aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">
   <h2 class="flex items-center gap-2 font-heading text-xl font-bold text-text-body">
     <Icon name="tabler:shield-check" class="h-5 w-5 text-primary" />
-    Contexto editorial
+    Fuentes y verificación
   </h2>
 
   <div class="mt-4 grid gap-4 text-sm leading-relaxed text-text-muted">
     {
       confidence && (
         <p>
-          <strong class="text-text-body">Nivel de confianza:</strong>{' '}
+          <strong class="text-text-body">Estado de la evidencia:</strong>{' '}
           {confidenceLabel[confidence.toLowerCase()] ?? confidence}
         </p>
       )

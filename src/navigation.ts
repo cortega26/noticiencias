@@ -45,7 +45,10 @@ export const headerData = {
       href: getPermalink('/series/'),
     },
   ],
-  actions: [{ text: 'Buscar', href: '/buscar/', icon: 'tabler:search' }],
+  actions: [
+    { text: 'Buscar', href: '/buscar/', icon: 'tabler:search' },
+    { text: 'Boletín', href: '/newsletter/', icon: 'tabler:mail' },
+  ],
 };
 
 export const footerData = {
@@ -65,6 +68,7 @@ export const footerData = {
   ],
   secondaryLinks: [
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
+    { text: 'Boletín', href: getPermalink('/newsletter/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
     { text: 'Reportar un problema', href: getPermalink('/reportar-problema') },
   ],

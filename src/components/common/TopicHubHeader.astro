@@ -1,5 +1,5 @@
 ---
-import { getPermalink } from '~/utils/permalinks';
+import TopicStrip from '~/components/common/TopicStrip.astro';
 import type { TopicFrequency } from '~/utils/hub';
 
 interface Props {
@@ -20,16 +20,12 @@ const { title, total, relatedTopics = [] } = Astro.props;
   </p>
   {
     relatedTopics.length > 0 && (
-      <div class="mt-5 flex flex-wrap gap-2">
-        {relatedTopics.map((topic) => (
-          <a
-            href={getPermalink(topic.slug, 'tag')}
-            class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
-          >
-            {topic.title}
-          </a>
-        ))}
-      </div>
+      <TopicStrip
+        topics={relatedTopics}
+        title="En seguimiento"
+        description="Temas que aparecen cerca de este hilo."
+        class="mt-5"
+      />
     )
   }
 </header>

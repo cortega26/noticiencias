@@ -3,6 +3,8 @@ import { fetchPosts } from '~/utils/blog';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import Pagination from '~/components/common/Pagination.astro';
+import TopicStrip from '~/components/common/TopicStrip.astro';
+import { getTopicFrequency } from '~/utils/hub';
 
 import type { GetStaticPaths } from 'astro';
 
@@ -17,6 +19,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const topics = getTopicFrequency(page.data, 10);
 const metadata = {
   title: `Blog`,
   description:
@@ -43,6 +46,13 @@ const metadata = {
     <div class="grid gap-6">
       {page.data.map((post) => <ArticleCard post={post} variant="row" />)}
     </div>
+
+    <TopicStrip
+      topics={topics}
+      title="En seguimiento"
+      description="Temas frecuentes en esta página del archivo."
+      class="mt-10"
+    />
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>

@@ -1,0 +1,50 @@
+---
+import { getPermalink } from '~/utils/permalinks';
+import type { TopicFrequency } from '~/utils/hub';
+
+interface Props {
+  topics: TopicFrequency[];
+  title?: string;
+  description?: string;
+  showCounts?: boolean;
+  class?: string;
+}
+
+const {
+  topics,
+  title = 'En seguimiento',
+  description,
+  showCounts = false,
+  class: className = '',
+} = Astro.props;
+---
+
+{
+  topics.length > 0 && (
+    <nav
+      class={`border-y border-border-subtle py-3 ${className}`}
+      aria-label={title}
+      data-retention-topic-strip
+    >
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-baseline">
+        <div class="shrink-0">
+          <p class="font-heading text-lg font-bold leading-tight text-text-body">{title}</p>
+          {description && (
+            <p class="mt-1 max-w-xl text-sm leading-relaxed text-text-muted">{description}</p>
+          )}
+        </div>
+        <div class="flex min-w-0 flex-wrap gap-x-4 gap-y-2 sm:justify-end">
+          {topics.map((topic) => (
+            <a
+              href={getPermalink(topic.slug, 'tag')}
+              class="text-sm font-medium text-text-muted underline-offset-4 hover:text-primary hover:underline"
+            >
+              {topic.title}
+              {showCounts && <span class="ml-1 text-xs text-text-muted">({topic.count})</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  )
+}
