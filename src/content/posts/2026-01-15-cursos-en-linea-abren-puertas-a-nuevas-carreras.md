@@ -36,5 +36,3 @@ Durante su tiempo en la universidad, Kevin participó activamente en proyectos d
 Hoy en día, Kevin es un profesional en gestión de cadenas de suministro. Su experiencia inicial con los cursos MicroMasters se convirtió en la puerta giratoria hacia su nueva vida laboral. El módulo sobre gestión de cadenas de suministro fue el catalizador que inició su transformación profesional, y ahora es un ejemplo inspirador para aquellos que buscan cambiar sus carreras.
 
 La historia de Kevin Power ilustra cómo los cursos en línea pueden ser la puerta de entrada a nuevas oportunidades. Aunque inicialmente parecía una oportunidad secundaria, el módulo MicroMasters sobre gestión de cadenas de suministro se convirtió en un paso decisivo hacia su transformación profesional.
-
-Fuente original: [https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115](https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115)

@@ -73,7 +73,4 @@ Por primera vez, un jurado ha tenido acceso a documentos internos de Meta –cor
 La cuestión central, por tanto, trasciende las cifras: ¿Son estos veredictos el primer temblor de un terremoto legal que obligará a los gigantes tecnológicos a rediseñar fundamentalmente sus productos para proteger a los niños, o solo un recordatorio costoso, pero tolerable, de su poder inalterado? El 4 de mayo de 2026, con el inicio del juicio de estrado en Nuevo México, podría comenzar a escribirse una respuesta, abriendo una nueva era en la responsabilidad de las plataformas digitales.
 
 ---
-
-Fuente original: [https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401](https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401)
-
 <!-- source_identity: source_id=the_conversation; source_name=The Conversation -->

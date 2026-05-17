@@ -48,7 +48,4 @@ Este descubrimiento cierra una larga controversia en la comunidad científica y 
 Hollick, ahora investigadora postdoctoral en la Universidad de Zaragoza, destaca que este trabajo ha fomentado un intercambio internacional único y ha profundizado el conocimiento sobre la física de partículas nucleares y la materia oscura. Aunque la fuente de la modulación en DAMA/LIBRA sigue siendo un misterio, la comunidad científica puede ahora enfocarse en buscar la verdadera naturaleza de la materia oscura sin la sombra de una afirmación inexplorada.
 
 Este artículo incluye contenido adaptado de un artículo en Physics Magazine de Rachel Berkowitz, publicado originalmente el 17 de septiembre de 2025.
-
-Fuente original: [https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim](https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim)
-
 <!-- source_identity: source_id=yale_wright_lab; source_name=Yale Wright Lab -->

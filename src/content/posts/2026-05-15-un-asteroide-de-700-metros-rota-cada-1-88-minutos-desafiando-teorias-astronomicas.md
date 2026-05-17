@@ -50,7 +50,4 @@ Rubin no resolverá todos los misterios. Aunque espera encontrar entre 5 y 500 o
 Los asteroides que Rubin descubre podrían revelar cómo se formaron los planetas. Algunos tienen órbitas sincronizadas con Neptuno, lo que sugiere que migraron desde su posición original. "Esto nos ayudará a reconstruir la historia de nuestro sistema solar", dice Sarah Greenstreet, autora principal del estudio sobre el asteroide giratorio. Hasta ahora, los científicos creían que los planetas estaban más cerca al formarse, pero no tenían pruebas concretas. Rubin está cambiando eso.
 
 Rubin no solo está mirando el cielo; está cambiando la forma en que lo entendemos. Cada noche, millones de alertas llegan a los científicos, y cada una es una nueva pregunta. ¿Qué otros objetos interestelares están cruzando nuestro sistema solar? ¿Qué revelarán las supernovas sobre la energía oscura? La ciencia está a punto de escribir un nuevo capítulo, y Rubin es la pluma.
-
-Fuente original: [https://quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/](https://quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/)
-
 <!-- source_identity: source_id=quanta_magazine; source_name=Quanta Magazine -->

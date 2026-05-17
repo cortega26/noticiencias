@@ -33,7 +33,4 @@ Es importante aclarar que el estudio no rechaza la automatización en sí. Algun
 Este hallazgo recuerda la famosa observación del economista Robert M. Solow en 1987: "Puedes ver la era de la computadora en todas partes, pero no en las estadísticas de productividad". Decenios después, el mismo enigma persiste. Aunque surgen nuevas tecnologías constantemente, la productividad crece lentamente, en parte porque las empresas no aprovechan la automatización al máximo.
 
 La pregunta real no es si la automatización es buena o mala, sino cómo la elegimos usar. Si las empresas se enfocan en aumentar la productividad en lugar de reducir salarios, podríamos lograr crecimiento económico y mayor equidad. Como dice Daron Acemoglu: "Es todo una elección". El camino que elijamos definirá el futuro del trabajo para todos.
-
-Fuente original: [https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507](https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507)
-
 <!-- source_identity: source_id=mit_news; source_name=MIT News -->
