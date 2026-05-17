@@ -1,5 +1,6 @@
 ---
 import Image from '~/components/common/Image.astro';
+import TagPill from '~/components/ds/atoms/TagPill.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
@@ -114,12 +115,7 @@ const styles = {
       post.tags && post.tags.length > 0 && variant !== 'lead' && (
         <div class="mt-4 flex flex-wrap gap-2">
           {post.tags.slice(0, 3).map((tag) => (
-            <a
-              href={getPermalink(tag.slug, 'tag')}
-              class="text-xs font-medium text-text-muted underline-offset-4 hover:text-primary hover:underline"
-            >
-              #{tag.title}
-            </a>
+            <TagPill title={tag.title} href={getPermalink(tag.slug, 'tag')} size="sm" />
           ))}
         </div>
       )

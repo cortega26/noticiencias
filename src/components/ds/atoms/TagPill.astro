@@ -1,0 +1,31 @@
+---
+// Editorial tag chip. Unified across ArticleCard and Tags.astro per
+// docs/EDITORIAL_VOICE.md decision D2. No `#` prefix: the `#hashtag`
+// code belongs to social-media surfaces, not editorial ones.
+interface Props {
+  title: string;
+  href?: string;
+  size?: 'sm' | 'md';
+  class?: string;
+}
+
+const { title, href, size = 'sm', class: className = '' } = Astro.props;
+
+const baseStyles =
+  'inline-flex items-center rounded-md border border-border-subtle bg-surface-paper font-medium lowercase text-text-muted transition-colors hover:border-primary hover:text-primary';
+
+const sizes = {
+  sm: 'text-xs px-2 py-0.5',
+  md: 'text-sm px-2.5 py-1',
+};
+---
+
+{
+  href ? (
+    <a href={href} class:list={[baseStyles, sizes[size], className]}>
+      {title}
+    </a>
+  ) : (
+    <span class:list={[baseStyles, sizes[size], className]}>{title}</span>
+  )
+}

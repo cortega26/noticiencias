@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
+import Button from '~/components/ds/atoms/Button.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 
 const title = `Error 404`;
@@ -17,7 +18,9 @@ const title = `Error 404`;
         <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
           Lo sentimos, no pudimos encontrar la página que buscas.
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Volver al inicio</a>
+        <Button href={getHomePermalink()} variant="secondary" rel="noopener noreferrer"
+          >Volver al inicio</Button
+        >
       </div>
     </div>
   </section>

@@ -23,15 +23,19 @@ const {
   ...rest
 } = Astro.props;
 
+// Editorial buttons use rounded-md (not rounded-full pills, which read as
+// social-media) per docs/EDITORIAL_VOICE.md decision D8.
 const baseStyles =
-  'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants = {
-  primary: 'bg-action-primary text-white hover:bg-blue-700',
-  secondary: 'bg-surface-highlight text-action-primary hover:bg-blue-100 dark:hover:bg-slate-700',
-  outline: 'border border-border-subtle bg-transparent hover:bg-surface-paper text-text-body',
-  ghost: 'bg-transparent hover:bg-surface-highlight text-text-body',
-  link: 'text-action-primary underline-offset-4 hover:underline p-0 h-auto',
+  primary: 'bg-primary text-text-inverse hover:bg-secondary',
+  secondary:
+    'border border-border-subtle bg-surface-paper text-text-body hover:border-primary hover:text-primary',
+  outline:
+    'border border-border-subtle bg-transparent text-text-body hover:bg-surface-paper hover:text-primary',
+  ghost: 'bg-transparent text-text-body hover:bg-surface-highlight',
+  link: 'text-primary underline-offset-4 hover:underline p-0 h-auto',
 };
 
 const sizes = {

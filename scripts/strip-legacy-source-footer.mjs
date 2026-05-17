@@ -21,13 +21,15 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const postsDir = path.join(repoRoot, 'src', 'content', 'posts');
 
-// Match the entire trailing footer block:
-//   - any number of blank lines,
-//   - the line `Fuente original: [URL](URL)`,
-//   - optional trailing whitespace,
-//   - up to (but not including) any HTML comment that follows (e.g. <!-- source_identity: ... -->),
-//   - or end of file.
-const FOOTER_RE = /\n+^Fuente original:\s*\[[^\]]+\]\([^)]+\)\s*$/m;
+// Match the footer line plus the blank line that follows it, so the
+// surrounding structure collapses correctly:
+//   paragraph + blank + footer + blank + <!-- comment -->
+//     → paragraph + blank + <!-- comment -->
+// The trailing `\r?\n(\r?\n)?` consumes the footer's own newline and one
+// optional adjacent blank line. The earlier regex (`\n+^...\s*$`) was
+// too greedy on `\s*$` and ate both surrounding newlines, leaving the
+// paragraph glued to the next block.
+const FOOTER_RE = /^Fuente original:\s*\[[^\]]+\]\([^)]+\)[ \t]*\r?\n(\r?\n)?/m;
 
 const files = fs
   .readdirSync(postsDir)

@@ -26,7 +26,7 @@ La promesa contiene una tensión deliberada que define toda la marca:
 
 ### Principio operativo: **rigor en el método, curiosidad en la entrada**
 
-El titular y el primer párrafo se ganan con sorpresa, *stakes* o pregunta. El cuerpo se gana con fuentes, incertidumbre nombrada y evidencia a la vista. **Quien entra por curiosidad sale informado; quien entra escéptico sale convencido.**
+El titular y el primer párrafo se ganan con sorpresa, _stakes_ o pregunta. El cuerpo se gana con fuentes, incertidumbre nombrada y evidencia a la vista. **Quien entra por curiosidad sale informado; quien entra escéptico sale convencido.**
 
 Esta es deliberadamente la línea editorial de Quanta Magazine, The Atlantic (Ed Yong), Vox Science o el canon Sagan/Attenborough — divulgación de alto rigor con entrada emocional. No es la línea de Nature ni de arXiv (público demasiado nicho para sostener un medio masivo) ni la de portales de hype tecnológico (incumplen "como realmente es").
 
@@ -36,7 +36,7 @@ Definir lo que no somos es tan importante como lo que somos. Las decisiones gris
 
 - No somos un **agregador social** (por eso los `#hashtag` en chips de tags violan la marca: pertenecen a un código visual de redes, no editorial).
 - No somos un **portal de hype tecnológico** (por eso el "Detector de hype" tiene sentido como recurso, y los titulares en futuro condicional —"podría", "promete"— necesitan justificación editorial).
-- No somos un **boletín académico** (por eso la jerga sin traducir, los abstracts copiados o la ausencia de un *takeaway* humano son fallos editoriales).
+- No somos un **boletín académico** (por eso la jerga sin traducir, los abstracts copiados o la ausencia de un _takeaway_ humano son fallos editoriales).
 - No somos un **medio de opinión** (por eso no hay columnistas con voz propia en la home: hay equipo editorial colectivo).
 
 ---
@@ -51,11 +51,11 @@ La voz Noticiencias entra por la curiosidad. Sin gancho no hay clic, sin clic no
 
 Cinco patrones legítimos de gancho:
 
-1. **Curiosity gap real** — Tease lo sorprendente sin spoilear el cierre. *"Por qué los físicos llevan 50 años discutiendo una constante que nadie puede medir"*.
-2. **Stakes nombrados** — Conecta el hallazgo con algo que le pasa al lector. *"Lo que el nuevo modelo de DeepMind cambia para tu próxima visita al médico"*.
-3. **Contraintuitivo + dato** — Líder con la sorpresa concreta. *"El cerebro humano consume menos energía que una bombilla LED — y eso debería sorprender más de lo que parece"*.
-4. **Pregunta editorial** — Una pregunta que el cuerpo responde. *"¿Por qué nadie habla del hallazgo que acaba de redefinir la edad del universo?"*.
-5. **Emoción humana** — La historia detrás del dato. *"Caminó 1.000 km buscando pareja: lo que aprendimos siguiendo a un puma"*.
+1. **Curiosity gap real** — Tease lo sorprendente sin spoilear el cierre. _"Por qué los físicos llevan 50 años discutiendo una constante que nadie puede medir"_.
+2. **Stakes nombrados** — Conecta el hallazgo con algo que le pasa al lector. _"Lo que el nuevo modelo de DeepMind cambia para tu próxima visita al médico"_.
+3. **Contraintuitivo + dato** — Líder con la sorpresa concreta. _"El cerebro humano consume menos energía que una bombilla LED — y eso debería sorprender más de lo que parece"_.
+4. **Pregunta editorial** — Una pregunta que el cuerpo responde. _"¿Por qué nadie habla del hallazgo que acaba de redefinir la edad del universo?"_.
+5. **Emoción humana** — La historia detrás del dato. _"Caminó 1.000 km buscando pareja: lo que aprendimos siguiendo a un puma"_.
 
 Adicionalmente, la claridad sigue siendo no-negociable como **propiedad** del texto, aunque no sea el primer atributo:
 
@@ -102,19 +102,19 @@ Un lector que termina un artículo debe poder hacer algo con lo que leyó: expli
 
 El atributo "Curioso" tiene una frontera concreta y no negociable. Cruzarla destruye la confianza y, a medio plazo, la base de lectores que se intenta construir. La frontera se codifica así:
 
-| Atrae (sí) | Sensacionalismo (no) |
-|---|---|
-| Curiosity gap real ("Por qué los físicos llevan 50 años discutiendo una constante que nadie puede medir") | Curiosity gap traicionado ("No vas a creer lo que descubrieron") |
-| Stakes nombrados ("Lo que el nuevo modelo de DeepMind cambia para tu próxima visita al médico") | Stakes inventados ("Esto va a cambiar tu vida para siempre") |
-| Contraintuitivo + dato verificable ("El cerebro humano consume menos energía que una bombilla LED") | Hype vacío ("La IA que va a destruir Google") |
-| Pregunta editorial respondida en el cuerpo ("¿Por qué nadie habla del hallazgo que redefinió la edad del universo?") | Pregunta manipuladora ("¿Sabías que esto te está matando?") |
-| Emoción humana atada a la historia ("Caminó 1.000 km buscando pareja: lo que aprendimos siguiendo a un puma") | Emoción manufacturada ("Lo que pasó después te dejará sin palabras") |
+| Atrae (sí)                                                                                                           | Sensacionalismo (no)                                                 |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Curiosity gap real ("Por qué los físicos llevan 50 años discutiendo una constante que nadie puede medir")            | Curiosity gap traicionado ("No vas a creer lo que descubrieron")     |
+| Stakes nombrados ("Lo que el nuevo modelo de DeepMind cambia para tu próxima visita al médico")                      | Stakes inventados ("Esto va a cambiar tu vida para siempre")         |
+| Contraintuitivo + dato verificable ("El cerebro humano consume menos energía que una bombilla LED")                  | Hype vacío ("La IA que va a destruir Google")                        |
+| Pregunta editorial respondida en el cuerpo ("¿Por qué nadie habla del hallazgo que redefinió la edad del universo?") | Pregunta manipuladora ("¿Sabías que esto te está matando?")          |
+| Emoción humana atada a la historia ("Caminó 1.000 km buscando pareja: lo que aprendimos siguiendo a un puma")        | Emoción manufacturada ("Lo que pasó después te dejará sin palabras") |
 
 Tres reglas que operacionalizan la línea:
 
 1. **El titular promete lo que el cuerpo entrega.** Si el cuerpo no entrega la sorpresa que prometió el titular, no se publica. Este es el filtro editorial más importante de Noticiencias — fallarlo una vez destruye más confianza de la que diez aciertos construyen.
-2. **Adjetivos especulativos** ("revolucionario", "increíble", "histórico", "asombroso", "milagroso") solo se usan **citando a una fuente identificada**, nunca como voz editorial. *"Los autores lo describen como 'revolucionario'"* sí. *"Un descubrimiento revolucionario"* no.
-3. **Contrapeso de incertidumbre obligatorio.** Cuando el titular usa un *curiosity gap* sobre un hallazgo preliminar, observacional o con n pequeña, `uncertainty_note` en el frontmatter pasa de opcional a obligatorio, y debe ser visible en la UI. El gancho legítimo se paga con la honestidad sobre los límites.
+2. **Adjetivos especulativos** ("revolucionario", "increíble", "histórico", "asombroso", "milagroso") solo se usan **citando a una fuente identificada**, nunca como voz editorial. _"Los autores lo describen como 'revolucionario'"_ sí. _"Un descubrimiento revolucionario"_ no.
+3. **Contrapeso de incertidumbre obligatorio.** Cuando el titular usa un _curiosity gap_ sobre un hallazgo preliminar, observacional o con n pequeña, `uncertainty_note` en el frontmatter pasa de opcional a obligatorio, y debe ser visible en la UI. El gancho legítimo se paga con la honestidad sobre los límites.
 
 ---
 
@@ -205,7 +205,7 @@ No todos los artículos se ven igual ni se comportan igual. Cuatro arquetipos cu
 - El autor sale más arriba en la cabecera (la voz propia hace que el firmante importe).
 - En home: candidato a `featured` solo si la pieza merece visibilidad propia (anuncio importante, posición editorial sobre tema candente). No por defecto.
 
-**Voz adaptada:** ver el párrafo final de la sección 2.2 — "Riguroso" cambia de forma sin cambiar de espíritu cuando no hay paper detrás. "Curioso" y la línea roja se aplican igual: un editorial sobre TikTok puede usar curiosity gap real (*"Por qué TikTok es el producto más opaco que se haya regulado"*), pero no curiosity gap traicionado (*"No vas a creer lo que esconde TikTok"*).
+**Voz adaptada:** ver el párrafo final de la sección 2.2 — "Riguroso" cambia de forma sin cambiar de espíritu cuando no hay paper detrás. "Curioso" y la línea roja se aplican igual: un editorial sobre TikTok puede usar curiosity gap real (_"Por qué TikTok es el producto más opaco que se haya regulado"_), pero no curiosity gap traicionado (_"No vas a creer lo que esconde TikTok"_).
 
 ---
 
@@ -213,16 +213,16 @@ No todos los artículos se ven igual ni se comportan igual. Cuatro arquetipos cu
 
 Las decisiones siguientes se derivan directamente de las secciones 1-3. No son opinión visual: son consecuencia de la promesa. Cualquier desviación necesita ser argumentada por escrito.
 
-| # | Decisión | Razón |
-|---|----------|-------|
-| D1 | Eliminar el `#` literal de los chips de tags (`ArticleCard.astro:121`) | Código visual social, contradice "no somos agregador social" |
-| D2 | Unificar `Tags.astro` y los chips inline de `ArticleCard` en un solo átomo `<TagPill />` | Un único lenguaje de tag = sensación de oficio editorial |
-| D3 | Renombrar "Vías de regreso" → "Boletín semanal" o "Sigue la edición" | Falla el atributo "Claro" |
-| D4 | `sources[]` y `source_url` deben ser visibles en cada artículo, no a un clic de distancia | "Evidencia a la vista" |
-| D5 | `uncertainty_note` debe tener un componente visible cuando esté poblado (badge o callout). Pasa de opcional a obligatorio cuando el titular usa un *curiosity gap* sobre hallazgo preliminar | Atributo "Riguroso" + contrapeso del atributo "Curioso" (sección 2.4) |
-| D6 | `investigation: true` debe disparar diferencias visuales reales (badge, tipografía, posición en home), no solo metadata | Sin diferenciación visible, marcar `investigation` no cuesta nada y pierde valor |
-| D7 | El módulo "Qué cambia" merece tratamiento visual diferenciado del resto de cards (no solo `variant="compact"`) | Es un arquetipo, no una sub-lista |
-| D8 | Botones legacy `.btn`/`.btn-primary` en `src/styles/global.css` se deprecan a favor de `ds/atoms/Button.astro` con `rounded-md` editorial | Un solo sistema visual |
+| #   | Decisión                                                                                                                                                                                     | Razón                                                                            |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| D1  | Eliminar el `#` literal de los chips de tags (`ArticleCard.astro:121`)                                                                                                                       | Código visual social, contradice "no somos agregador social"                     |
+| D2  | Unificar `Tags.astro` y los chips inline de `ArticleCard` en un solo átomo `<TagPill />`                                                                                                     | Un único lenguaje de tag = sensación de oficio editorial                         |
+| D3  | Renombrar "Vías de regreso" → "Boletín semanal" o "Sigue la edición"                                                                                                                         | Falla el atributo "Claro"                                                        |
+| D4  | `sources[]` y `source_url` deben ser visibles en cada artículo, no a un clic de distancia                                                                                                    | "Evidencia a la vista"                                                           |
+| D5  | `uncertainty_note` debe tener un componente visible cuando esté poblado (badge o callout). Pasa de opcional a obligatorio cuando el titular usa un _curiosity gap_ sobre hallazgo preliminar | Atributo "Riguroso" + contrapeso del atributo "Curioso" (sección 2.4)            |
+| D6  | `investigation: true` debe disparar diferencias visuales reales (badge, tipografía, posición en home), no solo metadata                                                                      | Sin diferenciación visible, marcar `investigation` no cuesta nada y pierde valor |
+| D7  | El módulo "Qué cambia" merece tratamiento visual diferenciado del resto de cards (no solo `variant="compact"`)                                                                               | Es un arquetipo, no una sub-lista                                                |
+| D8  | Botones legacy `.btn`/`.btn-primary` en `src/styles/global.css` se deprecan a favor de `ds/atoms/Button.astro` con `rounded-md` editorial                                                    | Un solo sistema visual                                                           |
 
 Cada una de estas decisiones es candidata a issue/PR independiente. La numeración sirve como referencia estable.
 
@@ -245,16 +245,19 @@ Auditoría rápida del estado actual al 2026-05-17. Sirve como baseline para med
 ## 6. Cómo usar este documento
 
 **Antes de proponer una pieza de contenido nueva:**
+
 - Identificar el arquetipo (sección 3). Si no encaja en ninguno, parar y consultar al editor.
 - Verificar que el frontmatter exigido por el arquetipo esté completo.
 - Pasar el titular y el dek por los tres atributos de voz (sección 2).
 
 **Antes de proponer un cambio de UI:**
+
 - Identificar qué afirmación de la sección 1-3 justifica el cambio.
 - Si el cambio contradice una decisión D1-D8 de la sección 4, escribir el contraargumento antes de implementar.
 - Cruzar con `AGENTS.md` para validar que la implementación respeta los límites técnicos (no islas, capas DS → template → pages, schema sellado).
 
 **Cuando este documento se sienta desactualizado:**
+
 - No editarlo unilateralmente. Es un documento de marca: las modificaciones requieren acuerdo editorial.
 - Abrir issue describiendo la fricción observada.
 - Proponer la edición como cambio rastreado en git, con razón en el commit message.
@@ -281,35 +284,35 @@ El front-end no genera contenido. Los titulares, deks, cuerpos y metadatos llega
 
 ### 8.1 Mapa de prompts activos
 
-| Prompt | Archivo | Rol en el pipeline |
-|---|---|---|
-| `translator` | `noticiencias_news_collector/config/prompts.yaml` | Traducción fiel del inglés. No editorializa. |
-| `editor` | `noticiencias_news_collector/config/prompts.yaml` | Reescribe la traducción como artículo Noticiencias. Implementa los seis patrones de apertura legítima. |
-| `editor_critic` | `noticiencias_news_collector/config/prompts.yaml` | Gate de calidad del cuerpo: evalúa 7 criterios (hook, clarity, structure, rigor, voice, shareability, closing). Bloquea publicación si falla. |
-| `headline` | `noticiencias_news_collector/config/prompts.yaml` | Genera `direct`, `question`, `benefit`, `excerpt`. Aplica los cinco patrones de gancho de la sección 2.1 + lista negra de adjetivos de la sección 2.4. |
-| `headline_critic` | `noticiencias_news_collector/config/prompts.yaml` | Gate de calidad del titular: valida fidelidad gancho-cuerpo y línea roja de sensacionalismo. Bloquea publicación si falla; hasta 2 reintentos. |
-| `auditor` | `noticiencias_news_collector/config/prompts.yaml` | Score-card informativo, no bloquea. Alimenta el campo `editorial_score` del frontmatter. |
-| `EDITORIAL_COUNCIL_SYSTEM_PROMPT` | `noticiencias_news_collector/news_collector/config/prompts.py` | Consejo de 4 roles (Científico, Escéptico, Curioso, Editor) con rúbricas específicas alineadas a este doc. |
+| Prompt                            | Archivo                                                        | Rol en el pipeline                                                                                                                                     |
+| --------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `translator`                      | `noticiencias_news_collector/config/prompts.yaml`              | Traducción fiel del inglés. No editorializa.                                                                                                           |
+| `editor`                          | `noticiencias_news_collector/config/prompts.yaml`              | Reescribe la traducción como artículo Noticiencias. Implementa los seis patrones de apertura legítima.                                                 |
+| `editor_critic`                   | `noticiencias_news_collector/config/prompts.yaml`              | Gate de calidad del cuerpo: evalúa 7 criterios (hook, clarity, structure, rigor, voice, shareability, closing). Bloquea publicación si falla.          |
+| `headline`                        | `noticiencias_news_collector/config/prompts.yaml`              | Genera `direct`, `question`, `benefit`, `excerpt`. Aplica los cinco patrones de gancho de la sección 2.1 + lista negra de adjetivos de la sección 2.4. |
+| `headline_critic`                 | `noticiencias_news_collector/config/prompts.yaml`              | Gate de calidad del titular: valida fidelidad gancho-cuerpo y línea roja de sensacionalismo. Bloquea publicación si falla; hasta 2 reintentos.         |
+| `auditor`                         | `noticiencias_news_collector/config/prompts.yaml`              | Score-card informativo, no bloquea. Alimenta el campo `editorial_score` del frontmatter.                                                               |
+| `EDITORIAL_COUNCIL_SYSTEM_PROMPT` | `noticiencias_news_collector/news_collector/config/prompts.py` | Consejo de 4 roles (Científico, Escéptico, Curioso, Editor) con rúbricas específicas alineadas a este doc.                                             |
 
 ### 8.2 Correspondencia atributos de voz ↔ prompts
 
-| Atributo (sección 2) | Dónde se hace cumplir |
-|---|---|
-| **Curioso** | `headline.system` (5 patrones), `editor.system` (6 aperturas legítimas), `headline_critic.system` (línea roja), Consejo Editorial rol "Curioso" |
-| **Riguroso** | `translator.system` (fidelidad), `editor.system` (preservación de matices de incertidumbre), `editor_critic.rigor_score`, Consejo Editorial rol "Científico" |
-| **Útil** | `editor.system` (Shareability, repertorio de cierres), `editor_critic.shareability_score` y `closing_score` |
-| **Línea roja sensacionalismo (2.4)** | `headline.system` (lista negra + reglas), `headline_critic.system` (gate), Consejo Editorial rol "Escéptico" |
+| Atributo (sección 2)                 | Dónde se hace cumplir                                                                                                                                        |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Curioso**                          | `headline.system` (5 patrones), `editor.system` (6 aperturas legítimas), `headline_critic.system` (línea roja), Consejo Editorial rol "Curioso"              |
+| **Riguroso**                         | `translator.system` (fidelidad), `editor.system` (preservación de matices de incertidumbre), `editor_critic.rigor_score`, Consejo Editorial rol "Científico" |
+| **Útil**                             | `editor.system` (Shareability, repertorio de cierres), `editor_critic.shareability_score` y `closing_score`                                                  |
+| **Línea roja sensacionalismo (2.4)** | `headline.system` (lista negra + reglas), `headline_critic.system` (gate), Consejo Editorial rol "Escéptico"                                                 |
 
 ### 8.3 Correspondencia arquetipos ↔ "Estructura Adaptativa" del editor
 
 El prompt `editor.system` define 4 tipos de estructura (`Tipo A` a `Tipo D`). Se mapean 1:1 con los arquetipos de la sección 3 de este documento:
 
-| Arquetipo (sección 3) | Tipo en `editor.system` | Señales de selección |
-|---|---|---|
-| Breaking (3.1) | Tipo A — Estudio o hallazgo científico | `date` reciente, `sources[]` primarias, `summary_points` 2-3 |
-| Explainer (3.2) | Tipo C — Tendencia, análisis o explicador | `glossary[]` ≥3, `summary_points` 4-5 |
-| Investigación (3.3) | Tipo A o B con flags | `investigation: true`, `fact_check[]`, `sources[]` ≥3 |
-| Qué cambia (3.4) | Tipo D — Decisión institucional o política científica | `why_it_matters[]` ≥2, categoría Salud/Política/Industria |
+| Arquetipo (sección 3) | Tipo en `editor.system`                               | Señales de selección                                         |
+| --------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| Breaking (3.1)        | Tipo A — Estudio o hallazgo científico                | `date` reciente, `sources[]` primarias, `summary_points` 2-3 |
+| Explainer (3.2)       | Tipo C — Tendencia, análisis o explicador             | `glossary[]` ≥3, `summary_points` 4-5                        |
+| Investigación (3.3)   | Tipo A o B con flags                                  | `investigation: true`, `fact_check[]`, `sources[]` ≥3        |
+| Qué cambia (3.4)      | Tipo D — Decisión institucional o política científica | `why_it_matters[]` ≥2, categoría Salud/Política/Industria    |
 
 ### 8.4 Cómo el front-end consume las señales nuevas
 
