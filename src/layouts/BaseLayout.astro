@@ -5,11 +5,32 @@ import Footer from '~/components/template/widgets/Footer.astro';
 
 import { headerData, footerData } from '~/navigation';
 import BetaBanner from '~/components/common/BetaBanner.astro';
+import type { MetaData } from '~/types';
 
-const { metadata } = Astro.props;
+interface Props {
+  metadata?: MetaData;
+  title?: string;
+  description?: string;
+  image?: string;
+  frontmatter?: {
+    title?: string;
+    description?: string;
+    excerpt?: string;
+  };
+}
+
+const { metadata = {}, title, description, image, frontmatter } = Astro.props as Props;
+
+const resolvedDescription = description ?? frontmatter?.description ?? frontmatter?.excerpt;
+const resolvedMetadata: MetaData = {
+  title: title ?? frontmatter?.title,
+  description: resolvedDescription,
+  ...(image ? { openGraph: { images: [{ url: image }] } } : {}),
+  ...metadata,
+};
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={resolvedMetadata}>
   <slot name="announcement">
     <BetaBanner />
   </slot>

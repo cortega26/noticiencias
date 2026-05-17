@@ -62,6 +62,34 @@
       }
     ]
   },
+  "~/assets/images/2026-01-18-artemis-ii-mission.jpg": {
+    "originalWidth": 1024,
+    "originalHeight": 1024,
+    "hash": "e79e1242b84cab82",
+    "variants": [
+      {
+        "width": 400,
+        "height": 400,
+        "format": "avif",
+        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 900,
+        "format": "avif",
+        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.900.avif"
+      },
+      {
+        "width": 1024,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.1024.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.1024.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-01-23-article-107.png": {
     "originalWidth": 1280,
     "originalHeight": 720,

@@ -1,8 +1,6 @@
-// z must come from astro:content, not zod — astro:content patches the zod
-// types so that ZodEffects (from superRefine) is assignable to the schema
-// type that defineCollection expects.
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
@@ -29,7 +27,7 @@ const posts = defineCollection({
       image_alt: z.string().optional(),
       permalink: z.string().optional(),
 
-      source_url: z.string().url().optional(),
+      source_url: z.url().optional(),
       refinery_id: z.string().optional(),
       headlines_variants: z
         .object({
@@ -61,7 +59,7 @@ const posts = defineCollection({
         .array(
           z.object({
             title: z.string().min(1),
-            url: z.string().url(),
+            url: z.url(),
             publisher: z.string().optional(),
             date: z.string().optional(),
           })
@@ -73,7 +71,7 @@ const posts = defineCollection({
       const frontmatterAlt = data.image_alt?.trim() ?? '';
       if (!objectAlt && !frontmatterAlt) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: 'custom',
           path: ['image_alt'],
           message: 'image_alt is required when image does not include inline alt text',
         });
