@@ -63,6 +63,12 @@ const imageAlt =
 // Estimated reading time (rude approximation)
 const readingTime = post.body ? Math.ceil(post.body.split(/\s+/).length / 200) : 0;
 
+const metadata = {
+  title,
+  description,
+  openGraph: imageSrc ? { images: [{ url: imageSrc }] } : undefined,
+};
+
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
@@ -80,7 +86,7 @@ const schema = JSON.stringify({
 });
 ---
 
-<BaseLayout title={title} description={description} image={imageSrc}>
+<BaseLayout metadata={metadata}>
   <script is:inline type="application/ld+json" set:html={schema} />
 
   <main class="container mx-auto px-4 py-12 lg:py-16">
