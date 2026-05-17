@@ -1,5 +1,6 @@
 ---
 title: 'Política de Privacidad'
+description: 'Cómo Noticiencias trata datos personales, cookies y comunicaciones de sus usuarios.'
 layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
@@ -23,7 +24,7 @@ A los efectos de esta Política de Privacidad:
 - **Cuenta** significa una cuenta única creada para que usted acceda a nuestro Servicio o partes de nuestro Servicio.
 - **Compañía** (referida como "la Compañía", "Nosotros", "Nos" o "Nuestro" en este Acuerdo) se refiere a Noticiencias.
 - **Cookies** son pequeños archivos que se colocan en su computadora, dispositivo móvil o cualquier otro dispositivo por un sitio web, que contienen los detalles de su historial de navegación en ese sitio web entre sus muchos usos.
-- **País** se refiere a: [País de Operación, e.g., México/España/Chile]
+- **País** se refiere a: Chile.
 - **Dispositivo** significa cualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono celular o una tableta digital.
 - **Datos Personales** es cualquier información que se relacione con un individuo identificado o identificable.
 - **Servicio** se refiere al Sitio Web.

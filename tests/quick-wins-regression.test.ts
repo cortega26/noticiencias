@@ -99,4 +99,17 @@ describe('quick wins regression coverage', () => {
 
     expect(legacyCallers).toEqual([]);
   });
+
+  it('keeps BaseLayout itself narrowed to metadata and frontmatter', () => {
+    const source = fs.readFileSync(path.join(srcDir, 'layouts', 'BaseLayout.astro'), 'utf8');
+
+    expect(source).toContain('metadata?: MetaData');
+    expect(source).toContain('frontmatter?:');
+    const topLevelLegacyProps = source
+      .split('\n')
+      .filter((line) => line.startsWith('  ') && !line.startsWith('    '))
+      .filter((line) => /(?:title|description|image)\?: string;/.test(line));
+
+    expect(topLevelLegacyProps).toEqual([]);
+  });
 });

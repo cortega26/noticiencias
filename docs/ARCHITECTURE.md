@@ -102,6 +102,19 @@ Rules:
 - may own small browser helpers tied to template behavior
 - must not become a generic dumping ground for arbitrary app logic
 
+### `src/components/common/`
+
+Owns site-specific shared fragments that are neither Noticiencias design-system primitives nor
+Astrowind template widgets.
+
+Current compatibility note:
+
+- `src/components/common/Image.astro` mirrors the frozen template image primitive so `ds`
+  components can render through the same image pipeline without importing from
+  `src/components/template/`.
+- Do not edit the two image primitives independently. If image behavior changes, migrate callers
+  deliberately or make a paired update with full image-pipeline validation.
+
 ### `src/utils/`
 
 Owns narrow helpers.
@@ -156,9 +169,9 @@ Rules:
 
 These behaviors exist today and are allowed only as documented compatibility:
 
-- `src/components/template/PostLayout.astro` contains defensive title cleanup for malformed legacy title strings. Do not expand that pattern; fix content or the publishing contract instead.
+- `src/layouts/PostLayout.astro` contains defensive title cleanup for malformed legacy title strings. Do not expand that pattern; fix content or the publishing contract instead.
 - `src/pages/search.json.js` contains local fallback permalink logic when `data.permalink` is absent. Shared permalink generation should remain the target direction.
-- `src/components/template/PostLayout.astro` emits JSON-LD with `set:html` for structured data. That is acceptable because the payload is locally constructed, not raw frontmatter HTML.
+- `src/layouts/PostLayout.astro` emits JSON-LD with `set:html` for structured data. That is acceptable because the payload is locally constructed, not raw frontmatter HTML.
 
 ## Extension Rules
 

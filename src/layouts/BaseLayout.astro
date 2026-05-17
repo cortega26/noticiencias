@@ -9,9 +9,6 @@ import type { MetaData } from '~/types';
 
 interface Props {
   metadata?: MetaData;
-  title?: string;
-  description?: string;
-  image?: string;
   frontmatter?: {
     title?: string;
     description?: string;
@@ -19,13 +16,11 @@ interface Props {
   };
 }
 
-const { metadata = {}, title, description, image, frontmatter } = Astro.props as Props;
+const { metadata = {}, frontmatter } = Astro.props as Props;
 
-const resolvedDescription = description ?? frontmatter?.description ?? frontmatter?.excerpt;
 const resolvedMetadata: MetaData = {
-  title: title ?? frontmatter?.title,
-  description: resolvedDescription,
-  ...(image ? { openGraph: { images: [{ url: image }] } } : {}),
+  title: frontmatter?.title,
+  description: frontmatter?.description ?? frontmatter?.excerpt,
   ...metadata,
 };
 ---
