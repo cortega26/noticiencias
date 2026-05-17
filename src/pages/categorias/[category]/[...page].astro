@@ -1,17 +1,23 @@
 ---
 import { getStaticPathsBlogCategory } from '~/utils/blog';
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import Headline from '~/components/template/blog/Headline.astro';
-import BlogList from '~/components/template/blog/List.astro';
-import Pagination from '~/components/template/blog/Pagination.astro';
+import SectionFront from '~/components/common/SectionFront.astro';
+import Pagination from '~/components/common/Pagination.astro';
+import { configuredCategorySections } from '~/utils/categorySections';
+import { getTopicFrequency } from '~/utils/hub';
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 export const getStaticPaths = getStaticPathsBlogCategory satisfies GetStaticPaths;
 
 const { page, category } = Astro.props as InferGetStaticPropsType<typeof getStaticPaths>;
+const configuredCategory = configuredCategorySections.find((item) => item.slug === category?.slug);
+const topics = getTopicFrequency(page.data, 8);
 
 const metadata = {
   title: `Categoría: ${category?.title || ''}`,
+  description:
+    configuredCategory?.description ||
+    `Últimas historias de ${category?.title || 'esta categoría'} en Noticiencias.`,
   robots: {
     index: true,
     follow: true,
@@ -20,21 +26,14 @@ const metadata = {
 ---
 
 <BaseLayout metadata={metadata}>
-  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline>
-      Categoría: <span class="capitalize">{category?.title}</span>
-    </Headline>
-
-    {
-      page.data.length > 0 ? (
-        <BlogList posts={page.data} />
-      ) : (
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 p-8 text-center text-slate-600 dark:text-slate-300">
-          Esta sección no tiene artículos publicados por ahora.
-        </div>
-      )
-    }
-
+  <SectionFront
+    title={category?.title || 'Categoría'}
+    description={configuredCategory?.description}
+    posts={page.data}
+    topics={topics}
+    taxonomy={category}
+  />
+  <div class="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-  </section>
+  </div>
 </BaseLayout>

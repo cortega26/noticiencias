@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/BaseLayout.astro';
-import Headline from '~/components/template/blog/Headline.astro';
 import { cleanSlug } from '~/utils/permalinks';
 
 const posts = await getCollection('posts');
@@ -23,13 +22,17 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      title="Series de Investigación"
-      subtitle="Reportajes en profundidad, agrupados por tema para una lectura completa."
-    />
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+    <header class="mb-8 border-b border-border-subtle pb-5">
+      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+        Series de investigación
+      </h1>
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
+        Lecturas agrupadas para seguir una historia científica o tecnológica con más continuidad.
+      </p>
+    </header>
 
-    <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {
         seriesList.length === 0 ? (
           <p class="text-center text-gray-500 col-span-full">
@@ -39,12 +42,10 @@ const metadata = {
           seriesList.map((series) => (
             <a
               href={`/series/${cleanSlug(series)}`}
-              class="block group relative p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              class="block border border-border-subtle p-5 hover:border-primary"
             >
-              <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                {series}
-              </h3>
-              <span class="text-sm text-gray-500">Ver artículos &rarr;</span>
+              <h2 class="font-heading text-xl font-bold text-text-body">{series}</h2>
+              <span class="mt-3 block text-sm font-semibold text-primary">Ver artículos →</span>
             </a>
           ))
         )

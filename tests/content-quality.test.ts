@@ -19,7 +19,7 @@ function writePost(repoRoot: string, filename: string, body: string): void {
   fs.writeFileSync(
     path.join(repoRoot, 'src', 'content', 'posts', filename),
     `---
-title: Test
+title: Una noticia de prueba con título suficientemente descriptivo
 schema_version: 2
 excerpt: A sufficiently long excerpt for testing content quality.
 author: Noticiencias
@@ -29,7 +29,8 @@ categories:
 tags:
   - prueba
 image: "~/assets/images/default.png"
-image_alt: "alt text"
+image_alt: "Imagen descriptiva para una noticia de prueba"
+source_url: "https://example.com/source"
 ---
 
 ${body}
@@ -173,6 +174,94 @@ Ese subtítulo baja dos niveles de golpe sin pasar por un H3 intermedio, lo que 
 
     expect(diagnostics.errors).toEqual(
       expect.arrayContaining([expect.stringContaining('skips from H2 to H4')])
+    );
+  });
+
+  it('rejects weak editorial frontmatter', () => {
+    const repoRoot = makeRepo();
+    fs.writeFileSync(
+      path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-weak-frontmatter.md'),
+      `---
+title: Test
+schema_version: 2
+excerpt: A sufficiently long excerpt for testing content quality.
+author: Noticiencias
+date: 2026-04-02
+categories: []
+tags: []
+image: "~/assets/images/default.png"
+image_alt: "Imagen editorial de Placeholder"
+source_url: "not a url"
+---
+
+## Apertura
+
+Este artículo contiene suficiente texto para que la validación editorial de frontmatter sea el centro del diagnóstico, con un cuerpo narrativo que evita activar las reglas de contenido demasiado delgado.
+
+El segundo párrafo agrega contexto, precisión y longitud suficiente para mantener separadas las fallas de metadatos editoriales de las fallas de estructura o densidad del contenido publicado.
+`,
+      'utf8'
+    );
+
+    const diagnostics = collectContentQualityDiagnostics({ repoRoot });
+
+    expect(diagnostics.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('title length must be between'),
+        expect.stringContaining('categories must contain exactly one'),
+        expect.stringContaining('tags must contain at least one'),
+        expect.stringContaining('source_url must be an absolute http(s) URL'),
+        expect.stringContaining('blocked image_alt pattern detected'),
+      ])
+    );
+  });
+
+  it('rejects invalid Hub V1 editorial metadata when present', () => {
+    const repoRoot = makeRepo();
+    fs.writeFileSync(
+      path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-bad-hub-metadata.md'),
+      `---
+title: Una noticia de prueba con metadatos del hub incompletos
+schema_version: 2
+excerpt: A sufficiently long excerpt for testing content quality.
+author: Noticiencias
+date: 2026-04-02
+categories:
+  - Ciencia
+tags:
+  - prueba
+image: "~/assets/images/default.png"
+image_alt: "Imagen descriptiva para una noticia de prueba"
+source_url: "https://example.com/source"
+featured: true
+summary_points:
+  - ""
+glossary:
+  - term: ""
+    definition: ""
+sources:
+  - title: "Fuente"
+    url: "not a url"
+---
+
+## Apertura
+
+Este artículo contiene suficiente texto narrativo para que las fallas de metadatos del hub sean fáciles de aislar durante la validación automatizada.
+
+El segundo párrafo agrega contexto, longitud y una estructura normal para evitar que la prueba falle por motivos no relacionados con los nuevos campos editoriales.
+`,
+      'utf8'
+    );
+
+    const diagnostics = collectContentQualityDiagnostics({ repoRoot });
+
+    expect(diagnostics.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('featured_rank must be a positive integer'),
+        expect.stringContaining('summary_points must contain 2 to 5'),
+        expect.stringContaining('glossary entries must include'),
+        expect.stringContaining('sources must use absolute http(s) URLs'),
+      ])
     );
   });
 });

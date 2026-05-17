@@ -1,0 +1,286 @@
+<section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+  <header class="mb-8 border-b border-border-subtle pb-5">
+    <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+      Buscador
+    </h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
+      Explora artículos por descubrimiento, tema, categoría o fuente.
+    </p>
+  </header>
+
+  <div class="search-container">
+    <form id="search-form" class="grid gap-3 sm:grid-cols-[1fr_auto]" role="search">
+      <div class="relative">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <svg
+            class="h-5 w-5 text-text-muted"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="search-box"
+          class="block min-h-12 w-full rounded-md border border-border-subtle bg-white p-3 pl-10 text-base text-text-body outline-none focus:border-primary focus:ring-2 focus:ring-primary dark:bg-slate-950"
+          placeholder="Escribe para buscar..."
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        class="min-h-12 rounded-md bg-primary px-5 text-sm font-semibold text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary"
+        >Buscar</button
+      >
+    </form>
+
+    <p
+      id="search-status"
+      class="mt-3 min-h-6 text-sm text-text-muted"
+      role="status"
+      aria-live="polite"
+    >
+    </p>
+
+    <div
+      id="search-results"
+      class="mt-8"
+      role="region"
+      aria-live="polite"
+      aria-label="Resultados de búsqueda"
+    >
+    </div>
+  </div>
+</section>
+
+<script>
+  import { normalizeQuery, normalizeSearchDocument } from '~/utils/search';
+  import { getQueryFromUrl, updateUrlWithQuery } from '~/utils/browser/search-url';
+  import type { SearchDocument } from '~/utils/search';
+
+  interface LunrResult {
+    ref: string;
+    score: number;
+    matchData: unknown;
+  }
+
+  interface LunrIndex {
+    search(query: string): LunrResult[];
+  }
+
+  interface LunrBuilder {
+    ref(field: string): void;
+    field(field: string, options?: { boost?: number }): void;
+    add(doc: unknown): void;
+  }
+
+  let index: LunrIndex | null = null;
+  let store: Record<string, SearchDocument> = {};
+  let activeInitPath = '';
+
+  interface SearchPageRefs {
+    form: HTMLFormElement;
+    input: HTMLInputElement;
+    status: HTMLElement;
+    results: HTMLElement;
+  }
+
+  function getSearchPageRefs(): SearchPageRefs | null {
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-box');
+    const status = document.getElementById('search-status');
+    const results = document.getElementById('search-results');
+
+    if (!(form instanceof HTMLFormElement)) return null;
+    if (!(input instanceof HTMLInputElement)) return null;
+    if (!(status instanceof HTMLElement)) return null;
+    if (!(results instanceof HTMLElement)) return null;
+
+    return { form, input, status, results };
+  }
+
+  async function bootSearch() {
+    const refs = getSearchPageRefs();
+    if (!refs) return;
+
+    const { form, input, status } = refs;
+    const currentPath = window.location.pathname;
+
+    if (form.dataset.searchInitialized === currentPath && activeInitPath === currentPath) {
+      return;
+    }
+
+    form.dataset.searchInitialized = currentPath;
+    activeInitPath = currentPath;
+
+    if (form.dataset.searchBound !== 'true') {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        runSearch(input.value);
+      });
+      form.dataset.searchBound = 'true';
+    }
+
+    index = null;
+    store = {};
+
+    status.innerHTML = '<span class="text-text-muted">Cargando índice de búsqueda...</span>';
+    input.disabled = true;
+
+    try {
+      const lunrModule = await import('lunr');
+      const lunr = lunrModule.default;
+      const response = await fetch('/search.json', { cache: 'force-cache' });
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+      const documents = await response.json();
+
+      if (!Array.isArray(documents) || documents.length === 0) {
+        status.textContent = 'El índice de búsqueda está vacío.';
+        return;
+      }
+
+      index = lunr(function (this: LunrBuilder) {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('description', { boost: 5 });
+        this.field('content');
+        this.field('tags');
+
+        documents.forEach((doc: SearchDocument) => {
+          this.add(normalizeSearchDocument(doc));
+          store[doc.url] = doc;
+        });
+      });
+
+      status.textContent = '';
+      input.disabled = false;
+
+      const initialQuery = getQueryFromUrl();
+      if (initialQuery) {
+        input.value = initialQuery;
+        runSearch(initialQuery);
+      } else {
+        input.focus();
+      }
+    } catch (error) {
+      console.error('Search init error:', error);
+      status.textContent = 'Error al cargar el buscador. Por favor recarga la página.';
+    }
+  }
+
+  function runSearch(query: string) {
+    const refs = getSearchPageRefs();
+    if (!refs) return;
+
+    const { results: resultsDiv, status } = refs;
+
+    resultsDiv.innerHTML = '';
+
+    if (!query || !query.trim()) {
+      updateUrlWithQuery('');
+      status.textContent = '';
+      return;
+    }
+
+    updateUrlWithQuery(query);
+
+    const normalizedQuery = normalizeQuery(query);
+
+    if (!index) return;
+    try {
+      const results = index.search(`${normalizedQuery}*`);
+
+      if (results.length === 0) {
+        status.textContent = '';
+        resultsDiv.innerHTML =
+          '<div class="border-y border-border-subtle py-8 text-text-muted"><p>No se encontraron resultados para <b id="no-results-query"></b>.</p></div>';
+        const querySpan = document.getElementById('no-results-query');
+        if (querySpan) querySpan.textContent = query;
+        return;
+      }
+
+      status.textContent = `Se encontraron ${results.length} resultados.`;
+
+      const ul = document.createElement('ul');
+      ul.className = 'grid gap-6';
+      resultsDiv.appendChild(ul);
+
+      results.slice(0, 20).forEach((result: LunrResult) => {
+        const doc = store[result.ref];
+        if (!doc) return;
+
+        const li = document.createElement('li');
+        li.className = 'grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]';
+
+        if (doc.image) {
+          const imgLink = document.createElement('a');
+          imgLink.href = doc.url;
+          imgLink.className = 'block aspect-[4/3] overflow-hidden rounded-md bg-surface-highlight';
+          const img = document.createElement('img');
+          img.src = doc.image;
+          img.alt = doc.title;
+          img.className = 'h-full w-full object-cover';
+          img.loading = 'lazy';
+          imgLink.appendChild(img);
+          li.appendChild(imgLink);
+        }
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'flex min-w-0 flex-col leading-normal';
+
+        const meta = document.createElement('p');
+        meta.className = 'mb-2 text-sm text-text-muted';
+        const category = Array.isArray(doc.categories) ? doc.categories[0] : '';
+        const date = doc.date
+          ? new Intl.DateTimeFormat('es', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }).format(new Date(doc.date))
+          : '';
+        meta.textContent = [category, date].filter(Boolean).join(' · ');
+        contentDiv.appendChild(meta);
+
+        const h3 = document.createElement('h3');
+        h3.className = 'mb-2 font-heading text-xl font-bold tracking-tight text-text-body';
+        const titleLink = document.createElement('a');
+        titleLink.href = doc.url;
+        titleLink.className = 'underline-offset-4 hover:underline';
+        titleLink.textContent = doc.title;
+        h3.appendChild(titleLink);
+        contentDiv.appendChild(h3);
+
+        const desc = document.createElement('p');
+        desc.className = 'mb-3 line-clamp-3 text-sm leading-relaxed text-text-muted';
+        desc.textContent = doc.description || '';
+        contentDiv.appendChild(desc);
+
+        if (doc.tags) {
+          const tagsDiv = document.createElement('div');
+          tagsDiv.className = 'mt-auto text-xs font-medium text-text-muted';
+          tagsDiv.textContent = Array.isArray(doc.tags) ? doc.tags.join(', ') : String(doc.tags);
+          contentDiv.appendChild(tagsDiv);
+        }
+
+        li.appendChild(contentDiv);
+        ul.appendChild(li);
+      });
+    } catch (error) {
+      console.error('Search error:', error);
+      status.textContent = 'Error al realizar la búsqueda.';
+    }
+  }
+
+  document.addEventListener('astro:page-load', bootSearch);
+  void bootSearch();
+</script>

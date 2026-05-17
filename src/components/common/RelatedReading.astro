@@ -1,0 +1,27 @@
+---
+import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
+import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import type { Post } from '~/types';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="mt-14 border-t border-border-subtle pt-8">
+      <SectionHeading
+        title="Seguir leyendo"
+        description="Más contexto para entender esta historia."
+      />
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        {posts.map((post) => (
+          <ArticleCard post={post} variant="compact" />
+        ))}
+      </div>
+    </section>
+  )
+}

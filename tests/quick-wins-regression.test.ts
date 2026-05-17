@@ -112,4 +112,34 @@ describe('quick wins regression coverage', () => {
 
     expect(topLevelLegacyProps).toEqual([]);
   });
+
+  it('keeps search browser behavior in the owning component and browser-only utility', () => {
+    const searchPage = fs.readFileSync(path.join(srcDir, 'pages', 'buscar.astro'), 'utf8');
+    const pureSearchUrl = fs.readFileSync(path.join(srcDir, 'utils', 'search-url.ts'), 'utf8');
+    const searchComponent = fs.readFileSync(
+      path.join(srcDir, 'components', 'common', 'SearchInterface.astro'),
+      'utf8'
+    );
+
+    expect(searchPage).toContain('SearchInterface');
+    expect(searchPage).not.toMatch(/<script[\s>]/);
+    expect(pureSearchUrl).not.toMatch(/\b(?:window|document|history)\b/);
+    expect(searchComponent).toContain("from '~/utils/browser/search-url'");
+  });
+
+  it('renders Hub V1 public surfaces with canonical metadata after build', () => {
+    for (const route of [
+      '/',
+      '/blog/',
+      '/buscar/',
+      '/newsletter/',
+      '/metodologia/',
+      '/transparencia/',
+    ]) {
+      const page = load(readDistHtml(route));
+      const canonical = page('link[rel="canonical"]').attr('href');
+      expect(page('title').text()).toContain('Noticiencias');
+      expect(canonical).toMatch(/^https:\/\/noticiencias\.com/);
+    }
+  });
 });

@@ -1,0 +1,73 @@
+---
+import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
+import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import { getPermalink } from '~/utils/permalinks';
+import type { Post, Taxonomy } from '~/types';
+import type { TopicFrequency } from '~/utils/hub';
+
+interface Props {
+  title: string;
+  description?: string;
+  posts: Post[];
+  topics?: TopicFrequency[];
+  taxonomy?: Taxonomy;
+}
+
+const { title, description, posts, topics = [], taxonomy } = Astro.props;
+const [leadPost, ...restPosts] = posts;
+---
+
+<section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+  <header class="mb-8 border-b border-border-subtle pb-5">
+    <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+      {title}
+    </h1>
+    {
+      description && (
+        <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">{description}</p>
+      )
+    }
+    {
+      taxonomy && (
+        <a href={getPermalink(taxonomy.slug, 'category')} class="sr-only">
+          {taxonomy.title}
+        </a>
+      )
+    }
+  </header>
+
+  {
+    leadPost ? (
+      <>
+        <ArticleCard post={leadPost} variant="lead" />
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          {restPosts.map((post) => (
+            <ArticleCard post={post} variant="standard" />
+          ))}
+        </div>
+      </>
+    ) : (
+      <p class="border-y border-border-subtle py-8 text-text-muted">
+        Esta sección no tiene artículos publicados por ahora.
+      </p>
+    )
+  }
+
+  {
+    topics.length > 0 && (
+      <aside class="mt-10">
+        <SectionHeading title="Temas relacionados" level={2} />
+        <div class="mt-4 flex flex-wrap gap-2">
+          {topics.map((topic) => (
+            <a
+              href={getPermalink(topic.slug, 'tag')}
+              class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
+            >
+              {topic.title}
+            </a>
+          ))}
+        </div>
+      </aside>
+    )
+  }
+</section>

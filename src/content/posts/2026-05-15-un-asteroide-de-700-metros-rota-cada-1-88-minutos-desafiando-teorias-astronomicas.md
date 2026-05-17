@@ -13,7 +13,7 @@ tags:
   - asteroide
 excerpt: "Rubin detecta asteroide de 700m girando cada 1,88 min, desafiando teorías. Rotación 'imposible' redefine física celestial. #Astronomía"
 image: ~/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg
-image_alt: Imagen editorial de Rubin Tracks Skyscraper-Size Asteroids, Failed Supernovas, and Interstellar Visitors
+image_alt: Observatorio Vera C. Rubin bajo el cielo nocturno, vinculado al rastreo de asteroides y objetos interestelares
 source_url: https://quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/
 refinery_id: Rubin Tracks Skyscraper-Size Asteroids, Failed Supernovas, and Interstellar Visitors
 headlines_variants:

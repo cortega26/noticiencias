@@ -48,8 +48,10 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 
 1. `src/pages/search.json.js` reads `getCollection('posts')` during build.
 2. It emits a JSON document index to `/search.json`.
-3. `src/pages/buscar.astro` loads that index in the browser and builds a Lunr index client-side.
-4. `src/utils/search-url.ts` owns URL query synchronization for the search page.
+3. `src/pages/buscar.astro` composes `src/components/common/SearchInterface.astro`.
+4. `SearchInterface.astro` owns the browser script that loads the index and builds a Lunr index client-side.
+5. `src/utils/search.ts` owns pure search normalization.
+6. `src/utils/browser/search-url.ts` owns browser-only URL query synchronization for the search page.
 
 ## Responsibility Boundaries
 
@@ -110,10 +112,10 @@ Astrowind template widgets.
 Current compatibility note:
 
 - `src/components/common/Image.astro` mirrors the frozen template image primitive so `ds`
-  components can render through the same image pipeline without importing from
-  `src/components/template/`.
-- Do not edit the two image primitives independently. If image behavior changes, migrate callers
-  deliberately or make a paired update with full image-pipeline validation.
+  components and legacy template callers render through the same image pipeline.
+- `src/components/template/common/Image.astro` is a compatibility wrapper only. It is the only
+  sanctioned exception in the template freeze check because it delegates to the common primitive.
+- Do not reintroduce independent image behavior in the frozen template layer.
 
 ### `src/utils/`
 
@@ -123,7 +125,8 @@ Current important files:
 
 - `blog.ts`
 - `permalinks.ts`
-- `search-url.ts`
+- `search.ts`
+- `browser/search-url.ts`
 - `images.ts`
 - `normalizeImage.ts`
 - `safeFs.ts`
@@ -157,7 +160,7 @@ The frontend is not a client-heavy app, but it does have controlled browser beha
 
 - `ClientRouter` view transitions in `src/layouts/template/Layout.astro`
 - theme and common template scripts
-- search UI in `src/pages/buscar.astro`
+- search UI in `src/components/common/SearchInterface.astro`
 
 Rules:
 

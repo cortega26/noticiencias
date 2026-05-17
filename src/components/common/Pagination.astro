@@ -1,0 +1,42 @@
+---
+import { getPermalink } from '~/utils/permalinks';
+
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  prevText?: string;
+  nextText?: string;
+}
+
+const { prevUrl, nextUrl, prevText = 'Más recientes', nextText = 'Más antiguos' } = Astro.props;
+---
+
+{
+  (prevUrl || nextUrl) && (
+    <nav
+      class="mt-10 flex items-center justify-between border-t border-border-subtle pt-5"
+      aria-label="Paginación"
+    >
+      {prevUrl ? (
+        <a
+          href={getPermalink(prevUrl)}
+          class="rounded-md border border-border-subtle px-4 py-2 text-sm font-semibold text-text-muted hover:border-primary hover:text-primary"
+        >
+          ← {prevText}
+        </a>
+      ) : (
+        <span />
+      )}
+      {nextUrl ? (
+        <a
+          href={getPermalink(nextUrl)}
+          class="rounded-md border border-border-subtle px-4 py-2 text-sm font-semibold text-text-muted hover:border-primary hover:text-primary"
+        >
+          {nextText} →
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+  )
+}

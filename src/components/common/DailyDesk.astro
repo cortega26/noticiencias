@@ -1,0 +1,119 @@
+---
+import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
+import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
+import { getPermalink } from '~/utils/permalinks';
+import type { CategoryRail, TopicFrequency } from '~/utils/hub';
+import type { Post } from '~/types';
+
+interface Props {
+  leadPosts: Post[];
+  latestPosts: Post[];
+  contextPosts: Post[];
+  categoryRails: CategoryRail[];
+  topicRadar: TopicFrequency[];
+}
+
+const { leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } = Astro.props;
+const [leadPost, ...secondaryLeadPosts] = leadPosts;
+---
+
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
+  <header class="mb-8 border-b border-border-subtle pb-5">
+    <p class="mb-2 text-sm font-semibold text-primary">Noticiencias Daily Desk</p>
+    <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
+      Ciencia y tecnología para entender qué cambió hoy.
+    </h1>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
+      Una portada editorial en español para seguir descubrimientos, evidencia y contexto sin
+      perderse en el ruido.
+    </p>
+  </header>
+
+  {
+    leadPost && (
+      <section aria-label="Historia principal">
+        <ArticleCard post={leadPost} variant="lead" />
+        {secondaryLeadPosts.length > 0 && (
+          <div class="mt-6 grid gap-6 md:grid-cols-2">
+            {secondaryLeadPosts.map((post) => (
+              <ArticleCard post={post} variant="compact" />
+            ))}
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  <section class="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
+    <div>
+      <SectionHeading title="Últimas historias" href="/blog/" linkText="Archivo completo" />
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        {latestPosts.map((post) => <ArticleCard post={post} variant="standard" />)}
+      </div>
+    </div>
+
+    <aside class="lg:border-l lg:border-border-subtle lg:pl-8">
+      <SectionHeading title="Radar de temas" level={2} />
+      <div class="mt-5 flex flex-wrap gap-2">
+        {
+          topicRadar.map((topic) => (
+            <a
+              href={getPermalink(topic.slug, 'tag')}
+              class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
+            >
+              {topic.title} <span class="text-xs">({topic.count})</span>
+            </a>
+          ))
+        }
+      </div>
+    </aside>
+  </section>
+
+  {
+    contextPosts.length > 0 && (
+      <section class="mt-12">
+        <SectionHeading
+          title="Por qué importa"
+          description="Historias recientes con una consecuencia clara para entender el panorama."
+        />
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          {contextPosts.map((post) => (
+            <ArticleCard post={post} variant="compact" showImage={false} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="mt-12">
+    <SectionHeading
+      title="Secciones"
+      description="La portada se ordena por áreas para que puedas seguir una línea de curiosidad."
+    />
+    <div class="mt-6 grid gap-8 lg:grid-cols-2">
+      {
+        categoryRails.map((rail) => (
+          <section class="border-t border-border-subtle pt-5">
+            <div class="mb-4 flex items-baseline justify-between gap-4">
+              <h2 class="font-heading text-2xl font-bold text-text-body">{rail.category.title}</h2>
+              <a
+                href={getPermalink(rail.category.slug, 'category')}
+                class="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                Ver sección
+              </a>
+            </div>
+            <div class="grid gap-5">
+              {rail.posts.map((post) => (
+                <ArticleCard post={post} variant="row" showExcerpt={false} />
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</div>
+
+<NewsletterCapture class="mt-4" />

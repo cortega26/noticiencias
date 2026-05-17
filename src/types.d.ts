@@ -47,9 +47,21 @@ export interface Post {
 
   /** Noticiencias extensions */
   series?: string;
+  summary_points?: string[];
+  uncertainty_note?: string;
+  glossary?: { term: string; definition: string }[];
   why_it_matters?: string[];
   fact_check?: { label: string; status: string }[];
   sources?: { title: string; url: string; publisher?: string; date?: string }[];
+  source_url?: string;
+  refinery_id?: string;
+  confidence?: string;
+  featured?: boolean;
+  featured_rank?: number;
+  investigation?: boolean;
+  editorial_score?: number;
+  review_status?: string;
+  translation_method?: string;
 }
 
 export interface Taxonomy {

@@ -1,60 +1,41 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import HeroGrid from '~/components/ds/organisms/HeroGrid.astro';
-import Grid from '~/components/template/blog/Grid.astro';
-import Features from '~/components/template/widgets/Features.astro';
-import Stats from '~/components/template/widgets/Stats.astro';
-import { findLatestPosts } from '~/utils/blog';
-import { homeSectionItems } from '~/navigation';
-import { getCollection } from 'astro:content';
+import DailyDesk from '~/components/common/DailyDesk.astro';
+import { fetchPosts } from '~/utils/blog';
+import {
+  buildCategoryRails,
+  getTopicFrequency,
+  selectContextPosts,
+  selectFeaturedPosts,
+} from '~/utils/hub';
+import { configuredCategorySections } from '~/utils/categorySections';
 
-const allPosts = await getCollection('posts');
-const count = 7;
-const latestPosts = await findLatestPosts({ count });
-const heroPosts = latestPosts.slice(0, 3);
-const morePosts = latestPosts.slice(3);
+const allPosts = await fetchPosts();
+const leadPosts = selectFeaturedPosts(allPosts, 3);
+const leadPostIds = new Set(leadPosts.map((post) => post.id));
+const latestPosts = allPosts.filter((post) => !leadPostIds.has(post.id)).slice(0, 6);
+const contextPosts = selectContextPosts(allPosts, 3);
+const topicRadar = getTopicFrequency(allPosts.slice(0, 18), 12);
+const categoryRails = buildCategoryRails(
+  allPosts,
+  configuredCategorySections.map(({ slug, title }) => ({ slug, title })),
+  3
+);
 
 const metadata = {
-  title: 'Noticiencias - Ciencia, tecnología e internet con contexto, en español.',
+  title: 'Noticiencias - Ciencia y tecnología con contexto, en español.',
+  description:
+    'La portada diaria de ciencia y tecnología para entender descubrimientos, evidencia y contexto en español.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <BaseLayout metadata={metadata}>
-  <div class="container mx-auto px-4 py-8">
-    {/* Hero Grid Section */}
-    <HeroGrid posts={heroPosts} />
-
-    {/* Latest News Section */}
-    <div class="mb-12">
-      <div
-        class="flex items-center justify-between mb-6 border-b border-gray-200 dark:border-gray-700 pb-2"
-      >
-        <h2 class="text-2xl font-bold font-heading text-text-body">Lo último</h2>
-        <a href="/blog" class="text-sm font-medium text-action-primary hover:underline">
-          Ver todo el archivo &raquo;
-        </a>
-      </div>
-      <Grid posts={morePosts} />
-    </div>
-  </div>
-
-  <!-- Categories (Features Widget) -->
-  <Features
-    id="features"
-    tagline="Explora"
-    title="Nuestras Secciones"
-    subtitle="Cobertura editorial sobre ciencia, tecnología, internet, salud y descubrimientos con impacto."
-    items={homeSectionItems}
-    columns={4}
-  />
-
-  <!-- Stats Widget -->
-  <Stats
-    stats={[
-      { title: 'Artículos', amount: allPosts.length.toString() },
-      { title: 'Lectores', amount: '580M' }, // Placeholder based on mission
-      { title: 'Confianza', amount: '100%' },
-    ]}
+  <DailyDesk
+    leadPosts={leadPosts}
+    latestPosts={latestPosts}
+    contextPosts={contextPosts}
+    categoryRails={categoryRails}
+    topicRadar={topicRadar}
   />
 </BaseLayout>

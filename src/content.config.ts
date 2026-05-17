@@ -42,6 +42,17 @@ const posts = defineCollection({
       confidence: z.string().optional(),
       investigation: z.boolean().default(false),
       featured: z.boolean().default(false),
+      featured_rank: z.number().int().positive().optional(),
+      summary_points: z.array(z.string().min(1)).min(2).max(5).optional(),
+      uncertainty_note: z.string().optional(),
+      glossary: z
+        .array(
+          z.object({
+            term: z.string().min(1),
+            definition: z.string().min(1),
+          })
+        )
+        .optional(),
 
       fact_check: z
         .array(
@@ -74,6 +85,14 @@ const posts = defineCollection({
           code: 'custom',
           path: ['image_alt'],
           message: 'image_alt is required when image does not include inline alt text',
+        });
+      }
+
+      if (data.featured === true && !data.featured_rank) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['featured_rank'],
+          message: 'featured_rank is required when featured is true',
         });
       }
     }),

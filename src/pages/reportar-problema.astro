@@ -4,6 +4,8 @@ import ReportForm from '~/components/template/widgets/ReportForm.astro';
 
 const metadata = {
   title: 'Reportar un problema',
+  description:
+    'Canal para reportar errores factuales, fuentes incorrectas o problemas técnicos en Noticiencias.',
   robots: {
     index: false,
     follow: false,
@@ -12,71 +14,43 @@ const metadata = {
 ---
 
 <BaseLayout metadata={metadata}>
-  <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-20 mx-auto max-w-4xl">
-    <div class="mb-10 text-center">
-      <h1 class="text-4xl font-bold tracking-tight text-heading mb-4">Reportar un problema</h1>
-      <p class="text-lg text-muted max-w-2xl mx-auto">
-        Canal exclusivo para la corrección factual y técnica. Ayúdenos a mantener la precisión
-        científica.
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    <header class="mb-8 border-b border-border-subtle pb-5">
+      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+        Reportar un problema
+      </h1>
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
+        Canal para correcciones factuales, fuentes mal citadas y problemas técnicos que afecten la
+        lectura.
       </p>
-    </div>
+    </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-      <!-- What we consider -->
-      <div
-        class="bg-green-50 dark:bg-green-900/10 p-6 rounded-lg border border-green-100 dark:border-green-800"
-      >
-        <h2 class="text-lg font-bold text-green-900 dark:text-green-300 mb-4 flex items-center">
-          <span class="mr-2 text-xl">✓</span> Qué consideramos un problema
+    <div class="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+      <section class="border-t border-border-subtle pt-5">
+        <h2 class="mb-4 font-heading text-xl font-bold text-text-body">
+          Qué consideramos un problema
         </h2>
-        <ul class="space-y-2 text-sm text-green-800 dark:text-green-200">
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Errores factuales verificables
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Fuentes incorrectas o mal citadas
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Datos, gráficos o cifras mal interpretadas
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Errores de traducción sustanciales
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Enlaces rotos a fuentes primarias
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Fallas técnicas o errores visuales de lectura
-          </li>
+        <ul class="space-y-2 text-sm leading-relaxed text-text-muted">
+          <li>Errores factuales verificables</li>
+          <li>Fuentes incorrectas o mal citadas</li>
+          <li>Datos, gráficos o cifras mal interpretadas</li>
+          <li>Errores de traducción sustanciales</li>
+          <li>Enlaces rotos a fuentes primarias</li>
+          <li>Fallas técnicas o visuales de lectura</li>
         </ul>
-      </div>
+      </section>
 
-      <!-- What we do NOT consider -->
-      <div
-        class="bg-red-50 dark:bg-red-900/10 p-6 rounded-lg border border-red-100 dark:border-red-800"
-      >
-        <h2 class="text-lg font-bold text-red-900 dark:text-red-300 mb-4 flex items-center">
-          <span class="mr-2 text-xl">✕</span> Qué NO será considerado
+      <section class="border-t border-border-subtle pt-5">
+        <h2 class="mb-4 font-heading text-xl font-bold text-text-body">
+          Qué no corresponde a este canal
         </h2>
-        <ul class="space-y-2 text-sm text-red-800 dark:text-red-200">
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Desacuerdos ideológicos o políticos
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Opiniones personales sobre el tema
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Críticas al enfoque editorial
-          </li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Demandas de "equilibrar opiniones"
-          </li>
-          <li class="flex items-start"><span class="mr-2">•</span> Quejas subjetivas</li>
-          <li class="flex items-start">
-            <span class="mr-2">•</span> Feedback general o sugerencias
-          </li>
+        <ul class="space-y-2 text-sm leading-relaxed text-text-muted">
+          <li>Desacuerdos ideológicos o políticos</li>
+          <li>Opiniones personales sobre el tema</li>
+          <li>Demandas de equilibrar opiniones sin evidencia</li>
+          <li>Quejas subjetivas o feedback general</li>
         </ul>
-      </div>
+      </section>
     </div>
 
     <div class="max-w-3xl mx-auto">

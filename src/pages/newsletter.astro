@@ -1,52 +1,47 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
-import HeroText from '~/components/template/widgets/HeroText.astro';
-import Features2 from '~/components/template/widgets/Features2.astro';
-import NewsletterComponent from '~/components/common/Newsletter.astro';
+import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
 
 const metadata = {
   title: 'Newsletter | Noticiencias',
+  description: 'Suscríbete al resumen semanal de ciencia y tecnología de Noticiencias.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-  <HeroText
-    tagline="Únete a la resistencia"
-    title="Deja de leer ruido. Entiende qué está cambiando."
-    subtitle="Cada viernes, analizamos las 5 noticias más importantes de ciencia, tecnología, internet e IA. Te decimos qué es verdad, qué es preliminar y qué es puro humo."
-  />
+  <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:py-14">
+    <header class="mb-8 border-b border-border-subtle pb-5">
+      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+        Newsletter
+      </h1>
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
+        Un resumen semanal para seguir ciencia y tecnología con calma: qué pasó, por qué importa y
+        qué evidencia lo sostiene.
+      </p>
+    </header>
 
-  <div class="max-w-3xl mx-auto px-4 sm:px-6">
-    <NewsletterComponent />
-  </div>
+    <NewsletterCapture class="px-0" />
 
-  <!-- Features2 Widget ************** -->
-  <Features2
-    title="Por qué unirte a 580M+ curiosos exigentes"
-    items={[
-      {
-        title: 'Sin tecnicismos innecesarios',
-        description: 'Explicamos la complejidad con claridad, sin perder el rigor.',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Fuentes siempre enlazadas',
-        description: 'Transparencia radical. Siempre sabrás de dónde viene la información.',
-        icon: 'tabler:link',
-      },
-      {
-        title: '0% Drama, 100% Evidencia',
-        description: ' Filtramos el clickbait para que tú no tengas que hacerlo.',
-        icon: 'tabler:shield-check',
-      },
-    ]}
-  />
-
-  <div class="text-center pb-20 pt-10">
-    <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">
-      🎁 <strong>Regalo de bienvenida:</strong> Al suscribirte, recibirás gratis nuestra guía<br />
-      <em>"Detector de Hype: Cómo leer noticias científicas y tecnológicas sin ser engañado"</em>.
-    </p>
-  </div>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <section class="border-t border-border-subtle pt-4">
+        <h2 class="font-heading text-xl font-bold text-text-body">Claridad</h2>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          Menos jerga y más contexto para entender la noticia sin simplificarla de más.
+        </p>
+      </section>
+      <section class="border-t border-border-subtle pt-4">
+        <h2 class="font-heading text-xl font-bold text-text-body">Fuentes</h2>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          Cada edición prioriza trazabilidad: papers, instituciones, laboratorios y enlaces
+          originales.
+        </p>
+      </section>
+      <section class="border-t border-border-subtle pt-4">
+        <h2 class="font-heading text-xl font-bold text-text-body">Ritmo</h2>
+        <p class="mt-2 text-sm leading-relaxed text-text-muted">
+          Una lectura semanal, no una avalancha de alertas.
+        </p>
+      </section>
+    </div>
+  </section>
 </Layout>

@@ -30,6 +30,7 @@
     "check:tags": "node scripts/check-tags.js",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",
+    "test:visual": "python scripts/visual-smoke.py",
     "test:deploy": "node scripts/post-deploy-check.js",
     "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:tags && astro sync && astro check && npm run check:freeze"
   },

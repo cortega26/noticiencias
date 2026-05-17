@@ -1,0 +1,35 @@
+---
+import { getPermalink } from '~/utils/permalinks';
+import type { TopicFrequency } from '~/utils/hub';
+
+interface Props {
+  title: string;
+  total: number;
+  relatedTopics?: TopicFrequency[];
+}
+
+const { title, total, relatedTopics = [] } = Astro.props;
+---
+
+<header class="mb-8 border-b border-border-subtle pb-5">
+  <p class="mb-2 text-sm font-semibold text-primary">Tema</p>
+  <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">{title}</h1>
+  <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
+    {total}
+    {total === 1 ? 'historia publicada' : 'historias publicadas'} para seguir este hilo de ciencia y tecnología.
+  </p>
+  {
+    relatedTopics.length > 0 && (
+      <div class="mt-5 flex flex-wrap gap-2">
+        {relatedTopics.map((topic) => (
+          <a
+            href={getPermalink(topic.slug, 'tag')}
+            class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
+          >
+            {topic.title}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</header>

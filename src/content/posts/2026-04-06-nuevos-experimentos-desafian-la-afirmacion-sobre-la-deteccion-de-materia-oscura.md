@@ -11,7 +11,7 @@ tags:
   - experimento
   - deteccion
 image: ~/assets/images/2026-04-06-experiments-refute-dark-matter-claim.png
-image_alt: Imagen editorial de Experiments refute dark matter claim
+image_alt: Equipo experimental de detección de partículas usado para contrastar una posible señal de materia oscura
 source_url: https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim
 refinery_id: Experiments refute dark matter claim
 headlines_variants:

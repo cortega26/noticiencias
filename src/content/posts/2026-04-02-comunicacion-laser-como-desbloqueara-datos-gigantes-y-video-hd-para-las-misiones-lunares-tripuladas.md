@@ -13,7 +13,7 @@ tags:
   - exploración espacial
   - telemedicina
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
-image_alt: Imagen editorial de Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
+image_alt: Terminal de comunicación láser de Lincoln Laboratory preparado para enviar datos de alta capacidad en misiones lunares
 source_url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
 refinery_id: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
 headlines_variants:

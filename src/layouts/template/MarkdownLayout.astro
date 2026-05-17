@@ -1,5 +1,5 @@
 ---
-import Layout from '~/layouts/template/PageLayout.astro';
+import Layout from '~/layouts/BaseLayout.astro';
 
 import type { MetaData } from '~/types';
 
@@ -20,12 +20,21 @@ const metadata: MetaData = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
-    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
-      {frontmatter.title}
-    </h1>
+  <section class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+    <header class="border-b border-border-subtle pb-5">
+      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
+        {frontmatter.title}
+      </h1>
+      {
+        (frontmatter.description || frontmatter.excerpt) && (
+          <p class="mt-3 text-lg leading-relaxed text-text-muted">
+            {frontmatter.description ?? frontmatter.excerpt}
+          </p>
+        )
+      }
+    </header>
     <div
-      class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+      class="prose prose-lg mt-8 max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md"
     >
       <slot />
     </div>

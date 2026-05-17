@@ -12,7 +12,7 @@ tags:
   - recorte salarial
 excerpt: 'Estudio MIT: automatización elimina empleos de alto salario, no mejora productividad. Causa 52% aumento desigualdad. 60-90% ganancias perdidas'
 image: ~/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg
-image_alt: 'Imagen editorial de Study: Firms often use automation to control certain workers’ wages'
+image_alt: 'Trabajadores y sistemas automatizados en una planta industrial, ilustrando el debate sobre productividad y salarios'
 source_url: https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507
 refinery_id: 'Study: Firms often use automation to control certain workers’ wages'
 headlines_variants:

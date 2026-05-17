@@ -1,0 +1,128 @@
+---
+import Image from '~/components/common/Image.astro';
+import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
+import { findImage } from '~/utils/images';
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+import type { Post } from '~/types';
+
+interface Props {
+  post: Post;
+  variant?: 'lead' | 'standard' | 'compact' | 'row';
+  showExcerpt?: boolean;
+  showImage?: boolean;
+  class?: string;
+}
+
+const {
+  post,
+  variant = 'standard',
+  showExcerpt = variant !== 'compact',
+  showImage = true,
+  class: className = '',
+} = Astro.props;
+
+const image = showImage ? await findImage(post.image) : undefined;
+const href = getPermalink(post.permalink, 'post');
+const imageAlt = post.image_alt || post.title;
+
+const styles = {
+  lead: {
+    article: 'grid gap-5 lg:grid-cols-[1.25fr_0.75fr] border-b border-border-subtle pb-6',
+    image: 'aspect-[16/10] lg:aspect-[4/3]',
+    title: 'text-3xl md:text-5xl',
+    excerpt: 'text-base md:text-lg',
+  },
+  standard: {
+    article: 'border-b border-border-subtle pb-5',
+    image: 'aspect-[16/10]',
+    title: 'text-xl md:text-2xl',
+    excerpt: 'text-sm md:text-base',
+  },
+  compact: {
+    article: 'border-b border-border-subtle pb-4',
+    image: 'aspect-[16/10]',
+    title: 'text-lg',
+    excerpt: 'text-sm',
+  },
+  row: {
+    article:
+      'grid grid-cols-[96px_1fr] gap-4 border-b border-border-subtle pb-4 sm:grid-cols-[160px_1fr]',
+    image: 'aspect-square sm:aspect-[4/3]',
+    title: 'text-lg md:text-xl',
+    excerpt: 'text-sm',
+  },
+}[variant];
+---
+
+<article class={`${styles.article} ${className}`}>
+  {
+    image && (
+      <a
+        href={href}
+        class={`block overflow-hidden rounded-md bg-surface-highlight ${styles.image}`}
+      >
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={variant === 'lead' ? 1200 : 640}
+          height={variant === 'lead' ? 800 : 420}
+          widths={[320, 640, 900, 1200]}
+          sizes={
+            variant === 'lead'
+              ? '(max-width: 1024px) 100vw, 760px'
+              : '(max-width: 768px) 100vw, 420px'
+          }
+          class="h-full w-full object-cover"
+          loading={variant === 'lead' ? 'eager' : 'lazy'}
+          fetchpriority={variant === 'lead' ? 'high' : 'auto'}
+        />
+      </a>
+    )
+  }
+
+  <div class="flex min-w-0 flex-col">
+    <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
+      {
+        post.category && (
+          <TopicBadge
+            topic={post.category.title}
+            href={getPermalink(post.category.slug, 'category')}
+            size="sm"
+          />
+        )
+      }
+      <time datetime={post.publishDate.toISOString()}>{getFormattedDate(post.publishDate)}</time>
+      {post.readingTime && <span>{post.readingTime} min lectura</span>}
+    </div>
+
+    <h2 class={`font-heading font-bold leading-tight text-text-body ${styles.title}`}>
+      <a href={href} class="underline-offset-4 hover:underline">
+        {post.title}
+      </a>
+    </h2>
+
+    {
+      showExcerpt && post.excerpt && (
+        <p class={`mt-3 line-clamp-3 leading-relaxed text-text-muted ${styles.excerpt}`}>
+          {post.excerpt}
+        </p>
+      )
+    }
+
+    {
+      post.tags && post.tags.length > 0 && variant !== 'lead' && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.tags.slice(0, 3).map((tag) => (
+            <a
+              href={getPermalink(tag.slug, 'tag')}
+              class="text-xs font-medium text-text-muted underline-offset-4 hover:text-primary hover:underline"
+            >
+              #{tag.title}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>

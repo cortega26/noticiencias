@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { getQueryFromUrl, updateUrlWithQuery, normalizeQuery } from '../src/utils/search-url.ts';
+import { getQueryFromUrl, updateUrlWithQuery } from '../src/utils/browser/search-url.ts';
+import { normalizeQuery } from '../src/utils/search.ts';
 
 describe('Search URL Utils', () => {
   beforeEach(() => {

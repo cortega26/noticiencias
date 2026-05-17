@@ -1,85 +1,60 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import Image from '~/components/template/common/Image.astro';
-import { getPermalink, getCanonical } from '~/utils/permalinks';
-import type { CollectionEntry } from 'astro:content';
-import WhyTrustUs from '~/components/common/WhyTrustUs.astro';
+import Image from '~/components/common/Image.astro';
+import RelatedReading from '~/components/common/RelatedReading.astro';
+import TrustPanel from '~/components/common/TrustPanel.astro';
+import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { findImage } from '~/utils/images';
+import { getCanonical, getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+import type { MetaData, Post } from '~/types';
 
 interface Props {
-  post: CollectionEntry<'posts'>;
-  headings: { depth: number; slug: string; text: string }[];
+  post: Post;
+  relatedPosts?: Post[];
+  url: string | URL;
 }
 
-const { post, headings } = Astro.props;
-const {
-  title: rawTitle,
-  excerpt: description,
-  date,
-  author,
-  image: rawImage,
-  tags,
-  categories,
-  confidence,
-  series,
-} = post.data;
+const { post, relatedPosts = [], url } = Astro.props;
+const image = (await findImage(post.image)) ?? post.image;
+const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
+const imageAlt = post.image_alt || post.title;
+const summaryPoints = post.summary_points?.length
+  ? post.summary_points
+  : post.excerpt
+    ? [post.excerpt]
+    : [];
+const sourceFallback =
+  post.sources?.length || !post.source_url
+    ? post.sources
+    : [
+        {
+          title: post.refinery_id || 'Fuente original',
+          url: post.source_url,
+        },
+      ];
 
-const imageSrc = typeof rawImage === 'string' ? rawImage : rawImage?.src;
-const imageWidth = typeof rawImage === 'object' ? rawImage.width : 900;
-const imageHeight = typeof rawImage === 'object' ? rawImage.height : 506;
-
-const title = rawTitle.trim();
-
-// Social share URLs
-const shareUrl = encodeURIComponent(String(getCanonical(Astro.url.pathname)));
-const shareText = encodeURIComponent(post.data.title);
-
-// Logic for Confidence Badge
-const confidenceMap: Record<string, { color: string; label: string; icon: string }> = {
-  alta: {
-    color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    label: 'Evidencia Robusta',
-    icon: 'tabler:check',
+const metadata: MetaData = {
+  title: post.title,
+  description: post.excerpt,
+  canonical: String(getCanonical(typeof url === 'string' ? url : url.pathname)),
+  openGraph: {
+    type: 'article',
+    images: imageSrc ? [{ url: imageSrc }] : [],
   },
-  media: {
-    color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    label: 'Evidencia Preliminar',
-    icon: 'tabler:alert-circle',
-  },
-  baja: {
-    color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    label: 'Faltan Datos / Debate',
-    icon: 'tabler:help',
-  },
-};
-// Safe access to confidence
-const confidenceBadge =
-  confidence && confidenceMap[confidence.toLowerCase()]
-    ? confidenceMap[confidence.toLowerCase()]
-    : null;
-
-const imageAlt =
-  typeof rawImage === 'object' && rawImage.alt ? rawImage.alt : post.data.image_alt || title;
-
-// Estimated reading time (rude approximation)
-const readingTime = post.body ? Math.ceil(post.body.split(/\s+/).length / 200) : 0;
-
-const metadata = {
-  title,
-  description,
-  openGraph: imageSrc ? { images: [{ url: imageSrc }] } : undefined,
 };
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
-  headline: title.substring(0, 110),
+  headline: post.title.substring(0, 110),
   image: imageSrc ? [imageSrc] : [],
-  datePublished: date.toISOString(),
-  dateModified: date.toISOString(), // Should be modified time if available
+  datePublished: post.publishDate.toISOString(),
+  dateModified: (post.updateDate ?? post.publishDate).toISOString(),
   author: [
     {
-      '@type': 'Person',
-      name: author,
+      '@type': 'Organization',
+      name: post.author || 'Noticiencias',
       url: 'https://noticiencias.com/nosotros/',
     },
   ],
@@ -89,173 +64,140 @@ const schema = JSON.stringify({
 <BaseLayout metadata={metadata}>
   <script is:inline type="application/ld+json" set:html={schema} />
 
-  <main class="container mx-auto px-4 py-12 lg:py-16">
-    <article class="max-w-screen-xl mx-auto">
-      {/* Header Section */}
-      <header class="max-w-4xl mx-auto text-center mb-12">
-        <div
-          class="flex flex-wrap justify-center items-center gap-3 text-sm font-bold tracking-wider uppercase text-slate-500 mb-6"
-        >
-          {
-            categories?.[0] && (
-              <span class="text-indigo-600 dark:text-indigo-400">{categories[0]}</span>
-            )
-          }
-          <span class="text-slate-300">•</span>
-          <span
-            >{
-              date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
-            }</span
-          >
-          <span class="text-slate-300">•</span>
-          <span>{readingTime} min lectura</span>
-
-          {
-            confidenceBadge && (
-              <span
-                class={`ml-2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold shadow-sm ${confidenceBadge.color}`}
-              >
-                <iconify-icon icon={confidenceBadge.icon} class="mr-1 text-base" />
-                {confidenceBadge.label}
-              </span>
-            )
-          }
-        </div>
-
+  <article class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+    <header class="mx-auto max-w-5xl border-b border-border-subtle pb-8">
+      <div class="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
         {
-          series && (
-            <div class="inline-block mb-6">
-              <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-violet-100 text-violet-900 dark:bg-violet-900/30 dark:text-violet-300 border border-violet-200 dark:border-violet-800">
-                Serie: {series}
-              </span>
+          post.category && (
+            <TopicBadge
+              topic={post.category.title}
+              href={getPermalink(post.category.slug, 'category')}
+            />
+          )
+        }
+        <time datetime={post.publishDate.toISOString()}>{getFormattedDate(post.publishDate)}</time>
+        {post.readingTime && <span>{post.readingTime} min lectura</span>}
+      </div>
+
+      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-6xl">
+        {post.title}
+      </h1>
+
+      {post.excerpt && <p class="mt-5 text-xl leading-relaxed text-text-muted">{post.excerpt}</p>}
+
+      <p class="mt-6 text-sm font-medium text-text-muted">
+        Por <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline"
+          >{post.author || 'Noticiencias'}</a
+        >
+      </p>
+
+      {
+        image && (
+          <figure class="mt-8">
+            <div class="overflow-hidden rounded-md bg-surface-highlight">
+              <Image
+                src={image}
+                alt={imageAlt}
+                width={1280}
+                height={720}
+                widths={[480, 900, 1280, 1600]}
+                sizes="(max-width: 1024px) 100vw, 1100px"
+                class="aspect-[16/9] w-full object-cover"
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
+            <figcaption class="mt-2 text-sm text-text-muted">{imageAlt}</figcaption>
+          </figure>
+        )
+      }
+    </header>
+
+    <div class="mx-auto mt-10 grid max-w-5xl gap-10 lg:grid-cols-[220px_1fr]">
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 border-t border-border-subtle pt-4 text-sm text-text-muted">
+          <p class="font-semibold text-text-body">Lectura guiada</p>
+          <p class="mt-2">Resumen, contexto editorial y fuentes dentro del flujo de lectura.</p>
+        </div>
+      </aside>
+
+      <div>
+        {
+          summaryPoints.length > 0 && (
+            <section class="not-prose mb-8 rounded-md border border-border-subtle bg-surface-paper p-5">
+              <h2 class="font-heading text-xl font-bold text-text-body">En simple</h2>
+              <ul class="mt-3 grid gap-2 text-text-muted">
+                {summaryPoints.map((point) => (
+                  <li class="pl-4 [text-indent:-1rem]">
+                    <span class="font-bold text-primary">•</span> {point}
+                  </li>
+                ))}
+              </ul>
+            </section>
           )
         }
 
-        <h1
-          class="text-4xl md:text-6xl font-serif font-black text-slate-900 dark:text-white leading-tight mb-8"
-        >
-          {title}
-        </h1>
+        {
+          post.why_it_matters && post.why_it_matters.length > 0 && (
+            <section class="not-prose mb-8 border-l-4 border-primary bg-surface-paper p-5">
+              <h2 class="font-heading text-xl font-bold text-text-body">Por qué importa</h2>
+              <ul class="mt-3 grid gap-2 text-text-muted">
+                {post.why_it_matters.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
 
         <div
-          class="flex items-center justify-center gap-3 text-lg text-slate-600 dark:text-slate-400"
+          class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
         >
-          <span>Por</span>
-          <a
-            href="/nosotros"
-            class="font-bold text-slate-900 dark:text-slate-200 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-600"
-          >
-            {author}
-          </a>
+          <slot />
         </div>
-      </header>
 
-      {/* Featured Image */}
-      {
-        imageSrc && (
-          <div class="mb-16 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5 aspect-video md:aspect-[2.39/1] relative">
-            <Image
-              src={imageSrc}
-              class="w-full h-full object-cover"
-              widths={[400, 900, 1400]}
-              width={imageWidth}
-              height={imageHeight}
-              loading="eager"
-              decoding="async"
-              alt={imageAlt}
-            />
-            <div class="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/10" />
-          </div>
-        )
-      }
+        {
+          post.glossary && post.glossary.length > 0 && (
+            <section class="not-prose mt-10 rounded-md border border-border-subtle p-5">
+              <h2 class="font-heading text-xl font-bold text-text-body">Glosario breve</h2>
+              <dl class="mt-4 grid gap-4">
+                {post.glossary.map((entry) => (
+                  <div>
+                    <dt class="font-semibold text-text-body">{entry.term}</dt>
+                    <dd class="mt-1 text-sm leading-relaxed text-text-muted">{entry.definition}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )
+        }
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Sidebar / TOC (Left) */}
-        <aside class="hidden lg:block lg:col-span-3">
-          <div class="sticky top-24 space-y-8">
-            {
-              headings.length > 0 && (
-                <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-800">
-                  <h3 class="font-serif font-bold text-lg mb-4 text-slate-900 dark:text-white">
-                    En este artículo
-                  </h3>
-                  <ul class="space-y-3 text-sm">
-                    {headings
-                      .filter((h) => h.depth <= 2)
-                      .map((h) => (
-                        <li>
-                          <a
-                            href={`#${h.slug}`}
-                            class="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors block leading-relaxed line-clamp-2"
-                          >
-                            {h.text}
-                          </a>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )
-            }
+        <TrustPanel
+          confidence={post.confidence}
+          factCheck={post.fact_check}
+          sources={sourceFallback}
+          uncertaintyNote={post.uncertainty_note}
+          translationMethod={post.translation_method}
+          reviewStatus={post.review_status}
+        />
 
-            <div class="text-center">
-              <p class="text-xs text-slate-400 font-medium uppercase tracking-widest mb-4">
-                Compartir
-              </p>
-              <div class="flex justify-center gap-2">
+        {
+          post.tags && post.tags.length > 0 && (
+            <footer class="not-prose mt-8 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
                 <a
-                  href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-indigo-100 dark:hover:bg-indigo-900 hover:text-indigo-700 transition-colors"
-                  aria-label="Compartir en X (Twitter)"
+                  href={getPermalink(tag.slug, 'tag')}
+                  class="rounded-md border border-border-subtle px-3 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary"
                 >
-                  <iconify-icon icon="tabler:brand-x" class="text-xl"></iconify-icon>
+                  #{tag.title}
                 </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 transition-colors"
-                  aria-label="Compartir en LinkedIn"
-                >
-                  <iconify-icon icon="tabler:brand-linkedin" class="text-xl"></iconify-icon>
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
+              ))}
+            </footer>
+          )
+        }
 
-        {/* Content (Center-Right) */}
-        <div class="lg:col-span-8 lg:col-start-4">
-          <div
-            class="prose prose-lg prose-indigo dark:prose-invert max-w-none
-                        prose-headings:font-serif prose-headings:font-bold prose-headings:tracking-tight
-                        prose-a:text-indigo-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-                        prose-img:rounded-2xl prose-img:shadow-lg
-                        prose-blockquote:border-l-indigo-500 prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-slate-900/50 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic"
-          >
-            <slot />
-          </div>
-
-          <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800">
-            <WhyTrustUs />
-          </div>
-
-          <div class="mt-12 flex flex-wrap gap-2">
-            {
-              tags.map((tag) => (
-                <a
-                  href={getPermalink(tag, 'tag')}
-                  class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-sm font-bold hover:bg-indigo-100 hover:text-indigo-700 transition-colors"
-                >
-                  #{tag}
-                </a>
-              ))
-            }
-          </div>
-        </div>
+        <RelatedReading posts={relatedPosts} />
       </div>
-    </article>
-  </main>
+    </div>
+  </article>
 </BaseLayout>

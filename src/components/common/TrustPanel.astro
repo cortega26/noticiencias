@@ -1,0 +1,122 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Source {
+  title: string;
+  url: string;
+  publisher?: string;
+  date?: string;
+}
+
+interface Props {
+  confidence?: string;
+  factCheck?: { label: string; status: string }[];
+  sources?: Source[];
+  uncertaintyNote?: string;
+  translationMethod?: string;
+  reviewStatus?: string;
+}
+
+const { confidence, factCheck, sources, uncertaintyNote, translationMethod, reviewStatus } =
+  Astro.props;
+
+const confidenceLabel: Record<string, string> = {
+  alta: 'Evidencia robusta',
+  media: 'Evidencia preliminar',
+  baja: 'Evidencia en debate',
+};
+
+const hasContent =
+  Boolean(confidence) ||
+  Boolean(uncertaintyNote) ||
+  Boolean(translationMethod) ||
+  Boolean(reviewStatus) ||
+  (factCheck?.length ?? 0) > 0 ||
+  (sources?.length ?? 0) > 0;
+
+if (!hasContent) return null;
+---
+
+<aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">
+  <h2 class="flex items-center gap-2 font-heading text-xl font-bold text-text-body">
+    <Icon name="tabler:shield-check" class="h-5 w-5 text-primary" />
+    Contexto editorial
+  </h2>
+
+  <div class="mt-4 grid gap-4 text-sm leading-relaxed text-text-muted">
+    {
+      confidence && (
+        <p>
+          <strong class="text-text-body">Nivel de confianza:</strong>{' '}
+          {confidenceLabel[confidence.toLowerCase()] ?? confidence}
+        </p>
+      )
+    }
+    {
+      uncertaintyNote && (
+        <p>
+          <strong class="text-text-body">Qué falta saber:</strong> {uncertaintyNote}
+        </p>
+      )
+    }
+    {
+      (translationMethod || reviewStatus) && (
+        <p>
+          {translationMethod && (
+            <>
+              <strong class="text-text-body">Método:</strong> {translationMethod}.{' '}
+            </>
+          )}
+          {reviewStatus && (
+            <>
+              <strong class="text-text-body">Revisión:</strong> {reviewStatus}.
+            </>
+          )}
+        </p>
+      )
+    }
+    {
+      factCheck && factCheck.length > 0 && (
+        <ul class="grid gap-2">
+          {factCheck.map((check) => (
+            <li class="flex gap-2">
+              <Icon
+                name={check.status === 'verified' ? 'tabler:check' : 'tabler:info-circle'}
+                class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+              />
+              <span>{check.label}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      sources && sources.length > 0 && (
+        <div>
+          <h3 class="mb-2 font-semibold text-text-body">Fuentes</h3>
+          <ul class="grid gap-2">
+            {sources.map((source) => (
+              <li>
+                <a
+                  href={source.url}
+                  class="font-medium text-primary underline-offset-4 hover:underline"
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  {source.title}
+                </a>
+                {(source.publisher || source.date) && (
+                  <span class="block text-xs">
+                    {source.publisher}
+                    {source.publisher && source.date ? ' · ' : ''}
+                    {source.date}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</aside>

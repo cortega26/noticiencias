@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { normalizeQuery } from '../src/utils/search-url';
+import { normalizeQuery, normalizeSearchDocument } from '../src/utils/search';
 // We mock Lunr since it's loaded via CDN in the real app, but for tests we want to verify logic.
 // In a real environment we might install lunr as a devDependency.
 // For this integration test, we will simulate the logic used in buscar.astro
@@ -62,16 +62,7 @@ describe('Search Integration', () => {
       this.field('tags');
 
       mockDocuments.forEach((doc) => {
-        // Normalize fields for better matching (Logic from buscar.astro)
-        const normalizedDoc = {
-          ...doc,
-          title: normalizeQuery(doc.title),
-          description: normalizeQuery(doc.description),
-          content: normalizeQuery(doc.content),
-          tags: doc.tags ? normalizeQuery(doc.tags.join(' ')) : '',
-        };
-
-        this.add(normalizedDoc);
+        this.add(normalizeSearchDocument(doc));
         store[doc.url] = doc;
       });
     });
