@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Logo from '~/components/template/Logo.astro';
 import ToggleTheme from '~/components/template/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/template/common/ToggleMenu.astro';
-import Button from '~/components/template/ui/Button.astro';
+import Button from '~/components/ds/atoms/Button.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -166,7 +166,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               {actions.map((btnProps) => (
                 <Button
                   {...btnProps}
-                  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto btn-primary"
+                  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"
                 />
               ))}
             </span>

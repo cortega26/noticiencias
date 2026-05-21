@@ -4,6 +4,7 @@ import RelatedReading from '~/components/common/RelatedReading.astro';
 import TopicStrip from '~/components/common/TopicStrip.astro';
 import TrustPanel from '~/components/common/TrustPanel.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
+import InvestigationBadge from '~/components/ds/atoms/InvestigationBadge.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
@@ -76,6 +77,7 @@ const schema = JSON.stringify({
   <article class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
     <header class="mx-auto max-w-5xl border-b border-border-subtle pb-8">
       <div class="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
+        {post.investigation && <InvestigationBadge size="sm" />}
         {
           post.category && (
             <TopicBadge
@@ -88,7 +90,12 @@ const schema = JSON.stringify({
         {post.readingTime && <span>{post.readingTime} min lectura</span>}
       </div>
 
-      <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-6xl">
+      <h1
+        class:list={[
+          'text-4xl font-black leading-tight text-text-body md:text-6xl',
+          post.investigation ? 'font-serif' : 'font-heading',
+        ]}
+      >
         {post.title}
       </h1>
 
@@ -160,7 +167,7 @@ const schema = JSON.stringify({
         }
 
         <div
-          class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
+          class="prose prose-lg prose-serif max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
         >
           <slot />
         </div>
@@ -186,6 +193,7 @@ const schema = JSON.stringify({
           factCheck={post.fact_check}
           sources={sourceFallback}
           uncertaintyNote={post.uncertainty_note}
+          requiresUncertaintyNote={post.requires_uncertainty_note}
           translationMethod={post.translation_method}
           reviewStatus={post.review_status}
         />

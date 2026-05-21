@@ -68,7 +68,7 @@ describe('hub curation helpers', () => {
       post({ id: 'why', why_it_matters: ['Importa'] }),
     ];
 
-    expect(selectContextPosts(posts, 3).map((item) => item.id)).toEqual(['summary', 'why']);
+    expect(selectContextPosts(posts, 3).map((item) => item.id)).toEqual(['why', 'summary']);
   });
 
   it('computes topic frequency and related topics', () => {

@@ -1,0 +1,22 @@
+---
+import Badge from './Badge.astro';
+
+interface Props {
+  size?: 'sm' | 'md';
+  class?: string;
+}
+
+const { size = 'md', class: className = '' } = Astro.props;
+---
+
+<Badge
+  variant="default"
+  size={size}
+  icon="tabler:microscope"
+  class:list={[
+    'bg-indigo-900 text-white dark:bg-indigo-400 dark:text-slate-950 font-bold uppercase tracking-wider border-transparent',
+    className,
+  ]}
+>
+  Investigación Noticiencias
+</Badge>

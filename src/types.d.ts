@@ -59,6 +59,7 @@ export interface Post {
   featured?: boolean;
   featured_rank?: number;
   investigation?: boolean;
+  requires_uncertainty_note?: boolean;
   editorial_score?: number;
   review_status?: string;
   translation_method?: string;

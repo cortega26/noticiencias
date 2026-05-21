@@ -41,6 +41,7 @@ const posts = defineCollection({
       review_status: z.string().optional(),
       confidence: z.string().optional(),
       investigation: z.boolean().default(false),
+      requires_uncertainty_note: z.boolean().default(false),
       featured: z.boolean().default(false),
       featured_rank: z.number().int().positive().optional(),
       summary_points: z.array(z.string().min(1)).min(2).max(5).optional(),

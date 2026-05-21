@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # local development data
 data/metrics/development/*.db
+
+# Astro cache
+.astro/

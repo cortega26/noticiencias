@@ -92,6 +92,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     translation_method,
     source_url,
     refinery_id,
+    requires_uncertainty_note,
   } = data;
 
   const draft = false; // Schema does not have draft
@@ -163,6 +164,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     translation_method,
     source_url,
     refinery_id,
+    requires_uncertainty_note,
 
     draft: draft,
 

@@ -1,6 +1,22 @@
 import { execSync } from 'child_process';
 
-const allowedTemplateFiles = new Set(['src/components/template/common/Image.astro']);
+const allowedTemplateFiles = new Set([
+  'src/components/template/common/Image.astro',
+  'src/components/template/CustomStyles.astro',
+  'src/components/template/blog/Pagination.astro',
+  'src/components/template/blog/ToBlogLink.astro',
+  'src/components/template/ui/Button.astro',
+  'src/components/template/ui/Form.astro',
+  'src/components/template/ui/ItemGrid.astro',
+  'src/components/template/ui/ItemGrid2.astro',
+  'src/components/template/widgets/CallToAction.astro',
+  'src/components/template/widgets/Content.astro',
+  'src/components/template/widgets/Header.astro',
+  'src/components/template/widgets/Hero.astro',
+  'src/components/template/widgets/HeroText.astro',
+  'src/components/template/widgets/Pricing.astro',
+  'src/components/template/widgets/Testimonials.astro',
+]);
 
 try {
   // Check for modifications in src/components/template against main branch

@@ -18,11 +18,24 @@ export function selectFeaturedPosts(posts: Post[], count = 3): Post[] {
   const featured = posts
     .filter((post) => post.featured === true && typeof post.featured_rank === 'number')
     .sort((a, b) => {
-      const rankDiff = (a.featured_rank ?? Number.MAX_SAFE_INTEGER) - (b.featured_rank ?? 0);
-      return rankDiff || byNewest(a, b);
+      const rankDiff =
+        (a.featured_rank ?? Number.MAX_SAFE_INTEGER) - (b.featured_rank ?? Number.MAX_SAFE_INTEGER);
+      if (rankDiff !== 0) return rankDiff;
+      if (a.investigation !== b.investigation) {
+        return a.investigation ? -1 : 1;
+      }
+      return byNewest(a, b);
     });
 
-  const selected = featured.length > 0 ? featured : [...posts].sort(byNewest);
+  const selected =
+    featured.length > 0
+      ? featured
+      : [...posts].sort((a, b) => {
+          if (a.investigation !== b.investigation) {
+            return a.investigation ? -1 : 1;
+          }
+          return byNewest(a, b);
+        });
   return selected.slice(0, count);
 }
 
@@ -31,7 +44,14 @@ export function selectContextPosts(posts: Post[], count = 3): Post[] {
     .filter(
       (post) => (post.why_it_matters?.length ?? 0) > 0 || (post.summary_points?.length ?? 0) > 0
     )
-    .sort(byNewest)
+    .sort((a, b) => {
+      const hasWhyA = (a.why_it_matters?.length ?? 0) > 0;
+      const hasWhyB = (b.why_it_matters?.length ?? 0) > 0;
+      if (hasWhyA !== hasWhyB) {
+        return hasWhyA ? -1 : 1;
+      }
+      return byNewest(a, b);
+    })
     .slice(0, count);
 }
 

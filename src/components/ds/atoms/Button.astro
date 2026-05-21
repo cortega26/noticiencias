@@ -2,26 +2,37 @@
 import { Icon } from 'astro-icon/components';
 
 interface Props {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
-  size?: 'sm' | 'md' | 'lg';
-  icon?: string;
-  iconPosition?: 'left' | 'right';
-  href?: string;
-  class?: string;
-  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'tertiary' | null;
+  size?: 'sm' | 'md' | 'lg' | null;
+  icon?: string | null;
+  iconPosition?: 'left' | 'right' | null;
+  href?: string | URL | null;
+  text?: string | null;
+  class?: string | null;
+  type?: 'button' | 'submit' | 'reset' | null;
   [key: string]: any;
 }
 
 const {
-  variant = 'primary',
-  size = 'md',
+  variant: rawVariant,
+  size: rawSize,
   icon,
-  iconPosition = 'left',
+  iconPosition: rawIconPosition,
   href,
-  class: className = '',
-  type = 'button',
+  text,
+  class: rawClassName,
+  type: rawType,
   ...rest
 } = Astro.props;
+
+const variant = rawVariant ?? 'primary';
+const size = rawSize ?? 'md';
+const iconPosition = rawIconPosition ?? 'left';
+const type = rawType ?? 'button';
+const className = rawClassName ?? '';
+
+// Map legacy tertiary to outline
+const effectiveVariant = variant === 'tertiary' ? 'outline' : variant;
 
 // Editorial buttons use rounded-md (not rounded-full pills, which read as
 // social-media) per docs/EDITORIAL_VOICE.md decision D8.
@@ -44,16 +55,23 @@ const sizes = {
   lg: 'text-base px-6 py-3',
 };
 
-const Tag = href ? 'a' : 'button';
+const hasHref = href !== undefined && href !== null && href !== '';
+const Tag = hasHref ? 'a' : 'button';
+const resolvedHref = hasHref ? String(href) : undefined;
 ---
 
 <Tag
-  type={href ? undefined : type}
-  href={href}
-  class:list={[baseStyles, variants[variant], variant !== 'link' && sizes[size], className]}
+  type={hasHref ? undefined : type}
+  href={resolvedHref}
+  class:list={[
+    baseStyles,
+    variants[effectiveVariant],
+    effectiveVariant !== 'link' && sizes[size],
+    className,
+  ]}
   {...rest}
 >
   {icon && iconPosition === 'left' && <Icon name={icon} class="w-4 h-4 mr-2" />}
-  <slot />
+  {text ? <Fragment set:html={text} /> : <slot />}
   {icon && iconPosition === 'right' && <Icon name={icon} class="w-4 h-4 ml-2" />}
 </Tag>
