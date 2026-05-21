@@ -13,6 +13,7 @@ interface Props {
   variant?: 'lead' | 'standard' | 'compact' | 'row' | 'consequence';
   showExcerpt?: boolean;
   showImage?: boolean;
+  showTags?: boolean;
   class?: string;
 }
 
@@ -21,6 +22,7 @@ const {
   variant = 'standard',
   showExcerpt = variant !== 'compact' && variant !== 'consequence',
   showImage = variant !== 'consequence',
+  showTags = variant !== 'lead' && variant !== 'consequence',
   class: className = '',
 } = Astro.props;
 
@@ -110,7 +112,12 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
         </a>
       )}
 
-      <div class="flex min-w-0 flex-col">
+      <div
+        class:list={[
+          'flex min-w-0 flex-col',
+          { 'mt-4': image && (variant === 'standard' || variant === 'compact') },
+        ]}
+      >
         <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
           {post.investigation && <InvestigationBadge size="sm" />}
           {post.category && (
@@ -143,7 +150,7 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
           </p>
         )}
 
-        {post.tags && post.tags.length > 0 && variant !== 'lead' && (
+        {showTags && post.tags && post.tags.length > 0 && (
           <div class="mt-4 flex flex-wrap gap-2">
             {post.tags.slice(0, 3).map((tag) => (
               <TagPill title={tag.title} href={getPermalink(tag.slug, 'tag')} size="sm" />

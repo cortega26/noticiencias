@@ -61,9 +61,11 @@ describe('quick wins regression coverage', () => {
     );
 
     const hypeDetector = load(readDistHtml('/recursos/detector-de-hype/'));
-    expect(hypeDetector('title').text()).toBe('Detector de Hype: Guía Rápida | Noticiencias');
+    expect(hypeDetector('title').text()).toBe(
+      'Detector de Hype: Guía de Sobrevivencia | Noticiencias'
+    );
     expect(hypeDetector('meta[name="description"]').attr('content')).toBe(
-      'Cómo leer noticias científicas y tecnológicas sin ser engañado.'
+      'Una caja de herramientas mental para distinguir la ciencia real de las promesas de marketing y el clickbait.'
     );
   });
 

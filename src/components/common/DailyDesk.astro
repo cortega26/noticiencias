@@ -49,7 +49,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
         {secondaryLeadPosts.length > 0 && (
           <div class="mt-6 grid gap-6 md:grid-cols-2">
             {secondaryLeadPosts.map((post) => (
-              <ArticleCard post={post} variant="compact" />
+              <ArticleCard post={post} variant="compact" showTags={false} />
             ))}
           </div>
         )}
@@ -61,7 +61,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
     <div>
       <SectionHeading title="Última edición" href="/blog/" linkText="Archivo completo" />
       <div class="mt-6 grid gap-6 md:grid-cols-2">
-        {latestPosts.map((post) => <ArticleCard post={post} variant="standard" />)}
+        {latestPosts.map((post) => <ArticleCard post={post} variant="standard" showTags={false} />)}
       </div>
     </div>
 
@@ -126,7 +126,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
             </div>
             <div class="grid gap-5">
               {rail.posts.map((post) => (
-                <ArticleCard post={post} variant="row" showExcerpt={false} />
+                <ArticleCard post={post} variant="row" showExcerpt={false} showTags={false} />
               ))}
             </div>
           </section>
