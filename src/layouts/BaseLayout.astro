@@ -1,10 +1,9 @@
 ---
 import Layout from '~/layouts/template/Layout.astro';
 import Header from '~/components/template/widgets/Header.astro';
-import Footer from '~/components/template/widgets/Footer.astro';
+import Footer from '~/components/ds/organisms/Footer.astro';
 
 import { headerData, footerData } from '~/navigation';
-import BetaBanner from '~/components/common/BetaBanner.astro';
 import type { MetaData } from '~/types';
 
 interface Props {
@@ -26,9 +25,7 @@ const resolvedMetadata: MetaData = {
 ---
 
 <Layout metadata={resolvedMetadata}>
-  <slot name="announcement">
-    <BetaBanner />
-  </slot>
+  <slot name="announcement" />
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>

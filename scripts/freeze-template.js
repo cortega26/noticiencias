@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import fs from 'fs';
 
 const allowedTemplateFiles = new Set([
   'src/components/template/common/Image.astro',
@@ -29,7 +30,8 @@ try {
   ).toString();
   const changedFiles = [...new Set(`${committedDiff}\n${workingTreeDiff}`.split('\n'))]
     .map((file) => file.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((file) => fs.existsSync(file));
   const blockedFiles = changedFiles.filter((file) => !allowedTemplateFiles.has(file));
 
   if (blockedFiles.length > 0) {

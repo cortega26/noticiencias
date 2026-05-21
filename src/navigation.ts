@@ -45,10 +45,7 @@ export const headerData = {
       href: getPermalink('/series/'),
     },
   ],
-  actions: [
-    { text: 'Buscar', href: '/buscar/', icon: 'tabler:search' },
-    { text: 'Boletín', href: '/newsletter/', icon: 'tabler:mail' },
-  ],
+  actions: [{ text: 'Buscar', href: '/buscar/', icon: 'tabler:search' }],
 };
 
 export const footerData = {

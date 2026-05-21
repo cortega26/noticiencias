@@ -33,7 +33,7 @@ Static Astro 6 site with MDX content, deployed to GitHub Pages. Server-first ren
 - `src/layouts/` — Page shells and metadata plumbing. `BaseLayout.astro` and `PostLayout.astro` are primary.
 - `src/components/ds/` — Noticiencias design-system primitives (atoms/molecules/organisms). Route-agnostic, typed props.
 - `src/components/template/` — Astrowind-derived site shell, widgets, header/footer, blog grid/sidebar.
-- `src/components/common/` — Site-specific fragments (BetaBanner, Newsletter, WhyTrustUs).
+- `src/components/common/` — Site-specific fragments (Newsletter, WhyTrustUs).
 - `src/utils/` — Pure helpers: `blog.ts` (post normalization), `permalinks.ts`, `search-url.ts`, `images.ts`.
 - `src/integration/` — Custom Astro integration that exposes `src/config.yaml` as virtual module `astrowind:config`.
 - `tests/` — Vitest test files covering search, slugs, site integrity, images, content quality, compliance.
