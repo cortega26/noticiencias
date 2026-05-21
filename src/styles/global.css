@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --aw-gradient-brand: linear-gradient(
+      90deg,
+      var(--aw-color-primary) 0%,
+      var(--aw-color-accent) 100%
+    );
+  }
+
+  .dark {
+    --aw-gradient-brand: linear-gradient(
+      90deg,
+      var(--aw-color-primary) 0%,
+      var(--aw-color-accent) 100%
+    );
+  }
+
   h1,
   h2,
   h3,

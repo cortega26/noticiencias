@@ -26,21 +26,25 @@ const {
       aria-label={title}
       data-retention-topic-strip
     >
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-baseline">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div class="shrink-0">
           <p class="font-heading text-lg font-bold leading-tight text-text-body">{title}</p>
           {description && (
             <p class="mt-1 max-w-xl text-sm leading-relaxed text-text-muted">{description}</p>
           )}
         </div>
-        <div class="flex min-w-0 flex-wrap gap-x-4 gap-y-2 sm:justify-end">
+        <div class="flex min-w-0 flex-wrap gap-2 sm:justify-end flex-grow">
           {topics.map((topic) => (
             <a
               href={getPermalink(topic.slug, 'tag')}
-              class="text-sm font-medium text-text-muted underline-offset-4 hover:text-primary hover:underline"
+              class="group inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full border border-border-subtle bg-surface-paper text-text-muted hover:border-primary hover:text-primary hover:bg-surface-highlight transition-all duration-200"
             >
               {topic.title}
-              {showCounts && <span class="ml-1 text-xs text-text-muted">({topic.count})</span>}
+              {showCounts && (
+                <span class="ml-1.5 inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-surface-highlight text-[10px] font-bold text-text-muted group-hover:bg-primary/15 group-hover:text-primary transition-colors duration-200">
+                  {topic.count}
+                </span>
+              )}
             </a>
           ))}
         </div>

@@ -20,8 +20,8 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
-  <header class="mb-8 border-b border-border-subtle pb-5">
-    <p class="mb-2 text-sm font-semibold text-primary">Portada</p>
+  <header class="mb-8 pb-6 border-b border-border-subtle/50 relative">
+    <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">Portada</p>
     <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
       La ciencia que conviene seguir hoy.
     </h1>
@@ -29,6 +29,10 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
       Una edición en español para entrar rápido en los hallazgos, las dudas y las consecuencias de
       cada historia.
     </p>
+    <div
+      class="absolute bottom-0 left-0 w-32 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"
+    >
+    </div>
   </header>
 
   <TopicStrip

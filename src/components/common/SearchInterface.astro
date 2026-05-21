@@ -220,7 +220,8 @@
         if (!doc) return;
 
         const li = document.createElement('li');
-        li.className = 'grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]';
+        li.className =
+          'group grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]';
 
         if (doc.image) {
           const imgLink = document.createElement('a');
@@ -229,7 +230,8 @@
           const img = document.createElement('img');
           img.src = doc.image;
           img.alt = doc.title;
-          img.className = 'h-full w-full object-cover';
+          img.className =
+            'h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105';
           img.loading = 'lazy';
           imgLink.appendChild(img);
           li.appendChild(imgLink);
@@ -255,7 +257,8 @@
         h3.className = 'mb-2 font-heading text-xl font-bold tracking-tight text-text-body';
         const titleLink = document.createElement('a');
         titleLink.href = doc.url;
-        titleLink.className = 'underline-offset-4 hover:underline';
+        titleLink.className =
+          'transition-colors duration-200 hover:text-primary hover:underline underline-offset-4';
         titleLink.textContent = doc.title;
         h3.appendChild(titleLink);
         contentDiv.appendChild(h3);
