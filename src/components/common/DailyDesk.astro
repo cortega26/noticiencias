@@ -17,11 +17,19 @@ interface Props {
 
 const { leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } = Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
+const now = new Date();
+const editionDate = now.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
   <header class="mb-8 pb-6 border-b border-border-subtle/50 relative">
-    <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">Portada</p>
+    <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">
+      Portada · {editionDate}
+    </p>
     <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
       La ciencia que conviene seguir hoy.
     </h1>
@@ -34,13 +42,6 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
     >
     </div>
   </header>
-
-  <TopicStrip
-    topics={topicRadar}
-    showCounts
-    class="mb-8"
-    description="Los temas que más se repiten en la edición reciente."
-  />
 
   {
     leadPost && (
@@ -56,6 +57,13 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
       </section>
     )
   }
+
+  <TopicStrip
+    topics={topicRadar}
+    showCounts
+    class="mt-8"
+    description="Los temas que más se repiten en la edición reciente."
+  />
 
   <section class="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
     <div>
@@ -106,7 +114,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
     )
   }
 
-  <section class="mt-12">
+  <section class="mt-14 rounded-xl border border-border-subtle/50 bg-surface-paper p-6 sm:p-8">
     <SectionHeading
       title="Secciones"
       description="La portada también se puede leer por área, de la actualidad al archivo."
@@ -135,7 +143,7 @@ const [leadPost, ...secondaryLeadPosts] = leadPosts;
     </div>
   </section>
 
-  <section class="mt-12 border-t border-border-subtle pt-5">
+  <section class="mt-6 rounded-xl border border-border-subtle/50 bg-surface-highlight p-6 sm:p-8">
     <SectionHeading
       title="Para leer con criterio"
       description="Piezas para volver cuando una noticia científica llega demasiado vestida de promesa."

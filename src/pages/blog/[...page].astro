@@ -43,16 +43,16 @@ const metadata = {
       </p>
     </header>
 
-    <div class="grid gap-6">
-      {page.data.map((post) => <ArticleCard post={post} variant="row" />)}
-    </div>
-
     <TopicStrip
       topics={topics}
       title="En seguimiento"
-      description="Temas frecuentes en esta página del archivo."
-      class="mt-10"
+      description="Temas frecuentes en el archivo. Filtra por área."
+      class="mb-8"
     />
+
+    <div class="grid gap-6">
+      {page.data.map((post) => <ArticleCard post={post} variant="row" />)}
+    </div>
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
