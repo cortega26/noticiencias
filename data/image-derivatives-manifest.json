@@ -685,6 +685,34 @@
       }
     ]
   },
+  "~/assets/images/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.png": {
+    "originalWidth": 1000,
+    "originalHeight": 1000,
+    "hash": "b64cdf78dadb451f",
+    "variants": [
+      {
+        "width": 400,
+        "height": 400,
+        "format": "avif",
+        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 900,
+        "format": "avif",
+        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.900.avif"
+      },
+      {
+        "width": 1000,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.1000.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.1000.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg": {
     "originalWidth": 2500,
     "originalHeight": 1666,
