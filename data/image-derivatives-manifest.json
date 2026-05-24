@@ -776,6 +776,34 @@
       }
     ]
   },
+  "~/assets/images/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.webp": {
+    "originalWidth": 1200,
+    "originalHeight": 660,
+    "hash": "2b8ee1a450a31fae",
+    "variants": [
+      {
+        "width": 400,
+        "height": 220,
+        "format": "avif",
+        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 495,
+        "format": "avif",
+        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.900.avif"
+      },
+      {
+        "width": 1200,
+        "height": 660,
+        "format": "avif",
+        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.1200.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.1200.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
