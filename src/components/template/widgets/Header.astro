@@ -183,7 +183,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
 <script>
   function initDropdowns() {
-    document.querySelectorAll('[data-aw-dropdown-trigger]').forEach((trigger) => {
+    document.querySelectorAll<HTMLElement>('[data-aw-dropdown-trigger]').forEach((trigger) => {
       if (trigger.dataset.awDropdownBound === 'true') return;
       trigger.dataset.awDropdownBound = 'true';
 
@@ -195,7 +195,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         trigger.setAttribute('aria-expanded', String(!expanded));
       });
 
-      trigger.addEventListener('keydown', (e) => {
+      trigger.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           trigger.setAttribute('aria-expanded', 'false');
           trigger.focus();
@@ -206,7 +206,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         trigger.setAttribute('aria-expanded', 'true');
       });
 
-      trigger.addEventListener('blur', (e) => {
+      trigger.addEventListener('blur', (e: FocusEvent) => {
         if (!parent.contains(e.relatedTarget as Node)) {
           trigger.setAttribute('aria-expanded', 'false');
         }

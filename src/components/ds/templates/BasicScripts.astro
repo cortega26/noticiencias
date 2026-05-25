@@ -169,11 +169,20 @@ import { UI } from 'astrowind:config';
 
 <script>
   /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
-  const Observer = {
+  type IntersectElement = HTMLElement & { _intersectionThreshold?: number };
+
+  const Observer: {
+    observer: IntersectionObserver | null;
+    delayBetweenAnimations: number;
+    animationCounter: number;
+    elements: IntersectElement[];
+    start: () => void;
+    removeAnimationDelay: () => void;
+  } = {
     observer: null,
     delayBetweenAnimations: 100,
     animationCounter: 0,
-    elements: null,
+    elements: [],
 
     start() {
       const selectors = [
@@ -186,9 +195,9 @@ import { UI } from 'astrowind:config';
         '[class$=" intersect"]',
       ];
 
-      this.elements = Array.from(document.querySelectorAll(selectors.join(',')));
+      this.elements = Array.from(document.querySelectorAll<IntersectElement>(selectors.join(',')));
 
-      const getThreshold = (element) => {
+      const getThreshold = (element: IntersectElement) => {
         if (element.classList.contains('intersect-full')) return 0.99;
         if (element.classList.contains('intersect-half')) return 0.5;
         if (element.classList.contains('intersect-quarter')) return 0.25;
@@ -200,18 +209,18 @@ import { UI } from 'astrowind:config';
         el._intersectionThreshold = getThreshold(el);
       });
 
-      const callback = (entries) => {
+      const callback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           requestAnimationFrame(() => {
-            const target = entry.target;
+            const target = entry.target as IntersectElement;
             const intersectionRatio = entry.intersectionRatio;
-            const threshold = target._intersectionThreshold;
+            const threshold = target._intersectionThreshold ?? 0;
 
             if (target.classList.contains('intersect-no-queue')) {
               if (entry.isIntersecting) {
                 target.removeAttribute('no-intersect');
                 if (target.classList.contains('intersect-once')) {
-                  this.observer.unobserve(target);
+                  this.observer?.unobserve(target);
                 }
               } else {
                 target.setAttribute('no-intersect', '');
@@ -231,7 +240,7 @@ import { UI } from 'astrowind:config';
                 target.style.animationDelay = `${delay}ms`;
 
                 if (target.classList.contains('intersect-once')) {
-                  this.observer.unobserve(target);
+                  this.observer?.unobserve(target);
                 }
               }
             } else {
@@ -251,7 +260,7 @@ import { UI } from 'astrowind:config';
       });
 
       this.elements.forEach((el) => {
-        this.observer.observe(el);
+        this.observer?.observe(el);
       });
     },
 
