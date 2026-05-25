@@ -1,5 +1,6 @@
 ---
 import { APP_CONFIG } from 'astrowind:config';
+import { getAsset } from '~/utils/permalinks';
 
 interface Props {
   title?: string;
@@ -26,36 +27,51 @@ const isEnabled = endpoint.length > 0;
       <p class="mt-3 max-w-2xl text-base leading-relaxed text-text-muted">{description}</p>
     </div>
 
-    <form
-      action={isEnabled ? endpoint : undefined}
-      method="post"
-      class="grid gap-3 sm:grid-cols-[1fr_auto]"
-      aria-label="Suscripción al boletín"
-    >
-      <label class="sr-only" for="newsletter-email">Correo electrónico</label>
-      <input
-        id="newsletter-email"
-        type="email"
-        name="email"
-        placeholder="tu@email.com"
-        required
-        disabled={!isEnabled}
-        class="min-h-11 rounded-md border border-border-subtle bg-white px-4 text-base text-text-body outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 disabled:cursor-not-allowed disabled:bg-surface-highlight dark:bg-slate-950"
-      />
-      <button
-        type="submit"
-        disabled={!isEnabled}
-        class="min-h-11 rounded-md bg-primary px-5 text-sm font-semibold text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-[0.98] transition-all duration-200 disabled:cursor-not-allowed disabled:bg-slate-400"
-      >
-        Suscribirme
-      </button>
-      <p class="text-xs text-text-muted sm:col-span-2" role="status">
-        {
-          isEnabled
-            ? 'Una entrega semanal. Baja inmediata desde cada correo.'
-            : 'La captura de correos se activará al configurar el endpoint del formulario.'
-        }
-      </p>
-    </form>
+    {
+      isEnabled ? (
+        <form
+          action={endpoint}
+          method="post"
+          class="grid gap-3 sm:grid-cols-[1fr_auto]"
+          aria-label="Suscripción al boletín"
+        >
+          <label class="sr-only" for="newsletter-email">
+            Correo electrónico
+          </label>
+          <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder="tu@email.com"
+            required
+            class="min-h-11 rounded-md border border-border-subtle bg-white px-4 text-base text-text-body outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 dark:bg-slate-950"
+          />
+          <button
+            type="submit"
+            class="min-h-11 rounded-md bg-primary px-5 text-sm font-semibold text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-[0.98] transition-all duration-200"
+          >
+            Suscribirme
+          </button>
+          <p class="text-xs text-text-muted sm:col-span-2">
+            Una entrega semanal. Baja inmediata desde cada correo.
+          </p>
+        </form>
+      ) : (
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={getAsset('/rss.xml')}
+            class="rounded-md border border-border-subtle px-4 py-2.5 text-sm font-semibold text-text-body hover:border-primary hover:text-primary transition-colors duration-200"
+          >
+            RSS
+          </a>
+          <a
+            href="/blog/"
+            class="rounded-md border border-border-subtle px-4 py-2.5 text-sm font-semibold text-text-body hover:border-primary hover:text-primary transition-colors duration-200"
+          >
+            Ver archivo
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>
