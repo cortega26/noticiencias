@@ -4,6 +4,7 @@ import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
 import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
 import TopicStrip from '~/components/common/TopicStrip.astro';
 import { getAsset, getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
 import type { CategoryRail, TopicFrequency } from '~/utils/hub';
 import type { Post } from '~/types';
 
@@ -17,12 +18,7 @@ interface Props {
 
 const { leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } = Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
-const now = new Date();
-const editionDate = now.toLocaleDateString('es-ES', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-});
+const editionDate = getFormattedDate(new Date(), 'long');
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">

@@ -128,7 +128,7 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
             />
           )}
           <time datetime={post.publishDate.toISOString()}>
-            {getFormattedDate(post.publishDate)}
+            {getFormattedDate(post.publishDate, 'relative')}
           </time>
           {post.readingTime && <span>{post.readingTime} min lectura</span>}
         </div>
