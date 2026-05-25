@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import { getAsset } from '~/utils/permalinks';
@@ -69,7 +70,14 @@ if (normalized) {
   if (!props.height && normalized.height) props.height = normalized.height;
 }
 
-const _image = await findImage(finalSrc);
+const _image =
+  typeof props.src === 'object' &&
+  props.src !== null &&
+  'width' in props.src &&
+  'height' in props.src &&
+  'src' in props.src
+    ? props.src
+    : await findImage(finalSrc);
 
 let image: ImageType | undefined = undefined;
 let avifSource:
@@ -110,10 +118,16 @@ if (
       image.attributes.srcset.length > 0 &&
       (props.format ?? 'avif') === 'avif'
     ) {
+      const fallbackWidth = Math.min(Number(props.width) || 1280, 1280);
+      const fallback = await getImage({
+        src: _image,
+        width: fallbackWidth,
+        inferSize: true,
+      });
       avifSource = {
         srcset: image.attributes.srcset,
         sizes: typeof image.attributes.sizes === 'string' ? image.attributes.sizes : undefined,
-        fallbackSrc: _image.src,
+        fallbackSrc: fallback.src,
       };
     }
   }

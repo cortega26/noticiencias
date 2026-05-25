@@ -6,6 +6,7 @@ import TrustPanel from '~/components/common/TrustPanel.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import InvestigationBadge from '~/components/ds/atoms/InvestigationBadge.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/ds/molecules/Breadcrumbs.astro';
 import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
@@ -44,23 +45,43 @@ const sourceFallback =
         },
       ];
 
+const canonical = String(getCanonical(typeof url === 'string' ? url : url.pathname));
+
 const metadata: MetaData = {
   title: post.title,
   description: post.excerpt,
-  canonical: String(getCanonical(typeof url === 'string' ? url : url.pathname)),
+  canonical,
   openGraph: {
     type: 'article',
     images: imageSrc ? [{ url: imageSrc }] : [],
+    'article:published_time': post.publishDate.toISOString(),
+    'article:modified_time': (post.updateDate ?? post.publishDate).toISOString(),
+    'article:section': post.category?.title,
   },
 };
+const publisherOrg = {
+  '@type': 'Organization',
+  name: 'Noticiencias',
+  url: 'https://noticiencias.com/',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://noticiencias.com/assets/images/default.png',
+    width: 1200,
+    height: 628,
+  },
+};
+
+const wordCount = post.content ? post.content.split(/\s+/).filter(Boolean).length : undefined;
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
   headline: post.title.substring(0, 110),
+  description: post.excerpt,
   image: imageSrc ? [imageSrc] : [],
   datePublished: post.publishDate.toISOString(),
   dateModified: (post.updateDate ?? post.publishDate).toISOString(),
+  articleSection: post.category?.title,
   author: [
     {
       '@type': 'Organization',
@@ -68,11 +89,34 @@ const schema = JSON.stringify({
       url: 'https://noticiencias.com/nosotros/',
     },
   ],
+  publisher: publisherOrg,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonical,
+  },
+  inLanguage: 'es',
+  isAccessibleForFree: true,
+  ...(wordCount ? { wordCount } : {}),
 });
+
+const breadcrumbItems = [
+  { label: 'Inicio', href: 'https://noticiencias.com/' },
+  ...(post.category
+    ? [
+        {
+          label: post.category.title,
+          href: getPermalink(post.category.slug, 'category'),
+        },
+      ]
+    : []),
+  { label: post.title, href: canonical },
+];
 ---
 
 <BaseLayout metadata={metadata}>
   <script is:inline type="application/ld+json" set:html={schema} />
+
+  <Breadcrumbs items={breadcrumbItems} />
 
   <article class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
     <header class="mx-auto max-w-5xl border-b border-border-subtle pb-8">

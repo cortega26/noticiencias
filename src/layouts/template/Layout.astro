@@ -1,7 +1,7 @@
 ---
 import '~/assets/styles/tailwind.css';
 
-import { I18N } from 'astrowind:config';
+import { I18N, SITE, METADATA } from 'astrowind:config';
 
 import CommonMeta from '~/components/template/common/CommonMeta.astro';
 import Favicons from '~/components/common/Favicons.astro';
@@ -11,6 +11,7 @@ import Metadata from '~/components/template/common/Metadata.astro';
 import SiteVerification from '~/components/template/common/SiteVerification.astro';
 import Analytics from '~/components/template/common/Analytics.astro';
 import BasicScripts from '~/components/template/common/BasicScripts.astro';
+import { footerData } from '~/navigation';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -23,6 +24,42 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
+
+const siteUrl = SITE.site ?? Astro.site?.href ?? '';
+const logoSrc = new URL('/assets/images/default.png', siteUrl).href;
+
+const socialProfiles = footerData.socialLinks?.map((link) => link.href) ?? [];
+
+const organizationSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: siteUrl,
+  logo: logoSrc,
+  description: METADATA?.description,
+  sameAs: socialProfiles,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    url: `${siteUrl}/reportar-problema/`,
+    availableLanguage: ['Spanish'],
+  },
+});
+
+const webSiteSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/buscar/?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+});
 ---
 
 <!doctype html>
@@ -33,6 +70,8 @@ const { language, textDirection } = I18N;
     <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
+    <script is:inline type="application/ld+json" set:html={organizationSchema} />
+    <script is:inline type="application/ld+json" set:html={webSiteSchema} />
     <SiteVerification />
     <Analytics />
 

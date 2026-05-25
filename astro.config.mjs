@@ -36,6 +36,12 @@ export default defineConfig({
     astrowind({ config: './src/config.yaml' }),
   ],
   image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
     domains: [
       'news.mit.edu',
       'news.yale.edu',

@@ -101,12 +101,16 @@ export interface MetaDataOpenGraph {
   images?: MetaDataImage[];
   locale?: string;
   type?: string;
+  'article:published_time'?: string;
+  'article:modified_time'?: string;
+  'article:section'?: string;
 }
 
 export interface MetaDataTwitter {
   handle?: string;
   site?: string;
   cardType?: string;
+  creator?: string;
 }
 
 export interface Image {

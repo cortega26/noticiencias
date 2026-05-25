@@ -60,12 +60,7 @@ const config = {
     1668, // Various iPads
     1920, // 1080p
     2048, // QXGA
-    2560, // WQXGA
-    3200, // QHD+
-    3840, // 4K
-    4480, // 4.5K
-    5120, // 5K
-    6016, // 6K
+    2560, // WQXGA — cap at 4K; higher resolutions only gain marginal visual improvement
   ],
 
   // Primary output format for local images. sharp (required) supports avif, webp, png, jpg.
@@ -294,6 +289,7 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
         src: image,
         width: w,
         inferSize: true,
+        quality: 75,
         ...(format ? { format: format } : {}),
       });
 

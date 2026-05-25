@@ -4,7 +4,7 @@ import { AstroSeo } from '@astrolib/seo';
 
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
-import { SITE, METADATA, I18N } from 'astrowind:config';
+import { SITE, METADATA } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
@@ -22,6 +22,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  creator = twitter?.creator ?? METADATA?.twitter?.handle,
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
@@ -36,7 +37,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'en',
+      locale: 'es_ES',
       type: 'website',
     },
     twitter: {
@@ -60,7 +61,7 @@ const seoProps: AstroSeoProps = merge(
     nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
     description: description,
     openGraph: { url: canonical, ...openGraph },
-    twitter: twitter,
+    twitter: { ...twitter, creator },
   }
 );
 ---

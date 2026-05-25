@@ -1,13 +1,16 @@
 ---
 import { GoogleAnalytics } from '@astrolib/analytics';
 import { ANALYTICS } from 'astrowind:config';
+
+const gaId = ANALYTICS?.vendors?.googleAnalytics?.id;
+const isEnabled = gaId && gaId !== 'null' && String(gaId).startsWith('G-');
 ---
 
-{
-  ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics
-      id={String(ANALYTICS.vendors.googleAnalytics.id)}
-      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-    />
-  ) : null
-}
+
+
+{isEnabled ? (
+  <GoogleAnalytics
+    id={String(gaId)}
+    partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
+  />
+) : null}
