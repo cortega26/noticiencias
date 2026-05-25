@@ -20,7 +20,7 @@ interface Props {
 const { post, relatedPosts = [], url } = Astro.props;
 const image = (await findImage(post.image)) ?? post.image;
 const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
-const imageAlt = post.image_alt || post.title;
+const imageAlt = post.image_alt ?? '';
 const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
   ? 'Equipo Noticiencias'
   : post.author || 'Noticiencias';

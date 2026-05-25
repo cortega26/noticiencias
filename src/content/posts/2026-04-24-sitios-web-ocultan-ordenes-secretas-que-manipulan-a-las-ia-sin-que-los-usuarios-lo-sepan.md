@@ -11,7 +11,7 @@ tags:
   - google threat intelligence
 excerpt: Investigadores de Google descubrieron que sitios públicos insertan instrucciones ocultas en páginas web para manipular el comportamiento de las inteligencias artificiales que las leen.
 image: ~/assets/images/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.png
-image_alt: 'Imagen de AI threats in the wild: The current state of prompt injections on the web'
+image_alt: 'Esquema de amenazas de inyección de prompts en la web mostrando cómo instrucciones ocultas en sitios web manipulan sistemas de inteligencia artificial'
 source_url: https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html
 refinery_id: 'AI threats in the wild: The current state of prompt injections on the web'
 headlines_variants:

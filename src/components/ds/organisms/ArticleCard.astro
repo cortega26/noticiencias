@@ -28,7 +28,7 @@ const {
 
 const image = showImage ? await findImage(post.image) : undefined;
 const href = getPermalink(post.permalink, 'post');
-const imageAlt = post.image_alt || post.title;
+const imageAlt = post.image_alt ?? '';
 
 const styles = {
   lead: {
