@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-27
 categories:
   - 'Química'
-permalink: 'ciencia/2026-01-27-article-206'
+permalink: 'ciencia/2026-01-27-conoce-a-los-misteriosos-electridos'
 tags:
   - 'electridos'
   - 'catalizadores'

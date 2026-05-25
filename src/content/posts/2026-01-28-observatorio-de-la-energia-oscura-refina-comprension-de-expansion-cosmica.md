@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-28
 categories:
   - 'Astronomía'
-permalink: 'ciencia/2026-01-28-article-279'
+permalink: 'ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica'
 tags:
   - 'energia oscura'
   - 'universo'

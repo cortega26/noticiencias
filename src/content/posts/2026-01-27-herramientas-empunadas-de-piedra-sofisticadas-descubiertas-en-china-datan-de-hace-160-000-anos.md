@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-27
 categories:
   - Arqueología
-permalink: ciencia/2026-01-27-article-235
+permalink: ciencia/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos
 tags:
   - xigou
   - herramienta sofisticada

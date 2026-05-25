@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-24
 categories:
   - 'Química'
-permalink: 'ciencia/2026-01-24-article-36'
+permalink: 'ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879'
 tags:
   - 'grafeno'
   - 'thomas edison'

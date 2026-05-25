@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-18
 categories:
   - 'Astronomía'
-permalink: 'ciencia/2026-01-18-article-64'
+permalink: 'ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii'
 tags:
   - 'misión'
 image: '~/assets/images/2026-01-18-artemis-ii-mission.jpg'

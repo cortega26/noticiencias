@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-02-16
 categories:
   - Salud
-permalink: ciencia/2026-02-16-article-677
+permalink: ciencia/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable
 tags:
   - harina semilla girasol
   - pan enriquecido

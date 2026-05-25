@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-27
 categories:
   - Salud
-permalink: ciencia/2026-01-27-article-250
+permalink: ciencia/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial
 tags:
   - piezo1
   - osteoporosis

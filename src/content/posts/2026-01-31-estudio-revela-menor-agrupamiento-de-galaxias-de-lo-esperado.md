@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-31
 categories:
   - 'Astronomía'
-permalink: 'ciencia/2026-01-31-article-520'
+permalink: 'ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado'
 tags:
   - 'universo'
   - 'galaxias'

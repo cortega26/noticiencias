@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-25
 categories:
   - 'Física'
-permalink: 'ciencia/2026-01-25-article-87'
+permalink: 'ciencia/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada'
 tags:
   - 'física cuántica'
   - 'superposición'

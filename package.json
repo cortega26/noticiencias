@@ -25,7 +25,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:image-alt": "node scripts/check-image-alt.js",
-    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run format:check && eslint .",
+    "check:slug-quality": "node scripts/check-slug-quality.js",
+    "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run format:check && eslint .",
     "lint-fix": "prettier --write . && eslint . --fix",
     "check:contract-sync": "node scripts/check-contract-sync.js ${BACKEND_SCHEMA_PATH:-../noticiencias_news_collector/news_collector/contracts/frontend_schema.py} src/content.config.ts",
     "check:tags": "node scripts/check-tags.js",
@@ -33,7 +34,7 @@
     "test:dist": "node scripts/dist-sanity.js",
     "test:visual": "python scripts/visual-smoke.py",
     "test:deploy": "node scripts/post-deploy-check.js",
-    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:tags && astro sync && astro check && npm run check:freeze"
+    "validate:content": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:tags && astro sync && astro check && npm run check:freeze"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.4",

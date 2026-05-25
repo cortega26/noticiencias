@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-02-18
 categories:
   - Tecnología
-permalink: ciencia/2026-02-18-article-849
+permalink: ciencia/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos
 tags:
   - almacenamiento de datos duradero
   - vidrio para almacenamiento

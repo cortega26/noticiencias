@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-17
 categories:
   - 'Biología'
-permalink: 'ciencia/2026-01-17-article-213'
+permalink: 'ciencia/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados'
 tags:
   - 'paleogenética'
   - 'biodiversidad'

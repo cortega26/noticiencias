@@ -6,7 +6,7 @@ author: Noticiencias
 date: 2026-01-23
 categories:
   - 'Arqueología'
-permalink: 'ciencia/2026-01-23-article-107'
+permalink: 'ciencia/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas'
 tags:
   - 'arqueología'
   - 'historia antigua'
