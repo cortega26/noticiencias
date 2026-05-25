@@ -7,7 +7,11 @@
  * This script adds quality rules on top of the existence check.
  */
 
-import { walkPostFiles, resolveHeroPlaceholderPaths, extractFrontmatter } from './utils/hero-placeholders.js';
+import {
+  walkPostFiles,
+  resolveHeroPlaceholderPaths,
+  extractFrontmatter,
+} from './utils/hero-placeholders.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
