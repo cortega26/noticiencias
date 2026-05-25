@@ -99,7 +99,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     type="button"
                     aria-label={text}
                     aria-haspopup="true"
+                    aria-expanded="false"
                     class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
+                    data-aw-dropdown-trigger
                   >
                     {text}{' '}
                     <Icon
@@ -151,7 +153,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showRssFeed && (
               <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-3 inline-flex items-center"
                 aria-label="RSS Feed"
                 href={getAsset('/rss.xml')}
               >
@@ -178,3 +180,40 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<script>
+  function initDropdowns() {
+    document.querySelectorAll('[data-aw-dropdown-trigger]').forEach((trigger) => {
+      if (trigger.dataset.awDropdownBound === 'true') return;
+      trigger.dataset.awDropdownBound = 'true';
+
+      const parent = trigger.closest('.dropdown');
+      if (!parent) return;
+
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!expanded));
+      });
+
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        }
+      });
+
+      trigger.addEventListener('focus', () => {
+        trigger.setAttribute('aria-expanded', 'true');
+      });
+
+      trigger.addEventListener('blur', (e) => {
+        if (!parent.contains(e.relatedTarget as Node)) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initDropdowns);
+  initDropdowns();
+</script>

@@ -124,8 +124,9 @@ if (!hasContent) return null;
                 <a
                   href={source.url}
                   class="font-medium text-primary underline-offset-4 hover:underline"
-                  rel="nofollow noopener"
+                  rel="nofollow noopener noreferrer"
                   target="_blank"
+                  aria-label={`${source.title} (se abre en una pestaña nueva)`}
                 >
                   {source.title}
                 </a>
