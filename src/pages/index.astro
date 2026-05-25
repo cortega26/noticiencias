@@ -15,7 +15,7 @@ const leadPosts = selectFeaturedPosts(allPosts, 3);
 const leadPostIds = new Set(leadPosts.map((post) => post.id));
 const latestPosts = allPosts.filter((post) => !leadPostIds.has(post.id)).slice(0, 6);
 const contextPosts = selectContextPosts(allPosts, 3);
-const topicRadar = getTopicFrequency(allPosts.slice(0, 18), 12);
+const topicRadar = getTopicFrequency(allPosts.slice(0, 18));
 const categoryRails = buildCategoryRails(
   allPosts,
   configuredCategorySections.map(({ slug, title }) => ({ slug, title })),

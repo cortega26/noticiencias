@@ -55,7 +55,7 @@ export function selectContextPosts(posts: Post[], count = 3): Post[] {
     .slice(0, count);
 }
 
-export function getTopicFrequency(posts: Post[], count = 12): TopicFrequency[] {
+export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {
   const topics = new Map<string, TopicFrequency>();
 
   for (const post of posts) {
@@ -70,6 +70,7 @@ export function getTopicFrequency(posts: Post[], count = 12): TopicFrequency[] {
   }
 
   return [...topics.values()]
+    .filter(({ count: n }) => n >= 2)
     .sort((a, b) => b.count - a.count || a.title.localeCompare(b.title, 'es'))
     .slice(0, count);
 }
