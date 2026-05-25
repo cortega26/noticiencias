@@ -3,6 +3,9 @@ import fs from 'fs';
 
 const allowedTemplateFiles = new Set([
   'src/components/template/common/Image.astro',
+  'src/components/template/common/Metadata.astro',
+  'src/components/template/common/Analytics.astro',
+  'src/components/template/common/CommonMeta.astro',
   'src/components/template/CustomStyles.astro',
   'src/components/template/blog/Pagination.astro',
   'src/components/template/blog/ToBlogLink.astro',

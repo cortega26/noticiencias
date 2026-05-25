@@ -22,8 +22,9 @@ const {
   description,
   openGraph = {},
   twitter = {},
-  creator = twitter?.creator ?? METADATA?.twitter?.handle,
 } = Astro.props;
+
+const creator = twitter?.creator ?? METADATA?.twitter?.handle;
 
 const seoProps: AstroSeoProps = merge(
   {
