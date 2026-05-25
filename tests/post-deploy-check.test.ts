@@ -4,6 +4,7 @@ import {
   readDeletedRouteSmokeChecks,
   probeUrl,
   runPostDeployCheck,
+  verifySecurityHeaders,
   verifyRouteHtml,
 } from '../scripts/post-deploy-check-lib.js';
 
@@ -12,6 +13,20 @@ const silentLogger = {
   warn: vi.fn(),
   error: vi.fn(),
 };
+
+function securityHeaders(overrides: Record<string, string> = {}) {
+  return {
+    'content-security-policy':
+      "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';",
+    'x-frame-options': 'SAMEORIGIN',
+    'x-content-type-options': 'nosniff',
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    'permissions-policy':
+      'geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), usb=()',
+    ...overrides,
+  };
+}
 
 function htmlResponse(html: string, status = 200, headers: Record<string, string> = {}) {
   return new Response(html, {
@@ -125,9 +140,37 @@ function mockFetchSequence(sequence: Array<Response | Error>) {
 }
 
 describe('Post-deploy deploy checker', () => {
+  it('accepts the required live security headers on the custom domain', () => {
+    expect(() =>
+      verifySecurityHeaders(securityHeaders(), { targetUrl: 'https://noticiencias.com/' })
+    ).not.toThrow();
+  });
+
+  it('rejects missing custom-domain security headers before route checks continue', async () => {
+    const fetchImpl = mockFetchSequence([
+      htmlResponse(createHomeHtml(), 200, {
+        ...securityHeaders({
+          'strict-transport-security': 'max-age=0; includeSubDomains; preload',
+        }),
+        server: 'cloudflare',
+      }),
+    ]);
+
+    await expect(
+      runPostDeployCheck('https://noticiencias.com/', {
+        deletedRoutes: [],
+        mode: 'hybrid',
+        fetchImpl,
+        retryDelaysMs: [0],
+        sleep: async () => {},
+        logger: silentLogger,
+      })
+    ).rejects.toThrow(/Security header verification failed/);
+  });
+
   it('passes on an immediate healthy deployment', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',
@@ -265,7 +308,9 @@ describe('Post-deploy deploy checker', () => {
   it('fails on invalid homepage HTML invariants', async () => {
     const fetchImpl = mockFetchSequence([
       htmlResponse(
-        '<html><head><title>Wrong Site</title></head><body><article>One</article></body></html>'
+        '<html><head><title>Wrong Site</title></head><body><article>One</article></body></html>',
+        200,
+        securityHeaders()
       ),
     ]);
 
@@ -283,7 +328,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when search.json is invalid', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',
@@ -336,7 +381,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when search.json is empty', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',
@@ -470,7 +515,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when a deleted route still returns 200 after deploy', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',
@@ -524,7 +569,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when an article hero is AVIF-only inside the article page', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: 'https://www.cdn.noticiencias.com/posts/example.avif',
@@ -548,7 +593,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when an article hero probe does not return 2xx', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',
@@ -574,7 +619,7 @@ describe('Post-deploy deploy checker', () => {
 
   it('fails when article og:image falls back to the default placeholder', async () => {
     const fetchImpl = mockFetchSequence([
-      htmlResponse(createHomeHtml()),
+      htmlResponse(createHomeHtml(), 200, securityHeaders()),
       htmlResponse(
         createArticleHtml({
           heroSrc: '/images/uno.jpg',

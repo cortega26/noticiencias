@@ -66,6 +66,11 @@ const RETRYABLE_HTTP_STATUSES = new Set([408, 425, 500, 502, 503, 504, 521, 522,
 const GREEN = '\x1b[32m';
 const YELLOW = '\x1b[33m';
 const RESET = '\x1b[0m';
+const REQUIRED_SECURITY_HEADERS = {
+  'x-frame-options': 'SAMEORIGIN',
+  'x-content-type-options': 'nosniff',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+};
 
 function normalizeMode(mode) {
   return mode === 'hybrid' ? 'hybrid' : 'strict-live';
@@ -103,6 +108,14 @@ function formatHeadersForLog(headers = {}) {
   const server = headers.server ? `server=${headers.server}` : null;
   const cfRay = headers['cf-ray'] ? `cf-ray=${headers['cf-ray']}` : null;
   return [server, cfRay].filter(Boolean).join(', ');
+}
+
+function headerValuesToString(value) {
+  if (Array.isArray(value)) {
+    return value.join(', ');
+  }
+
+  return typeof value === 'string' ? value : '';
 }
 
 function isResolvableUrlLike(value = '') {
@@ -640,6 +653,72 @@ export function verifyRssXml(body) {
   return { ok: true };
 }
 
+/**
+ * @param {Record<string, string | string[]>} headers
+ * @param {{ targetUrl: string }} options
+ */
+export function verifySecurityHeaders(headers, { targetUrl }) {
+  const normalizedHeaders = headersToObject(headers);
+  const failures = [];
+
+  for (const [headerName, expectedValue] of Object.entries(REQUIRED_SECURITY_HEADERS)) {
+    const actualValue = headerValuesToString(normalizedHeaders[headerName]).trim();
+    if (actualValue.toLowerCase() !== expectedValue.toLowerCase()) {
+      failures.push(
+        `${headerName} expected "${expectedValue}" but got "${actualValue || 'missing'}"`
+      );
+    }
+  }
+
+  const hsts = headerValuesToString(normalizedHeaders['strict-transport-security']).trim();
+  if (!hsts) {
+    failures.push('strict-transport-security is missing');
+  } else {
+    const maxAgeMatch = hsts.match(/max-age=(\d+)/i);
+    const maxAge = maxAgeMatch ? Number(maxAgeMatch[1]) : 0;
+
+    if (!Number.isFinite(maxAge) || maxAge < 31536000) {
+      failures.push(
+        `strict-transport-security max-age must be at least 31536000 but got "${hsts}"`
+      );
+    }
+    if (!/includesubdomains/i.test(hsts)) {
+      failures.push('strict-transport-security must include includeSubDomains');
+    }
+    if (!/preload/i.test(hsts)) {
+      failures.push('strict-transport-security must include preload');
+    }
+  }
+
+  const permissionsPolicy = headerValuesToString(normalizedHeaders['permissions-policy']).trim();
+  if (!permissionsPolicy) {
+    failures.push('permissions-policy is missing');
+  } else {
+    const requiredDirectives = ['geolocation=()', 'microphone=()', 'camera=()', 'payment=()'];
+
+    for (const directive of requiredDirectives) {
+      if (!permissionsPolicy.includes(directive)) {
+        failures.push(`permissions-policy must include ${directive}`);
+      }
+    }
+  }
+
+  if (isCustomDomain(targetUrl)) {
+    const csp = headerValuesToString(normalizedHeaders['content-security-policy']).trim();
+    if (!csp) {
+      failures.push(
+        'content-security-policy response header is missing on the custom domain; a meta CSP does not satisfy edge/header scanners'
+      );
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(`Security header verification failed: ${failures.join('; ')}`);
+  }
+
+  return { ok: true };
+}
+
 export function readDeletedRouteSmokeChecks(filePath = DEFAULT_DELETED_ROUTE_SMOKE_CHECKS_PATH) {
   if (!fs.existsSync(filePath)) {
     return [];
@@ -775,6 +854,9 @@ export async function runPostDeployCheck(
     warnings.push(homeProbe.warning);
     return { success: true, warnings };
   }
+
+  verifySecurityHeaders(homeProbe.result.headers, { targetUrl });
+  logger.info(`${GREEN}[PASS] Security Headers OK${RESET}`);
 
   const homeResult = verifyHomeHtml(homeProbe.result.body, targetUrl);
   warnings.push(...homeResult.warnings);

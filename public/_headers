@@ -1,6 +1,6 @@
 # GitHub Pages does not process _headers files — these are NOT applied in production.
-# Keep this file as reference/documentation. CSP is set via <meta> tag in CommonMeta.astro.
-# If migrating to Netlify or Cloudflare Pages, these headers will take effect.
+# Keep this file in sync with docs/DEPLOYMENT_SECURITY_HEADERS.md and the live edge policy.
+# CSP is currently duplicated in CommonMeta.astro because GitHub Pages cannot emit it itself.
 
 /*
   X-Frame-Options: SAMEORIGIN
