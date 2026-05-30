@@ -80,3 +80,7 @@ Key references for understanding the full system:
 
 - This repo does not currently use React islands or a separate client framework.
 - Historical migration material under `docs/migration/` and `docs/logs/MIGRATION_LOG.md` is useful context, but it is not the operational source of truth for the current site.
+
+---
+
+Built and maintained by **Carlos Ortega** — automation, data systems, and web technical hygiene consulting. Portfolio and services: **[tooltician.com](https://tooltician.com/)**.
