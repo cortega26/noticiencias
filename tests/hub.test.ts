@@ -87,11 +87,25 @@ describe('hub curation helpers', () => {
           { slug: 'energia', title: 'Energía' },
         ],
       }),
+      post({
+        id: 'c',
+        tags: [
+          { slug: 'ia', title: 'IA' },
+          { slug: 'energia', title: 'Energía' },
+        ],
+      }),
+      post({
+        id: 'd',
+        tags: [
+          { slug: 'ia', title: 'IA' },
+          { slug: 'salud', title: 'Salud' },
+        ],
+      }),
     ];
 
     expect(getTopicFrequency(posts, 2)).toEqual([
-      { slug: 'ia', title: 'IA', count: 2 },
-      { slug: 'energia', title: 'Energía', count: 1 },
+      { slug: 'ia', title: 'IA', count: 4 },
+      { slug: 'energia', title: 'Energía', count: 2 },
     ]);
     expect(getRelatedTopics(posts, 'ia', 2).map((topic) => topic.slug)).toEqual([
       'energia',
