@@ -1,4 +1,5 @@
 dist/
+.editorconfig
 .astro/
 .codacy/
 node_modules/
