@@ -29,6 +29,7 @@
     "lint": "npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run format:check && eslint .",
     "lint-fix": "prettier --write . && eslint . --fix",
     "check:contract-sync": "node scripts/check-contract-sync.js ${BACKEND_SCHEMA_PATH:-../noticiencias_news_collector/news_collector/contracts/frontend_schema.py} src/content.config.ts",
+    "sync:contract-snapshot": "node scripts/check-contract-sync.js --generate-snapshot .contract-snapshots/frontend_schema.snapshot.json ${BACKEND_SCHEMA_PATH:-../noticiencias_news_collector/news_collector/contracts/frontend_schema.py} src/content.config.ts",
     "check:tags": "node scripts/check-tags.js",
     "check:freeze": "node scripts/freeze-template.js",
     "test:dist": "node scripts/dist-sanity.js",

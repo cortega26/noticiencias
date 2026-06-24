@@ -1,0 +1,496 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-24T18:02:55.740Z",
+  "backendRef": "main",
+  "pythonIR": {
+    "version": 1,
+    "source": "python",
+    "models": {
+      "HeadlinesVariants": {
+        "fields": [
+          {
+            "name": "question",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "benefit",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "FactCheckItem": {
+        "fields": [
+          {
+            "name": "label",
+            "type": "string",
+            "optional": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "optional": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "SourceItem": {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false,
+            "constraints": {
+              "minLength": 1
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "url",
+            "type": "url",
+            "optional": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "GlossaryItem": {
+        "fields": [
+          {
+            "name": "term",
+            "type": "string",
+            "optional": false,
+            "constraints": {
+              "minLength": 1
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "definition",
+            "type": "string",
+            "optional": false,
+            "constraints": {
+              "minLength": 1
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "ImageObject": {
+        "fields": [
+          {
+            "name": "src",
+            "type": "string",
+            "optional": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "optional": false,
+            "constraints": {
+              "gt": 0,
+              "positive": true,
+              "integer": true
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "height",
+            "type": "number",
+            "optional": false,
+            "constraints": {
+              "gt": 0,
+              "positive": true,
+              "integer": true
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "alt",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "AstroPost": {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false,
+            "constraints": {
+              "minLength": 5,
+              "description": "Article Title"
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "schema_version",
+            "type": "number",
+            "optional": true,
+            "default": 1,
+            "constraints": {
+              "min": 1,
+              "description": "Schema Version",
+              "integer": true
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "excerpt",
+            "type": "string",
+            "optional": false,
+            "constraints": {
+              "minLength": 10,
+              "description": "SEO Meta Description / Excerpt"
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "optional": true,
+            "default": "Noticiencias",
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "date",
+            "type": "union",
+            "optional": false,
+            "constraints": {
+              "description": "Publish Date"
+            },
+            "unionTypes": [
+              "date",
+              "date"
+            ],
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "categories",
+            "type": "array",
+            "optional": true,
+            "default": [],
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "tags",
+            "type": "array",
+            "optional": true,
+            "default": [],
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "image",
+            "type": "union",
+            "optional": false,
+            "constraints": {},
+            "unionTypes": [
+              "string",
+              "ImageObject"
+            ],
+            "nestedModel": "ImageObject",
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "image_alt",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "permalink",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "source_url",
+            "type": "url",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "refinery_id",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "headlines_variants",
+            "type": "object",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": "HeadlinesVariants",
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "translation_method",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "editorial_score",
+            "type": "number",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "review_status",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "confidence",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "investigation",
+            "type": "boolean",
+            "optional": true,
+            "default": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "featured",
+            "type": "boolean",
+            "optional": true,
+            "default": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "featured_rank",
+            "type": "number",
+            "optional": true,
+            "constraints": {
+              "integer": true
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "summary_points",
+            "type": "array",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "uncertainty_note",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "glossary",
+            "type": "array",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "object",
+            "itemNestedModel": "GlossaryItem"
+          },
+          {
+            "name": "requires_uncertainty_note",
+            "type": "boolean",
+            "optional": true,
+            "default": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "fact_check",
+            "type": "array",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "object",
+            "itemNestedModel": "FactCheckItem"
+          },
+          {
+            "name": "why_it_matters",
+            "type": "array",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "series",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "sources",
+            "type": "array",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "object",
+            "itemNestedModel": "SourceItem"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -2,3 +2,41 @@ User-agent: *
 Allow: /
 Disallow: /buscar/
 Disallow: /recursos/
+
+# LLM Context files
+# llms-txt: https://noticiencias.com/llms.txt
+# llms-full-txt: https://noticiencias.com/llms-full.txt
+
+# Allow friendly AI search engines (GEO)
+User-agent: PerplexityBot
+Allow: /
+Disallow: /buscar/
+Disallow: /recursos/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /buscar/
+Disallow: /recursos/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /buscar/
+Disallow: /recursos/
+
+# Disallow aggressive scraping for model training
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+Sitemap: https://noticiencias.com/sitemap-index.xml
