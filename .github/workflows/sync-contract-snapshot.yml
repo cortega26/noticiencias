@@ -1,0 +1,55 @@
+name: Sync Contract Snapshot
+
+on:
+  schedule:
+    # Weekly on Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout frontend repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Checkout back-end schema (sparse)
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: cortega26/noticiencias_news_collector
+          ref: main
+          token: ${{ secrets.NOTICIENCIAS_BACKEND_READ_TOKEN }}
+          path: _backend_sparse
+          sparse-checkout: |
+            news_collector/contracts/frontend_schema.py
+          sparse-checkout-cone-mode: false
+
+      - name: Generate contract snapshot
+        run: |
+          BACKEND_SCHEMA_PATH="_backend_sparse/news_collector/contracts/frontend_schema.py" \
+            npm run sync:contract-snapshot
+
+      - name: Commit snapshot update if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .contract-snapshots/frontend_schema.snapshot.json
+          if git diff --cached --quiet; then
+            echo "Contract snapshot already up to date."
+            exit 0
+          fi
+          git commit -m "chore: sync contract schema snapshot"
+          git push origin "HEAD:${{ github.ref_name }}"
