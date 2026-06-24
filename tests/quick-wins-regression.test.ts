@@ -75,7 +75,9 @@ describe('quick wins regression coverage', () => {
 
     const rss = fs.readFileSync(rssPath, 'utf8');
     expect(rss).not.toContain('/posts/');
-    expect(rss).toContain('https://noticiencias.com/ciencia/2026-01-18-article-64/');
+    expect(rss).toContain(
+      'https://noticiencias.com/ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii/'
+    );
   });
 
   it('keeps ds components independent from the frozen template layer', () => {
@@ -209,7 +211,9 @@ describe('quick wins regression coverage', () => {
     }
   });
 
-  it('renders the En seguimiento habit loop on hub surfaces', () => {
+  it('renders topic navigation only on hub surfaces with repeated topics', () => {
+    let renderedStrips = 0;
+
     for (const route of [
       '/',
       '/blog/',
@@ -218,16 +222,22 @@ describe('quick wins regression coverage', () => {
       '/ciencia/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas/',
     ]) {
       const page = load(readDistHtml(route));
-      expect(page('[data-retention-topic-strip]').length, route).toBeGreaterThan(0);
+      const strips = page('[data-retention-topic-strip]');
+      renderedStrips += strips.length;
+
+      strips.each((_, strip) => {
+        expect(page(strip).find('a[href^="/temas/"]').length, route).toBeGreaterThan(0);
+      });
     }
+
+    expect(renderedStrips).toBeGreaterThan(0);
   });
 
-  it('keeps the newsletter capture accessible when no provider endpoint is configured', () => {
+  it('offers accessible newsletter alternatives when no provider endpoint is configured', () => {
     const page = load(readDistHtml('/newsletter/'));
     const form = page('form[aria-label="Suscripción al boletín"]');
-    expect(form.length).toBe(1);
-    expect(form.find('input[type="email"]').attr('disabled')).toBeDefined();
-    expect(form.find('button[type="submit"]').attr('disabled')).toBeDefined();
-    expect(page.text()).toContain('La captura de correos se activará');
+    expect(form.length).toBe(0);
+    expect(page('a[href="/rss.xml"]').length).toBeGreaterThan(0);
+    expect(page('a[href="/blog/"]').length).toBeGreaterThan(0);
   });
 });

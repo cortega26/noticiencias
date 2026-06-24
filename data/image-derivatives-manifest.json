@@ -804,6 +804,41 @@
       }
     ]
   },
+  "~/assets/images/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.jpg": {
+    "originalWidth": 2000,
+    "originalHeight": 1333,
+    "hash": "077b97f3a2bb7622",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.1400.avif"
+      },
+      {
+        "width": 2000,
+        "height": 1333,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.2000.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.2000.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
