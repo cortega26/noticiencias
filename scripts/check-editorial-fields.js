@@ -175,13 +175,34 @@ function collectEditorialDiagnostics() {
 
 const diagnostics = collectEditorialDiagnostics();
 const strictMode = process.env.STRICT_EDITORIAL === 'true';
+const jsonMode = process.argv.includes('--json');
+const hasErrors = diagnostics.errors.length > 0;
+
+if (jsonMode) {
+  const status = hasErrors ? (strictMode ? 'fail' : 'warning') : 'pass';
+  console.log(
+    JSON.stringify({
+      check: 'editorial-fields',
+      status,
+      filesCount: diagnostics.filesCount,
+      v2Count: diagnostics.v2Count,
+      errors: diagnostics.errors.map((e) => {
+        const colonIdx = e.indexOf(': ');
+        return colonIdx > 0
+          ? { file: e.slice(0, colonIdx), message: e.slice(colonIdx + 2) }
+          : { file: '', message: e };
+      }),
+    })
+  );
+  process.exit(strictMode && hasErrors ? 1 : 0);
+}
 
 if (diagnostics.v2Count === 0) {
   console.log(`[editorial-fields] No hay artículos con schema_version >= 2. Nada que validar.`);
   process.exit(0);
 }
 
-if (diagnostics.errors.length > 0) {
+if (hasErrors) {
   const label = strictMode ? 'error(es)' : 'aviso(s)';
   console.error(
     `[editorial-fields] ${diagnostics.errors.length} ${label} en ${diagnostics.v2Count} artículo(s) v2:`

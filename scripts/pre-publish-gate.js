@@ -113,9 +113,9 @@ writeFileSync(payloadPath, JSON.stringify(diagnostics, null, 2));
 
 console.log(`\n[pre-publish-gate] Ran ${CHECKS.length} checks:`);
 for (const d of diagnostics) {
-  const icon = d.status === 'pass' ? '✅' : '❌';
+  const icon = d.status === 'pass' ? '✅' : d.status === 'warning' ? '⚠️' : '❌';
   const errorCount = d.errors ? d.errors.length : 0;
-  const detail = d.status === 'pass' ? '' : ` (${errorCount} error(s))`;
+  const detail = d.status === 'pass' ? '' : ` (${errorCount} issue(s))`;
   console.log(`  ${icon} ${d.check}${detail}`);
 }
 

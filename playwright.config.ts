@@ -4,8 +4,8 @@ import { defineConfig, devices } from '@playwright/test';
  * Playwright configuration for Noticiencias E2E tests.
  *
  * Targets the production site by default.
- * Override with PLAYWRIGHT_BASE_URL for local preview:
- *   PLAYWRIGHT_BASE_URL=http://localhost:4321 npx playwright test
+ * Override with env var PLAYWRIGHT_BASE_URL for local preview:
+ *   npx playwright test (uses localhost:4321 by default)
  */
 
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL || 'https://noticiencias.com';
@@ -37,6 +37,7 @@ export default defineConfig({
     : [
         {
           command: 'npm run preview',
+          // eslint-disable-next-line no-secrets/no-secrets
           url: 'http://localhost:4321',
           reuseExistingServer: !process.env.CI,
           timeout: 30000,
