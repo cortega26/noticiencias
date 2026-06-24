@@ -45,6 +45,7 @@ function extractFrontmatter(content) {
 
 const offenders = [];
 const files = walkFiles(POSTS_DIR);
+const jsonMode = process.argv.includes('--json');
 
 for (const file of files) {
   const safeFile = assertWithinPostsDir(file);
@@ -56,6 +57,20 @@ for (const file of files) {
   if (DATE_QUOTED_PATTERN.test(frontmatter)) {
     offenders.push(path.relative(REPO_ROOT, safeFile));
   }
+}
+
+if (jsonMode) {
+  const report = {
+    check: 'frontmatter-dates',
+    status: offenders.length === 0 ? 'pass' : 'fail',
+    filesCount: files.length,
+    errors: offenders.map((f) => ({
+      file: f,
+      message: 'Frontmatter date must be unquoted YAML date for Astro z.date()',
+    })),
+  };
+  console.log(JSON.stringify(report, null, 2));
+  process.exit(offenders.length === 0 ? 0 : 1);
 }
 
 if (offenders.length > 0) {

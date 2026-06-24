@@ -15,6 +15,7 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  STRICT_EDITORIAL: true
   BACKEND_CONTRACT_REPOSITORY: cortega26/noticiencias_news_collector
   BACKEND_CONTRACT_REF: main
   BACKEND_CONTRACT_SCHEMA_PATH: news_collector/contracts/frontend_schema.py
@@ -62,8 +63,8 @@ jobs:
           SNAPSHOT=".contract-snapshots/frontend_schema.snapshot.json"
 
           if [ -f "$LIVE_SCHEMA" ]; then
-            echo "::notice::Using live backend schema from sparse checkout."
-            BACKEND_SCHEMA_PATH="$LIVE_SCHEMA" npm run check:contract-sync
+            echo "::notice::Using live backend schema from sparse checkout (strict mode)."
+            node scripts/check-contract-sync.js --strict "$LIVE_SCHEMA" src/content.config.ts
           elif [ -f "$SNAPSHOT" ]; then
             echo "::warning::Backend schema not available (fork/Dependabot?). Using committed snapshot."
             node scripts/check-contract-sync.js --snapshot "$SNAPSHOT" src/content.config.ts
@@ -77,6 +78,14 @@ jobs:
         with:
           args: --no-progress --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov './src/content/**/*.md'
           fail: true
+
+      - name: 📣 Notify Backend on Validation Failure
+        if: failure()
+        env:
+          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+        run: |
+          echo '{"check":"content-guard","status":"fail","message":"One or more validation steps failed. See run for details."}' > /tmp/guard-failure.json
+          node scripts/backend-notify.js --status=fail --payload-file=/tmp/guard-failure.json || true
 
   build:
     if: github.event_name == 'pull_request'

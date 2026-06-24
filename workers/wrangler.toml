@@ -1,0 +1,42 @@
+name = "noticiencias-api"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
+workers_dev = false
+
+# Account ID is passed via CLOUDFLARE_ACCOUNT_ID env var in CI.
+# For local dev, set it in a .dev.vars file or pass via --account-id.
+# account_id = ""
+
+# Route pattern: only intercept /api/* paths on the production domain.
+# All other requests pass through to GitHub Pages.
+# NOTE: Replace "noticiencias.com" below with your actual zone name if different.
+# The zone must exist in your Cloudflare dashboard before deploying.
+routes = [
+  { pattern = "noticiencias.com/api/*", zone_name = "noticiencias.com" }
+]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+# ---------------------------------------------------------------------------
+# Production environment
+# ---------------------------------------------------------------------------
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+# R2 bucket for storing form submissions (optional — create the bucket first)
+# [[env.production.r2_buckets]]
+# binding = "REPORT_BUCKET"
+# bucket_name = "noticiencias-reports"
+
+# KV namespace for pipeline status (optional — create the namespace first)
+# [[env.production.kv_namespaces]]
+# binding = "STATUS_KV"
+# id = ""
+
+# ---------------------------------------------------------------------------
+# Preview environment (for wrangler dev / staging)
+# ---------------------------------------------------------------------------
+[env.preview]
+vars = { ENVIRONMENT = "preview" }

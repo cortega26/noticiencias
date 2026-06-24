@@ -2,6 +2,7 @@
 dist/
 /public/CNAME
 .playwright-cli/
+test-results/
 output/
 reports/
 .coverage

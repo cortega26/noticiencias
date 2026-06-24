@@ -650,7 +650,53 @@ export function verifyRssXml(body) {
     throw new Error('RSS feed is missing expected site branding.');
   }
 
-  return { ok: true };
+  // At least one item
+  const itemCount = (body.match(/<item>/g) || []).length;
+  if (itemCount === 0) {
+    throw new Error('RSS feed has no items.');
+  }
+
+  return { ok: true, itemCount };
+}
+
+/**
+ * Verifies that page HTML is under a reasonable size limit.
+ * @param {string} html
+ * @param {string} url
+ * @param {{ maxBytes?: number }} [options]
+ */
+export function verifyPageWeight(html, url, { maxBytes = 500 * 1024 } = {}) {
+  const size = Buffer.byteLength(html, 'utf-8');
+  const sizeKB = Math.round(size / 1024);
+  if (size > maxBytes) {
+    throw new Error(
+      `Page weight ${sizeKB}KB exceeds limit of ${Math.round(maxBytes / 1024)}KB for ${url}`
+    );
+  }
+  return { sizeBytes: size, sizeKB };
+}
+
+/**
+ * Verifies search index has coverage across categories.
+ * @param {Array<{ categories?: string[] }>} json
+ */
+export function verifySearchCategoryCoverage(json) {
+  if (!Array.isArray(json) || json.length === 0) return { ok: true };
+
+  const categories = new Set();
+  for (const item of json) {
+    if (Array.isArray(item.categories)) {
+      for (const c of item.categories) {
+        categories.add(c);
+      }
+    }
+  }
+
+  if (categories.size === 0) {
+    throw new Error('Search index has no categories — category coverage missing.');
+  }
+
+  return { categoryCount: categories.size };
 }
 
 /**
@@ -862,6 +908,14 @@ export async function runPostDeployCheck(
   warnings.push(...homeResult.warnings);
   logger.info(`${GREEN}[PASS] Home Page OK (${homeResult.articleCount} articles)${RESET}`);
 
+  try {
+    const weight = verifyPageWeight(homeProbe.result.body, targetUrl);
+    logger.info(`${GREEN}[PASS] Page Weight OK (${weight.sizeKB}KB)${RESET}`);
+  } catch (err) {
+    warnings.push({ url: targetUrl, message: err.message });
+    logger.warn(`${YELLOW}[WARN] ${err.message}${RESET}`);
+  }
+
   const homeRouteResult = verifyRouteHtml(homeProbe.result.body);
   if (homeRouteResult.clientRouterScripts > 0) {
     logger.info(
@@ -960,6 +1014,14 @@ export async function runPostDeployCheck(
 
     const searchResult = verifySearchJson(json);
     logger.info(`${GREEN}[PASS] Search Index OK (${searchResult.itemCount} items)${RESET}`);
+
+    try {
+      const coverage = verifySearchCategoryCoverage(json);
+      logger.info(`${GREEN}[PASS] Category Coverage OK (${coverage.categoryCount} categories)${RESET}`);
+    } catch (err) {
+      warnings.push({ url: searchUrl, message: err.message });
+      logger.warn(`${YELLOW}[WARN] ${err.message}${RESET}`);
+    }
   }
 
   const rssUrl = new URL('/rss.xml', targetUrl).toString();

@@ -8,12 +8,13 @@
  *
  * Usage:
  *   node scripts/check-contract-sync.js <path-to-frontend_schema.py> <path-to-config.ts>
+ *   node scripts/check-contract-sync.js --strict <path-to-frontend_schema.py> <path-to-config.ts>
  *   node scripts/check-contract-sync.js --snapshot <snapshot.json> <path-to-config.ts>
  *   node scripts/check-contract-sync.js --generate-snapshot <out.json> <py-path> <ts-path>
  *
  * Exit codes:
- *   0 — parity confirmed (may include warnings)
- *   1 — parity failure (field presence mismatch)
+ *   0 — parity confirmed (may include warnings in V1 mode; no warnings in --strict)
+ *   1 — parity failure (field presence mismatch, or any mismatch in --strict mode)
  *   2 — usage error or file not found
  */
 
@@ -26,6 +27,7 @@ import { resolve, dirname } from 'path';
 
 const args = process.argv.slice(2);
 let mode = 'compare'; // 'compare' | 'snapshot' | 'generate-snapshot'
+let strictMode = false;
 let pyPath, tsPath, snapshotPath, generatePath;
 
 for (let i = 0; i < args.length; i++) {
@@ -35,9 +37,12 @@ for (let i = 0; i < args.length; i++) {
   } else if (args[i] === '--generate-snapshot') {
     mode = 'generate-snapshot';
     generatePath = args[++i];
+  } else if (args[i] === '--strict') {
+    strictMode = true;
   } else if (args[i] === '--help' || args[i] === '-h') {
     console.log(`Usage:
   node check-contract-sync.js <frontend_schema.py> <config.ts>
+  node check-contract-sync.js --strict <frontend_schema.py> <config.ts>
   node check-contract-sync.js --snapshot <snapshot.json> <config.ts>
   node check-contract-sync.js --generate-snapshot <out.json> <frontend_schema.py> <config.ts>`);
     process.exit(0);
@@ -1163,7 +1168,7 @@ function mapNestedModelNames(pyIr, tsIr) {
 /**
  * Main comparison function.
  */
-function compareSchemas(pyIr, tsIr) {
+function compareSchemas(pyIr, tsIr, strictMode = false) {
   const diffs = [];
 
   // Map Python nested model names to TypeScript inline names
@@ -1193,7 +1198,10 @@ function compareSchemas(pyIr, tsIr) {
     ];
   }
 
-  // Compare top-level fields (field presence = error, type/constraint = warning in V1)
+  // Compare top-level fields.
+  // V1: type/constraint/nested mismatches are warnings.
+  // Strict mode: all mismatches are errors (except those in ALLOWED_DIVERGENCES).
+  const typeConstraintSeverity = strictMode ? 'error' : 'warning';
   diffs.push(
     ...compareFieldSets(
       pyAstro.fields,
@@ -1201,7 +1209,7 @@ function compareSchemas(pyIr, tsIr) {
       'AstroPost',
       pyIr.models,
       tsIr.models,
-      'warning' // V1: type/constraint/nested mismatches are warnings
+      typeConstraintSeverity
     )
   );
 
@@ -1212,7 +1220,7 @@ function compareSchemas(pyIr, tsIr) {
 // Report formatting
 // ---------------------------------------------------------------------------
 
-function printReport(diffs) {
+function printReport(diffs, strictMode = false) {
   const errors = diffs.filter((d) => d.severity === 'error');
   const warnings = diffs.filter((d) => d.severity === 'warning');
   const allowedWarnings = [];
@@ -1252,13 +1260,24 @@ function printReport(diffs) {
   }
 
   if (realWarnings.length > 0) {
-    console.warn(
-      `\n[contract-sync] ${realWarnings.length} WARNING(S) (type/constraint — informational in V1):`
-    );
-    for (const w of realWarnings) {
-      console.warn(`  ⚠️  ${w.path}: ${w.message}`);
-      if (w.python) console.warn(`     Python:   ${w.python}`);
-      if (w.typescript) console.warn(`     TypeScript: ${w.typescript}`);
+    if (strictMode) {
+      console.error(
+        `\n[contract-sync] ${realWarnings.length} STRICT-MODE ERROR(S) (type/constraint — escalated from warning):`
+      );
+      for (const w of realWarnings) {
+        console.error(`  ❌ ${w.path}: ${w.message}`);
+        if (w.python) console.error(`     Python:   ${w.python}`);
+        if (w.typescript) console.error(`     TypeScript: ${w.typescript}`);
+      }
+    } else {
+      console.warn(
+        `\n[contract-sync] ${realWarnings.length} WARNING(S) (type/constraint — informational in V1):`
+      );
+      for (const w of realWarnings) {
+        console.warn(`  ⚠️  ${w.path}: ${w.message}`);
+        if (w.python) console.warn(`     Python:   ${w.python}`);
+        if (w.typescript) console.warn(`     TypeScript: ${w.typescript}`);
+      }
     }
   }
 
@@ -1272,6 +1291,13 @@ function printReport(diffs) {
   if (errors.length > 0) {
     console.error(
       '\n[contract-sync] PARITY FAILURE. See docs/adr/0003-content-schema-contract.md for the coordinated change protocol.'
+    );
+    return 1;
+  }
+
+  if (strictMode && realWarnings.length > 0) {
+    console.error(
+      '\n[contract-sync] STRICT MODE FAILURE. New divergences detected — fix or add to ALLOWED_DIVERGENCES with documented reason.'
     );
     return 1;
   }
@@ -1345,8 +1371,8 @@ function main() {
     }
 
     // Also run comparison to validate the snapshot
-    const diffs = compareSchemas(pyIr, tsIr);
-    const exitCode = printReport(diffs);
+    const diffs = compareSchemas(pyIr, tsIr, strictMode);
+    const exitCode = printReport(diffs, strictMode);
     process.exit(exitCode);
   }
 
@@ -1432,8 +1458,8 @@ function main() {
   }
 
   // Compare
-  const diffs = compareSchemas(pyIr, tsIr);
-  const exitCode = printReport(diffs);
+  const diffs = compareSchemas(pyIr, tsIr, strictMode);
+  const exitCode = printReport(diffs, strictMode);
   process.exit(exitCode);
 }
 

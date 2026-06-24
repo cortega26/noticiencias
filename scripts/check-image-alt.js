@@ -19,6 +19,7 @@ import yaml from 'js-yaml';
 const paths = resolveHeroPlaceholderPaths();
 const files = walkPostFiles(paths);
 const errors = [];
+const jsonMode = process.argv.includes('--json');
 
 for (const file of files) {
   const content = fs.readFileSync(file, 'utf8');
@@ -44,6 +45,20 @@ for (const file of files) {
       `${relPath}: image_alt starts with "Imagen de" — use a descriptive Spanish phrase instead: "${imageAlt}"`
     );
   }
+}
+
+if (jsonMode) {
+  const report = {
+    check: 'image-alt',
+    status: errors.length === 0 ? 'pass' : 'fail',
+    filesCount: files.length,
+    errors: errors.map((msg) => {
+      const [file, ...rest] = msg.split(': ');
+      return { file, message: rest.join(': ') };
+    }),
+  };
+  console.log(JSON.stringify(report, null, 2));
+  process.exit(errors.length === 0 ? 0 : 1);
 }
 
 if (errors.length > 0) {

@@ -12,5 +12,5 @@
     "esModuleInterop": true
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "vendor", "_site", "reports", "coverage", "archive"]
+  "exclude": ["dist", "vendor", "_site", "reports", "coverage", "archive", "workers"]
 }

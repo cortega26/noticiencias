@@ -1,0 +1,87 @@
+name: Performance Monitor
+
+on:
+  schedule:
+    # Monthly on the 15th at 09:37 UTC
+    - cron: '37 9 15 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+
+      - name: Build site
+        run: npm run build
+        env:
+          IMAGE_DERIVATIVES_REQUIRE_URL: 0
+          IMAGE_DERIVATIVES_STRICT: 0
+
+      - name: Serve and audit
+        run: |
+          npx serve dist -p 4173 &
+          sleep 3
+
+          lighthouse http://localhost:4173 \
+            --output=json \
+            --output-path=reports/lighthouse-home.json \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=performance,accessibility,seo,best-practices
+
+          # Extract scores
+          PERF=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories.performance.score*100))")
+          A11Y=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories.accessibility.score*100))")
+          SEO=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories.seo.score*100))")
+          BP=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories['best-practices'].score*100))")
+
+          echo "Performance: ${PERF}"
+          echo "Accessibility: ${A11Y}"
+          echo "SEO: ${SEO}"
+          echo "Best Practices: ${BP}"
+
+          # Alert if any score is below 80
+          if [ "$PERF" -lt 80 ] || [ "$A11Y" -lt 80 ] || [ "$SEO" -lt 80 ] || [ "$BP" -lt 80 ]; then
+            echo "::warning::Lighthouse scores below threshold: P=${PERF} A=${A11Y} S=${SEO} B=${BP}"
+            echo "LOW_SCORES=true" >> $GITHUB_ENV
+          fi
+
+          kill %1 || true
+
+      - name: Create issue on low scores
+        if: env.LOW_SCORES == 'true'
+        uses: actions/github-script@df52d1e8363f5c98429825cd7c4068346a38e93a # v7.0.0
+        with:
+          script: |
+            const title = '📉 Lighthouse: Puntuaciones bajas detectadas';
+            const body = [
+              'El monitoreo mensual de Lighthouse detectó puntuaciones por debajo del umbral de 80.',
+              '',
+              'Revisa los reportes en `reports/lighthouse-home.json` para más detalles.',
+              `- [Ver ejecución](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['performance'],
+            });

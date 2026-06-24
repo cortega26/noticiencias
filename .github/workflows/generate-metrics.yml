@@ -1,0 +1,37 @@
+name: Generate Content Metrics
+
+on:
+  schedule:
+    # Daily at 06:17 UTC (off-peak)
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate metrics
+        run: node scripts/generate-metrics.js
+
+      - name: Commit metrics
+        uses: stefanzweifel/git-auto-commit-action@6251bb73453e40b5abc4c7ef5a9915c53ca82fc0 # v5.0.0
+        with:
+          commit_message: 'chore: update pipeline metrics [skip ci]'
+          file_pattern: 'data/metrics/pipeline-metrics.json'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'

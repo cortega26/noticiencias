@@ -11,6 +11,7 @@ permissions:
   id-token: write
 
 env:
+  STRICT_EDITORIAL: true
   R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
   R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
   R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
@@ -18,7 +19,27 @@ env:
   R2_PUBLIC_BASE_URL: ${{ secrets.CLOUDFLARE_R2_PUBLIC_BASE_URL }}
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: 🚦 Pre-Publish Gate
+        run: node scripts/pre-publish-gate.js
+
   package:
+    needs: gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -107,3 +128,10 @@ jobs:
         env:
           DEPLOY_CHECK_MODE: hybrid
         run: npm run test:deploy -- ${{ steps.deployment.outputs.page_url }}
+
+      - name: 📣 Post-Publish Callback
+        if: success()
+        env:
+          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+          DEPLOY_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/post-publish-callback.js ${{ steps.deployment.outputs.page_url }}

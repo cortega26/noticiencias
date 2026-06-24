@@ -1,0 +1,87 @@
+name: Content Staleness Alert
+
+on:
+  schedule:
+    # Monthly on the 1st at 07:23 UTC
+    - cron: '23 7 1 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check-staleness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run staleness check
+        id: staleness
+        run: |
+          node scripts/check-content-staleness.js --json > /tmp/staleness.json
+          cat /tmp/staleness.json
+        continue-on-error: true
+
+      - name: Calculate staleness percentage
+        id: calc
+        run: |
+          TOTAL=$(node -e "const d=require('/tmp/staleness.json'); console.log(d.total_articles)")
+          STALE=$(node -e "const d=require('/tmp/staleness.json'); console.log(d.stale_count)")
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "stale=$STALE" >> $GITHUB_OUTPUT
+
+      - name: Create alert issue
+        if: steps.calc.outputs.stale > 0
+        uses: actions/github-script@df52d1e8363f5c98429825cd7c4068346a38e93a # v7.0.0
+        with:
+          script: |
+            const total = parseInt('${{ steps.calc.outputs.total }}');
+            const stale = parseInt('${{ steps.calc.outputs.stale }}');
+            const pct = total > 0 ? ((stale / total) * 100).toFixed(1) : 0;
+
+            const title = `📊 Contenido estancado: ${stale} artículos (>180 días sin actualizar)`;
+            const body = [
+              `**${stale} de ${total} artículos (${pct}%)** no se han actualizado en más de 180 días.`,
+              '',
+              'Revisa el dashboard para más detalles: https://noticiencias.com/admin/dashboard',
+              '',
+              'Ejecuta `node scripts/check-content-staleness.js` localmente para ver la lista completa.',
+            ].join('\n');
+
+            // Search for existing open staleness issue
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['staleness'],
+            });
+
+            if (issues.length > 0) {
+              // Update existing issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues[0].number,
+                body,
+              });
+            } else if (stale > 5) {
+              // Create new issue only if more than 5 stale articles
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['staleness'],
+              });
+            }

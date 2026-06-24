@@ -1,0 +1,15 @@
+{
+  "name": "noticiencias-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250601.0",
+    "vitest": "^4.0.17",
+    "wrangler": "^4.25.0"
+  }
+}

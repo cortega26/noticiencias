@@ -1,0 +1,21 @@
+---
+import MetricCard from '../molecules/MetricCard.astro';
+
+interface MetricItem {
+  title: string;
+  value: string | number;
+  subtitle?: string;
+  trend?: 'up' | 'down' | 'neutral';
+}
+
+interface Props {
+  metrics: MetricItem[];
+  class?: string;
+}
+
+const { metrics, class: className = '' } = Astro.props;
+---
+
+<div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${className}`}>
+  {metrics.map((m) => <MetricCard {...m} />)}
+</div>

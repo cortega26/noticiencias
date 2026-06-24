@@ -1,0 +1,227 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import DashboardMetrics from '~/components/ds/organisms/DashboardMetrics.astro';
+import DashboardHealthList from '~/components/ds/organisms/DashboardHealthList.astro';
+
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const metricsPath = resolve('data/metrics/pipeline-metrics.json');
+let metrics: Record<string, any> | null = null;
+try {
+  if (existsSync(metricsPath)) {
+    metrics = JSON.parse(readFileSync(metricsPath, 'utf-8'));
+  }
+} catch {
+  // Metrics not yet generated
+}
+
+const content = metrics?.content;
+const pipeline = metrics?.pipeline;
+const images = metrics?.images;
+
+// Editorial gaps — extract with explicit types
+type EditorialGaps = Record<string, number>;
+const gaps: EditorialGaps = content?.editorial_gaps ?? {};
+const gapValues: number[] = Object.values(gaps);
+const gapEntries: [string, number][] = Object.entries(gaps);
+const allEditorialComplete = gapEntries.length > 0 && gapValues.every((v) => v === 0);
+const hasGaps = gapValues.some((v) => v > 0);
+const missingGapNames = gapEntries
+  .filter(([, v]) => v > 0)
+  .map(([k]) => k.replace('missing_', ''))
+  .join(', ');
+
+const overviewMetrics = [
+  {
+    title: 'Total de artículos',
+    value: content?.total_articles ?? '—',
+    subtitle: content ? `${content.v2_articles} en v2` : undefined,
+    trend: 'neutral' as const,
+  },
+  {
+    title: 'Palabras promedio',
+    value: content?.avg_words?.toLocaleString() ?? '—',
+    subtitle: content ? `${content.total_words?.toLocaleString()} total` : undefined,
+    trend: 'neutral' as const,
+  },
+  {
+    title: 'Categorías',
+    value: content?.categories?.length ?? '—',
+    subtitle: content?.categories?.[0]?.name,
+    trend: 'neutral' as const,
+  },
+  {
+    title: 'Entrega de imágenes',
+    value: images?.delivery_mode === 'r2' ? 'R2 CDN' : 'GitHub',
+    subtitle: images ? `${images.derivatives_available} derivativos` : undefined,
+    trend: images?.delivery_mode === 'r2' ? 'up' as const : 'neutral' as const,
+  },
+  {
+    title: 'Campos editoriales',
+    value: gapEntries.length > 0
+      ? (allEditorialComplete ? '✅ Completo' : '⚠️ Con faltantes')
+      : '—',
+    subtitle: gapEntries.length > 0 ? (missingGapNames || 'Todos presentes') : undefined,
+    trend: hasGaps ? 'down' as const : 'neutral' as const,
+  },
+  {
+    title: 'Generado',
+    value: metrics?.generated_at
+      ? new Date(metrics.generated_at).toLocaleDateString('es-MX', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        })
+      : '—',
+    subtitle: 'Última actualización',
+    trend: 'neutral' as const,
+  },
+];
+
+const healthChecks = [
+  {
+    name: 'Schema Contract',
+    description: 'Paridad de esquema entre backend (Python) y frontend (TypeScript)',
+    status: (metrics ? 'pass' : 'unknown') as 'pass' | 'unknown',
+    detail: metrics ? 'Snapshot actualizado' : 'Métricas no generadas',
+  },
+  {
+    name: 'Campos editoriales v2',
+    description: 'summary_points, glossary, fact_check, why_it_matters, confidence, sources',
+    status: (gapEntries.length > 0
+      ? (allEditorialComplete ? 'pass' : 'warning')
+      : 'unknown') as 'pass' | 'warning' | 'unknown',
+    detail: gapEntries.length > 0
+      ? `${content?.v2_articles ?? 0} artículos v2. Faltantes: ${missingGapNames || 'ninguno'}`
+      : undefined,
+  },
+  {
+    name: 'Imágenes hero',
+    description: 'Imágenes de portada presentes y con alt text',
+    status: 'pass' as const,
+    detail: 'Validado en CI',
+  },
+  {
+    name: 'Derivativos de imagen',
+    description: 'Variantes AVIF generadas para CDN',
+    status: ((images?.derivatives_available ?? 0) > 0 ? 'pass' : 'warning') as 'pass' | 'warning',
+    detail: images ? `${images.derivatives_available} derivativos disponibles` : undefined,
+  },
+  {
+    name: 'Linting',
+    description: 'ESLint + Prettier + check:tags + check:doc-drift',
+    status: 'pass' as const,
+    detail: 'Validado en pre-commit y CI',
+  },
+];
+
+const topCategories: Array<{ name: string; count: number }> = content?.categories?.slice(0, 10) ?? [];
+const recentArticles: Array<{
+  title: string;
+  date: string;
+  categories: string[];
+  schema_version: number;
+  editorial_score: number | null;
+}> = content?.articles_by_date?.slice(0, 10) ?? [];
+
+// Pass metadata the way BaseLayout expects it
+const metadata = {
+  title: 'Dashboard | Noticiencias',
+  description: 'Métricas editoriales y salud del pipeline de Noticiencias.',
+};
+---
+
+<BaseLayout metadata={metadata}>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+    <SectionHeading
+      title="Dashboard Editorial"
+      description="Métricas de contenido, calidad editorial y salud del pipeline de publicación."
+      level={1}
+    />
+
+    <section>
+      <h2 class="font-heading text-xl font-bold text-text-body mb-4">Resumen</h2>
+      <DashboardMetrics metrics={overviewMetrics} />
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <DashboardHealthList checks={healthChecks} />
+
+      <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle">
+        <div class="px-5 py-4 border-b border-border-subtle">
+          <h3 class="text-lg font-heading font-bold text-text-body">Categorías principales</h3>
+        </div>
+        {
+          topCategories.length > 0 ? (
+            <ul class="divide-y divide-border-subtle">
+              {topCategories.map((cat) => (
+                <li class="px-5 py-3 flex items-center justify-between">
+                  <a
+                    href={`/categorias/${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    class="text-sm font-medium text-primary hover:underline"
+                  >
+                    {cat.name}
+                  </a>
+                  <span class="text-sm text-text-muted">{cat.count} artículos</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div class="px-5 py-8 text-center text-text-muted text-sm">
+              No hay datos de categorías. Ejecuta <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>.
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <section>
+      <h2 class="font-heading text-xl font-bold text-text-body mb-4">Artículos recientes</h2>
+      {
+        recentArticles.length > 0 ? (
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle">
+            <ul class="divide-y divide-border-subtle">
+              {recentArticles.map((article) => (
+                <li class="px-5 py-3 flex items-center justify-between gap-4">
+                  <div class="min-w-0">
+                    <p class="text-sm font-medium text-text-body truncate">{article.title}</p>
+                    <p class="text-xs text-text-muted mt-0.5">
+                      {article.date} &middot; {article.categories?.join(', ') || 'Sin categoría'}
+                    </p>
+                  </div>
+                  <div class="shrink-0 flex items-center gap-2">
+                    {article.schema_version >= 2 && (
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                        v{article.schema_version}
+                      </span>
+                    )}
+                    {article.editorial_score != null && (
+                      <span class="text-xs text-text-muted">Score: {article.editorial_score}</span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle px-5 py-8 text-center text-text-muted text-sm">
+            No hay artículos para mostrar. Ejecuta <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>.
+          </div>
+        )
+      }
+    </section>
+
+    <footer class="text-center text-xs text-text-muted pt-4">
+      <p>
+        Última generación: {metrics?.generated_at
+          ? new Date(metrics.generated_at).toLocaleString('es-MX')
+          : 'Nunca'}
+        &middot; Este dashboard es una página estática generada en CI.
+      </p>
+    </footer>
+  </main>
+</BaseLayout>

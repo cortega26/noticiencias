@@ -68,6 +68,8 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 form:
+  # Cuando el Worker esté desplegado, descomenta la línea de abajo y comenta endpoint: ''
+  # endpoint: 'https://noticiencias.com/api/report'
   endpoint: '' # https://formspree.io/f/your_id_here
 
 ui:
