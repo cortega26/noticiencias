@@ -14,7 +14,16 @@ const __dirname = path.dirname(__filename);
 
 export default [
   {
-    ignores: ['dist/', '_site/', 'node_modules/', 'coverage/', 'reports/', '.astro/', '.env.example', 'workers/'],
+    ignores: [
+      'dist/',
+      '_site/',
+      'node_modules/',
+      'coverage/',
+      'reports/',
+      '.astro/',
+      '.env.example',
+      'workers/',
+    ],
   },
   {
     plugins: {
