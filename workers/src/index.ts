@@ -16,7 +16,8 @@ import { handleHealth } from './handlers/status';
 export default {
   async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
-    const { pathname, method } = request;
+    const { pathname } = url;
+    const method = request.method;
 
     // POST /api/report — form submission
     if (pathname === '/api/report' && method === 'POST') {
