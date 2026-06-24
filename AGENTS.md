@@ -17,6 +17,24 @@ Before making any change:
 
 Do not ship "temporary", "follow-up", or "cleanup later" solutions. If the change needs a second step to be safe, the task is not complete.
 
+### 0.5) Quick Commands
+
+```bash
+npm run dev          # Start Astro dev server
+npm run build        # Full build (image derivatives + astro build)
+npm run preview      # Preview production build
+npm run lint         # All checks (frontmatter, images, tags, doc drift, prettier, eslint)
+npm run lint-fix     # Prettier write + eslint --fix
+npm run validate:content  # Full content validation (dates, images, sidecars, tags, astro check, freeze)
+npm run test:audit   # Run all Vitest tests (tests/**/*.test.ts)
+npm run test:coverage # Vitest with coverage
+npm run test:dist    # Sanity check on dist/ output
+npm run test:deploy -- <url>  # Post-deployment smoke tests
+npm run publish:image-derivatives  # Scan images, update manifest, upload AVIF to R2
+npm run format       # Prettier write
+npm run check:contract-sync  # Validate content schema matches backend contract
+```
+
 ## 1) Repo Reality
 
 The front-end is a static Astro site with MDX content and server-first rendering.
@@ -32,6 +50,28 @@ Current architectural pillars:
 - `src/utils/`: reusable data and URL helpers. These must stay mostly pure.
 
 The repo currently has two UI layers: `ds` and `template`. They are not interchangeable. New work must preserve that boundary instead of blending both systems into an unstructured component pool.
+
+### 1.1) Data flow
+
+1. Backend publishes Markdown into `src/content/posts/`
+2. `src/content.config.ts` validates frontmatter at build time
+3. `src/utils/blog.ts` normalizes collection entries into `Post` shape
+4. Pages consume normalized posts to build list, taxonomy, series, RSS, article pages
+5. Layouts forward metadata to `src/components/template/common/Metadata.astro` for SEO tags
+6. Astro emits static output to `dist/`
+7. GitHub Actions deploys `dist/` to GitHub Pages
+
+### 1.2) URL structure
+
+- Blog: `/blog/` → `src/pages/blog/[...page].astro`
+- Categories: `/categorias/[category]/` → `src/pages/categorias/[category]/[...page].astro`
+- Tags: `/temas/[tag]/` → `src/pages/temas/[tag]/[...page].astro`
+- Articles: `/%category%/%slug%/` (or override via frontmatter `permalink`)
+- Search: `/buscar` → build-time JSON index + Lunr client-side
+
+### 1.3) Image pipeline
+
+Hero images use a derivative manifest at `data/image-derivatives-manifest.json`. The `publish:image-derivatives` script generates AVIF variants and uploads to Cloudflare R2. Without R2 env vars, falls back to Astro image optimization. CI can enforce CDN URLs via `IMAGE_DERIVATIVES_REQUIRE_URL=1`.
 
 ## 2) Architectural Laws
 
