@@ -14,23 +14,23 @@
 
 ### High priority
 
-- **Replace `default.png` with article-specific images** for the 3 articles using the placeholder (articles 1, 2, 4). The `default.png` is a temporary fix; editorial quality improves with topical hero images. The news_collector pipeline should generate these automatically on re-processing.
+- **Replace `default.png` with article-specific images** ✅ (resolved June 2026): The 3 articles now have proper images. Only `2026-02-12-bienvenidos.md` (editorial welcome post) uses `default.png` via allowlist.
 
-- **Add `check:hero-images` to `validate:content`** as well. Currently it runs in `lint`; adding it to `validate:content` ensures CI catches it during content validation too.
+- **Add `check:hero-images` to `validate:content`** ✅ (resolved): Already integrated in both `lint` and `validate:content`.
 
 ### Medium priority
 
-- **Fix unused `eslint-disable` directives** in `scripts/check-frontmatter-dates.js` (lines 25, 29, 58). These cause 3 non-blocking ESLint warnings. They can be removed now that the security plugin no longer flags those patterns.
+- **Fix unused `eslint-disable` directives** in `scripts/check-frontmatter-dates.js` (lines 25, 29, 58). These cause 3 non-blocking ESLint warnings.
 
-- **Validate `image_alt` presence** in `check-hero-images.js` or the schema. Currently no article uses `image_alt`, but the schema supports it and accessibility audits will benefit from it.
+- **Validate `image_alt` presence** ✅ (resolved June 2026): `check-hero-images.js` + `check-image-alt.js` validate `image_alt`. All 30 posts have `image_alt`.
 
-- **Extend the check to public `/images/` paths**: the guardrail skips existence checks for `/images/` paths since those live in `public/` and require a build to verify. A separate dist-sanity step could cover this.
+- **Extend the check to public `/images/` paths**: the guardrail skips existence checks for `/images/` paths since those live in `public/` and require a build to verify. Already covered by `test:audit`.
 
 ### Low priority
 
-- **Investigate the Codex PR `778cf2c`** (Remove leaked authoring prompt). Since CI is offline, this PR was not merged. The preamble fix has been applied directly to main in this session. Once CI is restored, the PR should be closed as superseded.
+- **Investigate the Codex PR `778cf2c`** (Remove leaked authoring prompt). Superseded by direct main commit. Close PR when CI is restored.
 
-- **Add image dimensions to `default.png` fallback** articles. The schema supports `image` as an object `{ src, width, height }`. Using the full object form allows Astro to generate properly sized `<img>` without an extra stat call.
+- **Add image dimensions to `default.png` fallback** articles. The schema supports `image` as an object `{ src, width, height }`. Only `bienvenidos.md` remains.
 
 ---
 

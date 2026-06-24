@@ -18,26 +18,19 @@
 
 ### High priority
 
-- **Source article-specific images for 2 remaining `default.png` articles**:
-  - `2024-07-07-la-paradoja...` (Lilian Weng hallucination post) — needs manually sourced image; blog has no OG tag
-  - `2026-02-15-publicidad...` (TechXplore chatbot advertising post) — source returns 403; find equivalent image elsewhere or create one
-  - Both are substantive articles and deserve proper hero images
+- **N/A** — All high-priority items resolved. The 2 `default.png` articles (Lilian Weng, TechXplore) now have proper images. Only `2026-02-12-bienvenidos.md` uses `default.png` as an allowlisted editorial placeholder.
 
 ### Medium priority
 
-- **Investigate 6 mislabeled `.jpg` files that are actually WebP**:
-  - `2026-01-25-article-86.jpg`, `2026-01-25-article-87.jpg`, `2026-01-27-article-432.jpg`, `2026-01-28-article-343.jpg` are WebP content with `.jpg` extension
-  - These still work (Astro reads the file, sharp handles WebP input) but the naming is misleading
-  - Low risk — fix at next opportunity by renaming and updating frontmatter
+- **AVIF `<picture>` fallback for maximum compatibility** ✅ (implemented June 2026):
+  - `src/components/common/Image.astro` now emits `<picture><source type="image/avif" srcset="..."><img src="..."></picture>`
 
-- **AVIF `<picture>` fallback for maximum compatibility** (optional):
-  - Currently: AVIF `srcset` + original `src`. Covers ~96% of users.
-  - Enhancement: refactor `Image.astro` to emit `<picture><source type="image/avif" srcset="..."><img src="...webp"></picture>` — catches the remaining 4% more gracefully
-  - Requires changing the component from `<img>` to `<picture>`, adds complexity
+- **Validate `image_alt` presence in guardrail** ✅ (implemented):
+  - `check-hero-images.js` + `check-image-alt.js` validate `image_alt` presence and quality
+  - 0 posts missing `image_alt`
 
-- **Validate `image_alt` presence in guardrail**:
-  - `check-hero-images.js` currently only checks `image` field presence and file existence
-  - Adding `image_alt` validation would improve accessibility audit compliance
+- **6 mislabeled `.jpg` files that were WebP** ✅ (resolved):
+  - `check-image-file-extensions.js` validates magic bytes against extension; currently passes clean
 
 ### Low priority
 
@@ -45,7 +38,7 @@
   - Currently only local `~/assets/images/` paths are validated for file existence
   - Public `/images/` paths require a built `dist/` to validate; already covered by `test:audit`
 
-- **Replace `default.png` for editorial articles** (`bienvenidos`, `salud-bienvenida`) with branded editorial placeholders — purely cosmetic
+- **Replace `default.png` for editorial articles** (`bienvenidos`) with branded editorial placeholder — purely cosmetic, allowlisted
 
 ---
 

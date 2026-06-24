@@ -241,10 +241,7 @@
             "constraints": {
               "description": "Publish Date"
             },
-            "unionTypes": [
-              "date",
-              "date"
-            ],
+            "unionTypes": ["date", "date"],
             "nestedModel": null,
             "itemType": null,
             "itemNestedModel": null
@@ -276,10 +273,7 @@
             "type": "union",
             "optional": false,
             "constraints": {},
-            "unionTypes": [
-              "string",
-              "ImageObject"
-            ],
+            "unionTypes": ["string", "ImageObject"],
             "nestedModel": "ImageObject",
             "itemType": null,
             "itemNestedModel": null

@@ -5,16 +5,23 @@
  * defined in docs/tagging.md.
  *
  * Rules enforced (sourced from tagging.md and the backend TagNormalizer):
- *   - tags must be an array of strings
- *   - maximum 8 tags per article
- *   - each tag: minimum 3 characters, maximum 40 characters
- *   - each tag must match ^[a-z0-9áéíóúüñ\s]+$u  (lowercase, no stray uppercase)
- *   - each tag must be trimmed (no leading/trailing whitespace)
- *   - no duplicate tags within the same post (case-insensitive)
+ *
+ *   Errors (form violations — block the build):
+ *     - tags must be an array of strings
+ *     - maximum 8 tags per article
+ *     - each tag: minimum 3 characters, maximum 40 characters
+ *     - each tag must match ^[a-z0-9áéíóúüñ\s]+$u  (lowercase, no stray uppercase)
+ *     - each tag must be trimmed (no leading/trailing whitespace)
+ *     - no duplicate tags within the same post (case-insensitive)
+ *
+ *   Warnings (structural suggestions — do not block the build):
+ *     - tags should not contain hyphens or underscores (backend replaces them with spaces)
+ *     - no accent-insensitive duplicates (e.g., "análisis" + "analisis")
+ *     - stop-tags: flag overly generic tags like "noticias", "ciencia", etc.
  *
  * Exit codes:
- *   0 — all posts pass
- *   1 — one or more violations found
+ *   0 — all posts pass (warnings may be printed)
+ *   1 — one or more error-level violations found
  */
 
 import fs from 'node:fs';
@@ -34,6 +41,30 @@ const MAX_TAGS = 8;
 const MIN_TAG_LENGTH = 3;
 const MAX_TAG_LENGTH = 40;
 const TAG_PATTERN = /^[a-z0-9\u00e1\u00e9\u00ed\u00f3\u00fa\u00fc\u00f1\s]+$/u;
+
+// Stop-tags: overly generic tags that add little signal.
+// The backend TagNormalizer would remove these; the frontend warns so editors can
+// replace them with more specific alternatives.
+const STOP_TAGS = new Set([
+  'noticias',
+  'noticia',
+  'ciencia',
+  'tecnologia',
+  'tecnolog\u00eda',
+  'investigacion',
+  'investigaci\u00f3n',
+  'estudio',
+  'estudios',
+  'descubrimiento',
+  'avance',
+  'novedad',
+  'novedades',
+  'actualidad',
+  'interes',
+  'inter\u00e9s',
+  'salud',
+  'medio ambiente',
+]);
 
 function assertWithinPostsDir(absPath) {
   const normalized = path.resolve(absPath);
@@ -60,6 +91,7 @@ function walkFiles(dir, results = []) {
 }
 
 const issues = [];
+const warnings = [];
 const files = walkFiles(POSTS_DIR);
 let checkedCount = 0;
 
@@ -129,6 +161,50 @@ for (const file of files) {
       fileIssues.push(`duplicate tag (case-insensitive): "${rawTag}"`);
     }
     seen.add(lower);
+
+    // ── Warning checks ──────────────────────────────────────────
+    const fileWarnings = [];
+
+    // Hyphen / underscore detection
+    if (tag.includes('-') || tag.includes('_')) {
+      fileWarnings.push(
+        `tag contains hyphens or underscores (backend replaces them with spaces): "${rawTag}"`
+      );
+    }
+
+    // Stop-tag detection
+    if (STOP_TAGS.has(lower)) {
+      fileWarnings.push(
+        `tag is overly generic (consider a more specific alternative): "${rawTag}"`
+      );
+    }
+
+    if (fileWarnings.length > 0) {
+      warnings.push({ file: relPath, problems: fileWarnings });
+    }
+  }
+
+  // Accent-insensitive dedup check (cross-tag)
+  const accentSeen = new Map(); // stripped -> original
+  for (const rawTag of tags) {
+    if (typeof rawTag !== 'string') continue;
+    const tag = rawTag.normalize('NFC').trim().toLowerCase();
+    const stripped = tag.normalize('NFD').replace(/[̀-ͯ]/g, ''); // remove combining diacritics
+    if (accentSeen.has(stripped)) {
+      const prev = accentSeen.get(stripped);
+      if (prev !== tag) {
+        // Only warn once per pair
+        const fileWarnings = [`accent-insensitive duplicate tags: "${prev}" and "${tag}"`];
+        // Avoid duplicate warnings for the same pair
+        const alreadyWarned = warnings.some(
+          (w) => w.file === relPath && w.problems.some((p) => p.includes('accent-insensitive'))
+        );
+        if (!alreadyWarned) {
+          warnings.push({ file: relPath, problems: fileWarnings });
+        }
+      }
+    }
+    accentSeen.set(stripped, tag);
   }
 
   if (fileIssues.length > 0) {
@@ -137,17 +213,33 @@ for (const file of files) {
 }
 
 if (issues.length > 0) {
-  console.error(`[check:tags] ${issues.length} post(s) have tag violations:\n`);
+  console.error(`[check:tags] ${issues.length} post(s) have tag errors:\n`);
   for (const { file, problems } of issues) {
     console.error(`  ${file}`);
     for (const p of problems) {
       console.error(`    \u2022 ${p}`);
     }
   }
-  console.error(
-    '\nSee docs/tagging.md for the tag contract. Fix violations in the post frontmatter.'
+  console.error('\nSee docs/tagging.md for the tag contract. Fix errors in the post frontmatter.');
+}
+if (warnings.length > 0) {
+  console.warn(`[check:tags] ${warnings.length} post(s) have tag warnings:\n`);
+  for (const { file, problems } of warnings) {
+    console.warn(`  ${file}`);
+    for (const p of problems) {
+      console.warn(`    \u2022 ${p}`);
+    }
+  }
+  console.warn(
+    '\nThese are structural suggestions. The backend TagNormalizer would correct them, but fixing them at source is preferred. See docs/tagging.md.'
   );
+}
+
+if (issues.length > 0) {
   process.exit(1);
 }
 
-console.log(`[check:tags] OK \u2014 ${checkedCount} posts checked, no tag violations found.`);
+console.log(
+  `[check:tags] OK \u2014 ${checkedCount} posts checked, no tag errors found.` +
+    (warnings.length > 0 ? ` (${warnings.length} warning(s) present)` : '')
+);

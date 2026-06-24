@@ -61,6 +61,47 @@ describe('hub curation helpers', () => {
     expect(selectFeaturedPosts(posts, 1).map((item) => item.id)).toEqual(['newer']);
   });
 
+  it('prefers investigation posts as tiebreaker when featured ranks match', () => {
+    const posts = [
+      post({
+        id: 'featured-no-investigation',
+        featured: true,
+        featured_rank: 1,
+        investigation: false,
+        publishDate: new Date('2026-02-01T00:00:00Z'),
+      }),
+      post({
+        id: 'featured-investigation',
+        featured: true,
+        featured_rank: 1,
+        investigation: true,
+        publishDate: new Date('2026-01-01T00:00:00Z'),
+      }),
+    ];
+
+    expect(selectFeaturedPosts(posts, 2).map((item) => item.id)).toEqual([
+      'featured-investigation',
+      'featured-no-investigation',
+    ]);
+  });
+
+  it('prefers investigation posts in fallback when no featured posts are set', () => {
+    const posts = [
+      post({
+        id: 'plain-newer',
+        investigation: false,
+        publishDate: new Date('2026-03-01T00:00:00Z'),
+      }),
+      post({
+        id: 'investigation-older',
+        investigation: true,
+        publishDate: new Date('2026-01-01T00:00:00Z'),
+      }),
+    ];
+
+    expect(selectFeaturedPosts(posts, 1).map((item) => item.id)).toEqual(['investigation-older']);
+  });
+
   it('selects context posts from why-it-matters or summary points', () => {
     const posts = [
       post({ id: 'plain' }),

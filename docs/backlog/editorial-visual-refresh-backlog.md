@@ -23,55 +23,25 @@ What's already done (so don't redo it):
 
 ## High priority
 
-### D6 — Investigation archetype visual differentiation
+### D6 — Investigation archetype visual differentiation ✅
 
-Problem: The schema field `investigation: true` already exists and is documented in `EDITORIAL_VOICE.md` section 3.3, but the front-end gives investigation pieces no visible differentiation from regular articles. The frontmatter contract is making a promise the UI doesn't honor.
-Impact: Editorial effort spent on investigation pieces (manual review, multiple sources, fact-checks) is invisible to readers. Marking `investigation: true` costs nothing today, which erodes the meaning of the flag and weakens trust signals.
-Recommendation: Surface investigation pieces with a visible badge on cards and in the article header, a slightly different headline type treatment, and preferential placement in the home `featured` slot. Implementation should respect the layer boundary (`ds → template → pages`).
-Affected repo(s): frontend.
-Suggested priority: high.
+**Resolved: June 2026.** All visual differentiation is implemented:
 
-Files to touch:
+- `src/components/ds/atoms/InvestigationBadge.astro` — atom with Indigo accent, microscope icon
+- `src/components/ds/organisms/ArticleCard.astro:122` — renders badge when `post.investigation`
+- `src/layouts/PostLayout.astro:124` — renders badge in article header
+- `ArticleCard.astro:137` — `font-serif` for investigation lead cards
+- `PostLayout.astro:140` — `font-serif` for investigation article titles
+- `src/utils/hub.ts:24-25,34-35` — `selectFeaturedPosts` prefers investigation as tiebreaker and in fallback
+- `tests/hub.test.ts` — 2 unit tests for investigation preference in featured selection
 
-- `src/components/ds/atoms/` — new `<InvestigationBadge.astro />` atom (label "Investigación Noticiencias", Indigo accent, small icon optional via tabler:microscope or tabler:flask).
-- `src/components/ds/organisms/ArticleCard.astro` — when `post.investigation`, render `<InvestigationBadge />` in the metadata row above the title; for `variant="lead"`, swap the heading font to `font-serif` (Playfair Display already loaded) at the same size.
-- `src/layouts/PostLayout.astro` — show `<InvestigationBadge />` in the header row (around line 78-89), switch `<h1>` to `font-serif` only when `post.investigation`.
-- `src/utils/hub.ts` — `selectFeaturedPosts` may need to prefer `investigation: true` posts when available (look at the existing function and decide whether to extend it or leave selection logic alone).
+### D7 — "Qué cambia" archetype visual treatment ✅
 
-Acceptance criteria:
+**Resolved: June 2026.** The consequence archetype has full visual differentiation:
 
-- Cards with `investigation: true` show a visible badge above the title on `/` and `/blog/`.
-- Article page header shows the same badge in the metadata row.
-- Article title renders in serif when `investigation: true`; sans-serif otherwise.
-- Existing tests pass; add one unit test in `tests/` that renders an `ArticleCard` with `investigation: true` and asserts the badge text is present.
-- `npm run lint && npm run build && npx vitest run` all green.
-
-Risk: Low. Purely additive UI on an existing schema field. No data migration.
-
-### D7 — "Qué cambia" archetype visual treatment
-
-Problem: `EDITORIAL_VOICE.md` section 3.4 defines "Qué cambia" as a first-class archetype (consequence-of-a-known-fact), but in `DailyDesk.astro:89-103` it renders as plain `<ArticleCard variant="compact">` like any sub-section. The archetype loses its distinctness in the visual hierarchy.
-Impact: The reader cannot scan the home and recognize "this section answers 'what changes for me'". The contextual value the archetype is meant to deliver gets buried.
-Recommendation: Give "Qué cambia" a dedicated card variant or a wrapper component that visually marks the _consequence_ — `why_it_matters[]` should be the lead element, not the title; an ámbito kicker (Política/Salud/Industria/Vida cotidiana) should be visible on the card.
-Affected repo(s): frontend.
-Suggested priority: high.
-
-Files to touch:
-
-- `src/components/ds/organisms/ArticleCard.astro` — add `variant="consequence"` (or create a sibling component `<ConsequenceCard />` in the same directory if the existing variants get crowded).
-- `src/components/common/DailyDesk.astro:89-103` — use the new variant/component for the `contextPosts` section, and refine the section heading copy if needed (currently "Qué cambia").
-- `src/utils/hub.ts` — `selectContextPosts` already drives this; verify the selection prefers posts with `why_it_matters[]` populated.
-
-Open question to resolve before implementing: where does the "ámbito" come from? Options: (a) infer from `categories[]`, (b) introduce an opt-in `ambito` field in the schema (requires LAW-F1 cross-repo schema change), (c) pick the first `why_it_matters[]` entry's leading noun heuristically. Option (a) is the cheapest and respects the sealed schema; recommend starting there.
-
-Acceptance criteria:
-
-- "Qué cambia" cards on `/` are visually distinct from `compact` cards (different background or border accent, `why_it_matters` lead visible).
-- An "ámbito" kicker appears above the title.
-- The section heading remains "Qué cambia" (or is replaced by a copy that passes the AI-magazine ban list in `tests/quick-wins-regression.test.ts`).
-- `npm run lint && npm run build && npx vitest run` all green.
-
-Risk: Low if option (a) is taken. Medium if option (b) requires backend schema coordination.
+- `src/components/ds/organisms/ArticleCard.astro` — `variant="consequence"` branch with distinct styling (border, bg, shadow), uses `why_it_matters[0]` as lead headline, and renders ámbito kicker from `post.category?.title` (option a: inferred from categories)
+- `src/components/common/DailyDesk.astro:97-111` — renders `contextPosts` with `variant="consequence"` in a 3-column grid under "Qué cambia" heading
+- `src/utils/hub.ts:48-51` — `selectContextPosts` prefers posts with `why_it_matters[]` populated
 
 ### D5 — uncertainty_note visual emphasis tied to `requires_uncertainty_note`
 
@@ -192,8 +162,8 @@ For convenience when planning a multi-PR sprint:
 
 | Item                                   | Frontend-only | Backend-only | Both |
 | -------------------------------------- | :-----------: | :----------: | :--: |
-| D6 — Investigation visual              |       ✓       |              |      |
-| D7 — Qué cambia visual                 |       ✓       |              |      |
+| D6 — Investigation visual              |       ✓       |      ✓       |  ✅  |
+| D7 — Qué cambia visual                 |       ✓       |      ✓       |  ✅  |
 | D5 — uncertainty emphasis              |               |              |  ✓   |
 | D8 follow-up — Widget Button migration |       ✓       |              |      |
 | `.astro/` untrack                      |       ✓       |              |      |

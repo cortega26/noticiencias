@@ -1,6 +1,7 @@
 ---
 import { findLatestPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
+import Button from '~/components/ds/atoms/Button.astro';
 
 const latestPosts = await findLatestPosts({ count: 5 });
 
@@ -66,12 +67,7 @@ const { class: className = '' } = Astro.props;
         required
         class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-800 dark:border-slate-700"
       />
-      <button
-        type="submit"
-        class="w-full bg-primary text-white py-2 rounded font-bold hover:bg-blue-700 transition"
-      >
-        Suscribirse
-      </button>
+      <Button variant="primary" type="submit" text="Suscribirse" class="w-full" />
       <p class="text-xs text-gray-400 text-left">Sin spam. 0% drama.</p>
     </form>
   </div>
