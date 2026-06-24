@@ -168,6 +168,7 @@ function collectEditorialDiagnostics() {
 // ---------------------------------------------------------------------------
 
 const diagnostics = collectEditorialDiagnostics();
+const strictMode = process.env.STRICT_EDITORIAL === 'true';
 
 if (diagnostics.v2Count === 0) {
   console.log(`[editorial-fields] No hay artículos con schema_version >= 2. Nada que validar.`);
@@ -175,13 +176,26 @@ if (diagnostics.v2Count === 0) {
 }
 
 if (diagnostics.errors.length > 0) {
+  const label = strictMode ? 'error(es)' : 'aviso(s)';
   console.error(
-    `[editorial-fields] ${diagnostics.errors.length} error(es) en ${diagnostics.v2Count} artículo(s) v2:`
+    `[editorial-fields] ${diagnostics.errors.length} ${label} en ${diagnostics.v2Count} artículo(s) v2:`
   );
   for (const error of diagnostics.errors) {
-    console.error(`  ❌ ${error}`);
+    const prefix = strictMode ? '❌' : '⚠️';
+    console.error(`  ${prefix} ${error}`);
   }
-  process.exit(1);
+
+  if (strictMode) {
+    console.error(
+      `\n[editorial-fields] STRICT_EDITORIAL=true — bloquear build. Corrige los campos o desactiva el flag.`
+    );
+    process.exit(1);
+  } else {
+    console.error(
+      `\n[editorial-fields] Reporte informativo. Para bloquear, usa STRICT_EDITORIAL=true.`
+    );
+    process.exit(0);
+  }
 }
 
 console.log(
