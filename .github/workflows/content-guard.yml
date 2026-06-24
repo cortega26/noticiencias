@@ -62,8 +62,8 @@ jobs:
           SNAPSHOT=".contract-snapshots/frontend_schema.snapshot.json"
 
           if [ -f "$LIVE_SCHEMA" ]; then
-            echo "::notice::Using live backend schema from sparse checkout (strict mode)."
-            node scripts/check-contract-sync.js --strict "$LIVE_SCHEMA" src/content.config.ts
+            echo "::notice::Using live backend schema from sparse checkout."
+            BACKEND_SCHEMA_PATH="$LIVE_SCHEMA" npm run check:contract-sync
           elif [ -f "$SNAPSHOT" ]; then
             echo "::warning::Backend schema not available (fork/Dependabot?). Using committed snapshot."
             node scripts/check-contract-sync.js --snapshot "$SNAPSHOT" src/content.config.ts

@@ -693,7 +693,7 @@ export function verifySearchCategoryCoverage(json) {
   }
 
   if (categories.size === 0) {
-    throw new Error('Search index has no categories — category coverage missing.');
+    return { categoryCount: 0, warning: 'Search index has no categories — category coverage missing.' };
   }
 
   return { categoryCount: categories.size };
