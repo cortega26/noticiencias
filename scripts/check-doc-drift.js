@@ -56,11 +56,16 @@ function looksLikeFilePath(s) {
   // Skip wildcards / globs
   if (s.includes('*')) return false;
   // Skip cross-repo backend references
-  if (s.startsWith('news_collector/') || s.startsWith('../noticiencias_news_collector')) return false;
+  if (s.startsWith('news_collector/') || s.startsWith('../noticiencias_news_collector'))
+    return false;
   // Skip directory-only paths with no extension (harder to validate accurately)
   if (s.endsWith('/')) return false;
   // Skip JavaScript member expressions (data.permalink, post.title, etc.)
-  if (/^[a-z_]+\.[a-z_]+$/.test(s) && !/\.(ts|js|astro|md|yaml|yml|json|css|mjs|py|txt|xml)$/.test(s)) return false;
+  if (
+    /^[a-z_]+\.[a-z_]+$/.test(s) &&
+    !/\.(ts|js|astro|md|yaml|yml|json|css|mjs|py|txt|xml)$/.test(s)
+  )
+    return false;
   // Must contain a dot extension or be a known directory prefix
   return (
     /\.(ts|js|astro|md|yaml|yml|json|css|mjs|py|txt|xml)$/.test(s) ||
@@ -91,16 +96,35 @@ function resolveDocPath(rawPath, docDir) {
   }
 
   // Known repo-root prefixes: resolve from REPO_ROOT
-  const rootPrefixes = ['src/', 'scripts/', 'tests/', 'docs/', 'data/', '.github/', '.contract-snapshots/'];
+  const rootPrefixes = [
+    'src/',
+    'scripts/',
+    'tests/',
+    'docs/',
+    'data/',
+    '.github/',
+    '.contract-snapshots/',
+  ];
   if (rootPrefixes.some((p) => cleaned.startsWith(p))) {
     return resolve(REPO_ROOT, cleaned);
   }
 
   // Top-level files: resolve from REPO_ROOT
-  const topLevelFiles = ['package.json', 'AGENTS.md', 'CLAUDE.md', 'README.md',
-    'CONTRIBUTING.md', 'CHANGELOG.md', 'vitest.config.ts', 'tsconfig.json',
-    'astro.config.mjs', 'eslint.config.mjs', 'tailwind.config.mjs', '.gitignore',
-    '.prettierrc'];
+  const topLevelFiles = [
+    'package.json',
+    'AGENTS.md',
+    'CLAUDE.md',
+    'README.md',
+    'CONTRIBUTING.md',
+    'CHANGELOG.md',
+    'vitest.config.ts',
+    'tsconfig.json',
+    'astro.config.mjs',
+    'eslint.config.mjs',
+    'tailwind.config.mjs',
+    '.gitignore',
+    '.prettierrc',
+  ];
   if (topLevelFiles.includes(cleaned)) {
     return resolve(REPO_ROOT, cleaned);
   }
@@ -109,12 +133,29 @@ function resolveDocPath(rawPath, docDir) {
   // try common source directories broadly
   if (!cleaned.includes('/') && cleaned.includes('.')) {
     const searchDirs = [
-      'src/utils', 'src/utils/browser', 'src/layouts', 'src/layouts/template',
-      'src/components/ds/atoms', 'src/components/ds/molecules', 'src/components/ds/organisms',
-      'src/components/common', 'src/components/template', 'src/components/template/blog',
-      'src/components/template/common', 'src/components/template/ui', 'src/components/template/widgets',
-      'src/pages', 'src/pages/blog', 'src/pages/categorias', 'src/pages/temas', 'src/pages/series',
-      'scripts', 'tests', '.github/workflows', 'docs', '',
+      'src/utils',
+      'src/utils/browser',
+      'src/layouts',
+      'src/layouts/template',
+      'src/components/ds/atoms',
+      'src/components/ds/molecules',
+      'src/components/ds/organisms',
+      'src/components/common',
+      'src/components/template',
+      'src/components/template/blog',
+      'src/components/template/common',
+      'src/components/template/ui',
+      'src/components/template/widgets',
+      'src/pages',
+      'src/pages/blog',
+      'src/pages/categorias',
+      'src/pages/temas',
+      'src/pages/series',
+      'scripts',
+      'tests',
+      '.github/workflows',
+      'docs',
+      '',
     ];
     for (const d of searchDirs) {
       const candidate = resolve(REPO_ROOT, d, cleaned);

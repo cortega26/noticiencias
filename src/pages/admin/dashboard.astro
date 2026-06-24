@@ -56,15 +56,14 @@ const overviewMetrics = [
     title: 'Entrega de imágenes',
     value: images?.delivery_mode === 'r2' ? 'R2 CDN' : 'GitHub',
     subtitle: images ? `${images.derivatives_available} derivativos` : undefined,
-    trend: images?.delivery_mode === 'r2' ? 'up' as const : 'neutral' as const,
+    trend: images?.delivery_mode === 'r2' ? ('up' as const) : ('neutral' as const),
   },
   {
     title: 'Campos editoriales',
-    value: gapEntries.length > 0
-      ? (allEditorialComplete ? '✅ Completo' : '⚠️ Con faltantes')
-      : '—',
-    subtitle: gapEntries.length > 0 ? (missingGapNames || 'Todos presentes') : undefined,
-    trend: hasGaps ? 'down' as const : 'neutral' as const,
+    value:
+      gapEntries.length > 0 ? (allEditorialComplete ? '✅ Completo' : '⚠️ Con faltantes') : '—',
+    subtitle: gapEntries.length > 0 ? missingGapNames || 'Todos presentes' : undefined,
+    trend: hasGaps ? ('down' as const) : ('neutral' as const),
   },
   {
     title: 'Generado',
@@ -92,12 +91,14 @@ const healthChecks = [
   {
     name: 'Campos editoriales v2',
     description: 'summary_points, glossary, fact_check, why_it_matters, confidence, sources',
-    status: (gapEntries.length > 0
-      ? (allEditorialComplete ? 'pass' : 'warning')
-      : 'unknown') as 'pass' | 'warning' | 'unknown',
-    detail: gapEntries.length > 0
-      ? `${content?.v2_articles ?? 0} artículos v2. Faltantes: ${missingGapNames || 'ninguno'}`
-      : undefined,
+    status: (gapEntries.length > 0 ? (allEditorialComplete ? 'pass' : 'warning') : 'unknown') as
+      | 'pass'
+      | 'warning'
+      | 'unknown',
+    detail:
+      gapEntries.length > 0
+        ? `${content?.v2_articles ?? 0} artículos v2. Faltantes: ${missingGapNames || 'ninguno'}`
+        : undefined,
   },
   {
     name: 'Imágenes hero',
@@ -119,7 +120,8 @@ const healthChecks = [
   },
 ];
 
-const topCategories: Array<{ name: string; count: number }> = content?.categories?.slice(0, 10) ?? [];
+const topCategories: Array<{ name: string; count: number }> =
+  content?.categories?.slice(0, 10) ?? [];
 const recentArticles: Array<{
   title: string;
   date: string;
@@ -172,7 +174,11 @@ const metadata = {
             </ul>
           ) : (
             <div class="px-5 py-8 text-center text-text-muted text-sm">
-              No hay datos de categorías. Ejecuta <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>.
+              No hay datos de categorías. Ejecuta{' '}
+              <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">
+                npm run generate:metrics
+              </code>
+              .
             </div>
           )
         }
@@ -209,7 +215,9 @@ const metadata = {
           </div>
         ) : (
           <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle px-5 py-8 text-center text-text-muted text-sm">
-            No hay artículos para mostrar. Ejecuta <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>.
+            No hay artículos para mostrar. Ejecuta{' '}
+            <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>
+            .
           </div>
         )
       }
@@ -217,9 +225,9 @@ const metadata = {
 
     <footer class="text-center text-xs text-text-muted pt-4">
       <p>
-        Última generación: {metrics?.generated_at
-          ? new Date(metrics.generated_at).toLocaleString('es-MX')
-          : 'Nunca'}
+        Última generación: {
+          metrics?.generated_at ? new Date(metrics.generated_at).toLocaleString('es-MX') : 'Nunca'
+        }
         &middot; Este dashboard es una página estática generada en CI.
       </p>
     </footer>

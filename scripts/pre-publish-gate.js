@@ -129,11 +129,7 @@ if (hasFailures) {
     console.log(`[pre-publish-gate] Notifying backend at ${webhookUrl}...`);
     spawnSync(
       'node',
-      [
-        resolve(__dirname, 'backend-notify.js'),
-        '--status=fail',
-        `--payload-file=${payloadPath}`,
-      ],
+      [resolve(__dirname, 'backend-notify.js'), '--status=fail', `--payload-file=${payloadPath}`],
       {
         cwd: REPO_ROOT,
         timeout: 15000,

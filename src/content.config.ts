@@ -110,8 +110,7 @@ const posts = defineCollection({
           ctx.addIssue({
             code: 'custom',
             path: ['summary_points'],
-            message:
-              'summary_points is required for schema_version >= 2 (2-5 items)',
+            message: 'summary_points is required for schema_version >= 2 (2-5 items)',
           });
         } else if (data.summary_points.length < 2 || data.summary_points.length > 5) {
           ctx.addIssue({
@@ -144,8 +143,7 @@ const posts = defineCollection({
           ctx.addIssue({
             code: 'custom',
             path: ['why_it_matters'],
-            message:
-              'why_it_matters is required for schema_version >= 2 (≥1 item)',
+            message: 'why_it_matters is required for schema_version >= 2 (≥1 item)',
           });
         }
 

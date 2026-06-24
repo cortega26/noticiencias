@@ -93,11 +93,11 @@ if (jsonMode) {
     process.exit(0);
   }
 
-  console.log(
-    `[staleness] ${staleArticles.length} article(s) older than ${thresholdDays} days:`
-  );
+  console.log(`[staleness] ${staleArticles.length} article(s) older than ${thresholdDays} days:`);
   for (const a of staleArticles.slice(0, 10)) {
-    console.log(`  - ${a.title} (${a.age_days} días, última modificación: ${a.last_modified.slice(0, 10)})`);
+    console.log(
+      `  - ${a.title} (${a.age_days} días, última modificación: ${a.last_modified.slice(0, 10)})`
+    );
   }
   if (staleArticles.length > 10) {
     console.log(`  ... y ${staleArticles.length - 10} más`);

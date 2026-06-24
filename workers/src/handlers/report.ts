@@ -20,10 +20,7 @@ export async function handleReport(request: Request, env: Env): Promise<Response
   // Validate payload
   const validation = validateReportPayload(body);
   if (!validation.valid) {
-    return errorResponse(
-      `Datos inválidos: ${validation.errors.join('; ')}`,
-      422
-    );
+    return errorResponse(`Datos inválidos: ${validation.errors.join('; ')}`, 422);
   }
 
   const data = body as Record<string, unknown>;

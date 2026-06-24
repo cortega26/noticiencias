@@ -50,9 +50,7 @@ function collectContentMetrics() {
       content = readFileSync(filePath, 'utf-8');
       const parsed = matter(content);
       fm = parsed.data;
-      const wordCount = parsed.content
-        .split(/\s+/)
-        .filter((w) => w.length > 0).length;
+      const wordCount = parsed.content.split(/\s+/).filter((w) => w.length > 0).length;
       totalWords += wordCount;
     } catch {
       continue;
@@ -75,10 +73,12 @@ function collectContentMetrics() {
     // Editorial fields (only for v2)
     if (fm.schema_version && fm.schema_version >= 2) {
       v2Count++;
-      if (!fm.summary_points || fm.summary_points.length === 0) editorialGaps.missing_summary_points++;
+      if (!fm.summary_points || fm.summary_points.length === 0)
+        editorialGaps.missing_summary_points++;
       if (!fm.glossary || fm.glossary.length === 0) editorialGaps.missing_glossary++;
       if (!fm.fact_check || fm.fact_check.length === 0) editorialGaps.missing_fact_check++;
-      if (!fm.why_it_matters || fm.why_it_matters.length === 0) editorialGaps.missing_why_it_matters++;
+      if (!fm.why_it_matters || fm.why_it_matters.length === 0)
+        editorialGaps.missing_why_it_matters++;
       if (!fm.confidence) editorialGaps.missing_confidence++;
       if (!fm.sources || fm.sources.length === 0) editorialGaps.missing_sources++;
     }
@@ -112,17 +112,16 @@ function collectContentMetrics() {
     avg_words: files.length > 0 ? Math.round(totalWords / files.length) : 0,
     categories: sortedCategories,
     top_tags: sortedTags,
-    articles_by_date: articles
-      .filter((a) => a.date)
-      .sort((a, b) => b.date.localeCompare(a.date)),
+    articles_by_date: articles.filter((a) => a.date).sort((a, b) => b.date.localeCompare(a.date)),
     editorial_gaps: editorialGaps,
     articles_with_gaps:
       editorialGaps.missing_summary_points +
-      editorialGaps.missing_glossary +
-      editorialGaps.missing_fact_check +
-      editorialGaps.missing_why_it_matters +
-      editorialGaps.missing_confidence +
-      editorialGaps.missing_sources > 0
+        editorialGaps.missing_glossary +
+        editorialGaps.missing_fact_check +
+        editorialGaps.missing_why_it_matters +
+        editorialGaps.missing_confidence +
+        editorialGaps.missing_sources >
+      0
         ? v2Count
         : 0,
   };
@@ -209,12 +208,16 @@ function main() {
   console.log(`[metrics] Report written to ${METRICS_FILE}`);
   console.log(`[metrics] ${content.total_articles} articles, ${content.v2_articles} at v2`);
   console.log(
-    `[metrics] Editorial gaps: ${Object.entries(content.editorial_gaps)
-      .filter(([, v]) => v > 0)
-      .map(([k, v]) => `${k}=${v}`)
-      .join(', ') || 'none'}`
+    `[metrics] Editorial gaps: ${
+      Object.entries(content.editorial_gaps)
+        .filter(([, v]) => v > 0)
+        .map(([k, v]) => `${k}=${v}`)
+        .join(', ') || 'none'
+    }`
   );
-  console.log(`[metrics] Image delivery: ${images.delivery_mode}, ${images.derivatives_available} derivatives`);
+  console.log(
+    `[metrics] Image delivery: ${images.delivery_mode}, ${images.derivatives_available} derivatives`
+  );
 }
 
 main();

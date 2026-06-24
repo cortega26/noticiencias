@@ -53,9 +53,13 @@ function collectEditorialDiagnostics() {
           `${slug}: summary_points tiene ${count} ítems (mín ${MIN_SUMMARY_POINTS}, máx ${MAX_SUMMARY_POINTS})`
         );
       }
-      const emptyItems = fm.summary_points.filter((s) => typeof s !== 'string' || s.trim().length === 0);
+      const emptyItems = fm.summary_points.filter(
+        (s) => typeof s !== 'string' || s.trim().length === 0
+      );
       if (emptyItems.length > 0) {
-        diagnostics.errors.push(`${slug}: summary_points contiene ${emptyItems.length} ítem(s) vacío(s)`);
+        diagnostics.errors.push(
+          `${slug}: summary_points contiene ${emptyItems.length} ítem(s) vacío(s)`
+        );
       }
     }
 
@@ -119,7 +123,9 @@ function collectEditorialDiagnostics() {
         `${slug}: why_it_matters tiene ${fm.why_it_matters.length} ítems (mín ${MIN_WHY_IT_MATTERS_ITEMS})`
       );
     } else {
-      const emptyItems = fm.why_it_matters.filter((s) => typeof s !== 'string' || s.trim().length === 0);
+      const emptyItems = fm.why_it_matters.filter(
+        (s) => typeof s !== 'string' || s.trim().length === 0
+      );
       if (emptyItems.length > 0) {
         diagnostics.errors.push(
           `${slug}: why_it_matters contiene ${emptyItems.length} ítem(s) vacío(s)`
@@ -198,6 +204,4 @@ if (diagnostics.errors.length > 0) {
   }
 }
 
-console.log(
-  `[editorial-fields] OK — ${diagnostics.v2Count} artículo(s) v2 validados sin errores.`
-);
+console.log(`[editorial-fields] OK — ${diagnostics.v2Count} artículo(s) v2 validados sin errores.`);

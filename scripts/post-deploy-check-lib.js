@@ -1017,7 +1017,9 @@ export async function runPostDeployCheck(
 
     try {
       const coverage = verifySearchCategoryCoverage(json);
-      logger.info(`${GREEN}[PASS] Category Coverage OK (${coverage.categoryCount} categories)${RESET}`);
+      logger.info(
+        `${GREEN}[PASS] Category Coverage OK (${coverage.categoryCount} categories)${RESET}`
+      );
     } catch (err) {
       warnings.push({ url: searchUrl, message: err.message });
       logger.warn(`${YELLOW}[WARN] ${err.message}${RESET}`);

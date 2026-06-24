@@ -106,5 +106,7 @@ const result = spawnSync(
 );
 
 if (result.status !== 0) {
-  console.warn('[post-publish-callback] Backend notification had issues but deploy was successful.');
+  console.warn(
+    '[post-publish-callback] Backend notification had issues but deploy was successful.'
+  );
 }
