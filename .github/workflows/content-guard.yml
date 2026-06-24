@@ -36,13 +36,13 @@ jobs:
       - name: 🔍 Frontmatter & Type Validation
         run: npm run validate:content
 
-      - name: Skip cross-repo contract parity on forked pull requests
-        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
+      - name: Skip cross-repo contract parity on forked or Dependabot pull requests
+        if: ${{ github.event_name == 'pull_request' && (github.event.pull_request.head.repo.fork || github.actor == 'dependabot[bot]') }}
         run: |
-          echo "::notice::Skipping cross-repo contract parity gate for forked pull requests because repository secrets are not available."
+          echo "::notice::Skipping cross-repo contract parity gate because repository secrets are not available (forked or Dependabot PR)."
 
       - name: Verify back-end contract checkout access
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
+        if: ${{ github.event_name != 'pull_request' || (github.event.pull_request.head.repo.fork == false && github.actor != 'dependabot[bot]') }}
         run: |
           if [ -z "${{ secrets.NOTICIENCIAS_BACKEND_READ_TOKEN }}" ]; then
             echo "::error::Missing NOTICIENCIAS_BACKEND_READ_TOKEN secret with read access to $BACKEND_CONTRACT_REPOSITORY."
@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Checkout back-end schema (sparse)
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
+        if: ${{ github.event_name != 'pull_request' || (github.event.pull_request.head.repo.fork == false && github.actor != 'dependabot[bot]') }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           repository: ${{ env.BACKEND_CONTRACT_REPOSITORY }}
@@ -62,7 +62,7 @@ jobs:
           sparse-checkout-cone-mode: false
 
       - name: 🔗 Contract Parity Gate
-        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
+        if: ${{ github.event_name != 'pull_request' || (github.event.pull_request.head.repo.fork == false && github.actor != 'dependabot[bot]') }}
         run: npm run check:contract-sync
         env:
           BACKEND_SCHEMA_PATH: _backend_sparse/news_collector/contracts/frontend_schema.py
