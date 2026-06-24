@@ -15,7 +15,6 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  STRICT_EDITORIAL: true
   BACKEND_CONTRACT_REPOSITORY: cortega26/noticiencias_news_collector
   BACKEND_CONTRACT_REF: main
   BACKEND_CONTRACT_SCHEMA_PATH: news_collector/contracts/frontend_schema.py
