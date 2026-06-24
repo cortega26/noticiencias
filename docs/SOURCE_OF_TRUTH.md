@@ -14,7 +14,7 @@ This file governs documentation hierarchy. It does not replace code-owned contra
 The frontend is a static Astro site with:
 
 - published content in `src/content/posts/`
-- one content collection contract in `src/content/config.ts`
+- one content collection contract in `src/content.config.ts`
 - site and blog path configuration in `src/config.yaml`
 - route entrypoints in `src/pages/`
 - shared layout and metadata plumbing in `src/layouts/`
@@ -31,7 +31,7 @@ Authority is split by concern.
 
 These files are the source of truth for the exact contract they implement:
 
-1. `src/content/config.ts`
+1. `src/content.config.ts`
    - authoritative post frontmatter schema
 2. `src/config.yaml`
    - authoritative site metadata defaults, canonical site URL, and blog pathname configuration
@@ -70,7 +70,7 @@ The backend repo owns:
 
 The frontend repo owns:
 
-- the actual render schema in `src/content/config.ts`
+- the actual render schema in `src/content.config.ts`
 - page routes, canonical pathnames, and metadata emission
 - image rendering rules
 - search UI and search index shape
@@ -83,7 +83,7 @@ Cross-repo rule:
 ## Binding Current Truths
 
 - The only content collection in active use for published articles is `posts`.
-- New contributor guidance must reference `src/content/posts/`, not legacy `_posts` or `src/content/post/` paths.
+- New contributor guidance must reference `src/content/posts/`, not legacy _posts or src/content/post/ (deprecated path, does not exist).
 - Category and tag archive pathnames come from `src/config.yaml`, currently `categorias` and `temas`.
 - Metadata flows through page/layout props into `src/components/template/common/Metadata.astro`; pages should not bypass that path for normal SEO.
 - Search is implemented as:

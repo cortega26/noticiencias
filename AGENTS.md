@@ -24,7 +24,7 @@ The front-end is a static Astro site with MDX content and server-first rendering
 Current architectural pillars:
 
 - `src/content/posts/`: content source of truth for published articles.
-- `src/content/config.ts`: frontmatter contract for the `posts` collection.
+- `src/content.config.ts`: frontmatter contract for the `posts` collection.
 - `src/pages/`: route entrypoints and static path generation.
 - `src/layouts/`: page shells and metadata composition.
 - `src/components/ds/`: Noticiencias-specific design-system primitives and article UI.
@@ -37,19 +37,19 @@ The repo currently has two UI layers: `ds` and `template`. They are not intercha
 
 ### LAW-F1: Content schema is sealed
 
-The only authoritative post schema is `src/content/config.ts`.
+The only authoritative post schema is `src/content.config.ts`.
 
 Rules:
 
 - New or modified posts must satisfy the current `posts` schema exactly.
 - Governance text must reflect the real fields in code, not a hypothetical schema.
-- Frontmatter fields currently in active use include `title`, `schema_version`, `excerpt`, `author`, `date`, `categories`, `tags`, `image`, `image_alt`, `permalink`, and the Noticiencias editorial metadata defined in `src/content/config.ts`.
+- Frontmatter fields currently in active use include `title`, `schema_version`, `excerpt`, `author`, `date`, `categories`, `tags`, `image`, `image_alt`, `permalink`, and the Noticiencias editorial metadata defined in `src/content.config.ts`.
 - Do not introduce undocumented frontmatter fields without updating the schema first.
 - Do not re-interpret schema defaults as product behavior. If a field is defaulted for legacy compatibility, new content still needs explicit editorial intent.
 
 Review trigger:
 
-- Any change to `src/content/config.ts` is high risk and must be treated as a cross-repo contract change because the backend publishes into this schema.
+- Any change to `src/content.config.ts` is high risk and must be treated as a cross-repo contract change because the backend publishes into this schema.
 
 ### LAW-F2: Route, layout, and component responsibilities are fixed
 
@@ -147,7 +147,7 @@ Rules:
 
 ### 3.1 Post contract
 
-All article rendering paths must continue to work with the `posts` collection contract in `src/content/config.ts`.
+All article rendering paths must continue to work with the `posts` collection contract in `src/content.config.ts`.
 
 Additional editorial rules for new or modified posts:
 

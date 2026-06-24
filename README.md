@@ -7,7 +7,7 @@ This repository is a static Astro 5 site with MD/MDX content under `src/content/
 ## Current State
 
 - Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/template/Layout.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/layouts/template/Layout.astro).
-- Content contract: the only authoritative post schema is [`src/content/config.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/content/config.ts).
+- Content contract: the only authoritative post schema is [`src/content.config.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/content.config.ts).
 - Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/config.yaml).
 - Metadata emission: pages pass metadata through layouts into [`src/components/template/common/Metadata.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/components/template/common/Metadata.astro).
 - URL and taxonomy helpers: [`src/utils/permalinks.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/permalinks.ts) and [`src/utils/blog.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/blog.ts).

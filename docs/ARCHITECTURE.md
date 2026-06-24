@@ -15,7 +15,7 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 
 - `src/content/posts/`
   - article source files consumed by Astro Content Collections
-- `src/content/config.ts`
+- `src/content.config.ts`
   - sealed schema for article frontmatter
 - `src/pages/`
   - route entrypoints and `getStaticPaths()` owners
@@ -37,7 +37,7 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 ### Publication Flow
 
 1. Humans or the backend publish Markdown into `src/content/posts/`.
-2. `src/content/config.ts` validates frontmatter during `astro sync`, `astro check`, and build.
+2. `src/content.config.ts` validates frontmatter during `astro sync`, `astro check`, and build.
 3. `src/utils/blog.ts` normalizes collection entries into the local `Post` shape and fails closed on duplicate permalinks.
 4. `src/pages/` routes use those normalized posts to build list, taxonomy, series, RSS, and article pages.
 5. Layouts pass page metadata into `src/components/template/common/Metadata.astro`.
@@ -126,7 +126,7 @@ Current important files:
 - `blog.ts`
 - `permalinks.ts`
 - `search.ts`
-- `browser/search-url.ts`
+- `src/utils/browser/search-url.ts`
 - `images.ts`
 - `normalizeImage.ts`
 - `safeFs.ts`
@@ -181,4 +181,4 @@ These behaviors exist today and are allowed only as documented compatibility:
 - New article-facing UI should prefer `ds` or `common` unless it is clearly part of the Astrowind shell.
 - New route families should keep pathname ownership in `src/config.yaml` and URL generation in shared helpers.
 - New validation or content-policy behavior should live close to schema or content checks, not in rendering components.
-- If a change affects `src/content/config.ts`, `src/config.yaml`, or permalink generation, treat it as a cross-repo contract change with the backend.
+- If a change affects `src/content.config.ts`, `src/config.yaml`, or permalink generation, treat it as a cross-repo contract change with the backend.

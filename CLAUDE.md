@@ -27,7 +27,7 @@ Static Astro 6 site with MDX content, deployed to GitHub Pages. Server-first ren
 ### Key directories
 
 - `src/content/posts/` — Article source files (MD/MDX). Published by backend `noticiencias_news_collector`.
-- `src/content/config.ts` — **Sealed** Zod schema for the `posts` collection. Cross-repo contract with backend.
+- `src/content.config.ts` — **Sealed** Zod schema for the `posts` collection. Cross-repo contract with backend.
 - `src/config.yaml` — Site metadata, blog config, URL pathnames, analytics, UI theme. Exposed via `astrowind:config`.
 - `src/pages/` — Route entrypoints and `getStaticPaths()`. Blog list, categories (`categorias/`), tags (`temas/`), search, series, article pages.
 - `src/layouts/` — Page shells and metadata plumbing. `BaseLayout.astro` and `PostLayout.astro` are primary.
@@ -42,7 +42,7 @@ Static Astro 6 site with MDX content, deployed to GitHub Pages. Server-first ren
 ### Data flow
 
 1. Backend publishes Markdown into `src/content/posts/`
-2. `src/content/config.ts` validates frontmatter at build time
+2. `src/content.config.ts` validates frontmatter at build time
 3. `src/utils/blog.ts` normalizes collection entries into `Post` shape
 4. Pages consume normalized posts to build list, taxonomy, series, RSS, article pages
 5. Layouts forward metadata to `src/components/template/common/Metadata.astro` for SEO tags
@@ -71,7 +71,7 @@ Hero images use a derivative manifest at `data/image-derivatives-manifest.json`.
 
 ### Key laws from AGENTS.md
 
-- **Content schema is sealed** (`src/content/config.ts`). Changes are cross-repo contract changes.
+- **Content schema is sealed** (`src/content.config.ts`). Changes are cross-repo contract changes.
 - **No client framework islands.** Default to plain Astro; scoped browser scripts only.
 - **Utilities must stay pure.** No DOM manipulation or browser globals in `src/utils/`.
 - **Layers are not interchangeable.** `ds` → `template` → `pages` is the import direction. `ds` must not import from `template`.
