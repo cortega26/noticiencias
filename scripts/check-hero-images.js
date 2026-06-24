@@ -10,6 +10,24 @@ import { collectHeroImageDiagnostics } from './utils/hero-placeholders.js';
 
 const diagnostics = collectHeroImageDiagnostics();
 const errors = [...diagnostics.errors];
+const jsonMode = process.argv.includes('--json');
+
+if (jsonMode) {
+  console.log(
+    JSON.stringify({
+      check: 'hero-images',
+      status: errors.length === 0 ? 'pass' : 'fail',
+      filesCount: diagnostics.filesCount,
+      errors: errors.map((e) => {
+        const colonIdx = e.indexOf(': ');
+        return colonIdx > 0
+          ? { file: e.slice(0, colonIdx), message: e.slice(colonIdx + 2) }
+          : { file: '', message: e };
+      }),
+    })
+  );
+  process.exit(errors.length === 0 ? 0 : 1);
+}
 
 if (errors.length > 0) {
   console.error(`Hero image check found ${errors.length} issue(s):`);

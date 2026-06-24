@@ -80,6 +80,20 @@ for (const filePath of collectFiles(IMAGE_DIR)) {
   );
 }
 
+const jsonMode = process.argv.includes('--json');
+
+if (jsonMode) {
+  console.log(
+    JSON.stringify({
+      check: 'image-extensions',
+      status: errors.length === 0 ? 'pass' : 'fail',
+      filesCount: collectFiles(IMAGE_DIR).length,
+      errors: errors.map((e) => ({ file: '', message: e })),
+    })
+  );
+  process.exit(errors.length === 0 ? 0 : 1);
+}
+
 if (errors.length > 0) {
   console.error(`Image extension check found ${errors.length} issue(s):`);
   for (const error of errors) {

@@ -212,6 +212,27 @@ for (const file of files) {
   }
 }
 
+const jsonMode = process.argv.includes('--json');
+
+if (jsonMode) {
+  console.log(
+    JSON.stringify({
+      check: 'tags',
+      status: issues.length === 0 ? 'pass' : 'fail',
+      filesCount: checkedCount,
+      errors: issues.map((i) => ({
+        file: i.file,
+        message: i.problems.join('; '),
+      })),
+      warnings: warnings.map((w) => ({
+        file: w.file,
+        message: w.problems.join('; '),
+      })),
+    })
+  );
+  process.exit(issues.length === 0 ? 0 : 1);
+}
+
 if (issues.length > 0) {
   console.error(`[check:tags] ${issues.length} post(s) have tag errors:\n`);
   for (const { file, problems } of issues) {
