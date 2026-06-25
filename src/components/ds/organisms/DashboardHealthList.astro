@@ -17,7 +17,7 @@ const statusStyles = {
   pass: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
   fail: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
   warning: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400',
-  unknown: 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400',
+  unknown: 'bg-surface-highlight text-text-muted',
 };
 
 const statusIcons = {
@@ -28,9 +28,7 @@ const statusIcons = {
 };
 ---
 
-<div
-  class={`bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle ${className}`}
->
+<div class={`bg-surface-paper rounded-lg shadow-sm border border-border-subtle ${className}`}>
   <div class="px-5 py-4 border-b border-border-subtle">
     <h3 class="text-lg font-heading font-bold text-text-body">Salud del Pipeline</h3>
   </div>

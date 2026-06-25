@@ -232,7 +232,7 @@ import Button from '~/components/ds/atoms/Button.astro';
           img.src = doc.image;
           img.alt = doc.title;
           img.className =
-            'h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105';
+            'h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:transform-none';
           img.loading = 'lazy';
           imgLink.appendChild(img);
           li.appendChild(imgLink);
