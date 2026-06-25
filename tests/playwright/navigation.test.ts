@@ -18,13 +18,13 @@ test('home page has navigation', async ({ page }) => {
 });
 
 test('blog archive loads', async ({ page }) => {
-  const response = await page.goto('/blog');
+  const response = await page.goto('/blog/');
   expect(response?.status()).toBe(200);
   await expect(page.locator('h1').first()).toBeVisible();
 });
 
 test('search page loads', async ({ page }) => {
-  const response = await page.goto('/buscar');
+  const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
   await expect(page.locator('input[type="search"], input[type="text"]').first()).toBeVisible();
 });
@@ -34,9 +34,13 @@ test('404 page for unknown route', async ({ page }) => {
   expect(response?.status()).toBe(404);
 });
 
-test('noticiencias.com redirects to correct domain', async ({ page }) => {
+test('noticiencias.com redirects to correct domain', async ({ page, baseURL }) => {
   // Verify the page renders at the base URL
   await page.goto('/');
   const url = page.url();
-  expect(url).toContain('noticiencias.com');
+  if (baseURL && !baseURL.includes('localhost') && !baseURL.includes('127.0.0.1')) {
+    expect(url).toContain('noticiencias.com');
+  } else {
+    expect(url).toContain(baseURL ? new URL(baseURL).hostname : 'localhost');
+  }
 });

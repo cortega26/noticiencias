@@ -3,14 +3,14 @@
  * Verifies structure, metadata, and accessibility of article pages.
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 
 // Fetch the search index to find an article URL
-async function getFirstArticleUrl(page: any): Promise<string | null> {
+async function getFirstArticleUrl(page: Page): Promise<string | null> {
   try {
     const response = await page.request.get('/search.json');
     if (!response.ok()) return null;
-    const index = await response.json();
+    const index = (await response.json()) as any[];
     // Return the first article's URL from the index
     if (Array.isArray(index) && index.length > 0) {
       return index[0].url || index[0].permalink || index[0].href || null;

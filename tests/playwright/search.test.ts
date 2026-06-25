@@ -6,7 +6,7 @@
 import { test, expect } from '@playwright/test';
 
 test('search page loads with input field', async ({ page }) => {
-  const response = await page.goto('/buscar');
+  const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
 
   // Search input should be visible

@@ -6,13 +6,13 @@
 import { test, expect } from '@playwright/test';
 
 test('report form page loads', async ({ page }) => {
-  const response = await page.goto('/reportar-problema');
+  const response = await page.goto('/reportar-problema/');
   // Page should load (may be 200 or 404 if route doesn't exist yet)
   expect(response?.status()).toBeLessThan(500);
 });
 
 test('report form has problem type selector', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   // Check for form elements if page exists
   const select = page.locator('select#problem-type');
@@ -31,7 +31,7 @@ test('report form has problem type selector', async ({ page }) => {
 });
 
 test('report form validates required fields', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const form = page.locator('form#report-problem-form');
   const hasForm = (await form.count()) > 0;
@@ -49,7 +49,7 @@ test('report form validates required fields', async ({ page }) => {
 });
 
 test('report form has accessible labels', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const form = page.locator('form#report-problem-form');
   const hasForm = (await form.count()) > 0;

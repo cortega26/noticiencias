@@ -6,6 +6,13 @@ test-results/
 output/
 reports/
 .coverage
+.agents/
+.claude/
+.antigravity/
+.autoskills/
+.continue/
+skills-lock.json
+
 
 # dependencies
 node_modules/
