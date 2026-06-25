@@ -57,7 +57,7 @@ describe('quick wins regression coverage', () => {
     const search = load(readDistHtml('/buscar/'));
     expect(search('title').text()).toBe('Buscar Noticias | Noticiencias');
     expect(search('meta[name="description"]').attr('content')).toBe(
-      'Busca artículos de ciencia, tecnología e internet publicados por Noticiencias.'
+      'Utiliza nuestro motor de búsqueda para encontrar artículos, noticias e investigaciones científicas publicadas por Noticiencias sobre ciencia, tecnología e internet.'
     );
 
     const hypeDetector = load(readDistHtml('/recursos/detector-de-hype/'));

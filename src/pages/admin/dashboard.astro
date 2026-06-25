@@ -131,8 +131,13 @@ const recentArticles: Array<{
 
 // Pass metadata the way BaseLayout expects it
 const metadata = {
-  title: 'Dashboard | Noticiencias',
-  description: 'Métricas editoriales y salud del pipeline de Noticiencias.',
+  title: 'Dashboard Editorial',
+  description:
+    'Dashboard editorial con métricas avanzadas de contenido, calidad de los artículos, variantes de imagen R2 y estado del pipeline de Noticiencias.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 ---
 

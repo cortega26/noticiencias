@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 
 export function safeYamlLoad(content: string): unknown {
   const parsed = yaml.load(content, {
-    schema: yaml.FAILSAFE_SCHEMA,
+    schema: yaml.DEFAULT_SCHEMA,
   });
 
   if (parsed === null || parsed === undefined) {

@@ -13,11 +13,22 @@ const { page, category } = Astro.props as InferGetStaticPropsType<typeof getStat
 const configuredCategory = configuredCategorySections.find((item) => item.slug === category?.slug);
 const topics = getTopicFrequency(page.data, 8);
 
+const baseDesc =
+  configuredCategory?.description ||
+  `Últimas historias de ${category?.title || 'esta categoría'} en Noticiencias.`;
+const pageSuffix = page.currentPage > 1 ? ` Página ${page.currentPage}.` : '';
+
+let extra = ' Encuentra los últimos artículos, análisis y novedades científicas en Noticiencias.';
+if (baseDesc.length + extra.length + pageSuffix.length > 170) {
+  extra = ' Artículos, análisis y novedades científicas.';
+}
+
 const metadata = {
-  title: `Categoría: ${category?.title || ''}`,
-  description:
-    configuredCategory?.description ||
-    `Últimas historias de ${category?.title || 'esta categoría'} en Noticiencias.`,
+  title:
+    page.currentPage > 1
+      ? `Artículos de ${category?.title || ''} (Pág. ${page.currentPage})`
+      : `Artículos y noticias de ${category?.title || ''}`,
+  description: `${baseDesc}${extra}${pageSuffix}`,
   robots: {
     index: true,
     follow: true,

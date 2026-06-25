@@ -21,9 +21,11 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 const topics = getTopicFrequency(page.data, 10);
 const metadata = {
-  title: `Blog`,
-  description:
-    'Archivo cronológico de artículos de ciencia y tecnología publicados por Noticiencias.',
+  title:
+    page.currentPage > 1
+      ? `Archivo completo de artículos (Pág. ${page.currentPage})`
+      : 'Archivo completo de artículos',
+  description: `Archivo cronológico de todos los artículos y reportajes sobre ciencia, tecnología e internet de interés público publicados por Noticiencias.${page.currentPage > 1 ? ` Página ${page.currentPage}.` : ''}`,
   robots: {
     index: true,
     follow: true,

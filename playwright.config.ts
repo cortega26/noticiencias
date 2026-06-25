@@ -37,7 +37,7 @@ export default defineConfig({
     : [
         {
           command: 'npm run preview',
-          // eslint-disable-next-line no-secrets/no-secrets
+
           url: 'http://localhost:4321',
           reuseExistingServer: !process.env.CI,
           timeout: 30000,
