@@ -1,5 +1,9 @@
 # Noticiencias Frontend
 
+*Part of the [Tooltician ecosystem](https://tooltician.com) — periodismo científico, reproducible y open-source.*
+
+[![Part of Tooltician](https://img.shields.io/badge/Part%20of-Tooltician-6C47FF.svg?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIgM2g2YTQgNCAwIDAgMSA0IDR2MTRhMiAyIDAgMCAwLTItMkg0YTIgMiAwIDAgMS0yLTJWNVoiLz48cGF0aCBkPSJNMjIgM2gtNmE0IDQgMCAwIDAtNCA0djE0YTIgMiAwIDAgMSAyLTJoNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMloiLz48L3N2Zz4=)](https://tooltician.com)
+
 Frontend repo for `noticiencias.com`.
 
 This repository is a static Astro 5 site with MD/MDX content under `src/content/posts`, a custom Astrowind-derived shell, and a small amount of page-scoped browser behavior. It is the presentation layer of the Noticiencias system; ingestion, scoring, editorial automation, and publication orchestration live in the sibling backend repo `../noticiencias_news_collector`.
@@ -84,3 +88,5 @@ Key references for understanding the full system:
 ---
 
 Built and maintained by **Carlos Ortega** — automation, data systems, and web technical hygiene consulting. Portfolio and services: **[tooltician.com](https://tooltician.com/)**.
+
+*Part of the [Tooltician](https://tooltician.com) ecosystem — periodismo científico, reproducible y open-source.*
