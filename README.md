@@ -2,7 +2,7 @@
 
 *Parte del [ecosistema Tooltician](https://tooltician.com) — periodismo científico, reproducible y open-source.*
 
-[![Tooltician](https://tooltician.com/badge.svg)](https://tooltician.com)
+[![Parte de Tooltician](https://tooltician.com/badge.es.svg)](https://tooltician.com)
 
 Frontend repo for `noticiencias.com`.
 
