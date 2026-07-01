@@ -14,7 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   BACKEND_CONTRACT_REPOSITORY: cortega26/noticiencias_news_collector
   BACKEND_CONTRACT_REF: main
   BACKEND_CONTRACT_SCHEMA_PATH: news_collector/contracts/frontend_schema.py
