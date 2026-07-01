@@ -1,6 +1,6 @@
 # Noticiencias Frontend
 
-*Parte del [ecosistema Tooltician](https://tooltician.com) — periodismo científico, reproducible y open-source.*
+_Parte del [ecosistema Tooltician](https://tooltician.com) — periodismo científico, reproducible y open-source._
 
 [![Parte de Tooltician](https://img.shields.io/badge/Parte_de-Tooltician.com-6C47FF?v=2)](https://tooltician.com)
 
@@ -89,4 +89,4 @@ Key references for understanding the full system:
 
 Built and maintained by **Carlos Ortega** — automation, data systems, and web technical hygiene consulting. Portfolio and services: **[tooltician.com](https://tooltician.com/)**.
 
-*Part of the [Tooltician](https://tooltician.com) ecosystem — periodismo científico, reproducible y open-source.*
+_Part of the [Tooltician](https://tooltician.com) ecosystem — periodismo científico, reproducible y open-source._
