@@ -6,6 +6,7 @@ test-results/
 output/
 reports/
 .coverage
+workers/coverage/
 .agents/
 .claude/
 .antigravity/

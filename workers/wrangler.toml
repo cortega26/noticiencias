@@ -32,6 +32,12 @@ vars = { ENVIRONMENT = "production" }
 # binding = "STATUS_KV"
 # id = ""
 
+# KV namespace for report-endpoint rate limiting + idempotency
+# (optional — create the namespace first: `wrangler kv namespace create RATE_LIMIT_KV`)
+# [[env.production.kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = ""
+
 # ---------------------------------------------------------------------------
 # Preview environment (for wrangler dev / staging)
 # ---------------------------------------------------------------------------

@@ -31,9 +31,13 @@ jobs:
         working-directory: workers
         run: npm ci
 
-      - name: Run tests
+      - name: Typecheck
         working-directory: workers
-        run: npm test
+        run: npm run typecheck
+
+      - name: Run tests with coverage
+        working-directory: workers
+        run: npm run test:coverage
 
   deploy:
     needs: test

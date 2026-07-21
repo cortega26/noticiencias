@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250601.0",
+    "@vitest/coverage-v8": "4.0.18",
     "vitest": "4.0.18",
     "wrangler": "^4.25.0"
   }

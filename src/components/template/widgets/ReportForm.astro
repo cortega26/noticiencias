@@ -229,15 +229,16 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 </div>
 
 <script>
+  import { buildReportPayload } from '~/utils/reportPayload';
+
+  // ClientRouter (see Layout.astro) fires 'astro:page-load' on every page
+  // load, including the very first one — a single listener here is enough;
+  // do NOT also branch on document.readyState/DOMContentLoaded, which used
+  // to fire *in addition to* this listener and attach duplicate submit
+  // handlers to the same form within one page load.
   document.addEventListener('astro:page-load', () => {
     initReportForm();
   });
-
-  if (document.readyState === 'complete') {
-    initReportForm();
-  } else {
-    document.addEventListener('DOMContentLoaded', initReportForm);
-  }
 
   function initReportForm() {
     // Elements
@@ -247,8 +248,16 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 
     if (!form || !successView) return;
 
-    // Get endpoint from data attribute
-    const endpoint = form.dataset.endpoint;
+    // Get endpoint from data attribute. E2E tests override this via
+    // window.__NOTICIENCIAS_TEST_REPORT_ENDPOINT__ (set with
+    // page.addInitScript before navigation) to exercise the
+    // configured-endpoint code paths without baking a real endpoint into
+    // the production build — never set outside of Playwright tests.
+    const testEndpointOverride = (
+      window as unknown as { __NOTICIENCIAS_TEST_REPORT_ENDPOINT__?: string }
+    ).__NOTICIENCIAS_TEST_REPORT_ENDPOINT__;
+    const endpoint = testEndpointOverride || form.dataset.endpoint;
+    const formEnabled = Boolean(endpoint);
 
     const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
     const detailsWrapper = document.querySelector('#details-wrapper') as HTMLElement | null;
@@ -288,6 +297,17 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
       return;
     }
 
+    if (!formEnabled) {
+      // Never simulate success: no endpoint means submission is genuinely
+      // unavailable, so say so up front and keep the button disabled
+      // regardless of what the user selects.
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envío de reportes no disponible';
+      errorMsg.textContent =
+        'El envío de reportes no está disponible en este momento. Por favor intente más tarde.';
+      errorMsg.classList.remove('hidden');
+    }
+
     const updateFormState = () => {
       const type = typeSelect.value;
       const isContent = [
@@ -317,8 +337,10 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
       detailsWrapper.classList.remove('opacity-50', 'pointer-events-none');
       reportUrl.disabled = false;
       reportDesc.disabled = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar reporte verificable';
+      if (formEnabled) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar reporte verificable';
+      }
 
       // Toggle Specifics & Update Labels/Placeholders
       specificContent.classList.add('hidden');
@@ -358,6 +380,16 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
       e.preventDefault();
       errorMsg.classList.add('hidden');
 
+      // Defense in depth: the button is already disabled/hidden-behind-a-
+      // message when there's no endpoint, but never simulate success here
+      // even if this handler somehow still runs.
+      if (!formEnabled || !endpoint) {
+        errorMsg.textContent =
+          'El envío de reportes no está disponible en este momento. Por favor intente más tarde.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
       // Custom validation check
       if (!form.checkValidity()) {
         errorMsg.textContent = 'Por favor complete todos los campos obligatorios.';
@@ -383,35 +415,52 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
         }
       }
 
-      // Submit Data
+      // Map UI field names/values to the Worker's snake_case contract.
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+      const payload = buildReportPayload(Object.fromEntries(formData.entries()));
 
       try {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Enviando...';
 
-        if (!endpoint) {
-          console.warn('Simulación: No se configuró endpoint en config.yaml');
-          // Datos logged server-side; no client console output
-          // Simulate network delay
-          await new Promise((resolve) => setTimeout(resolve, 800));
-        } else {
-          const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            body: JSON.stringify(data),
-          });
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
 
-          if (!response.ok) {
-            throw new Error('Error en el envío. Intente nuevamente.');
-          }
+        if (response.status === 429) {
+          errorMsg.textContent = 'Demasiados intentos. Espere un momento antes de reintentar.';
+          errorMsg.classList.remove('hidden');
+          return;
+        }
+        if (response.status === 503) {
+          errorMsg.textContent =
+            'El servicio de reportes no está disponible temporalmente. Intente más tarde.';
+          errorMsg.classList.remove('hidden');
+          return;
+        }
+        if (response.status === 422) {
+          const errorBody = await response.json().catch(() => null);
+          errorMsg.textContent = errorBody?.error
+            ? `Datos inválidos: ${errorBody.error}`
+            : 'Los datos enviados no son válidos.';
+          errorMsg.classList.remove('hidden');
+          return;
+        }
+        if (!response.ok) {
+          throw new Error(`Unexpected response status ${response.status}`);
         }
 
-        // Success State UI
+        const result = await response.json().catch(() => null);
+        if (!result?.id) {
+          throw new Error('Response missing report id');
+        }
+
+        // Success State UI — only reached after a genuine 2xx with a report id.
         form.classList.add('hidden');
         successView.classList.remove('hidden');
         successView.scrollIntoView({ behavior: 'smooth' });

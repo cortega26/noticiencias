@@ -57,6 +57,8 @@ export interface Env {
   REPORT_BUCKET?: R2Bucket;
   // KV namespace for pipeline status (optional)
   STATUS_KV?: KVNamespace;
+  // KV namespace for report-endpoint rate limiting + idempotency (optional)
+  RATE_LIMIT_KV?: KVNamespace;
   // Email service API key (optional — SendGrid, Mailgun, etc.)
   EMAIL_API_KEY?: string;
   EMAIL_FROM?: string;
