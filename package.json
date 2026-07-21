@@ -64,7 +64,7 @@
     "autoprefixer": "10.4.23",
     "csv-parse": "^6.1.0",
     "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.3.0",
     "limax": "^4.2.2",
     "lodash.merge": "^4.6.2",
     "lunr": "^2.3.9",
