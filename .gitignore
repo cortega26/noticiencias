@@ -40,5 +40,13 @@ pnpm-debug.log*
 # local development data
 data/metrics/development/*.db
 
+# runtime artifacts (generated, never tracked)
+.codegraph/*.pid
+.codegraph/daemon.*.sock
+data/logs/
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
 # Astro cache
 .astro/
