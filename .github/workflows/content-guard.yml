@@ -120,5 +120,36 @@ jobs:
       - name: 🧪 Dist Sanity
         run: npm run test:dist
 
-      - name: ✅ Audit Suite
-        run: npm run test:audit
+      - name: ✅ Unit Coverage (honest denominator, no-regression thresholds)
+        run: npm run test:coverage
+
+      - name: Restore Playwright browser cache
+        id: playwright-cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: 🎭 Browser Suite (local build only — never the live site)
+        env:
+          CI: true
+          PLAYWRIGHT_BASE_URL: http://localhost:4321
+        run: npx playwright test --project=chromium
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: playwright-report
+          # Traces/screenshots of the local build's DOM/network only — no
+          # report-form submissions are ever sent to a real endpoint in
+          # these tests (mocked via page.route), so nothing here can leak
+          # real report contents or secrets.
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
