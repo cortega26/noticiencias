@@ -11,15 +11,23 @@ const id = String(gaId);
 {
   isEnabled ? (
     <>
-      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} {...attrs} />
-      <script is:inline define:vars={{ id }} {...attrs}>
-        {`window.dataLayer = window.dataLayer || [];
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+        {...attrs}
+      />
+      <script
+        is:inline
+        define:vars={{ id }}
+        {...attrs}
+        set:html={`window.dataLayer = window.dataLayer || [];
 function gtag() {
   window.dataLayer.push(arguments);
 }
 gtag("js", new Date());
 gtag("config", id);`}
-      </script>
+      />
     </>
   ) : null
 }

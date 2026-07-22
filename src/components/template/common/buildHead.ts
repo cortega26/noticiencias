@@ -41,7 +41,8 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
     if (r.nosnippet) robots.push('nosnippet');
     if (typeof r.maxSnippet === 'number') robots.push(`max-snippet:${r.maxSnippet}`);
     if (r.maxImagePreview) robots.push(`max-image-preview:${r.maxImagePreview}`);
-    if (typeof r.maxVideoPreview === 'number') robots.push(`max-video-preview:${r.maxVideoPreview}`);
+    if (typeof r.maxVideoPreview === 'number')
+      robots.push(`max-video-preview:${r.maxVideoPreview}`);
     if (r.noarchive) robots.push('noarchive');
     if (r.unavailableAfter) robots.push(`unavailable_after:${r.unavailableAfter}`);
     if (r.noimageindex) robots.push('noimageindex');
@@ -60,7 +61,11 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
   if (config.mobileAlternate) {
     push({
       tag: 'link',
-      attrs: { rel: 'alternate', media: config.mobileAlternate.media, href: config.mobileAlternate.href },
+      attrs: {
+        rel: 'alternate',
+        media: config.mobileAlternate.media,
+        href: config.mobileAlternate.href,
+      },
     });
   }
 
@@ -78,7 +83,8 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
     if (ogTitle) push({ tag: 'meta', attrs: { property: 'og:title', content: ogTitle } });
 
     const ogDescription = og.description || config.description;
-    if (ogDescription) push({ tag: 'meta', attrs: { property: 'og:description', content: ogDescription } });
+    if (ogDescription)
+      push({ tag: 'meta', attrs: { property: 'og:description', content: ogDescription } });
 
     if (og.url) push({ tag: 'meta', attrs: { property: 'og:url', content: og.url } });
     if (og.type) push({ tag: 'meta', attrs: { property: 'og:type', content: og.type } });
@@ -86,25 +92,54 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
     if (og.images?.length) {
       for (const medium of og.images as ReadonlyArray<OpenGraphMedia>) {
         push({ tag: 'meta', attrs: { property: 'og:image', content: medium.url } });
-        if (medium.alt) push({ tag: 'meta', attrs: { property: 'og:image:alt', content: medium.alt } });
-        if (medium.secureUrl) push({ tag: 'meta', attrs: { property: 'og:image:secure_url', content: medium.secureUrl } });
-        if (medium.type) push({ tag: 'meta', attrs: { property: 'og:image:type', content: medium.type } });
-        if (typeof medium.width === 'number') push({ tag: 'meta', attrs: { property: 'og:image:width', content: String(medium.width) } });
-        if (typeof medium.height === 'number') push({ tag: 'meta', attrs: { property: 'og:image:height', content: String(medium.height) } });
+        if (medium.alt)
+          push({ tag: 'meta', attrs: { property: 'og:image:alt', content: medium.alt } });
+        if (medium.secureUrl)
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:image:secure_url', content: medium.secureUrl },
+          });
+        if (medium.type)
+          push({ tag: 'meta', attrs: { property: 'og:image:type', content: medium.type } });
+        if (typeof medium.width === 'number')
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:image:width', content: String(medium.width) },
+          });
+        if (typeof medium.height === 'number')
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:image:height', content: String(medium.height) },
+          });
       }
     }
     if (og.videos?.length) {
       for (const medium of og.videos as ReadonlyArray<OpenGraphMedia>) {
         push({ tag: 'meta', attrs: { property: 'og:video', content: medium.url } });
-        if (medium.alt) push({ tag: 'meta', attrs: { property: 'og:video:alt', content: medium.alt } });
-        if (medium.secureUrl) push({ tag: 'meta', attrs: { property: 'og:video:secure_url', content: medium.secureUrl } });
-        if (medium.type) push({ tag: 'meta', attrs: { property: 'og:video:type', content: medium.type } });
-        if (typeof medium.width === 'number') push({ tag: 'meta', attrs: { property: 'og:video:width', content: String(medium.width) } });
-        if (typeof medium.height === 'number') push({ tag: 'meta', attrs: { property: 'og:video:height', content: String(medium.height) } });
+        if (medium.alt)
+          push({ tag: 'meta', attrs: { property: 'og:video:alt', content: medium.alt } });
+        if (medium.secureUrl)
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:video:secure_url', content: medium.secureUrl },
+          });
+        if (medium.type)
+          push({ tag: 'meta', attrs: { property: 'og:video:type', content: medium.type } });
+        if (typeof medium.width === 'number')
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:video:width', content: String(medium.width) },
+          });
+        if (typeof medium.height === 'number')
+          push({
+            tag: 'meta',
+            attrs: { property: 'og:video:height', content: String(medium.height) },
+          });
       }
     }
     if (og.locale) push({ tag: 'meta', attrs: { property: 'og:locale', content: og.locale } });
-    if (og.site_name) push({ tag: 'meta', attrs: { property: 'og:site_name', content: og.site_name } });
+    if (og.site_name)
+      push({ tag: 'meta', attrs: { property: 'og:site_name', content: og.site_name } });
   }
 
   // Facebook
@@ -114,9 +149,12 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
 
   // Twitter
   if (config.twitter) {
-    if (config.twitter.cardType) push({ tag: 'meta', attrs: { name: 'twitter:card', content: config.twitter.cardType } });
-    if (config.twitter.site) push({ tag: 'meta', attrs: { name: 'twitter:site', content: config.twitter.site } });
-    if (config.twitter.handle) push({ tag: 'meta', attrs: { name: 'twitter:creator', content: config.twitter.handle } });
+    if (config.twitter.cardType)
+      push({ tag: 'meta', attrs: { name: 'twitter:card', content: config.twitter.cardType } });
+    if (config.twitter.site)
+      push({ tag: 'meta', attrs: { name: 'twitter:site', content: config.twitter.site } });
+    if (config.twitter.handle)
+      push({ tag: 'meta', attrs: { name: 'twitter:creator', content: config.twitter.handle } });
   }
 
   // Additional Meta Tags

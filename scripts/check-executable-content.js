@@ -30,11 +30,11 @@ if (jsonMode) {
   }
   if (diagnostics.errors.length > 0) {
     console.error(
-      `\n[executable-content] FAIL — ${diagnostics.errors.length} article(s) contain executable content.`,
+      `\n[executable-content] FAIL — ${diagnostics.errors.length} article(s) contain executable content.`
     );
     process.exit(1);
   }
   console.log(
-    `[executable-content] OK — ${diagnostics.filesCount} article(s) checked, no executable content found.`,
+    `[executable-content] OK — ${diagnostics.filesCount} article(s) checked, no executable content found.`
   );
 }

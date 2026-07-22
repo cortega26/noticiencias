@@ -42,6 +42,11 @@ jobs:
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
+      - name: 📦 Dependency Graph (peer validity)
+        # Plan 032: fail the build if any production dependency declares an
+        # invalid peer range. `npm ls --omit=dev` exits non-zero on invalid peers.
+        run: npm ls --omit=dev
+
       - name: 🔍 Frontmatter & Type Validation
         run: npm run validate:content
 
@@ -155,7 +160,7 @@ jobs:
         env:
           CI: true
           PLAYWRIGHT_BASE_URL: http://localhost:4321
-        run: npx playwright test --project=chromium
+        run: npx playwright test --project=mobile-375 --project=desktop-1280
 
       - name: Upload Playwright report on failure
         if: failure()

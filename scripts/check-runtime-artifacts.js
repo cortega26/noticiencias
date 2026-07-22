@@ -21,10 +21,10 @@ const ARTIFACT_PATTERNS = [
 ];
 
 function listTrackedFiles() {
-  const output = execSync(
-    'git ls-files --cached --full-name',
-    { encoding: 'utf8', maxBuffer: 50 * 1024 * 1024 },
-  );
+  const output = execSync('git ls-files --cached --full-name', {
+    encoding: 'utf8',
+    maxBuffer: 50 * 1024 * 1024,
+  });
   return output.trim().split('\n').filter(Boolean);
 }
 
@@ -49,14 +49,12 @@ function main() {
 
   if (violations.length > 0) {
     console.error(
-      `\n[check-runtime-artifacts] FAIL — ${violations.length} tracked runtime artifact(s):\n`,
+      `\n[check-runtime-artifacts] FAIL — ${violations.length} tracked runtime artifact(s):\n`
     );
     for (const v of violations) {
       console.error(v);
     }
-    console.error(
-      '\nRemove them from tracking and add ignore rules to .gitignore.\n',
-    );
+    console.error('\nRemove them from tracking and add ignore rules to .gitignore.\n');
     process.exit(1);
   }
 

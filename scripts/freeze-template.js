@@ -6,6 +6,8 @@ const allowedTemplateFiles = new Set([
   'src/components/template/common/Metadata.astro',
   'src/components/template/common/Analytics.astro',
   'src/components/template/common/CommonMeta.astro',
+  'src/components/template/common/buildHead.ts',
+  'src/components/template/common/seo.ts',
   'src/components/template/CustomStyles.astro',
   'src/components/template/blog/Pagination.astro',
   'src/components/template/blog/ToBlogLink.astro',
