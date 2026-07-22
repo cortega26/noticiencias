@@ -16,7 +16,9 @@ export interface Config {
   metadata?: MetaDataConfig;
   i18n?: I18NConfig;
   apps?: {
-    blog?: BlogConfig;
+    // Partial: getAppBlog merges this over full defaults via lodash.merge,
+    // so callers only need to override the fields they care about.
+    blog?: Partial<BlogConfig>;
   };
   ui?: unknown;
   analytics?: unknown;

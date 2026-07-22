@@ -119,7 +119,9 @@ describe('quick wins regression coverage', () => {
 
   it('keeps search browser behavior in the owning component and browser-only utility', () => {
     const searchPage = fs.readFileSync(path.join(srcDir, 'pages', 'buscar.astro'), 'utf8');
-    const pureSearchUrl = fs.readFileSync(path.join(srcDir, 'utils', 'search-url.ts'), 'utf8');
+    // `search.ts` holds the pure, DOM-free query/document normalization logic;
+    // the DOM-touching URL <-> browser wiring lives only in `browser/search-url.ts`.
+    const pureSearchLogic = fs.readFileSync(path.join(srcDir, 'utils', 'search.ts'), 'utf8');
     const searchComponent = fs.readFileSync(
       path.join(srcDir, 'components', 'common', 'SearchInterface.astro'),
       'utf8'
@@ -127,7 +129,7 @@ describe('quick wins regression coverage', () => {
 
     expect(searchPage).toContain('SearchInterface');
     expect(searchPage).not.toMatch(/<script[\s>]/);
-    expect(pureSearchUrl).not.toMatch(/\b(?:window|document|history)\b/);
+    expect(pureSearchLogic).not.toMatch(/\b(?:window|document|history)\b/);
     expect(searchComponent).toContain("from '~/utils/browser/search-url'");
   });
 
