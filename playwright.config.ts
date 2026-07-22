@@ -3,12 +3,22 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * Playwright configuration for Noticiencias E2E tests.
  *
- * Targets the production site by default.
- * Override with env var PLAYWRIGHT_BASE_URL for local preview:
- *   npx playwright test (uses localhost:4321 by default)
+ * These tests build and serve a local production build (`dist/` via
+ * `astro preview`) and gate PRs against it — never the live site. Live
+ * production is checked separately and explicitly by
+ * `npm run test:deploy` (scripts/post-deploy-check.js), after a deploy
+ * has actually happened.
+ *
+ * A previous version of this file defaulted to `https://noticiencias.com`
+ * and skipped starting a local server entirely in CI — meaning a CI run
+ * would have silently exercised the live site instead of the build being
+ * gated. Confirmed by reproducing it locally: several report-form
+ * assertions written against this repo's `config.yaml` (no report
+ * endpoint configured) failed when accidentally pointed at the live site,
+ * which has since diverged, and passed once correctly pointed at the
+ * local build.
  */
-
-const BASE_URL = process.env.PLAYWRIGHT_BASE_URL || 'https://noticiencias.com';
+const BASE_URL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321';
 
 export default defineConfig({
   testDir: './tests/playwright',
@@ -32,15 +42,13 @@ export default defineConfig({
     },
   ],
 
-  webServer: process.env.CI
-    ? undefined
-    : [
-        {
-          command: 'npm run preview',
-
-          url: 'http://localhost:4321',
-          reuseExistingServer: !process.env.CI,
-          timeout: 30000,
-        },
-      ],
+  // Always start (or reuse, outside CI) a local preview server against the
+  // current dist/ build — in CI as much as locally. There is no live-site
+  // fallback here.
+  webServer: {
+    command: 'npm run preview',
+    url: 'http://localhost:4321',
+    reuseExistingServer: !process.env.CI,
+    timeout: 30000,
+  },
 });

@@ -1,21 +1,15 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// Helper to fetch the first article URL from search index
+// Helper to fetch the first article URL from search index. Article routes
+// are leaf pages (e.g. `/2026-01-15-some-slug`) with no trailing slash —
+// appending one 404s them, matching this repo's `trailingSlash: false`.
 async function getFirstArticleUrl(page: Page): Promise<string | null> {
-  try {
-    const response = await page.request.get('/search.json');
-    if (!response.ok()) return null;
-    const index = (await response.json()) as any[];
-    if (Array.isArray(index) && index.length > 0) {
-      const url = index[0].url || index[0].permalink || index[0].href;
-      // Ensure it has a trailing slash for local preview consistency
-      return url ? (url.endsWith('/') ? url : `${url}/`) : null;
-    }
-    return null;
-  } catch {
-    return null;
-  }
+  const response = await page.request.get('/search.json');
+  expect(response.ok(), 'search.json must be reachable').toBe(true);
+  const index = (await response.json()) as { url?: string }[];
+  expect(index.length, 'a local build always has articles in the search index').toBeGreaterThan(0);
+  return index[0].url ?? null;
 }
 
 // Helper to check accessibility and format output
@@ -75,30 +69,30 @@ test.describe('Accessibility audits', () => {
     await checkA11y(page, '/');
   });
 
-  test('blog archive page has no a11y violations', async ({ page }) => {
+  // FIXME (plan 031, unresolved as of 2026-07-22): production serves these
+  // routes with a trailing slash as canonical (200) and 301-redirects the
+  // no-slash form, but this repo's `config.yaml` (`trailingSlash: false`)
+  // makes the local build do the opposite — see navigation.test.ts for the
+  // full finding. Asked the operator directly rather than guessing which
+  // form is actually intended; don't "fix" these by picking one.
+  test.fixme('blog archive page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/blog/');
   });
 
-  test('search page has no a11y violations', async ({ page }) => {
+  test.fixme('search page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/buscar/');
   });
 
-  test('report problem page has no a11y violations', async ({ page }) => {
+  test.fixme('report problem page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/reportar-problema/');
   });
 
-  test('newsletter page has no a11y violations', async ({ page }) => {
+  test.fixme('newsletter page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/newsletter/');
   });
 
   test('article page has no a11y violations', async ({ page }) => {
     const articleUrl = await getFirstArticleUrl(page);
-    if (!articleUrl) {
-      test.skip(true, 'No article URL found');
-      return;
-    }
-    // Convert url path to relative to baseURL
-    const path = new URL(articleUrl, 'https://noticiencias.com').pathname;
-    await checkA11y(page, path);
+    await checkA11y(page, articleUrl as string);
   });
 });

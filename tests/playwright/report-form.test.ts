@@ -27,34 +27,24 @@ async function fillAndSubmit(page: Page) {
 
 test('report form page loads', async ({ page }) => {
   const response = await page.goto('/reportar-problema');
-  // Page should load (may be 200 or 404 if route doesn't exist yet)
-  expect(response?.status()).toBeLessThan(500);
+  expect(response?.status()).toBe(200);
 });
 
 test('report form has problem type selector', async ({ page }) => {
   await page.goto('/reportar-problema');
 
   const select = page.locator('select#problem-type');
-  const form = page.locator('form#report-problem-form');
-
-  const hasForm = (await form.count()) > 0;
-  if (hasForm) {
-    await expect(select).toBeVisible();
-    const options = select.locator('option');
-    const count = await options.count();
-    expect(count).toBeGreaterThanOrEqual(3);
-  }
+  await expect(select).toBeVisible();
+  const options = select.locator('option');
+  const count = await options.count();
+  expect(count).toBeGreaterThanOrEqual(3);
 });
 
 test('report form validates required fields', async ({ page }) => {
   await page.goto('/reportar-problema');
 
   const form = page.locator('form#report-problem-form');
-  const hasForm = (await form.count()) > 0;
-  if (!hasForm) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
+  await expect(form).toBeAttached();
 
   const submitBtn = form.locator('button[type="submit"]');
   await expect(submitBtn).toBeVisible();
@@ -66,11 +56,7 @@ test('report form has accessible labels', async ({ page }) => {
   await page.goto('/reportar-problema');
 
   const form = page.locator('form#report-problem-form');
-  const hasForm = (await form.count()) > 0;
-  if (!hasForm) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
+  await expect(form).toBeAttached();
 
   const labels = form.locator('label');
   const labelCount = await labels.count();
@@ -91,10 +77,6 @@ test('with no endpoint configured, the form is honestly disabled — never fakes
   await page.goto('/reportar-problema');
 
   const form = page.locator('form#report-problem-form');
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
 
   // The current production config.yaml has no endpoint set, so this is the
   // real default state, not a mock — the plan's core bug was showing fake
@@ -118,11 +100,6 @@ test('a successful submission shows success only after a 2xx response with a rep
   );
   await page.goto('/reportar-problema');
 
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
-
   await fillAndSubmit(page);
 
   await expect(page.locator('#success-view')).toBeVisible();
@@ -130,7 +107,6 @@ test('a successful submission shows success only after a 2xx response with a rep
 });
 
 test('a 422 response shows a validation error, not success', async ({ page }) => {
-  const form = page.locator('form#report-problem-form');
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) =>
     route.fulfill({
@@ -141,11 +117,6 @@ test('a 422 response shows a validation error, not success', async ({ page }) =>
   );
   await page.goto('/reportar-problema');
 
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
-
   await fillAndSubmit(page);
 
   await expect(page.locator('#form-error')).toBeVisible();
@@ -154,15 +125,9 @@ test('a 422 response shows a validation error, not success', async ({ page }) =>
 });
 
 test('a 429 response shows a rate-limit message, not success', async ({ page }) => {
-  const form = page.locator('form#report-problem-form');
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.fulfill({ status: 429 }));
   await page.goto('/reportar-problema');
-
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
 
   await fillAndSubmit(page);
 
@@ -172,15 +137,9 @@ test('a 429 response shows a rate-limit message, not success', async ({ page }) 
 });
 
 test('a 503 response shows a service-unavailable message, not success', async ({ page }) => {
-  const form = page.locator('form#report-problem-form');
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.fulfill({ status: 503 }));
   await page.goto('/reportar-problema');
-
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
 
   await fillAndSubmit(page);
 
@@ -190,15 +149,9 @@ test('a 503 response shows a service-unavailable message, not success', async ({
 });
 
 test('a network failure shows a generic error, not success', async ({ page }) => {
-  const form = page.locator('form#report-problem-form');
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.abort('failed'));
   await page.goto('/reportar-problema');
-
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
 
   await fillAndSubmit(page);
 
@@ -221,11 +174,6 @@ test('repeated ClientRouter navigations do not attach duplicate submit listeners
   });
 
   await page.goto('/reportar-problema');
-  const form = page.locator('form#report-problem-form');
-  if ((await form.count()) === 0) {
-    test.skip(true, 'Report form not found on page');
-    return;
-  }
 
   // Navigate away and back to force astro:page-load to fire again.
   await page.goto('/');
