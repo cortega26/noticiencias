@@ -15,7 +15,10 @@ export default defineConfig({
   prefetch: false,
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/buscar') && !page.includes('/search.json') && !page.includes('/admin/'),
+    }),
     mdx(),
     icon({
       include: {

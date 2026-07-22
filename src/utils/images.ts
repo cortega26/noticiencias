@@ -1,6 +1,6 @@
 import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './images-optimization';
 import type { ImageMetadata } from 'astro';
-import type { OpenGraph } from '@astrolib/seo';
+import type { OpenGraph } from '~/components/template/common/seo';
 import type { ImagesOptimizer } from './images-optimization';
 import { selectPreferredVariantSrc, type DerivativeAwareImageMetadata } from './image-derivatives';
 import { getAsset } from './permalinks';

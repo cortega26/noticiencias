@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /buscar/
-Disallow: /recursos/
 
 # LLM Context files
 # llms-txt: https://noticiencias.com/llms.txt
@@ -11,17 +10,14 @@ Disallow: /recursos/
 User-agent: PerplexityBot
 Allow: /
 Disallow: /buscar/
-Disallow: /recursos/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /buscar/
-Disallow: /recursos/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /buscar/
-Disallow: /recursos/
 
 # Disallow aggressive scraping for model training
 User-agent: GPTBot

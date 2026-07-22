@@ -1,14 +1,13 @@
 ---
 import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
-
-import type { Props as AstroSeoProps } from '@astrolib/seo';
 
 import { SITE, METADATA } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
 import { adaptOpenGraphImages } from '~/utils/images';
+import { buildHead } from './buildHead';
+import type { SeoProps } from './seo';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -26,13 +25,16 @@ const {
 
 const creator = twitter?.creator ?? METADATA?.twitter?.handle;
 
-const seoProps: AstroSeoProps = merge(
+const seoProps = merge(
   {
     title: '',
     titleTemplate: '%s',
     canonical: canonical,
     noindex: true,
     nofollow: true,
+    robotsProps: {
+      maxImagePreview: 'large',
+    },
     description: undefined,
     openGraph: {
       url: canonical,
@@ -64,9 +66,20 @@ const seoProps: AstroSeoProps = merge(
     openGraph: { url: canonical, ...openGraph },
     twitter: { ...twitter, creator },
   }
-);
+) as SeoProps;
+
+const adaptedOpenGraph = await adaptOpenGraphImages(seoProps?.openGraph, Astro.site);
+const headTags = buildHead({ ...seoProps, openGraph: adaptedOpenGraph });
 ---
 
-<AstroSeo
-  {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }}
-/>
+{
+  headTags.map((t) => {
+    if (t.tag === 'title') {
+      return <title>{t.content}</title>;
+    }
+    if (t.tag === 'meta') {
+      return <meta {...t.attrs} />;
+    }
+    return <link {...t.attrs} />;
+  })
+}
