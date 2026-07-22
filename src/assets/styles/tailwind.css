@@ -1,23 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-@layer utilities {
-  .bg-page {
-    background-color: var(--aw-color-bg-page);
+/* darkMode: 'class' — Tailwind 4 uses @custom-variant for dark mode strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Custom variant: the `intersect` variant from the v3 plugin */
+@custom-variant intersect (&:not([no-intersect]));
+
+/* Design tokens — migrated from tailwind.config.mjs.
+   The --aw-color-* and --aw-font-* variables are defined at runtime by
+   CustomStyles.astro (:root + .dark). We map them to Tailwind utilities
+   here so classes like `bg-page`, `text-muted`, `font-sans` resolve. */
+@theme {
+  --color-primary: var(--aw-color-primary);
+  --color-secondary: var(--aw-color-secondary);
+  --color-accent: var(--aw-color-accent);
+  --color-default: var(--aw-color-text-default);
+  --color-muted: var(--aw-color-text-muted);
+
+  --color-surface-base: var(--aw-color-bg-page);
+  --color-surface-paper: var(--aw-color-bg-paper);
+  --color-surface-highlight: var(--aw-color-bg-highlight);
+
+  --color-text-body: var(--aw-color-text-default);
+  --color-text-muted: var(--aw-color-text-muted);
+  --color-text-inverse: #ffffff;
+
+  --color-border-subtle: var(--aw-color-border);
+
+  --font-sans: var(--aw-font-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--aw-font-serif, Merriweather, Georgia, Cambria, 'Times New Roman', Times, serif),
+    Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-heading: var(--aw-font-heading, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade: fadeInUp 300ms both;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .bg-dark {
-    background-color: var(--aw-color-bg-page-dark);
-  }
-  .bg-light {
-    background-color: var(--aw-color-bg-page);
-  }
-  .text-page {
-    color: var(--aw-color-text-page);
-  }
-  .text-muted {
-    color: var(--aw-color-text-muted);
-  }
+}
+
+@utility bg-page {
+  background-color: var(--aw-color-bg-page);
+}
+@utility bg-dark {
+  background-color: var(--aw-color-bg-page-dark);
+}
+@utility bg-light {
+  background-color: var(--aw-color-bg-page);
+}
+@utility text-page {
+  color: var(--aw-color-text-page);
+}
+@utility text-muted {
+  color: var(--aw-color-text-muted);
 }
 
 #header.scroll > div:first-child {
@@ -62,7 +105,6 @@
 [data-aw-toggle-menu].expanded g > path:first-child {
   @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
 }
-
 [data-aw-toggle-menu].expanded g > path:last-child {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
