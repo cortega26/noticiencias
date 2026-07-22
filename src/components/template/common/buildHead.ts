@@ -14,9 +14,6 @@ export type HeadTag =
   | { tag: 'meta'; attrs: Record<string, string> }
   | { tag: 'link'; attrs: Record<string, string> };
 
-const ROBOTS_TRUE_FALSE = (v: boolean | undefined, whenTrue: string, whenFalse: string): string | undefined =>
-  typeof v === 'undefined' ? undefined : v ? whenTrue : whenFalse;
-
 export const buildHead = (config: SeoProps): HeadTag[] => {
   const tags: HeadTag[] = [];
   const push = (t: HeadTag) => tags.push(t);
