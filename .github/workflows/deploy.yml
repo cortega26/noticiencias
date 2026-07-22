@@ -105,6 +105,11 @@ jobs:
     steps:
       - name: Checkout Source for Verification
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          # Full history: post-publish-callback.js diffs against
+          # github.event.before to derive publication_ids, which a shallow
+          # (default depth-1) checkout wouldn't have available.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
@@ -132,5 +137,7 @@ jobs:
         if: success()
         env:
           BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
           DEPLOY_URL: ${{ steps.deployment.outputs.page_url }}
+          GITHUB_BASE_SHA: ${{ github.event.before }}
         run: node scripts/post-publish-callback.js ${{ steps.deployment.outputs.page_url }}

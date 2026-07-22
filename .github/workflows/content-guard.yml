@@ -24,6 +24,11 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          # Full history: the failure-path callback below diffs against the
+          # PR base / pre-push commit to derive publication_ids, which a
+          # shallow (default depth-1) checkout wouldn't have available.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
@@ -81,9 +86,21 @@ jobs:
         if: failure()
         env:
           BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
+          GITHUB_BASE_SHA: >-
+            ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
           echo '{"check":"content-guard","status":"fail","message":"One or more validation steps failed. See run for details."}' > /tmp/guard-failure.json
-          node scripts/backend-notify.js --status=fail --payload-file=/tmp/guard-failure.json || true
+          node --input-type=module <<'EOF' > /tmp/guard-failure-ids.json
+          import { getChangedPostRefineryIds } from './scripts/utils/publication-ids.js';
+          const ids = getChangedPostRefineryIds({
+            baseSha: process.env.GITHUB_BASE_SHA,
+            headSha: process.env.GITHUB_SHA,
+            repoRoot: process.cwd(),
+          });
+          console.log(JSON.stringify(ids));
+          EOF
+          node scripts/backend-notify.js --status=fail --payload-file=/tmp/guard-failure.json --publication-ids-file=/tmp/guard-failure-ids.json || true
 
   build:
     if: github.event_name == 'pull_request'
