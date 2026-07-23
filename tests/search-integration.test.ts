@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { normalizeQuery, normalizeSearchDocument } from '../src/utils/search';
-import { buildSearchArtifact } from '../src/utils/build-search-index';
+import { buildSearchArtifact, stripMarkdown } from '../src/utils/build-search-index';
 
 import lunr from 'lunr';
 
@@ -169,5 +169,84 @@ describe('Build-time search artifact (plan 039)', () => {
     const a1 = buildSearchArtifact(mockDocuments);
     const a2 = buildSearchArtifact(mockDocuments);
     expect(JSON.stringify(a1)).toBe(JSON.stringify(a2));
+  });
+});
+
+describe('stripMarkdown edge cases (plan 039)', () => {
+  it('empty string returns empty string', () => {
+    expect(stripMarkdown('')).toBe('');
+  });
+
+  it('only frontmatter returns empty string', () => {
+    expect(stripMarkdown('---\ntitle: Test\n---')).toBe('');
+  });
+
+  it('only code fence returns empty string', () => {
+    expect(stripMarkdown('```python\nprint(1)\n```')).toBe('');
+  });
+
+  it('strips images but keeps alt text', () => {
+    const result = stripMarkdown('![Alt text](image.png)');
+    expect(result).toContain('Alt text');
+    expect(result).not.toContain('image.png');
+  });
+
+  it('strips links but keeps link text', () => {
+    const result = stripMarkdown('[Click here](https://example.com)');
+    expect(result).toContain('Click here');
+    expect(result).not.toContain('https://example.com');
+  });
+
+  it('removes HTML tags', () => {
+    const result = stripMarkdown('<div>content</div>');
+    expect(result).toBe('content');
+  });
+
+  it('removes heading markers', () => {
+    const result = stripMarkdown('## Heading');
+    expect(result).toBe('Heading');
+  });
+
+  it('removes emphasis markers', () => {
+    const result = stripMarkdown('**bold** and _italic_');
+    expect(result).toBe('bold and italic');
+  });
+
+  it('collapses whitespace', () => {
+    const result = stripMarkdown('Multiple\n\n\n  spaces   here');
+    expect(result).toBe('Multiple spaces here');
+  });
+});
+
+describe('buildSearchArtifact edge cases (plan 039)', () => {
+  it('empty documents array throws', () => {
+    expect(() => buildSearchArtifact([])).toThrow('No documents provided');
+  });
+
+  it('null documents throws', () => {
+    expect(() => buildSearchArtifact(null as unknown as never[])).toThrow();
+  });
+
+  it('single document with empty content works', () => {
+    const doc = {
+      title: 'Empty',
+      url: '/empty',
+      description: '',
+      content: '',
+    };
+    const artifact = buildSearchArtifact([doc]);
+    expect(artifact.version).toBe(1);
+    expect(Object.keys(artifact.store)).toHaveLength(1);
+  });
+
+  it('documents are sorted by URL in the store', () => {
+    const docs = [
+      { title: 'Z', url: '/z', description: '', content: 'z' },
+      { title: 'A', url: '/a', description: '', content: 'a' },
+      { title: 'M', url: '/m', description: '', content: 'm' },
+    ];
+    const artifact = buildSearchArtifact(docs);
+    const urls = Object.keys(artifact.store);
+    expect(urls).toEqual(['/a', '/m', '/z']);
   });
 });
