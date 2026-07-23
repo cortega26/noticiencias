@@ -35,6 +35,16 @@ import { UI } from 'astrowind:config';
       const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
       if (matches && matches.length) {
         matches.forEach((elem) => {
+          // Only element-like nodes have dataset; document/window don't.
+          // For non-element targets (document), use a property flag.
+          if (elem.dataset && elem.dataset.awBound === 'true') return;
+          if (elem.dataset) {
+            elem.dataset.awBound = 'true';
+          } else if (elem.__awBound === true) {
+            return;
+          } else {
+            elem.__awBound = true;
+          }
           elem.addEventListener(event, (e) => fn(e, elem), false);
         });
       }
@@ -183,6 +193,12 @@ import { UI } from 'astrowind:config';
     elements: [],
 
     start() {
+      // Disconnect any previous observer before creating a new one.
+      // Without this, every astro:after-swap would leak an observer that
+      // keeps firing callbacks on elements that no longer exist.
+      this.observer?.disconnect();
+      this.elements = [];
+
       const selectors = [
         '[class*=" intersect:"]',
         '[class*=":intersect:"]',
@@ -282,5 +298,12 @@ import { UI } from 'astrowind:config';
 
   document.addEventListener('astro:after-swap', () => {
     Observer.start();
+  });
+
+  // Teardown: disconnect the observer before the old DOM is discarded
+  // so no leaked observer keeps firing on detached nodes.
+  document.addEventListener('astro:before-swap', () => {
+    Observer.observer?.disconnect();
+    Observer.elements = [];
   });
 </script>
