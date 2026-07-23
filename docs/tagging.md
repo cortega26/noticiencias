@@ -18,7 +18,7 @@ Tagging authority is split across the two repos:
    - `../noticiencias_news_collector/news_collector/taxonomy/orthography.yml`
    - `../noticiencias_news_collector/news_collector/taxonomy/normalizer.py`
 2. Frontend content schema
-   - `src/content/config.ts`
+   - `src/content.config.ts`
 3. This document
    - explains how those rules relate
 
@@ -95,7 +95,7 @@ The backend owns these limits. If they change, this doc and any editorial prompt
 What is enforced today:
 
 - backend normalization and validation when content flows through the backend publisher
-- frontend schema shape through `src/content/config.ts`
+- frontend schema shape through `src/content.config.ts`
 - general content/build checks through `npm run validate:content`
 
 What is not fully enforced today:

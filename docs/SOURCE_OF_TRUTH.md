@@ -87,8 +87,8 @@ Cross-repo rule:
 - Category and tag archive pathnames come from `src/config.yaml`, currently `categorias` and `temas`.
 - Metadata flows through page/layout props into `src/components/template/common/Metadata.astro`; pages should not bypass that path for normal SEO.
 - Search is implemented as:
-  - build-time document extraction in `src/pages/search.json.js`
-  - browser-only Lunr behavior in `src/pages/buscar.astro`
+  - build-time serialized Lunr index + compact result store in `src/pages/search.json.js` (via `src/utils/build-search-index.ts`, plan 039)
+  - browser-only `lunr.Index.load()` deserialize in `src/components/common/SearchInterface.astro`
 - View transitions are globally enabled in `src/layouts/template/Layout.astro`; routed page scripts must therefore be idempotent across Astro navigations.
 
 ## Non-Authoritative Material

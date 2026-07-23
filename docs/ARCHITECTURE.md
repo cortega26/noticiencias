@@ -47,9 +47,9 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 ### Search Flow
 
 1. `src/pages/search.json.js` reads `getCollection('posts')` during build.
-2. It emits a JSON document index to `/search.json`.
+2. It uses `src/utils/build-search-index.ts` to strip Markdown, normalize, build a serialized Lunr index, and emit a versioned artifact `{ version, index, store }` to `/search.json`.
 3. `src/pages/buscar.astro` composes `src/components/common/SearchInterface.astro`.
-4. `SearchInterface.astro` owns the browser script that loads the index and builds a Lunr index client-side.
+4. `SearchInterface.astro` owns the browser script that fetches the prebuilt serialized Lunr index (plan 039) and deserializes it via `lunr.Index.load()`.
 5. `src/utils/search.ts` owns pure search normalization.
 6. `src/utils/browser/search-url.ts` owns browser-only URL query synchronization for the search page.
 

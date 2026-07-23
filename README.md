@@ -6,7 +6,7 @@ _Parte del [ecosistema Tooltician](https://tooltician.com) â€” periodismo cientÃ
 
 Frontend repo for `noticiencias.com`.
 
-This repository is a static Astro 6 site with MD/MDX content under `src/content/posts`, a custom Astrowind-derived shell, and a small amount of page-scoped browser behavior. It is the presentation layer of the Noticiencias system; ingestion, scoring, editorial automation, and publication orchestration live in the sibling backend repo `../noticiencias_news_collector`.
+This repository is a static Astro 7 site with MD/MDX content under `src/content/posts`, a custom Astrowind-derived shell, and a small amount of page-scoped browser behavior. It is the presentation layer of the Noticiencias system; ingestion, scoring, editorial automation, and publication orchestration live in the sibling backend repo `../noticiencias_news_collector`.
 
 ## Current State
 
