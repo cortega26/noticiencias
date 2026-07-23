@@ -137,31 +137,38 @@ import Button from '~/components/ds/atoms/Button.astro';
     input.disabled = true;
 
     try {
-      const lunrModule = await import('lunr');
-      const lunr = lunrModule.default;
       const response = await fetch('/search.json', { cache: 'force-cache' });
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-      const documents = await response.json();
+      const artifact = await response.json();
 
-      if (!Array.isArray(documents) || documents.length === 0) {
+      // Validate the versioned artifact structure.
+      if (!artifact || typeof artifact !== 'object') {
+        status.textContent = 'El índice de búsqueda tiene un formato inválido.';
+        return;
+      }
+      if (artifact.version !== 1) {
+        status.textContent =
+          'La versión del índice de búsqueda no es compatible. Recarga la página.';
+        return;
+      }
+      if (!artifact.index || !artifact.store) {
+        status.textContent = 'El índice de búsqueda está incompleto.';
+        return;
+      }
+
+      const storeEntries = Object.keys(artifact.store);
+      if (storeEntries.length === 0) {
         status.textContent = 'El índice de búsqueda está vacío.';
         return;
       }
 
-      index = lunr(function (this: LunrBuilder) {
-        this.ref('url');
-        this.field('title', { boost: 10 });
-        this.field('description', { boost: 5 });
-        this.field('content');
-        this.field('tags');
-
-        documents.forEach((doc: SearchDocument) => {
-          this.add(normalizeSearchDocument(doc));
-          store[doc.url] = doc;
-        });
-      });
+      // Deserialize the prebuilt index instead of building it in the browser.
+      const lunrModule = await import('lunr');
+      const lunr = lunrModule.default;
+      index = lunr.Index.load(artifact.index);
+      store = artifact.store;
 
       status.textContent = '';
       input.disabled = false;

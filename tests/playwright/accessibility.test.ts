@@ -1,15 +1,23 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// Helper to fetch the first article URL from search index. Article routes
+// Helper to fetch the first article URL from the search artifact. Article routes
 // are leaf pages (e.g. `/2026-01-15-some-slug`) with no trailing slash —
 // appending one 404s them, matching this repo's `trailingSlash: false`.
 async function getFirstArticleUrl(page: Page): Promise<string | null> {
   const response = await page.request.get('/search.json');
   expect(response.ok(), 'search.json must be reachable').toBe(true);
-  const index = (await response.json()) as { url?: string }[];
-  expect(index.length, 'a local build always has articles in the search index').toBeGreaterThan(0);
-  return index[0].url ?? null;
+  // Plan 039: the artifact is a versioned object { version, index, store }.
+  const artifact = (await response.json()) as {
+    version?: number;
+    store?: Record<string, { url?: string }>;
+  };
+  const store = artifact.store ?? {};
+  const urls = Object.values(store)
+    .map((e) => e.url)
+    .filter(Boolean);
+  expect(urls.length, 'a local build always has articles in the search store').toBeGreaterThan(0);
+  return urls[0] ?? null;
 }
 
 // Helper to check accessibility and format output

@@ -25,9 +25,14 @@ test('search index JSON is accessible', async ({ page }) => {
   expect(response.ok()).toBeTruthy();
 
   const data = await response.json();
-  expect(Array.isArray(data)).toBe(true);
-  // Should have at least some entries
-  expect(data.length).toBeGreaterThan(0);
+  // Plan 039: the artifact is now a versioned object { version, index, store }
+  // instead of a top-level array of documents.
+  expect(data).toBeTruthy();
+  expect(data.version).toBe(1);
+  expect(data.index).toBeTruthy();
+  expect(data.store).toBeTruthy();
+  const storeEntries = Object.keys(data.store);
+  expect(storeEntries.length).toBeGreaterThan(0);
 });
 
 test('RSS feed is accessible', async ({ page }) => {

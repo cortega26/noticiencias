@@ -2,23 +2,24 @@ import { getCollection } from 'astro:content';
 import { getPermalink } from '~/utils/permalinks';
 import { resolvePostPermalink } from '~/utils/blog';
 import { resolveImageUrl } from '~/utils/images';
+import { buildSearchArtifact, stripMarkdown } from '~/utils/build-search-index';
 
 export async function GET() {
   try {
     const posts = await getCollection('posts');
 
-    // FAIL-CLOSED: Ensure we have content. If posts are empty, something is wrong with the build or content source.
+    // FAIL-CLOSED: Ensure we have content.
     if (!posts || posts.length === 0) {
       throw new Error(
         'FATAL: No posts found for search index. Aborting build to prevent corrupt search.json.'
       );
     }
 
-    // Transform posts into a lightweight search index
+    // Transform posts into search documents with stripped Markdown content
+    // (not raw post.body, which includes frontmatter artifacts and MDX syntax).
     const documents = (
       await Promise.all(
         posts.map(async (post) => {
-          // Validation: Ensure essential fields exist
           if (!post.data.title || !post.body) {
             console.warn(`Skipping invalid post: ${post.slug}`);
             return null;
@@ -30,7 +31,9 @@ export async function GET() {
             title: post.data.title,
             url,
             description: post.data.excerpt,
-            content: post.body, // Full content for better indexing (could be truncated)
+            // Strip Markdown/MDX syntax to indexable text instead of
+            // shipping the raw body to the browser.
+            content: stripMarkdown(post.body),
             categories: post.data.categories,
             tags: post.data.tags,
             series: post.data.series,
@@ -44,20 +47,22 @@ export async function GET() {
           };
         })
       )
-    ).filter((doc) => doc !== null); // Remove any invalid docs
+    ).filter((doc) => doc !== null);
 
     if (documents.length === 0) {
       throw new Error('FATAL: All posts failed validation during search index generation.');
     }
 
-    return new Response(JSON.stringify(documents), {
+    // Build the serialized Lunr index + compact result store at build time.
+    const artifact = buildSearchArtifact(documents);
+
+    return new Response(JSON.stringify(artifact), {
       headers: {
         'Content-Type': 'application/json',
       },
     });
   } catch (error) {
     console.error('❌ CRITICAL BUILD ERROR in search.json.js:', error.message);
-    // Rethrow to fail the build process
     throw error;
   }
 }

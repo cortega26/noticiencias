@@ -1,8 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { normalizeQuery, normalizeSearchDocument } from '../src/utils/search';
-// We mock Lunr since it's loaded via CDN in the real app, but for tests we want to verify logic.
-// In a real environment we might install lunr as a devDependency.
-// For this integration test, we will simulate the logic used in buscar.astro
+import { buildSearchArtifact } from '../src/utils/build-search-index';
 
 import lunr from 'lunr';
 
@@ -105,5 +103,71 @@ describe('Search Integration', () => {
     const results = index.search(`${normalizedQuery}*`);
 
     expect(results.length).toBe(0);
+  });
+});
+
+describe('Build-time search artifact (plan 039)', () => {
+  const mockDocuments = [
+    {
+      title: 'Energía Oscura y el Universo',
+      url: '/posts/energia-oscura',
+      description: 'Un estudio sobre la expansión.',
+      content: 'Contenido detallado sobre física.',
+      tags: ['física', 'espacio'],
+      image: 'img1.jpg',
+    },
+    {
+      title: 'Avances en IA',
+      url: '/posts/ai-advances',
+      description: 'Inteligencia Artificial moderna.',
+      content: 'Redes neuronales y LLMs.',
+      tags: ['tecnología', 'ia'],
+      image: 'img2.jpg',
+    },
+  ];
+
+  it('should produce a versioned artifact with serialized index and store', () => {
+    const artifact = buildSearchArtifact(mockDocuments);
+    expect(artifact.version).toBe(1);
+    expect(artifact.index).toBeTruthy();
+    expect(artifact.store).toBeTruthy();
+    expect(Object.keys(artifact.store)).toHaveLength(2);
+  });
+
+  it('should load the serialized index and reproduce result order', () => {
+    const artifact = buildSearchArtifact(mockDocuments);
+    const loadedIndex = lunr.Index.load(artifact.index as object);
+
+    // Accent search
+    const accentResults = loadedIndex.search(`${normalizeQuery('energía')}*`);
+    expect(accentResults.length).toBeGreaterThan(0);
+    expect(accentResults[0].ref).toBe('/posts/energia-oscura');
+
+    // Case-insensitive search
+    const caseResults = loadedIndex.search(`${normalizeQuery('OSCURA')}*`);
+    expect(caseResults.length).toBeGreaterThan(0);
+    expect(caseResults[0].ref).toBe('/posts/energia-oscura');
+
+    // Tag search
+    const tagResults = loadedIndex.search(`${normalizeQuery('Tecnología')}*`);
+    expect(tagResults.length).toBeGreaterThan(0);
+    expect(tagResults[0].ref).toBe('/posts/ai-advances');
+
+    // No match
+    const noResults = loadedIndex.search(`${normalizeQuery('Gastronomía')}*`);
+    expect(noResults.length).toBe(0);
+  });
+
+  it('should not include raw content in the store', () => {
+    const artifact = buildSearchArtifact(mockDocuments);
+    for (const entry of Object.values(artifact.store)) {
+      expect(entry).not.toHaveProperty('content');
+    }
+  });
+
+  it('should produce deterministic output across calls', () => {
+    const a1 = buildSearchArtifact(mockDocuments);
+    const a2 = buildSearchArtifact(mockDocuments);
+    expect(JSON.stringify(a1)).toBe(JSON.stringify(a2));
   });
 });

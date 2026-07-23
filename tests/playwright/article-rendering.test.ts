@@ -14,14 +14,20 @@ async function getFirstArticleUrl(page: Page): Promise<string> {
   expect(response.ok(), 'search.json must be reachable for these tests to mean anything').toBe(
     true
   );
-  const index = (await response.json()) as { url?: string }[];
-  expect(
-    Array.isArray(index) && index.length > 0,
-    'search index must contain at least one article'
-  ).toBe(true);
-  const url = index[0].url;
-  expect(url, 'the first search index entry must have a url').toBeTruthy();
-  return url as string;
+  // The search artifact is now a versioned object { version, index, store }
+  // (plan 039) instead of a top-level array of documents.
+  const artifact = (await response.json()) as {
+    version?: number;
+    store?: Record<string, { url?: string }>;
+  };
+  expect(artifact, 'search artifact must be an object').toBeTruthy();
+  expect(artifact.version, 'search artifact must have a version').toBe(1);
+  const store = artifact.store ?? {};
+  const urls = Object.values(store)
+    .map((e) => e.url)
+    .filter(Boolean);
+  expect(urls.length > 0, 'search store must contain at least one article').toBe(true);
+  return urls[0] as string;
 }
 
 test('article page has hero heading', async ({ page }) => {
