@@ -95,6 +95,26 @@ Acceptance criteria:
 
 Risk: Low per widget; medium in aggregate because Header is high-visibility.
 
+### D9 — v2 optional editorial fields (`glossary`, `why_it_matters`, `summary_points`, `sources`) not populated in published content
+
+Problem: 0 of 30 published posts in `src/content/posts/` populate `glossary`, `why_it_matters`, `summary_points`, or `sources` in their frontmatter (verified 2026-08-02). They are optional fields of `schema_version: 2`, but the backend is either not generating them yet or existing content is not being republished with them. Practical effect: the PR-4 article rail (`ArticleRail.astro`) renders only "En breve" + Fuentes on 100% of real articles — the "Glosario" block never renders, and the "Qué cambia" prologue (`why_it_matters`) never appears either. Same problem family as D5 (optional v2 fields not transported/populated) — same root cause, different fields; keep separate because the fixes target different backend agents and frontmatter keys.
+Impact: Two PR-4 features exist only in code, not in the product: no article on the live site shows a glossary or the "Qué cambia" editorial prologue. The editorial voice's "rigor en el método" surfaces (`EDITORIAL_VOICE.md`) stay partially unimplemented until the backend starts emitting these fields.
+Recommendation: Backend (cross-repo) should start populating these four fields when generating/republishing articles: `summary_points` and `glossary` from the editorial pipeline, `why_it_matters` from the "Qué cambia" agent, and `sources` (structured list with `title`/`url`/`publisher`/`date`) from the source collector. Coordinate with `src/content.config.ts` (LAW-F1 schema-sealed change only if a field shape needs adjustment — the fields already exist in the schema) and the `frontend_schema.py` mirror. Republishing existing content with the new fields is sufficient; no frontend code change is required for the rail to show the blocks (they render conditionally).
+Affected repo(s): both (cross-repo — content generation in `noticiencias_news_collector`, consumed by the frontend).
+Suggested priority: medium (frontend features shipped but inert until content arrives; no functional bug on the frontend).
+Files to touch:
+
+- Backend: the editorial pipeline (`news_collector/components/editorial/`), source collector, and `news_collector/contracts/frontend_schema.py` if the field shapes must change.
+- Frontend: none required for rendering (fields already in `src/content.config.ts`); optionally audit `src/content/posts/` after republish to confirm coverage.
+
+Acceptance criteria:
+
+- `grep -l "glossary:" src/content/posts/` returns at least one post after the next publish cycle.
+- At least one live article shows the "Glosario" block in the PR-4 rail, and at least one shows the "Qué cambia" prologue.
+- `npm run lint && npm run validate:content && npm run build` green after republish (existing posts without the fields still validate).
+
+Risk: Low on the frontend (no code change); medium on the backend (generation + republish pipeline work).
+
 ### Stop tracking `.astro/` runtime cache in git
 
 Problem: `.gitignore` does not list `.astro/`. The dev server and `astro sync` mutate `.astro/data-store.json` and `.astro/content-assets.mjs` on every run, producing dirty working trees and auto-commits like `19aae64` (the placeholder-message commit that appeared on top of `f754059` in this session's history).
@@ -291,6 +311,7 @@ For convenience when planning a multi-PR sprint:
 | D6 — Investigation visual              |       ✓       |      ✓       |  ✅  |
 | D7 — Qué cambia visual                 |       ✓       |      ✓       |  ✅  |
 | D5 — uncertainty emphasis              |               |              |  ✓   |
+| D9 — v2 editorial fields unpopulated   |               |              |  ✓   |
 | D8 follow-up — Widget Button migration |       ✓       |              |      |
 | `.astro/` untrack                      |       ✓       |              |      |
 | MD5 → SHA-256                          |               |      ✓       |      |
