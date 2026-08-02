@@ -72,28 +72,16 @@ Risk: Medium. Cross-repo schema change governed by AGENTS.md LAW-F1. Coordinate 
 
 ## Medium priority
 
-### D8 follow-up — Migrate Astrowind widget Button consumers to `ds/atoms/Button.astro`
+### D8 follow-up — Migrate Astrowind widget Button consumers to `ds/atoms/Button.astro` ✅
 
-Problem: `src/components/template/ui/Button.astro` still wraps the legacy `.btn` / `.btn-primary` / `.btn-secondary` / `.btn-tertiary` classes from `src/styles/global.css`. Several Astrowind-derived widgets in `src/components/template/widgets/` (Header, CallToAction, Features, Hero, etc.) consume this wrapper. Until those callsites migrate, the legacy classes cannot be deleted from `global.css`.
-Impact: Two button languages coexist in the codebase — rounded-full pills (legacy) and rounded-md editorial buttons (DS). The visual inconsistency is the same kind of fragmentation D1/D2 fixed for tags.
-Recommendation: Migrate the widget callsites one at a time, then delete `template/ui/Button.astro` and the legacy `.btn` block from `global.css`. Each widget migration is independent and low-risk; bundle by widget if a single PR is preferred.
-Affected repo(s): frontend.
-Suggested priority: medium (purely visual consistency; no functional bug).
+**Resolved: already done before this entry was last reviewed (commit `e03e270`, 2026-05-21) — confirmed stale on 2026-08-02.** All three acceptance criteria already pass:
 
-Files to touch (in suggested order):
+- `src/components/template/ui/Button.astro` no longer exists.
+- `grep -rn "template/ui/Button" src/` — 0 results.
+- `grep -rn "class=\"btn" src/` — 0 results.
+- No `.btn`/`.btn-primary`/`.btn-secondary`/`.btn-tertiary` block remains in `src/styles/global.css`.
 
-1. `src/components/template/widgets/Header.astro:163-172` — the actions array currently feeds into `template/ui/Button.astro` with `btn-primary` override. Replace with `ds/atoms/Button.astro` mapping `variant="primary"`.
-2. `src/components/template/widgets/CallToAction.astro`, `Hero.astro`, `Hero2.astro`, `Features.astro`, `Features2.astro`, `Steps.astro` — search for `import Button from` pointing to the template wrapper and migrate.
-3. Once no callsites remain, delete `src/components/template/ui/Button.astro` and remove the `.btn`/`.btn-primary`/`.btn-secondary`/`.btn-tertiary` block from `src/styles/global.css:37-62`.
-
-Acceptance criteria:
-
-- `grep -rn "template/ui/Button" src/` returns no results.
-- `grep -rn "class=\"btn" src/` returns no results.
-- Visual smoke test on `/`, `/blog/`, `/buscar/`, `/beta/` — buttons render with `rounded-md` editorial style.
-- `npm run lint && npm run build && npx vitest run` all green.
-
-Risk: Low per widget; medium in aggregate because Header is high-visibility.
+No action needed. Left as a record so this doesn't get re-investigated.
 
 ### D9 — Campos editoriales opcionales v2 (`glossary`, `why_it_matters`, `summary_points`, `sources`) sin poblar en el contenido publicado
 
