@@ -5,6 +5,7 @@ import TopicStrip from '~/components/common/TopicStrip.astro';
 import TrustPanel from '~/components/common/TrustPanel.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import InvestigationBadge from '~/components/ds/atoms/InvestigationBadge.astro';
+import ArticleRail from '~/components/ds/molecules/ArticleRail.astro';
 import SourceLine from '~/components/ds/molecules/SourceLine.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/ds/molecules/Breadcrumbs.astro';
@@ -30,11 +31,6 @@ const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
   : post.author || 'Noticiencias';
 const isNoticienciasAi = /noticiencias\s+ai/i.test(post.author ?? '');
 const sourcePublisher = resolveSourcePublisher(post);
-const summaryPoints = post.summary_points?.length
-  ? post.summary_points
-  : post.excerpt
-    ? [post.excerpt]
-    : [];
 const articleTopics = (post.tags ?? []).map((tag) => ({
   slug: tag.slug,
   title: tag.title,
@@ -186,35 +182,22 @@ const breadcrumbItems = [
       }
     </header>
 
-    <div class="mx-auto mt-10 max-w-3xl">
-      <div>
-        {
-          summaryPoints.length > 0 && (
-            <section class="not-prose mb-8 rounded-md border border-border-subtle bg-surface-paper p-5">
-              <h2 class="font-heading text-xl font-bold text-text-body">En breve</h2>
-              <ul class="mt-3 grid gap-2 text-text-muted">
-                {summaryPoints.map((point) => (
-                  <li class="pl-4 [text-indent:-1rem]">
-                    <span class="font-bold text-primary">•</span> {point}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
+    {
+      post.why_it_matters && post.why_it_matters.length > 0 && (
+        <section class="not-prose mx-auto mt-10 max-w-6xl border-l-4 border-primary bg-surface-paper p-5">
+          <h2 class="font-heading text-xl font-bold text-text-body">Qué cambia</h2>
+          <ul class="mt-3 grid gap-2 text-text-muted">
+            {post.why_it_matters.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
-        {
-          post.why_it_matters && post.why_it_matters.length > 0 && (
-            <section class="not-prose mb-8 border-l-4 border-primary bg-surface-paper p-5">
-              <h2 class="font-heading text-xl font-bold text-text-body">Qué cambia</h2>
-              <ul class="mt-3 grid gap-2 text-text-muted">
-                {post.why_it_matters.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
+    <div class="mx-auto mt-10 grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div class="min-w-0">
+        <ArticleRail post={post} variant="inline" sections={['summary']} class="mb-8 lg:hidden" />
 
         <div
           class="prose prose-lg prose-serif max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
@@ -222,21 +205,12 @@ const breadcrumbItems = [
           <slot />
         </div>
 
-        {
-          post.glossary && post.glossary.length > 0 && (
-            <section class="not-prose mt-10 rounded-md border border-border-subtle p-5">
-              <h2 class="font-heading text-xl font-bold text-text-body">Glosario breve</h2>
-              <dl class="mt-4 grid gap-4">
-                {post.glossary.map((entry) => (
-                  <div>
-                    <dt class="font-semibold text-text-body">{entry.term}</dt>
-                    <dd class="mt-1 text-sm leading-relaxed text-text-muted">{entry.definition}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
-          )
-        }
+        <ArticleRail
+          post={post}
+          variant="inline"
+          sections={['glossary', 'sources']}
+          class="mt-10 lg:hidden"
+        />
 
         <TrustPanel
           confidence={post.confidence}
@@ -257,6 +231,8 @@ const breadcrumbItems = [
 
         <RelatedReading posts={relatedPosts} />
       </div>
+
+      <ArticleRail post={post} class="hidden lg:block lg:sticky lg:top-20 self-start" />
     </div>
   </article>
 </BaseLayout>
