@@ -13,7 +13,7 @@ import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
-import { resolveSourcePublisher } from '~/utils/source-publisher';
+import { resolveSourcePublisher, resolveSourceTitle } from '~/utils/source-publisher';
 import type { MetaData, Post } from '~/types';
 
 interface Props {
@@ -41,7 +41,7 @@ const sourceFallback =
     ? post.sources
     : [
         {
-          title: post.refinery_id || 'Fuente original',
+          title: resolveSourceTitle(post),
           url: post.source_url,
         },
       ];

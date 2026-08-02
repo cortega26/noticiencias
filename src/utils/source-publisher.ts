@@ -45,3 +45,14 @@ export function resolveSourcePublisher(post: Pick<Post, 'source_url'>): string |
 
   return hostnameToPublisher[hostname] ?? hostname;
 }
+
+/**
+ * Título legible para el enlace de fuente cuando el post no trae `sources`
+ * estructuradas: usa el publicador resoluble desde `source_url`, o el
+ * hostname desnudo si el dominio no está en el mapa; solo cae al texto
+ * genérico cuando no hay URL de la que derivar nada. Nunca expone el
+ * `refinery_id` crudo como texto de enlace.
+ */
+export function resolveSourceTitle(post: Pick<Post, 'source_url'>): string {
+  return resolveSourcePublisher(post) ?? 'Fuente original';
+}

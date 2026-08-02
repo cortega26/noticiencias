@@ -1,5 +1,6 @@
 ---
 import type { Post } from '~/types';
+import { resolveSourceTitle } from '~/utils/source-publisher';
 
 type RailSection = 'summary' | 'glossary' | 'sources';
 
@@ -27,7 +28,7 @@ const sourceFallback =
     ? post.sources
     : [
         {
-          title: post.refinery_id || 'Fuente original',
+          title: resolveSourceTitle(post),
           url: post.source_url,
         },
       ];
