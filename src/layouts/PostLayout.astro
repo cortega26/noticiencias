@@ -131,6 +131,7 @@ const breadcrumbItems = [
           post.category && (
             <TopicBadge
               topic={post.category.title}
+              slug={post.category.slug}
               href={getPermalink(post.category.slug, 'category')}
             />
           )

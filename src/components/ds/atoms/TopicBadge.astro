@@ -1,13 +1,16 @@
 ---
+import { getCategoryColors } from '~/utils/categorySections';
+
 interface Props {
   topic: string;
   href?: string;
+  slug?: string;
   size?: 'sm' | 'md';
   class?: string;
   [key: string]: any;
 }
 
-const { topic, href, size = 'md', class: className = '', ...rest } = Astro.props;
+const { topic, href, slug, size = 'md', class: className = '', ...rest } = Astro.props;
 
 const baseStyles = 'inline-flex items-center font-bold rounded-sm transition-colors';
 
@@ -16,44 +19,20 @@ const sizes = {
   md: 'text-xs px-2 py-1',
 };
 
-const getColors = (t: string) => {
-  const lower = t.toLowerCase();
+// Colores cerrados por slug de categoría (src/utils/categorySections.ts).
+// Un slug de categoría que falte en el mapa es un error de contenido: el
+// build debe fallar para que se corrija el mapa o el dato, no renderizar
+// un badge genérico indiferenciable.
+const categoryColors = slug ? getCategoryColors(slug) : null;
+if (slug && !categoryColors) {
+  throw new Error(
+    `TopicBadge: la categoría "${slug}" no está mapeada en configuredCategorySections (categorySections.ts). Agrega su color antes de renderizar.`
+  );
+}
 
-  // Health / Medicine -> Teal/Emerald
-  if (lower.includes('salud') || lower.includes('medicin') || lower.includes('bienestar')) {
-    return 'bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-900/30 dark:text-teal-300 dark:hover:bg-teal-900/50 border border-teal-200 dark:border-teal-800';
-  }
-
-  // Tech / AI -> Violet/Purple
-  if (
-    lower.includes('tecnolog') ||
-    lower.includes('tech') ||
-    lower.includes('ia') ||
-    lower.includes('digital')
-  ) {
-    return 'bg-violet-50 text-violet-700 hover:bg-violet-100 dark:bg-violet-900/30 dark:text-violet-300 dark:hover:bg-violet-900/50 border border-violet-200 dark:border-violet-800';
-  }
-
-  // Science / Space -> Blue/Indigo
-  if (
-    lower.includes('cienci') ||
-    lower.includes('espacio') ||
-    lower.includes('naturaleza') ||
-    lower.includes('fisica')
-  ) {
-    return 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-800';
-  }
-
-  // Editorial -> Gray/Slate
-  if (lower.includes('editor') || lower.includes('opini') || lower.includes('analisis')) {
-    return 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700';
-  }
-
-  // Default
-  return 'bg-surface-highlight text-primary hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent';
-};
-
-const colors = getColors(topic);
+const colors =
+  categoryColors ??
+  'bg-surface-highlight text-primary hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent';
 ---
 
 {

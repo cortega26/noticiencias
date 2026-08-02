@@ -124,6 +124,7 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
           {post.category && (
             <TopicBadge
               topic={post.category.title}
+              slug={post.category.slug}
               href={getPermalink(post.category.slug, 'category')}
               size="sm"
             />

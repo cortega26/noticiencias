@@ -33,7 +33,11 @@ const resolvedImageAlt =
   <div class="flex flex-wrap items-center gap-3 mb-4 text-sm text-text-muted">
     {
       category && (
-        <TopicBadge topic={category.title} href={getPermalink(category.slug, 'category')} />
+        <TopicBadge
+          topic={category.title}
+          slug={category.slug}
+          href={getPermalink(category.slug, 'category')}
+        />
       )
     }
     <span class="flex items-center">
