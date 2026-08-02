@@ -20,6 +20,7 @@ What's already done (so don't redo it):
 - D3 — Home copy refreshed with hook; passes the AI-magazine ban guard (commit `df12b5b`).
 - D4 — `sources[]` / `source_url` visible via `<TrustPanel>` in `PostLayout.astro`; the duplicate prose footer is gone (commits `f754059` + backend `6a32965`).
 - D8 (partial) — `ds/atoms/Button.astro` fixed (phantom `action-primary` token), `404.astro` + `beta.astro` migrated, deprecation comment on legacy `.btn` in `global.css` (commit `df12b5b`).
+- QW-1..QW-5 (from `noticiencias-ui-improvements-plan.md`, verified done on 2026-08-02): alt text con `check-image-alt.js` sin fallback silencioso; `getFormattedDate` con variantes `compact|long|relative` en `src/utils/date.ts` (sin `toLocaleDateString` en componentes); `check-slug-quality.js` en cadena lint (0 posts `article-NNN`); `NewsletterCapture` sin formulario cuando `form.endpoint` está vacío; `getTopicFrequency` filtra `count >= 2`, ordena desc y topa en 6 con `[]` si nada califica.
 
 ## High priority
 
@@ -114,6 +115,131 @@ Acceptance criteria:
 
 Risk: Very low. Astro regenerates the cache on demand.
 
+## Migrated from `noticiencias-ui-improvements-plan.md` (May 2026 plan, triaged 2026-08-02)
+
+The following items come from the root-level UX plan (`noticiencias-ui-improvements-plan.md`, audit of 24 May 2026). The quick wins QW-1..QW-5 were verified as done on 2026-08-02 and are NOT listed here. Items below are the remaining priority improvements, ordered as recommended by the plan (PR-3 → PR-1 → PR-2 → PR-5 → PR-4).
+
+### PR-3 — Alinear la promesa de cadencia con la realidad
+
+Problem: La descripción de la portada (`src/pages/index.astro:28`) todavía promete "La edición diaria de ciencia y tecnología...", pero no se publica a diario. El eyebrow de `DailyDesk.astro:21` usa `new Date()` ("Portada · fecha de hoy") en vez de la frescura real del contenido, y el h1 dice "La ciencia que conviene seguir hoy." Mientras tanto, el boletín y el newsletter dicen "semanal" (`NewsletterCapture.astro`). Conviven tres promesas distintas.
+Impact: La promesa de cadencia es inconsistente (diaria vs. semanal) y el eyebrow miente sobre la frescura: muestra la fecha actual aunque la pieza más reciente tenga días. Es el mismo tipo de "site feels off" que el plan buscaba eliminar.
+Recommendation: Adoptar la opción B del plan (cadencia semanal). Cambiar la descripción de `index.astro` a "selección semanal", agregar `getEditionDate(posts)` en `src/utils/hub.ts` (devuelve el `publishDate` más reciente), pasar ese valor a `DailyDesk` como prop y usar la fecha de la pieza más reciente en el eyebrow en lugar de `new Date()`; revisar el copy del h1 ("hoy" → "esta semana" o similar).
+Affected repo(s): frontend.
+Suggested priority: medium (solo copy + datos; despeja expectativas antes del trabajo visual mayor).
+Files to touch:
+
+- `src/pages/index.astro` (meta description)
+- `src/components/common/DailyDesk.astro` (eyebrow, h1 y prop de fecha de edición)
+- `src/utils/hub.ts` (nueva función `getEditionDate`)
+- `src/config.yaml` (meta description, opcional)
+
+Acceptance criteria:
+
+- `grep -rn "edición diaria" src/` no devuelve resultados.
+- El eyebrow de la portada refleja la fecha de la pieza más reciente, no `new Date()`.
+- La descripción de metadata y el titular coinciden en cadencia.
+- `npm run lint && npm run validate:content` verdes.
+
+Risk: Bajo (copy y datos; sin cambio de layout).
+
+### PR-1 — Fuente primaria arriba del pliegue
+
+Problem: La página de artículo muestra un byline "Por <autor>" (`PostLayout.astro:149-153`) pero la fuente primaria solo aparece en el `TrustPanel`, al final del cuerpo; las tarjetas no muestran el publicador en absoluto. El schema tiene `source_url` (`src/content.config.ts:30`) pero no un nombre de publicador legible.
+Impact: Se pierde la atribución visible ("¿de dónde sale esto?") en el punto de mayor decisión de lectura; el lector debe llegar al final del artículo para ver la fuente. Es el contrapeso de confianza que el sitio promete en su meta y en su metodología.
+Recommendation: Opción A del plan: mostrar "Fuente: <publicador>" sobre el pliegue (en tarjeta y en el header del artículo) con nota de traducción, dejando la lista completa con enlaces en el `TrustPanel`. Agregar `source_publisher: z.string().optional()` al schema de contenido con derivación por defecto desde `source_url` (mapa `hostnameToPublisher`), crear `src/components/ds/molecules/SourceLine.astro` y montarlo en `ArticleCard` (todos los variantes salvo `consequence`) y en el header de `PostLayout`. Para posts con autor "Noticiencias AI", reemplazar el byline redundante por la línea de fuente.
+Affected repo(s): frontend (campo de schema aditivo y opcional; el backend ya publica `source_url`).
+Suggested priority: medium (componente contenido, alto impacto en confianza). Hacer antes de PR-2 y PR-4.
+Files to touch:
+
+- `src/content.config.ts` (campo aditivo `source_publisher`)
+- `src/utils/blog.ts` y tipo `Post` (propagación del campo)
+- Nuevo `src/components/ds/molecules/SourceLine.astro`
+- `src/components/ds/organisms/ArticleCard.astro` (meta row)
+- `src/layouts/PostLayout.astro` (header del artículo; byline condicional)
+
+Acceptance criteria:
+
+- Toda tarjeta de portada muestra una línea de publicador.
+- La página de artículo muestra "Fuente: <publicador> · traducción NotiAI" sobre el lede.
+- `TrustPanel` conserva la lista completa de fuentes con enlaces (no se quita).
+- `npm run lint && npm run validate:content && npm run build` verdes; `npm run check:contract-sync` sigue pasando (campo aditivo).
+
+Risk: Medio — cambio en schema sellado (LAW-F1), aunque aditivo y opcional. No requiere coordinación con el backend si el campo solo se deriva en frontend.
+
+### PR-2 — Separar visualmente categorías de tags (mapa de colores explícito)
+
+Problem: `TopicBadge.astro` asigna colores con una cascada de `lower.includes()` (9 ocurrencias, líneas 19-54) con fallback genérico para slugs desconocidos, y `src/utils/categorySections.ts` no tiene mapa de colores. La separación estructural ya está hecha: `ArticleCard` muestra `TopicBadge` (categoría) en la fila de meta y `TagPill` en una fila aparte, y `PostLayout` saca los tags al final del cuerpo vía `TopicStrip` ("Seguir temas").
+Impact: Los colores dependen de subcadenas del título (colisiones entre categorías con palabras compartidas, p. ej. "física" y "ciencia"), el fallback genérico es indistinguible de un color intencional y no existe un mapa canónico por slug de categoría.
+Recommendation: Reemplazar la cascada por un mapa cerrado de colores por slug de categoría (las 9 categorías del plan: ciencia, astronomia, salud, tecnologia, editorial, fisica, quimica, biologia, arqueologia), definir el mapa en `src/utils/categorySections.ts` y hacer que un slug desconocido no renderice nada (assert en build) en lugar del fallback genérico. Mantener `TagPill` como tratamiento exclusivo de tags.
+Affected repo(s): frontend.
+Suggested priority: medium. Hacer después de PR-1 para no tocar dos veces la meta row de las tarjetas.
+Files to touch:
+
+- `src/components/ds/atoms/TopicBadge.astro` (lookup por slug en vez de cascada; revisar firma: hoy recibe `topic` como string de título)
+- `src/utils/categorySections.ts` (mapa de colores por slug)
+- Callsites de `TopicBadge` (pasar slug además de título si la firma cambia)
+- Tests si aplica
+
+Acceptance criteria:
+
+- `grep -rn "lower.includes" src/components/ds/atoms/` no devuelve resultados.
+- `TopicBadge` resuelve el color desde el mapa por slug de categoría; slug desconocido → no renderiza nada.
+- La fila de meta de `ArticleCard` muestra solo `TopicBadge`; los tags nunca comparten fila (ya verificado).
+- `npm run lint && npm run validate:content && npm run build` verdes.
+
+Risk: Bajo-medio (cambio visual en tarjetas y header; verificar los 9 slugs contra las categorías reales de los posts).
+
+### PR-5 — Diálogo de búsqueda en el header con ⌘K / `/`
+
+Problem: No existe ningún disparador de búsqueda en el header; `SearchInterface.astro` es la página completa `/buscar/` (h1 "Buscador" + form + resultados) y arranca Lunr al cargar la página (~600 ms hasta el primer input utilizable). El único acceso es el enlace "Buscar en el archivo" del pie de la portada (`DailyDesk.astro:167-174`).
+Impact: La búsqueda está a dos clics, exige abandonar la página y tarda; el atajo universal ⌘K/" /" no existe.
+Recommendation: Crear un diálogo modal con `<dialog>` nativo (`src/components/common/HeaderSearch.astro`), disparado desde el header con botón y atajos `/` (fuera de inputs) y ⌘K/Ctrl-K; arranque diferido del índice de Lunr al primer foco (extraer el boot de `SearchInterface.astro` a un módulo compartido `src/utils/browser/search-index.ts` con `loadIndex()` + `search()`); estado por defecto con los 5 posts más recientes; navegación con ↑/↓, Enter y ESC; enlace "Ver todos los resultados →" a `/buscar/?q=<query>`. Mantener `/buscar/` como página (SEO y fallback sin-JS). Respetar LAW-F3: HTML estático + script scoped, sin isla de framework.
+Affected repo(s): frontend.
+Suggested priority: medium. Independiente de los demás PR.
+Files to touch:
+
+- Nuevo `src/components/common/HeaderSearch.astro` (dialog + trigger)
+- `src/components/template/widgets/Header.astro` (montar el trigger; hoy no tiene ningún control de búsqueda) y su configuración de acciones en `src/config.yaml` si aplica
+- Nuevo `src/utils/browser/search-index.ts` (extracción del boot de Lunr)
+- `src/components/common/SearchInterface.astro` (usar el módulo compartido; de paso elimina los warnings de eslint de variables sin usar)
+- `src/pages/buscar.astro` (se mantiene tal cual)
+
+Acceptance criteria:
+
+- El botón del header abre el diálogo en la página; no navega a `/buscar/`.
+- `/` (fuera de inputs) y ⌘K/Ctrl-K abren el diálogo; ESC lo cierra.
+- `/buscar/` sigue funcionando como página (fallback sin-JS + SEO).
+- Tiempo al primer input utilizable < 100 ms (vs ~600 ms actuales).
+- ↑/↓ mueven el resaltado, Enter navega, "Ver todos los resultados →" enlaza a `/buscar/?q=<query>`.
+- `npm run lint && npm run validate:content && npm run build && npm run test:audit` verdes.
+- Verificación manual 375px/1280px sin errores de consola (AGENTS.md §7).
+
+Risk: Medio (LAW-F3: sin isla; el arranque debe ser idempotente entre transiciones de página — reutilizar el patrón `astro:page-load` que ya usa `SearchInterface`).
+
+### PR-4 — Rail de contexto sticky en desktop
+
+Problem: El cuerpo del artículo es una sola columna (`max-w-3xl`, `PostLayout.astro:177`) donde se apilan hasta seis paneles (En breve, Qué cambia, prosa, Glosario breve, TrustPanel, TopicStrip, RelatedReading); no hay navegación de contexto visible durante el scroll y el ancho de desktop queda subutilizado.
+Impact: La lectura larga pierde el ancla contextual (resumen, glosario, fuentes) en cuanto se avanza; el patrón "sigo el hilo" que el diseño editorial quiere no existe en desktop.
+Recommendation: Grid de dos columnas en `lg:` (`grid-cols-[1fr_280px]`) con rail `position: sticky; top: 80px` que componga "En breve", "Glosario" y "Fuentes" (`ArticleRail.astro` en `ds/molecules`); mover "Qué cambia" arriba del cuerpo como prólogo editorial; en móvil (<1024px) los mismos componentes se intercalan inline, sin rail. Dividir `TrustPanel` (resumen para el rail, lista completa al final del cuerpo). Es la tarea de mayor alcance del plan; hacerla después de PR-1 y PR-2.
+Affected repo(s): frontend.
+Suggested priority: low (mayor alcance).
+Files to touch:
+
+- Nuevo `src/components/ds/molecules/ArticleRail.astro`
+- `src/layouts/PostLayout.astro` (grid + orden de secciones)
+- `src/components/common/TrustPanel.astro` (división rail/fondo)
+- `src/components/ds/molecules/KeyTakeaways.astro` (evaluar si se pliega al rail)
+
+Acceptance criteria:
+
+- Desktop (≥1024px): rail sticky con En breve / Glosario / Fuentes visible durante el scroll; el cuerpo ya no ocupa todo el ancho de la columna.
+- Móvil (<1024px): sin rail; el mismo contenido aparece inline en las posiciones actuales.
+- Los paneles apilados en el cuerpo pasan de ~6 a 2 (Qué cambia + prosa, más TrustPanel al final).
+- El orden del rail respeta el outline del documento para lectores de pantalla (sin `aria-hidden`).
+- `npm run lint && npm run validate:content && npm run build && npm run test:audit` verdes; verificación manual 375px/1280px.
+
+Risk: Medio (restructuración del layout más visible del sitio; respetar LAW-F2: `PostLayout` no debe adquirir lógica de contenido).
+
 ## Low priority
 
 ### Replace MD5 in `ai_editor.py` cache keys with SHA-256
@@ -169,6 +295,11 @@ For convenience when planning a multi-PR sprint:
 | `.astro/` untrack                      |       ✓       |              |      |
 | MD5 → SHA-256                          |               |      ✓       |      |
 | dist-stale test fix                    |       ✓       |              |      |
+| PR-3 — Cadence copy                    |       ✓       |              |      |
+| PR-1 — Source line                     |       ✓       |              |      |
+| PR-2 — Category color map              |       ✓       |              |      |
+| PR-5 — Header search dialog            |       ✓       |              |      |
+| PR-4 — Sticky article rail             |       ✓       |              |      |
 
 ## Related persistent memory
 
