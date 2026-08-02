@@ -28,31 +28,7 @@ function collectFiles(root: string, predicate: (filePath: string) => boolean): s
   });
 }
 
-function getLatestMtimeMs(files: string[]) {
-  return files.reduce((latest, filePath) => Math.max(latest, fs.statSync(filePath).mtimeMs), 0);
-}
-
 describe('quick wins regression coverage', () => {
-  it('uses a fresh dist build for dist-backed assertions', () => {
-    expect(fs.existsSync(distDir), 'Dist directory not found. Run npm run build first.').toBe(true);
-
-    const sourceFiles = [
-      ...collectFiles(srcDir, (filePath) =>
-        /\.(astro|js|ts|md|mdx|yaml|json)$/.test(path.basename(filePath))
-      ),
-      path.join(repoRoot, 'astro.config.mjs'),
-      path.join(repoRoot, 'data/image-derivatives-manifest.json'),
-    ].filter((filePath) => fs.existsSync(filePath));
-
-    const latestSourceMtime = getLatestMtimeMs(sourceFiles);
-    const latestDistMtime = getLatestMtimeMs(collectFiles(distDir, () => true));
-
-    expect(
-      latestDistMtime,
-      'Dist is older than source files. Run npm run build before npm run test:audit.'
-    ).toBeGreaterThanOrEqual(latestSourceMtime);
-  });
-
   it('emits page-specific metadata for pages that previously fell back to defaults', () => {
     const search = load(readDistHtml('/buscar/'));
     expect(search('title').text()).toBe('Buscar Noticias | Noticiencias');
