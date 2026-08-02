@@ -14,6 +14,14 @@ export interface CategoryRail {
 
 const byNewest = (a: Post, b: Post) => b.publishDate.valueOf() - a.publishDate.valueOf();
 
+export function getEditionDate(posts: Post[]): Date {
+  if (posts.length === 0) return new Date();
+  return posts.reduce(
+    (latest, post) => (post.publishDate.valueOf() > latest.valueOf() ? post.publishDate : latest),
+    posts[0].publishDate
+  );
+}
+
 export function selectFeaturedPosts(posts: Post[], count = 3): Post[] {
   const featured = posts
     .filter((post) => post.featured === true && typeof post.featured_rank === 'number')

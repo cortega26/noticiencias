@@ -9,6 +9,7 @@ import type { CategoryRail, TopicFrequency } from '~/utils/hub';
 import type { Post } from '~/types';
 
 interface Props {
+  editionDate: Date;
   leadPosts: Post[];
   latestPosts: Post[];
   contextPosts: Post[];
@@ -16,18 +17,19 @@ interface Props {
   topicRadar: TopicFrequency[];
 }
 
-const { leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } = Astro.props;
+const { editionDate, leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } =
+  Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
-const editionDate = getFormattedDate(new Date(), 'long');
+const editionLabel = getFormattedDate(editionDate, 'long');
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
   <header class="mb-8 pb-6 border-b border-border-subtle/50 relative">
     <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">
-      Portada · {editionDate}
+      Portada · {editionLabel}
     </p>
     <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
-      La ciencia que conviene seguir hoy.
+      La ciencia que conviene seguir esta semana.
     </h1>
     <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
       Una edición en español para entrar rápido en los hallazgos, las dudas y las consecuencias de

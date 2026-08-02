@@ -4,6 +4,7 @@ import DailyDesk from '~/components/common/DailyDesk.astro';
 import { fetchPosts } from '~/utils/blog';
 import {
   buildCategoryRails,
+  getEditionDate,
   getTopicFrequency,
   selectContextPosts,
   selectFeaturedPosts,
@@ -11,6 +12,7 @@ import {
 import { configuredCategorySections } from '~/utils/categorySections';
 
 const allPosts = await fetchPosts();
+const editionDate = getEditionDate(allPosts);
 const leadPosts = selectFeaturedPosts(allPosts, 3);
 const leadPostIds = new Set(leadPosts.map((post) => post.id));
 const latestPosts = allPosts.filter((post) => !leadPostIds.has(post.id)).slice(0, 6);
@@ -25,13 +27,14 @@ const categoryRails = buildCategoryRails(
 const metadata = {
   title: 'Noticiencias - Portada científica en español.',
   description:
-    'La edición diaria de ciencia y tecnología para seguir hallazgos, evidencia y temas abiertos en español con rigor y claridad editorial.',
+    'Una selección semanal de ciencia y tecnología en español, con fuente primaria y contexto para entender qué cambia.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <BaseLayout metadata={metadata}>
   <DailyDesk
+    editionDate={editionDate}
     leadPosts={leadPosts}
     latestPosts={latestPosts}
     contextPosts={contextPosts}
