@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const POSTS_DIR = path.resolve(__dirname, '../src/content/posts');
+const SRC_DIR = path.resolve(__dirname, '../src');
 const DEFAULT_HERO_IMAGE = '~/assets/images/default.png';
 
 // Colors for console output
@@ -112,6 +113,53 @@ function scanDir(dir) {
       fileCount++;
     }
   }
+}
+
+function collectFiles(root, predicate) {
+  if (!fs.existsSync(root)) {
+    return [];
+  }
+
+  return fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
+    const filePath = path.join(root, entry.name);
+    if (entry.isDirectory()) {
+      return collectFiles(filePath, predicate);
+    }
+    return predicate(filePath) ? [filePath] : [];
+  });
+}
+
+function getLatestMtimeMs(files) {
+  return files.reduce((latest, filePath) => Math.max(latest, fs.statSync(filePath).mtimeMs), 0);
+}
+
+function checkDistFreshness() {
+  if (!fs.existsSync(DIST_DIR)) {
+    console.error(
+      `${RED}Error: dist directory not found at ${DIST_DIR}. Run 'npm run build' first.${RESET}`
+    );
+    process.exit(1);
+  }
+
+  const sourceFiles = [
+    ...collectFiles(SRC_DIR, (filePath) =>
+      /\.(astro|js|ts|md|mdx|yaml|json)$/.test(path.basename(filePath))
+    ),
+    path.resolve(__dirname, '../astro.config.mjs'),
+    path.resolve(__dirname, '../data/image-derivatives-manifest.json'),
+  ].filter((filePath) => fs.existsSync(filePath));
+
+  const latestSourceMtime = getLatestMtimeMs(sourceFiles);
+  const latestDistMtime = getLatestMtimeMs(collectFiles(DIST_DIR, () => true));
+
+  if (latestDistMtime < latestSourceMtime) {
+    console.error(
+      `${RED}[FAIL] Dist is older than source files. Run 'npm run build' before 'npm run test:dist'.${RESET}`
+    );
+    process.exit(1);
+  }
+
+  console.log(`${GREEN}PASSED: Dist is newer than all source files.${RESET}`);
 }
 
 function validateHtml(filePath) {
@@ -293,6 +341,7 @@ function auditBuiltArticleHeroes() {
 }
 
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
+checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
 
