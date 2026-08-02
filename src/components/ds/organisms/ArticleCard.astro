@@ -3,6 +3,7 @@ import Image from '~/components/common/Image.astro';
 import TagPill from '~/components/ds/atoms/TagPill.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import InvestigationBadge from '~/components/ds/atoms/InvestigationBadge.astro';
+import SourceLine from '~/components/ds/molecules/SourceLine.astro';
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
@@ -132,6 +133,8 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
           </time>
           {post.readingTime && <span>{post.readingTime} min lectura</span>}
         </div>
+
+        <SourceLine post={post} showTranslationNote={false} class="mb-3" />
 
         <h2
           class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold leading-tight text-text-body ${styles.title}`}

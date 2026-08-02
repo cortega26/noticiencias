@@ -5,12 +5,14 @@ import TopicStrip from '~/components/common/TopicStrip.astro';
 import TrustPanel from '~/components/common/TrustPanel.astro';
 import TopicBadge from '~/components/ds/atoms/TopicBadge.astro';
 import InvestigationBadge from '~/components/ds/atoms/InvestigationBadge.astro';
+import SourceLine from '~/components/ds/molecules/SourceLine.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/ds/molecules/Breadcrumbs.astro';
 import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
+import { resolveSourcePublisher } from '~/utils/source-publisher';
 import type { MetaData, Post } from '~/types';
 
 interface Props {
@@ -26,6 +28,8 @@ const imageAlt = post.image_alt ?? '';
 const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
   ? 'Equipo Noticiencias'
   : post.author || 'Noticiencias';
+const isNoticienciasAi = /noticiencias\s+ai/i.test(post.author ?? '');
+const sourcePublisher = resolveSourcePublisher(post);
 const summaryPoints = post.summary_points?.length
   ? post.summary_points
   : post.excerpt
@@ -144,13 +148,20 @@ const breadcrumbItems = [
         {post.title}
       </h1>
 
+      <SourceLine post={post} size="sm" class="mt-5" />
+
       {post.excerpt && <p class="mt-5 text-xl leading-relaxed text-text-muted">{post.excerpt}</p>}
 
-      <p class="mt-6 text-sm font-medium text-text-muted">
-        Por <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline"
-          >{displayAuthor}</a
-        >
-      </p>
+      {
+        (!sourcePublisher || !isNoticienciasAi) && (
+          <p class="mt-6 text-sm font-medium text-text-muted">
+            Por{' '}
+            <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline">
+              {displayAuthor}
+            </a>
+          </p>
+        )
+      }
 
       {
         image && (

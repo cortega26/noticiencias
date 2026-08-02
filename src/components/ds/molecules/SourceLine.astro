@@ -1,0 +1,24 @@
+---
+import type { Post } from '~/types';
+import { resolveSourcePublisher } from '~/utils/source-publisher';
+
+interface Props {
+  post: Post;
+  showTranslationNote?: boolean;
+  size?: 'xs' | 'sm';
+  class?: string;
+}
+
+const { post, showTranslationNote = true, size = 'xs', class: className = '' } = Astro.props;
+const publisher = resolveSourcePublisher(post);
+const isTranslated = /noticiencias\s+ai/i.test(post.author ?? '');
+---
+
+{
+  publisher && (
+    <p class={`font-medium text-text-muted ${size === 'sm' ? 'text-sm' : 'text-xs'} ${className}`}>
+      Fuente: <span class="text-text-body">{publisher}</span>
+      {showTranslationNote && isTranslated && <span> · traducción NotiAI</span>}
+    </p>
+  )
+}
