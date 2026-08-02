@@ -63,28 +63,10 @@ import Button from '~/components/ds/atoms/Button.astro';
 </section>
 
 <script>
-  import { normalizeQuery, normalizeSearchDocument } from '~/utils/search';
+  import { loadIndex, search } from '~/utils/browser/search-index';
+  import { normalizeQuery } from '~/utils/search';
   import { getQueryFromUrl, updateUrlWithQuery } from '~/utils/browser/search-url';
-  import type { SearchDocument } from '~/utils/search';
 
-  interface LunrResult {
-    ref: string;
-    score: number;
-    matchData: unknown;
-  }
-
-  interface LunrIndex {
-    search(query: string): LunrResult[];
-  }
-
-  interface LunrBuilder {
-    ref(field: string): void;
-    field(field: string, options?: { boost?: number }): void;
-    add(doc: unknown): void;
-  }
-
-  let index: LunrIndex | null = null;
-  let store: Record<string, SearchDocument> = {};
   let activeInitPath = '';
 
   interface SearchPageRefs {
@@ -130,45 +112,11 @@ import Button from '~/components/ds/atoms/Button.astro';
       form.dataset.searchBound = 'true';
     }
 
-    index = null;
-    store = {};
-
     status.innerHTML = '<span class="text-text-muted">Cargando índice de búsqueda...</span>';
     input.disabled = true;
 
     try {
-      const response = await fetch('/search.json', { cache: 'force-cache' });
-
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-      const artifact = await response.json();
-
-      // Validate the versioned artifact structure.
-      if (!artifact || typeof artifact !== 'object') {
-        status.textContent = 'El índice de búsqueda tiene un formato inválido.';
-        return;
-      }
-      if (artifact.version !== 1) {
-        status.textContent =
-          'La versión del índice de búsqueda no es compatible. Recarga la página.';
-        return;
-      }
-      if (!artifact.index || !artifact.store) {
-        status.textContent = 'El índice de búsqueda está incompleto.';
-        return;
-      }
-
-      const storeEntries = Object.keys(artifact.store);
-      if (storeEntries.length === 0) {
-        status.textContent = 'El índice de búsqueda está vacío.';
-        return;
-      }
-
-      // Deserialize the prebuilt index instead of building it in the browser.
-      const lunrModule = await import('lunr');
-      const lunr = lunrModule.default;
-      index = lunr.Index.load(artifact.index);
-      store = artifact.store;
+      await loadIndex();
 
       status.textContent = '';
       input.disabled = false;
@@ -204,9 +152,8 @@ import Button from '~/components/ds/atoms/Button.astro';
 
     const normalizedQuery = normalizeQuery(query);
 
-    if (!index) return;
     try {
-      const results = index.search(`${normalizedQuery}*`);
+      const results = search(`${normalizedQuery}*`);
 
       if (results.length === 0) {
         status.textContent = '';
@@ -223,10 +170,7 @@ import Button from '~/components/ds/atoms/Button.astro';
       ul.className = 'grid gap-6';
       resultsDiv.appendChild(ul);
 
-      results.slice(0, 20).forEach((result: LunrResult) => {
-        const doc = store[result.ref];
-        if (!doc) return;
-
+      results.slice(0, 20).forEach(({ doc }) => {
         const li = document.createElement('li');
         li.className =
           'group grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]';

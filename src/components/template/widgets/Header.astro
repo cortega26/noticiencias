@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Logo from '~/components/template/Logo.astro';
 import ToggleTheme from '~/components/template/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/template/common/ToggleMenu.astro';
+import HeaderSearch from '~/components/common/HeaderSearch.astro';
 import Button from '~/components/ds/atoms/Button.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
@@ -149,6 +150,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     >
       <div class="items-center flex justify-between w-full md:w-auto">
         <div class="flex">
+          <HeaderSearch />
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
           {
             showRssFeed && (
