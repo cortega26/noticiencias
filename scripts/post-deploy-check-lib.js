@@ -619,23 +619,38 @@ export function verifyRouteHtml(html) {
 }
 
 /**
+ * Verifies the build-time Lunr search artifact (plan 039):
+ * `{ version: 1, index: <serialized lunr index>, store: { url: entry } }`.
  * @param {unknown} json
  */
 export function verifySearchJson(json) {
-  if (!Array.isArray(json)) {
-    throw new Error('Search index is not an array.');
+  if (!json || typeof json !== 'object' || Array.isArray(json)) {
+    throw new Error('Search index is not a valid artifact object.');
   }
 
-  if (json.length === 0) {
+  if (json.version !== 1) {
+    throw new Error(`Search index artifact version unsupported: ${json.version}.`);
+  }
+
+  if (!json.index || typeof json.index !== 'object') {
+    throw new Error('Search index artifact is missing the serialized index.');
+  }
+
+  if (!json.store || typeof json.store !== 'object' || Array.isArray(json.store)) {
+    throw new Error('Search index artifact is missing the result store.');
+  }
+
+  const entries = Object.values(json.store);
+  if (entries.length === 0) {
     throw new Error('Search index is empty.');
   }
 
-  const firstItem = json[0];
+  const firstItem = entries[0];
   if (!firstItem || !firstItem.title || !firstItem.url) {
     throw new Error('Search item missing required fields (title, url).');
   }
 
-  return { itemCount: json.length };
+  return { itemCount: entries.length };
 }
 
 /**
@@ -678,6 +693,7 @@ export function verifyPageWeight(html, url, { maxBytes = 500 * 1024 } = {}) {
 
 /**
  * Verifies search index has coverage across categories.
+ * Accepts search artifact store entries (or the legacy per-post array).
  * @param {Array<{ categories?: string[] }>} json
  */
 export function verifySearchCategoryCoverage(json) {
@@ -685,7 +701,7 @@ export function verifySearchCategoryCoverage(json) {
 
   const categories = new Set();
   for (const item of json) {
-    if (Array.isArray(item.categories)) {
+    if (item && Array.isArray(item.categories)) {
       for (const c of item.categories) {
         categories.add(c);
       }
@@ -1019,7 +1035,7 @@ export async function runPostDeployCheck(
     logger.info(`${GREEN}[PASS] Search Index OK (${searchResult.itemCount} items)${RESET}`);
 
     try {
-      const coverage = verifySearchCategoryCoverage(json);
+      const coverage = verifySearchCategoryCoverage(Object.values(json.store));
       logger.info(
         `${GREEN}[PASS] Category Coverage OK (${coverage.categoryCount} categories)${RESET}`
       );

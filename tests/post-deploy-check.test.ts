@@ -202,7 +202,11 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse([{ title: 'Uno', url: '/ciencia/uno/' }]),
+      jsonResponse({
+        version: 1,
+        index: {},
+        store: { '/ciencia/uno/': { title: 'Uno', url: '/ciencia/uno/' } },
+      }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -360,7 +364,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse({ title: 'not-an-array' }),
+      jsonResponse('not-an-artifact'),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -376,7 +380,7 @@ describe('Post-deploy deploy checker', () => {
         sleep: async () => {},
         logger: silentLogger,
       })
-    ).rejects.toThrow(/Search index is not an array/);
+    ).rejects.toThrow(/Search index is not a valid artifact object/);
   });
 
   it('fails when search.json is empty', async () => {
@@ -413,7 +417,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse([]),
+      jsonResponse({ version: 1, index: {}, store: {} }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -547,7 +551,11 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse([{ title: 'Uno', url: '/ciencia/uno/' }]),
+      jsonResponse({
+        version: 1,
+        index: {},
+        store: { '/ciencia/uno/': { title: 'Uno', url: '/ciencia/uno/' } },
+      }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
