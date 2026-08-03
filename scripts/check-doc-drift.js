@@ -8,9 +8,16 @@
  * Checks:
  *   - File paths in backticks that look like repo paths exist on disk
  *   - npm scripts in `npm run <name>` exist in package.json
+ *   - Authority-order references: claims that a file is "authoritative"
+ *     (including the Pointer form) must reference existing files, and no
+ *     two documents may claim authority over the same subject
+ *
+ * Env overrides (used by the test suite; default to repo behavior):
+ *   - DOC_DRIFT_ROOT: base directory for resolving doc paths
+ *   - DOC_DRIFT_FILES: comma-separated list of docs to check
  *
  * Exit codes:
- *   0 — all paths and commands verified
+ *   0 — all paths, commands, and authority references verified
  *   1 — one or more broken references found
  */
 
@@ -19,10 +26,14 @@ import { resolve, relative, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = resolve(__dirname, '..');
+const SCRIPT_DIR = resolve(__dirname, '..');
+
+// DOC_DRIFT_ROOT / DOC_DRIFT_FILES let the test suite run the check against
+// fixture doc trees instead of the live repo docs.
+const REPO_ROOT = process.env.DOC_DRIFT_ROOT ? resolve(process.env.DOC_DRIFT_ROOT) : SCRIPT_DIR;
 
 // ── Docs to check ──────────────────────────────────────────────
-const DOC_FILES = [
+const DEFAULT_DOC_FILES = [
   'README.md',
   'AGENTS.md',
   'CLAUDE.md',
@@ -30,9 +41,23 @@ const DOC_FILES = [
   'docs/SOURCE_OF_TRUTH.md',
 ];
 
+const DOC_FILES = (() => {
+  const envFiles = (process.env.DOC_DRIFT_FILES || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return envFiles.length > 0 ? envFiles : DEFAULT_DOC_FILES;
+})();
+
 // ── npm scripts cache ──────────────────────────────────────────
-const pkg = JSON.parse(readFileSync(resolve(REPO_ROOT, 'package.json'), 'utf-8'));
-const npmScripts = new Set(Object.keys(pkg.scripts || {}));
+const npmScripts = new Set();
+try {
+  const pkg = JSON.parse(readFileSync(resolve(SCRIPT_DIR, 'package.json'), 'utf-8'));
+  for (const name of Object.keys(pkg.scripts || {})) npmScripts.add(name);
+} catch {
+  // Fixture runs (DOC_DRIFT_ROOT set) may have no package.json; npm scripts
+  // simply cannot be verified in that mode.
+}
 
 // ── Helpers ────────────────────────────────────────────────────
 
@@ -201,8 +226,85 @@ function extractPaths(line) {
   return results;
 }
 
+/**
+ * Normalize an authority subject for grouping (used by the contradiction
+ * check): lowercase, collapse whitespace, drop trailing punctuation.
+ */
+function normalizeAuthoritySubject(subject) {
+  return subject
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase()
+    .replace(/[.!:;]+$/, '');
+}
+
+/**
+ * Extract authority claims from a single line of markdown.
+ *
+ * Recognized shapes (the ones actually used by the governance docs):
+ *   - "the authoritative <subject> is `file`"
+ *   - "the authoritative <subject> is [`file`](./target)"
+ *   - "the authoritative <subject> is [file](./target)"   (Pointer form)
+ *
+ * Known limitations (deliberately not modeled):
+ *   - "Authority: Subordinate to `X`" statements
+ *     (docs/ARCHITECTURE.md) are not parsed; the referenced files are
+ *     still existence-checked by the backtick path check above.
+ *   - "authoritative <subject>" list bullets (docs/SOURCE_OF_TRUTH.md)
+ *     where the subject and its file are on separate lines are not paired;
+ *     each referenced file is still existence-checked by the path check.
+ *   - Link targets that are absolute filesystem paths (old machine-specific
+ *     hrefs like /home/<user>/...) are not verified: they describe a
+ *     workspace layout, not a repo reference. Only relative link targets
+ *     are checked for existence.
+ */
+const AUTHORITY_CLAIM_RE =
+  /(?<!non-)authoritative\s+([^`\n]{1,80}?)\s+is\s+(?:`([^`]+)`|\[`([^`]+)`\]\(([^)]*)\)|\[([^\]\n]+)\]\(([^)]*)\))/gi;
+
+function extractAuthorityClaims(line) {
+  const claims = [];
+  let m;
+  while ((m = AUTHORITY_CLAIM_RE.exec(line)) !== null) {
+    const subject = normalizeAuthoritySubject(m[1]);
+    const ref = (m[2] || m[3] || m[5] || '').trim();
+    const target = (m[4] || m[6] || '').trim();
+    const claim = { subject, ref: null, target: null };
+    if (ref && looksLikeFilePath(ref)) claim.ref = stripLineNumbers(ref);
+    if (
+      target &&
+      !target.startsWith('http://') &&
+      !target.startsWith('https://') &&
+      !target.startsWith('/') &&
+      !target.startsWith('#') &&
+      !target.includes('*') &&
+      !target.startsWith('mailto:')
+    ) {
+      claim.target = stripLineNumbers(target);
+    }
+    if (claim.ref || claim.target) claims.push(claim);
+  }
+  return claims;
+}
+
+/**
+ * Extract "This file governs <subject>" self-claims. Used to detect two
+ * documents claiming governance over the same subject.
+ */
+const GOVERNS_RE = /\b(?:this file|this document)\s+governs\s+([^.!]+)/gi;
+
+function extractGovernsClaims(line) {
+  const subjects = [];
+  let m;
+  while ((m = GOVERNS_RE.exec(line)) !== null) {
+    subjects.push(normalizeAuthoritySubject(m[1]));
+  }
+  return subjects;
+}
+
 // ── Main ───────────────────────────────────────────────────────
 const broken = [];
+const authorityClaims = [];
+const governsClaims = [];
 
 for (const docRel of DOC_FILES) {
   const docPath = resolve(REPO_ROOT, docRel);
@@ -255,8 +357,73 @@ for (const docRel of DOC_FILES) {
         });
       }
     }
+
+    for (const claim of extractAuthorityClaims(line)) {
+      authorityClaims.push({ doc: docRel, docDir, ...claim });
+    }
+    for (const subject of extractGovernsClaims(line)) {
+      governsClaims.push({ doc: docRel, docDir, subject });
+    }
   }
 }
+
+// ── Authority-order reference verification ─────────────────────
+const authorityErrors = [];
+const authorityBySubject = new Map(); // subject → Map(resolvedPath → Set(docs))
+
+function recordAuthoritySubject(subject, resolvedPath, doc) {
+  if (!authorityBySubject.has(subject)) authorityBySubject.set(subject, new Map());
+  const byPath = authorityBySubject.get(subject);
+  if (!byPath.has(resolvedPath)) byPath.set(resolvedPath, new Set());
+  byPath.get(resolvedPath).add(doc);
+}
+
+for (const claim of authorityClaims) {
+  if (claim.ref) {
+    const resolved = resolveDocPath(claim.ref, claim.docDir);
+    if (!existsSync(resolved)) {
+      authorityErrors.push({
+        doc: claim.doc,
+        type: 'authority_ref',
+        ref: claim.ref,
+        message: `authority reference not found: ${relative(REPO_ROOT, resolved)}`,
+      });
+    } else {
+      recordAuthoritySubject(claim.subject, resolved, claim.doc);
+    }
+  }
+  if (claim.target) {
+    const resolvedTarget = resolveDocPath(claim.target, claim.docDir);
+    if (!existsSync(resolvedTarget)) {
+      authorityErrors.push({
+        doc: claim.doc,
+        type: 'authority_ref',
+        ref: claim.target,
+        message: `authority link target not found: ${relative(REPO_ROOT, resolvedTarget)}`,
+      });
+    }
+  }
+}
+
+for (const claim of governsClaims) {
+  recordAuthoritySubject(claim.subject, resolve(REPO_ROOT, claim.doc), claim.doc);
+}
+
+for (const [subject, byPath] of authorityBySubject) {
+  if (byPath.size > 1) {
+    const detail = [...byPath.entries()]
+      .map(([path, docs]) => `${relative(REPO_ROOT, path)} (claimed by ${[...docs].join(', ')})`)
+      .join(' vs ');
+    authorityErrors.push({
+      doc: 'multiple',
+      type: 'authority_conflict',
+      ref: subject,
+      message: `conflicting authority over "${subject}": ${detail}`,
+    });
+  }
+}
+
+for (const err of authorityErrors) broken.push(err);
 
 // ── Deduplicate ─────────────────────────────────────────────────
 const seen = new Set();
@@ -272,6 +439,8 @@ if (unique.length > 0) {
   const pathErrors = unique.filter((b) => b.type === 'broken_path');
   const scriptErrors = unique.filter((b) => b.type === 'npm_script');
   const missingDocs = unique.filter((b) => b.type === 'doc_missing');
+  const authorityRefErrors = unique.filter((b) => b.type === 'authority_ref');
+  const authorityConflictErrors = unique.filter((b) => b.type === 'authority_conflict');
 
   if (missingDocs.length > 0) {
     console.error(`[check:doc-drift] ${missingDocs.length} doc(s) not found:`);
@@ -288,11 +457,30 @@ if (unique.length > 0) {
     console.error(`[check:doc-drift] ${scriptErrors.length} unknown npm script(s):`);
     for (const b of scriptErrors) console.error(`  ${b.doc}: ${b.ref}`);
   }
+  if (authorityRefErrors.length > 0) {
+    console.error(`[check:doc-drift] ${authorityRefErrors.length} broken authority reference(s):`);
+    for (const b of authorityRefErrors) {
+      console.error(`  ${b.doc}: authority over "${b.ref}"`);
+      console.error(`    → ${b.message}`);
+    }
+  }
+  if (authorityConflictErrors.length > 0) {
+    console.error(
+      `[check:doc-drift] ${authorityConflictErrors.length} conflicting authority claim(s):`
+    );
+    for (const b of authorityConflictErrors) {
+      console.error(`  ${b.ref}: ${b.message}`);
+    }
+  }
 
-  console.error('\nUpdate the docs to reference existing files and commands.');
-  process.exit(pathErrors.length > 0 ? 1 : 0);
+  console.error('\nUpdate the docs to reference existing files, commands, and authority sources.');
+  process.exit(
+    pathErrors.length > 0 || authorityRefErrors.length > 0 || authorityConflictErrors.length > 0
+      ? 1
+      : 0
+  );
 }
 
 console.log(
-  `[check:doc-drift] OK — ${DOC_FILES.length} docs checked, all paths and commands verified.`
+  `[check:doc-drift] OK — ${DOC_FILES.length} docs checked, all paths, commands, and authority references verified.`
 );
