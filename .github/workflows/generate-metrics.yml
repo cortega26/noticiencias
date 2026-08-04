@@ -38,7 +38,7 @@ jobs:
         run: git config core.hooksPath /dev/null
 
       - name: Warn when bot PAT is not configured
-        if: ${{ secrets.NOTICIENCIAS_BOT_TOKEN == '' }}
+        if: secrets.NOTICIENCIAS_BOT_TOKEN == ''
         run: echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured — bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run), so the bot cannot land PRs. Configure the fine-grained PAT to enable self-serve landing."
 
       - name: Commit and land metrics
