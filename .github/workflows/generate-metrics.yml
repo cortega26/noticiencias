@@ -38,9 +38,12 @@ jobs:
         run: git config core.hooksPath /dev/null
 
       - name: Warn when bot PAT is not configured
-        if: secrets.NOTICIENCIAS_BOT_TOKEN == ''
-        run: echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured — bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run), so the bot cannot land PRs. Configure the fine-grained PAT to enable self-serve landing."
-
+        env:
+          GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || '' }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured - bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run). Configure the fine-grained PAT to enable self-serve landing."
+          fi
       - name: Commit and land metrics
         # Direct pushes to main are rejected by branch protection; land via PR
         # (scripts/ci-land-bot-pr.sh merges once Content Guard passes).
