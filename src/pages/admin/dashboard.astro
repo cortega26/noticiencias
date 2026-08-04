@@ -6,6 +6,7 @@ import DashboardHealthList from '~/components/ds/organisms/DashboardHealthList.a
 
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { cleanSlug } from '~/utils/permalinks';
 
 const metricsPath = resolve('data/metrics/pipeline-metrics.json');
 let metrics: Record<string, any> | null = null;
@@ -167,7 +168,7 @@ const metadata = {
               {topCategories.map((cat) => (
                 <li class="px-5 py-3 flex items-center justify-between">
                   <a
-                    href={`/categorias/${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/categorias/${cleanSlug(cat.name)}`}
                     class="text-sm font-medium text-primary hover:underline"
                   >
                     {cat.name}
