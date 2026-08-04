@@ -1407,7 +1407,7 @@ async function main() {
       const ageDays = Math.round(age / (1000 * 60 * 60 * 24));
       if (ageDays > 7) {
         console.warn(
-          `[contract-sync] WARNING: Snapshot is ${ageDays} days old (generated ${snapshotData.generatedAt}). Consider updating with: npm run sync:contract-snapshot`
+          `[contract-sync] WARNING: Snapshot is ${ageDays} days old (generated ${snapshotData.generatedAt}). If the backend contract changed since then, update with: npm run sync:contract-snapshot (note: no-op regenerations preserve the timestamp by design).`
         );
       } else {
         console.log(
