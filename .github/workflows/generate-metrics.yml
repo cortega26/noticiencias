@@ -28,8 +28,13 @@ jobs:
       - name: Generate metrics
         run: node scripts/generate-metrics.js
 
+      - name: Bypass git hooks for bot commit
+        # Husky pre-commit/pre-push hooks are for human pushes; the bot commit
+        # must not run lint-staged or the full validation chain on the runner.
+        run: git config core.hooksPath /dev/null
+
       - name: Commit metrics
-        uses: stefanzweifel/git-auto-commit-action@6251bb73453e40b5abc4c7ef5a9915c53ca82fc0 # v5.0.0
+        uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5.0.0
         with:
           commit_message: 'chore: update pipeline metrics [skip ci]'
           file_pattern: 'data/metrics/pipeline-metrics.json'

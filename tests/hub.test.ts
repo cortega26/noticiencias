@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   buildCategoryRails,
+  getEditionDate,
   getRelatedTopics,
   getTopicFrequency,
   selectContextPosts,
@@ -168,5 +169,63 @@ describe('hub curation helpers', () => {
 
     expect(rails).toHaveLength(1);
     expect(rails[0].posts.map((item) => item.id)).toEqual(['ciencia']);
+  });
+
+  it('falls back to the current time when the edition has no posts', () => {
+    const before = Date.now();
+    const date = getEditionDate([]);
+    expect(date.valueOf()).toBeGreaterThanOrEqual(before);
+  });
+
+  it('returns the latest publish date across posts', () => {
+    const posts = [
+      post({ id: 'old', publishDate: new Date('2026-01-01T00:00:00Z') }),
+      post({ id: 'new', publishDate: new Date('2026-05-01T00:00:00Z') }),
+    ];
+    expect(getEditionDate(posts).valueOf()).toBe(new Date('2026-05-01T00:00:00Z').valueOf());
+  });
+
+  it('breaks featured ties by newest publish date when investigation matches', () => {
+    const posts = [
+      post({
+        id: 'older-featured',
+        featured: true,
+        featured_rank: 1,
+        investigation: true,
+        publishDate: new Date('2026-01-01T00:00:00Z'),
+      }),
+      post({
+        id: 'newer-featured',
+        featured: true,
+        featured_rank: 1,
+        investigation: true,
+        publishDate: new Date('2026-02-01T00:00:00Z'),
+      }),
+    ];
+
+    expect(selectFeaturedPosts(posts, 2).map((item) => item.id)).toEqual([
+      'newer-featured',
+      'older-featured',
+    ]);
+  });
+
+  it('breaks context ties by newest publish date', () => {
+    const posts = [
+      post({
+        id: 'older-context',
+        why_it_matters: ['Importa'],
+        publishDate: new Date('2026-01-01T00:00:00Z'),
+      }),
+      post({
+        id: 'newer-context',
+        why_it_matters: ['Importa'],
+        publishDate: new Date('2026-02-01T00:00:00Z'),
+      }),
+    ];
+
+    expect(selectContextPosts(posts, 2).map((item) => item.id)).toEqual([
+      'newer-context',
+      'older-context',
+    ]);
   });
 });

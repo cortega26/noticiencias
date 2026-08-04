@@ -49,4 +49,14 @@ describe('normalizeImage', () => {
     const result = normalizeImage({ src: 'https://example.com/a.jpg' });
     expect(result).toMatchObject({ kind: 'remote' });
   });
+
+  it('coerces alt/width/height from an object without src', () => {
+    const result = normalizeImage({ alt: 'Desc', width: '100', height: '200' });
+    expect(result).toEqual({ src: '', alt: 'Desc', width: 100, height: 200, kind: 'remote' });
+  });
+
+  it('normalizes a root-relative object wrapper to local', () => {
+    const result = normalizeImage({ src: '/a.jpg', height: 200 });
+    expect(result).toEqual({ src: '/a.jpg', alt: '', height: 200, kind: 'local' });
+  });
 });

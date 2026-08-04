@@ -107,7 +107,8 @@ if (mode === 'snapshot' && (!snapshotPath || !tsPath)) {
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Known intentional divergences (warning only, never error)
+// Known intentional divergences (always tolerated — warning only, never error,
+// including in --strict mode)
 // ---------------------------------------------------------------------------
 
 const ALLOWED_DIVERGENCES = [
@@ -1169,8 +1170,6 @@ function mapNestedModelNames(pyIr, tsIr) {
  * Main comparison function.
  */
 function compareSchemas(pyIr, tsIr, strictMode = false) {
-  const diffs = [];
-
   // Map Python nested model names to TypeScript inline names
   const modelMap = mapNestedModelNames(pyIr, tsIr);
 
@@ -1202,18 +1201,23 @@ function compareSchemas(pyIr, tsIr, strictMode = false) {
   // V1: type/constraint/nested mismatches are warnings.
   // Strict mode: all mismatches are errors (except those in ALLOWED_DIVERGENCES).
   const typeConstraintSeverity = strictMode ? 'error' : 'warning';
-  diffs.push(
-    ...compareFieldSets(
-      pyAstro.fields,
-      tsAstro.fields,
-      'AstroPost',
-      pyIr.models,
-      tsIr.models,
-      typeConstraintSeverity
-    )
+  const diffs = compareFieldSets(
+    pyAstro.fields,
+    tsAstro.fields,
+    'AstroPost',
+    pyIr.models,
+    tsIr.models,
+    typeConstraintSeverity
   );
 
-  return diffs;
+  // Known intentional divergences are tolerated unconditionally, including in
+  // strict mode (see ALLOWED_DIVERGENCES). Downgrade them so they can never
+  // fail the build, even when strict mode escalated their severity to error.
+  return diffs.map((d) =>
+    d.severity === 'error' && isAllowedDivergence(d.path, d.category)
+      ? { ...d, severity: 'warning' }
+      : d
+  );
 }
 
 // ---------------------------------------------------------------------------
