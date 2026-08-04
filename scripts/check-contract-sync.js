@@ -20,6 +20,7 @@
 
 import { readFileSync, writeFileSync, statSync } from 'fs';
 import { resolve, dirname } from 'path';
+import { format } from 'prettier';
 
 // ---------------------------------------------------------------------------
 // CLI argument parsing
@@ -1314,7 +1315,7 @@ function printReport(diffs, strictMode = false) {
 // Main
 // ---------------------------------------------------------------------------
 
-function main() {
+async function main() {
   let pyIr, tsIr;
 
   if (mode === 'generate-snapshot') {
@@ -1364,7 +1365,11 @@ function main() {
 
     const outPath = resolve(generatePath);
     try {
-      writeFileSync(outPath, JSON.stringify(snapshot, null, 2));
+      // Format through Prettier (parser json) so the committed snapshot always
+      // passes `npm run format:check` in the Content Guard lint step — the bot
+      // workflow and local `sync:contract-snapshot` runs both commit this file.
+      const formatted = await format(JSON.stringify(snapshot, null, 2), { parser: 'json' });
+      writeFileSync(outPath, formatted);
       console.log(`[contract-sync] Snapshot written to ${outPath}`);
       console.log(
         `[contract-sync] Python fields: ${pyIr.models['AstroPost'].fields.length} top-level, ${Object.keys(pyIr.models).length - 1} nested models`
@@ -1467,4 +1472,4 @@ function main() {
   process.exit(exitCode);
 }
 
-main();
+await main();

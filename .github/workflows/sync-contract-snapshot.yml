@@ -13,7 +13,10 @@ permissions:
 jobs:
   sync-snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # 25 min: checkout + npm ci (~2-3 min) plus the 15-min PR-check poll loop
+    # in scripts/ci-land-bot-pr.sh (runner queue delays can push Content Guard
+    # far past the PR creation time).
+    timeout-minutes: 25
     steps:
       - name: Checkout frontend repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

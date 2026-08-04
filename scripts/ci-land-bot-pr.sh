@@ -20,13 +20,17 @@ TITLE="$2"
 gh pr create --base main --head "$BRANCH" --title "$TITLE" \
   --body "Automated change committed by a scheduled workflow; merged automatically once required checks pass."
 
-for i in $(seq 1 60); do
+# 90 polls x 10s = 15 min. Longer than a plain 10-min window so runner queue
+# delays (Content Guard can sit queued for tens of minutes) don't mask a
+# later check failure as a timeout.
+for i in $(seq 1 90); do
   CHECKS=$(gh pr checks "$BRANCH" --required 2>/dev/null || true)
   if [ -n "$CHECKS" ]; then
     FAILED=$(printf '%s\n' "$CHECKS" | grep -c $'\tfail' || true)
     PENDING=$(printf '%s\n' "$CHECKS" | grep -c $'\tpending' || true)
     if [ "$FAILED" -gt 0 ]; then
       echo "::error::PR checks failed for ${BRANCH}."
+      printf '%s\n' "$CHECKS"
       exit 1
     fi
     if [ "$PENDING" -eq 0 ]; then
@@ -39,4 +43,6 @@ for i in $(seq 1 60); do
 done
 
 echo "::error::Timed out waiting for required checks on ${BRANCH} — PR left open for manual merge."
+echo "Last known check state:"
+gh pr checks "$BRANCH" --required 2>/dev/null || echo "(no required checks reported yet)"
 exit 1
