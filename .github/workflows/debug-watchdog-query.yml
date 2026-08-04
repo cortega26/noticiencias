@@ -1,6 +1,6 @@
 name: Debug Watchdog Query
 on:
-  workflow_dispatch:
+  push:
 
 permissions:
   actions: read
