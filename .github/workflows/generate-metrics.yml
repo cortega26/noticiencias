@@ -37,6 +37,10 @@ jobs:
         # must not run lint-staged or the full validation chain on the runner.
         run: git config core.hooksPath /dev/null
 
+      - name: Warn when bot PAT is not configured
+        if: ${{ secrets.NOTICIENCIAS_BOT_TOKEN == '' }}
+        run: echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured — bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run), so the bot cannot land PRs. Configure the fine-grained PAT to enable self-serve landing."
+
       - name: Commit and land metrics
         # Direct pushes to main are rejected by branch protection; land via PR
         # (scripts/ci-land-bot-pr.sh merges once Content Guard passes).
@@ -54,6 +58,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Self-cleanup: the bot exits 1 when checks fail or the merge times
+          # out and leaves the PR open; close any stale bot PRs from previous
+          # failed runs and delete their branches so debris cannot accumulate.
+          while IFS=$'\t' read -r pr_number branch_name; do
+            gh pr close "$pr_number" --comment "Superseded by a newer metrics run." || true
+            gh api "repos/${GITHUB_REPOSITORY}/git/refs/heads/${branch_name}" -X DELETE --silent || true
+          done < <(gh pr list --base main --state open --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("ci/metrics-")) | [.number, .headRefName] | @tsv' 2>/dev/null || true)
           git add data/metrics/pipeline-metrics.json
           if git diff --cached --quiet; then
             echo "Metrics already up to date."

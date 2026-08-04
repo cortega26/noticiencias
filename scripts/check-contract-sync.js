@@ -1364,6 +1364,19 @@ async function main() {
     };
 
     const outPath = resolve(generatePath);
+    // Preserve the existing generatedAt when the extracted IR is unchanged so
+    // no-op regenerations (weekly bot runs with no backend drift) produce an
+    // empty diff and the workflow's `git diff --cached --quiet` guard skips
+    // the commit/PR — otherwise every run opens a timestamp-only PR.
+    try {
+      const existing = JSON.parse(readFileSync(outPath, 'utf-8'));
+      if (existing && JSON.stringify(existing.pythonIR) === JSON.stringify(snapshot.pythonIR)) {
+        snapshot.generatedAt = existing.generatedAt;
+      }
+    } catch {
+      // No existing snapshot; keep the fresh timestamp.
+    }
+
     try {
       // Format through Prettier (parser json) so the committed snapshot always
       // passes `npm run format:check` in the Content Guard lint step — the bot

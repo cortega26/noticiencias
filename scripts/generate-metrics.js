@@ -15,7 +15,11 @@ import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = resolve(__dirname, '..');
+// METRICS_ROOT override is used by the test suite to run against a temp
+// fixture tree instead of the repository itself.
+const REPO_ROOT = process.env.METRICS_ROOT
+  ? resolve(process.env.METRICS_ROOT)
+  : resolve(__dirname, '..');
 const POSTS_DIR = resolve(REPO_ROOT, 'src', 'content', 'posts');
 const METRICS_DIR = resolve(REPO_ROOT, 'data', 'metrics');
 const METRICS_FILE = resolve(METRICS_DIR, 'pipeline-metrics.json');
@@ -189,6 +193,34 @@ function collectImageMetrics() {
 // Main
 // ---------------------------------------------------------------------------
 
+/**
+ * Preserve the existing timestamps when the meaningful metrics are unchanged.
+ *
+ * The scheduled bot workflow skips the commit/PR via `git diff --cached
+ * --quiet`; without this guard every daily run would rewrite generated_at and
+ * open + auto-merge a "chore: update pipeline metrics" PR that only bumps the
+ * timestamp. The output must be byte-identical to the committed file for the
+ * diff to stay empty.
+ */
+function preserveTimestampsWhenUnchanged(report) {
+  let existing;
+  try {
+    existing = JSON.parse(readFileSync(METRICS_FILE, 'utf-8'));
+  } catch {
+    return;
+  }
+
+  const stripTimestamps = (r) =>
+    JSON.parse(JSON.stringify(r, (key, value) => (key === 'generated_at' ? undefined : value)));
+
+  if (JSON.stringify(stripTimestamps(existing)) !== JSON.stringify(stripTimestamps(report))) {
+    return;
+  }
+
+  report.generated_at = existing.generated_at || report.generated_at;
+  report.pipeline.generated_at = existing.pipeline?.generated_at || report.pipeline.generated_at;
+}
+
 function main() {
   const content = collectContentMetrics();
   const pipeline = collectPipelineMetrics();
@@ -200,6 +232,8 @@ function main() {
     pipeline,
     images,
   };
+
+  preserveTimestampsWhenUnchanged(report);
 
   // Write metrics file
   mkdirSync(METRICS_DIR, { recursive: true });
