@@ -10,7 +10,7 @@
  */
 
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { resolve, dirname, basename } from 'node:path';
+import { resolve, dirname, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 
@@ -84,7 +84,7 @@ function collectContentMetrics() {
     }
 
     articles.push({
-      slug: basename(file, path.extname(file)),
+      slug: basename(file, extname(file)),
       title: fm.title || 'Sin título',
       date: fm.date ? new Date(fm.date).toISOString().slice(0, 10) : null,
       categories: fm.categories || [],
