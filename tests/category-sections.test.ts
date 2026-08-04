@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   configuredCategorySections,
+  getCategoryColors,
   getConfiguredCategoryTaxonomies,
 } from '../src/utils/categorySections';
 
@@ -18,5 +19,17 @@ describe('configured category sections', () => {
       slug: 'tecnologia',
       title: 'Tecnología',
     });
+  });
+
+  it('returns Tailwind badge classes for every configured category', () => {
+    for (const section of configuredCategorySections) {
+      const color = getCategoryColors(section.slug);
+      expect(color).toBe(section.color);
+      expect(color).toMatch(/^bg-.* text-.* hover:/);
+    }
+  });
+
+  it('returns null for an unmapped category slug', () => {
+    expect(getCategoryColors('no-such-category')).toBeNull();
   });
 });
