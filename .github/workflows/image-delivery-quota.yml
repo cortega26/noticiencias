@@ -82,6 +82,10 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `target_mode=${summary.targetMode}\n`, 'utf8');
           EOF
 
+      - name: Warn when bot PAT is not configured
+        if: ${{ secrets.NOTICIENCIAS_BOT_TOKEN == '' }}
+        run: echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured — bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run). Configure the fine-grained PAT to enable self-serve landing."
+
       - name: Commit mode update to automation branch
         if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
         env:

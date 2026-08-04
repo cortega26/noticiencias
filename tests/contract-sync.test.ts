@@ -6,8 +6,10 @@
  */
 
 import { execSync } from 'child_process';
-import { readFileSync, unlinkSync, existsSync } from 'fs';
-import { resolve } from 'path';
+import { readFileSync, writeFileSync, mkdtempSync, rmSync, unlinkSync, existsSync } from 'fs';
+import { join, resolve } from 'path';
+import { tmpdir } from 'os';
+import { format } from 'prettier';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
 const SCRIPT = resolve('scripts/check-contract-sync.js');
@@ -128,6 +130,57 @@ describe('check-contract-sync', () => {
     it('exits 2 when Python file does not exist and no snapshot fallback', () => {
       const result = runSync('/nonexistent/py.py /nonexistent/ts.ts');
       expect(result.exitCode).toBe(2);
+    });
+  });
+
+  // ── generatedAt no-churn contract ──────────────────────────────
+  // The scheduled Sync Contract Snapshot bot skips the commit/PR via
+  // `git diff --cached --quiet`; if regeneration always bumped generatedAt
+  // the diff would never be empty and every weekly run would open and merge
+  // a timestamp-only PR. The generator must preserve generatedAt when the
+  // extracted Python IR is unchanged and bump it only on real drift.
+  describe('generatedAt no-churn contract', () => {
+    const TMP = mkdtempSync(join(tmpdir(), 'contract-sync-gen-'));
+    const SNAPSHOT_PATH = join(TMP, 'snapshot.json');
+    const PY_PATH = resolve('tests/fixtures/contract-sync/simple_py.py');
+    const TS_PATH = resolve('tests/fixtures/contract-sync/simple_ts.ts');
+    const CHANGED_PY_PATH = join(TMP, 'changed_py.py');
+
+    afterAll(() => {
+      rmSync(TMP, { recursive: true, force: true });
+    });
+
+    it('preserves generatedAt when the Python IR is unchanged', () => {
+      runSync(`--generate-snapshot ${SNAPSHOT_PATH} ${PY_PATH} ${TS_PATH}`);
+      const first = JSON.parse(readFileSync(SNAPSHOT_PATH, 'utf-8'));
+
+      runSync(`--generate-snapshot ${SNAPSHOT_PATH} ${PY_PATH} ${TS_PATH}`);
+      const second = JSON.parse(readFileSync(SNAPSHOT_PATH, 'utf-8'));
+
+      expect(second.generatedAt).toBe(first.generatedAt);
+      expect(second.pythonIR).toEqual(first.pythonIR);
+    });
+
+    it('bumps generatedAt when the Python IR changes', () => {
+      runSync(`--generate-snapshot ${SNAPSHOT_PATH} ${PY_PATH} ${TS_PATH}`);
+      const first = JSON.parse(readFileSync(SNAPSHOT_PATH, 'utf-8'));
+
+      writeFileSync(
+        CHANGED_PY_PATH,
+        `${readFileSync(PY_PATH, 'utf-8')}\nclass ExtraModel(BaseModel):\n    extra_field: str\n`,
+        'utf-8'
+      );
+      runSync(`--generate-snapshot ${SNAPSHOT_PATH} ${CHANGED_PY_PATH} ${TS_PATH}`);
+
+      const second = JSON.parse(readFileSync(SNAPSHOT_PATH, 'utf-8'));
+      expect(second.generatedAt).not.toBe(first.generatedAt);
+      expect(second.pythonIR.models.ExtraModel).toBeDefined();
+    });
+
+    it('writes a Prettier-formatted snapshot that passes format:check', async () => {
+      const raw = readFileSync(SNAPSHOT_PATH, 'utf-8');
+      const normalized = await format(JSON.stringify(JSON.parse(raw), null, 2), { parser: 'json' });
+      expect(raw).toBe(normalized);
     });
   });
 });
