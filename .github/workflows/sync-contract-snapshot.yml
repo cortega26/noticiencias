@@ -44,11 +44,13 @@ jobs:
             npm run sync:contract-snapshot
 
       - name: Commit and land snapshot update if changed
-        # Direct pushes to main are blocked by branch protection (required
-        # checks), so land the snapshot through a PR and merge it once the
-        # Content Guard checks pass. Hooks are bypassed: the husky pre-push
-        # hook runs the full validate:content chain (incl. the flaky link
-        # check) on the runner and would abort the bot push.
+        # Direct pushes to main are rejected by branch protection (required
+        # checks), so land the snapshot through a PR (scripts/ci-land-bot-pr.sh
+        # merges it once Content Guard passes). Hooks are bypassed: the husky
+        # pre-push hook runs the full validate:content chain (incl. the flaky
+        # link check) on the runner and would abort the bot push.
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config core.hooksPath /dev/null
           git config user.name "github-actions[bot]"
@@ -61,25 +63,4 @@ jobs:
           git commit -m "chore: sync contract schema snapshot"
           BRANCH="sync/contract-snapshot-$(date -u +%Y%m%dT%H%M%SZ)"
           git push -u origin "HEAD:$BRANCH"
-          gh pr create --base main --head "$BRANCH" \
-            --title "chore: sync contract schema snapshot" \
-            --body "Automated weekly sync of the backend contract snapshot (generated from \`cortega26/noticiencias_news_collector\` @ main)."
-          for i in $(seq 1 60); do
-            CHECKS=$(gh pr checks "$BRANCH" --required 2>/dev/null || true)
-            if [ -n "$CHECKS" ]; then
-              FAILED=$(printf '%s\n' "$CHECKS" | grep -c $'\tfail' || true)
-              PENDING=$(printf '%s\n' "$CHECKS" | grep -c $'\tpending' || true)
-              if [ "$FAILED" -gt 0 ]; then
-                echo "Snapshot PR checks failed."
-                exit 1
-              fi
-              if [ "$PENDING" -eq 0 ]; then
-                gh pr merge "$BRANCH" --merge --delete-branch
-                echo "Snapshot landed on main."
-                exit 0
-              fi
-            fi
-            sleep 10
-          done
-          echo "Timed out waiting for snapshot PR checks — PR left open for manual merge."
-          exit 1
+          bash scripts/ci-land-bot-pr.sh "$BRANCH" "chore: sync contract schema snapshot"

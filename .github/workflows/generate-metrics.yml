@@ -8,11 +8,12 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -33,10 +34,20 @@ jobs:
         # must not run lint-staged or the full validation chain on the runner.
         run: git config core.hooksPath /dev/null
 
-      - name: Commit metrics
-        uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5.0.0
-        with:
-          commit_message: 'chore: update pipeline metrics [skip ci]'
-          file_pattern: 'data/metrics/pipeline-metrics.json'
-          commit_user_name: 'github-actions[bot]'
-          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+      - name: Commit and land metrics
+        # Direct pushes to main are rejected by branch protection; land via PR
+        # (scripts/ci-land-bot-pr.sh merges once Content Guard passes).
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/metrics/pipeline-metrics.json
+          if git diff --cached --quiet; then
+            echo "Metrics already up to date."
+            exit 0
+          fi
+          git commit -m "chore: update pipeline metrics"
+          BRANCH="ci/metrics-$(date -u +%Y%m%dT%H%M%SZ)"
+          git push -u origin "HEAD:$BRANCH"
+          bash scripts/ci-land-bot-pr.sh "$BRANCH" "chore: update pipeline metrics"
