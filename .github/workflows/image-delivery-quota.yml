@@ -86,6 +86,11 @@ jobs:
         if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
         env:
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          # Fine-grained PAT (contents: write + pull-requests: write) when set:
+          # events triggered by the plain GITHUB_TOKEN are gated by GitHub's
+          # bot-approval mechanism, so bot-created PRs never validate or merge.
+          # Falls back to GITHUB_TOKEN when the secret is not configured.
+          GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || github.token }}
         run: |
           git checkout -B "$AUTOMATION_BRANCH" "origin/$BASE_BRANCH"
           git config user.name "github-actions[bot]"
@@ -96,13 +101,22 @@ jobs:
             exit 0
           fi
           git commit -m "chore: switch image delivery mode to ${{ steps.quota_summary.outputs.target_mode }}"
-          git push --force-with-lease origin "HEAD:$AUTOMATION_BRANCH"
+          if [ -n "$GH_TOKEN" ]; then
+            git push --force-with-lease "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:$AUTOMATION_BRANCH"
+          else
+            git push --force-with-lease origin "HEAD:$AUTOMATION_BRANCH"
+          fi
 
       - name: Create or update pull request
         id: create_pr
         if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          # Fine-grained PAT (contents: write + pull-requests: write) when set:
+          # pull_request workflows on bot-created PRs conclude `action_required`
+          # with zero jobs when the PR was opened with the plain GITHUB_TOKEN,
+          # so they never validate or merge. A PAT-created PR is attributed to
+          # a human and runs ungated. Falls back to GITHUB_TOKEN.
+          GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || github.token }}
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
           REQUESTED_MODE: ${{ github.event.inputs.mode || 'auto' }}
         run: |
