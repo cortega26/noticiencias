@@ -48,12 +48,22 @@ jobs:
 
       - name: Commit and land snapshot update if changed
         # Direct pushes to main are rejected by branch protection (required
-        # checks), so land the snapshot through a PR (scripts/ci-land-bot-pr.sh
-        # merges it once Content Guard passes). Hooks are bypassed: the husky
-        # pre-push hook runs the full validate:content chain (incl. the flaky
-        # link check) on the runner and would abort the bot push.
+        # checks validate + build), so land the snapshot through a PR
+        # (scripts/ci-land-bot-pr.sh merges it once Content Guard passes).
+        # Hooks are bypassed: the husky pre-push hook runs the full
+        # validate:content chain (incl. the flaky link check) on the runner
+        # and would abort the bot push.
+        #
+        # GH_TOKEN uses NOTICIENCIAS_BOT_TOKEN (fine-grained PAT with
+        # contents: write + pull-requests: write on this repo) when set:
+        # events triggered by the plain GITHUB_TOKEN are gated by GitHub's
+        # bot-approval mechanism — pull_request workflows on bot-created PRs
+        # conclude `action_required` with zero jobs and never run, so bot PRs
+        # could never validate or merge. A PAT-credited push/PR is attributed
+        # to a human and runs ungated. Falls back to GITHUB_TOKEN when the
+        # secret is not configured.
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || github.token }}
         run: |
           git config core.hooksPath /dev/null
           git config user.name "github-actions[bot]"
@@ -65,5 +75,13 @@ jobs:
           fi
           git commit -m "chore: sync contract schema snapshot"
           BRANCH="sync/contract-snapshot-$(date -u +%Y%m%dT%H%M%SZ)"
-          git push -u origin "HEAD:$BRANCH"
+          # Push with the configured token (PAT when set) so the head commit
+          # is credited to a human, not github-actions[bot]. Without this the
+          # branch protection can treat the bot push as a workflow-triggering
+          # action and gate the checks.
+          if [ -n "$GH_TOKEN" ]; then
+            git push -u "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:$BRANCH"
+          else
+            git push -u origin "HEAD:$BRANCH"
+          fi
           bash scripts/ci-land-bot-pr.sh "$BRANCH" "chore: sync contract schema snapshot"
