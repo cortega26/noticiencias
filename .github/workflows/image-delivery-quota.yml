@@ -82,6 +82,17 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `target_mode=${summary.targetMode}\n`, 'utf8');
           EOF
 
+      - name: Notify on bot failure
+        if: failure()
+        env:
+          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
+        run: |
+          cat > /tmp/bot-landing-failure.json <<'EOF'
+          {"check": "bot-landing", "status": "fail", "errors": [{"message": "Image delivery quota guard step failed."}]}
+          EOF
+          node scripts/backend-notify.js --status=fail --event=bot_landing_failed --payload-file=/tmp/bot-landing-failure.json || true
+
       - name: Warn when bot PAT is not configured
         env:
           GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || '' }}

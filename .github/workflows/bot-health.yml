@@ -1,0 +1,63 @@
+name: Bot Health Watchdog
+
+on:
+  schedule:
+    # Daily at 07:45 UTC, after all three scheduled bot workflows (05:17 quota,
+    # 06:17 metrics, 06:00 Mon sync) have had a chance to run.
+    - cron: '45 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check bot workflow freshness
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          failures=0
+
+          check_fresh() {
+            local workflow="$1" max_age_hours="$2" label="$3"
+            local last age_hours now
+            last="$(gh run list --workflow="$workflow" --limit 1 --json updatedAt --jq '.[0].updatedAt // empty' 2>/dev/null || true)"
+            if [ -z "$last" ]; then
+              echo "::error::Bot Health: $label ($workflow) has NO recorded runs."
+              failures=$((failures + 1))
+              return
+            fi
+            now="$(date -u +%s)"
+            age_hours="$(( ( now - $(date -u -d "$last" +%s) ) / 3600 ))"
+            echo "  $label: last run $last (${age_hours}h ago)"
+            if [ "$age_hours" -gt "$max_age_hours" ]; then
+              echo "::error::Bot Health: $label last ran ${age_hours}h ago (max ${max_age_hours}h). The workflow may be disabled or broken."
+              failures=$((failures + 1))
+            fi
+          }
+
+          # Expected cadence: daily 05:17 / 06:17; weekly Monday 06:00.
+          check_fresh "Generate Content Metrics" 30 "metrics"
+          check_fresh "Image Delivery Quota Guard" 30 "quota guard"
+          check_fresh "Sync Contract Snapshot" 192 "contract sync"
+
+          if [ "$failures" -gt 0 ]; then
+            echo "::error::Bot Health: $failures bot workflow(s) stale or missing. Check https://github.com/${{ github.repository }}/actions for disabled or failing workflows."
+            exit 1
+          fi
+          echo "All bot workflows fresh."
+
+      - name: Notify on watchdog failure
+        if: failure()
+        env:
+          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
+          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
+        run: |
+          cat > /tmp/bot-health-failure.json <<'EOF'
+          {"check": "bot-health-watchdog", "status": "fail", "errors": [{"message": "A scheduled bot workflow is stale or missing. The workflow may be disabled (e.g. secrets in a step if: condition) or failing repeatedly."}]}
+          EOF
+          node scripts/backend-notify.js --status=fail --event=bot_health_failed --payload-file=/tmp/bot-health-failure.json || true
