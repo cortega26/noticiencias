@@ -1,0 +1,549 @@
+{
+  "generated_at": "2026-08-04T16:44:04.535Z",
+  "content": {
+    "total_articles": 30,
+    "v2_articles": 30,
+    "total_words": 17281,
+    "avg_words": 576,
+    "categories": [
+      {
+        "name": "Tecnología",
+        "count": 10
+      },
+      {
+        "name": "Salud",
+        "count": 5
+      },
+      {
+        "name": "Astronomía",
+        "count": 4
+      },
+      {
+        "name": "Ciencia",
+        "count": 3
+      },
+      {
+        "name": "Arqueología",
+        "count": 2
+      },
+      {
+        "name": "Química",
+        "count": 2
+      },
+      {
+        "name": "Física",
+        "count": 2
+      },
+      {
+        "name": "Biología",
+        "count": 1
+      },
+      {
+        "name": "Editorial",
+        "count": 1
+      }
+    ],
+    "top_tags": [
+      {
+        "name": "misión",
+        "count": 2
+      },
+      {
+        "name": "universo",
+        "count": 2
+      },
+      {
+        "name": "cadenas de suministro",
+        "count": 1
+      },
+      {
+        "name": "gestión empresarial",
+        "count": 1
+      },
+      {
+        "name": "cursos en línea",
+        "count": 1
+      },
+      {
+        "name": "transformación profesional",
+        "count": 1
+      },
+      {
+        "name": "paleogenética",
+        "count": 1
+      },
+      {
+        "name": "biodiversidad",
+        "count": 1
+      },
+      {
+        "name": "especies en peligro",
+        "count": 1
+      },
+      {
+        "name": "arqueología",
+        "count": 1
+      },
+      {
+        "name": "historia antigua",
+        "count": 1
+      },
+      {
+        "name": "caza",
+        "count": 1
+      },
+      {
+        "name": "grafeno",
+        "count": 1
+      },
+      {
+        "name": "thomas edison",
+        "count": 1
+      },
+      {
+        "name": "inventor",
+        "count": 1
+      },
+      {
+        "name": "física cuántica",
+        "count": 1
+      },
+      {
+        "name": "superposición",
+        "count": 1
+      },
+      {
+        "name": "ordenadores cuánticos",
+        "count": 1
+      },
+      {
+        "name": "microbioma",
+        "count": 1
+      },
+      {
+        "name": "guardería",
+        "count": 1
+      },
+      {
+        "name": "infantil",
+        "count": 1
+      },
+      {
+        "name": "salud",
+        "count": 1
+      },
+      {
+        "name": "electridos",
+        "count": 1
+      },
+      {
+        "name": "catalizadores",
+        "count": 1
+      },
+      {
+        "name": "núcleo terrestre",
+        "count": 1
+      },
+      {
+        "name": "física",
+        "count": 1
+      },
+      {
+        "name": "química",
+        "count": 1
+      },
+      {
+        "name": "sarampión",
+        "count": 1
+      },
+      {
+        "name": "vacunación",
+        "count": 1
+      },
+      {
+        "name": "desinformación",
+        "count": 1
+      }
+    ],
+    "articles_by_date": [
+      {
+        "slug": "2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos",
+        "title": "1.121 especies marinas nuevas descubiertas... y la mayoría ya estaban en los estantes de los museos",
+        "date": "2026-06-14",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva",
+        "title": "Los chatbots rescataron a Elias Thorne de una conversación casual y lo convirtieron en una ficción masiva",
+        "date": "2026-06-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio",
+        "title": "Un cohete con un motor apagado y otro fallando llegó al espacio y volvió",
+        "date": "2026-05-23",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas",
+        "title": "Un asteroide de 700 metros rota cada 1,88 minutos, desafiando teorías astronómicas",
+        "date": "2026-05-15",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia",
+        "title": "El MIT descubre que la automatización no mejora la productividad como se creía",
+        "date": "2026-05-07",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan",
+        "title": "Sitios web ocultan órdenes secretas que manipulan a las IA sin que los usuarios lo sepan",
+        "date": "2026-04-24",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura",
+        "title": "Nuevos experimentos desafían la afirmación sobre la detección de materia oscura",
+        "date": "2026-04-06",
+        "categories": [
+          "Física"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas",
+        "title": "Comunicación Láser: Cómo Desbloqueará Datos Gigantes y Video HD para las Misiones Lunares Tripuladas",
+        "date": "2026-04-02",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube",
+        "title": "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube",
+        "date": "2026-03-27",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos",
+        "title": "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años",
+        "date": "2026-02-18",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva",
+        "title": "Un agujero negro se forma sin explotar una estrella masiva",
+        "date": "2026-02-16",
+        "categories": [
+          "Astronomía"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable",
+        "title": "Un ingrediente inesperado puede hacer el pan mucho más saludable",
+        "date": "2026-02-16",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida",
+        "title": "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida",
+        "date": "2026-02-05",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos",
+        "title": "Cómo Claude Code está llevando el vibe coding a todos",
+        "date": "2026-01-31",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado",
+        "title": "Estudio revela menor agrupamiento de galaxias de lo esperado",
+        "date": "2026-01-31",
+        "categories": [
+          "Astronomía"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad",
+        "title": "Moltbot, asistente personal de inteligencia artificial, ofrece funcionalidades innovadoras pero también plantea desafíos de seguridad",
+        "date": "2026-01-28",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica",
+        "title": "Observatorio de la Energía Oscura refina comprensión de expansión cósmica",
+        "date": "2026-01-28",
+        "categories": [
+          "Astronomía"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-27-conoce-a-los-misteriosos-electridos",
+        "title": "Conoce a los misteriosos electridos",
+        "date": "2026-01-27",
+        "categories": [
+          "Química"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas",
+        "title": "Desafío global contra el sarampión por falta de confianza en las vacunas",
+        "date": "2026-01-27",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos",
+        "title": "Herramientas empuñadas de piedra sofisticadas descubiertas en China datan de hace 160.000 años",
+        "date": "2026-01-27",
+        "categories": [
+          "Arqueología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas",
+        "title": "Nuevas plataformas estratosféricas podrían revolucionar la conectividad en áreas remotas",
+        "date": "2026-01-27",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial",
+        "title": "Piezo1 identificado como 'sensor de ejercicio' interno crucial",
+        "date": "2026-01-27",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada",
+        "title": "Investigadores logran la superposición cuántica más grande registrada",
+        "date": "2026-01-25",
+        "categories": [
+          "Física"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma",
+        "title": "La guardería: un lugar donde los bebés intercambian microorganismos y desarrollan su microbioma",
+        "date": "2026-01-25",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879",
+        "title": "Thomas Edison podría haber creado el grafeno accidentalmente en 1879",
+        "date": "2026-01-24",
+        "categories": [
+          "Química"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas",
+        "title": "Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nuestra Perspectiva sobre la Caza de Ballenas",
+        "date": "2026-01-23",
+        "categories": [
+          "Arqueología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-02-12-bienvenidos",
+        "title": "Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos",
+        "date": "2026-01-21",
+        "categories": [
+          "Editorial"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii",
+        "title": "NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II",
+        "date": "2026-01-18",
+        "categories": [
+          "Astronomía"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados",
+        "title": "Científicos descubren ADN preservado en guepardos momificados",
+        "date": "2026-01-17",
+        "categories": [
+          "Biología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      },
+      {
+        "slug": "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras",
+        "title": "Cursos en línea abren puertas a nuevas carreras",
+        "date": "2026-01-15",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": null,
+        "review_status": null
+      }
+    ],
+    "editorial_gaps": {
+      "missing_summary_points": 30,
+      "missing_glossary": 30,
+      "missing_fact_check": 30,
+      "missing_why_it_matters": 30,
+      "missing_confidence": 30,
+      "missing_sources": 30
+    },
+    "articles_with_gaps": 30
+  },
+  "pipeline": {
+    "last_validation": null,
+    "generated_at": "2026-08-04T16:44:04.534Z"
+  },
+  "images": {
+    "delivery_mode": "github",
+    "derivatives_available": 30,
+    "missing_derivatives": 0
+  }
+}
