@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import matter from 'gray-matter';
+import matter from './frontmatter-parser.js';
 import { globSync } from 'glob';
 
 export const MIN_CONTENT_QUALITY_WORDS = 80;

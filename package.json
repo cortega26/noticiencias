@@ -61,7 +61,6 @@
     "astro-embed": "^0.13.0",
     "astro-icon": "^1.1.5",
     "csv-parse": "^6.1.0",
-    "gray-matter": "^4.0.3",
     "js-yaml": "^4.3.1",
     "limax": "^4.2.2",
     "lodash.merge": "^4.6.2",

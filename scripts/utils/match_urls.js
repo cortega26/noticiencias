@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import matter from './frontmatter-parser.js';
 import { parse } from 'csv-parse/sync';
 
 const POSTS_DIR = './src/content/posts';
