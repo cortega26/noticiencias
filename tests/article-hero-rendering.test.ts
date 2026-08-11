@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import matter from 'gray-matter';
+import matter from '../scripts/utils/frontmatter-parser.js';
 import { load } from 'cheerio';
 import { describe, expect, it } from 'vitest';
 
