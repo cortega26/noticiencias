@@ -82,7 +82,7 @@ describe('article hero rendering', () => {
 
     for (const fileName of postFiles) {
       const raw = fs.readFileSync(path.join(postsDir, fileName), 'utf8');
-      const { data } = matter(raw);
+      const { data } = matter(raw) as { data: Record<string, unknown> };
       if (!data.image) {
         continue;
       }
