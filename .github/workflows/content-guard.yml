@@ -147,6 +147,14 @@ jobs:
       - name: ✅ Unit Coverage (honest denominator, no-regression thresholds)
         run: npm run test:coverage
 
+      - name: ⚙️ Worker suite (fetch-boundary + coverage, workerd runtime)
+        # Plan 031 Step 3/4: the Worker tests run inside the real workerd
+        # runtime via @cloudflare/vitest-pool-workers (fetch routing, CORS,
+        # R2/KV bindings) with coverage thresholds — the deploy-worker gate
+        # also runs them on workers/** changes.
+        working-directory: workers
+        run: npm run test:coverage
+
       - name: Restore Playwright browser cache
         id: playwright-cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
