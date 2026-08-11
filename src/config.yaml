@@ -72,6 +72,11 @@ form:
   # (R2 bucket noticiencias-reports) was provisioned and verified live
   # (plan 023, 2026-08-11): POST -> 201 with report id, idempotent retries.
   endpoint: 'https://noticiencias.com/api/report'
+  # Newsletter capture endpoint — deliberately separate from the report
+  # endpoint (the two forms have different wire contracts). Stays empty
+  # until a newsletter backend exists; the page then shows RSS/blog
+  # alternatives instead of a form that would POST to /api/report.
+  newsletter_endpoint: ''
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

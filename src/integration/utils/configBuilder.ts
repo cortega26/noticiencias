@@ -138,6 +138,7 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
 const getFormConfig = (config: Config): FormConfig => {
   const _default = {
     endpoint: '',
+    newsletter_endpoint: '',
   };
   return merge({}, _default, config.form ?? {}) as FormConfig;
 };

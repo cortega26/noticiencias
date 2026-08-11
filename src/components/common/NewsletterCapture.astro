@@ -15,7 +15,7 @@ const {
   class: className = '',
 } = Astro.props;
 
-const endpoint = APP_CONFIG?.form?.endpoint || '';
+const endpoint = APP_CONFIG?.form?.newsletter_endpoint || '';
 const isEnabled = endpoint.length > 0;
 ---
 

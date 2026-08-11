@@ -76,6 +76,7 @@ export interface UIConfig {
 
 export interface FormConfig {
   endpoint?: string;
+  newsletter_endpoint?: string;
 }
 
 export interface AppConfig {
