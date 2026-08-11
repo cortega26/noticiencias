@@ -300,6 +300,12 @@ Before considering a change complete, verify:
 - Content normalization did not move into rendering.
 - Images, headings, and controls remain accessible.
 - Required validation commands for the change class were run.
+- **Docs follow code:** if the change touches `src/content.config.ts`,
+  `src/config.yaml`, `astro.config.mjs`, `package.json` (engines/deps), or
+  `.github/workflows/`, the corresponding active doc (`README.md`,
+  `docs/ARCHITECTURE.md`, `docs/SOURCE_OF_TRUTH.md`, `CONTRIBUTING.md`) must
+  be updated in the same PR — `npm run check:doc-drift` must stay green.
+  Archive/audit-only edits do not trigger this requirement.
 
 ## 9) Change Matrix
 

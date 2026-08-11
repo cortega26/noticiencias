@@ -2,8 +2,9 @@
 /**
  * check-doc-drift.js
  *
- * Validates that file paths and npm scripts referenced in governance docs
- * actually exist. Catches stale references before they mislead contributors.
+ * Validates that file paths, commands, and declared invariants referenced in
+ * governance docs are true of the current repository. Catches stale
+ * references and stale semantic claims before they mislead contributors.
  *
  * Checks:
  *   - File paths in backticks that look like repo paths exist on disk
@@ -11,18 +12,27 @@
  *   - Authority-order references: claims that a file is "authoritative"
  *     (including the Pointer form) must reference existing files, and no
  *     two documents may claim authority over the same subject
+ *   - Declared invariants, parsed from authoritative files (not hardcoded):
+ *       - stale schema path `src/content/config.ts` (expected `src/content.config.ts`)
+ *       - stale site host `noticiencias.cl` (expected from src/config.yaml or astro.config.mjs)
+ *       - stale framework/runtime majors ("static Astro N site" / "Node N"
+ *         claims that disagree with package.json versions)
+ *   - Cross-repo references (`../noticiencias_news_collector/...`) when a
+ *     sibling checkout exists; silently skipped when it does not
  *
  * Env overrides (used by the test suite; default to repo behavior):
  *   - DOC_DRIFT_ROOT: base directory for resolving doc paths
  *   - DOC_DRIFT_FILES: comma-separated list of docs to check
+ *   - DOC_DRIFT_SIBLING_ROOT: sibling repo root for cross-repo refs
+ *     (default: ../noticiencias_news_collector relative to this repo)
  *
  * Exit codes:
- *   0 — all paths, commands, and authority references verified
- *   1 — one or more broken references found
+ *   0 — all paths, commands, invariants, and authority references verified
+ *   1 — one or more broken references or stale claims found
  */
 
 import { readFileSync, existsSync } from 'fs';
-import { resolve, relative, dirname, basename } from 'path';
+import { resolve, relative, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -37,8 +47,17 @@ const DEFAULT_DOC_FILES = [
   'README.md',
   'AGENTS.md',
   'CLAUDE.md',
+  'CONTRIBUTING.md',
   'docs/ARCHITECTURE.md',
   'docs/SOURCE_OF_TRUTH.md',
+  'docs/tagging.md',
+  'docs/webhook-integration.md',
+  'docs/report-pipeline-setup.md',
+  'docs/supported-dependency-matrix.md',
+  // eslint-disable-next-line no-secrets/no-secrets -- doc filename in the active allowlist
+  'docs/DEPLOYMENT_SECURITY_HEADERS.md',
+  'docs/EDITORIAL.md',
+  'docs/EDITORIAL_VOICE.md',
 ];
 
 const DOC_FILES = (() => {
@@ -57,6 +76,57 @@ try {
 } catch {
   // Fixture runs (DOC_DRIFT_ROOT set) may have no package.json; npm scripts
   // simply cannot be verified in that mode.
+}
+
+// ── Declared invariants (parsed from authoritative files) ──────
+// Versions and hosts are read from the files that own them, never
+// hardcoded, so the check drifts with the code instead of against it.
+
+// Sibling repo for cross-repo reference validation. When it is absent
+// (CI without a sibling checkout) cross-repo refs are skipped silently.
+const SIBLING_ROOT = process.env.DOC_DRIFT_SIBLING_ROOT
+  ? resolve(process.env.DOC_DRIFT_SIBLING_ROOT)
+  : resolve(SCRIPT_DIR, '..', 'noticiencias_news_collector');
+const SIBLING_PRESENT = existsSync(SIBLING_ROOT);
+
+// Site host: src/config.yaml site.site is authoritative; astro.config.mjs
+// site: is the fallback when config.yaml is absent (fixture trees).
+let SITE_HOST = null;
+try {
+  const yaml = readFileSync(resolve(REPO_ROOT, 'src/config.yaml'), 'utf-8');
+  const m = yaml.match(/^\s{2}site:\s*['"]([^'"]+)['"]/m);
+  if (m) SITE_HOST = m[1].replace(/\/+$/, '');
+} catch {
+  // no config.yaml (fixture tree)
+}
+if (!SITE_HOST) {
+  try {
+    const astroCfg = readFileSync(resolve(REPO_ROOT, 'astro.config.mjs'), 'utf-8');
+    const m = astroCfg.match(/site:\s*['"]([^'"]+)['"]/);
+    if (m) SITE_HOST = m[1].replace(/\/+$/, '');
+  } catch {
+    // no astro.config.mjs either (fixture tree)
+  }
+}
+
+// Framework/runtime majors: from package.json (dependencies.astro,
+// engines.node). Skipped in fixture mode when package.json is absent.
+let ASTRO_MAJOR = null;
+let NODE_MAJOR = null;
+try {
+  const pkg = JSON.parse(readFileSync(resolve(SCRIPT_DIR, 'package.json'), 'utf-8'));
+  const astroVer = pkg.dependencies && pkg.dependencies.astro;
+  if (typeof astroVer === 'string') {
+    const m = astroVer.match(/(\d+)/);
+    if (m) ASTRO_MAJOR = parseInt(m[1], 10);
+  }
+  const nodeRange = pkg.engines && pkg.engines.node;
+  if (typeof nodeRange === 'string') {
+    const m = nodeRange.match(/>=\s*(\d+)/);
+    if (m) NODE_MAJOR = parseInt(m[1], 10);
+  }
+} catch {
+  // fixture run without package.json
 }
 
 // ── Helpers ────────────────────────────────────────────────────
@@ -80,9 +150,8 @@ function looksLikeFilePath(s) {
   if (s.startsWith('#')) return false;
   // Skip wildcards / globs
   if (s.includes('*')) return false;
-  // Skip cross-repo backend references
-  if (s.startsWith('news_collector/') || s.startsWith('../noticiencias_news_collector'))
-    return false;
+  // Cross-repo backend references are validated against the sibling repo
+  // when it is checked out (see resolveDocPath); keep them as candidates.
   // Skip directory-only paths with no extension (harder to validate accurately)
   if (s.endsWith('/')) return false;
   // Skip JavaScript member expressions (data.permalink, post.title, etc.)
@@ -108,6 +177,22 @@ function resolveDocPath(rawPath, docDir) {
   // Strip leading / for absolute-ish paths
   let cleaned = rawPath.replace(/^\/+/, '');
 
+  // Cross-repo backend references: validate against the sibling checkout
+  // when present; otherwise the reference is skipped silently.
+  if (cleaned.startsWith('../noticiencias_news_collector/')) {
+    if (SIBLING_PRESENT) {
+      const rest = cleaned.slice('../noticiencias_news_collector/'.length);
+      return resolve(SIBLING_ROOT, rest);
+    }
+    return null;
+  }
+  if (cleaned.startsWith('news_collector/')) {
+    if (SIBLING_PRESENT) {
+      return resolve(SIBLING_ROOT, cleaned);
+    }
+    return null;
+  }
+
   // Handle old workspace absolute paths:
   // /home/carlos/.../noticiencias/src/foo → src/foo
   const noticienciasIdx = cleaned.indexOf('noticiencias/');
@@ -127,6 +212,7 @@ function resolveDocPath(rawPath, docDir) {
     'tests/',
     'docs/',
     'data/',
+    'workers/',
     '.github/',
     '.contract-snapshots/',
   ];
@@ -306,6 +392,69 @@ const broken = [];
 const authorityClaims = [];
 const governsClaims = [];
 
+/**
+ * Check a single non-code line for declared-invariant violations.
+ * Invariants are parsed from authoritative files (config.yaml,
+ * astro.config.mjs, package.json), so expected values drift with code.
+ */
+function checkInvariants(line, docRel, lineNo) {
+  const found = [];
+
+  // Stale schema path: the pre-split path is gone; content.config.ts owns it.
+  if (/`src\/content\/config\.ts`/.test(line)) {
+    found.push({
+      doc: docRel,
+      type: 'stale_schema_path',
+      ref: 'src/content/config.ts',
+      line: lineNo,
+      message: 'expected `src/content.config.ts` (schema moved out of src/content/)',
+    });
+  }
+
+  // Stale site host: production host comes from config.yaml / astro.config.mjs.
+  if (SITE_HOST && /noticiencias\.cl/.test(line)) {
+    found.push({
+      doc: docRel,
+      type: 'stale_site_host',
+      ref: 'noticiencias.cl',
+      line: lineNo,
+      message: `expected ${SITE_HOST} (parsed from site config)`,
+    });
+  }
+
+  // Stale framework major: docs claiming "static Astro N site" (present-tense
+  // current-state claims only) must match the installed major from package.json.
+  if (ASTRO_MAJOR !== null) {
+    const m = line.match(/static\s+Astro\s+(\d+)\s+site/i);
+    if (m && parseInt(m[1], 10) !== ASTRO_MAJOR) {
+      found.push({
+        doc: docRel,
+        type: 'stale_framework_major',
+        ref: `static Astro ${m[1]} site`,
+        line: lineNo,
+        message: `expected Astro ${ASTRO_MAJOR} (parsed from package.json dependencies.astro)`,
+      });
+    }
+  }
+
+  // Stale runtime major: "Node N" claims in current-state contexts must match
+  // the engines range major from package.json.
+  if (NODE_MAJOR !== null) {
+    const m = line.match(/Node(?:\.js)?\s+(?:v?)(\d+)/i);
+    if (m && parseInt(m[1], 10) !== NODE_MAJOR) {
+      found.push({
+        doc: docRel,
+        type: 'stale_runtime_major',
+        ref: `Node ${m[1]}`,
+        line: lineNo,
+        message: `expected Node ${NODE_MAJOR} (parsed from package.json engines.node)`,
+      });
+    }
+  }
+
+  return found;
+}
+
 for (const docRel of DOC_FILES) {
   const docPath = resolve(REPO_ROOT, docRel);
   if (!existsSync(docPath)) {
@@ -317,13 +466,19 @@ for (const docRel of DOC_FILES) {
   const docDir = dirname(docPath);
   let inCodeBlock = false;
 
-  for (const line of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineNo = i + 1;
     // Track code blocks (```)
     if (line.trim().startsWith('```')) {
       inCodeBlock = !inCodeBlock;
       continue;
     }
     if (inCodeBlock) continue;
+
+    // Declared invariants run on every non-code line, including table rows:
+    // they are semantic claims, not path lookups, and must never go stale.
+    for (const err of checkInvariants(line, docRel, lineNo)) broken.push(err);
 
     // Skip markdown table rows (they contain pipes and often trigger false positives)
     if (line.trim().startsWith('|')) continue;
@@ -336,6 +491,7 @@ for (const docRel of DOC_FILES) {
             doc: docRel,
             type: 'npm_script',
             ref: ref.raw,
+            line: lineNo,
             message: `npm script "${ref.npmCmd}" not found in package.json`,
           });
         }
@@ -343,16 +499,15 @@ for (const docRel of DOC_FILES) {
       }
 
       const resolved = resolveDocPath(ref.cleaned, docDir);
+      // Cross-repo refs resolve to null when the sibling is not checked out:
+      // skip them silently in that case.
+      if (resolved === null) continue;
       if (!existsSync(resolved)) {
-        // Check if it exists with a different extension
-        const dir = dirname(resolved);
-        const base = basename(resolved, ref.cleaned.match(/\.\w+$/)?.[0] || '');
-        const ext = ref.cleaned.match(/\.\w+$/)?.[0] || '';
-
         broken.push({
           doc: docRel,
           type: 'broken_path',
           ref: ref.raw,
+          line: lineNo,
           message: `file not found: ${relative(REPO_ROOT, resolved)}`,
         });
       }
@@ -441,6 +596,14 @@ if (unique.length > 0) {
   const missingDocs = unique.filter((b) => b.type === 'doc_missing');
   const authorityRefErrors = unique.filter((b) => b.type === 'authority_ref');
   const authorityConflictErrors = unique.filter((b) => b.type === 'authority_conflict');
+  const invariantErrors = unique.filter((b) =>
+    [
+      'stale_schema_path',
+      'stale_site_host',
+      'stale_framework_major',
+      'stale_runtime_major',
+    ].includes(b.type)
+  );
 
   if (missingDocs.length > 0) {
     console.error(`[check:doc-drift] ${missingDocs.length} doc(s) not found:`);
@@ -449,13 +612,20 @@ if (unique.length > 0) {
   if (pathErrors.length > 0) {
     console.error(`[check:doc-drift] ${pathErrors.length} broken path(s):`);
     for (const b of pathErrors) {
-      console.error(`  ${b.doc}: \`${b.ref}\``);
+      console.error(`  ${b.doc}:${b.line || '?'}: \`${b.ref}\``);
       console.error(`    → ${b.message}`);
     }
   }
   if (scriptErrors.length > 0) {
     console.error(`[check:doc-drift] ${scriptErrors.length} unknown npm script(s):`);
-    for (const b of scriptErrors) console.error(`  ${b.doc}: ${b.ref}`);
+    for (const b of scriptErrors) console.error(`  ${b.doc}:${b.line || '?'}: ${b.ref}`);
+  }
+  if (invariantErrors.length > 0) {
+    console.error(`[check:doc-drift] ${invariantErrors.length} stale declared claim(s):`);
+    for (const b of invariantErrors) {
+      console.error(`  ${b.doc}:${b.line}: \`${b.ref}\``);
+      console.error(`    → ${b.message}`);
+    }
   }
   if (authorityRefErrors.length > 0) {
     console.error(`[check:doc-drift] ${authorityRefErrors.length} broken authority reference(s):`);
@@ -475,12 +645,16 @@ if (unique.length > 0) {
 
   console.error('\nUpdate the docs to reference existing files, commands, and authority sources.');
   process.exit(
-    pathErrors.length > 0 || authorityRefErrors.length > 0 || authorityConflictErrors.length > 0
+    pathErrors.length > 0 ||
+      authorityRefErrors.length > 0 ||
+      authorityConflictErrors.length > 0 ||
+      invariantErrors.length > 0 ||
+      missingDocs.length > 0
       ? 1
       : 0
   );
 }
 
 console.log(
-  `[check:doc-drift] OK — ${DOC_FILES.length} docs checked, all paths, commands, and authority references verified.`
+  `[check:doc-drift] OK — ${DOC_FILES.length} docs checked, all paths, commands, invariants, and authority references verified.`
 );

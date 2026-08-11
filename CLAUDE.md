@@ -15,7 +15,7 @@ npm run test:audit   # Run tests
 
 ## Key facts
 
-- Static Astro 6 site, server-first rendering, no React islands
+- Static Astro 7 site, server-first rendering, no React islands
 - Content schema is sealed: `src/content.config.ts` is a cross-repo contract
 - Layers: `ds` → `template` → `pages` (not interchangeable)
 - Utilities must stay pure; no DOM in `src/utils/`

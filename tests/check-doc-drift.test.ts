@@ -19,7 +19,8 @@ const FIXTURES = resolve('tests/fixtures/doc-drift');
 
 function runCheck(
   root: string,
-  docs: string[]
+  docs: string[],
+  siblingRoot?: string
 ): {
   combined: string;
   exitCode: number;
@@ -34,6 +35,7 @@ function runCheck(
         ...process.env,
         DOC_DRIFT_ROOT: root,
         DOC_DRIFT_FILES: docs.join(','),
+        ...(siblingRoot ? { DOC_DRIFT_SIBLING_ROOT: siblingRoot } : {}),
       },
     });
     return { combined: stdout, exitCode: 0 };
@@ -68,6 +70,74 @@ describe('check-doc-drift authority-order references', () => {
 
   it('passes against the live governance docs', () => {
     const { combined, exitCode } = runCheck(resolve('.'), []);
+    expect(combined).toContain('[check:doc-drift] OK');
+    expect(exitCode).toBe(0);
+  });
+});
+
+describe('check-doc-drift declared invariants', () => {
+  const staleRoot = join(FIXTURES, 'stale');
+
+  it('flags the stale pre-split schema path with the expected value', () => {
+    const { combined, exitCode } = runCheck(staleRoot, ['README.md']);
+    expect(exitCode).toBe(1);
+    expect(combined).toContain('stale declared claim');
+    expect(combined).toContain('src/content/config.ts');
+    expect(combined).toContain('src/content.config.ts');
+  });
+
+  it('flags the stale site host with the value parsed from site config', () => {
+    const { combined, exitCode } = runCheck(staleRoot, ['README.md']);
+    expect(exitCode).toBe(1);
+    expect(combined).toContain('noticiencias.cl');
+    expect(combined).toContain('https://noticiencias.com (parsed from site config)');
+  });
+
+  it('flags a stale "static Astro N site" claim with the installed major', () => {
+    const { combined, exitCode } = runCheck(staleRoot, ['README.md']);
+    expect(exitCode).toBe(1);
+    expect(combined).toContain('static Astro 6 site');
+    expect(combined).toMatch(/expected Astro \d+ \(parsed from package.json/);
+  });
+
+  it('flags a stale Node major claim with the engines major', () => {
+    const { combined, exitCode } = runCheck(staleRoot, ['README.md']);
+    expect(exitCode).toBe(1);
+    expect(combined).toContain('Node 20');
+    expect(combined).toMatch(/expected Node \d+ \(parsed from package\.json engines\.node\)/);
+  });
+});
+
+describe('check-doc-drift cross-repo references', () => {
+  const siblingRoot = (name: string) => join(FIXTURES, name, '_sibling');
+
+  it('passes when a sibling reference resolves', () => {
+    const { combined, exitCode } = runCheck(
+      join(FIXTURES, 'sibling-ok'),
+      ['README.md'],
+      siblingRoot('sibling-ok')
+    );
+    expect(combined).toContain('[check:doc-drift] OK');
+    expect(exitCode).toBe(0);
+  });
+
+  it('flags a sibling reference to a missing file', () => {
+    const { combined, exitCode } = runCheck(
+      join(FIXTURES, 'sibling-broken'),
+      ['README.md'],
+      siblingRoot('sibling-broken')
+    );
+    expect(exitCode).toBe(1);
+    expect(combined).toContain('broken path');
+    expect(combined).toContain('MISSING.md');
+  });
+
+  it('skips sibling references when the sibling is not checked out', () => {
+    const { combined, exitCode } = runCheck(
+      join(FIXTURES, 'sibling-broken'),
+      ['README.md'],
+      join(FIXTURES, 'no-such-sibling')
+    );
     expect(combined).toContain('[check:doc-drift] OK');
     expect(exitCode).toBe(0);
   });

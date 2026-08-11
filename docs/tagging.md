@@ -48,8 +48,8 @@ The backend `TagNormalizer` currently performs:
 
 1. trim, lowercase, and whitespace cleanup
 2. hyphen and underscore replacement with spaces
-3. orthography correction from `orthography.yml`
-4. semantic alias mapping from `tags.yml`
+3. orthography correction from `../noticiencias_news_collector/news_collector/taxonomy/orthography.yml`
+4. semantic alias mapping from `../noticiencias_news_collector/news_collector/taxonomy/tags.yml`
 5. accent-insensitive deduplication
 6. stop-tag removal
 7. length filtering
@@ -64,7 +64,7 @@ The backend validator then returns:
 
 ## Enforced Current Limits
 
-These values come from `news_collector/taxonomy/normalizer.py` and `tags.yml`:
+These values come from `news_collector/taxonomy/normalizer.py` and `../noticiencias_news_collector/news_collector/taxonomy/tags.yml`:
 
 - maximum tags per article: `8`
 - minimum tag length: `3`, unless explicitly whitelisted

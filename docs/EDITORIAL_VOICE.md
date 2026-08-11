@@ -222,7 +222,7 @@ Las decisiones siguientes se derivan directamente de las secciones 1-3. No son o
 | D5  | `uncertainty_note` debe tener un componente visible cuando esté poblado (badge o callout). Pasa de opcional a obligatorio cuando el titular usa un _curiosity gap_ sobre hallazgo preliminar | Atributo "Riguroso" + contrapeso del atributo "Curioso" (sección 2.4)            |
 | D6  | `investigation: true` debe disparar diferencias visuales reales (badge, tipografía, posición en home), no solo metadata                                                                      | Sin diferenciación visible, marcar `investigation` no cuesta nada y pierde valor |
 | D7  | El módulo "Qué cambia" merece tratamiento visual diferenciado del resto de cards (no solo `variant="compact"`)                                                                               | Es un arquetipo, no una sub-lista                                                |
-| D8  | Botones legacy `.btn`/`.btn-primary` en `src/styles/global.css` se deprecan a favor de `ds/atoms/Button.astro` con `rounded-md` editorial                                                    | Un solo sistema visual                                                           |
+| D8  | Botones legacy `.btn`/`.btn-primary` en `src/styles/global.css` se deprecan a favor de `src/components/ds/atoms/Button.astro` con `rounded-md` editorial                                     | Un solo sistema visual                                                           |
 
 Cada una de estas decisiones es candidata a issue/PR independiente. La numeración sirve como referencia estable.
 
@@ -237,7 +237,7 @@ Auditoría rápida del estado actual al 2026-05-17. Sirve como baseline para med
 - **Copy sin gancho** ("Vías de regreso", "Guías de lectura" en `DailyDesk.astro`) — falla "Curioso": describe en lugar de invitar.
 - **`investigation: true` sin tratamiento visual diferenciado** — falla "Riguroso" y desperdicia un campo de schema.
 - **`sources[]` y `uncertainty_note` poco visibles en la lectura del artículo** — falla "Evidencia a la vista".
-- **Dos sistemas de botones coexistiendo** (`.btn` legacy + `ds/atoms/Button.astro`) — fragmentación visual.
+- **Dos sistemas de botones coexistiendo** (`.btn` legacy + `src/components/ds/atoms/Button.astro`) — fragmentación visual.
 - **Sin diferenciación clara entre arquetipos** en la home: todas las cards usan la misma escala visual con sutiles `variant="lead|standard|compact|row"`, pero el lector no sabe leer la diferencia porque no hay códigos visuales reconocibles (kickers tipados, badges de arquetipo).
 
 ---
