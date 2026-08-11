@@ -14,7 +14,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import matter from 'gray-matter';
+import matter from './utils/frontmatter-parser.js';
 import { globSync } from 'glob';
 
 const CONTENT_DIR = path.resolve('src/content/posts');

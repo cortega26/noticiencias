@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { load } from 'cheerio';
-import matter from 'gray-matter';
+import matter from './utils/frontmatter-parser.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);

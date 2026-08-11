@@ -61,7 +61,6 @@
     "astro-embed": "^0.13.0",
     "astro-icon": "^1.1.5",
     "csv-parse": "^6.1.0",
-    "gray-matter": "^4.0.3",
     "js-yaml": "^4.3.1",
     "limax": "^4.2.2",
     "lodash.merge": "^4.6.2",
@@ -75,8 +74,8 @@
   "overrides": {
     "lodash": "4.17.23",
     "yaml": ">=2.8.3",
-    "fast-uri": "3.1.4",
-    "brace-expansion@^1.1.7": "1.1.17",
+    "fast-uri": "4.1.2",
+    "brace-expansion@^1.1.7": "1.1.18",
     "brace-expansion@^5.0.5": "5.0.9",
     "esbuild": "0.28.1"
   },

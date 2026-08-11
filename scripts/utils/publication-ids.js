@@ -8,7 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import matter from 'gray-matter';
+import matter from './frontmatter-parser.js';
 
 const POSTS_PATH_PREFIX = 'src/content/posts/';
 const MAX_PUBLICATION_IDS = 200;

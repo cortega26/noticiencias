@@ -12,7 +12,7 @@
 import { readdirSync, statSync, readFileSync } from 'node:fs';
 import { resolve, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import matter from 'gray-matter';
+import matter from './utils/frontmatter-parser.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, '..');

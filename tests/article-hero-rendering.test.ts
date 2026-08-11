@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import matter from 'gray-matter';
+import matter from '../scripts/utils/frontmatter-parser.js';
 import { load } from 'cheerio';
 import { describe, expect, it } from 'vitest';
 
@@ -82,7 +82,7 @@ describe('article hero rendering', () => {
 
     for (const fileName of postFiles) {
       const raw = fs.readFileSync(path.join(postsDir, fileName), 'utf8');
-      const { data } = matter(raw);
+      const { data } = matter(raw) as { data: Record<string, unknown> };
       if (!data.image) {
         continue;
       }

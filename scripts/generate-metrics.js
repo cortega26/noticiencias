@@ -12,7 +12,7 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import matter from 'gray-matter';
+import matter from './utils/frontmatter-parser.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // METRICS_ROOT override is used by the test suite to run against a temp
