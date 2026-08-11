@@ -29,16 +29,37 @@ npm run test:dist         # dist sanity checks (run after build)
 
 1. Consult the **Change Matrix** in `AGENTS.md §9` and run the minimum required
    commands for your change class.
-2. For component, layout, or route changes, also run:
+2. Run the canonical one-command gate (mirrors the CI PR checks):
+   ```bash
+   npm run verify:ci
+   ```
+   This runs lint, content validation, build, dist sanity, unit tests,
+   browser tests, and the cross-repo contract sync in one pass — the same
+   checks `content-guard.yml` runs on every PR.
+3. For component, layout, or route changes, also run:
    ```bash
    npm run build
    npm run test:dist
    npm run test:audit
    ```
-3. Verify at 375 px and 1280 px — no console errors, no broken images, no broken
+4. Verify at 375 px and 1280 px — no console errors, no broken images, no broken
    canonical metadata.
-4. No "we'll fix it later" workarounds. If the change needs a follow-up to be safe,
+5. No "we'll fix it later" workarounds. If the change needs a follow-up to be safe,
    the task is not complete.
+
+## Fork and Dependabot behavior
+
+- `content-guard.yml` fetches the backend contract schema with a
+  least-privilege read token. On fork or Dependabot PRs (where secrets are
+  unavailable) it falls back to the committed snapshot
+  (`.contract-snapshots/frontend_schema.snapshot.json`) instead of failing.
+- `npm run check:contract-sync` is the local equivalent of the contract
+  parity gate; it compares `src/content.config.ts` against the backend
+  `news_collector/contracts/frontend_schema.py` when the sibling repo is
+  present.
+- The browser suite always runs against a local build
+  (`PLAYWRIGHT_BASE_URL=http://localhost:4321`) — never the live site —
+  so fork PRs get the same coverage as main-branch PRs.
 
 ## Key directories
 
