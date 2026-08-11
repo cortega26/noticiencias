@@ -13,6 +13,6 @@
     "@cloudflare/workers-types": "^5.20260801.1",
     "@vitest/coverage-v8": "4.1.10",
     "vitest": "4.1.10",
-    "wrangler": "4.116.0"
+    "wrangler": "4.120.1"
   }
 }
