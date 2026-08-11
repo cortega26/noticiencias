@@ -68,11 +68,10 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 form:
-  # Report-a-problem endpoint. Stays empty until the Worker's durable sink
-  # (R2 bucket) is provisioned — see docs/report-pipeline-setup.md. The form
-  # deliberately shows "unavailable" rather than fake success while empty.
-  # Once provisioned: endpoint: 'https://noticiencias.com/api/report'
-  endpoint: ''
+  # Report-a-problem endpoint. Enabled after the Worker's durable sink
+  # (R2 bucket noticiencias-reports) was provisioned and verified live
+  # (plan 023, 2026-08-11): POST -> 201 with report id, idempotent retries.
+  endpoint: 'https://noticiencias.com/api/report'
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

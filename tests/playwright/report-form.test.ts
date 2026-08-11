@@ -74,13 +74,18 @@ test('report form has accessible labels', async ({ page }) => {
 test('with no endpoint configured, the form is honestly disabled — never fakes success', async ({
   page,
 }) => {
+  // Force the empty-endpoint state explicitly (the test override takes
+  // precedence over the config endpoint, which is now set in production —
+  // plan 023, 2026-08-11). The plan's core bug was showing fake success
+  // when no endpoint exists, so this state must stay tested even though
+  // production now has a real endpoint.
+  await page.addInitScript(() => {
+    (window as unknown as Record<string, string>).__NOTICIENCIAS_TEST_REPORT_ENDPOINT__ = '';
+  });
   await page.goto('/reportar-problema');
 
   const form = page.locator('form#report-problem-form');
 
-  // The current production config.yaml has no endpoint set, so this is the
-  // real default state, not a mock — the plan's core bug was showing fake
-  // success here instead.
   await expect(form.locator('#submit-btn')).toBeDisabled();
   await expect(form.locator('#form-error')).toContainText('no está disponible');
   await expect(page.locator('#success-view')).toBeHidden();

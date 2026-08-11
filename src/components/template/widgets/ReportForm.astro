@@ -250,13 +250,18 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 
     // Get endpoint from data attribute. E2E tests override this via
     // window.__NOTICIENCIAS_TEST_REPORT_ENDPOINT__ (set with
-    // page.addInitScript before navigation) to exercise the
-    // configured-endpoint code paths without baking a real endpoint into
-    // the production build — never set outside of Playwright tests.
+    // page.addInitScript before navigation) to exercise both the
+    // configured-endpoint and the empty-endpoint code paths — an explicit
+    // override wins even when it is an empty string (it must be able to
+    // force the disabled state now that production config sets a real
+    // endpoint) — never set outside of Playwright tests.
     const testEndpointOverride = (
       window as unknown as { __NOTICIENCIAS_TEST_REPORT_ENDPOINT__?: string }
     ).__NOTICIENCIAS_TEST_REPORT_ENDPOINT__;
-    const endpoint = testEndpointOverride || form.dataset.endpoint;
+    const endpoint =
+      typeof testEndpointOverride === 'string'
+        ? testEndpointOverride
+        : form.dataset.endpoint;
     const formEnabled = Boolean(endpoint);
 
     const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
