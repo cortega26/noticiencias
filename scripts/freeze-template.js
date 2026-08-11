@@ -22,6 +22,9 @@ const allowedTemplateFiles = new Set([
   'src/components/template/widgets/HeroText.astro',
   'src/components/template/widgets/Pricing.astro',
   'src/components/template/widgets/Testimonials.astro',
+  // Plan 023 (durable reader reports) owns the report-problem form; it stays
+  // in the template layer until the form is migrated to ds/ in a later plan.
+  'src/components/template/widgets/ReportForm.astro',
 ]);
 
 try {
