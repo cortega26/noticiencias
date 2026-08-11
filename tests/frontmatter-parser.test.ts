@@ -70,6 +70,13 @@ describe('matter parse', () => {
   });
 });
 
+describe('matter API surface', () => {
+  it('exposes stringify as a static on the default export (gray-matter compat)', () => {
+    expect(typeof matter.stringify).toBe('function');
+    expect(matter.stringify('body text', { title: 'X' })).toBe('---\ntitle: X\n---\nbody text\n');
+  });
+});
+
 describe('matter stringify', () => {
   it('round-trips a parsed post with stable serialization', () => {
     const parsed = matter(POST_WITH_YAML);

@@ -95,4 +95,8 @@ export function stringify(file, data) {
   return buf + newline(str);
 }
 
+// gray-matter exposes stringify as a static on the default export; the
+// call sites (match_urls.js) use `matter.stringify(...)`, so mirror it.
+matter.stringify = stringify;
+
 export default matter;
