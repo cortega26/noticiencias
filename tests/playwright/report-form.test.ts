@@ -26,12 +26,12 @@ async function fillAndSubmit(page: Page) {
 }
 
 test('report form page loads', async ({ page }) => {
-  const response = await page.goto('/reportar-problema');
+  const response = await page.goto('/reportar-problema/');
   expect(response?.status()).toBe(200);
 });
 
 test('report form has problem type selector', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const select = page.locator('select#problem-type');
   await expect(select).toBeVisible();
@@ -41,7 +41,7 @@ test('report form has problem type selector', async ({ page }) => {
 });
 
 test('report form validates required fields', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const form = page.locator('form#report-problem-form');
   await expect(form).toBeAttached();
@@ -53,7 +53,7 @@ test('report form validates required fields', async ({ page }) => {
 });
 
 test('report form has accessible labels', async ({ page }) => {
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const form = page.locator('form#report-problem-form');
   await expect(form).toBeAttached();
@@ -82,7 +82,7 @@ test('with no endpoint configured, the form is honestly disabled — never fakes
   await page.addInitScript(() => {
     (window as unknown as Record<string, string>).__NOTICIENCIAS_TEST_REPORT_ENDPOINT__ = '';
   });
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   const form = page.locator('form#report-problem-form');
 
@@ -103,7 +103,7 @@ test('a successful submission shows success only after a 2xx response with a rep
       body: JSON.stringify({ id: 'abc-123', message: 'ok' }),
     })
   );
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
 
@@ -120,7 +120,7 @@ test('a 422 response shows a validation error, not success', async ({ page }) =>
       body: JSON.stringify({ error: 'Datos inválidos' }),
     })
   );
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
 
@@ -132,7 +132,7 @@ test('a 422 response shows a validation error, not success', async ({ page }) =>
 test('a 429 response shows a rate-limit message, not success', async ({ page }) => {
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.fulfill({ status: 429 }));
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
 
@@ -144,7 +144,7 @@ test('a 429 response shows a rate-limit message, not success', async ({ page }) 
 test('a 503 response shows a service-unavailable message, not success', async ({ page }) => {
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.fulfill({ status: 503 }));
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
 
@@ -156,7 +156,7 @@ test('a 503 response shows a service-unavailable message, not success', async ({
 test('a network failure shows a generic error, not success', async ({ page }) => {
   await useTestEndpoint(page);
   await page.route('**/api/report', (route) => route.abort('failed'));
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
 
@@ -178,11 +178,11 @@ test('repeated ClientRouter navigations do not attach duplicate submit listeners
     });
   });
 
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   // Navigate away and back to force astro:page-load to fire again.
   await page.goto('/');
-  await page.goto('/reportar-problema');
+  await page.goto('/reportar-problema/');
 
   await fillAndSubmit(page);
   await expect(page.locator('#success-view')).toBeVisible();

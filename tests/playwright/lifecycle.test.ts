@@ -59,7 +59,17 @@ test.describe('lifecycle idempotency across page swaps', () => {
     expect(pageErrors, `page errors after ${ROUNDS} swaps: ${pageErrors.join('; ')}`).toEqual([]);
   });
 
-  test('menu toggle opens then closes after navigation (no double-handler)', async ({ page }) => {
+  test('menu toggle opens then closes after navigation (no double-handler)', async ({
+    page,
+  }, testInfo) => {
+    // The toggle is wrapped in `lg:hidden` (mobile-only pattern in
+    // Header.astro); on desktop viewports it exists but is never visible,
+    // so the click-assert sequence is only meaningful on mobile.
+    test.skip(
+      testInfo.project.name === 'desktop-1280',
+      'menu toggle is hidden on desktop (lg:hidden) by design'
+    );
+
     await page.goto('/');
 
     // Navigate to an article and back to exercise swaps

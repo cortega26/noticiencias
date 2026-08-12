@@ -14,8 +14,9 @@ test('search page loads with input field', async ({ page }) => {
   const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
 
-  // Search input should be visible
-  const searchInput = page.locator('input[type="search"], input[type="text"]').first();
+  // The page's search input (not the header's, which is collapsed on
+  // mobile viewports).
+  const searchInput = page.locator('#search-box');
   await expect(searchInput).toBeVisible();
 });
 
