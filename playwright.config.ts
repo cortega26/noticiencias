@@ -25,7 +25,11 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // GitHub-hosted runners expose 2 cores; the previous workers:1 serialized
+  // 61 tests x 2 projects (12+ min with retries). Parallelism on 2 workers
+  // roughly halves wall time without stressing the single preview server
+  // (the webServer is shared and browser instances are isolated per test).
+  workers: process.env.CI ? 2 : undefined,
   reporter: process.env.CI ? 'github' : 'list',
   timeout: 15000,
 

@@ -31,7 +31,8 @@ test('blog archive loads', async ({ page }) => {
 test('search page loads', async ({ page }) => {
   const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
-  await expect(page.locator('input[type="search"], input[type="text"]').first()).toBeVisible();
+  // The page's search input (not the header's, collapsed on mobile).
+  await expect(page.locator('#search-box')).toBeVisible();
 });
 
 test('404 page for unknown route', async ({ page }) => {
