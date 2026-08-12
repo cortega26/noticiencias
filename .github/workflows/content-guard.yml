@@ -147,6 +147,12 @@ jobs:
       - name: ✅ Unit Coverage (honest denominator, no-regression thresholds)
         run: npm run test:coverage
 
+      - name: Install Worker dependencies
+        # The Worker has its own package.json/lockfile; the pool-based suite
+        # needs its node_modules installed before it can run.
+        working-directory: workers
+        run: npm ci
+
       - name: ⚙️ Worker suite (fetch-boundary + coverage, workerd runtime)
         # Plan 031 Step 3/4: the Worker tests run inside the real workerd
         # runtime via @cloudflare/vitest-pool-workers (fetch routing, CORS,
