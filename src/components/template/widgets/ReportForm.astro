@@ -259,9 +259,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
       window as unknown as { __NOTICIENCIAS_TEST_REPORT_ENDPOINT__?: string }
     ).__NOTICIENCIAS_TEST_REPORT_ENDPOINT__;
     const endpoint =
-      typeof testEndpointOverride === 'string'
-        ? testEndpointOverride
-        : form.dataset.endpoint;
+      typeof testEndpointOverride === 'string' ? testEndpointOverride : form.dataset.endpoint;
     const formEnabled = Boolean(endpoint);
 
     const typeSelect = document.querySelector('#problem-type') as HTMLSelectElement | null;
