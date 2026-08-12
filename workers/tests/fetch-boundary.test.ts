@@ -37,7 +37,7 @@ function post(path: string, body: unknown, headers: Record<string, string> = {})
 let ipCounter = 0;
 function uniqueIp(): string {
   ipCounter += 1;
-  return `10.0.0.${ipCounter % 250 + 1}`;
+  return `10.0.0.${(ipCounter % 250) + 1}`;
 }
 
 async function fetchThrough(request: Request): Promise<Response> {
@@ -58,14 +58,18 @@ describe('worker fetch boundary (plan 031)', () => {
   });
 
   it('routes POST /api/report to the report handler (201)', async () => {
-    const response = await fetchThrough(post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': uniqueIp() }));
+    const response = await fetchThrough(
+      post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': uniqueIp() })
+    );
     expect(response.status).toBe(201);
     const json = (await response.json()) as { id: string };
     expect(json.id).toBeTruthy();
   });
 
   it('returns 404 for unknown /api paths', async () => {
-    const response = await fetchThrough(post('/api/unknown', VALID_PAYLOAD, { 'CF-Connecting-IP': uniqueIp() }));
+    const response = await fetchThrough(
+      post('/api/unknown', VALID_PAYLOAD, { 'CF-Connecting-IP': uniqueIp() })
+    );
     expect(response.status).toBe(404);
   });
 
@@ -101,7 +105,9 @@ describe('worker fetch boundary (plan 031)', () => {
   });
 
   it('returns 400 for malformed JSON at the boundary', async () => {
-    const response = await fetchThrough(post('/api/report', '{not json', { 'CF-Connecting-IP': uniqueIp() }));
+    const response = await fetchThrough(
+      post('/api/report', '{not json', { 'CF-Connecting-IP': uniqueIp() })
+    );
     expect(response.status).toBe(400);
   });
 
@@ -128,9 +134,13 @@ describe('worker fetch boundary (plan 031)', () => {
     const results: number[] = [];
     for (let i = 0; i < 6; i++) {
       const response = await fetchThrough(
-        post('/api/report', { ...VALID_PAYLOAD, description: `intento ${i}` }, {
-          'CF-Connecting-IP': ip,
-        })
+        post(
+          '/api/report',
+          { ...VALID_PAYLOAD, description: `intento ${i}` },
+          {
+            'CF-Connecting-IP': ip,
+          }
+        )
       );
       results.push(response.status);
     }
@@ -140,9 +150,13 @@ describe('worker fetch boundary (plan 031)', () => {
 
   it('returns the same id for an identical retried payload (idempotency at the boundary)', async () => {
     const ip = uniqueIp();
-    const first = await fetchThrough(post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': ip }));
+    const first = await fetchThrough(
+      post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': ip })
+    );
     const firstJson = (await first.json()) as { id: string };
-    const second = await fetchThrough(post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': ip }));
+    const second = await fetchThrough(
+      post('/api/report', VALID_PAYLOAD, { 'CF-Connecting-IP': ip })
+    );
     const secondJson = (await second.json()) as { id: string };
     expect(secondJson.id).toBe(firstJson.id);
   });
