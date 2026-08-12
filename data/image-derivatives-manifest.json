@@ -867,6 +867,34 @@
       }
     ]
   },
+  "~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp": {
+    "originalWidth": 980,
+    "originalHeight": 735,
+    "hash": "b04c6f6bb9c4fa31",
+    "variants": [
+      {
+        "width": 400,
+        "height": 300,
+        "format": "avif",
+        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 675,
+        "format": "avif",
+        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.900.avif"
+      },
+      {
+        "width": 980,
+        "height": 735,
+        "format": "avif",
+        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.980.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.980.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
