@@ -77,25 +77,24 @@ test.describe('Accessibility audits', () => {
     await checkA11y(page, '/');
   });
 
-  // FIXME (plan 031, unresolved as of 2026-07-22): production serves these
-  // routes with a trailing slash as canonical (200) and 301-redirects the
-  // no-slash form, but this repo's `config.yaml` (`trailingSlash: false`)
-  // makes the local build do the opposite — see navigation.test.ts for the
-  // full finding. Asked the operator directly rather than guessing which
-  // form is actually intended; don't "fix" these by picking one.
-  test.fixme('blog archive page has no a11y violations', async ({ page }) => {
+  // Trailing-slash investigation concluded 2026-08-11 (plan 031): production
+  // serves these routes with a trailing slash as canonical (200) and the
+  // config now sets trailingSlash: true, so the local build matches — these
+  // were fixme'd while the config was stale (trailingSlash: false made the
+  // local build 404 on the slash form).
+  test('blog archive page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/blog/');
   });
 
-  test.fixme('search page has no a11y violations', async ({ page }) => {
+  test('search page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/buscar/');
   });
 
-  test.fixme('report problem page has no a11y violations', async ({ page }) => {
+  test('report problem page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/reportar-problema/');
   });
 
-  test.fixme('newsletter page has no a11y violations', async ({ page }) => {
+  test('newsletter page has no a11y violations', async ({ page }) => {
     await checkA11y(page, '/newsletter/');
   });
 

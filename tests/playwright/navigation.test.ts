@@ -17,23 +17,18 @@ test('home page has navigation', async ({ page }) => {
   await expect(page.locator('header').first()).toBeVisible();
 });
 
-// FIXME (plan 031, unresolved as of 2026-07-22): production serves
-// `/blog/` (trailing slash) as canonical 200 and 301-redirects `/blog`
-// to it, but this repo's `config.yaml` sets `trailingSlash: false`, so
-// the local build (`astro preview`) does the opposite — `/blog` is 200,
-// `/blog/` 404s. Which form is actually intended (stale config vs. a
-// hosting-layer override) is a real infra question, not a test bug —
-// asked the operator directly rather than guessing either way. Do not
-// "fix" this by picking a slash form until that's answered.
-test.fixme('blog archive loads', async ({ page }) => {
+// Trailing-slash investigation concluded 2026-08-11 (plan 031): production
+// serves the slash form as canonical (301s no-slash routes, 200 on the
+// slash form), and config.yaml now sets trailingSlash: true so the local
+// build matches the deployed site. Previously the local build 404'd on
+// `/blog/` while production served 200 — stale config, now fixed.
+test('blog archive loads', async ({ page }) => {
   const response = await page.goto('/blog/');
   expect(response?.status()).toBe(200);
   await expect(page.locator('h1').first()).toBeVisible();
 });
 
-// FIXME (plan 031, unresolved as of 2026-07-22): same trailing-slash
-// question as 'blog archive loads' above, for `/buscar/`.
-test.fixme('search page loads', async ({ page }) => {
+test('search page loads', async ({ page }) => {
   const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
   await expect(page.locator('input[type="search"], input[type="text"]').first()).toBeVisible();

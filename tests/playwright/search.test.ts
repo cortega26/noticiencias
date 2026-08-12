@@ -5,13 +5,12 @@
 
 import { test, expect } from '@playwright/test';
 
-// FIXME (plan 031, unresolved as of 2026-07-22): production serves
-// `/buscar/` (trailing slash) as canonical 200 and 301-redirects
-// `/buscar`, but this repo's `config.yaml` (`trailingSlash: false`)
-// makes the local build do the opposite — see navigation.test.ts for the
-// full finding. Asked the operator directly rather than guessing which
-// form is intended; don't "fix" this by picking one.
-test.fixme('search page loads with input field', async ({ page }) => {
+// Trailing-slash investigation concluded 2026-08-11 (plan 031): production
+// serves the slash form as canonical (301s no-slash routes, 200 on the
+// slash form), and config.yaml now sets trailingSlash: true so the local
+// build matches the deployed site. Previously the local build 404'd on
+// `/buscar/` while production served 200 — stale config, now fixed.
+test('search page loads with input field', async ({ page }) => {
   const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
 

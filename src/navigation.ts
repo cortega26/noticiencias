@@ -67,7 +67,7 @@ export const footerData = {
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
     { text: 'Boletín', href: getPermalink('/newsletter/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
-    { text: 'Reportar un problema', href: getPermalink('/reportar-problema') },
+    { text: 'Reportar un problema', href: getPermalink('/reportar-problema/') },
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://twitter.com/noti_ciencias' },

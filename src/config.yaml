@@ -2,7 +2,13 @@ site:
   name: 'Noticiencias'
   site: 'https://noticiencias.com'
   base: '/'
-  trailingSlash: false
+  # Plan 031 (2026-08-11): trailing-slash investigation concluded — the
+  # production host serves the slash form as canonical (301s no-slash
+  # routes to them, 200 on /buscar/, /blog/, /categorias/*, /temas/*),
+  # and the site's own nav links are authored in slash form. The previous
+  # `false` made the local build 404 on every slash-form route and emit
+  # no-slash canonical tags, diverging from the deployed site.
+  trailingSlash: true
 
   googleSiteVerificationId: ''
 
