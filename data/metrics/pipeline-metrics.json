@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-08-04T16:54:17.759Z",
+  "generated_at": "2026-08-13T07:51:22.495Z",
   "content": {
-    "total_articles": 30,
-    "v2_articles": 30,
-    "total_words": 17281,
-    "avg_words": 576,
+    "total_articles": 31,
+    "v2_articles": 31,
+    "total_words": 18257,
+    "avg_words": 589,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 10
+        "count": 11
       },
       {
         "name": "Salud",
@@ -166,6 +166,18 @@
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face",
+        "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
+        "date": "2026-08-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — el informe se basa en análisis de seguridad y comunicados oficiales, pero incluye hipótesis no verificadas sobre el origen del ataque.",
+        "review_status": null
+      },
       {
         "slug": "2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos",
         "title": "1.121 especies marinas nuevas descubiertas... y la mayoría ya estaban en los estantes de los museos",
@@ -535,15 +547,15 @@
       "missing_confidence": 30,
       "missing_sources": 30
     },
-    "articles_with_gaps": 30
+    "articles_with_gaps": 31
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-08-04T16:54:17.759Z"
+    "generated_at": "2026-08-13T07:51:22.495Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 30,
+    "derivatives_available": 31,
     "missing_derivatives": 0
   }
 }
