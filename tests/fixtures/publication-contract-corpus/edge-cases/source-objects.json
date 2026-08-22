@@ -1,15 +1,12 @@
-{
-  "_fixture_note": "Exercises the optional fields on the `sources` array item shape at src/content.config.ts lines 70-79: title and url are required (min 1 char / valid URL); publisher and date are optional. Synthetic values use example.com per repo convention for fixtures.",
-  "sources": [
-    {
-      "title": "Fuente mínima con solo título y URL",
-      "url": "https://example.com/source/minimal"
-    },
-    {
-      "title": "Fuente completa con los cuatro campos",
-      "url": "https://example.com/source/complete",
-      "publisher": "Example Publisher",
-      "date": "2026-08-12"
-    }
-  ]
-}
+[
+  {
+    "title": "Fuente mínima con solo título y URL",
+    "url": "https://example.com/source/minimal"
+  },
+  {
+    "title": "Fuente completa con los cuatro campos",
+    "url": "https://example.com/source/complete",
+    "publisher": "Example Publisher",
+    "date": "2026-08-12"
+  }
+]

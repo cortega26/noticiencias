@@ -1,5 +1,4 @@
 {
-  "_fixture_note": "valid/v2-complete.json plus one extra unknown top-level field, 'not_a_real_field'. Characterizes Zod's default stripping behavior, not rejection: src/content.config.ts's top-level object schema has no .strict() or .passthrough() call (confirmed via `grep -n \"\\.strict()\\|\\.passthrough()\" src/content.config.ts` -> no matches), so Zod's default applies and unknown keys like 'not_a_real_field' are silently stripped from the parsed result, not rejected as a validation error. This is a live design gap noted in this corpus's README for Phase 6 to decide on explicitly.",
   "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
   "schema_version": 2,
   "date": "2026-08-12",

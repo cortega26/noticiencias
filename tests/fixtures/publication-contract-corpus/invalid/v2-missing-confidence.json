@@ -1,6 +1,4 @@
 {
-  "_fixture_note": "valid/v2-complete.json with the required v2 field 'confidence' removed. Exercises the strict-editorial missing-field check at src/content.config.ts's superRefine block.",
-  "_fixture_source": "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md frontmatter, transcribed verbatim (YAML -> JSON, no paraphrasing)",
   "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
   "schema_version": 2,
   "date": "2026-08-12",

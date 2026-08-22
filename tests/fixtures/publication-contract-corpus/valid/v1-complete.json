@@ -1,5 +1,4 @@
 {
-  "_fixture_note": "Synthetic, structurally-valid schema_version:1 publication object exercising every non-v2 field in src/content.config.ts (lines 10-48). No v2 enrichment fields (glossary, fact_check, why_it_matters, sources) are present, matching what schema_version:1 content is permitted to omit even under STRICT_EDITORIAL. Placeholder URLs use example.com per repo convention for synthetic fixtures.",
   "title": "Un título de ejemplo con longitud suficiente",
   "schema_version": 1,
   "excerpt": "Un extracto de ejemplo con longitud suficiente para superar la validación mínima.",

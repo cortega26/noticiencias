@@ -1,5 +1,4 @@
 {
-  "_fixture_note": "valid/v2-complete.json with summary_points containing 6 items (synthetic, not the real post's 3 points). Violates the max-5 constraint enforced in src/content.config.ts's superRefine block.",
   "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
   "schema_version": 2,
   "date": "2026-08-12",

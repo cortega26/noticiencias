@@ -38,11 +38,18 @@ Initial corpus. Contents:
   the 2-5 item minimum.
 - `invalid/v2-too-many-summary-points.json` — `summary_points` with 6 items,
   violating the max-5 constraint.
-- `edge-cases/date-formats.json` — real `date:` string formats observed
-  across `src/content/posts/*.md` at generation time (one format found:
-  bare `YYYY-MM-DD`).
-- `edge-cases/source-objects.json` — `sources` array exercising the optional
-  `publisher`/`date` fields on a source object.
+- `edge-cases/date-formats.json` — a bare JSON array of real `date:` string
+  values observed across `src/content/posts/*.md` at generation time (via
+  `grep -h '^date:' src/content/posts/*.md | sort -u`). Only one format was
+  found in the current corpus: bare, unquoted `YYYY-MM-DD` (10 characters,
+  no time component) — e.g. `"2026-01-15"`, `"2026-01-17"`, `"2026-08-12"`.
+  This is a deviation from what the plan anticipated ("a few date-string
+  variants"): the live corpus has exactly one variant, so that is what is
+  recorded, per the rule against inventing values that aren't observed.
+- `edge-cases/source-objects.json` — a bare `sources` array (matching the
+  shape of `src/content.config.ts`'s `sources` field, lines 70-79) exercising
+  the optional `publisher`/`date` fields on a source object: one entry with
+  only `title`+`url`, one with all four fields.
 - `edge-cases/defaults.json` — an object omitting every field that carries a
   `.default(...)` in `src/content.config.ts`, to characterize
   default-application behavior.
@@ -56,6 +63,24 @@ Initial corpus. Contents:
   `_generated_at_commit` key added on top of the tool's own output. This is
   Phase 2's human-content-review migration input; its `errors[]` array is
   recorded as-is, unedited.
+
+## No in-file annotations on schema-instance fixtures
+
+Every fixture that represents a publication-schema instance (everything
+under `valid/`, `invalid/`, plus `edge-cases/defaults.json` and
+`edge-cases/additional-property-stripped.json`) contains **only** real
+`src/content.config.ts` field keys — no `_fixture_note`/`_fixture_source`-style
+annotation keys. Explanatory prose lives here in the README instead. This
+matters structurally: the schema being characterized silently strips unknown
+top-level keys (see "Known design gap" below), so an annotation key inside a
+fixture would itself be an instance of that stripping behavior, corrupting
+fixtures whose entire purpose is something else — most acutely
+`valid/v2-complete.json` (would no longer be a verbatim transcription) and
+`edge-cases/additional-property-stripped.json` (`not_a_real_field` must be
+the _only_ unknown key present, or the fixture stops isolating one variable).
+`v2-strict-failure-inventory.json` is the sole exception: it is recorded tool
+output, not a schema instance, and the plan explicitly directs adding
+`_generated_at_commit` on top of it.
 
 ## Known design gap: additional-property handling
 
