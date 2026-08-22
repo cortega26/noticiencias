@@ -15,7 +15,7 @@ this publication attempt land, and what happened to it."
 
 Plan 060 (backend Phase 5) introduces durable, queryable workflow-lifecycle
 tables on the backend to fix this. Backend ADR-0006
-(`../../noticiencias_news_collector/docs/adr/0006-durable-workflow-lifecycle-state.md`)
+(`../../../noticiencias_news_collector/docs/adr/0006-durable-workflow-lifecycle-state.md`)
 is the canonical record of that decision, including the table/field design.
 This frontend ADR exists only so a reader of this repo's `docs/adr/`
 understands _why_ backend publication-attempt IDs are becoming stable and

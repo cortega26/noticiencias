@@ -6,7 +6,7 @@
 ## Context
 
 Backend ADR-0003
-(`../../noticiencias_news_collector/docs/adr/0003-two-repo-split-and-schema-versioning.md`,
+(`../../../noticiencias_news_collector/docs/adr/0003-two-repo-split-and-schema-versioning.md`,
 reference only) already decided to keep two repositories —
 `noticiencias_news_collector` (backend) and `noticiencias` (this repo,
 frontend) — connected by a contract-mirror pattern: this repo's
