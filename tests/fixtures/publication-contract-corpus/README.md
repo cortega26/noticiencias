@@ -21,12 +21,18 @@ fixture's content in place. If a fixture turns out to be wrong, add a new
 one and note the correction here; do not rewrite history that Phase 2/6
 tooling may already be pinned against.
 
-### v1 (2026-08-22, plan 060 Phase 0, frontend commit `582ed40`)
+### v1 (2026-08-22, plan 060 Phase 0)
 
 Initial corpus. Contents:
 
 - `valid/v1-complete.json` — synthetic, schema-version-1 object exercising
-  every non-v2 field in `src/content.config.ts` (lines 10-48).
+  the non-v2 fields in `src/content.config.ts` (lines 10-48). Two fields in
+  that range are deliberately omitted: `featured_rank` (line 46), because
+  the `superRefine` cross-field check at lines 94-99 only requires it when
+  `featured: true` and this fixture sets `featured: false`; and
+  `uncertainty_note` (line 48), because `requires_uncertainty_note` is
+  `false` here (no cross-field requirement forces it, unlike
+  `image_alt`/`featured_rank`).
 - `valid/v2-complete.json` — real frontmatter transcribed verbatim (not
   paraphrased) from
   `src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md`,
@@ -59,10 +65,12 @@ Initial corpus. Contents:
   below.
 - `v2-strict-failure-inventory.json` — the JSON output of
   `STRICT_EDITORIAL=true node scripts/check-editorial-fields.js --json` run
-  against `src/content/posts/` at frontend commit `582ed40`, with a
-  `_generated_at_commit` key added on top of the tool's own output. This is
-  Phase 2's human-content-review migration input; its `errors[]` array is
-  recorded as-is, unedited.
+  against `src/content/posts/` at frontend commit `582ed40` (the ADR commit;
+  two commits precede this file's own addition and one follows it, but
+  nothing in this corpus's work touches `src/content/posts/`, so `errors[]`
+  is identical at all of them), with a `_generated_at_commit` key added on
+  top of the tool's own output. This is Phase 2's human-content-review
+  migration input; its `errors[]` array is recorded as-is, unedited.
 
 ## No in-file annotations on schema-instance fixtures
 
