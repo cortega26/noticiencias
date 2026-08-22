@@ -103,8 +103,8 @@ const healthChecks = [
   {
     name: 'Imágenes hero',
     description: 'Imágenes de portada presentes y con alt text',
-    status: 'pass' as const,
-    detail: 'Validado en CI',
+    status: 'unknown' as const,
+    detail: 'Sin métrica medida — verificar manualmente en CI',
   },
   {
     name: 'Derivativos de imagen',
@@ -115,8 +115,8 @@ const healthChecks = [
   {
     name: 'Linting',
     description: 'ESLint + Prettier + check:tags + check:doc-drift',
-    status: 'pass' as const,
-    detail: 'Validado en pre-commit y CI',
+    status: 'unknown' as const,
+    detail: 'Sin métrica medida — verificar manualmente en CI',
   },
 ];
 

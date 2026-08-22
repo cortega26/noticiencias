@@ -19,7 +19,7 @@ cp .env.example .env  # fill in any overrides you need locally
 npm run dev               # start local dev server at http://localhost:4321
 npm run lint              # all content + code checks (ESLint, frontmatter, images)
 npm run validate:content  # full frontmatter + TypeScript + schema pass
-npm run build             # production build (runs validate:content first)
+npm run build             # production build (image derivatives + astro build; run `npm run validate:content` separately first if you want the full content-quality gate)
 npm run test:audit        # Vitest unit tests
 npm run test:coverage     # Vitest with coverage report in reports/coverage/
 npm run test:dist         # dist sanity checks (run after build)
@@ -33,9 +33,12 @@ npm run test:dist         # dist sanity checks (run after build)
    ```bash
    npm run verify:ci
    ```
-   This runs lint, content validation, build, dist sanity, unit tests,
-   browser tests, and the cross-repo contract sync in one pass — the same
-   checks `content-guard.yml` runs on every PR.
+   This approximates the CI PR checks in one local command (lint, content
+   validation, build, dist sanity, unit tests, search budget, browser tests,
+   contract sync). CI additionally runs a dependency-graph check, a link
+   checker, a Worker test suite, and uses coverage-threshold unit tests and
+   explicit-viewport Playwright projects not reproduced here — see
+   `.github/workflows/content-guard.yml` for the authoritative CI step list.
 3. For component, layout, or route changes, also run:
    ```bash
    npm run build
