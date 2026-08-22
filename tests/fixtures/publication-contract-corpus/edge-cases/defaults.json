@@ -1,0 +1,8 @@
+{
+  "_fixture_note": "Omits every field in src/content.config.ts that carries a .default(...): schema_version (default 1, line 11), author (default 'Noticiencias', line 13), categories (default [], line 15), tags (default [], line 16), investigation (default false, line 43), requires_uncertainty_note (default false, line 44), featured (default false, line 45). Keeps every other required field (title, excerpt, date, image, image_alt) present and valid so the object characterizes default-application behavior in isolation rather than failing for unrelated reasons. image_alt is included even though it has no .default() of its own, because it becomes effectively required by the image_alt/image cross-field superRefine check when image is a plain string (src/content.config.ts lines 82-91).",
+  "title": "Un título de ejemplo con longitud suficiente",
+  "excerpt": "Un extracto de ejemplo con longitud suficiente para superar la validación mínima.",
+  "date": "2026-01-15",
+  "image": "https://example.com/images/defaults-fixture.webp",
+  "image_alt": "Descripción alternativa de la imagen de ejemplo"
+}

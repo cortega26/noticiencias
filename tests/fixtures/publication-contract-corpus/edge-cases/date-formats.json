@@ -1,0 +1,17 @@
+{
+  "_fixture_note": "Real date-string formats observed in src/content/posts/*.md frontmatter `date:` field, as of this fixture's generation. A full scan of every post (`grep -h '^date:' src/content/posts/*.md | sort -u`) at generation time found exactly one format in use across the whole corpus: bare, unquoted YYYY-MM-DD (10 characters, no time component). This fixture is not a claim that other formats are invalid — z.date() in src/content.config.ts:14 accepts any value coercible to a JS Date — only a record of what the current corpus actually contains, for later phases to compare against.",
+  "observed_examples": [
+    {
+      "source_file": "src/content/posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md",
+      "date": "2026-01-15"
+    },
+    {
+      "source_file": "src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md",
+      "date": "2026-01-17"
+    },
+    {
+      "source_file": "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md",
+      "date": "2026-08-12"
+    }
+  ]
+}
