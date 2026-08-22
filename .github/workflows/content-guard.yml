@@ -144,6 +144,9 @@ jobs:
       - name: 🧪 Dist Sanity
         run: npm run test:dist
 
+      - name: 📏 Search Budget
+        run: npm run check:search-budget
+
       - name: ✅ Unit Coverage (honest denominator, no-regression thresholds)
         run: npm run test:coverage
 
