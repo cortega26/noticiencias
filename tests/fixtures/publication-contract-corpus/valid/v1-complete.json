@@ -1,0 +1,29 @@
+{
+  "title": "Un título de ejemplo con longitud suficiente",
+  "schema_version": 1,
+  "excerpt": "Un extracto de ejemplo con longitud suficiente para superar la validación mínima.",
+  "author": "Noticiencias",
+  "date": "2026-01-15",
+  "categories": ["Ciencia"],
+  "tags": ["ejemplo", "fixture"],
+  "image": "https://example.com/images/v1-complete-fixture.webp",
+  "image_alt": "Descripción alternativa de la imagen de ejemplo",
+  "permalink": "/posts/v1-complete-fixture",
+  "source_url": "https://example.com/source/v1-complete-fixture",
+  "refinery_id": "v1-complete-fixture-refinery-id",
+  "headlines_variants": {
+    "question": "¿Es este un ejemplo de titular en forma de pregunta?",
+    "benefit": "Cómo aprovechar este titular de ejemplo en forma de beneficio"
+  },
+  "translation_method": "manual",
+  "editorial_score": 0.75,
+  "review_status": "approved",
+  "confidence": "Alta — fixture sintético, no corresponde a una publicación real.",
+  "investigation": false,
+  "requires_uncertainty_note": false,
+  "featured": false,
+  "summary_points": [
+    "Primer punto de resumen del fixture sintético.",
+    "Segundo punto de resumen del fixture sintético."
+  ]
+}

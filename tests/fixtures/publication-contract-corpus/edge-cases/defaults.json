@@ -1,0 +1,7 @@
+{
+  "title": "Un título de ejemplo con longitud suficiente",
+  "excerpt": "Un extracto de ejemplo con longitud suficiente para superar la validación mínima.",
+  "date": "2026-01-15",
+  "image": "https://example.com/images/defaults-fixture.webp",
+  "image_alt": "Descripción alternativa de la imagen de ejemplo"
+}

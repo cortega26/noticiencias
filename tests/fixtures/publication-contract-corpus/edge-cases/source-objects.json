@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Fuente mínima con solo título y URL",
+    "url": "https://example.com/source/minimal"
+  },
+  {
+    "title": "Fuente completa con los cuatro campos",
+    "url": "https://example.com/source/complete",
+    "publisher": "Example Publisher",
+    "date": "2026-08-12"
+  }
+]
