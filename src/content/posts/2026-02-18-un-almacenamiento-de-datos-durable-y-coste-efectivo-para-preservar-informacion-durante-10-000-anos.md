@@ -20,6 +20,44 @@ headlines_variants:
   benefit: La técnica voxel de fase permite almacenar cientos de capas de datos en una pieza de vidrio de solo 2 mm de espesor, resistentemente a agua, calor y polvorienta acumulación
 investigation: false
 featured: false
+summary_points:
+  - El proyecto Silica almacena datos en vidrio mediante voxels de fase creados con láseres femtosegundo.
+  - Pruebas de envejecimiento acelerado proyectan que esta técnica podría preservar información durante hasta 10,000 años, gracias a la durabilidad del vidrio frente al agua, calor y polvo.
+  - Se logró escritura paralela de alta velocidad y optimización de codificaciones usando aprendizaje automático.
+  - Se demostró el almacenamiento de una película de Warner Bros. y la preservación de música en colaboración con Global Music Vault.
+  - Los datos pueden leerse con una simple cámara, lo que simplifica el acceso futuro.
+glossary:
+  - term: voxel de fase
+    definition: Un elemento tridimensional de datos creado induciendo cambios en la estructura del vidrio mediante pulsos láser ultracortos.
+  - term: femtosegundo
+    definition: Una cuatrillonésima de segundo (10⁻¹⁵ s), unidad de tiempo usada para los pulsos láser que escriben en el vidrio.
+  - term: vidrio bórico
+    definition: Tipo de vidrio común y económico, basado en boro y sílice, utilizado en el proyecto en lugar de silicio fundido costoso.
+  - term: aprendizaje automático
+    definition: Técnica de inteligencia artificial que permite optimizar la codificación de símbolos en el vidrio analizando patrones de datos.
+  - term: cámara de lectura
+    definition: Dispositivo óptico sencillo que detecta los cambios de fase en el vidrio para recuperar la información almacenada.
+fact_check:
+  - label: El vidrio utilizado es comúnmente encontrado en utensilios del hogar.
+    status: confirmed
+  - label: El método permite almacenar cientos de capas de datos en una pieza de vidrio de 2 mm de espesor.
+    status: confirmed
+  - label: La escritura paralela a alta velocidad aumenta la velocidad de escritura.
+    status: confirmed
+  - label: Las pruebas de envejecimiento acelerado proyectan una vida útil de al menos 10,000 años, demostrada en una prueba de concepto de preservación musical junto con Global Music Vault.
+    status: confirmed
+  - label: El artículo fue publicado en la revista Nature.
+    status: confirmed
+why_it_matters:
+  - Para América Latina, donde la infraestructura de almacenamiento puede ser costosa y vulnerable a desastres naturales, el vidrio ofrece una solución barata y resistente.
+  - Permite preservar el patrimonio cultural latinoamericano (música, cine, documentos) para futuras generaciones sin necesidad de migraciones frecuentes.
+  - Reduce la dependencia de centros de datos energéticamente intensivos, contribuyendo a la sostenibilidad ambiental en la región.
+confidence: Moderada — estudio revisado por pares en Nature con evidencia experimental de durabilidad a corto plazo, pero la afirmación de 10,000 años sigue siendo una proyección no verificable directamente.
+sources:
+  - title: Project Silica's advances in glass storage technology
+    url: https://microsoft.com/en-us/research/blog/project-silicas-advances-in-glass-storage-technology/
+    publisher: Microsoft Research
+    date: '2026-02-18'
 ---
 
 ## Avances del Proyecto Silica: Un Almacenamiento de Datos Durable y Coste-efectivo

@@ -20,6 +20,40 @@ headlines_variants:
   question: ¿Por qué la mayor parte de las nuevas especies marinas no se encontraron en el océano, sino en los museos?
   benefit: Lo que el descubrimiento de 1.121 especies marinas nuevas significa para la conservación de los ecosistemas que aún no conocemos
 requires_uncertainty_note: false
+summary_points:
+  - Entre mediados de 2025 y mediados de 2026, un esfuerzo global describirion 1.121 especies marinas previamente desconocidas, muchas de ellas identificadas en colecciones de museos en lugar de en nuevas expediciones.
+  - El estudio indica que 728 de esas especies provienen de muestras almacenadas durante décadas, evidenciando un importante retraso en la descripción taxonómica que puede superar los 13 años por especie.
+  - Los autores destacan que, pese a que menos del 0,001 % del fondo marino ha sido observado directamente, el uso de datos abiertos como la plataforma Ocean Census NOVA y el trabajo de taxonomistas permite acelerar el descubrimiento de la biodiversidad marina.
+glossary:
+  - term: esponja de cristal
+    definition: Esponja marina cuyo esqueleto está compuesto de sílice pura, lo que le da una apariencia vítrea y frágil.
+  - term: taxonomía
+    definition: Ciencia que se encarga de nombrar, describir y clasificar organismos según sus relaciones evolutivas.
+  - term: Ocean Census NOVA
+    definition: Plataforma de datos abiertos que integra información de especímenes marinos de todo el mundo para facilitar la identificación y descripción de nuevas especies.
+  - term: secuenciación de ADN
+    definition: Proceso mediante el cual se determina el orden exacto de los nucleótidos en una molécula de ADN, utilizado para diferenciar y clasificar especies.
+fact_check:
+  - label: Se describieron 1.121 especies marinas nuevas entre mediados de 2025 y mediados de 2026.
+    status: confirmed
+  - label: 728 de las 1.121 especies nuevas provienen de muestras almacenadas en museos.
+    status: confirmed
+  - label: La descripción taxonómica de una especie marina promedio toma más de 13 años.
+    status: confirmed
+  - label: Menos del 0,001 % del fondo marino ha sido observado directamente por humanos.
+    status: confirmed
+  - label: Las toxinas de los gusanos cinta encontrados en Timor Oriental podrían servir para tratar el Alzheimer o la esquizofrenia.
+    status: confirmed
+why_it_matters:
+  - El hallazgo muestra que incluso en costas de América Latina, donde existen vastas colecciones marinas poco revisadas, podrían haber especies desconocidas esperando ser descritas en museos y laboratorios locales.
+  - Mejorar el financiamiento y el tiempo dedicado a la taxonomía marina en la región podría acelerar el descubrimiento de especies con aplicaciones biomédicas, como compuestos neuroprotectores.
+  - Conocer la biodiversidad oceánica subyacente ayuda a diseñar políticas de conservación más efectivas para ecosistemas vulnerables como arrecifes coralinos y fondos bentónicos de la región.
+confidence: Alta — artículo basado en un censo internacional con datos de colecciones museísticas y expediciones, publicado en Scientific American, una fuente de divulgación científica rigurosa.
+sources:
+  - title: Ocean census reveals more than 1,100 new species
+    url: https://scientificamerican.com/article/ocean-census-reveals-more-than-1-100-new-species/
+    publisher: Scientific American
+    date: '2026-05-24'
 ---
 
 **Más allá de las olas: lo que el océano aún guarda en silencio**

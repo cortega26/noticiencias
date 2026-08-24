@@ -19,6 +19,39 @@ headlines_variants:
   benefit: 'La mejora de habilidades de codificación con herramientas como Claude Code'
 investigation: false
 featured: false
+summary_points:
+  - El vibe coding busca convertir instrucciones en lenguaje natural en código funcional, haciendo la programación más accesible.
+  - Claude Code es una herramienta que permite crear sitios web rápidamente y superar obstáculos de forma eficaz, según la experiencia del autor.
+  - En comparación con Codex de OpenAI (2021), Claude Code parece ofrecer mayor facilidad de uso y velocidad.
+  - El concepto de vibe coding fue acuñado por Andrej Karpathy en febrero de 2025 y está ganando interés entre personas sin formación en programación.
+glossary:
+  - term: vibe coding
+    definition: Enfoque que permite generar código a partir de instrucciones dadas en lenguaje natural, con el objetivo de hacer la programación más intuitiva y accesible.
+  - term: Claude Code
+    definition: Herramienta de inteligencia artificial que interpreta indicaciones en lenguaje natural y produce código, facilitando la creación de sitios web y otras aplicaciones.
+  - term: Codex
+    definition: Modelo de OpenAI lanzado en 2021 que también convierte instrucciones en inglés plano en código, precursor de herramientas como Claude Code.
+  - term: IA para codificar
+    definition: Uso de sistemas de inteligencia artificial diseñados para asistir o automatizar la escritura de código de programación.
+fact_check:
+  - label: OpenAI lanzó Codex en 2021
+    status: confirmed
+  - label: El término 'vibe coding' fue acuñado por Andrej Karpathy en febrero de 2025
+    status: confirmed
+  - label: Según la experiencia personal del autor, Claude Code le permitió crear sitios web complejos de forma más rápida y efectiva que con Codex.
+    status: confirmed
+  - label: El vibe coding está aumentando su popularidad entre no codificadores
+    status: confirmed
+why_it_matters:
+  - Reduce la barrera de entrada al mundo del desarrollo de software, permitiendo que más personas en América Latina puedan crear aplicaciones sin necesidad de aprender lenguajes de programación tradicionales.
+  - Puede impulsar emprendimientos tecnológicos y soluciones locales al facilitar la prototipación rápida de sitios web y herramientas digitales.
+  - Podría contribuir a cerrar la brecha de habilidades digitales en la región y ampliar oportunidades de trabajo remoto.
+confidence: Moderada — artículo de divulgación basado en experiencia personal y opiniones, sin datos empíricos ni revisión por pares detallada.
+sources:
+  - title: Software is becoming something you speak into existence
+    url: https://scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/
+    publisher: Scientific American
+    date: '2026-01-31'
 ---
 
 **El vibe coding: ¿el futuro de la programación?**

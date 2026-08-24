@@ -19,6 +19,40 @@ headlines_variants:
   benefit: Entendimiento más preciso sobre la materia oscura gracias a nuevos experimentos
 investigation: false
 featured: false
+summary_points:
+  - El experimento DAMA/NaI observó en 1997 una señal de modulación anual que se interpretó como posible detección directa de materia oscura.
+  - Los nuevos experimentos hermanos ANAIS-112 (España) y COSINE-100 (Corea del Sur) repitieron el diseño de DAMA/NaI pero no encontraron evidencia significativa de dicha modulación.
+  - El análisis combinado de los datos de ambos experimentos, realizado por Sophia Hollick, confirmó la ausencia de la señal de modulación atribuida previamente a la materia oscura.
+  - Estos resultados descartan, con mayor confianza, la hipótesis de que la materia oscura sea responsable de la señal observada en DAMA/LIBRA, permitiendo redirigir los esfuerzos de búsqueda.
+glossary:
+  - term: materia oscura
+    definition: forma de materia que no emite, absorbe ni refleja luz, detectable solo por sus efectos gravitatorios.
+  - term: modulación anual
+    definition: variación periódica de una señal esperada debido al movimiento de la Tierra alrededor del Sol, que cambiaría la velocidad relativa respecto a un flujo de partículas de materia oscura.
+  - term: DAMA/NaI
+    definition: experimento que utiliza cristales de yoduro de sodio (NaI) para buscar señales de interacción de materia oscura, ubicado en el Laboratorio Nacional del Gran Sasso (Italia).
+  - term: ANAIS-112
+    definition: experimento español que emplea 112 kg de cristales de NaI para buscar modulación anual de señales de materia oscura.
+  - term: COSINE-100
+    definition: experimento surcoreano que usa 100 kg de NaI con el mismo objetivo que DAMA/NaI y ANAIS-112.
+fact_check:
+  - label: El experimento DAMA/NaI observó una señal de modulación anual en 1997.
+    status: confirmed
+  - label: Los experimentos ANAIS-112 y COSINE-100 no encontraron evidencia significativa de modulación anual en las regiones de energía relevantes.
+    status: confirmed
+  - label: El análisis combinado de Sophia Hollick de los datos de ANAIS-112 y COSINE-100 no encontró evidencia significativa de la modulación anual observada por DAMA/LIBRA.
+    status: confirmed
+  - label: Maruyama, investigadora principal de COSINE-100, afirma que los resultados permiten usar detectores de yoduro de sodio para explorar materia oscura de baja masa.
+    status: confirmed
+why_it_matters:
+  - La participación del experimento español ANAIS-112 muestra cómo la colaboración internacional, incluida la experiencia latinoamericana, puede contribuir a resolver grandes misterios de la física.
+  - Descartar una señal falsa de materia oscura permite que los recursos y esfuerzos de investigación se concentren en búsquedas más prometedoras, beneficiando a la comunidad científica global, incluidos los grupos de América Latina que trabajan en detección de partículas.
+confidence: Alta — basada en el análisis conjunto de dos experimentos independientes con metodología idéntica a DAMA/NaI y un tamaño de muestra suficiente, aunque los autores reconocen que no explican el origen de la modulación observada en DAMA/LIBRA.
+sources:
+  - title: Experiments Refute Dark Matter Claim
+    url: https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim
+    publisher: Yale Wright Laboratory
+    date: '2026-03-31'
 ---
 
 **Experimentos Refutan la Afirmación sobre la Materia Oscura | Laboratorio Wright de Yale**

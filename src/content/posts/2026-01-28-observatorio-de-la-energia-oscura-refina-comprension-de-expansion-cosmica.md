@@ -20,6 +20,43 @@ headlines_variants:
   benefit: 'Ofrece una visión más precisa de la expansión acelerada del universo y el papel de la energía oscura.'
 investigation: false
 featured: false
+summary_points:
+  - El Dark Energy Survey analizó seis años de datos de 669 millones de galaxias usando cuatro tipos de marcadores cosmológicos.
+  - Los resultados son consistentes con el modelo estándar de cosmología, donde la densidad de energía oscura es constante, pero también permiten un modelo en que dicha densidad varía con el tiempo.
+  - El patrón de agrupación de galaxias no coincide exactamente con las predicciones del modelo estándar, indicando que se necesitan más investigaciones.
+  - Se planea continuar la investigación con el Observatorio Vera C. Rubin en Chile para probar la gravedad y profundizar en el conocimiento de la energía oscura.
+glossary:
+  - term: energía oscura
+    definition: Forma hipotética de energía que permea el espacio y parece responsable de la expansión acelerada del universo.
+  - term: modelo estándar de cosmología
+    definition: Marco teórico que describe la evolución del universo asumiendo una densidad constante de energía oscura y materia oscura.
+  - term: oscilaciones acústicas bariónicas
+    definition: Patrones en la distribución de galaxias que provienen de ondas de sonido en el universo temprano y sirven como regla cósmica para medir distancias.
+  - term: supernovas tipo Ia
+    definition: Explosiones de estrellas blancas cuya luminosidad conocida permite usarlas como faros para medir la expansión del universo.
+  - term: lentes gravitacionales débiles
+    definition: Distorsión sutil de la luz de galaxias lejana por la gravedad de materia intermedia, usada para mapear la distribución de materia oscura.
+  - term: Observatorio Vera C. Rubin
+    definition: Telescopio grande en construcción en Chile que realizará un censo profundo del cielo para estudiar energía oscura y materia oscura.
+fact_check:
+  - label: El Dark Energy Survey estudió 669 millones de galaxias durante seis años.
+    status: confirmed
+  - label: Los resultados son consistentes con el modelo estándar de cosmología donde la densidad de energía oscura es constante.
+    status: confirmed
+  - label: El patrón de agrupación de galaxias no coincide exactamente con las predicciones del modelo estándar.
+    status: confirmed
+  - label: El Observatorio Vera C. Rubin en Chile permitirá nuevas pruebas de la gravedad y arrojará luz sobre la energía oscura.
+    status: confirmed
+why_it_matters:
+  - El próximo Observatorio Vera C. Rubin, ubicado en Chile, brindará a científicos latinoamericanos acceso a datos de punta para estudiar la energía oscura.
+  - Avanzar en la comprensión de la expansión cósmica puede impulsar desarrollos tecnológicos en áreas como sensores, procesamiento de grandes datos y educación científica en la región.
+  - Conocer mejor la energía oscura ayuda a situar a América Latina en la vanguardia de la investigación básica que aborda preguntas fundamentales sobre el universo.
+confidence: Alta — estudio basado en seis años de datos y análisis de cientos de millones de galaxias, aunque el artículo reconoce limitaciones en el ajuste de los modelos.
+sources:
+  - title: 'The dream has come true: Standard model of cosmology holds up in massive 6‑year study of the universe — with one big caveat'
+    url: https://livescience.com/physics-mathematics/dark-energy/the-dream-has-come-true-standard-model-of-cosmology-holds-up-in-massive-6-year-study-of-the-universe-with-one-big-caveat
+    publisher: Live Science
+    date: '2026-01-27'
 ---
 
 **Un paso adelante en la comprensión del universo: El Observatorio de la Energía Oscura refina nuestro conocimiento de la expansión cósmica**

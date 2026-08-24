@@ -20,6 +20,41 @@ headlines_variants:
   benefit: "Descubre cómo la exposición a 'buenos' gérmenes en la guardería puede fortalecer el sistema inmunológico de tus hijos"
 investigation: false
 featured: false
+summary_points:
+  - Los bebés que asisten a la guardería comparten una cantidad significativa de microorganismos con sus compañeros, lo que contribuye al 15-20% de su microbioma intestinal.
+  - El estudio encontró que la transmisión de cepas microbianas entre infantes es extensa durante el primer año de guardería, incluso involucrando a mascotas.
+  - El uso de antibióticos en el primer año de vida reduce drásticamente la diversidad bacteriana, aunque seguida de una recuperación rápida gracias al intercambio microbiano en el entorno.
+  - Los autores sugieren que las cepas adquiridas en la guardería podrían persistir hasta la adultez, pero su impacto a largo plazo en la salud aún no se conoce.
+glossary:
+  - term: microbioma
+    definition: Conjunto de microorganismos (bacterias, virus, hongos) que viven en un entorno específico, como el intestino humano.
+  - term: cepas microbianas
+    definition: Variantes genéticas dentro de una especie de bacteria que pueden tener funciones diferentes en el organismo.
+  - term: transmisión
+    definition: Transmisión o intercambio de microorganismos de una persona a otra mediante contacto directo o indirecto.
+  - term: antibióticos
+    definition: Fármacos que matan o inhiben el crecimiento de bacterias, usados para tratar infecciones pero que también afectan al microbioma.
+  - term: fecales
+    definition: Relacionado con las heces; las muestras fecales se utilizan para estudiar el contenido del microbioma intestinal.
+fact_check:
+  - label: Los bebés en guardería comparten microorganismos entre sí.
+    status: confirmed
+  - label: Tras cuatro meses en guardería, los bebés comparten aproximadamente el 15-20% de sus especies microbianas con sus compañeros.
+    status: confirmed
+  - label: El uso de antibióticos durante el primer año reduce severamente la cantidad de cepas bacterianas en el microbioma infantil.
+    status: confirmed
+  - label: El impacto a largo plazo de la exposición a cepas microbianas de la guardería en la salud adulta es desconocido.
+    status: uncertain
+why_it_matters:
+  - Entender cómo la guardería influye en el microbioma puede ayudar a diseñar políticas de salud infantil en América Latina, donde el acceso a educación preescolar está en aumento.
+  - El microbioma temprano influye en el desarrollo inmunológico infantil, aunque este estudio no demuestra directamente una reducción de enfermedades específicas — el propio trabajo señala que el impacto sanitario a largo plazo aún se desconoce.
+  - El hallazgo de intercambio microbiano con mascotas es un área de investigación emergente; el estudio no establece recomendaciones de higiene específicas al respecto.
+confidence: Alta — estudio revisado por pares publicado en Nature con muestra de 43 bebés y análisis detallado de transmisión microbiana.
+sources:
+  - title: Babies who attend daycare share 'good' germs, too
+    url: https://scientificamerican.com/article/babies-who-attend-daycare-share-good-germs-too/
+    publisher: Scientific American
+    date: '2026-01-25'
 ---
 
 **La Guardería: Un Caldo de Cultivo para el Microbioma Infantil**
