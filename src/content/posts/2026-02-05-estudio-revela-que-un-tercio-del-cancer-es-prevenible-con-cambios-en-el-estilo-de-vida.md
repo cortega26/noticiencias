@@ -20,6 +20,38 @@ headlines_variants:
   benefit: 'Conocimiento sobre los factores de riesgo evitables abre camino a nuevas estrategias contra el cáncer'
 investigation: false
 featured: false
+summary_points:
+  - El estudio estima que alrededor del 38% de los nuevos casos de cáncer en 2022 (≈7,1 millones) se deben a factores de riesgo evitables.
+  - El tabaquismo representa aproximadamente el 15% de esos casos prevenibles, seguido por infecciones (10%) y consumo de alcohol (3%).
+  - El análisis incluyó 36 tipos de cáncer en 185 países y reconoció limitaciones como la variabilidad en la calidad de los datos.
+glossary:
+  - term: cáncer prevenible
+    definition: Casos de cáncer que podrían evitarse modificando factores de riesgo como el tabaquismo, el consumo de alcohol o ciertas infecciones.
+  - term: factores de riesgo modificables
+    definition: Hábitos o exposiciones que pueden cambiarse para reducir la probabilidad de desarrollar cáncer, como fumar, beber alcohol o infecciones prevenibles.
+  - term: Agencia Internacional para la Investigación del Cáncer (IARC)
+    definition: Entidad especializada de la OMS que estudia las causas del cáncer y evalúa los factores de riesgo a nivel global.
+  - term: Nature Medicine
+    definition: Revista científica revisada por pares que publica investigaciones biomédicas de alto impacto.
+fact_check:
+  - label: El estudio publicado en Nature Medicine encontró que el 38% de los nuevos casos de cáncer en 2022 se atribuyen a causas evitables.
+    status: confirmed
+  - label: El tabaquismo fue responsable de alrededor del 15% de los casos prevenibles de cáncer.
+    status: confirmed
+  - label: Las infecciones contribuyeron al 10% y el consumo de alcohol al 3% de los casos prevenibles.
+    status: confirmed
+  - label: El análisis incluyó datos de 36 tipos de cáncer en 185 países.
+    status: confirmed
+why_it_matters:
+  - En América Latina, donde el acceso a tratamientos oncológicos es limitado, prevenir hasta un tercio de los casos de cáncer podría salvar miles de vidas y reducir la carga económica en los sistemas de salud.
+  - Enfocar políticas de salud en reducir el tabaquismo, promover la vacunación contra infecciones oncogénicas y moderar el consumo de alcohol tendría un impacto directo en la disminución del cáncer en la región.
+  - Abordar las desigualdades en la prevención permite que los países de bajos y medianos ingresos se beneficien de estrategias de bajo costo y alto rendimiento.
+confidence: Alta — estudio revisado por pares en Nature Medicine con datos globales de 2022, aunque menciona limitaciones en la calidad de los datos y posibles factores no considerados.
+sources:
+  - title: These two habits are linked to many cancer cases
+    url: https://scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/
+    publisher: Scientific American
+    date: '2026-02-05'
 ---
 
 **Apertura**

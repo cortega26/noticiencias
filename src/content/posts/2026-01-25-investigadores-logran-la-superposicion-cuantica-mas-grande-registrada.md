@@ -20,6 +20,45 @@ headlines_variants:
   benefit: 'Avance revoluciona el desarrollo de ordenadores cuánticos y nuestra comprensión del cosmos'
 investigation: false
 featured: false
+summary_points:
+  - Un equipo liderado por la Universidad de Viena logró colocar en superposición cuántica clusters de aproximadamente 7.000 átomos de sodio, cada uno de unos 8 nanómetros de ancho, separando sus posiciones en 133 nanómetros.
+  - El experimento demostró que estos clusters se comportaron como ondas, produciendo patrones de interferencia detectables, lo que confirma que la mecánica cuántica opera a escalas mucho mayores de lo anteriormente pensado.
+  - Los resultados son relevantes para la escalabilidad de sistemas cuánticos, aunque el estudio no concluye que la computación cuántica práctica sea ahora más viable de lo esperado.
+  - El avance revive el experimento mental del gato de Schrödinger e ilustra cómo la mecánica cuántica puede manifestarse en sistemas cada vez más grandes, aunque las aplicaciones prácticas en computación cuántica siguen siendo un objetivo a largo plazo.
+glossary:
+  - term: Superposición cuántica
+    definition: Principio según el cual una partícula puede existir simultáneamente en varios estados hasta que se mide.
+  - term: Cluster
+    definition: Grupo de átomos unidos que se comporta como una entidad única en el experimento.
+  - term: Nanómetro
+    definition: Unidad de longitud equivalente a mil millonésimas de metro (10⁻⁹ m), usada para escalas atómicas y moleculares.
+  - term: Mecánica cuántica
+    definition: Rama de la física que describe el comportamiento de la materia y la energía a escalas subatómicas.
+  - term: Ordenador cuántico
+    definition: Dispositivo que utiliza bits cuánticos (qubits) para realizar cálculos que, en ciertos problemas específicos, pueden superar significativamente a los ordenadores clásicos.
+  - term: Gato de Schrödinger
+    definition: Experimento mental que ilustra la paradoja de la superposición aplicada a un objeto macroscópico.
+fact_check:
+  - label: Los investigadores lograron una superposición de alrededor de 7.000 átomos de sodio.
+    status: confirmed
+  - label: Cada cluster tiene un ancho aproximado de 8 nanómetros.
+    status: confirmed
+  - label: La distancia entre las dos ubicaciones en superposición fue de 133 nanómetros.
+    status: confirmed
+  - label: Este resultado indica que escalar sistemas cuánticos para computadoras podría ser más factible de lo esperado.
+    status: uncertain
+  - label: El gato de Schrödinger es un experimento mental propuesto por Erwin Schrödinger en 1935.
+    status: confirmed
+why_it_matters:
+  - El avance muestra que la computación cuántica podría escalar a niveles prácticos, lo que beneficiaría a países latinoamericanos al permitir el desarrollo de tecnologías locales en áreas como criptografía y simulación de moléculas para fármacos.
+  - Comprender los límites de la superposición ayuda a diseñar mejores materiales y sensores cuánticos que podrían aplicarse en la industria minera y energética de la región.
+  - Fomentar la investigación básica en física cuántica inspira a jóvenes latinoamericanos a carreras STEM y fortalece la colaboración internacional en ciencia.
+confidence: Moderada — basado en estudio publicado en revista científica (informado por Scientific American), aunque el artículo es divulgativo y no detalla todos los aspectos metodológicos.
+sources:
+  - title: Largest-ever 'superposition' supersizes Schrödinger's cat
+    url: https://scientificamerican.com/article/quantum-physicists-just-supersized-schroedingers-cat/
+    publisher: Scientific American
+    date: '2026-01-25'
 ---
 
 **El gato de Schrödinger se vuelve más grande: Un avance cuántico revoluciona nuestra comprensión del universo**

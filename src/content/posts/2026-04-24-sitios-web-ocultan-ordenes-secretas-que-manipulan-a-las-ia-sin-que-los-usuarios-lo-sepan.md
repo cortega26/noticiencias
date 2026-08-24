@@ -18,6 +18,44 @@ headlines_variants:
   question: ¿Cómo pueden sitios web invisibles estar instruyendo a las IA sin que nadie lo note?
   benefit: Lo que esto significa para tu próxima búsqueda con un asistente de IA
 requires_uncertainty_note: true
+summary_points:
+  - Los sitios web pueden insertar instrucciones ocultas que las inteligencias artificiales siguen sin que los usuarios lo noten, mediante inyecciones indirectas.
+  - El equipo de inteligencia de amenazas de Google analizó la web pública y encontró solo experimentos, no ataques masivos organizados, clasificados en seis tipos de uso.
+  - Aunque muchos ejemplos son inocuos (bromas o guías útiles), existen intentos de usar la técnica para promover contenido malicioso o desinformación.
+  - Google ya protege sus modelos con equipos rojos, programas de recompensas y monitoreo en tiempo real, pero el riesgo crece a medida que la IA se integra más en herramientas cotidianas.
+  - La presencia de instrucciones ocultas constituye una forma de contaminación digital que afecta la autonomía de los asistentes de IA y podría ser explotada en futuras campañas automatizadas.
+glossary:
+  - term: Inyección indirecta
+    definition: Técnica donde un sitio web, documento o correo contiene instrucciones ocultas que una IA lee y ejecuta sin que el usuario las perciba.
+  - term: Equipo rojo
+    definition: Grupo interno de seguridad que simula ataques para probar la resistencia de sistemas y modelos de IA.
+  - term: Programa de recompensas por vulnerabilidades
+    definition: Iniciativa que paga a investigadores externos por descubrir y reportar fallos de seguridad en productos o servicios.
+  - term: Contaminación digital
+    definition: Presencia de elementos maliciosos o engañosos en el entorno digital que alteran el comportamiento esperado de sistemas como la IA.
+  - term: Modelo de IA
+    definition: Sistema computacional entrenado para realizar tareas como comprender lenguaje, generar respuestas o tomar decisiones basado en datos.
+fact_check:
+  - label: Google's threat intelligence team searched the public web for indirect injections.
+    status: confirmed
+  - label: They found experiments, not massive organized attacks.
+    status: confirmed
+  - label: Los casos observados se agruparon en varias categorías (incluyendo bromas benignas, guías útiles y optimización maliciosa), aunque la taxonomía real de Google incluye categorías adicionales como SEO y disuasión (deterrence).
+    status: uncertain
+  - label: Google runs red team tests on Gemini and offers bug‑bounty rewards for AI vulnerabilities.
+    status: confirmed
+  - label: Indirect injections can cause an AI to follow hidden instructions that affect its output.
+    status: confirmed
+why_it_matters:
+  - En América Latina el uso de asistentes de IA para consultas, educación y comercio está creciendo rápidamente, lo que aumenta la exposición a posibles manipulaciones ocultas.
+  - Si una IA oculta sigue instrucciones de un sitio web, podría difundir información errónea o promocionar contenido de forma sesgada, afectando la confianza en servicios digitales regionales.
+  - Conocer esta amenaza permite a desarrolladores, empresas y usuarios de la región adoptar medidas de protección, como validar fuentes y usar modelos con filtros de seguridad adecuados.
+confidence: Alta — artículo publicado en el blog oficial de seguridad de Google, basado en el análisis de su equipo de amenazas y respaldado por evidencia de experimentos observados en la web pública.
+sources:
+  - title: 'AI threats in the wild: The current state of prompt injections on the web'
+    url: https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html
+    publisher: Google Security Blog
+    date: '2026-04-23'
 ---
 
 ¿La IA está siendo manipulada por sitios web sin que lo sepas?
