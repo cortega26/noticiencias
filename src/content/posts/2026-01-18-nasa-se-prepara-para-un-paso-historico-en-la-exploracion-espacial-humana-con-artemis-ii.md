@@ -30,7 +30,7 @@ La campaña Artemis tiene como objetivo alcanzar tres objetivos fundamentales: b
 
 La preparación para esta misión ha sido intensa, con los astronautas y el equipo de NASA trabajando incansablemente para asegurarse de que todo esté listo. El kit de prensa oficial para la misión Artemis II ahora está disponible, incluyendo información sobre los astronautas que llevarán a cabo la misión y otros recursos para medios.
 
-*Nota editorial: esta sección citaba previamente una segunda declaración atribuida a Isaacman sobre el envío de estadounidenses a Marte en esta misión. Esa cita no se encontró en la fuente oficial de NASA y fue retirada — Artemis II no incluye un viaje a Marte; NASA describe Marte como una meta de misiones futuras.*
+_Nota editorial: esta sección citaba previamente una segunda declaración atribuida a Isaacman sobre el envío de estadounidenses a Marte en esta misión. Esa cita no se encontró en la fuente oficial de NASA y fue retirada — Artemis II no incluye un viaje a Marte; NASA describe Marte como una meta de misiones futuras._
 
 Con la misión Artemis II a punto de despegar, la comunidad científica y espacial se está emocionando ante la posibilidad de ver a los astronautas estadounidenses en acción. ¿Cuáles son tus expectativas para esta misión histórica? ¿Cómo crees que afectará la exploración lunar y la búsqueda de vida extraterrestre? Comparte tus pensamientos con nosotros.
 
