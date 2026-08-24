@@ -22,15 +22,15 @@ featured: false
 
 **NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II**
 
-En un momento crucial de la historia del vuelo espacial humano, la agencia espacial norteamericana NASA está a punto de lanzar su segunda misión en el programa Artemis. Con Artemis II, la agencia espacial estadounidense hará un paso sin precedentes hacia la exploración lunar y más allá. Esta misión, que se estima que será la más larga y desafiante hasta la fecha, tiene como objetivo establecer una presencia lunar duradera y enviar estadounidenses a Marte.
+En un momento crucial de la historia del vuelo espacial humano, la agencia espacial norteamericana NASA está a punto de lanzar su segunda misión en el programa Artemis. Con Artemis II, la agencia espacial estadounidense hará un paso sin precedentes hacia la exploración lunar y más allá. Esta misión tiene como objetivo enviar a los astronautas más lejos de la Tierra que nunca antes, como parte del avance hacia una presencia lunar duradera; enviar estadounidenses a Marte sigue siendo una meta de misiones futuras del programa Artemis, no de Artemis II en sí.
 
-La misión Artemis II es el resultado de años de trabajo y planificación, y es considerada un paso fundamental hacia la reanudación de las misiones tripuladas a la Luna. "Artemis II será un paso hacia adelante crucial en la historia del vuelo espacial humano", declaró Jared Isaacman, administrador de NASA. "Esta misión histórica enviará seres humanos más allá de la Tierra que nunca antes y recopilará los conocimientos necesarios para regresar a la Luna".
+La misión Artemis II es el resultado de años de trabajo y planificación, y es considerada un paso fundamental hacia la reanudación de las misiones tripuladas a la Luna. "Artemis II será un paso hacia adelante crucial en la historia del vuelo espacial humano", declaró Jared Isaacman, administrador de NASA. "Esta misión histórica enviará seres humanos más allá de la Tierra que nunca antes".
 
 La campaña Artemis tiene como objetivo alcanzar tres objetivos fundamentales: beneficiar la economía estadounidense, realizar descubrimientos científicos importantes y preparar las misiones tripuladas a Marte. La misión Artemis II es un paso crucial en este camino, ya que se estima que la agencia espacial estadounidense podrá enviar astronautas a una distancia mayor que cualquier tripulación anterior.
 
 La preparación para esta misión ha sido intensa, con los astronautas y el equipo de NASA trabajando incansablemente para asegurarse de que todo esté listo. El kit de prensa oficial para la misión Artemis II ahora está disponible, incluyendo información sobre los astronautas que llevarán a cabo la misión y otros recursos para medios.
 
-"Artemis II representa el avance hacia la establecimiento de una presencia lunar duradera y enviar estadounidenses a Marte", añadió Isaacman. "No puedo estar más impresionado por nuestro equipo de NASA y por el equipo Artemis II, y les deseo todo lo mejor. ¡Avancemos con firmeza!"
+*Nota editorial: esta sección citaba previamente una segunda declaración atribuida a Isaacman sobre el envío de estadounidenses a Marte en esta misión. Esa cita no se encontró en la fuente oficial de NASA y fue retirada — Artemis II no incluye un viaje a Marte; NASA describe Marte como una meta de misiones futuras.*
 
 Con la misión Artemis II a punto de despegar, la comunidad científica y espacial se está emocionando ante la posibilidad de ver a los astronautas estadounidenses en acción. ¿Cuáles son tus expectativas para esta misión histórica? ¿Cómo crees que afectará la exploración lunar y la búsqueda de vida extraterrestre? Comparte tus pensamientos con nosotros.
 
