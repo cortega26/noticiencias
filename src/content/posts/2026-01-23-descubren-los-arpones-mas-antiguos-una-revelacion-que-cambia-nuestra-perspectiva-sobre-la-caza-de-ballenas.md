@@ -1,6 +1,6 @@
 ---
 title: 'Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nuestra Perspectiva sobre la Caza de Ballenas'
-schema_version: 2
+schema_version: 1
 excerpt: 'Descubren arpones de 5.000 años en Brasil, revelando que indígenas locales cazaban ballenas mucho antes de lo pensado.'
 author: Noticiencias
 date: 2026-01-23

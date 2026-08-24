@@ -1,6 +1,6 @@
 ---
 title: Un asteroide de 700 metros rota cada 1,88 minutos, desafiando teorías astronómicas
-schema_version: 2
+schema_version: 1
 date: 2026-05-15
 author: Noticiencias AI
 categories:

@@ -1,6 +1,6 @@
 ---
 title: 'Estudio revela menor agrupamiento de galaxias de lo esperado'
-schema_version: 2
+schema_version: 1
 excerpt: 'Un estudio cosmológico revela menor agrupamiento de galaxias que lo esperado según la teoría del universo estándar.'
 author: Noticiencias
 date: 2026-01-31

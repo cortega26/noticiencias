@@ -1,6 +1,6 @@
 ---
 title: 'Desafío global contra el sarampión por falta de confianza en las vacunas'
-schema_version: 2
+schema_version: 1
 excerpt: 'La lucha contra el sarampión en América Latina y el mundo enfrenta obstáculos por falta de confianza en las vacunas debido a la desinformación.'
 author: Noticiencias
 date: 2026-01-27

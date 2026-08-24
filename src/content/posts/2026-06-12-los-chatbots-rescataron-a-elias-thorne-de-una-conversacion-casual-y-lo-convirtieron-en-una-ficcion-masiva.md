@@ -1,6 +1,6 @@
 ---
 title: Los chatbots rescataron a Elias Thorne de una conversación casual y lo convirtieron en una ficción masiva
-schema_version: 2
+schema_version: 1
 date: 2026-06-12
 author: Noticiencias AI
 categories:
