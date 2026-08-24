@@ -1,6 +1,6 @@
 ---
 title: Un agujero negro se forma sin explotar una estrella masiva
-schema_version: 2
+schema_version: 1
 excerpt: Una estrella masiva se desvanece sin detonar como una supernova, revelando un misterio en astrofísica
 author: Noticiencias
 date: 2026-02-16

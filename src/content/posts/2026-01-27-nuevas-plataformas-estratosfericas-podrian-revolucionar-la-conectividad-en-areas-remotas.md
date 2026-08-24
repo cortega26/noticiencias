@@ -1,6 +1,6 @@
 ---
 title: 'Nuevas plataformas estratosféricas podrían revolucionar la conectividad en áreas remotas'
-schema_version: 2
+schema_version: 1
 excerpt: 'Pruebas de dirigibles y aviones estratosféricos (HAPS) buscan llevar Internet a zonas remotas este año, compitiendo con satélites como Starlink.'
 author: Noticiencias
 date: 2026-01-27

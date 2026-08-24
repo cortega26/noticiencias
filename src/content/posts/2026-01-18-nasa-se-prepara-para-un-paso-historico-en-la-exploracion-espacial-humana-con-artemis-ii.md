@@ -1,6 +1,6 @@
 ---
 title: 'NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II'
-schema_version: 2
+schema_version: 1
 excerpt: 'La NASA ultima detalles para Artemis II, la misión que llevará humanos de regreso a la órbita lunar y más allá.'
 author: Noticiencias
 date: 2026-01-18

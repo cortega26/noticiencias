@@ -1,6 +1,6 @@
 ---
 title: 'Científicos descubren ADN preservado en guepardos momificados'
-schema_version: 2
+schema_version: 1
 excerpt: 'Hallazgo de guepardos momificados en Arabia Saudita con ADN preservado abre puertas para su posible reintroducción.'
 author: Noticiencias
 date: 2026-01-17

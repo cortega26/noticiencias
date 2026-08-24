@@ -1,6 +1,6 @@
 ---
 title: El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube
-schema_version: 2
+schema_version: 1
 excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
 author: Noticiencias
 date: 2026-03-27

@@ -1,6 +1,6 @@
 ---
 title: Un cohete con un motor apagado y otro fallando llegó al espacio y volvió
-schema_version: 2
+schema_version: 1
 date: 2026-05-23
 author: Noticiencias AI
 categories:

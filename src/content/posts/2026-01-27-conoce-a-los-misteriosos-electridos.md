@@ -1,6 +1,6 @@
 ---
 title: 'Conoce a los misteriosos electridos'
-schema_version: 2
+schema_version: 1
 excerpt: 'Electridos: materiales con propiedades únicas que podrían revolucionar la química'
 author: Noticiencias
 date: 2026-01-27
