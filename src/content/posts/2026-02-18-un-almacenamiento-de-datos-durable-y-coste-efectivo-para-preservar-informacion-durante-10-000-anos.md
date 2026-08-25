@@ -49,9 +49,9 @@ fact_check:
   - label: El artículo fue publicado en la revista Nature.
     status: confirmed
 why_it_matters:
-  - Para América Latina, donde la infraestructura de almacenamiento puede ser costosa y vulnerable a desastres naturales, el vidrio ofrece una solución barata y resistente.
-  - Permite preservar el patrimonio cultural latinoamericano (música, cine, documentos) para futuras generaciones sin necesidad de migraciones frecuentes.
-  - Reduce la dependencia de centros de datos energéticamente intensivos, contribuyendo a la sostenibilidad ambiental en la región.
+  - Para América Latina, donde la infraestructura de almacenamiento puede ser costosa y vulnerable a desastres naturales, el vidrio podría ofrecer una solución barata y resistente.
+  - Podría permitir preservar el patrimonio cultural latinoamericano (música, cine, documentos) para futuras generaciones sin necesidad de migraciones frecuentes.
+  - Podría reducir la dependencia de centros de datos energéticamente intensivos, contribuyendo a la sostenibilidad ambiental en la región.
 confidence: Moderada — estudio revisado por pares en Nature con evidencia experimental de durabilidad a corto plazo, pero la afirmación de 10,000 años sigue siendo una proyección no verificable directamente.
 sources:
   - title: Project Silica's advances in glass storage technology

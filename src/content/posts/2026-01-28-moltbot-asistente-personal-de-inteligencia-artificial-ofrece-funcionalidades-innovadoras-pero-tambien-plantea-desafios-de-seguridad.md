@@ -65,7 +65,7 @@ Aunque Moltbot es una herramienta innovadora, también plantea desafíos de segu
 
 **Mitigación de riesgos**
 
-Para mitigar estos riesgos, los usuarios pueden tomar medidas como configurar Moltbot cuidadosamente y ejecutarlo en un entorno aislado. Steinberger mismo ha advertido sobre la importancia de la seguridad y ha recomendado que los usuarios sean cautelosos al utilizar su herramienta. Sin embargo, es importante destacar que la seguridad es un desafío continuo y que los usuarios deben estar conscientes de los riesgos potenciales asociados con el uso de Moltbot.
+Para mitigar estos riesgos, los usuarios pueden tomar medidas como configurar Moltbot cuidadosamente y ejecutarlo en un entorno aislado. La fuente recoge la advertencia de Rahul Sood de usar un equipo o servidor separado y cuentas desechables. Sin embargo, es importante destacar que la seguridad es un desafío continuo y que los usuarios deben estar conscientes de los riesgos potenciales asociados con el uso de Moltbot.
 
 **Contexto y relevancia**
 

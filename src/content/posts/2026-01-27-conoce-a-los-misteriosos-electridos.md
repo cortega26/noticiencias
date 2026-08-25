@@ -1,6 +1,6 @@
 ---
 title: 'Conoce a los misteriosos electridos'
-schema_version: 1
+schema_version: 2
 excerpt: 'Electridos: materiales con propiedades únicas que podrían revolucionar la química'
 author: Noticiencias
 date: 2026-01-27
@@ -22,6 +22,44 @@ headlines_variants:
   benefit: ''
 investigation: false
 featured: false
+summary_points:
+  - Los electridos son materiales donde los electrones quedan atrapados en sitios no nucleares, lo que les confiere propiedades únicas.
+  - Se han identificado electridos estables a temperatura ambiente y materiales como la mayenita que actúan como catalizadores en reacciones industriales, como la síntesis de amoníaco.
+  - Una hipótesis sugiere que los electridos podrían existir bajo las altas presiones del núcleo terrestre y explicar su menor densidad esperada, aunque esta interpretación sigue siendo controvertida entre los científicos.
+  - La investigación aún requiere más estudios para confirmar estas ideas y desarrollar modelos predictivos de su formación.
+  - Si se validan, los electridos podrían revolucionar la catálisis en farmacéutica y producción de energía, reduciendo consumo energético y emisiones.
+glossary:
+  - term: electrido
+    definition: Material en el que los electrones están localizados en cavidades entre átomos, en lugar de moverse libremente como en los metales.
+  - term: catalizador
+    definition: Sustancia que acelera una reacción química sin consumirse en el proceso.
+  - term: mayenita
+    definition: Tipo de electrido basado en calcio y aluminio que se ha estudiado como catalizador para la producción de amoníaco.
+  - term: síntesis de amoníaco
+    definition: Proceso industrial que combina nitrógeno e hidrógeno para producir amoníaco, usado principalmente en fertilizantes.
+  - term: núcleo terrestre
+    definition: La parte más interna de la Tierra, compuesta principalmente de hierro y cuya densidad observada es menor de lo esperado.
+fact_check:
+  - label: Los electridos se forman cuando los electrones quedan atrapados en sitios atractores no nucleares entre átomos.
+    status: confirmed
+  - label: Un electrido estable a temperatura ambiente hecho de iones de calcio rodeado de moléculas orgánicas grandes facilita reacciones difíciles de iniciar.
+    status: confirmed
+  - label: La mayenita, un tipo de electrido, se usa como catalizador para producir amoníaco a temperaturas y presiones más bajas.
+    status: confirmed
+  - label: La densidad más baja de lo esperado del núcleo terrestre podría explicarse por la presencia de electridos bajo alta presión.
+    status: uncertain
+  - label: Los investigadores utilizan algoritmos de aprendizaje automático para buscar nuevos materiales con propiedades similares a los electridos.
+    status: confirmed
+why_it_matters:
+  - Si los electridos logran mejorar la eficiencia de la síntesis de amoníaco, los países latinoamericanos con grandes sectores agrícolas podrían reducir costos de fertilizantes y su huella de carbono.
+  - El uso de estos materiales como catalizadores en la industria farmacéutica podría acelerar la producción de medicamentos esenciales, beneficiando el acceso a la salud en la región.
+  - Entender mejor el núcleo terrestre mediante estudios de electridos podría aportar a la geofísica y a la exploración de recursos minerales, relevantes para economías dependientes de la minería en América Latina.
+confidence: Moderada — artículo de divulgación basado en estudios preliminares y hipótesis, sin evidencia concluyente; señala que se necesitan más investigaciones para confirmar las propuestas.
+sources:
+  - title: Meet the mysterious electrides
+    url: https://arstechnica.com/science/2026/01/meet-the-mysterious-electrides/
+    publisher: Ars Technica
+    date: '2026-01-27'
 ---
 
 **Un misterioso grupo de materiales llamados electridos podría revolucionar la forma en que entendemos la química y la física**

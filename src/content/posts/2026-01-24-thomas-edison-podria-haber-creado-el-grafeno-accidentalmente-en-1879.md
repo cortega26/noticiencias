@@ -48,7 +48,7 @@ fact_check:
   - label: El grafeno se aisló oficialmente por primera vez en 2004
     status: unsupported
 why_it_matters:
-  - Si se confirma que el grafeno pudo producirse con materiales simples y baratos como el bambú, abriría la puerta a métodos de bajo costo para su fabricación en regiones con abundancia de este recurso, como varios países latinoamericanos.
+  - Si se confirma que el grafeno pudo producirse con materiales simples y baratos como el bambú, esto podría abrir la puerta a métodos de bajo costo para su fabricación en regiones con abundancia de este recurso, como varios países latinoamericanos.
   - El conocimiento de que un invento histórico pudo haber generado nanomateriales avanzados motiva a revisitar colecciones de patentes y dispositivos antiguos con técnicas modernas, lo que podría generar innovaciones tecnológicas locales.
   - Aplicaciones prometedoras del grafeno, como baterías de mayor capacidad y supercondensadores, podrían beneficiar la transición energética y la electrificación rural en América Latina.
 confidence: Moderada — basada en una recreación experimental publicada en ACS Nano y fuentes históricas, aunque la atribución histórica a Edison sigue sin poder confirmarse de forma definitiva.

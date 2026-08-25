@@ -49,11 +49,11 @@ fact_check:
     status: confirmed
 why_it_matters:
   - En América Latina el envejecimiento de la población aumenta la prevalencia de osteoporosis, por lo que nuevas terapias podrían reducir la carga de fracturas en adultos mayores.
-  - Un tratamiento basado en Piezo1 beneficiaría a personas con movilidad limitada, como aquellos con discapacidades o enfermedades crónicas que impiden el ejercicio regular.
+  - Un eventual tratamiento basado en Piezo1 podría beneficiar a personas con movilidad limitada, como aquellos con discapacidades o enfermedades crónicas que impiden el ejercicio regular.
   - Al explorar una eventual alternativa farmacológica al ejercicio para fortalecer los huesos, se podría mejorar la calidad de vida y disminuir los costos asociados a la atención de fracturas en la región.
 confidence: Moderada-alta — estudio publicado con revisión por pares en Signal Transduction and Targeted Therapy (con DOI), reportado por ScienceDaily; no se detalla el tamaño de muestra en la nota de divulgación.
 sources:
-  - title: Piezo1 identified as crucial internal 'exercise sensor'
+  - title: This discovery could let bones benefit from exercise without moving
     url: https://sciencedaily.com/releases/2026/01/260127010149.htm
     publisher: ScienceDaily
     date: '2026-01-27'

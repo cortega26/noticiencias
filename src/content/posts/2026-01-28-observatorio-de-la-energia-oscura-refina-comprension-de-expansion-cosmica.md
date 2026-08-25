@@ -48,9 +48,9 @@ fact_check:
   - label: El Observatorio Vera C. Rubin en Chile permitirá nuevas pruebas de la gravedad y arrojará luz sobre la energía oscura.
     status: confirmed
 why_it_matters:
-  - El próximo Observatorio Vera C. Rubin, ubicado en Chile, brindará a científicos latinoamericanos acceso a datos de punta para estudiar la energía oscura.
+  - El próximo Observatorio Vera C. Rubin, ubicado en Chile, podría brindar a científicos latinoamericanos acceso a datos de punta para estudiar la energía oscura.
   - Avanzar en la comprensión de la expansión cósmica puede impulsar desarrollos tecnológicos en áreas como sensores, procesamiento de grandes datos y educación científica en la región.
-  - Conocer mejor la energía oscura ayuda a situar a América Latina en la vanguardia de la investigación básica que aborda preguntas fundamentales sobre el universo.
+  - Conocer mejor la energía oscura podría ayudar a situar a América Latina en la vanguardia de la investigación básica que aborda preguntas fundamentales sobre el universo.
 confidence: Alta — estudio basado en seis años de datos y análisis de cientos de millones de galaxias, aunque el artículo reconoce limitaciones en el ajuste de los modelos.
 sources:
   - title: 'The dream has come true: Standard model of cosmology holds up in massive 6‑year study of the universe — with one big caveat'
