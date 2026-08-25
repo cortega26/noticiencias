@@ -42,7 +42,7 @@ El equipo en tierra aplaudió. No por la perfección, sino por la persistencia.
 
 Esta prueba no era solo sobre tecnología. Era sobre confianza.
 
-La NASA confía tanto en Starship que ha diseñado toda su misión Artemis III —el primer aterrizaje humano en la Luna desde 1972— alrededor de él. En 2027, la cápsula Orion de la NASA se acoplará en órbita lunar con una versión modificada de Starship, que llevará a los astronautas hasta la superficie lunar en 2028. Pero el reloj corre en contra de SpaceX. La oficina de inspección general de la NASA ha advertido que, por los retrasos en las pruebas, es posible que Starship no esté listo a tiempo. Las explosiones pasadas no fueron errores menores: fueron lecciones costosas. Y aún no se ha demostrado que el sistema pueda volar con frecuencia, como una aeronave comercial.
+La NASA confía tanto en Starship que ha diseñado toda su misión Artemis III —el primer aterrizaje humano en la Luna desde 1972— alrededor de él. En 2027, la cápsula Orion de la NASA se acoplará en órbita lunar con una versión modificada de Starship, que podría llevar a los astronautas hasta la superficie lunar tan pronto como en 2028. Pero el reloj corre en contra de SpaceX. La oficina de inspección general de la NASA ha advertido que, por los retrasos en las pruebas, es posible que Starship no esté listo a tiempo. Las explosiones pasadas no fueron errores menores: fueron lecciones costosas. Y aún no se ha demostrado que el sistema pueda volar con frecuencia, como una aeronave comercial.
 
 Sin embargo, SpaceX no está construyendo solo un cohete. Está construyendo una plataforma.
 

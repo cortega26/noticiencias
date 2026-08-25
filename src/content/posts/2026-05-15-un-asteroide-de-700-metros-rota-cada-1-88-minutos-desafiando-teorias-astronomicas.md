@@ -37,7 +37,7 @@ Para procesar tanta información, Rubin usa un sistema de alertas automatizado. 
 
 En junio de 2025, Rubin reveló 1.500 asteroides nuevos. Entre ellos, 19 giraban a velocidades sorprendentes. El más rápido, 2025 MN 45, mide 700 metros de diámetro —casi el doble de la altura del Empire State— y completa una vuelta cada 1,88 minutos. "No esperábamos encontrar algo girando más rápido de 10 minutos", dice Dmitrii Vavilov, coautor del estudio. Para asteroides de este tamaño, la ciencia pensaba que eran montones de escombros débiles, unidos por gravedad. Pero este objeto debe tener una estructura sólida, posiblemente un fragmento de un núcleo planetario muerto desde hace 4.500 millones de años.
 
-También detectó un cometa interestelar llamado 3I/ATLAS 10 días antes que otros telescopios. Y encontró supernovas fallidas, donde estrellas masivas colapsan en lugar de explotar. "Es 100 veces más débil que otras encuestas del cielo", explica Stephen Smartt.
+También detectó un cometa interestelar llamado 3I/ATLAS 10 días antes que otros telescopios. Y podría convertirse en una herramienta clave para identificar supernovas fallidas, esos casos en que estrellas masivas colapsan en lugar de explotar. "Es 100 veces más débil que otras encuestas del cielo", explica Stephen Smartt.
 
 Rubin mide el desplazamiento de la luz hacia el rojo para calcular distancias a galaxias. Esto ayudará a estudiar la energía oscura y los destellos de radio rápidos, cuyos orígenes siguen siendo un misterio.
 
