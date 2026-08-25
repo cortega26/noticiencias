@@ -33,6 +33,6 @@ Después de completar el módulo MicroMasters sobre gestión de cadenas de sumin
 
 Durante su tiempo en la universidad, Kevin participó activamente en proyectos de investigación práctica y trabajó estrechamente con expertos en la materia. La experiencia práctica adquirida en el programa se unió a sus conocimientos teóricos, creando una sólida base para una carrera exitosa.
 
-Hoy en día, Kevin es un profesional en gestión de cadenas de suministro. Su experiencia inicial con los cursos MicroMasters se convirtió en la puerta giratoria hacia su nueva vida laboral. El módulo sobre gestión de cadenas de suministro fue el catalizador que inició su transformación profesional, y ahora es un ejemplo inspirador para aquellos que buscan cambiar sus carreras.
+Hoy en día, Kevin cursa una maestría en el programa de Tecnología y Políticas Públicas (Technology and Policy Program) del MIT. Su experiencia inicial con los cursos MicroMasters se convirtió en la puerta giratoria hacia esta nueva etapa de su formación. El módulo sobre gestión de cadenas de suministro fue el catalizador que inició su transformación profesional, y ahora es un ejemplo inspirador para aquellos que buscan cambiar sus carreras.
 
 La historia de Kevin Power ilustra cómo los cursos en línea pueden ser la puerta de entrada a nuevas oportunidades. Aunque inicialmente parecía una oportunidad secundaria, el módulo MicroMasters sobre gestión de cadenas de suministro se convirtió en un paso decisivo hacia su transformación profesional.

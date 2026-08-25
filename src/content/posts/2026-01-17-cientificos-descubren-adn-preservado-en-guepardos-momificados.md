@@ -24,7 +24,7 @@ featured: false
 
 **Guepardos momificados antiguos descubiertos en Arabia Saudita contienen ADN preservado de la población perdida**
 
-Un equipo de científicos ha logrado extraer el ADN de siete guepardos momificados descubiertos en una cueva en Arabia Saudita, lo que podría llevar a su reintroducción a la región. Los restos datan entre 100 y 4,000 años atrás.
+Un equipo de científicos ha encontrado siete guepardos momificados en una cueva en Arabia Saudita y logró extraer ADN antiguo de los restos, lo que podría llevar a su reintroducción a la región. Los restos datan entre 100 y 4,000 años atrás.
 
 **Un paso hacia la conservación**
 
