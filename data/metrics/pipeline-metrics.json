@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-13T07:51:22.495Z",
+  "generated_at": "2026-08-25T07:06:57.483Z",
   "content": {
     "total_articles": 31,
-    "v2_articles": 31,
-    "total_words": 18257,
+    "v2_articles": 16,
+    "total_words": 18274,
     "avg_words": 589,
     "categories": [
       {
@@ -187,7 +187,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — artículo basado en un censo internacional con datos de colecciones museísticas y expediciones, publicado en Scientific American, una fuente de divulgación científica rigurosa.",
         "review_status": null
       },
       {
@@ -197,7 +197,7 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -209,7 +209,7 @@
         "categories": [
           "Ciencia"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -221,7 +221,7 @@
         "categories": [
           "Ciencia"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -235,7 +235,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — el estudio de MIT utiliza un amplio conjunto de datos (500 grupos demográficos, 49 industrias) pero la información proviene de un comunicado de prensa y no se presentan detalles metodológicos completos ni limitaciones explícitas.",
         "review_status": null
       },
       {
@@ -247,7 +247,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — artículo publicado en el blog oficial de seguridad de Google, basado en el análisis de su equipo de amenazas y respaldado por evidencia de experimentos observados en la web pública.",
         "review_status": null
       },
       {
@@ -259,7 +259,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — basada en el análisis conjunto de dos experimentos independientes con metodología idéntica a DAMA/NaI y un tamaño de muestra suficiente, aunque los autores reconocen que no explican el origen de la modulación observada en DAMA/LIBRA.",
         "review_status": null
       },
       {
@@ -269,7 +269,7 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -281,7 +281,7 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -295,7 +295,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — estudio revisado por pares en Nature con evidencia experimental de durabilidad a corto plazo, pero la afirmación de 10,000 años sigue siendo una proyección no verificable directamente.",
         "review_status": null
       },
       {
@@ -305,7 +305,7 @@
         "categories": [
           "Astronomía"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -319,7 +319,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — estudio de investigadores de la Universidad de São Paulo con resultados experimentales claros, aunque aún en fase de laboratorio y sin validación a gran escala.",
         "review_status": null
       },
       {
@@ -331,7 +331,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — estudio revisado por pares en Nature Medicine con datos globales de 2022, aunque menciona limitaciones en la calidad de los datos y posibles factores no considerados.",
         "review_status": null
       },
       {
@@ -343,7 +343,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — artículo de divulgación basado en experiencia personal y opiniones, sin datos empíricos ni revisión por pares detallada.",
         "review_status": null
       },
       {
@@ -353,7 +353,7 @@
         "categories": [
           "Astronomía"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -367,7 +367,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — artículo de divulgación basado en declaraciones del desarrollador y opiniones de expertos, sin evidencia empírica detallada.",
         "review_status": null
       },
       {
@@ -379,7 +379,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — estudio basado en seis años de datos y análisis de cientos de millones de galaxias, aunque el artículo reconoce limitaciones en el ajuste de los modelos.",
         "review_status": null
       },
       {
@@ -389,7 +389,7 @@
         "categories": [
           "Química"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -401,7 +401,7 @@
         "categories": [
           "Salud"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -415,7 +415,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — estudio revisado por pares con evidencia arqueológica sustancial (más de 2.600 herramientas), aunque la identidad exacta de los fabricantes permanece incierta.",
         "review_status": null
       },
       {
@@ -425,7 +425,7 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -439,7 +439,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada-alta — estudio publicado con revisión por pares en Signal Transduction and Targeted Therapy (con DOI), reportado por ScienceDaily; no se detalla el tamaño de muestra en la nota de divulgación.",
         "review_status": null
       },
       {
@@ -451,7 +451,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — basado en estudio publicado en revista científica (informado por Scientific American), aunque el artículo es divulgativo y no detalla todos los aspectos metodológicos.",
         "review_status": null
       },
       {
@@ -463,7 +463,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — estudio revisado por pares publicado en Nature con muestra de 43 bebés y análisis detallado de transmisión microbiana.",
         "review_status": null
       },
       {
@@ -475,7 +475,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — basada en una recreación experimental publicada en ACS Nano y fuentes históricas, aunque la atribución histórica a Edison sigue sin poder confirmarse de forma definitiva.",
         "review_status": null
       },
       {
@@ -485,7 +485,7 @@
         "categories": [
           "Arqueología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -497,7 +497,7 @@
         "categories": [
           "Editorial"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -509,7 +509,7 @@
         "categories": [
           "Astronomía"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -521,7 +521,7 @@
         "categories": [
           "Biología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
@@ -533,25 +533,25 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 2,
+        "schema_version": 1,
         "editorial_score": null,
         "confidence": null,
         "review_status": null
       }
     ],
     "editorial_gaps": {
-      "missing_summary_points": 30,
-      "missing_glossary": 30,
-      "missing_fact_check": 30,
-      "missing_why_it_matters": 30,
-      "missing_confidence": 30,
-      "missing_sources": 30
+      "missing_summary_points": 0,
+      "missing_glossary": 0,
+      "missing_fact_check": 0,
+      "missing_why_it_matters": 0,
+      "missing_confidence": 0,
+      "missing_sources": 0
     },
-    "articles_with_gaps": 31
+    "articles_with_gaps": 0
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-08-13T07:51:22.495Z"
+    "generated_at": "2026-08-25T07:06:57.483Z"
   },
   "images": {
     "delivery_mode": "github",
