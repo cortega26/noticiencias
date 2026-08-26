@@ -37,7 +37,7 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 ### Publication Flow
 
 1. Humans or the backend publish Markdown into `src/content/posts/`.
-2. `src/content.config.ts` validates frontmatter during `astro sync`, `astro check`, and build.
+2. `src/content.config.ts` validates frontmatter during `astro sync`, `astro check`, and build. A post with `schema_version >= 2` must carry all six editorial enrichment fields (`summary_points`, `glossary`, `fact_check`, `why_it_matters`, `confidence`, `sources`) — this is enforced unconditionally (no permissive/informational mode; there is no environment flag that relaxes it). `scripts/check-editorial-fields.js` mirrors the same rule for the standalone pre-publish gate.
 3. `src/utils/blog.ts` normalizes collection entries into the local `Post` shape and fails closed on duplicate permalinks.
 4. `src/pages/` routes use those normalized posts to build list, taxonomy, series, RSS, and article pages.
 5. Layouts pass page metadata into `src/components/template/common/Metadata.astro`.
