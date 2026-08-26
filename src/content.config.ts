@@ -101,10 +101,9 @@ const posts = defineCollection({
 
       // --- Editorial enrichment enforcement (schema_version >= 2) ---
       // Progressive contract: v1 posts are grandfathered; v2+ require structured editorial fields.
-      // Gate: STRICT_EDITORIAL=true enables blocking enforcement (CI). In dev, the standalone
-      // script scripts/check-editorial-fields.js still surfaces issues without blocking builds.
-      const strictEditorial = process.env.STRICT_EDITORIAL === 'true';
-      if (strictEditorial && data.schema_version && data.schema_version >= 2) {
+      // Enforcement is unconditional (Plan 060 / Phase 2b): the full corpus has zero strict
+      // editorial-field errors, so this branch always runs — there is no permissive/off state.
+      if (data.schema_version && data.schema_version >= 2) {
         // summary_points: 2-5 non-empty strings
         if (!data.summary_points || data.summary_points.length === 0) {
           ctx.addIssue({

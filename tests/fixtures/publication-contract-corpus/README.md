@@ -7,7 +7,10 @@ contract defined in `src/content.config.ts`. It is used across plan 060:
 
 - **Phase 0** (this phase) creates and commits it.
 - **Phase 2** uses it to prove producer (backend) and consumer (frontend) v2
-  field rejection under `STRICT_EDITORIAL=true`.
+  field rejection. As of Phase 2b, this enforcement is unconditional — the
+  `STRICT_EDITORIAL` flag referenced elsewhere in this document no longer
+  exists in the codebase; see the v1 note under
+  `v2-strict-failure-inventory.json` below for what it meant historically.
 - **Phase 6** uses it to prove Zod / JSON Schema / Pydantic parity — the
   generated-contract work described in
   [`../../../docs/adr/0006-generate-contracts-instead-of-hand-maintained-parsers.md`](../../../docs/adr/0006-generate-contracts-instead-of-hand-maintained-parsers.md).
@@ -71,6 +74,11 @@ Initial corpus. Contents:
   is identical at all of them), with a `_generated_at_commit` key added on
   top of the tool's own output. This is Phase 2's human-content-review
   migration input; its `errors[]` array is recorded as-is, unedited.
+  **Historical note (Plan 060 / Phase 2b):** `STRICT_EDITORIAL` gated
+  strict/informational behavior at the time this fixture was generated; the
+  flag has since been removed and `check-editorial-fields.js` now always
+  runs in the mode this record captured. This frozen fixture's command line
+  is left as originally run, per this document's versioning rule.
 
 ## No in-file annotations on schema-instance fixtures
 

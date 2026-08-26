@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { z } from 'astro/zod';
 
 vi.mock('astro:content', () => ({
@@ -18,13 +18,6 @@ const basePost = {
 };
 
 describe('content.config posts schema', () => {
-  const originalStrictEditorial = process.env.STRICT_EDITORIAL;
-
-  afterEach(() => {
-    if (originalStrictEditorial === undefined) delete process.env.STRICT_EDITORIAL;
-    else process.env.STRICT_EDITORIAL = originalStrictEditorial;
-  });
-
   it('accepts a minimal valid post', () => {
     expect(schema.safeParse(basePost).success).toBe(true);
   });
@@ -55,11 +48,7 @@ describe('content.config posts schema', () => {
     expect(result.success).toBe(true);
   });
 
-  describe('STRICT_EDITORIAL enforcement for schema_version >= 2', () => {
-    beforeEach(() => {
-      process.env.STRICT_EDITORIAL = 'true';
-    });
-
+  describe('editorial field enforcement for schema_version >= 2', () => {
     it('rejects a v2 post missing every editorial field', () => {
       const result = schema.safeParse({ ...basePost, schema_version: 2 });
       expect(result.success).toBe(false);
@@ -90,15 +79,9 @@ describe('content.config posts schema', () => {
       expect(result.success).toBe(true);
     });
 
-    it('does not enforce editorial fields for schema_version 1 even when strict', () => {
+    it('does not enforce editorial fields for schema_version 1', () => {
       const result = schema.safeParse({ ...basePost, schema_version: 1 });
       expect(result.success).toBe(true);
     });
-  });
-
-  it('does not enforce editorial fields for v2 posts when STRICT_EDITORIAL is not set', () => {
-    delete process.env.STRICT_EDITORIAL;
-    const result = schema.safeParse({ ...basePost, schema_version: 2 });
-    expect(result.success).toBe(true);
   });
 });
