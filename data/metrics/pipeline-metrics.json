@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-25T07:06:57.483Z",
+  "generated_at": "2026-08-26T07:07:15.351Z",
   "content": {
     "total_articles": 31,
-    "v2_articles": 16,
-    "total_words": 18274,
-    "avg_words": 589,
+    "v2_articles": 19,
+    "total_words": 18373,
+    "avg_words": 593,
     "categories": [
       {
         "name": "Tecnología",
@@ -228,7 +228,7 @@
       },
       {
         "slug": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia",
-        "title": "El MIT descubre que la automatización no mejora la productividad como se creía",
+        "title": "El MIT descubre que las empresas usan la automatización con frecuencia para recortar salarios, no para maximizar la productividad",
         "date": "2026-05-07",
         "categories": [
           "Tecnología"
@@ -281,9 +281,9 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 1,
+        "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Alta — basada en veredictos judiciales recientes, acceso a documentos internos de Meta y la presencia de múltiples casos pendientes que respaldan las conclusiones.",
         "review_status": null
       },
       {
@@ -389,9 +389,9 @@
         "categories": [
           "Química"
         ],
-        "schema_version": 1,
+        "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — artículo de divulgación basado en estudios preliminares y hipótesis, sin evidencia concluyente; señala que se necesitan más investigaciones para confirmar las propuestas.",
         "review_status": null
       },
       {
@@ -425,9 +425,9 @@
         "categories": [
           "Tecnología"
         ],
-        "schema_version": 1,
+        "schema_version": 2,
         "editorial_score": null,
-        "confidence": null,
+        "confidence": "Moderada — el artículo presenta pruebas en curso y afirmaciones optimistas, pero también señala desafíos técnicos, económicos y un mercado proyectado modesto.",
         "review_status": null
       },
       {
@@ -551,7 +551,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-08-25T07:06:57.483Z"
+    "generated_at": "2026-08-26T07:07:15.351Z"
   },
   "images": {
     "delivery_mode": "github",
