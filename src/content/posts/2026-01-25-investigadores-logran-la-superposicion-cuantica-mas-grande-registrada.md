@@ -46,11 +46,11 @@ fact_check:
   - label: La distancia entre las dos ubicaciones en superposición fue de 133 nanómetros.
     status: confirmed
   - label: Este resultado indica que escalar sistemas cuánticos para computadoras podría ser más factible de lo esperado.
-    status: uncertain
+    status: unsupported
   - label: El gato de Schrödinger es un experimento mental propuesto por Erwin Schrödinger en 1935.
     status: confirmed
 why_it_matters:
-  - El avance muestra que la computación cuántica podría escalar a niveles prácticos, lo que beneficiaría a países latinoamericanos al permitir el desarrollo de tecnologías locales en áreas como criptografía y simulación de moléculas para fármacos.
+  - El avance muestra que la computación cuántica podría escalar a niveles prácticos, lo que podría beneficiar a países latinoamericanos al permitir el desarrollo de tecnologías locales en áreas como criptografía y simulación de moléculas para fármacos.
   - Comprender los límites de la superposición ayuda a diseñar mejores materiales y sensores cuánticos que podrían aplicarse en la industria minera y energética de la región.
   - Fomentar la investigación básica en física cuántica inspira a jóvenes latinoamericanos a carreras STEM y fortalece la colaboración internacional en ciencia.
 confidence: Moderada — basado en estudio publicado en revista científica (informado por Scientific American), aunque el artículo es divulgativo y no detalla todos los aspectos metodológicos.
@@ -75,7 +75,7 @@ La teoría cuántica no establece un límite en cuanto al tamaño de una superpo
 
 **Implicaciones prácticas**
 
-El experimento también tiene importancia práctica, ya que los ordenadores cuánticos necesitarán mantener posiblemente millones de objetos en un gran estado cuántico para realizar cálculos útiles. Si la naturaleza hiciera que los sistemas colapsaran más allá de cierto punto y esa escala fuera menor que la necesaria para crear un ordenador cuántico, "entonces sería problemático", afirma Giulia Rubino, física cuántica de la Universidad de Bristol. Este avance sugiere que la escalada de sistemas cuánticos puede ser más factible de lo esperado.
+El experimento también tiene importancia práctica, ya que los ordenadores cuánticos necesitarán mantener posiblemente millones de objetos en un gran estado cuántico para realizar cálculos útiles. Si la naturaleza hiciera que los sistemas colapsaran más allá de cierto punto y esa escala fuera menor que la necesaria para crear un ordenador cuántico, "entonces sería problemático", afirma Giulia Rubino, física cuántica de la Universidad de Bristol. El resultado muestra que la mecánica cuántica sigue siendo válida a esta escala; la fuente señala que escalar sistemas más masivos seguirá siendo difícil.
 
 **El gato de Schrödinger y el debate sobre la superposición**
 

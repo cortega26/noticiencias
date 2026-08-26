@@ -11,7 +11,7 @@ tags:
   - pez enano del mar de coral
   - camarón de bandas brillantes
   - censo oceánico nippon foundation
-excerpt: 'Más de mil nuevas especies marinas fueron identificadas no en expediciones profundas, sino revisando colecciones olvidadas en museos: gusanos que brillan, peces únicos y camarones de neón, esperando ser vistos.'
+excerpt: 'Más de mil nuevas especies marinas fueron identificadas no en expediciones profundas, sino revisando colecciones olvidadas en museos: gusanos transparentes, peces únicos y camarones de neón, esperando ser vistos.'
 image: ~/assets/images/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.webp
 image_alt: Ilustración editorial relacionada con Ocean census reveals more than 1,100 new species
 source_url: https://scientificamerican.com/article/ocean-census-reveals-more-than-1-100-new-species/
@@ -47,7 +47,7 @@ fact_check:
 why_it_matters:
   - El hallazgo muestra que incluso en costas de América Latina, donde existen vastas colecciones marinas poco revisadas, podrían haber especies desconocidas esperando ser descritas en museos y laboratorios locales.
   - Mejorar el financiamiento y el tiempo dedicado a la taxonomía marina en la región podría acelerar el descubrimiento de especies con aplicaciones biomédicas, como compuestos neuroprotectores.
-  - Conocer la biodiversidad oceánica subyacente ayuda a diseñar políticas de conservación más efectivas para ecosistemas vulnerables como arrecifes coralinos y fondos bentónicos de la región.
+  - Conocer la biodiversidad oceánica subyacente podría ayudar a diseñar políticas de conservación más efectivas para ecosistemas vulnerables como arrecifes coralinos y fondos bentónicos de la región.
 confidence: Alta — artículo basado en un censo internacional con datos de colecciones museísticas y expediciones, publicado en Scientific American, una fuente de divulgación científica rigurosa.
 sources:
   - title: Ocean census reveals more than 1,100 new species
@@ -64,7 +64,7 @@ Entre mediados de 2025 y mediados de 2026, una red global de científicos descub
 
 La mayoría de estas especies no vino de viajes a aguas profundas. Vino de los estantes.
 
-Un gusano transparente, tan fino como un hilo, viviendo dentro de una esponja de cristal en las costas de Japón. Sus paredes, hechas de sílice pura, brillan como vidrio bajo la luz de los submarinos. Dentro, el gusano no solo se alimenta de ella: también emite una luz tenue, como una estrella en miniatura. “Imagina castillos de cristal parpadeando en la oscuridad”, dice Michelle Taylor, jefa de ciencia del Censo Oceánico Nippon Foundation–Nekton. “Eso es lo que probablemente está ocurriendo ahí abajo”.
+Un gusano transparente, tan fino como un hilo, vive dentro de una esponja de cristal en las costas de Japón. Sus paredes, hechas de sílice pura, brillan como vidrio bajo la luz de los submarinos. Se trata de una especie de poliqueto que aporta nutrientes a la esponja; algunas especies afines también son bioluminiscentes. “Imagina castillos de cristal parpadeando en la oscuridad”, dice Michelle Taylor, jefa de ciencia del Censo Oceánico Nippon Foundation–Nekton. “Eso es lo que probablemente está ocurriendo ahí abajo”.
 
 En las islas Sandwich del Sur, una pluma de mar flotaba como una nube de seda. En el Mar de Coral, un pez enano, de ojos rojos y manchas naranjas, desafió todo lo que se sabía de sus parientes australianos —todos verdes, todos iguales. Pero este, único, se escondía entre los corales como un secreto.
 

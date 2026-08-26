@@ -43,7 +43,7 @@ fact_check:
   - label: El vibe coding está aumentando su popularidad entre no codificadores
     status: confirmed
 why_it_matters:
-  - Reduce la barrera de entrada al mundo del desarrollo de software, permitiendo que más personas en América Latina puedan crear aplicaciones sin necesidad de aprender lenguajes de programación tradicionales.
+  - Podría reducir la barrera de entrada al mundo del desarrollo de software, permitiendo que más personas en América Latina creen aplicaciones sin necesidad de aprender lenguajes de programación tradicionales.
   - Puede impulsar emprendimientos tecnológicos y soluciones locales al facilitar la prototipación rápida de sitios web y herramientas digitales.
   - Podría contribuir a cerrar la brecha de habilidades digitales en la región y ampliar oportunidades de trabajo remoto.
 confidence: Moderada — artículo de divulgación basado en experiencia personal y opiniones, sin datos empíricos ni revisión por pares detallada.

@@ -11,7 +11,7 @@ tags:
   - fuerza centrifuga
   - rotacion rapida
   - asteroide
-excerpt: "Rubin detecta asteroide de 700m girando cada 1,88 min, desafiando teorías. Rotación 'imposible' redefine física celestial."
+excerpt: 'Rubin detecta asteroide de 700m girando cada 1,88 min, más rápido de lo esperado. Su rotación inusual desafía lo que se sabía sobre este tipo de objetos.'
 image: ~/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg
 image_alt: Observatorio Vera C. Rubin bajo el cielo nocturno, vinculado al rastreo de asteroides y objetos interestelares
 source_url: https://quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/
@@ -21,7 +21,7 @@ headlines_variants:
   benefit: Este descubrimiento redefine la comprensión de asteroides y su formación
 ---
 
-Un asteroide del tamaño del Edificio Empire State gira cada 1,88 minutos. La ciencia decía que un objeto de 700 metros no podría sobrevivir a una rotación tan rápida; su propia fuerza centrífuga lo habría destrozado. Pero en las primeras imágenes del Observatorio Vera C. Rubin, allí estaba, intacto, desafiando todo lo que creíamos saber.
+Un asteroide del tamaño del Edificio Empire State gira cada 1,88 minutos. Los astrónomos no esperaban hallar un objeto de 700 metros girando en menos de 10 minutos; una rotación tan rápida podría generar suficiente fuerza centrífuga como para destrozarlo. Pero en las primeras imágenes del Observatorio Vera C. Rubin, allí estaba, intacto, desafiando lo que se esperaba encontrar.
 
 El Observatorio Vera C. Rubin se alza en la cima del Cerro Pachón, en el desierto de Atacama, Chile. Con un telescopio de 8,4 metros de diámetro y la cámara digital más grande del mundo, este observatorio está diseñado para observar el universo en constante cambio. Durante una década, capturará imágenes del cielo nocturno del Hemisferio Sur cada pocos días, creando la película time-lapse más grande jamás construida. En su primer año, espera descubrir un millón de asteroides desconocidos —tanto como en los últimos 200 años de historia— y miles de millones de estrellas y galaxias.
 
@@ -37,7 +37,7 @@ Para procesar tanta información, Rubin usa un sistema de alertas automatizado. 
 
 En junio de 2025, Rubin reveló 1.500 asteroides nuevos. Entre ellos, 19 giraban a velocidades sorprendentes. El más rápido, 2025 MN 45, mide 700 metros de diámetro —casi el doble de la altura del Empire State— y completa una vuelta cada 1,88 minutos. "No esperábamos encontrar algo girando más rápido de 10 minutos", dice Dmitrii Vavilov, coautor del estudio. Para asteroides de este tamaño, la ciencia pensaba que eran montones de escombros débiles, unidos por gravedad. Pero este objeto debe tener una estructura sólida, posiblemente un fragmento de un núcleo planetario muerto desde hace 4.500 millones de años.
 
-También detectó un cometa interestelar llamado 3I/ATLAS 10 días antes que otros telescopios. Y podría convertirse en una herramienta clave para identificar supernovas fallidas, esos casos en que estrellas masivas colapsan en lugar de explotar. "Es 100 veces más débil que otras encuestas del cielo", explica Stephen Smartt.
+También participó en el seguimiento del cometa interestelar 3I/ATLAS: tras el anuncio del descubrimiento por parte de ATLAS, búsquedas en datos previos de Rubin mostraron una detección 10 días anterior. Y podría convertirse en una herramienta clave para identificar supernovas fallidas, esos casos en que estrellas masivas colapsan en lugar de explotar. "Es 100 veces más débil que otras encuestas del cielo", explica Stephen Smartt.
 
 Rubin mide el desplazamiento de la luz hacia el rojo para calcular distancias a galaxias. Esto ayudará a estudiar la energía oscura y los destellos de radio rápidos, cuyos orígenes siguen siendo un misterio.
 

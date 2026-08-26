@@ -44,8 +44,8 @@ fact_check:
     status: confirmed
 why_it_matters:
   - En América Latina, donde el acceso a tratamientos oncológicos es limitado, prevenir hasta un tercio de los casos de cáncer podría salvar miles de vidas y reducir la carga económica en los sistemas de salud.
-  - Enfocar políticas de salud en reducir el tabaquismo, promover la vacunación contra infecciones oncogénicas y moderar el consumo de alcohol tendría un impacto directo en la disminución del cáncer en la región.
-  - Abordar las desigualdades en la prevención permite que los países de bajos y medianos ingresos se beneficien de estrategias de bajo costo y alto rendimiento.
+  - Enfocar políticas de salud en reducir el tabaquismo, promover la vacunación contra infecciones oncogénicas y moderar el consumo de alcohol podría tener un impacto directo en la disminución del cáncer en la región.
+  - Abordar las desigualdades en la prevención podría permitir que los países de bajos y medianos ingresos se beneficien de estrategias de bajo costo y alto rendimiento.
 confidence: Alta — estudio revisado por pares en Nature Medicine con datos globales de 2022, aunque menciona limitaciones en la calidad de los datos y posibles factores no considerados.
 sources:
   - title: These two habits are linked to many cancer cases
@@ -60,7 +60,7 @@ El cáncer es una de las principales causas de enfermedad y muerte en todo el mu
 
 **Desarrollo**
 
-El estudio, liderado por Hanna Fink, epidemióloga del cáncer en la Agencia Internacional para la Investigación del Cáncer de la Organización Mundial de la Salud, analiza los datos globales de casos de 2022 para 36 diferentes tipos de cáncer en 185 países. Los investigadores examinaron 30 factores de riesgo modificables que son causas bien establecidas del cáncer, como el tabaquismo, el consumo de alcohol y las infecciones. Luego, estimaron la proporción de casos que estuvieron directamente vinculados a cada factor de riesgo.
+Un estudio en el que figura como coautora Hanna Fink, epidemióloga del cáncer en la Agencia Internacional para la Investigación del Cáncer de la Organización Mundial de la Salud, analiza los datos globales de casos de 2022 para 36 diferentes tipos de cáncer en 185 países. Los investigadores examinaron 30 factores de riesgo modificables que son causas bien establecidas del cáncer, como el tabaquismo, el consumo de alcohol y las infecciones. Luego, estimaron la proporción de casos que estuvieron directamente vinculados a cada factor de riesgo.
 
 **Evidencia y límites**
 

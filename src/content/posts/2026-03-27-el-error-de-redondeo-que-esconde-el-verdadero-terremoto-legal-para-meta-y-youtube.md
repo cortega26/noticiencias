@@ -1,6 +1,6 @@
 ---
 title: El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube
-schema_version: 1
+schema_version: 2
 excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
 author: Noticiencias
 date: 2026-03-27
@@ -22,6 +22,46 @@ headlines_variants:
   benefit: Cómo las multas millonarias abren la puerta a un internet más seguro para los niños
 investigation: false
 featured: false
+summary_points:
+  - Dos veredictos recientes en EE. UU. condenaron a Meta a pagar 375 millones de dólares en Nuevo México, y a Meta y YouTube (70%/30%) a compartir daños por casi 6 millones de dólares en el caso de Los Ángeles, por perjuicios a menores relacionados con el diseño de sus plataformas.
+  - Los jurados concluyeron que características como el desplazamiento infinito, la reproducción automática y los algoritmos de recomendación contribuyeron a adicción, depresión y autolesiones en jóvenes.
+  - El caso de Los Ángeles funciona como un 'bellwether' que podría allanar el camino para cientos de demandas similares y para más de 40 casos pendientes de fiscales estatales.
+  - El acceso a documentos internos de Meta mostró que la empresa priorizó la interacción sobre la seguridad, lo que refuerza la teoría legal de responsabilidad por diseño de producto.
+glossary:
+  - term: Sección 230
+    definition: Parte de la Ley de Decencia en las Comunicaciones de EE. UU. que otorga a las plataformas de internet inmunidad frente al contenido publicado por sus usuarios.
+  - term: desplazamiento infinito (infinite scroll)
+    definition: Función que carga contenido continuamente mientras el usuario hace scroll, sin necesidad de hacer clic en páginas siguientes.
+  - term: reproducción automática (autoplay video)
+    definition: Reproducción de un video siguiente sin que el usuario lo seleccione, activándose tras finalizar el actual.
+  - term: algoritmos de recomendación
+    definition: Sistemas que sugieren contenido basado en el comportamiento previo del usuario, como clics, tiempo de visualización e interacciones.
+  - term: bellwether
+    definition: Caso de prueba seleccionado entre muchos similares para determinar si una teoría legal puede prosperar ante un jurado.
+  - term: diseño de producto
+    definition: Decisiones intencionales sobre cómo se estructuran y funcionan las características de una plataforma, que pueden influir en el comportamiento del usuario.
+fact_check:
+  - label: Meta fue ordenada a pagar 375 millones de dólares en el veredicto de Nuevo México.
+    status: confirmed
+  - label: YouTube fue considerada responsable del 30% de los daños en el caso de Los Ángeles.
+    status: confirmed
+  - label: Las acciones de Meta subieron un 5% tras uno de los veredictos.
+    status: confirmed
+  - label: El caso de Los Ángeles es un 'bellwether' que podría sentar precedente para cientos de demandas similares.
+    status: confirmed
+  - label: Más de 40 casos pendientes de fiscales generales estatales se basan en las teorías legales de estos veredictos.
+    status: confirmed
+  - label: Un juicio federal sobre estas cuestiones está previsto para finales de este año.
+    status: confirmed
+why_it_matters:
+  - Los fallos podrían inspirar a reguladores latinoamericanos a exigir cambios en el diseño de plataformas para proteger a niños y adolescentes.
+  - Si las compañías deben rediseñar funciones como el autoplay o el infinite scroll, la experiencia de millones de usuarios en la región podría volverse más segura y menos adictiva.
+  - El acceso a documentos internos revela prácticas corporativas de plataformas que operan también en mercados emergentes; esto podría abrir la puerta a demandas colectivas similares en países como Brasil, México o Colombia.
+confidence: Alta — basada en veredictos judiciales recientes, acceso a documentos internos de Meta y la presencia de múltiples casos pendientes que respaldan las conclusiones.
+sources:
+  - title: 'Two verdicts in two days: How American courts are rewriting the rules for Big Tech and children'
+    url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
+    publisher: The Conversation
 ---
 
 ## El Verdadero Terremoto Legal: Cuando las Multas Millonarias son un "Error de Redondeo" para los Gigantes Tech
@@ -50,7 +90,7 @@ Al día siguiente, un segundo veredicto en Los Ángeles abordó una teoría dife
 
 ### El Verano de los Veredictos: Señales de un Cambio Incipiente
 
-El jurado de Nuevo México falló a favor del estado en todos los cargos, ordenando a Meta pagar 375 millones de dólares. Un día después, el jurado de Los Ángeles encontró a Meta y a YouTube negligentes en el diseño de sus plataformas, concluyendo que esta negligencia fue un factor sustancial en el daño a KGM y otorgándole casi 6 millones de dólares en concepto de daños compensatorios. (Meta fue considerada responsable del 70%; YouTube del 30%).
+El jurado de Nuevo México falló a favor del estado en todos los cargos, ordenando a Meta pagar 375 millones de dólares. Un día después, el jurado de Los Ángeles encontró a Meta y a YouTube negligentes en el diseño de sus plataformas, concluyendo que esta negligencia fue un factor sustancial en el daño a KGM y otorgándole 3 millones de dólares en daños compensatorios. (Meta fue considerada responsable del 70%; YouTube del 30%).
 
 Más allá de las cifras, el caso de Los Ángeles es un **"caso testigo" (_bellwether_)**: fue seleccionado entre cientos de demandas similares para probar si una teoría de responsabilidad por el diseño de producto podía prosperar en un juicio con jurado. El éxito de este caso allana el camino para que miles de demandas similares avancen, pasando la exposición financiera potencial de las empresas de cientos de millones a miles de millones de dólares. Se ha establecido que las demandas por negligencia contra el diseño de la plataforma son viables en los tribunales de California, lo que transforma la posición de partida de futuros litigantes.
 

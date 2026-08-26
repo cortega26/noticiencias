@@ -1,5 +1,5 @@
 ---
-title: El MIT descubre que la automatización no mejora la productividad como se creía
+title: El MIT descubre que las empresas usan la automatización con frecuencia para recortar salarios, no para maximizar la productividad
 schema_version: 2
 date: 2026-05-07
 author: Noticiencias AI
@@ -10,16 +10,16 @@ tags:
   - automatización
   - desigualdad
   - recorte salarial
-excerpt: 'Estudio MIT: automatización elimina empleos de alto salario, no mejora productividad. Causa 52% aumento desigualdad. 60-90% ganancias perdidas'
+excerpt: 'Estudio MIT: las empresas usan con frecuencia la automatización para sustituir trabajadores con prima salarial, en lugar de maximizar la productividad. Explica el 52% del aumento de la desigualdad; 60-90% de las ganancias de productividad se perdieron'
 image: ~/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg
 image_alt: 'Trabajadores y sistemas automatizados en una planta industrial, ilustrando el debate sobre productividad y salarios'
 source_url: https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507
 refinery_id: 'Study: Firms often use automation to control certain workers’ wages'
 headlines_variants:
-  question: ¿Por qué la automatización no mejora la productividad según el MIT?
+  question: ¿Por qué las empresas usan la automatización más para recortar salarios que para mejorar la productividad?
   benefit: La automatización empresarial agrava la desigualdad al priorizar recortes salariales
 summary_points:
-  - El estudio del MIT encontró que la automatización se ha usado principalmente para eliminar trabajadores con salarios más altos, no para aumentar la productividad.
+  - El estudio del MIT encontró que las empresas han usado con frecuencia la automatización para sustituir trabajadores con prima salarial, en lugar de maximizar la productividad.
   - Esta práctica explica el 52% del crecimiento de la desigualdad de ingresos desde 1980, y entre el 60% y el 90% de las posibles ganancias de productividad se perdieron por enfocarse en recortes de costo.
   - Los investigadores analizaron datos de 500 grupos demográficos y 49 industrias durante varias décadas para identificar qué empleos eran más susceptibles de ser automatizados.
   - Aunque algunas formas de automatización sí mejoran la productividad y crean empleo, la estrategia actual centrada en ahorros a corto plazo está limitando el crecimiento económico y aumentando la brecha salarial.
@@ -46,7 +46,7 @@ fact_check:
 why_it_matters:
   - En América Latina, donde la brecha salarial es ya alta, la tendencia de usar la automatización para despedir a los trabajadores mejor pagados podría profundizar la desigualdad y limitar la movilidad social.
   - Redirigir la automatización hacia mejoras reales de productividad podría generar empleos de mejor calidad y contribuir al crecimiento económico necesario para reducir la pobreza en la región.
-  - Los resultados sugieren que gobiernos y empresas latinoamericanas deben incentivar políticas que enfoquen la tecnología en la innovación, no solo en el recorte de costos laborales.
+  - Los resultados sugieren que gobiernos y empresas latinoamericanas podrían beneficiarse al incentivar políticas que enfoquen la tecnología en la innovación, no solo en el recorte de costos laborales.
 confidence: Moderada — el estudio de MIT utiliza un amplio conjunto de datos (500 grupos demográficos, 49 industrias) pero la información proviene de un comunicado de prensa y no se presentan detalles metodológicos completos ni limitaciones explícitas.
 sources:
   - title: "Study: Firms often use automation to control certain workers' wages"
@@ -55,7 +55,7 @@ sources:
     date: '2026-05-07'
 ---
 
-Cuando escuchamos sobre robots reemplazando trabajos, imaginamos mayor eficiencia. Pero un nuevo estudio del MIT revela un giro inesperado: la automatización no se enfoca principalmente en mejorar la productividad. En cambio, las empresas la han usado para eliminar a trabajadores con salarios más altos, dejando intactos los puestos de menor pago. El resultado: creciente desigualdad sin el aumento prometido en la productividad.
+Cuando escuchamos sobre robots reemplazando trabajos, imaginamos mayor eficiencia. Pero un nuevo estudio del MIT revela un giro inesperado: las empresas han usado con frecuencia la automatización para sustituir trabajadores con prima salarial, en lugar de maximizar la productividad, dejando intactos los puestos de menor pago. El resultado: creciente desigualdad sin el aumento prometido en la productividad.
 
 En muchas industrias, ciertos trabajadores ganan más que otros en roles similares, como un mecánico senior frente a uno junior. Estas "primas salariales" son a menudo las primeras en automatizarse. ¿Por qué? Porque las empresas ven en ellas objetivos de alto costo. Reducir estos salarios aumenta las ganancias a corto plazo, incluso si no mejora la eficiencia general.
 

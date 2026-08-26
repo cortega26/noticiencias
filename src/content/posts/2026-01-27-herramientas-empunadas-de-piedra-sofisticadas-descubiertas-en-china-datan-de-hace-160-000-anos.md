@@ -53,7 +53,7 @@ fact_check:
   - label: Los posibles creadores incluyen Denisovanos, H. longi, H. juluensis o H. sapiens.
     status: uncertain
 why_it_matters:
-  - Entender la sofisticación tecnológica de los primeros humanos en Asia ayuda a reconstruir los procesos de poblamiento y adaptación que finalmente llevaron a la llegada de humanos a América.
+  - Entender la sofisticación tecnológica de los primeros humanos en Asia puede ayudar a reconstruir los procesos de poblamiento y adaptación de la región, un tema de interés más amplio para el estudio de la dispersión humana hacia América.
   - Reconocer que la innovación tecnológica no estuvo limitada a ciertas regiones desafía estereotipos sobre la complejidad cognitiva de distintas poblaciones de homínidos en Asia.
   - Estos hallazgos inspiran a comunidades académicas y museísticas de la región a promover investigaciones comparativas que conecten el pasado asiático con las primeras poblaciones del continente americano.
 confidence: Alta — estudio revisado por pares con evidencia arqueológica sustancial (más de 2.600 herramientas), aunque la identidad exacta de los fabricantes permanece incierta.

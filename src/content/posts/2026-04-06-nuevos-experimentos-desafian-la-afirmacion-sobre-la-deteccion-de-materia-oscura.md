@@ -45,8 +45,8 @@ fact_check:
   - label: Maruyama, investigadora principal de COSINE-100, afirma que los resultados permiten usar detectores de yoduro de sodio para explorar materia oscura de baja masa.
     status: confirmed
 why_it_matters:
-  - La participación del experimento español ANAIS-112 muestra cómo la colaboración internacional, incluida la experiencia latinoamericana, puede contribuir a resolver grandes misterios de la física.
-  - Descartar una señal falsa de materia oscura permite que los recursos y esfuerzos de investigación se concentren en búsquedas más prometedoras, beneficiando a la comunidad científica global, incluidos los grupos de América Latina que trabajan en detección de partículas.
+  - La participación del experimento español ANAIS-112 muestra cómo la colaboración internacional puede contribuir a resolver grandes misterios de la física.
+  - Descartar una señal falsa de materia oscura podría permitir que los recursos y esfuerzos de investigación se concentren en búsquedas más prometedoras, lo que beneficiaría a la comunidad científica global, incluidos los grupos de América Latina que trabajan en detección de partículas.
 confidence: Alta — basada en el análisis conjunto de dos experimentos independientes con metodología idéntica a DAMA/NaI y un tamaño de muestra suficiente, aunque los autores reconocen que no explican el origen de la modulación observada en DAMA/LIBRA.
 sources:
   - title: Experiments Refute Dark Matter Claim

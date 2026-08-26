@@ -30,7 +30,7 @@ Entre 2013 y 2019, el equipo del DES utilizó un telescopio en el Observatorio I
 
 Los resultados combinados de este estudio refinan las mediciones anteriores del DES y confirman que la gravedad no ha agrupado a las galaxias tanto como se anticipaba según la teoría estándar de la evolución del Universo. Esto plantea un rompecabezas para los cosmólogos, ya que sugiere que el Universo puede ser menos irregular de lo que se pensaba.
 
-Es importante destacar que este estudio se basa en una observación cósmica sin precedentes. Sin embargo, los resultados no permiten concluir que la teoría estándar de la evolución del Universo sea incorrecta, sino más bien que requiere una revisión y un ajuste para explicar las observaciones.
+Es importante destacar que este estudio se basa en una observación cósmica sin precedentes. Sin embargo, los resultados no permiten concluir que la teoría estándar de la evolución del Universo sea incorrecta; más bien reflejan una tensión aún no resuelta entre las observaciones y las predicciones del modelo.
 
 En el contexto de la cosmología actual, este estudio se suma a una serie de descubrimientos que han cuestionado nuestra comprensión del Universo. La observación de la expansión acelerada del Universo, la existencia de materia oscura y energía oscura, y la distribución irregular de galaxias en el Universo son solo algunos de los temas que siguen siendo objeto de investigación y debate.
 

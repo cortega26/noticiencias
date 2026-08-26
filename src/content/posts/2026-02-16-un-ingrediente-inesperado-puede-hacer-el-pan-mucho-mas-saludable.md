@@ -46,7 +46,7 @@ fact_check:
 why_it_matters:
   - En América Latina, donde el girasol es un cultivo importante, aprovechar su subproducto puede reducir costos y mejorar la nutrición del pan básico.
   - El mayor contenido de proteínas y fibra podría aportar valor nutricional al pan de consumo diario, aunque este estudio no demuestra beneficios clínicos directos contra la desnutrición o enfermedades crónicas.
-  - Utilizar residuos industriales apoya la sostenibilidad y la economía circular, alineándose con metas de desarrollo ambiental en muchos países latinoamericanos.
+  - Utilizar residuos industriales podría apoyar la sostenibilidad y la economía circular, en línea con metas de desarrollo ambiental de muchos países latinoamericanos.
 confidence: Moderada — estudio de investigadores de la Universidad de São Paulo con resultados experimentales claros, aunque aún en fase de laboratorio y sin validación a gran escala.
 sources:
   - title: This Unexpected Ingredient Makes Bread Much Healthier
