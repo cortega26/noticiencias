@@ -174,16 +174,14 @@ function collectEditorialDiagnostics() {
 // ---------------------------------------------------------------------------
 
 const diagnostics = collectEditorialDiagnostics();
-const strictMode = process.env.STRICT_EDITORIAL === 'true';
 const jsonMode = process.argv.includes('--json');
 const hasErrors = diagnostics.errors.length > 0;
 
 if (jsonMode) {
-  const status = hasErrors ? (strictMode ? 'fail' : 'warning') : 'pass';
   console.log(
     JSON.stringify({
       check: 'editorial-fields',
-      status,
+      status: hasErrors ? 'fail' : 'pass',
       filesCount: diagnostics.filesCount,
       v2Count: diagnostics.v2Count,
       errors: diagnostics.errors.map((e) => {
@@ -194,7 +192,7 @@ if (jsonMode) {
       }),
     })
   );
-  process.exit(strictMode && hasErrors ? 1 : 0);
+  process.exit(hasErrors ? 1 : 0);
 }
 
 if (diagnostics.v2Count === 0) {
@@ -203,26 +201,15 @@ if (diagnostics.v2Count === 0) {
 }
 
 if (hasErrors) {
-  const label = strictMode ? 'error(es)' : 'aviso(s)';
   console.error(
-    `[editorial-fields] ${diagnostics.errors.length} ${label} en ${diagnostics.v2Count} artículo(s) v2:`
+    `[editorial-fields] ${diagnostics.errors.length} error(es) en ${diagnostics.v2Count} artículo(s) v2:`
   );
   for (const error of diagnostics.errors) {
-    const prefix = strictMode ? '❌' : '⚠️';
-    console.error(`  ${prefix} ${error}`);
+    console.error(`  ❌ ${error}`);
   }
 
-  if (strictMode) {
-    console.error(
-      `\n[editorial-fields] STRICT_EDITORIAL=true — bloquear build. Corrige los campos o desactiva el flag.`
-    );
-    process.exit(1);
-  } else {
-    console.error(
-      `\n[editorial-fields] Reporte informativo. Para bloquear, usa STRICT_EDITORIAL=true.`
-    );
-    process.exit(0);
-  }
+  console.error(`\n[editorial-fields] Bloqueando build. Corrige los campos faltantes.`);
+  process.exit(1);
 }
 
 console.log(`[editorial-fields] OK — ${diagnostics.v2Count} artículo(s) v2 validados sin errores.`);
