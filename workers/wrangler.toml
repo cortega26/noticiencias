@@ -6,10 +6,14 @@ workers_dev = false
 # Account ID is passed via CLOUDFLARE_ACCOUNT_ID env var in CI.
 # For local dev, set it in a .dev.vars file or pass via --account-id.
 
-# Route pattern: only intercept /api/* paths on the production domain.
-# All other requests pass through to GitHub Pages.
+# Route pattern: the whole zone. Needed because article permalinks have
+# no fixed prefix (see docs/adr/0008-markdown-for-agents.md) — some
+# resolve to bare root-level slugs, so /api/*-only routing can't reach
+# every article for Accept: text/markdown negotiation. The fetch handler
+# still passes through unchanged to GitHub Pages for every request that
+# isn't /api/* or an explicit Markdown-negotiation match.
 routes = [
-  { pattern = "noticiencias.com/api/*", zone_name = "noticiencias.com" }
+  { pattern = "noticiencias.com/*", zone_name = "noticiencias.com" }
 ]
 
 [observability]

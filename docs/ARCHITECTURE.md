@@ -153,6 +153,14 @@ Canonical URLs should resolve through `getCanonical()` in `src/utils/permalinks.
   - tag: `temas`
 - Post permalinks currently derive from `/%category%/%slug%` unless a frontmatter `permalink` overrides them.
 - Reusable route generation belongs in `src/utils/permalinks.ts` and `src/utils/blog.ts`.
+- `/llm-md/*` (`src/pages/llm-md/[...slug].md.ts`) is a build-time backing
+  artifact namespace for Accept-based Markdown negotiation (see
+  `docs/adr/0008-markdown-for-agents.md`) — one static Markdown file per
+  `schema_version >= 2` article, at the same path as its canonical
+  permalink. It is not a second canonical URL: excluded from the sitemap
+  (`astro.config.mjs`'s `sitemap.filter`) and disallowed in
+  `public/robots.txt`. The Cloudflare Worker in `workers/` fetches it
+  internally when a request's `Accept` header prefers `text/markdown`.
 
 ## Browser-Side Behavior
 
