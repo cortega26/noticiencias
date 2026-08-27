@@ -492,6 +492,44 @@ scratch or overwriting what's there. `Content-Type` is still set
 explicitly (the only header that must change). See `workers/src/index.ts`
 and the "Vary: Accept scope" audit below for the rest of this correction.
 
+**Automated PR review (chatgpt-codex-connector) caught two further real
+bugs before merge, both fixed:**
+
+1. **Trailing-slash artifact mismatch (P1, critical).** `site.trailingSlash`
+   is `true` (`src/config.yaml`), so every real canonical article URL
+   (`getPermalink`/`getCanonical`) ends in `/` — but the generated
+   `/llm-md/*.md` artifact path never does (`getStaticPaths()` strips
+   leading/trailing slashes from `post.permalink`). The Worker was
+   appending `.md` to the raw incoming pathname unmodified, producing
+   `/llm-md/ciencia/slug/.md` for every real request — which never
+   matches the actual `/llm-md/ciencia/slug.md` file. This would have
+   silently broken Markdown negotiation for every article in production
+   (always falling back to HTML) while every local test used a
+   trailing-slash-free path and never caught it. Fixed by stripping the
+   trailing slash before constructing the artifact URL; regression test
+   added using a real trailing-slash path.
+2. **`q=0` exclusion overridden by a broader wildcard (P2).** `parseAccept()`
+   discarded zero-weighted entries entirely, so
+   `text/*;q=1, text/markdown;q=0, text/html;q=0.5` lost the explicit
+   markdown exclusion and fell back to matching the `text/*` wildcard
+   instead — incorrectly serving Markdown to a client that explicitly
+   marked it unacceptable. Fixed by keeping `q=0` entries in the parsed
+   list so the more-specific exact match (specificity 2, `q=0`) correctly
+   outranks the wildcard (specificity 1) in `matchQuality()`; regression
+   test added.
+
+A third finding (translation_method/investigation appearing in the
+`/llm-md/*` artifact beyond operator constraint #4's explicit field list)
+was reviewed and not fixed: both fields are already publicly rendered on
+the real article page today (`TrustPanel.astro`'s "Método:" line;
+`PostLayout.astro`'s `InvestigationBadge`), so their presence in the
+artifact is not a privacy/internal-data leak — constraint #4's list
+establishes the required six-field contract, not an exhaustive denylist
+against every other already-public field. A fourth finding (updating an
+active doc for the `astro.config.mjs` sitemap-filter change, per
+`AGENTS.md` §8) was addressed: see the `/llm-md/*` note added to
+`docs/ARCHITECTURE.md`'s "URL And Taxonomy Contract" section.
+
 ## Done criteria
 
 - [x] A normal browser request (no `Accept: text/markdown` preference)

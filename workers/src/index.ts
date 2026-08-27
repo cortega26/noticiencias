@@ -82,7 +82,11 @@ export default {
     ctx.passThroughOnException();
     try {
       if (method === 'GET' && prefersMarkdown(request.headers.get('Accept'))) {
-        const markdownUrl = new URL(`/llm-md${pathname}.md`, url);
+        // Canonical article URLs carry a trailing slash (site.trailingSlash
+        // is enabled), but the generated artifact path never does — strip
+        // it before appending .md, or every real request would miss.
+        const trimmedPath = pathname.replace(/\/+$/, '');
+        const markdownUrl = new URL(`/llm-md${trimmedPath}.md`, url);
         const markdownResponse = await fetch(markdownUrl);
         if (markdownResponse.ok) {
           const response = new Response(markdownResponse.body, markdownResponse);

@@ -70,4 +70,11 @@ describe('prefersMarkdown (RFC 9110 Accept negotiation)', () => {
   it('handles multiple accept-params, using only q', () => {
     expect(prefersMarkdown('text/markdown;charset=utf-8;q=0.9, text/html;q=0.1')).toBe(true);
   });
+
+  it('lets an explicit q=0 exclusion override a broader text/* wildcard', () => {
+    // A naive implementation that drops q=0 entries before matching would
+    // fall back to the text/* wildcard here and incorrectly serve
+    // Markdown, even though the client explicitly marked it unacceptable.
+    expect(prefersMarkdown('text/*;q=1, text/markdown;q=0, text/html;q=0.5')).toBe(false);
+  });
 });

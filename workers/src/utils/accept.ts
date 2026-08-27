@@ -34,9 +34,11 @@ function parseAccept(header: string | null): AcceptEntry[] {
       }
     }
 
-    if (q > 0) {
-      entries.push({ type: rawType.toLowerCase(), subtype: rawSubtype.toLowerCase(), q });
-    }
+    // Keep q=0 entries too: an explicit `text/markdown;q=0` must be able to
+    // out-rank a broader `text/*;q=1` wildcard in matchQuality() below
+    // (exact match wins on specificity regardless of q) — dropping it here
+    // would let the wildcard silently override an explicit exclusion.
+    entries.push({ type: rawType.toLowerCase(), subtype: rawSubtype.toLowerCase(), q });
   }
   return entries;
 }

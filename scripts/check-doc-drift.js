@@ -212,6 +212,7 @@ function resolveDocPath(rawPath, docDir) {
     'tests/',
     'docs/',
     'data/',
+    'public/',
     'workers/',
     '.github/',
     '.contract-snapshots/',

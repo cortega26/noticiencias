@@ -89,6 +89,31 @@ describe('worker Markdown negotiation (ADR-0008)', () => {
     expect(requestedUrls).toContain('https://noticiencias.com/llm-md/ciencia/algun-articulo.md');
   });
 
+  it('strips the canonical trailing slash before locating the artifact (site.trailingSlash: true)', async () => {
+    fetchSpy.mockImplementation(async (input: string | URL | Request) => {
+      const url = extractUrl(input);
+      if (url.includes('/llm-md/')) {
+        return new Response('# contenido', { status: 200 });
+      }
+      return htmlResponse('<html>html</html>');
+    });
+
+    // Real canonical article URLs carry a trailing slash — getPermalink()
+    // with site.trailingSlash: true always appends one.
+    const response = await fetchThrough(get('/ciencia/algun-articulo/', 'text/markdown'));
+
+    expect(response.headers.get('Content-Type')).toBe('text/markdown; charset=utf-8');
+    expect(await response.text()).toContain('contenido');
+
+    const requestedUrls = fetchSpy.mock.calls.map((call: unknown[]) =>
+      extractUrl(call[0] as string | URL | Request)
+    );
+    expect(requestedUrls).toContain('https://noticiencias.com/llm-md/ciencia/algun-articulo.md');
+    expect(requestedUrls).not.toContain(
+      'https://noticiencias.com/llm-md/ciencia/algun-articulo/.md'
+    );
+  });
+
   it('falls back to HTML when no Markdown artifact exists for the path', async () => {
     fetchSpy.mockImplementation(async (input: string | URL | Request) => {
       const url = extractUrl(input);
