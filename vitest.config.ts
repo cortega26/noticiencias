@@ -84,6 +84,12 @@ export default defineConfig({
           lines: 92,
         },
         'src/utils/hub.ts': { statements: 95, branches: 79, functions: 100, lines: 94 },
+        'src/utils/markdownArticle.ts': {
+          statements: 100,
+          branches: 97,
+          functions: 100,
+          lines: 100,
+        },
         'src/utils/permalinks.ts': { statements: 91, branches: 71, functions: 90, lines: 90 },
         'src/utils/blog.ts': { statements: 55, branches: 32, functions: 36, lines: 59 },
         'src/utils/image-derivatives.ts': {
@@ -100,6 +106,7 @@ export default defineConfig({
         'src/utils/images.ts': { statements: 0, branches: 0, functions: 0, lines: 0 },
         'src/pages/llms.txt.ts': { statements: 0, branches: 0, functions: 0, lines: 0 },
         'src/pages/llms-full.txt.ts': { statements: 0, branches: 0, functions: 0, lines: 0 },
+        'src/pages/llm-md/[...slug].md.ts': { statements: 0, branches: 0, functions: 0, lines: 0 },
         'src/integration/index.ts': { statements: 0, branches: 0, functions: 0, lines: 0 },
       },
     },

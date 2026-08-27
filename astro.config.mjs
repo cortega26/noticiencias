@@ -16,7 +16,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !page.includes('/buscar') && !page.includes('/search.json') && !page.includes('/admin/'),
+        !page.includes('/buscar') &&
+        !page.includes('/search.json') &&
+        !page.includes('/admin/') &&
+        !page.includes('/llm-md/'),
     }),
     mdx(),
     icon({
