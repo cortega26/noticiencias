@@ -136,8 +136,8 @@ itself, and that existing policy is unchanged by this feature.
 
 `/llm-md/*`, however, is an **implementation backing namespace**, not
 a second piece of public content — it exists only so the Worker has
-something to fetch internally (Design §2/§3), and per operator constraint
-#2 must never become a second, independently-discoverable/indexable
+something to fetch internally (Design §2/§3), and per operator
+constraint #2 must never become a second, independently-discoverable/indexable
 surface for the same article. A crawler that discovers and indexes
 `/llm-md/*` directly (rather than reaching the Markdown representation
 through negotiation on the real URL) would create exactly the duplicate-
