@@ -37,7 +37,8 @@ jobs:
 
       - name: Serve and audit
         run: |
-          npx serve dist -p 4173 &
+          mkdir -p reports
+          npx --yes serve dist -p 4173 &
           sleep 3
 
           lighthouse http://localhost:4173 \
