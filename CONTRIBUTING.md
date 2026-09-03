@@ -64,6 +64,16 @@ npm run test:dist         # dist sanity checks (run after build)
   (`PLAYWRIGHT_BASE_URL=http://localhost:4321`) — never the live site —
   so fork PRs get the same coverage as main-branch PRs.
 
+## Scheduled maintenance workflows
+
+- `perf-monitor.yml` runs Lighthouse monthly (15th, 09:37 UTC, plus manual
+  dispatch): it builds the site, serves `dist/` locally, and writes the
+  report to `reports/lighthouse-home.json` (the job creates `reports/`
+  first — Lighthouse fails if the output directory does not exist).
+- Scores below 80 in any category (performance, accessibility, SEO,
+  best-practices) raise a `::warning::` annotation and open a
+  `performance`-labeled issue automatically.
+
 ## Key directories
 
 | Path                       | Purpose                                                   |
