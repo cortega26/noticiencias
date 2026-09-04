@@ -895,6 +895,27 @@
       }
     ]
   },
+  "~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif": {
+    "originalWidth": 766,
+    "originalHeight": 402,
+    "hash": "861d273d4a0de365",
+    "variants": [
+      {
+        "width": 400,
+        "height": 210,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.400.avif"
+      },
+      {
+        "width": 766,
+        "height": 402,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.766.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.766.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
