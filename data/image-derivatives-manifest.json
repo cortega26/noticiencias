@@ -867,6 +867,34 @@
       }
     ]
   },
+  "~/assets/images/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.avif": {
+    "originalWidth": 1356,
+    "originalHeight": 668,
+    "hash": "33db36e4f0e350eb",
+    "variants": [
+      {
+        "width": 400,
+        "height": 197,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 443,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.900.avif"
+      },
+      {
+        "width": 1356,
+        "height": 668,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.1356.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.1356.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp": {
     "originalWidth": 980,
     "originalHeight": 735,
