@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-26T07:07:15.351Z",
+  "generated_at": "2026-09-05T10:31:49.300Z",
   "content": {
-    "total_articles": 31,
-    "v2_articles": 19,
-    "total_words": 18373,
-    "avg_words": 593,
+    "total_articles": 32,
+    "v2_articles": 20,
+    "total_words": 19467,
+    "avg_words": 608,
     "categories": [
       {
         "name": "Tecnología",
@@ -20,7 +20,7 @@
       },
       {
         "name": "Ciencia",
-        "count": 3
+        "count": 4
       },
       {
         "name": "Arqueología",
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — el informe se basa en análisis de seguridad y comunicados oficiales, pero incluye hipótesis no verificadas sobre el origen del ataque.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles",
+        "title": "¿Qué efectos tiene un rayo sin rasguños visibles?",
+        "date": "2026-08-10",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación basado en investigación de la Universidad de Dakota del Norte y la African Centres for Lightning and Education Network, con datos recopilados pero con rangos amplios debido a la escasez de registros y limitaciones metodológicas.",
         "review_status": null
       },
       {
@@ -551,11 +563,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-08-26T07:07:15.351Z"
+    "generated_at": "2026-09-05T10:31:49.299Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 31,
+    "derivatives_available": 32,
     "missing_derivatives": 0
   }
 }
