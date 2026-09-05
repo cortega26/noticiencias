@@ -12,7 +12,7 @@
  * Exits 0 if no unapproved unreachable components, 1 otherwise.
  */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { resolve, join, extname, basename } from 'node:path';
+import { resolve, join } from 'node:path';
 
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');

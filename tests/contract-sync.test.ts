@@ -29,14 +29,19 @@ function runSync(args: string): {
       timeout: 10_000,
     });
     return { stdout, stderr: '', combined: stdout, exitCode: 0 };
-  } catch (e: any) {
-    const stdout = e.stdout?.toString() || '';
-    const stderr = e.stderr?.toString() || '';
+  } catch (e: unknown) {
+    const execError = e as {
+      stdout?: { toString(): string } | string;
+      stderr?: { toString(): string } | string;
+      status?: number | null;
+    };
+    const stdout = execError.stdout?.toString() || '';
+    const stderr = execError.stderr?.toString() || '';
     return {
       stdout,
       stderr,
       combined: stdout + stderr,
-      exitCode: e.status || 1,
+      exitCode: execError.status || 1,
     };
   }
 }
