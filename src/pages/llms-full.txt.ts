@@ -68,7 +68,7 @@ export const GET: APIRoute = async () => {
   }
 
   if (hypeContent) {
-    output += `### [Detector de Hype: Guía de Sobrevivencia](${hypeUrl})\n\n`;
+    output += `### [Detector de hype: leer ciencia sin que te vendan humo](${hypeUrl})\n\n`;
     output += `${hypeContent}\n\n`;
     output += `---\n\n`;
   }

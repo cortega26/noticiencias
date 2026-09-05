@@ -2,61 +2,52 @@
 title: 'Metodología Editorial'
 permalink: /metodologia/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Cómo combinamos automatización inteligente y curación humana para ofrecer ciencia sin ruido, 100% verificable.'
+excerpt: 'Cómo elegimos, traducimos y revisamos cada artículo: automatización para cubrir mucho, revisión humana para no publicar humo, y las fuentes siempre a la vista.'
 ---
 
-En un entorno digital saturado de titulares exagerados y clickbait, **Noticiencias** nació con una obsesión: devolver el rigor y la trazabilidad al periodismo de ciencia y tecnología.
+Internet está lleno de titulares de ciencia exagerados. **Noticiencias** nació para lo contrario: contar qué se ha descubierto de verdad, con qué respaldo y con qué límites, en un español claro y con las fuentes a la vista.
 
-No somos un agregador pasivo de noticias, ni un blog de opinión. Somos un sistema híbrido diseñado para extraer la esencia de la investigación científica primaria, traducirla a un lenguaje accesible y declarar abiertamente los límites de cada hallazgo.
-
-Así es como trabajamos para garantizar que cada lectura valga tu tiempo.
-
----
-
-## Nuestros 3 Pilares Fundamentales
-
-Toda pieza que publicamos pasa por tres filtros de integridad:
-
-1. **Evidencia Primaria Primero:** No informamos sobre rumores de pasillo o notas de prensa de marketing. La fuente de origen siempre es un paper de investigación revisado por pares, un preprint de un repositorio académico reconocido o un reporte técnico institucional.
-2. **Contexto y Límites Explícitos:** Un hallazgo científico nunca está completo sin sus matices. Declaramos siempre el tamaño de la muestra, el sujeto del estudio (ratón, humano, simulación matemática) y las dudas que la propia comunidad científica plantea.
-3. **Trazabilidad Total:** No te pedimos que confíes a ciegas en nosotros. Proporcionamos los enlaces DOI originales, las fuentes utilizadas y el nivel de confianza de la información para que puedas auditar nuestro trabajo con un solo clic.
+No somos un agregador que copia titulares ni un blog de opinión. Combinamos herramientas automáticas —que vigilan muchas fuentes y preparan borradores— con la revisión de una persona antes de publicar. Así es como trabajamos.
 
 ---
 
-## El Pipeline de Noticiencias: De la Fuente a tu Pantalla
+## Qué cuidamos en cada artículo
 
-Para mantener una cobertura amplia pero rigurosa, operamos a través de un flujo estructurado de 5 pasos:
+Tres ideas guían todo lo que hacemos.
 
-1. **Curación y Selección 🔍**
-   Monitoreamos en tiempo real revistas científicas de alta reputación (como _Nature_, _Science_, _PLOS_, _arXiv_). Filtramos el ruido y descartamos publicaciones en revistas predatorias o preprints dudosos.
+**Ir hacia la evidencia, no hacia el rumor.** Partimos de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints. Desde ahí buscamos el estudio original para enlazarlo y leerlo con calma.
 
-2. **Extracción y Trazabilidad 🛠️**
-   Extraemos el contenido respetando los protocolos `robots.txt`. Guardamos y estructuramos todos los metadatos del estudio, incluyendo autores, afiliaciones y el DOI (Digital Object Identifier) original.
+**Contar los matices.** Un hallazgo sin contexto engaña. Decimos en qué se basa —cuánta gente participó, si se probó en personas, animales o simulaciones— y qué dudas plantea la propia comunidad científica.
 
-3. **Coprocesamiento Inteligente (IA) 🤖**
-   Modelos de lenguaje avanzados traducen la investigación técnica del inglés al español y extraen los elementos clave: resúmenes ejecutivos ("En breve"), consecuencias ("Qué cambia") y términos difíciles ("Glosario").
-
-4. **Mesa Editorial Humana ✍️**
-   **La IA nunca publica sola.** Un editor de carne y hueso revisa y limpia el borrador. Corregimos cualquier alucinación técnica de la IA, eliminamos términos excesivamente complejos y suprimimos adjetivos sensacionalistas ("revolucionario", "increíble", "milagroso").
-
-5. **Ficha de Transparencia 🛡️**
-   El artículo se publica junto con sus credenciales de auditoría. Al final de cada lectura, encontrarás un panel interactivo declarando el tipo de estudio, el método de traducción y el enlace DOI directo al paper original.
+**Dejar el rastro.** No te pedimos que confíes a ciegas. Enlazamos las fuentes que usamos, añadimos el DOI del estudio cuando existe y publicamos una valoración del estado de la evidencia, para que puedas comprobar el trabajo por tu cuenta.
 
 ---
 
-## Compromiso de Transparencia y Erratas
+## Cómo llega un artículo hasta aquí
+
+1. **Selección.** Un sistema propio revisa de forma continua alrededor de sesenta fuentes: revistas y medios de divulgación con buena reputación, salas de prensa universitarias, blogs de laboratorios de investigación y servidores de preprints como arXiv y bioRxiv. Ordena los hallazgos por relevancia y descarta el ruido y las publicaciones dudosas.
+
+2. **Lectura y traducción.** Recogemos el contenido a través de los canales RSS oficiales y respetando las condiciones de cada sitio. Guardamos los datos del estudio —autores, institución, DOI— y unos modelos de lenguaje preparan una primera versión en español, con sus apartados: «En breve», «Qué cambia» y un glosario de términos difíciles.
+
+3. **Controles automáticos.** Cada borrador pasa por comprobaciones con un listón fijo: un crítico editorial que lo puntúa y lo rechaza si no llega al umbral, una medida de legibilidad que detecta los textos demasiado densos y un control de políticas de contenido que frena las promesas sin respaldo y los adjetivos sensacionalistas.
+
+4. **Revisión y publicación.** Una persona decide qué historia entra, revisa el resultado y sus fuentes, y aprueba el cambio. Nada se publica sin ese visto bueno; lo que no convence se corrige o se deja fuera. Al aprobarse, todavía corren comprobaciones de la propia web antes de que el artículo quede en línea.
+
+5. **La ficha de fuentes.** Cada artículo se publica con su recuadro **«Fuentes y verificación»**: el estado de la evidencia, lo que falta por saber, el método de traducción y los enlaces a las fuentes originales.
+
+---
+
+## Cuando algo cambia
 
 La ciencia avanza corrigiéndose a sí misma, y nuestro periodismo también.
 
-- Si un estudio científico que cubrimos es refutado, retractado o actualizado por sus autores, editamos de inmediato el artículo original en Noticiencias, detallando los cambios en una nota visible.
-- Promovemos el escrutinio público. Todo nuestro código de procesamiento de datos y la visualización web es de código abierto en [GitHub](https://github.com/cortega26/noticiencias). Si encuentras un error o quieres sugerir una mejora en nuestra traducción, puedes abrir un issue o enviar una propuesta directamente.
+- Si un estudio que cubrimos se retracta, se corrige o se actualiza, editamos el artículo y lo explicamos en una nota visible.
+- El código que procesa los datos y la propia web son de código abierto en [GitHub](https://github.com/cortega26/noticiencias). Si ves un error o quieres proponer una mejora en una traducción, puedes abrir un issue o enviar una propuesta.
 
 ---
 
-### Apoya el Periodismo Científico Libre de Hype
+### Ciencia sin hype
 
-No dependemos de clics sensacionalistas para vender anuncios molestos. Noticiencias se financia mediante el interés y apoyo de su comunidad.
+No vivimos de clics ni de anuncios molestos: Noticiencias se sostiene con el interés y el apoyo de su comunidad. Si te sirve lo que hacemos, suscríbete al boletín semanal.
 
-Si valoras nuestro esfuerzo por traer ciencia explicada con rigor, suscríbete a nuestro boletín semanal.
-
-[Suscribirse al Boletín](/newsletter)
+[Suscribirse al boletín](/newsletter)

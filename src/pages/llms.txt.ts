@@ -41,7 +41,7 @@ export const GET: APIRoute = async () => {
   output += `- [Código Fuente](https://github.com/cortega26/noticiencias): Nuestro repositorio de código abierto en GitHub.\n\n`;
 
   output += `## Guías y Recursos\n`;
-  output += `- [Detector de Hype](${hypeUrl}): Guía de sobrevivencia y herramientas lógicas para identificar noticias científicas infladas o sensacionalistas.\n\n`;
+  output += `- [Detector de hype](${hypeUrl}): Preguntas y herramientas para identificar noticias científicas infladas o sensacionalistas.\n\n`;
 
   output += `## Secciones Temáticas\n`;
   for (const section of sections) {
