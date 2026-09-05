@@ -39,10 +39,15 @@ function runCheck(
       },
     });
     return { combined: stdout, exitCode: 0 };
-  } catch (e: any) {
-    const stdout = e.stdout?.toString() || '';
-    const stderr = e.stderr?.toString() || '';
-    return { combined: stdout + stderr, exitCode: e.status || 1 };
+  } catch (e: unknown) {
+    const execError = e as {
+      stdout?: { toString(): string } | string;
+      stderr?: { toString(): string } | string;
+      status?: number | null;
+    };
+    const stdout = execError.stdout?.toString() || '';
+    const stderr = execError.stderr?.toString() || '';
+    return { combined: stdout + stderr, exitCode: execError.status || 1 };
   }
 }
 

@@ -18,8 +18,8 @@
  *   2 — usage error or file not found
  */
 
-import { readFileSync, writeFileSync, statSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 import { format } from 'prettier';
 
 // ---------------------------------------------------------------------------
@@ -393,7 +393,6 @@ function parsePythonSchema(source) {
     const afterClass = source.indexOf('\n', classStart);
     let bodyStart = afterClass + 1;
     // Class body lines are indented by 4 spaces
-    let bodyEnd = source.length;
     const lines = source.slice(bodyStart).split('\n');
     let endLine = lines.length;
     for (let i = 0; i < lines.length; i++) {
@@ -492,24 +491,6 @@ function zodBaseType(method) {
     url: 'url',
   };
   return m[method] || 'string';
-}
-
-/**
- * Track brace/paren/bracket depth through a string.
- */
-function trackDepth(str) {
-  let depth = 0;
-  let parenDepth = 0;
-  let bracketDepth = 0;
-  for (const ch of str) {
-    if (ch === '{') depth++;
-    if (ch === '}') depth--;
-    if (ch === '(') parenDepth++;
-    if (ch === ')') parenDepth--;
-    if (ch === '[') bracketDepth++;
-    if (ch === ']') bracketDepth--;
-  }
-  return { brace: depth, paren: parenDepth, bracket: bracketDepth };
 }
 
 /**
@@ -1137,43 +1118,9 @@ function compareFieldSets(pyFields, tsFields, modelPath, nestedPy, nestedTs, sev
 }
 
 /**
- * Map nested model names from Python to TypeScript conventions.
- * Python uses class names like 'SourceItem', 'GlossaryItem'
- * TypeScript uses inline names based on field: 'sources_item', 'glossary_item'
- */
-function mapNestedModelNames(pyIr, tsIr) {
-  // Build a mapping: Python model name → TypeScript model name
-  // We use the field that references the model to find the TS equivalent
-  const mapping = {};
-  const pyAstro = pyIr.models['AstroPost'];
-  const tsAstro = tsIr.models['AstroPost'];
-  if (!pyAstro || !tsAstro) return mapping;
-
-  for (const pyField of pyAstro.fields) {
-    const tsField = tsAstro.fields.find((f) => f.name === pyField.name);
-    if (!tsField) continue;
-
-    // Map nestedModel
-    if (pyField.nestedModel && tsField.nestedModel) {
-      mapping[pyField.nestedModel] = tsField.nestedModel;
-    }
-
-    // Map itemNestedModel
-    if (pyField.itemNestedModel && tsField.itemNestedModel) {
-      mapping[pyField.itemNestedModel] = tsField.itemNestedModel;
-    }
-  }
-
-  return mapping;
-}
-
-/**
  * Main comparison function.
  */
 function compareSchemas(pyIr, tsIr, strictMode = false) {
-  // Map Python nested model names to TypeScript inline names
-  const modelMap = mapNestedModelNames(pyIr, tsIr);
-
   const pyAstro = pyIr.models['AstroPost'];
   const tsAstro = tsIr.models['AstroPost'];
 
@@ -1240,11 +1187,6 @@ function printReport(diffs, strictMode = false) {
   }
 
   if (errors.length === 0 && realWarnings.length === 0) {
-    const total = diffs.find(
-      (d) => d.path.startsWith('AstroPost') && d.category === 'field_missing'
-    )
-      ? 0
-      : 0;
     console.log(`[contract-sync] OK — full parity confirmed.`);
     if (allowedWarnings.length > 0) {
       console.log(`[contract-sync] ${allowedWarnings.length} known divergence(s) tolerated:`);
