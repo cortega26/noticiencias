@@ -100,8 +100,14 @@ jobs:
     needs: package
     runs-on: ubuntu-latest
     environment:
+      # Static canonical URL (custom domain). A dynamic
+      # `url: ${{ steps.deployment.outputs.page_url }}` makes the runner
+      # skip setting the environment URL ("may contain secret" warning)
+      # and would point at the github.io origin instead of the domain
+      # readers actually visit. Step outputs are still used directly
+      # where functionally needed (verify, post-publish callback).
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://noticiencias.com
     steps:
       - name: Checkout Source for Verification
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
