@@ -1,95 +1,94 @@
 ---
-title: 'Detector de Hype: Guía de Sobrevivencia'
-description: 'Una caja de herramientas mental para distinguir la ciencia real de las promesas de marketing y el clickbait.'
+title: 'Detector de hype: cómo leer una noticia científica sin que te vendan humo'
+description: 'Las preguntas que usamos en Noticiencias para distinguir un hallazgo real de una promesa de marketing, y que puedes aplicar a cualquier titular.'
 layout: '~/layouts/template/MarkdownLayout.astro'
 ---
 
-En la era de la sobreinformación, los titulares científicos y tecnológicos suelen vestirse de revolución. Un avance de laboratorio incremental se vende como "la cura definitiva" o "el fin de la crisis energética".
+Casi cualquier hallazgo científico puede convertirse en un titular espectacular. Un avance pequeño de laboratorio se anuncia como «la cura del cáncer» o «el fin de la crisis energética», y para cuando la noticia llega a tus redes ya perdió casi todos los matices que traía el estudio original.
 
-El **hype** (o sensacionalismo tecnológico) no solo distorsiona la realidad, sino que genera fatiga informativa y desconfianza en el método científico. Esta guía rápida es una caja de herramientas mental para filtrar el ruido y quedarte con la evidencia.
+A ese ruido lo llamamos **hype**. No es exactamente mentira: es una promesa estirada hasta que se rompe. Cuando se repite, cansa y termina por hacernos desconfiar de la ciencia en general.
 
----
-
-## El Ciclo del Hype: ¿Cómo nace una noticia inflada?
-
-El sensacionalismo rara vez proviene de una sola fuente; es un teléfono descompuesto que sigue este camino:
-
-1. **El Paper Original:** Investigadores reportan un hallazgo específico con límites muy claros y cautelosos.
-2. **La Nota de Prensa:** La oficina de comunicación de la universidad o empresa simplifica el paper y añade citas optimistas para llamar la atención.
-3. **El Medio Masivo:** Un redactor traduce la nota de prensa de prisa, elimina las advertencias y añade un titular llamativo para conseguir clics.
-4. **Las Redes Sociales:** El titular se viraliza fuera de contexto, convertido en una promesa de cambio mundial inminente.
+Esta guía reúne las preguntas que hacemos en Noticiencias antes de publicar. Sirven igual de bien para lo que leas en cualquier otro sitio.
 
 ---
 
-## Los 5 Filtros Esenciales de Sobrevivencia
+## De dónde sale una noticia inflada
 
-Cada vez que leas un titular que prometa cambiar el mundo, pásalo por estos cinco filtros lógicos:
+El sensacionalismo casi nunca nace de una sola persona. Es más bien un teléfono descompuesto:
 
-### 1. ¿Modelos Animales o Humanos? 🐭 ➔ 🧍
+- **El estudio.** Los investigadores describen un resultado concreto, con sus límites y sus dudas.
+- **El comunicado de prensa.** La oficina de comunicación de la universidad o la empresa lo resume y le añade frases optimistas para llamar la atención.
+- **La nota periodística.** Una redacción con prisa traduce el comunicado, recorta las advertencias y le pone un título atractivo.
+- **La red social.** El título circula solo, sin el resto del texto, y acaba convertido en una promesa de cambio inmediato.
 
-Una de las mayores trampas del periodismo de salud es omitir el sujeto del estudio.
-
-- **La alerta:** "Nueva molécula destruye el cáncer en 48 horas".
-- **La realidad:** Si el estudio se realizó en ratones o en placas de Petri (in vitro), el camino hacia una terapia real en humanos dura entre 10 y 15 años, y más del **90%** de los tratamientos exitosos en animales fracasan en ensayos clínicos con personas.
-- **Tu defensa:** Busca términos como _"ensayo clínico fase I/II/III"_ o _"pacientes humanos"_. Si no están, asume que es una fase muy preliminar.
-
-### 2. ¿Correlación o Causalidad? 📊
-
-El cerebro humano adora buscar patrones de causa y efecto donde solo hay coincidencia.
-
-- **La alerta:** "El consumo de café reduce el riesgo de padecer Alzheimer".
-- **La realidad:** El estudio puede demostrar que la gente que toma café tiene menos Alzheimer (asociación), pero eso no significa que el café _cause_ esa reducción. Podría ser que los consumidores de café tengan hábitos de vida diferentes, mayor nivel de ingresos o factores genéticos asociados.
-- **Tu defensa:** Si el estudio es _observacional_ (solo mira conductas existentes), no puede demostrar causalidad. Solo los _ensayos controlados aleatorizados_ pueden hacerlo.
-
-### 3. El Factor "Próximamente" (Línea de Tiempo) ⏳
-
-El optimismo tecnológico suele ignorar las barreras de la escala física e industrial.
-
-- **La alerta:** "Nueva batería de estado sólido se carga en 5 segundos y dura un mes".
-- **La realidad:** Demostrar que un material funciona en un laboratorio de un centímetro cuadrado es muy diferente a fabricar millones de celdas idénticas a bajo costo y de forma segura.
-- **Tu defensa:** Pregúntate si el artículo menciona costes de producción, degradación del material tras mil ciclos o planes de industrialización realistas. Si es un prototipo de laboratorio, el horizonte mínimo de llegada al mercado suele ser de una década.
-
-### 4. Sigue el Dinero (Conflictos de Interés) 💰
-
-La ciencia es una actividad humana financiada por entidades con intereses específicos.
-
-- **La alerta:** "Un nuevo estudio concluye que las bebidas azucaradas no influyen en la obesidad infantil".
-- **La realidad:** Al investigar el origen de los fondos, descubres que la investigación fue patrocinada directa o indirectamente por consorcios de bebidas azucaradas.
-- **Tu defensa:** Ve al final del artículo o del paper científico y busca las secciones de _"Funding"_ (Financiamiento) o _"Conflict of Interest"_ (Declaración de conflictos). Una fuente financiada por la misma industria que audita siempre requiere doble escepticismo.
-
-### 5. ¿Revisión por Pares o Preprint? 🔍
-
-No toda la literatura científica tiene el mismo nivel de validación.
-
-- **La alerta:** "Científicos descubren un superconductor a temperatura ambiente".
-- **La realidad:** El estudio fue subido a un servidor de _preprints_ (como arXiv o bioRxiv) sin haber sido revisado ni replicado por otros expertos del área.
-- **Tu defensa:** Confirma si el artículo fue publicado en una revista con revisión por pares (como _Nature_, _Science_ o _The Lancet_) o si es un manuscrito preliminar autopublicado por los autores.
+En cada salto se pierde precisión y se gana entusiasmo.
 
 ---
 
-## Lista de Palabras Alerta Roja 🚩
+## Cinco preguntas que desinflan casi cualquier titular
 
-Si detectas estas palabras en un titular de ciencia o tecnología, activa tu modo escéptico:
+Antes de creerte —o compartir— una noticia de ciencia o tecnología, prueba a hacerle estas cinco preguntas.
 
-- **"Milagroso" / "Cura definitiva"** (La ciencia es incremental, no mágica).
-- **"Revoluciona" / "Rompe las leyes de la física"** (Los paradigmas de la física rara vez se rompen de la noche a la mañana).
-- **"El estudio prueba..."** (Un solo estudio aporta evidencia; rara vez prueba algo de manera absoluta y final).
-- **"Inteligencia Artificial Autoconsciente"** (El software actual predice patrones; no tiene conciencia).
+### 1. ¿El estudio se hizo en personas o en animales?
+
+Una de las omisiones más frecuentes en las noticias de salud es el sujeto del estudio.
+
+Si lees «una nueva molécula destruye el cáncer en 48 horas», busca en qué se probó. Si fue en ratones o en cultivos de células, el camino hasta una terapia real en personas dura entre diez y quince años, y más del **90 %** de los tratamientos que funcionan en animales fracasan luego en ensayos con humanos. Fíjate en si aparecen expresiones como «ensayo clínico de fase I, II o III» o «pacientes»; si no están, asume que es una etapa muy temprana.
+
+### 2. ¿Es una relación de causa o solo una coincidencia?
+
+Nuestro cerebro busca causas y efectos incluso donde solo hay casualidad.
+
+«El café reduce el riesgo de Alzheimer» puede significar únicamente que quienes toman café tienen menos Alzheimer, no que el café lo evite. Quizá esas personas comparten otros hábitos, más ingresos o una genética distinta. Solo un ensayo controlado con grupos asignados al azar puede demostrar causa y efecto; un estudio que se limita a observar lo que ya hace la gente, no.
+
+### 3. ¿Cuánto falta para que esto exista de verdad?
+
+El optimismo tecnológico suele saltarse los obstáculos de fabricar algo a gran escala.
+
+«Una batería que se carga en cinco segundos y dura un mes» puede ser cierta en una muestra de un centímetro cuadrado y seguir siendo inviable en una fábrica. Pregúntate si el artículo menciona costes de producción, cuánto se degrada el material tras mil ciclos o si hay un plan real de industrialización. Cuando se trata de un prototipo de laboratorio, lo habitual es que pase una década antes de que llegue al mercado, si es que llega.
+
+### 4. ¿Quién pagó la investigación?
+
+La ciencia es una actividad humana, y quien la financia tiene intereses.
+
+Si «un estudio concluye que las bebidas azucaradas no influyen en la obesidad infantil», conviene mirar de dónde salió el dinero. Al final de los artículos científicos hay un apartado de financiación (_funding_) y otro de conflictos de interés (_conflict of interest_). Cuando quien paga es la misma industria a la que beneficia el resultado, toca duplicar el escepticismo.
+
+### 5. ¿Ya lo revisaron otros científicos?
+
+No toda la literatura científica tiene el mismo respaldo.
+
+«Científicos logran un superconductor a temperatura ambiente» es muy distinto si el trabajo se publicó en una revista con revisión por pares o si solo se subió a un servidor de preprints (como arXiv o bioRxiv), donde nadie externo lo ha comprobado todavía. Un preprint es una pista, no una conclusión.
 
 ---
 
-## Cómo lo hacemos en Noticiencias
+## Palabras que encienden la alarma
 
-Para ayudarte a evitar el hype, en Noticiencias aplicamos un estándar de publicación estricto a cada artículo:
+Si ves estas expresiones en un titular de ciencia o tecnología, activa el modo escéptico:
 
-1. **Transparencia DOI:** Siempre enlazamos directamente al paper de la investigación original en el pie del artículo.
-2. **Nivel de Confianza:** Declaramos explícitamente el estado del estudio (si es observacional, ensayo clínico, preprint, etc.) para que sepas el peso de la evidencia.
-3. **Control Editorial Humano:** Nuestro equipo revisa los textos generados por sistemas automatizados para eliminar adjetivos grandilocuentes y promesas sin fundamento científico.
+- **«Milagroso», «cura definitiva».** La ciencia avanza a pasos pequeños, no por milagros.
+- **«Revoluciona», «rompe las leyes de la física».** Los grandes marcos de la física casi nunca caen de un día para otro.
+- **«El estudio demuestra…».** Un solo estudio aporta evidencia; rara vez demuestra algo de forma definitiva.
+- **«Inteligencia artificial consciente».** El software actual predice patrones. No tiene conciencia.
 
 ---
 
-### ¿Quieres practicar tu lectura crítica?
+## Qué hacemos en Noticiencias con todo esto
 
-Suscríbete a **Noticiencias Semanal**. Cada viernes seleccionamos los hallazgos más relevantes de la semana, desglosando sus límites y su metodología para que no te vendan humo.
+Habrás notado algo incómodo: buena parte de lo que publicamos entra por esa misma cadena. Nuestras fuentes son medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints. Es decir, trabajamos con el segundo y el tercer eslabón del teléfono descompuesto.
 
-[Suscribirme ahora al Boletín](/newsletter)
+Por eso intentamos deshacer el camino en lugar de alargarlo:
+
+- **Volvemos hacia la fuente original.** Buscamos el estudio o el informe que hay detrás de la nota y lo enlazamos al final del artículo, con su DOI cuando lo tiene.
+- **Decimos en qué punto está la evidencia.** Cada artículo lleva una valoración en lenguaje llano: un resultado sólido, algo preliminar o una hipótesis todavía en discusión.
+- **Avisamos de lo que aún no se sabe.** Si el hallazgo es provisional o hay resultados que se contradicen, lo marcamos con una nota de incertidumbre.
+- **Quitamos los adjetivos de más.** Antes de publicar, el borrador pasa por varios controles automáticos —puntuación editorial, legibilidad y políticas de contenido— y luego una persona lo revisa y lo aprueba. Lo que no llega al listón se corrige o se descarta.
+
+Todo esto queda a la vista en el recuadro «Fuentes y verificación» que acompaña a cada artículo. El detalle completo está en nuestra [metodología](/metodologia/).
+
+---
+
+### ¿Quieres entrenar el ojo?
+
+Cada viernes enviamos **Noticiencias Semanal**: una selección de los hallazgos de la semana con sus fuentes, su contexto y sus límites, explicados sin humo.
+
+[Suscribirme al boletín](/newsletter)

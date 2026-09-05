@@ -24,11 +24,11 @@ Nuestro propósito es cerrar la brecha entre los hallazgos científicos y tecnol
 
 Cada pieza incluye fuentes enlazadas, método de traducción y nivel de confianza. Consulta nuestra [metodología editorial](/metodologia/) para detalles operativos completos.
 
-Nuestro proceso combina **selección automatizada de fuentes primarias** —estudios revisados por pares, preprints con validación comunitaria, documentos técnicos de organismos oficiales— con **revisión humana** de cada contenido antes de su publicación. Esto nos permite mantener ritmo y profundidad sin sacrificar precisión.
+Nuestro proceso combina **selección automatizada** —a partir de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints— con **revisión humana** antes de publicar. Rastreamos cada nota hasta el estudio original para enlazarlo y declarar sus límites. Así mantenemos ritmo y profundidad sin sacrificar precisión.
 
 Cada artículo muestra:
 
-- **Nivel de confianza**: alto, medio o bajo según la solidez de las fuentes.
+- **Nivel de confianza**: una valoración del estado de la evidencia, en lenguaje llano, de sólida a en debate.
 - **Verificaciones**: qué afirmaciones han sido contrastadas y con qué resultado.
 - **Notas de incertidumbre**: cuando la evidencia es preliminar o contradictoria, lo decimos.
 - **Método de traducción**: si el contenido se tradujo, cómo se hizo y con qué herramientas.
