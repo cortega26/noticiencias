@@ -13,7 +13,7 @@ tags:
   - sobreviviente
 excerpt: Investigadores de EE.UU. y africanos crearon la mayor base de datos de víctimas de rayo en el continente, entrevistando a sobrevivientes para identificar lesiones a largo plazo no registradas oficialmente.
 image: ~/assets/images/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.avif
-image_alt: Ilustración editorial relacionada con Lightning strikes kill thousands globally each year, but for those who survive, the storm is far from over
+image_alt: Ilustración editorial relacionada con ¿Qué efectos tiene un rayo sin rasguños visibles?
 source_url: https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721
 refinery_id: '504'
 headlines_variants:
@@ -76,7 +76,7 @@ Las entrevistas revelaron patrones de secuelas invisibles. Una enfermera relató
 
 ## Límites y alcance real
 
-Los números de muertes y lesiones provienen de estimaciones basadas en reportes incompletos; la verdadera cifra podría ser mayor o menor según la región. La base de datos africana, aunque la más grande disponible, aún deja fuera incidentes no reportados o aquellos que ocurren en zonas de difícil acceso. El índice de riesgo combina factores disponibles, pero no captura matices locales como la tradición arquitectónica específica o la presencia de sistemas informales de protección. Las entrevistas ofrecen testimonios valiosos, pero no representan una muestra estadísticamente significativa de todos los sobrevivientes. Por tanto, los porcentajes de secuelas y las comparativas entre continentes deben leerse como indicaciones tendencies más que como conclusiones definitivas.
+Los números de muertes y lesiones provienen de estimaciones basadas en reportes incompletos; la verdadera cifra podría ser mayor o menor según la región. La base de datos africana, aunque la más grande disponible, aún deja fuera incidentes no reportados o aquellos que ocurren en zonas de difícil acceso. El índice de riesgo combina factores disponibles, pero no captura matices locales como la tradición arquitectónica específica o la presencia de sistemas informales de protección. Las entrevistas ofrecen testimonios valiosos, pero no representan una muestra estadísticamente significativa de todos los sobrevivientes. Por tanto, los porcentajes de secuelas y las comparativas entre continentes deben leerse como indicaciones orientativas más que como conclusiones definitivas.
 
 ## Cómo encaja en el conocimiento existente
 
