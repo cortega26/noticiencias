@@ -1,5 +1,5 @@
 ---
-title: 'Detector de hype: cómo leer una noticia científica sin que te vendan humo'
+title: 'Detector de hype: leer ciencia sin que te vendan humo'
 description: 'Las preguntas que usamos en Noticiencias para distinguir un hallazgo real de una promesa de marketing, y que puedes aplicar a cualquier titular.'
 layout: '~/layouts/template/MarkdownLayout.astro'
 ---

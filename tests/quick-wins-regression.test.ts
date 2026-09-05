@@ -38,10 +38,10 @@ describe('quick wins regression coverage', () => {
 
     const hypeDetector = load(readDistHtml('/recursos/detector-de-hype/'));
     expect(hypeDetector('title').text()).toBe(
-      'Detector de Hype: Guía de Sobrevivencia | Noticiencias'
+      'Detector de hype: leer ciencia sin que te vendan humo | Noticiencias'
     );
     expect(hypeDetector('meta[name="description"]').attr('content')).toBe(
-      'Una caja de herramientas mental para distinguir la ciencia real de las promesas de marketing y el clickbait.'
+      'Las preguntas que usamos en Noticiencias para distinguir un hallazgo real de una promesa de marketing, y que puedes aplicar a cualquier titular.'
     );
   });
 
