@@ -923,6 +923,34 @@
       }
     ]
   },
+  "~/assets/images/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.jpg": {
+    "originalWidth": 1350,
+    "originalHeight": 900,
+    "hash": "1496193f17f74026",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.900.avif"
+      },
+      {
+        "width": 1350,
+        "height": 900,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.1350.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.1350.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
