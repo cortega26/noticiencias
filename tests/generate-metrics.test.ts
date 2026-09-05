@@ -56,7 +56,14 @@ function writePost(root: string, name: string, overrides: Record<string, unknown
   writeFileSync(join(root, 'src', 'content', 'posts', name), base.join('\n'), 'utf-8');
 }
 
-function readMetrics(root: string): Record<string, any> {
+interface MetricsSnapshot {
+  generated_at: string;
+  pipeline: { generated_at: string };
+  content: { total_articles: number };
+  [key: string]: unknown;
+}
+
+function readMetrics(root: string): MetricsSnapshot {
   return JSON.parse(readFileSync(metricsPath(root), 'utf-8'));
 }
 
