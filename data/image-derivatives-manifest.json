@@ -923,6 +923,41 @@
       }
     ]
   },
+  "~/assets/images/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.png": {
+    "originalWidth": 1553,
+    "originalHeight": 1207,
+    "hash": "c51634966de7ea38",
+    "variants": [
+      {
+        "width": 400,
+        "height": 311,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 699,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 1088,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1400.avif"
+      },
+      {
+        "width": 1553,
+        "height": 1207,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1553.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1553.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif": {
     "originalWidth": 766,
     "originalHeight": 402,
