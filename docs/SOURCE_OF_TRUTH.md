@@ -83,6 +83,7 @@ Cross-repo rule:
 ## Binding Current Truths
 
 - The only content collection in active use for published articles is `posts`.
+- The `posts` frontmatter contract includes an optional `social` object (`{ publish: boolean = false, id?: 64-char lowercase hex }`) for social-distribution opt-in — mirror of `SocialConfig` in the backend `news_collector/contracts/frontend_schema.py`. Absent by default; an explicit `social: null` is rejected on both sides; unknown keys inside `social` are rejected.
 - New contributor guidance must reference `src/content/posts/`, not legacy \_posts or src/content/post/ (deprecated path, does not exist).
 - Category and tag archive pathnames come from `src/config.yaml`, currently `categorias` and `temas`.
 - Metadata flows through page/layout props into `src/components/template/common/Metadata.astro`; pages should not bypass that path for normal SEO.
