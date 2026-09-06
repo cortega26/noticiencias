@@ -83,7 +83,7 @@ Rules:
 
 - New or modified posts must satisfy the current `posts` schema exactly.
 - Governance text must reflect the real fields in code, not a hypothetical schema.
-- Frontmatter fields currently in active use include `title`, `schema_version`, `excerpt`, `author`, `date`, `categories`, `tags`, `image`, `image_alt`, `permalink`, and the Noticiencias editorial metadata defined in `src/content.config.ts`.
+- Frontmatter fields currently in active use include `title`, `schema_version`, `excerpt`, `author`, `date`, `categories`, `tags`, `image`, `image_alt`, `permalink`, the Noticiencias editorial metadata, and the optional `social` distribution opt-in (`{ publish, id }`) — all defined in `src/content.config.ts`.
 - Do not introduce undocumented frontmatter fields without updating the schema first.
 - Do not re-interpret schema defaults as product behavior. If a field is defaulted for legacy compatibility, new content still needs explicit editorial intent.
 

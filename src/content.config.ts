@@ -2,6 +2,17 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+// Social distribution identity (plan social-distribution §8/§9): a 64-char
+// lowercase hex SHA-256 digest. Mirrors `SOCIAL_ID_PATTERN` in the backend
+// contract (`news_collector/contracts/frontend_schema.py`). Kept at module
+// scope so the `social` field body stays free of `//` comments, which the
+// line-based parser in scripts/check-contract-sync.js cannot skip.
+//
+// The `social` object itself: absent by default; `.optional()` admits only
+// `undefined`, so an explicit `social: null` is rejected, and `.strict()`
+// rejects unknown keys — both mirror the backend `SocialConfig` model.
+const SOCIAL_ID_RE = /^[0-9a-f]{64}$/;
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
@@ -77,6 +88,14 @@ const posts = defineCollection({
           })
         )
         .optional(),
+
+      social: z
+        .object({
+          publish: z.boolean().default(false),
+          id: z.string().regex(SOCIAL_ID_RE, 'social.id must be 64 lowercase hex chars').optional(),
+        })
+        .strict()
+        .optional(),
     })
     .superRefine((data, ctx) => {
       // --- image_alt cross-field validation ---
@@ -96,6 +115,18 @@ const posts = defineCollection({
           code: 'custom',
           path: ['featured_rank'],
           message: 'featured_rank is required when featured is true',
+        });
+      }
+
+      // --- social.id cross-field validation ---
+      // A post authorised for distribution (social.publish === true) must carry
+      // a non-empty social.id. Mirrors `_id_required_when_publishing` in the
+      // backend contract.
+      if (data.social?.publish === true && !data.social.id?.trim()) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['social', 'id'],
+          message: 'social.id is required and non-empty when social.publish is true',
         });
       }
 

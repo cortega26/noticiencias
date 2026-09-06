@@ -9,6 +9,8 @@ import { collections } from '../src/content.config';
 
 const schema = (collections.posts as unknown as { schema: z.ZodTypeAny }).schema;
 
+type ParsedPost = { social?: { publish: boolean; id?: string } };
+
 const basePost = {
   title: 'A valid post title',
   excerpt: 'A sufficiently long excerpt',
@@ -82,6 +84,59 @@ describe('content.config posts schema', () => {
     it('does not enforce editorial fields for schema_version 1', () => {
       const result = schema.safeParse({ ...basePost, schema_version: 1 });
       expect(result.success).toBe(true);
+    });
+  });
+
+  describe('social distribution config', () => {
+    const hexId = 'a'.repeat(64);
+
+    it('accepts a post with no social block', () => {
+      expect(schema.safeParse(basePost).success).toBe(true);
+    });
+
+    it('keeps a valid social block instead of stripping it', () => {
+      const result = schema.safeParse({
+        ...basePost,
+        social: { publish: true, id: hexId },
+      });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect((result.data as ParsedPost).social).toEqual({ publish: true, id: hexId });
+      }
+    });
+
+    it('defaults social.publish to false when only an id is given', () => {
+      const result = schema.safeParse({ ...basePost, social: { id: hexId } });
+      expect(result.success).toBe(true);
+      if (result.success) expect((result.data as ParsedPost).social?.publish).toBe(false);
+    });
+
+    it('requires a non-empty social.id when social.publish is true', () => {
+      const result = schema.safeParse({ ...basePost, social: { publish: true } });
+      expect(result.success).toBe(false);
+      expect(result.error?.issues.some((i) => i.path.join('.') === 'social.id')).toBe(true);
+    });
+
+    it('rejects a malformed social.id', () => {
+      const result = schema.safeParse({
+        ...basePost,
+        social: { publish: false, id: 'NOT-HEX' },
+      });
+      expect(result.success).toBe(false);
+      expect(result.error?.issues.some((i) => i.path.includes('id'))).toBe(true);
+    });
+
+    it('rejects unknown keys inside social', () => {
+      const result = schema.safeParse({
+        ...basePost,
+        social: { publish: true, id: hexId, channel: 'x' },
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it('rejects an explicit social: null', () => {
+      const result = schema.safeParse({ ...basePost, social: null });
+      expect(result.success).toBe(false);
     });
   });
 });
