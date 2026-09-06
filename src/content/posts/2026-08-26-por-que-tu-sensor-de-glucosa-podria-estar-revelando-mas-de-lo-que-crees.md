@@ -13,7 +13,7 @@ tags:
   - sensor cgm
 excerpt: GlucoFM, modelo auto‑supervisado de Google, analiza la glucosa continua para detectar riesgo de diabetes sin etiquetas costosas.
 image: ~/assets/images/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.png
-image_alt: Ilustración editorial relacionada con Por qué tu sensor de glucosa podría estar revelando más de lo que crees
+image_alt: 'Infografía de GlucoFM. Arriba a la izquierda, una curva de glucosa de 24 horas dividida en noche, mañana, día y tarde señala lecturas válidas, huecos del sensor y picos posprandiales. Debajo, dos pasos: alinear la señal a una grilla horaria conservando la máscara de observación y separarla en una corriente lenta de tendencias y una corriente rápida de desviaciones a corto plazo. A la derecha, el diagrama de preentrenamiento estilo JEPA: entrada CGM de un día, normalización, un filtro gaussiano causal que divide la señal en estado y evento, troceado con enmascarado aleatorio, codificadores de estado y de evento, fusión con embeddings de tiempo circular y de posición, y un codificador Transformer. Abajo a la izquierda, un gráfico radial compara GlucoFM con GluFormer, CGM-JEPA y X-CGM-JEPA en ocho tareas clínicas —riesgo de diabetes, resistencia a la insulina, disfunción de células beta, hiperlipidemia, hipoglucemia, obesidad y glucotipo—, con GlucoFM en la envolvente exterior. Abajo a la derecha, un gráfico de líneas de respuesta glucémica posprandial muestra la predicción de GlucoFM siguiendo de cerca la curva observada tras un desayuno.'
 source_url: https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/
 refinery_id: '980'
 headlines_variants:
@@ -50,7 +50,7 @@ fact_check:
     status: confirmed
 why_it_matters:
   - Una predicción más fiable del riesgo de diabetes con pocos datos etiquetados puede reducir la carga de diagnóstico en regiones latinoamericanas donde los recursos de salud son limitados.
-  - Al aprovechar sensores CGM cada vez más accesibles, GlucoFM permite una detección temprana y un manejo personalizado de la glucosa, lo que podría disminuir complicaciones asociadas a la diabetes en la población.
+  - Al aprovechar sensores CGM cada vez más accesibles, enfoques como GlucoFM abren la vía a una detección más temprana del riesgo y a un manejo más personalizado de la glucosa; de confirmarse en estudios clínicos, ese avance podría contribuir a reducir las complicaciones asociadas a la diabetes.
 confidence: Moderada — resultados prometedores de un modelo auto‑supervisado presentado en un blog de Google Research; se necesita validación en estudios revisados por pares y con cohorts más grandes y diversos.
 sources:
   - title: 'GlucoFM: Foundation model for continuous glucose monitoring'
