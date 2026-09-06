@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-04T16:34:29.656Z",
+  "generatedAt": "2026-09-06T19:45:41.389Z",
   "backendRef": "main",
   "pythonIR": {
     "version": 1,
@@ -173,6 +173,33 @@
             "type": "string",
             "optional": true,
             "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          }
+        ]
+      },
+      "SocialConfig": {
+        "fields": [
+          {
+            "name": "publish",
+            "type": "boolean",
+            "optional": true,
+            "default": false,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "pattern": "r\"^[0-9a-f]{64}$\""
+            },
             "unionTypes": null,
             "nestedModel": null,
             "itemType": null,
@@ -482,6 +509,16 @@
             "nestedModel": null,
             "itemType": "object",
             "itemNestedModel": "SourceItem"
+          },
+          {
+            "name": "social",
+            "type": "object",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": "SocialConfig",
+            "itemType": null,
+            "itemNestedModel": null
           }
         ]
       }
