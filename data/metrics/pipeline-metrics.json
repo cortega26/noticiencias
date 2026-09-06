@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-05T10:31:49.300Z",
+  "generated_at": "2026-09-06T10:53:18.089Z",
   "content": {
-    "total_articles": 32,
-    "v2_articles": 20,
-    "total_words": 19467,
-    "avg_words": 608,
+    "total_articles": 34,
+    "v2_articles": 22,
+    "total_words": 21120,
+    "avg_words": 621,
     "categories": [
       {
         "name": "Tecnología",
@@ -15,12 +15,16 @@
         "count": 5
       },
       {
+        "name": "Ciencia",
+        "count": 5
+      },
+      {
         "name": "Astronomía",
         "count": 4
       },
       {
-        "name": "Ciencia",
-        "count": 4
+        "name": "Biología",
+        "count": 2
       },
       {
         "name": "Arqueología",
@@ -35,10 +39,6 @@
         "count": 2
       },
       {
-        "name": "Biología",
-        "count": 1
-      },
-      {
         "name": "Editorial",
         "count": 1
       }
@@ -51,6 +51,10 @@
       {
         "name": "universo",
         "count": 2
+      },
+      {
+        "name": "2027",
+        "count": 1
       },
       {
         "name": "cadenas de suministro",
@@ -159,13 +163,33 @@
       {
         "name": "vacunación",
         "count": 1
-      },
-      {
-        "name": "desinformación",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos",
+        "title": "El eclipse solar de 2027 durará seis minutos y veintitrés segundos",
+        "date": "2026-08-28",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado",
+        "title": "Qué reveló el ADN de una tortuga que el tiempo había borrado",
+        "date": "2026-08-26",
+        "categories": [
+          "Biología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio basado en métodos computacionales sobre ADN muy degradado, con resultados estadísticos y limitaciones reconocidas por los autores.",
+        "review_status": null
+      },
       {
         "slug": "2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face",
         "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
@@ -563,11 +587,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-05T10:31:49.299Z"
+    "generated_at": "2026-09-06T10:53:18.089Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 32,
+    "derivatives_available": 34,
     "missing_derivatives": 0
   }
 }
