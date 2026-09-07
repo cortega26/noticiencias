@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-06T10:53:18.089Z",
+  "generated_at": "2026-09-07T12:27:07.437Z",
   "content": {
-    "total_articles": 34,
-    "v2_articles": 22,
-    "total_words": 21120,
-    "avg_words": 621,
+    "total_articles": 35,
+    "v2_articles": 23,
+    "total_words": 22099,
+    "avg_words": 631,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 11
+        "count": 12
       },
       {
         "name": "Salud",
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees",
+        "title": "Por qué tu sensor de glucosa podría estar revelando más de lo que crees",
+        "date": "2026-08-26",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — resultados prometedores de un modelo auto‑supervisado presentado en un blog de Google Research; se necesita validación en estudios revisados por pares y con cohorts más grandes y diversos.",
         "review_status": null
       },
       {
@@ -587,11 +599,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-06T10:53:18.089Z"
+    "generated_at": "2026-09-07T12:27:07.437Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 34,
+    "derivatives_available": 35,
     "missing_derivatives": 0
   }
 }
