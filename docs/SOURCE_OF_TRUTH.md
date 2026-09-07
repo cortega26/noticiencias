@@ -91,6 +91,7 @@ Cross-repo rule:
   - build-time serialized Lunr index + compact result store in `src/pages/search.json.js` (via `src/utils/build-search-index.ts`, plan 039)
   - browser-only `lunr.Index.load()` deserialize in `src/components/common/SearchInterface.astro`
 - View transitions are globally enabled in `src/layouts/template/Layout.astro`; routed page scripts must therefore be idempotent across Astro navigations.
+- `src/pages/social-manifest.json.ts` builds `/social-manifest.json` — a public, operational JSON snapshot of every article route this build publishes with its normalized `social` config and canonical URL, plus build provenance. It is not linked from the site and is excluded from the sitemap (an explicit `/social-manifest.json` filter in `astro.config.mjs`, since `@astrojs/sitemap` does emit JSON endpoint routes — cf. the `/search.json` exclusion); `scripts/dist-sanity.js` asserts both.
 
 ## Fact Ownership
 
