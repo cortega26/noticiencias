@@ -1,8 +1,13 @@
 /**
- * Head-tag builder — reproduces the exact rendered output of
+ * Head-tag builder — originally reproduced the exact rendered output of
  * `@astrolib/seo`'s `buildTags` (same tag order, same attribute order,
- * same self-closing style) so the rendered `<head>` is byte-identical
- * after the wrapper is removed.
+ * same self-closing style) so the rendered `<head>` was byte-identical
+ * after the wrapper was removed.
+ *
+ * It now deliberately diverges in one place: the Twitter block also emits
+ * `twitter:title` / `twitter:description` / `twitter:image` from the
+ * already-adapted OpenGraph values (plan social-distribution §11), which
+ * `@astrolib/seo` does not.
  *
  * Returns a structured list of tag descriptors; `Metadata.astro` renders
  * them as real (auto-escaped) Astro elements — no `set:html` string blob.
@@ -155,6 +160,28 @@ export const buildHead = (config: SeoProps): HeadTag[] => {
       push({ tag: 'meta', attrs: { name: 'twitter:site', content: config.twitter.site } });
     if (config.twitter.handle)
       push({ tag: 'meta', attrs: { name: 'twitter:creator', content: config.twitter.handle } });
+
+    // twitter:title / :description / :image — mirror the same OpenGraph
+    // values emitted above (already adapted by adaptOpenGraphImages) so the
+    // X card matches the OG preview. No image is re-resolved here; empty
+    // values are omitted, matching the og:image emptiness that
+    // optimizeOpenGraphImage can produce.
+    if (config.openGraph) {
+      const og = config.openGraph;
+      const twitterTitle = og.title || config.title;
+      if (twitterTitle)
+        push({ tag: 'meta', attrs: { name: 'twitter:title', content: twitterTitle } });
+
+      const twitterDescription = og.description || config.description;
+      if (twitterDescription)
+        push({ tag: 'meta', attrs: { name: 'twitter:description', content: twitterDescription } });
+
+      const twitterImage = og.images?.length
+        ? (og.images as ReadonlyArray<OpenGraphMedia>)[0].url
+        : undefined;
+      if (twitterImage)
+        push({ tag: 'meta', attrs: { name: 'twitter:image', content: twitterImage } });
+    }
   }
 
   // Additional Meta Tags

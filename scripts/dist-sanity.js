@@ -340,10 +340,244 @@ function auditBuiltArticleHeroes() {
   }
 }
 
+const SOCIAL_MANIFEST_PATH = path.join(DIST_DIR, 'social-manifest.json');
+
+function readMeta($, selector) {
+  return ($(selector).attr('content') || '').trim();
+}
+
+/**
+ * Social distribution contract (plan §7/§8/§11): the public manifest must
+ * agree with the article routes and metadata this build actually emitted,
+ * and the JSON endpoint must not leak into the sitemap.
+ */
+function auditSocialManifest() {
+  const errorsBefore = errorCount;
+  if (!fs.existsSync(SOCIAL_MANIFEST_PATH)) {
+    console.error(
+      `${RED}[FAIL] social-manifest.json missing from dist. Endpoint src/pages/social-manifest.json.ts did not build.${RESET}`
+    );
+    errorCount++;
+    return;
+  }
+
+  let manifest;
+  try {
+    manifest = JSON.parse(fs.readFileSync(SOCIAL_MANIFEST_PATH, 'utf8'));
+  } catch (error) {
+    console.error(`${RED}[FAIL] social-manifest.json is not valid JSON: ${error.message}${RESET}`);
+    errorCount++;
+    return;
+  }
+
+  if (manifest.schema_version !== 1) {
+    console.error(
+      `${RED}[FAIL] social-manifest.json schema_version is ${JSON.stringify(manifest.schema_version)}, expected 1.${RESET}`
+    );
+    errorCount++;
+  }
+
+  // provenance is null on local/PR builds and only an object inside the
+  // Deploy to GitHub Pages workflow — accept both, reject a malformed object.
+  if (manifest.provenance !== null) {
+    const p = manifest.provenance;
+    const provenanceOk =
+      p &&
+      typeof p === 'object' &&
+      typeof p.repository === 'string' &&
+      /^[0-9a-f]{40}$/.test(p.commit || '') &&
+      /^[0-9]+$/.test(String(p.run_id)) &&
+      Number.isInteger(p.build_attempt) &&
+      p.build_attempt >= 1 &&
+      typeof p.workflow === 'string';
+    if (!provenanceOk) {
+      console.error(
+        `${RED}[FAIL] social-manifest.json provenance is neither null nor a well-formed object: ${JSON.stringify(p)}${RESET}`
+      );
+      errorCount++;
+    }
+  }
+
+  if (!Array.isArray(manifest.articles)) {
+    console.error(`${RED}[FAIL] social-manifest.json articles is not an array.${RESET}`);
+    errorCount++;
+    return;
+  }
+
+  const seenCanonical = new Set();
+  const seenSocialId = new Set();
+
+  for (const article of manifest.articles) {
+    const cid = article?.collection_id || '<unknown>';
+
+    if (!/^https:\/\/noticiencias\.com\//.test(article?.canonical_url || '')) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: canonical_url is not an https noticiencias.com URL: "${article?.canonical_url}".${RESET}`
+      );
+      errorCount++;
+      continue;
+    }
+
+    if (seenCanonical.has(article.canonical_url)) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: duplicate canonical_url "${article.canonical_url}".${RESET}`
+      );
+      errorCount++;
+    }
+    seenCanonical.add(article.canonical_url);
+
+    const socialId = article?.social?.id;
+    if (socialId) {
+      if (seenSocialId.has(socialId)) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: duplicate social.id "${socialId}".${RESET}`
+        );
+        errorCount++;
+      }
+      seenSocialId.add(socialId);
+    }
+
+    const routePath = article.canonical_url.replace('https://noticiencias.com/', '');
+    const htmlPath = path.join(DIST_DIR, routePath.replace(/\/+$/, ''), 'index.html');
+    if (!fs.existsSync(htmlPath)) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: no built page at ${htmlPath} for canonical ${article.canonical_url}.${RESET}`
+      );
+      errorCount++;
+      continue;
+    }
+
+    const $ = load(fs.readFileSync(htmlPath, 'utf8'));
+
+    const canonicalLinks = $('link[rel="canonical"]');
+    if (canonicalLinks.length !== 1) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: built page has ${canonicalLinks.length} <link rel="canonical"> tags, expected exactly 1.${RESET}`
+      );
+      errorCount++;
+    }
+    const canonicalHref = (canonicalLinks.first().attr('href') || '').trim();
+    if (canonicalHref !== article.canonical_url) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: page canonical "${canonicalHref}" != manifest canonical_url "${article.canonical_url}".${RESET}`
+      );
+      errorCount++;
+    }
+
+    const ogUrl = readMeta($, 'meta[property="og:url"]');
+    if (ogUrl !== article.canonical_url) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: og:url "${ogUrl}" != manifest canonical_url "${article.canonical_url}".${RESET}`
+      );
+      errorCount++;
+    }
+
+    // Compare against og:title / og:description, NOT <title> — the document
+    // title carries the site-name template while og:title is the bare title.
+    const ogTitle = readMeta($, 'meta[property="og:title"]');
+    if (ogTitle !== article.title) {
+      console.error(
+        `${RED}[FAIL] social-manifest ${cid}: og:title "${ogTitle}" != manifest title "${article.title}".${RESET}`
+      );
+      errorCount++;
+    }
+
+    if (article.description !== undefined) {
+      const ogDescription = readMeta($, 'meta[property="og:description"]');
+      if (ogDescription !== article.description) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: og:description != manifest description.${RESET}`
+        );
+        errorCount++;
+      }
+    }
+
+    // twitter:title / :description mirror og and must be present exactly once.
+    for (const [twSel, ogVal, label] of [
+      ['meta[name="twitter:title"]', ogTitle, 'twitter:title'],
+      [
+        'meta[name="twitter:description"]',
+        readMeta($, 'meta[property="og:description"]'),
+        'twitter:description',
+      ],
+    ]) {
+      const nodes = $(twSel);
+      if (nodes.length !== 1) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: expected exactly 1 ${label}, found ${nodes.length}.${RESET}`
+        );
+        errorCount++;
+      } else if ((nodes.attr('content') || '').trim() !== ogVal) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: ${label} does not mirror its OpenGraph value.${RESET}`
+        );
+        errorCount++;
+      }
+    }
+
+    // twitter:image only when og:image is non-empty (optimizeOpenGraphImage
+    // can emit an empty og:image for an unresolved asset).
+    const ogImage = readMeta($, 'meta[property="og:image"]');
+    const twitterImageNodes = $('meta[name="twitter:image"]');
+    if (ogImage) {
+      if (twitterImageNodes.length !== 1) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: expected exactly 1 twitter:image, found ${twitterImageNodes.length}.${RESET}`
+        );
+        errorCount++;
+      } else if ((twitterImageNodes.attr('content') || '').trim() !== ogImage) {
+        console.error(
+          `${RED}[FAIL] social-manifest ${cid}: twitter:image does not mirror og:image.${RESET}`
+        );
+        errorCount++;
+      }
+    }
+  }
+
+  // Reverse direction: every built article must be represented. The forward
+  // loop above proves each manifest entry maps to a distinct real page with
+  // matching canonical/OG; asserting the counts match closes the other
+  // direction (a published article silently missing from the manifest)
+  // without reimplementing slug logic. The loader globs `**/*.md`, so count
+  // `.md` sources only.
+  const postSourceCount = collectFiles(POSTS_DIR, (filePath) => filePath.endsWith('.md')).length;
+  if (manifest.articles.length !== postSourceCount) {
+    console.error(
+      `${RED}[FAIL] social-manifest.json lists ${manifest.articles.length} article(s) but ${postSourceCount} post source file(s) exist under ${POSTS_DIR}. The manifest must include every built article.${RESET}`
+    );
+    errorCount++;
+  }
+
+  // The JSON endpoint must not appear in the sitemap.
+  const sitemapFiles = fs
+    .readdirSync(DIST_DIR)
+    .filter((name) => /^sitemap.*\.xml$/.test(name))
+    .map((name) => path.join(DIST_DIR, name));
+  for (const sitemapFile of sitemapFiles) {
+    if (fs.readFileSync(sitemapFile, 'utf8').includes('social-manifest.json')) {
+      console.error(
+        `${RED}[FAIL] ${path.basename(sitemapFile)} lists social-manifest.json; it must be excluded from the sitemap.${RESET}`
+      );
+      errorCount++;
+    }
+  }
+
+  if (errorCount > errorsBefore) {
+    console.error(
+      `${RED}FAILED: social-manifest.json audit found ${errorCount - errorsBefore} violation(s).${RESET}`
+    );
+  } else {
+    console.log(
+      `${GREEN}PASSED: social-manifest.json verified against ${manifest.articles.length} built article routes.${RESET}`
+    );
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
+auditSocialManifest();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);

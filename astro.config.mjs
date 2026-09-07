@@ -18,6 +18,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/buscar') &&
         !page.includes('/search.json') &&
+        !page.includes('/social-manifest.json') &&
         !page.includes('/admin/') &&
         !page.includes('/llm-md/'),
     }),
