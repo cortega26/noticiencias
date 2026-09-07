@@ -9,18 +9,20 @@ import type { SeoProps } from '../../src/components/template/common/seo';
  * that is out of scope here), canonical, and no duplicate tags.
  */
 
-const metaByName = (tags: HeadTag[], name: string) =>
-  tags.filter(
+function metaByName(tags: HeadTag[], name: string) {
+  return tags.filter(
     (t) => t.tag === 'meta' && (t as { attrs: Record<string, string> }).attrs.name === name
   );
+}
 
-const metaByProperty = (tags: HeadTag[], property: string) =>
-  tags.filter(
+function metaByProperty(tags: HeadTag[], property: string) {
+  return tags.filter(
     (t) => t.tag === 'meta' && (t as { attrs: Record<string, string> }).attrs.property === property
   );
+}
 
-const baseConfig = (overrides: Partial<SeoProps> = {}): SeoProps =>
-  ({
+function baseConfig(overrides: Partial<SeoProps> = {}): SeoProps {
+  return {
     title: 'Un titular científico',
     description: 'Un resumen del hallazgo.',
     canonical: 'https://noticiencias.com/ciencia/hallazgo/',
@@ -30,7 +32,8 @@ const baseConfig = (overrides: Partial<SeoProps> = {}): SeoProps =>
     },
     twitter: { cardType: 'summary_large_image' },
     ...overrides,
-  }) as SeoProps;
+  } as SeoProps;
+}
 
 describe('buildHead twitter card metadata', () => {
   it('emits twitter:title/description/image mirroring the OpenGraph values', () => {

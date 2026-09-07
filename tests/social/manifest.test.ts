@@ -39,10 +39,12 @@ type Entry = {
   };
 };
 
-const entry = (id: string, over: Partial<Entry['data']> = {}): Entry => ({
-  id,
-  data: { title: `Title ${id}`, date: new Date('2026-01-02T00:00:00Z'), ...over },
-});
+function entry(id: string, over: Partial<Entry['data']> = {}): Entry {
+  return {
+    id,
+    data: { title: `Title ${id}`, date: new Date('2026-01-02T00:00:00Z'), ...over },
+  };
+}
 
 const DEPLOY_ENV = {
   GITHUB_WORKFLOW: 'Deploy to GitHub Pages',
@@ -80,8 +82,6 @@ describe('buildProvenance', () => {
 });
 
 describe('buildSocialManifest', () => {
-  const social = (a: SocialManifestArticle) => a.social;
-
   it('normalizes social: absent → {publish:false}, keeps a valid opt-in', async () => {
     const manifest = await buildSocialManifest(
       [
@@ -91,14 +91,14 @@ describe('buildSocialManifest', () => {
       ] as never,
       {}
     );
-    const find = (id: string) => {
+    function socialOf(id: string): SocialManifestArticle['social'] {
       const article = manifest.articles.find((a) => a.collection_id === id);
       expect(article, `article ${id} in manifest`).toBeDefined();
-      return article as SocialManifestArticle;
-    };
-    expect(social(find('no-social'))).toEqual({ publish: false });
-    expect(social(find('opt-in'))).toEqual({ publish: true, id: 'b'.repeat(64) });
-    expect(social(find('disabled'))).toEqual({ publish: false });
+      return (article as SocialManifestArticle).social;
+    }
+    expect(socialOf('no-social')).toEqual({ publish: false });
+    expect(socialOf('opt-in')).toEqual({ publish: true, id: 'b'.repeat(64) });
+    expect(socialOf('disabled')).toEqual({ publish: false });
   });
 
   it('carries schema_version 1, provenance, canonical URL and description', async () => {
