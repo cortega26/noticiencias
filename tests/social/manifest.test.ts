@@ -91,10 +91,14 @@ describe('buildSocialManifest', () => {
       ] as never,
       {}
     );
-    const byId = Object.fromEntries(manifest.articles.map((a) => [a.collection_id, a]));
-    expect(social(byId['no-social'])).toEqual({ publish: false });
-    expect(social(byId['opt-in'])).toEqual({ publish: true, id: 'b'.repeat(64) });
-    expect(social(byId['disabled'])).toEqual({ publish: false });
+    const find = (id: string) => {
+      const article = manifest.articles.find((a) => a.collection_id === id);
+      expect(article, `article ${id} in manifest`).toBeDefined();
+      return article as SocialManifestArticle;
+    };
+    expect(social(find('no-social'))).toEqual({ publish: false });
+    expect(social(find('opt-in'))).toEqual({ publish: true, id: 'b'.repeat(64) });
+    expect(social(find('disabled'))).toEqual({ publish: false });
   });
 
   it('carries schema_version 1, provenance, canonical URL and description', async () => {
@@ -104,10 +108,12 @@ describe('buildSocialManifest', () => {
     );
     expect(manifest.schema_version).toBe(1);
     expect(manifest.provenance).not.toBeNull();
-    const a = manifest.articles.find((x) => x.collection_id === 'a')!;
+    const [a, b] = manifest.articles;
+    expect(a.collection_id).toBe('a');
     expect(a.canonical_url).toBe('https://noticiencias.com/a/');
     expect(a.description).toBe('An excerpt');
-    expect(manifest.articles.find((x) => x.collection_id === 'b')!.description).toBeUndefined();
+    expect(b.collection_id).toBe('b');
+    expect(b.description).toBeUndefined();
   });
 
   it('orders by social.id then collection id, deterministically', async () => {
