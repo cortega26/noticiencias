@@ -117,13 +117,28 @@ describe('content.config posts schema', () => {
       expect(result.error?.issues.some((i) => i.path.join('.') === 'social.id')).toBe(true);
     });
 
-    it('rejects a malformed social.id', () => {
-      const result = schema.safeParse({
-        ...basePost,
-        social: { publish: false, id: 'NOT-HEX' },
-      });
-      expect(result.success).toBe(false);
-      expect(result.error?.issues.some((i) => i.path.includes('id'))).toBe(true);
+    it('rejects a malformed social.id (non-hex / uppercase / wrong length)', () => {
+      for (const id of ['NOT-HEX', 'abc', 'A'.repeat(64), `${hexId}a`, hexId.slice(0, -1)]) {
+        expect(schema.safeParse({ ...basePost, social: { publish: false, id } }).success).toBe(
+          false
+        );
+      }
+    });
+
+    it('rejects an id with surrounding whitespace or a trailing newline', () => {
+      // Parity guard: Python `re` lets `$` match before a trailing newline, so a
+      // mirror built with re.search would accept these. The Zod regex must not.
+      for (const id of [`${hexId}\n`, `\n${hexId}`, `${hexId} `, ` ${hexId}`]) {
+        expect(schema.safeParse({ ...basePost, social: { publish: true, id } }).success).toBe(
+          false
+        );
+      }
+    });
+
+    it('rejects a non-boolean social.publish (no "true" / 1 / 0 coercion)', () => {
+      for (const publish of ['true', 1, 0]) {
+        expect(schema.safeParse({ ...basePost, social: { publish } }).success).toBe(false);
+      }
     });
 
     it('rejects unknown keys inside social', () => {

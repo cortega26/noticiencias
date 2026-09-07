@@ -161,6 +161,14 @@ Canonical URLs should resolve through `getCanonical()` in `src/utils/permalinks.
   (`astro.config.mjs`'s `sitemap.filter`) and disallowed in
   `public/robots.txt`. The Cloudflare Worker in `workers/` fetches it
   internally when a request's `Accept` header prefers `text/markdown`.
+- `/social-manifest.json` (`src/pages/social-manifest.json.ts`) is a
+  build-time operational snapshot of every article route with its normalized
+  `social` opt-in and canonical URL, plus build provenance (non-null only
+  inside the `Deploy to GitHub Pages` workflow). Consumed by the
+  social-distribution publisher, not by the site. Also excluded from the
+  sitemap (`astro.config.mjs`'s `sitemap.filter` — `@astrojs/sitemap` does
+  emit JSON endpoint routes); `scripts/dist-sanity.js` asserts the manifest
+  matches the built routes and stays out of the sitemap.
 
 ## Browser-Side Behavior
 
