@@ -1,56 +1,58 @@
+# Plantilla de artículo
+
+Guía para redactar un archivo `.md` en `src/content/posts/`. No publicar este
+archivo ni sus ejemplos literalmente: reemplazar los textos, fecha, fuentes,
+imagen y metadatos con evidencia editorial. La autoridad es
+`src/content.config.ts`; consultar `docs/tagging.md` para etiquetas y
+`AGENTS.md` para validación. `schema_version: 2` requiere los seis campos
+editoriales estructurados que se muestran abajo.
+
+```yaml
 ---
-title: 'Título: Conclusión Principal (Alcance)'
+title: 'Título informativo con el alcance del hallazgo'
+schema_version: 2
 author: Equipo Noticiencias
-date: 2026-01-XX
-excerpt: 'Resumen de una frase para Google y redes sociales. Contexto + Noticia + Límite.'
+date: 2026-09-04
+excerpt: 'Resumen específico que explica el hallazgo y su principal limitación.'
 categories:
-  - [ciencia/salud/tecnologia]
+  - Tecnología
 tags:
-  - [tag-existente]
-image: /assets/images/temas/[imagen].jpg
-image_alt: 'Descripción accesible de la imagen.'
-translation_method: [humana/asistida]
-editorial_score: [1-100]
-review_status: [verificado/en_revision]
-confidence: [alta/media/baja]
+  - inteligencia artificial
+image: /assets/images/reemplazar-con-imagen-real.jpg
+image_alt: 'Descripción específica de la imagen elegida.'
+translation_method: asistida
+review_status: en_revision
+confidence: media
+summary_points:
+  - 'Primer resultado respaldado por la fuente.'
+  - 'Segundo resultado o limitación relevante.'
+glossary:
+  - term: 'Término necesario'
+    definition: 'Explicación breve y accesible.'
+fact_check:
+  - label: 'Afirmación concreta que se ha comprobado.'
+    status: uncertain
 why_it_matters:
-  - 'Punto 1: Impacto social o económico.'
-  - 'Punto 2: Cambio en el paradigma actual.'
+  - 'Relevancia sustentada, sin prometer aplicaciones no demostradas.'
 sources:
-  - title: 'Nombre del Paper / Reporte'
-    url: 'https://doi.org/...'
-    publisher: 'Journal Name / Institution'
-    date: '202X-XX-XX'
+  - title: 'Nombre de la fuente primaria real'
+    url: 'https://example.com/reemplazar-con-fuente'
+    publisher: 'Institución o revista real'
 ---
+```
 
 ## Lo que sabemos
 
-Párrafo de apertura directo. Contextualiza la noticia inmediatamente. ¿Qué pasó? ¿Quién lo hizo? ¿Qué encontraron?
+Abrir con el hallazgo, quién lo estudió y en qué contexto. Distinguir observación,
+inferencia y aplicaciones posibles. Usar citas textuales solo si se verificaron.
 
-> "Cita clave del estudio o del investigador principal que resume el hallazgo."
+## Evidencia y límites
 
-### Evidencia Clave
-
-- **Dato 1:** Número, porcentaje o resultado duro.
-- **Dato 2:** Comparación con el estándar anterior.
-
-## Lo que falta (o sus limites)
-
-Aquí es donde ganamos la confianza.
-
-- ¿Fue en ratones o humanos?
-- ¿Es una muestra pequeña?
-- ¿Falta revisión por pares?
-- _Declaración explícita:_ "Este estudio es preliminar y requiere replicación."
+Explicar población, método y limitaciones con fuentes. Mantener una jerarquía
+de encabezados ordenada; el título de página ya aporta el `h1`.
 
 ## Por qué importa
 
-Conexión con la vida real del lector. No exagerar, pero explicar la relevancia.
-
-- Implicaciones a futuro.
-- Posibles aplicaciones prácticas.
-
-## Para leer más
-
-- [Enlace interno a Topic Cluster 1]
-- [Enlace interno a Topic Cluster 2]
+Conectar la evidencia con la pregunta del lector, sin exagerar certeza ni alcance.
+Antes de publicar, sustituir todos los ejemplos y ejecutar `npm run lint` y
+`npm run validate:content`; la validez del YAML no prueba rigor editorial.

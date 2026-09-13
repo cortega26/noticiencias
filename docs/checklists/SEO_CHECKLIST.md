@@ -14,10 +14,10 @@
   - `og:description`
   - `og:image` (absolute URL)
   - `og:type` ('website' or 'article')
-  - `og:locale` ('es_ES')
+  - `og:locale` (consistent with the configured language and metadata implementation)
 - [ ] **Twitter Cards**:
   - `twitter:card` ('summary_large_image')
-  - `twitter:site` ('@noticiencias')
+  - `twitter:site` (value from `src/config.yaml`, currently `@noti_ciencias`)
 
 ## Structured Data (Schema.org)
 
@@ -31,8 +31,8 @@
 
 - [ ] **Sitemap**: `/sitemap-index.xml` and `/sitemap-0.xml` exist.
 - [ ] **RSS**: `/rss.xml` exists and validates.
-- [ ] **Robots.txt**: Exists (default Astro handles this or needs manual add).
+- [ ] **Robots.txt**: Matches the committed `public/robots.txt`, including the backing Markdown namespace exclusion.
 
 ## URL Parity
 
-- [ ] All URLs from `URL_PARITY_REPORT.csv` return 200 OK on the new site.
+- [ ] Affected canonical article/list/taxonomy/search URLs resolve with the configured trailing-slash behavior. Historical migration URL reports are not a complete current route inventory.

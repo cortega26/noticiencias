@@ -26,7 +26,9 @@ function runCheck(
   exitCode: number;
 } {
   try {
-    const stdout = execSync(`node ${SCRIPT}`, {
+    // 2>&1 merges stderr into stdout so `combined` is truthful on both paths:
+    // warnings are printed to stderr but exit 0.
+    const stdout = execSync(`node ${SCRIPT} 2>&1`, {
       cwd: resolve('.'),
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
@@ -76,6 +78,23 @@ describe('check-doc-drift authority-order references', () => {
   it('passes against the live governance docs', () => {
     const { combined, exitCode } = runCheck(resolve('.'), []);
     expect(combined).toContain('[check:doc-drift] OK');
+    expect(exitCode).toBe(0);
+  });
+});
+
+describe('check-doc-drift npm script references', () => {
+  const npmRoot = join(FIXTURES, 'npm-scripts');
+
+  it('accepts a workers-package script scoped to workers/', () => {
+    const { combined, exitCode } = runCheck(npmRoot, ['ok.md']);
+    expect(combined).toContain('[check:doc-drift] OK');
+    expect(exitCode).toBe(0);
+  });
+
+  it('still warns on a script that exists in neither package', () => {
+    const { combined, exitCode } = runCheck(npmRoot, ['broken.md']);
+    expect(combined).toContain('unknown npm script');
+    expect(combined).toContain('definitely-not-a-real-script');
     expect(exitCode).toBe(0);
   });
 });
