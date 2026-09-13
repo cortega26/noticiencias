@@ -10,7 +10,7 @@
 
 ```bash
 npm ci                # install exact deps from package-lock.json
-cp .env.example .env  # fill in any overrides you need locally
+test -f .env || cp .env.example .env  # preserve existing local settings
 ```
 
 ## Daily development
@@ -29,23 +29,19 @@ npm run test:dist         # dist sanity checks (run after build)
 
 1. Consult the **Change Matrix** in `AGENTS.md §9` and run the minimum required
    commands for your change class.
-2. Run the canonical one-command gate (mirrors the CI PR checks):
+2. Run the aggregate local gate for changes requiring the full validation suite:
    ```bash
    npm run verify:ci
    ```
    This approximates the CI PR checks in one local command (lint, content
    validation, build, dist sanity, unit tests, search budget, browser tests,
-   contract sync). CI additionally runs a dependency-graph check, a link
-   checker, a Worker test suite, and uses coverage-threshold unit tests and
+   contract sync). CI additionally runs a dependency-graph check,
+   a Worker test suite, and uses coverage-threshold unit tests and
    explicit-viewport Playwright projects not reproduced here — see
    `.github/workflows/content-guard.yml` for the authoritative CI step list.
-3. For component, layout, or route changes, also run:
-   ```bash
-   npm run build
-   npm run test:dist
-   npm run test:audit
-   ```
-4. Verify at 375 px and 1280 px — no console errors, no broken images, no broken
+3. The aggregate command already includes build, dist and unit tests; do not
+   repeat them unless a change or failure warrants another run.
+4. For visual or interaction changes, verify at 375 px and 1280 px — no console errors, no broken images, no broken
    canonical metadata.
 5. No "we'll fix it later" workarounds. If the change needs a follow-up to be safe,
    the task is not complete.
@@ -89,8 +85,9 @@ npm run test:dist         # dist sanity checks (run after build)
 
 ## Env vars
 
-See `.env.example`. All variables are optional in local development. Without R2
-credentials the site falls back to Astro's built-in image optimization.
+See `.env.example`. The committed `data/image-delivery-mode.json` selects
+`github`; `src/utils/image-delivery-mode.js` owns mode resolution. R2 delivery
+and upload behavior depend on mode as well as credentials, not credentials alone.
 
 ## Architecture and governance
 
@@ -111,8 +108,8 @@ That document covers:
 
 - back-end bootstrap (`make bootstrap`) and `.env` configuration
 - front-end bootstrap (`npm ci`)
-- collector dry-run to verify connectivity without side effects
-- Refinery UI launch (`make refinery`)
+- collector dry-run behavior and its initialization/network/output limits
+- current Astro admin launch (`make admin`) and legacy Streamlit fallback
 - validation commands by change type (including cross-repo schema changes)
 - common failure modes and their fixes
 

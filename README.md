@@ -10,12 +10,12 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 
 ## Current State
 
-- Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/template/Layout.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/layouts/template/Layout.astro).
-- Content contract: the only authoritative post schema is [`src/content.config.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/content.config.ts).
-- Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/config.yaml).
-- Metadata emission: pages pass metadata through layouts into [`src/components/template/common/Metadata.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/components/template/common/Metadata.astro).
-- URL and taxonomy helpers: [`src/utils/permalinks.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/permalinks.ts) and [`src/utils/blog.ts`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/utils/blog.ts).
-- Search: build-time JSON at [`src/pages/search.json.js`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/pages/search.json.js) plus a browser-only Lunr UI on [`src/pages/buscar.astro`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/src/pages/buscar.astro).
+- Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/template/Layout.astro`](src/layouts/template/Layout.astro).
+- Content contract: the only authoritative post schema is [`src/content.config.ts`](src/content.config.ts).
+- Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](src/config.yaml).
+- Metadata emission: pages pass metadata through layouts into [`src/components/template/common/Metadata.astro`](src/components/template/common/Metadata.astro).
+- URL and taxonomy helpers: [`src/utils/permalinks.ts`](src/utils/permalinks.ts) and [`src/utils/blog.ts`](src/utils/blog.ts).
+- Search: build-time JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only Lunr UI on [`src/pages/buscar.astro`](src/pages/buscar.astro).
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`.
 
 ## Key Directories
@@ -54,20 +54,19 @@ Useful local commands:
 
 ## Image Derivatives
 
-- Post hero images now use a generated manifest at `data/image-derivatives-manifest.json`.
-- `npm run publish:image-derivatives` scans local post raster images, computes deterministic derivative keys, updates the manifest, and uploads missing AVIF variants when the R2 env vars are present.
-- Required Cloudflare env vars for upload mode: `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_ENDPOINT`, and `R2_PUBLIC_BASE_URL`.
-- Without those env vars, the script still refreshes the manifest metadata locally and the site falls back to Astro image optimization during build.
-- The GitHub Pages deploy workflow auto-enables `IMAGE_DERIVATIVES_REQUIRE_URL=1` and `IMAGE_DERIVATIVES_STRICT=1` once those R2 env vars are configured in CI. At that point, deploy builds stop accepting Astro fallback for post images and require published CDN derivative URLs instead.
+- `data/image-derivatives-manifest.json` records derivative metadata.
+- `data/image-delivery-mode.json` selects delivery mode through `src/utils/image-delivery-mode.js`; the committed mode is `github`.
+- `npm run publish:image-derivatives` scans post raster images and refreshes the manifest. R2 uploads require both `r2` mode and the relevant R2 environment variables; credentials alone do not select that mode.
+- `.env.example`, the publisher script and `.github/workflows/deploy.yml` own credential names and strictness behavior. Build commands can generate files and, when configured for R2, upload derivatives.
 
 ## Governance Docs
 
-- [`AGENTS.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/AGENTS.md): binding review and change law for this repo.
-- [`docs/SOURCE_OF_TRUTH.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/SOURCE_OF_TRUTH.md): governance stack, authority model, and repo boundary with the backend.
-- [`docs/ARCHITECTURE.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/ARCHITECTURE.md): actual module boundaries, data flow, and extension rules.
-- [`docs/tagging.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/tagging.md): cross-repo tagging contract.
-- [`docs/audits/2026-04-source-of-truth-audit.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/audits/2026-04-source-of-truth-audit.md): documentation audit for this pass.
-- [`docs/backlog/source-of-truth-backlog.md`](/home/carlos/VS_Code_Projects/noticiencias/noticiencias/docs/backlog/source-of-truth-backlog.md): prioritized follow-up backlog.
+- [`AGENTS.md`](AGENTS.md): binding review and change law for this repo.
+- [`docs/SOURCE_OF_TRUTH.md`](docs/SOURCE_OF_TRUTH.md): governance stack, authority model, and repo boundary with the backend.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): actual module boundaries, data flow, and extension rules.
+- [`docs/tagging.md`](docs/tagging.md): cross-repo tagging contract.
+- [`docs/audits/2026-04-source-of-truth-audit.md`](docs/audits/2026-04-source-of-truth-audit.md): documentation audit for this pass.
+- [`docs/backlog/source-of-truth-backlog.md`](docs/backlog/source-of-truth-backlog.md): prioritized follow-up backlog.
 
 ## Back-End System
 

@@ -1,0 +1,53 @@
+name: Hero Image Delivery
+
+# Spike 024 (Step 1): explicit pre-merge gate for the two hand-syncs behind
+# hero-image delivery friction — placeholder allowlist sync and derivative
+# manifest freshness. Additive only: existing CI (notably content-guard.yml,
+# which already runs these checks via `npm run lint`) is untouched.
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hero-image-delivery-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hero-delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Hero image placeholders (missing image / alt / allowlist reason)
+        run: npm run check:hero-images
+
+      - name: Placeholder allowlist in sync (sync:hero-placeholders verification)
+        run: |
+          node scripts/sync-hero-placeholders.js
+          if ! git diff --exit-code -- data/hero-image-placeholder-allowlist.json; then
+            echo "::error::data/hero-image-placeholder-allowlist.json is out of sync. Run npm run sync:hero-placeholders locally and commit the result."
+            exit 1
+          fi
+
+      - name: Published sidecars (stale manifest / allowlist entries)
+        run: npm run check:published-sidecars
+
+      - name: Image derivative manifest freshness
+        run: npm run check:image-derivatives

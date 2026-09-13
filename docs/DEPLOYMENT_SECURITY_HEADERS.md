@@ -8,7 +8,11 @@
 
 ## Required production headers
 
-These are the headers the post-deploy check now enforces on the live custom domain:
+The example below is an edge-policy starting point, not the exact assertion
+set or evidence of live configuration. `scripts/post-deploy-check-lib.js`
+owns enforced header checks; its custom-domain CSP check requires a response
+header but does not validate every directive. Reconcile any deployed CSP
+with current image, analytics and API origins before applying it:
 
 ```text
 Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';
@@ -37,4 +41,4 @@ npm run test:deploy -- https://noticiencias.com/
 curl -I https://noticiencias.com/
 ```
 
-On `2026-05-25`, the live site still returned `Strict-Transport-Security: max-age=0; includeSubDomains; preload` and did not return the other required security headers, which is why `https://securityheaders.com/?q=noticiencias.com&followRedirects=on` graded the site `F`.
+Historical observation only (not rechecked in this audit): on `2026-05-25`, the site returned `Strict-Transport-Security: max-age=0; includeSubDomains; preload` and did not return the other required security headers, which is why `https://securityheaders.com/?q=noticiencias.com&followRedirects=on` graded the site `F`.

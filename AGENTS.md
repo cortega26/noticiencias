@@ -2,7 +2,7 @@
 
 Status: Active and binding
 Audience: AI agents, front-end engineers, and content maintainers
-Scope: `/home/carlos/VS_Code_Projects/noticiencias/noticiencias`
+Scope: the `noticiencias` repository
 
 This file is an engineering governance document for code review and autonomous edits. It is not a style guide and it is not aspirational. If a rule here conflicts with convenience, convenience loses.
 
@@ -67,11 +67,11 @@ The repo currently has two UI layers: `ds` and `template`. They are not intercha
 - Categories: `/categorias/[category]/` → `src/pages/categorias/[category]/[...page].astro`
 - Tags: `/temas/[tag]/` → `src/pages/temas/[tag]/[...page].astro`
 - Articles: `/%category%/%slug%/` (or override via frontmatter `permalink`)
-- Search: `/buscar` → build-time JSON index + Lunr client-side
+- Search: `/buscar/` → build-time JSON index + Lunr client-side
 
 ### 1.3) Image pipeline
 
-Hero images use a derivative manifest at `data/image-derivatives-manifest.json`. The `publish:image-derivatives` script generates AVIF variants and uploads to Cloudflare R2. Without R2 env vars, falls back to Astro image optimization. CI can enforce CDN URLs via `IMAGE_DERIVATIVES_REQUIRE_URL=1`.
+Hero images use `data/image-derivatives-manifest.json`. Delivery mode is selected by `data/image-delivery-mode.json` through `src/utils/image-delivery-mode.js`; the committed mode is `github`. In `r2` mode, `publish:image-derivatives` can upload AVIF variants when credentials are supplied. Credential presence alone does not select delivery mode. CI can require published URLs via `IMAGE_DERIVATIVES_REQUIRE_URL=1`.
 
 ## 2) Architectural Laws
 

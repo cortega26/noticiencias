@@ -17,8 +17,8 @@ npm run test:audit   # Run tests
 
 - Static Astro 7 site, server-first rendering, no React islands
 - Content schema is sealed: `src/content.config.ts` is a cross-repo contract
-- Layers: `ds` → `template` → `pages` (not interchangeable)
-- Utilities must stay pure; no DOM in `src/utils/`
+- Pages compose layouts/components; `template` may import `ds`, while `ds` must not import `template`. Shared image behavior lives in `common`.
+- Utilities stay mostly pure; reused browser helpers belong in explicit `src/utils/browser/` modules.
 - Content normalization belongs before rendering; components don't fix broken data
 
 For architecture, data flow, URL structure, image pipeline, and the complete set of

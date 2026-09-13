@@ -1,10 +1,11 @@
 # Supported dependency matrix
 
 This document records the supported Node, Astro, and Tailwind versions for the
-Noticiencias frontend. It is the authoritative reference for CI, deployment
-environments, and future framework upgrades.
+Noticiencias frontend. It is derived from `package.json`, `package-lock.json`,
+`workers/package.json`, `workers/package-lock.json` and workflow YAML. Those
+files own exact versions and CI behavior.
 
-## Current matrix (plan 032, July 2026)
+## Current matrix (checked 2026-09-04)
 
 | Layer      | Supported version | Notes                                                                      |
 | ---------- | ----------------- | -------------------------------------------------------------------------- |
@@ -14,8 +15,8 @@ environments, and future framework upgrades.
 | MDX        | `^7.0.3`          | Peers Astro 7                                                              |
 | Vite       | `^8` (via Astro)  | No direct vite config beyond the tailwindcss plugin                        |
 | Playwright | `^1.61.1`         | Projects: `mobile-375` (Pixel 5), `desktop-1280` (Desktop Chrome)          |
-| Vitest     | `4.0.18` (pinned) | Pinned for `@cloudflare/vitest-pool-workers` compatibility (plan 031 STOP) |
-| sharp      | `^0.35.3`         | Pulls libvips CVE fixes (GHSA-f88m-g3jw-g9cj)                              |
+| Vitest     | `4.1.10` (pinned) | Main app and Worker use separate lockfiles; Worker pool is `^0.21.1` |
+| sharp      | `^0.35.3`         | Image processing; validate the resolved dependency graph on upgrades                              |
 
 ## Peer validity
 
@@ -28,8 +29,9 @@ were removed in plans 032 step 2-3.
 ## Production audit
 
 `npm audit --omit=dev` must report zero high/critical production advisories.
-Remaining dev-only advisories (esbuild Windows dev-server, vitest UI, fast-uri)
-are tracked separately and are not production-exposed.
+Record the audit date, lockfile revision and affected dependency path when
+triaging findings. Development dependencies need their own exposure review;
+this document does not certify the absence of current vulnerabilities.
 
 ## Upgrade protocol
 
@@ -43,5 +45,8 @@ Future framework majors require:
 6. `npx astro check` 0 errors
 7. Metadata DOM snapshots byte-identical (or intentional diffs documented)
 
-Run `bash ../noticiencias_news_collector/plans/032/tests/harness.sh all` to
-verify all of the above in one command.
+Use `npm run verify:ci` for the aggregate local gate. It does not replace
+the dependency audit or intentional snapshot review above. Run Worker
+checks from `workers/` separately (`npm run typecheck` and
+`npm run test:coverage`); `.github/workflows/content-guard.yml` and
+`.github/workflows/deploy-worker.yml` own the full CI step lists.

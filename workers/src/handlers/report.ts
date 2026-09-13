@@ -22,12 +22,10 @@ const IDEMPOTENCY_WINDOW_SECONDS = 600;
 export async function handleReport(request: Request, env: Env): Promise<Response> {
   const clientIp = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  if (env.RATE_LIMIT_KV) {
-    const rateLimit = await checkRateLimit(env.RATE_LIMIT_KV, clientIp);
-    if (!rateLimit.allowed) {
-      return errorResponse('Demasiadas solicitudes. Intente nuevamente más tarde.', 429);
-    }
-  }
+  // NOTE: validación primero, rate-limit después (patrón Monedario).
+  // El limiter hace KV.put por cada petición admitida; si se ejecutara
+  // antes de validar, payloads inválidos/sobredimensionados consumirían
+  // escrituras KV (cuota 1.000/día) sin posibilidad de éxito.
 
   const bodyText = await readBoundedBody(request, MAX_BODY_BYTES);
   if (bodyText === null) {
@@ -44,6 +42,13 @@ export async function handleReport(request: Request, env: Env): Promise<Response
   const validation = validateReportPayload(body);
   if (!validation.valid) {
     return errorResponse(`Datos inválidos: ${validation.errors.join('; ')}`, 422);
+  }
+
+  if (env.RATE_LIMIT_KV) {
+    const rateLimit = await checkRateLimit(env.RATE_LIMIT_KV, clientIp);
+    if (!rateLimit.allowed) {
+      return errorResponse('Demasiadas solicitudes. Intente nuevamente más tarde.', 429);
+    }
   }
 
   const data = body as Record<string, unknown>;

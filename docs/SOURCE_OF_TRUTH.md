@@ -1,7 +1,7 @@
 # Frontend Source Of Truth
 
 Status: Active and binding  
-Scope: `/home/carlos/VS_Code_Projects/noticiencias/noticiencias`
+Scope: the `noticiencias` repository
 
 ## Purpose
 
@@ -19,7 +19,8 @@ The frontend is a static Astro site with:
 - route entrypoints in `src/pages/`
 - shared layout and metadata plumbing in `src/layouts/`
 - two UI layers, `components/ds/` and `components/template/`
-- page-scoped browser behavior, not a client application shell
+- scoped browser behavior with global Astro `ClientRouter` navigation
+- a separate Cloudflare Worker under `workers/` for API routes and Markdown content negotiation
 
 The sibling backend repo `../noticiencias_news_collector` may generate and publish Markdown into this repo, but it does not own frontend routing, metadata emission, or render-time behavior.
 
@@ -96,8 +97,8 @@ Cross-repo rule:
 Each cross-cutting fact type has one owning file (or pair of files, when a
 backend/frontend mirror exists). When that fact changes, the owner is
 responsible for updating the active docs that repeat it — and the doc-drift
-gates (`npm run check:doc-drift`, backend `make docs-check`) enforce the
-reference.
+gates (`npm run check:doc-drift`, backend `make docs-check`) check selected
+references and invariants. They are not a semantic audit of every document.
 
 | Fact                        | Owning file(s)                                                                                           | Repeaters to keep in sync                                                 |
 | --------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -107,7 +108,7 @@ reference.
 | CI and validation commands  | `.github/workflows/*.yml` + `package.json` scripts                                                       | `README.md`, `docs/supported-dependency-matrix.md`                        |
 | Search implementation       | `src/pages/search.json.js` + `src/utils/build-search-index.ts`                                           | `docs/ARCHITECTURE.md`, `docs/SOURCE_OF_TRUTH.md`                         |
 | Deployment host/URLs        | `astro.config.mjs` / `src/config.yaml`                                                                   | `README.md`, backend `docs/PRODUCT_FLOW.md`                               |
-| Report-pipeline contract    | `workers/src/handlers/report.ts` + backend `news_collector/contracts/`                                   | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
+| Report-pipeline contract    | `workers/src/handlers/report.ts` + `workers/src/utils/validate.ts`                                   | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
 
 ## Non-Authoritative Material
 
