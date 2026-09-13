@@ -1,97 +1,55 @@
-# Report pipeline: operator setup (plan 023)
+# Report pipeline operations
 
-The reader "report a problem" form and its Worker (`workers/`) are code-complete
-and tested, but the production endpoint stays **disabled** (`src/config.yaml`'s
-`form.endpoint` is empty) until the durable-storage prerequisites below are
-provisioned. This is a deliberate STOP per plan 023: never enable the frontend
-endpoint before at least one durable sink actually exists.
+Status: Active. Checked against repository configuration on 2026-09-04.
 
-None of the steps below can be done from a code change — they require actions
-in the Cloudflare dashboard/CLI with account credentials.
+The reader report form is enabled in `src/config.yaml` at
+`https://noticiencias.com/api/report`. The production environment in
+`workers/wrangler.toml` declares `REPORT_BUCKET` and `RATE_LIMIT_KV`.
+These are committed configuration facts; they do not prove current remote
+resource availability. Verify existing resources before creating replacements.
 
-## 1. Create the R2 bucket (durable storage — required)
+## Contract and storage
 
-```bash
-cd workers
-npx wrangler r2 bucket create noticiencias-reports
-```
+- `workers/src/utils/validate.ts` owns accepted fields and validation.
+  `src/utils/reportPayload.ts` maps the form into that payload.
+- `workers/src/handlers/report.ts` owns storage and responses. A fresh
+  submission returns `201` only after R2 storage or email delivery succeeds;
+  it returns `503` if neither sink succeeds. Receipt is not editorial resolution.
+- The body limit is 20,000 bytes. Invalid JSON returns `400`, invalid fields
+  `422`, an oversized body `413`, and a rate-limit rejection `429`.
+- With `RATE_LIMIT_KV`, the handler applies rate limiting and a 600-second
+  retry window keyed by the exact request body. These KV checks do not
+  guarantee exactly-once submission under concurrent requests; see
+  [Cloudflare KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/).
+- Without KV, those checks are skipped. Without an available R2 or email
+  sink, successful report submission is unavailable.
 
-Then uncomment the R2 binding in `workers/wrangler.toml`:
+## Deployment configuration
 
-```toml
-[[env.production.r2_buckets]]
-binding = "REPORT_BUCKET"
-bucket_name = "noticiencias-reports"
-```
+`.github/workflows/deploy-worker.yml` deploys the production Wrangler
+environment after Worker type checks and coverage tests. It uses GitHub
+Actions environment `cloudflare-workers` with `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID`. Actual secret values belong in the provider's secret
+store, never in this document or committed config.
 
-## 2. Create the rate-limit/idempotency KV namespace (recommended)
+R2 and KV bindings are already present in the production config. For a new
+environment, provision its resources and bind their names/IDs in that
+Wrangler environment before enabling the form there. Production bindings
+are not declared in the preview environment.
 
-```bash
-npx wrangler kv namespace create RATE_LIMIT_KV
-```
+Email is an optional additional sink. The existing implementation calls
+SendGrid; it requires `EMAIL_API_KEY`, `EMAIL_FROM` and `EMAIL_TO`. Set the
+key as a Worker secret in the intended environment.
 
-Copy the returned `id` into the commented block in `workers/wrangler.toml`:
+## Verification
 
-```toml
-[[env.production.kv_namespaces]]
-binding = "RATE_LIMIT_KV"
-id = "<the id wrangler printed>"
-```
+From `workers/`, run `npm ci`, `npm run typecheck` and
+`npm run test:coverage` for Worker changes. Frontend form changes also follow
+`AGENTS.md` validation requirements.
 
-Without this binding the endpoint still works, but with no rate limiting or
-submission idempotency (a client retry could create a duplicate report).
-
-## 3. Email notifications (optional second sink)
-
-`workers/src/handlers/report.ts`'s `sendEmail()` calls SendGrid's REST API.
-Set these as Wrangler secrets (never in `wrangler.toml` or `.env`):
-
-```bash
-npx wrangler secret put EMAIL_API_KEY --env production
-```
-
-...and set `EMAIL_FROM`/`EMAIL_TO` as plain vars in `wrangler.toml`'s
-`[env.production.vars]` (they're addresses, not secrets) or as secrets too if
-you'd rather not have them in version control. To use a different provider
-(Mailgun, Resend, etc.), edit `sendEmail()` directly — it's a single function.
-
-## 4. Deploy secrets (already required for any Worker deploy)
-
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions secrets
-in the `cloudflare-workers` environment — used by
-`.github/workflows/deploy-worker.yml`. If not already set, create an API
-token with Workers + R2 + KV edit permissions.
-
-## 5. Enable the endpoint
-
-Only after step 1 (and ideally step 2) is live:
-
-```yaml
-# src/config.yaml
-form:
-  endpoint: 'https://noticiencias.com/api/report'
-```
-
-Deploy the Worker (`git push` on `workers/**`, or `workflow_dispatch`), then
-the frontend (normal deploy). Verify with:
-
-```bash
-curl -i -X POST https://noticiencias.com/api/report \
-  -H 'Content-Type: application/json' \
-  -d '{"problem_type": "content_factual", "description": "smoke test"}'
-```
-
-Expect `201` with a `{"id": "..."}` body once R2 (or email) is bound; `503`
-if neither sink is configured yet — that 503 is correct behavior, not a bug
-(see `workers/src/handlers/report.ts`'s "at least one durable sink" rule).
-
-## What's already handled without operator action
-
-- Body-size limit (20KB), strict field validation, and hostname dot-boundary
-  checks — no setup needed, always active.
-- Rate limiting (5 req/min/IP) and idempotency (10-minute window) — active
-  automatically once `RATE_LIMIT_KV` is bound (step 2); silently skipped
-  (not failed) if it isn't.
-- CI gates: `workers/tests/*.test.ts` (validation + handler-level runtime
-  tests with mocked bindings), `tsc --noEmit`, and an 80% coverage threshold
-  all run in `.github/workflows/deploy-worker.yml` before every deploy.
+After an authorized deployment, submit a clearly identified test report
+through the form and verify the returned ID in the configured durable sink.
+A live submission writes a real report and may send email. A `201` response
+alone does not establish that both sinks worked; inspect the intended sink.
+The reader report pipeline is separate from the backend publication webhook
+in [webhook-integration.md](webhook-integration.md).

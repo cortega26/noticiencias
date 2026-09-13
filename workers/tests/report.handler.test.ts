@@ -142,6 +142,35 @@ describe('handleReport', () => {
     expect(res.status).toBe(201);
   });
 
+  it('does not consume rate-limit quota for invalid payloads', async () => {
+    const rateLimitKv = makeFakeKV();
+    const r2 = makeFakeR2();
+    const env = {
+      ENVIRONMENT: 'test',
+      REPORT_BUCKET: r2 as never,
+      RATE_LIMIT_KV: rateLimitKv as never,
+    } as Env;
+
+    for (let i = 0; i < 6; i++) {
+      const res = await handleReport(
+        makeRequest({ problem_type: 'bogus' }, { 'CF-Connecting-IP': '9.9.9.9' }),
+        env
+      );
+      expect(res.status).toBe(422);
+    }
+
+    const ratelimitWrites = rateLimitKv.put.mock.calls.filter(([k]) =>
+      String(k).startsWith('ratelimit:')
+    );
+    expect(ratelimitWrites).toHaveLength(0);
+
+    const valid = await handleReport(
+      makeRequest(VALID_PAYLOAD, { 'CF-Connecting-IP': '9.9.9.9' }),
+      env
+    );
+    expect(valid.status).toBe(201);
+  });
+
   it('rate-limits after the configured threshold for the same IP', async () => {
     const rateLimitKv = makeFakeKV();
     const r2 = makeFakeR2();
