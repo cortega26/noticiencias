@@ -97,6 +97,13 @@ describe('check-doc-drift npm script references', () => {
     expect(combined).toContain('definitely-not-a-real-script');
     expect(exitCode).toBe(0);
   });
+
+  it('warns on a workers-only script documented without workers scoping', () => {
+    const { combined, exitCode } = runCheck(npmRoot, ['unscoped.md']);
+    expect(combined).toContain('unknown npm script');
+    expect(combined).toContain('exists only in workers/package.json');
+    expect(exitCode).toBe(0);
+  });
 });
 
 describe('check-doc-drift declared invariants', () => {

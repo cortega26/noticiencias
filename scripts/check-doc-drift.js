@@ -69,22 +69,27 @@ const DOC_FILES = (() => {
 })();
 
 // ── npm scripts cache ──────────────────────────────────────────
-const npmScripts = new Set();
+// Root and workers scripts are kept in SEPARATE sets on purpose: a doc that
+// tells contributors to run `npm run <name>` from the repository root must
+// reference a root script. A workers-only script is accepted only when the
+// same line scopes the command to `workers/` (e.g. "From `workers/`, run
+// `npm run typecheck`"); otherwise the doc sends readers to a command that
+// fails at root. See the npm-script check in the main loop below.
+const rootScripts = new Set();
 try {
   const pkg = JSON.parse(readFileSync(resolve(SCRIPT_DIR, 'package.json'), 'utf-8'));
-  for (const name of Object.keys(pkg.scripts || {})) npmScripts.add(name);
+  for (const name of Object.keys(pkg.scripts || {})) rootScripts.add(name);
 } catch {
   // Fixture runs (DOC_DRIFT_ROOT set) may have no package.json; npm scripts
   // simply cannot be verified in that mode.
 }
-// Workers package scripts are also valid `npm run` targets: docs scope them
-// explicitly (e.g. "From `workers/`, run `npm run typecheck`"). Loaded from
-// SCRIPT_DIR (always the live repo) so fixture runs behave identically.
+const workerScripts = new Set();
 try {
   const wpkg = JSON.parse(readFileSync(resolve(SCRIPT_DIR, 'workers/package.json'), 'utf-8'));
-  for (const name of Object.keys(wpkg.scripts || {})) npmScripts.add(name);
+  for (const name of Object.keys(wpkg.scripts || {})) workerScripts.add(name);
 } catch {
-  // No workers package; root scripts alone are verified.
+  // No workers package; root scripts alone are verified. Note both sets load
+  // from SCRIPT_DIR (always the live repo), so fixture runs behave identically.
 }
 
 // ── Declared invariants (parsed from authoritative files) ──────
@@ -496,15 +501,26 @@ for (const docRel of DOC_FILES) {
     const refs = extractPaths(line);
     for (const ref of refs) {
       if (ref.npmCmd) {
-        if (!npmScripts.has(ref.npmCmd)) {
+        if (rootScripts.has(ref.npmCmd)) continue;
+        if (workerScripts.has(ref.npmCmd)) {
+          // Workers-only script: the doc line must scope it to workers/.
+          if (line.includes('workers/')) continue;
           broken.push({
             doc: docRel,
             type: 'npm_script',
             ref: ref.raw,
             line: lineNo,
-            message: `npm script "${ref.npmCmd}" not found in package.json`,
+            message: `npm script "${ref.npmCmd}" exists only in workers/package.json — scope the doc to workers/`,
           });
+          continue;
         }
+        broken.push({
+          doc: docRel,
+          type: 'npm_script',
+          ref: ref.raw,
+          line: lineNo,
+          message: `npm script "${ref.npmCmd}" not found in package.json`,
+        });
         continue;
       }
 
@@ -628,7 +644,10 @@ if (unique.length > 0) {
   }
   if (scriptErrors.length > 0) {
     console.error(`[check:doc-drift] ${scriptErrors.length} unknown npm script(s):`);
-    for (const b of scriptErrors) console.error(`  ${b.doc}:${b.line || '?'}: ${b.ref}`);
+    for (const b of scriptErrors) {
+      console.error(`  ${b.doc}:${b.line || '?'}: ${b.ref}`);
+      console.error(`    → ${b.message}`);
+    }
   }
   if (invariantErrors.length > 0) {
     console.error(`[check:doc-drift] ${invariantErrors.length} stale declared claim(s):`);
