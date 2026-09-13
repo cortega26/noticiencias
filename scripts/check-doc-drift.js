@@ -77,6 +77,15 @@ try {
   // Fixture runs (DOC_DRIFT_ROOT set) may have no package.json; npm scripts
   // simply cannot be verified in that mode.
 }
+// Workers package scripts are also valid `npm run` targets: docs scope them
+// explicitly (e.g. "From `workers/`, run `npm run typecheck`"). Loaded from
+// SCRIPT_DIR (always the live repo) so fixture runs behave identically.
+try {
+  const wpkg = JSON.parse(readFileSync(resolve(SCRIPT_DIR, 'workers/package.json'), 'utf-8'));
+  for (const name of Object.keys(wpkg.scripts || {})) npmScripts.add(name);
+} catch {
+  // No workers package; root scripts alone are verified.
+}
 
 // ── Declared invariants (parsed from authoritative files) ──────
 // Versions and hosts are read from the files that own them, never

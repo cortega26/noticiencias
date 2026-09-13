@@ -108,7 +108,7 @@ references and invariants. They are not a semantic audit of every document.
 | CI and validation commands  | `.github/workflows/*.yml` + `package.json` scripts                                                       | `README.md`, `docs/supported-dependency-matrix.md`                        |
 | Search implementation       | `src/pages/search.json.js` + `src/utils/build-search-index.ts`                                           | `docs/ARCHITECTURE.md`, `docs/SOURCE_OF_TRUTH.md`                         |
 | Deployment host/URLs        | `astro.config.mjs` / `src/config.yaml`                                                                   | `README.md`, backend `docs/PRODUCT_FLOW.md`                               |
-| Report-pipeline contract    | `workers/src/handlers/report.ts` + `workers/src/utils/validate.ts`                                   | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
+| Report-pipeline contract    | `workers/src/handlers/report.ts` + `workers/src/utils/validate.ts`                                       | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
 
 ## Non-Authoritative Material
 

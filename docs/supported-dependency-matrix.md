@@ -7,16 +7,16 @@ files own exact versions and CI behavior.
 
 ## Current matrix (checked 2026-09-04)
 
-| Layer      | Supported version | Notes                                                                      |
-| ---------- | ----------------- | -------------------------------------------------------------------------- |
-| Node.js    | `>=24.0.0 <25`    | Pinned in `package.json#engines`; CI uses `node-version: 24`               |
-| Astro      | `^7.1.3`          | Astro 7 (Rust compiler, Sätteri Markdown, `compressHTML: 'jsx'`)           |
-| Tailwind   | `^4.3.3`          | Via `@tailwindcss/vite` (not `@astrojs/tailwind`)                          |
-| MDX        | `^7.0.3`          | Peers Astro 7                                                              |
-| Vite       | `^8` (via Astro)  | No direct vite config beyond the tailwindcss plugin                        |
-| Playwright | `^1.61.1`         | Projects: `mobile-375` (Pixel 5), `desktop-1280` (Desktop Chrome)          |
+| Layer      | Supported version | Notes                                                                |
+| ---------- | ----------------- | -------------------------------------------------------------------- |
+| Node.js    | `>=24.0.0 <25`    | Pinned in `package.json#engines`; CI uses `node-version: 24`         |
+| Astro      | `^7.1.3`          | Astro 7 (Rust compiler, Sätteri Markdown, `compressHTML: 'jsx'`)     |
+| Tailwind   | `^4.3.3`          | Via `@tailwindcss/vite` (not `@astrojs/tailwind`)                    |
+| MDX        | `^7.0.3`          | Peers Astro 7                                                        |
+| Vite       | `^8` (via Astro)  | No direct vite config beyond the tailwindcss plugin                  |
+| Playwright | `^1.61.1`         | Projects: `mobile-375` (Pixel 5), `desktop-1280` (Desktop Chrome)    |
 | Vitest     | `4.1.10` (pinned) | Main app and Worker use separate lockfiles; Worker pool is `^0.21.1` |
-| sharp      | `^0.35.3`         | Image processing; validate the resolved dependency graph on upgrades                              |
+| sharp      | `^0.35.3`         | Image processing; validate the resolved dependency graph on upgrades |
 
 ## Peer validity
 

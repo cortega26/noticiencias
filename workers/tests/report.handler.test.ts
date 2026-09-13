@@ -152,7 +152,10 @@ describe('handleReport', () => {
     } as Env;
 
     for (let i = 0; i < 6; i++) {
-      const res = await handleReport(makeRequest({ problem_type: 'bogus' }, { 'CF-Connecting-IP': '9.9.9.9' }), env);
+      const res = await handleReport(
+        makeRequest({ problem_type: 'bogus' }, { 'CF-Connecting-IP': '9.9.9.9' }),
+        env
+      );
       expect(res.status).toBe(422);
     }
 
@@ -168,7 +171,8 @@ describe('handleReport', () => {
     expect(valid.status).toBe(201);
   });
 
-  it('rate-limits after the configured threshold for the same IP', async () => {    const rateLimitKv = makeFakeKV();
+  it('rate-limits after the configured threshold for the same IP', async () => {
+    const rateLimitKv = makeFakeKV();
     const r2 = makeFakeR2();
     const env = {
       ENVIRONMENT: 'test',
