@@ -1173,7 +1173,7 @@ export async function createRealDependencies({ requireStateWrite = false } = {})
 
 // --- CLI -----------------------------------------------------------------
 
-/** Closed argv parsing: `--execute`, `--dry-run` (default), `--article-id`, `--platform`, `--reconcile`. */
+/** Closed argv parsing: `--execute` (arms a real run: `publish`, or `reconcile` with `--reconcile`), `--dry-run` (default), `--article-id`, `--platform`, `--reconcile`. */
 export function parseCliFlags(argv) {
   const flags = { execute: false, mode: 'dry-run', articleId: '', platform: 'all' };
   for (let i = 0; i < argv.length; i += 1) {
@@ -1187,13 +1187,27 @@ export function parseCliFlags(argv) {
   return flags;
 }
 
+/**
+ * Derive the run mode from parsed CLI flags. Pure and exported so the
+ * safety-critical `--execute` → `publish` mapping is pinned by tests:
+ * without `--execute` everything stays `dry-run` (fail closed), even if a
+ * mode flag is also present.
+ *
+ * @param {{ execute?: boolean, mode?: string } | null | undefined} flags
+ * @returns {'dry-run'|'publish'|'reconcile'}
+ */
+export function resolveMode(flags) {
+  if (!flags?.execute) return 'dry-run';
+  return flags.mode === 'reconcile' ? 'reconcile' : 'publish';
+}
+
 export async function main(argv = process.argv.slice(2)) {
   const flags = parseCliFlags(argv);
   const deps = await createRealDependencies({ requireStateWrite: flags.execute });
   // Real execution is trusted only inside the actual GitHub Actions job,
   // which sets the CI flag and drives `--execute` itself.
   const trustedContext = flags.execute && process.env.GITHUB_ACTIONS === 'true';
-  const mode = flags.execute ? flags.mode : 'dry-run';
+  const mode = resolveMode(flags);
 
   const summary = await runDistribution({
     mode,
