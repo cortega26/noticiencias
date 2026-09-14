@@ -1,0 +1,116 @@
+name: Social Distribution
+
+# Disabled by default: the publish job only runs when the repository variable
+# `SOCIAL_PUBLISH_ENABLED == 'true'`. Otherwise only the read-only dry-run job
+# runs (zero mutations, no provider writes, no ledger writes). There are no
+# push/pull_request/schedule triggers on purpose — this workflow reacts to a
+# successful deploy or to a manual dispatch, never to a PR.
+
+on:
+  workflow_run:
+    workflows: ['Deploy to GitHub Pages']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'dry-run (default, read-only), reconcile, or publish (publish still requires vars.SOCIAL_PUBLISH_ENABLED=true)'
+        required: false
+        default: 'dry-run'
+        type: choice
+        options: [dry-run, reconcile, publish]
+
+permissions: {}
+
+concurrency:
+  group: social-distribution
+  cancel-in-progress: false
+
+jobs:
+  dry-run:
+    name: Dry run (read-only, default)
+    # Branch/repo/success guard for workflow_run; manual dispatches always
+    # allowed (they default to dry-run, zero mutations).
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.repository == 'cortega26/noticiencias')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Social publisher dry run (no writes)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOCIAL_PUBLISH_ENABLED: ${{ vars.SOCIAL_PUBLISH_ENABLED }}
+          SOCIAL_PLATFORMS: ${{ vars.SOCIAL_PLATFORMS }}
+          SOCIAL_MANIFEST_URL: ${{ vars.SOCIAL_MANIFEST_URL }}
+          BUFFER_ORGANIZATION_ID: ${{ vars.BUFFER_ORGANIZATION_ID }}
+          BUFFER_FACEBOOK_CHANNEL_ID: ${{ vars.BUFFER_FACEBOOK_CHANNEL_ID }}
+          BUFFER_X_CHANNEL_ID: ${{ vars.BUFFER_X_CHANNEL_ID }}
+          BUFFER_LINKEDIN_CHANNEL_ID: ${{ vars.BUFFER_LINKEDIN_CHANNEL_ID }}
+          BLUESKY_DID: ${{ vars.BLUESKY_DID }}
+          BLUESKY_PDS_URL: ${{ vars.BLUESKY_PDS_URL }}
+        run: node scripts/social/publish.js
+
+  publish:
+    name: Publish (gated, disabled by default)
+    needs: dry-run
+    # Disabled by default: requires the explicit opt-in variable. Even then,
+    # only a successful main-branch deploy of this repo, or a manual dispatch
+    # with mode=publish, can reach `--execute`. Anything else stays dry-run.
+    if: >-
+      vars.SOCIAL_PUBLISH_ENABLED == 'true' &&
+      ((github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.repository == 'cortega26/noticiencias') ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Social publisher execute
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          SOCIAL_PUBLISH_ENABLED: ${{ vars.SOCIAL_PUBLISH_ENABLED }}
+          SOCIAL_PLATFORMS: ${{ vars.SOCIAL_PLATFORMS }}
+          SOCIAL_MANIFEST_URL: ${{ vars.SOCIAL_MANIFEST_URL }}
+          BUFFER_ORGANIZATION_ID: ${{ vars.BUFFER_ORGANIZATION_ID }}
+          BUFFER_FACEBOOK_CHANNEL_ID: ${{ vars.BUFFER_FACEBOOK_CHANNEL_ID }}
+          BUFFER_X_CHANNEL_ID: ${{ vars.BUFFER_X_CHANNEL_ID }}
+          BUFFER_LINKEDIN_CHANNEL_ID: ${{ vars.BUFFER_LINKEDIN_CHANNEL_ID }}
+          BLUESKY_DID: ${{ vars.BLUESKY_DID }}
+          BLUESKY_PDS_URL: ${{ vars.BLUESKY_PDS_URL }}
+        run: node scripts/social/publish.js --execute
