@@ -40,7 +40,7 @@ fact_check:
     status: confirmed
   - label: They found experiments, not massive organized attacks.
     status: confirmed
-  - label: Los casos observados se agruparon en varias categorías (incluyendo bromas benignas, guías útiles y optimización maliciosa), aunque la taxonomía real de Google incluye categorías adicionales como SEO y disuasión (deterrence).
+  - label: Los casos observados se agruparon en varias categorías (incluyendo bromas benignas, guías útiles, disuasión y exfiltración/destrucción), aunque la categoría que Google llama "SEO" se presenta aquí como "optimización maliciosa", con una connotación más negativa que la de la fuente original.
     status: uncertain
   - label: Google runs red team tests on Gemini and offers bug‑bounty rewards for AI vulnerabilities.
     status: confirmed

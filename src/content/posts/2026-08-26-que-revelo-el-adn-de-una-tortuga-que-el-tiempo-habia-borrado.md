@@ -11,7 +11,7 @@ tags:
   - galápagos
   - linaje extinto
   - hueso de museo
-excerpt: Un fragmento óseo de museo, considerado demasiado deteriorado, reveló dos linajes extintos de tortugas gigantes de San Cristóbal y Santa Fe, separadas hace cientos de miles de años.
+excerpt: Cinco especímenes óseos de museo, considerados demasiado deteriorados, revelaron dos linajes extintos de tortugas gigantes de San Cristóbal y Santa Fe, separadas hace cientos de miles de años.
 image: ~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif
 image_alt: Ilustración editorial relacionada con Qué reveló el ADN de una tortuga que el tiempo había borrado
 source_url: https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot
@@ -20,7 +20,7 @@ headlines_variants:
   question: ¿Qué linajes de tortugas gigantes descubrió el ADN de un hueso olvidado?
   benefit: Cómo el ADN de tortugas extintas ayuda a entender la biodiversidad actual de Galápagos
 summary_points:
-  - Un fragmento óseo de museo previamente descartado como demasiado deteriorado permitió recuperar ADN de tortugas gigantes extintas de San Cristóbal y Santa Fe.
+  - Cinco especímenes óseos de museo previamente descartados como demasiado deteriorados permitieron recuperar ADN de tortugas gigantes extintas de San Cristóbal y Santa Fe.
   - Los investigadores combinaron extracción de ADN de huesos secos con algoritmos que rellenan huecos genómicos usando un árbol filogenético de referencia construido a partir de tortugas vivas y muestras históricas mejor conservadas.
   - El análisis identificó dos linajes genéticamente distintos que se separaron de las tortugas actuales hace varios cientos de miles de años, revelando una diversidad pasada mayor de la sospechada.
   - Parte del material genético de esos linajes extintos podría persistir en tortugas híbridas actuales, producto de translocaciones humanas durante la época ballenera y de colonización.
@@ -37,7 +37,7 @@ glossary:
   - term: Algoritmo de imputación
     definition: Método computacional que estima las secuencias faltantes de ADN usando información de genomas de referencia y patrones de variación conocidos.
 fact_check:
-  - label: El fragmento óseo proviene de un especimen de museo de San Cristóbal.
+  - label: Los especímenes analizados fueron cinco huesos de museo pertenecientes a dos poblaciones extintas, de San Cristóbal y de Santa Fe.
     status: confirmed
   - label: Los dos linajes identificados se separaron de las tortugas actuales hace varios cientos de miles de años.
     status: uncertain
@@ -65,7 +65,7 @@ uncertainty_note: Los resultados se basan en fragmentos de ADN altamente degrada
 
 Leyendo el ADN de la tortuga gigante que el tiempo olvidó
 
-Un fragmento óseo guardado en un cajón de museo, pensado durante décadas como demasiado deteriorado para servir a la genética, acabó revelando dos linajes de tortugas gigantes que ya no existen en las Galápagos.
+Cinco especímenes óseos guardados en un cajón de museo, pensados durante décadas como demasiado deteriorados para servir a la genética, acabaron revelando dos linajes de tortugas gigantes que ya no existen en las Galápagos.
 
 ## Contexto
 

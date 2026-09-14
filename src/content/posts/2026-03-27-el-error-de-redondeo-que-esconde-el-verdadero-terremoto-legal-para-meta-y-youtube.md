@@ -90,7 +90,7 @@ Al día siguiente, un segundo veredicto en Los Ángeles abordó una teoría dife
 
 ### El Verano de los Veredictos: Señales de un Cambio Incipiente
 
-El jurado de Nuevo México falló a favor del estado en todos los cargos, ordenando a Meta pagar 375 millones de dólares. Un día después, el jurado de Los Ángeles encontró a Meta y a YouTube negligentes en el diseño de sus plataformas, concluyendo que esta negligencia fue un factor sustancial en el daño a KGM y otorgándole 3 millones de dólares en daños compensatorios. (Meta fue considerada responsable del 70%; YouTube del 30%).
+El jurado de Nuevo México falló a favor del estado en todos los cargos, ordenando a Meta pagar 375 millones de dólares. Un día después, el jurado de Los Ángeles encontró a Meta y a YouTube negligentes en el diseño de sus plataformas, concluyendo que esta negligencia fue un factor sustancial en el daño a KGM y otorgándole 3 millones de dólares en daños compensatorios, más otros 3 millones en daños punitivos —6 millones de dólares en total—. (Meta fue considerada responsable del 70% de ambos componentes; YouTube del 30%).
 
 Más allá de las cifras, el caso de Los Ángeles es un **"caso testigo" (_bellwether_)**: fue seleccionado entre cientos de demandas similares para probar si una teoría de responsabilidad por el diseño de producto podía prosperar en un juicio con jurado. El éxito de este caso allana el camino para que miles de demandas similares avancen, pasando la exposición financiera potencial de las empresas de cientos de millones a miles de millones de dólares. Se ha establecido que las demandas por negligencia contra el diseño de la plataforma son viables en los tribunales de California, lo que transforma la posición de partida de futuros litigantes.
 
