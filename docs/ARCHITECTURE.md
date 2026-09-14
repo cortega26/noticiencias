@@ -169,6 +169,15 @@ Canonical URLs should resolve through `getCanonical()` in `src/utils/permalinks.
   sitemap (`astro.config.mjs`'s `sitemap.filter` — `@astrojs/sitemap` does
   emit JSON endpoint routes); `scripts/dist-sanity.js` asserts the manifest
   matches the built routes and stays out of the sitemap.
+- Social publishing (`scripts/social/publish.js`, admin CLI
+  `scripts/social/operate.js`, Buffer adapter
+  `scripts/social/providers/buffer.js`, Bluesky adapter
+  `scripts/social/providers/bluesky.js`) runs from
+  `.github/workflows/social-distribution.yml`, which is disabled by default:
+  every trigger runs the read-only dry-run job, and the publish job only runs
+  when the `SOCIAL_PUBLISH_ENABLED` repository variable is `'true'`.
+  Publisher state lives in the state.json file on the social-state branch,
+  never in src/content/posts/.
 
 ## Browser-Side Behavior
 
