@@ -65,7 +65,7 @@ uncertainty_note: Los resultados se basan en fragmentos de ADN altamente degrada
 
 Leyendo el ADN de la tortuga gigante que el tiempo olvidó
 
-Un fragmento óseo guardado en un cajón de museo, pensado durante décadas como demasiado deteriorado para servir a la genética, acabó revelando dos linajes de tortugas gigantes que ya no existen en las Galápagos.
+Cinco especímenes óseos guardados en un cajón de museo, pensados durante décadas como demasiado deteriorados para servir a la genética, acabaron revelando dos linajes de tortugas gigantes que ya no existen en las Galápagos.
 
 ## Contexto
 
