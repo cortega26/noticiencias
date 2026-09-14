@@ -895,6 +895,41 @@
       }
     ]
   },
+  "~/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png": {
+    "originalWidth": 1910,
+    "originalHeight": 1000,
+    "hash": "30ec3d7abe132a73",
+    "variants": [
+      {
+        "width": 400,
+        "height": 209,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 471,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 733,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1400.avif"
+      },
+      {
+        "width": 1910,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1910.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1910.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp": {
     "originalWidth": 980,
     "originalHeight": 735,
