@@ -11,7 +11,7 @@ tags:
   - gpu h100
   - licencia apache 20
   - parámetros 30b
-excerpt: Meta lanza Muse Glimmer, modelo multimodal de 30 000 millones de parámetros que funciona en una sola GPU H100 bajo licencia Apache 2.0, permitiendo uso local y abierto.
+excerpt: Meta lanza Muse Glimmer, modelo multimodal de 30 000 millones de parámetros que según Meta funcionaría en una sola GPU H100 bajo licencia Apache 2.0, permitiendo uso local y abierto.
 image: ~/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png
 image_alt: 'Ilustración editorial relacionada con Muse Glimmer: IA de 30 B que cabe en una sola GPU'
 source_url: https://huggingface.co/blog/muse-glimmer
@@ -35,9 +35,9 @@ glossary:
   - term: LoRA
     definition: Low‑Rank Adaptation, técnica de ajuste fino que actualiza solo matrices de bajo rango para adaptar un modelo grande con pocos recursos computacionales.
   - term: GRPO
-    definition: Generative Reward‑Weighted Policy Optimization, método de refinamiento de modelos basado en recompensas para mejorar la calidad de la generación.
+    definition: Group Relative Policy Optimization, método de optimización de políticas que compara grupos de respuestas candidatas mediante recompensas para mejorar la calidad de la generación.
 fact_check:
-  - label: Muse Glimmer tiene 30 billones de parámetros.
+  - label: Muse Glimmer tiene 30 mil millones de parámetros.
     status: confirmed
   - label: Muse Glimmer puede ejecutarse en una sola GPU NVIDIA H100.
     status: uncertain
@@ -69,7 +69,7 @@ Treinta mil millones de parámetros suenan a cifra de centro de datos, pero Meta
 
 ## Contexto del fenómeno
 
-Los modelos de lenguaje grande (_large language model_, LLM) más potentes suelen requerir clusters completos de servidores, lo que restringe su uso a quienes pueden pagar por esos recursos o que no temen enviar información sensible a terceros. Meta partió de esa limitación y lanzó una versión “destilada” de su anterior modelo Muse, reduciéndola a 30 B de parámetros pero manteniendo su capacidad multimodal. El resultado es un sistema que puede ejecutarse en una sola GPU H100 o en varias tarjetas menos potentes usando técnicas de paralelismo, y que, al ser de código abierto bajo Apache 2.0, permite a cualquiera inspeccionarlo, modificarlo y desplegarlo donde le resulte más cómodo.
+Los modelos de lenguaje grande (_large language model_, LLM) más potentes suelen requerir clusters completos de servidores, lo que restringe su uso a quienes pueden pagar por esos recursos o que no temen enviar información sensible a terceros. Meta partió de esa limitación y lanzó una versión “destilada” de su anterior modelo Muse, reduciéndola a 30 B de parámetros pero manteniendo su capacidad multimodal. El resultado es un sistema que según Meta puede ejecutarse en una sola GPU H100 o en varias tarjetas menos potentes usando técnicas de paralelismo, y que, al ser de código abierto bajo Apache 2.0, permite a cualquiera inspeccionarlo, modificarlo y desplegarlo donde le resulte más cómodo.
 
 ## Qué hicieron los investigadores
 
