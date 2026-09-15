@@ -55,30 +55,31 @@ hilos en §6 al cerrar.
 Paralelizables entre sí. Criterio de salida: veredicto registrado (004) y
 brief aprobado (005).
 
-### Wave 4 — Builds (fuera del alcance actual; se planifica al cerrar los spikes)
+### Wave 4 — Builds (planes 007–008 redactados; resto al cerrar sus spikes)
 
-Cada ADR aprobado genera su build plan correspondiente. Orden de builds
-sugerido (a confirmar con los ADRs): 001-build → 003-build → 002-build →
-006-graduación → 005-guías → 004-veredicto. Regla: ningún build arranca sin
-su ADR en `Accepted`.
+Orden de builds decidido (revisión Wave 1, §6): 007 (003-build, observabilidad
+aditiva, sin prerrequisitos) → 008 (001-build, puerta: pregunta abierta 3
+resuelta) → 002-build → 006-graduación → 005-guías → 004-veredicto. 007 y 008
+nunca en paralelo (ambos tocan `src/config.yaml` + `CommonMeta.astro:11`).
+Regla: ningún build arranca sin su ADR en `Accepted`.
 
 ## §2. Backlog — estado y orden recomendado
 
 Orden global recomendado (cruza las Waves por leverage):
 
-| #   | Ítem                                                            | Tipo       | Estado                                       |
-| --- | --------------------------------------------------------------- | ---------- | -------------------------------------------- |
-| 1   | 003 traffic analytics spike                                     | spike      | TODO                                         |
-| 2   | 001 newsletter backend spike                                    | spike      | TODO                                         |
-| 3   | 002 corrections loop spike                                      | spike      | TODO                                         |
-| 4   | 006 social graduation spike                                     | spike      | TODO                                         |
-| 5   | 004 series fate spike                                           | spike      | TODO                                         |
-| 6   | 005 recursos library spike                                      | spike      | TODO                                         |
-| 7   | ADRs 0009–0012: revisión y `Accepted`/rechazo                   | decisión   | BLOQUEADO por 1–6                            |
-| 8   | Builds derivados de ADRs aceptados                              | build      | BLOQUEADO por 7                              |
-| 9   | Primer informe periódico de crecimiento (`transparencia.md:27`) | entregable | BLOQUEADO por 003-build + 1 período de datos |
-| 10  | Notificación a lectores de artículos corregidos (defer de 002)  | entregable | BLOQUEADO por 001-build + 002-build          |
-| 11  | Feedback de performance social a curaduría (defer de 006)       | entregable | BLOQUEADO por 003-build + 006-graduación     |
+| #   | Ítem                                                            | Tipo       | Estado                                                                                          |
+| --- | --------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| 1   | 003 traffic analytics spike                                     | spike      | DONE 2026-09-15 (ADR-0011 Proposed)                                                             |
+| 2   | 001 newsletter backend spike                                    | spike      | DONE 2026-09-15 (ADR-0009 Proposed)                                                             |
+| 3   | 002 corrections loop spike                                      | spike      | TODO                                                                                            |
+| 4   | 006 social graduation spike                                     | spike      | TODO                                                                                            |
+| 5   | 004 series fate spike                                           | spike      | TODO                                                                                            |
+| 6   | 005 recursos library spike                                      | spike      | TODO                                                                                            |
+| 7   | ADRs 0009–0012: revisión y `Accepted`/rechazo                   | decisión   | BLOQUEADO por 1–6                                                                               |
+| 8   | Builds 007 (003-build) y 008 (001-build)                        | build      | TODO (007 listo para ejecutar tras ADR-0011 Accepted; 008 tras ADR-0009 Accepted + Q3 resuelta) |
+| 9   | Primer informe periódico de crecimiento (`transparencia.md:27`) | entregable | BLOQUEADO por 003-build + 1 período de datos                                                    |
+| 10  | Notificación a lectores de artículos corregidos (defer de 002)  | entregable | BLOQUEADO por 001-build + 002-build                                                             |
+| 11  | Feedback de performance social a curaduría (defer de 006)       | entregable | BLOQUEADO por 003-build + 006-graduación                                                        |
 
 Ítems diferidos heredados de los planes (no perder): guías #4+ y
 traducciones (005), índice público `/correcciones/` (002), elementos
@@ -92,14 +93,14 @@ Un ejecutor marca `DONE` solo cuando la fila de Done criteria de su plan
 está completa. Mantener una fila por plan; no borrar filas, solo avanzar
 el estado.
 
-| Plan | ADR/brief objetivo                    | Estado | Rama | Commit/PR | Verificado por | Fecha cierre |
-| ---- | ------------------------------------- | ------ | ---- | --------- | -------------- | ------------ |
-| 001  | `docs/adr/0009-newsletter-backend.md` | TODO   | —    | —         | —              | —            |
-| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —    | —         | —              | —            |
-| 003  | `docs/adr/0011-traffic-analytics.md`  | TODO   | —    | —         | —              | —            |
-| 004  | veredicto en `plans/README.md`        | TODO   | —    | —         | —              | —            |
-| 005  | `docs/recursos-library-brief.md`      | TODO   | —    | —         | —              | —            |
-| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —    | —         | —              | —            |
+| Plan | ADR/brief objetivo                    | Estado | Rama                                   | Commit/PR                                 | Verificado por                                                                              | Fecha cierre |
+| ---- | ------------------------------------- | ------ | -------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- | ------------ |
+| 001  | `docs/adr/0009-newsletter-backend.md` | DONE   | `advisor/001-newsletter-backend-spike` | `714caa9` + PR #169 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 003  | `docs/adr/0011-traffic-analytics.md`  | DONE   | `advisor/003-traffic-analytics-spike`  | `00f0b50` + PR #170 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 004  | veredicto en `plans/README.md`        | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 005  | `docs/recursos-library-brief.md`      | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
 
 Estados: TODO | IN PROGRESS (con fecha de inicio) | DONE | BLOCKED (motivo en una línea) | REJECTED (justificación en una línea).
 Salud de la Wave: una Wave está sana si ningún plan lleva >7 días en
@@ -137,26 +138,28 @@ Formato de registro (una línea por eslabón, con enlaces cuando existan):
 
 `- [plan] → spike <rama/commit> → ADR <estado> → build <plan/PR> → deploy <fecha> → verifica <comando>`
 
-| Plan | Hallazgo origen                                                                          | Spike | ADR/brief (estado)    | Build | Deploy/efecto |
-| ---- | ---------------------------------------------------------------------------------------- | ----- | --------------------- | ----- | ------------- |
-| 001  | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes) | —     | 0009 (pendiente)      | —     | —             |
-| 002  | Correcciones prometidas sin salida visible (intake R2 sí, display no)                    | —     | 0010 (pendiente)      | —     | —             |
-| 003  | Cero señal de tráfico; pregunta diferida ADR-0008                                        | —     | 0011 (pendiente)      | —     | —             |
-| 004  | `/series/` placeholder con 0 posts usando `series:`                                      | —     | veredicto (pendiente) | —     | —             |
-| 005  | `/recursos/` con 1 sola página; sección con relleno                                      | —     | brief (pendiente)     | —     | —             |
-| 006  | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad           | —     | 0012 (pendiente)      | —     | —             |
+| Plan | Hallazgo origen                                                                          | Spike                | ADR/brief (estado)            | Build | Deploy/efecto |
+| ---- | ---------------------------------------------------------------------------------------- | -------------------- | ----------------------------- | ----- | ------------- |
+| 001  | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes) | `714caa9` 2026-09-15 | 0009 Proposed (Buttondown)    | —     | —             |
+| 002  | Correcciones prometidas sin salida visible (intake R2 sí, display no)                    | —                    | 0010 (pendiente)              | —     | —             |
+| 003  | Cero señal de tráfico; pregunta diferida ADR-0008                                        | `00f0b50` 2026-09-15 | 0011 Proposed (Cloudflare WA) | —     | —             |
+| 004  | `/series/` placeholder con 0 posts usando `series:`                                      | —                    | veredicto (pendiente)         | —     | —             |
+| 005  | `/recursos/` con 1 sola página; sección con relleno                                      | —                    | brief (pendiente)             | —     | —             |
+| 006  | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad           | —                    | 0012 (pendiente)              | —     | —             |
 
 Archivo: al cerrar cada eslabón se completa su celda y nunca se reescribe
 hacia atrás (si un ADR se supersede, se añade fila, no se borra historia).
 
 ## §6. Decision log — decisiones y supuestos
 
-| Fecha      | Decisión / supuesto                                                                             | Contexto             | Estado                                    |
-| ---------- | ----------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------- |
-| 2026-09-15 | Spikes primero, builds después (ningún build sin ADR `Accepted`)                                | Este roadmap         | vigente                                   |
-| 2026-09-15 | Back-end no auditado: sus contratos se toman de los docs del front-end como supuestos           | Alcance del análisis | vigente — confirmar en builds 002/004/006 |
-| 2026-09-15 | Rechazados: dark mode/features genéricos, migrar buscador, consolidar repos (ADR-0007 lo zanjó) | `plans/README.md`    | vigente                                   |
-| —          | —                                                                                               | —                    | —                                         |
+| Fecha      | Decisión / supuesto                                                                                                                                                                                                                                                                                                                                                   | Contexto             | Estado                                                 |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------ |
+| 2026-09-15 | Spikes primero, builds después (ningún build sin ADR `Accepted`)                                                                                                                                                                                                                                                                                                      | Este roadmap         | vigente                                                |
+| 2026-09-15 | Back-end no auditado: sus contratos se toman de los docs del front-end como supuestos                                                                                                                                                                                                                                                                                 | Alcance del análisis | vigente — confirmar en builds 002/004/006              |
+| 2026-09-15 | Rechazados: dark mode/features genéricos, migrar buscador, consolidar repos (ADR-0007 lo zanjó)                                                                                                                                                                                                                                                                       | `plans/README.md`    | vigente                                                |
+| 2026-09-15 | Arquitectura: ACEPTAR ADR-0009 (Buttondown) y ADR-0011 (Cloudflare WA) — afirmaciones load-bearing verificadas contra docs oficiales (embed endpoint + double-opt-in mandatorio; beacon cookieless/free + CSP exacto) y contra código (Partytown default true, privacidad País :27). Sin cambios bloqueantes                                                          | Revisión Wave 1      | vigente — falta `Proposed` → `Accepted` del maintainer |
+| 2026-09-15 | Orden de builds: 003-build primero (observabilidad aditiva, sin dependencia externa), 001-build después (puerta: pregunta abierta 3 — humano dueño, billing, cuenta — resuelta ANTES del merge). No paralelizar builds: ambos tocan `src/config.yaml` + `CommonMeta.astro:11`. Wave 2 spikes (002+006) en paralelo en cualquier momento: solo crean ADRs, cero solape | Revisión Wave 1      | vigente                                                |
+| —          | —                                                                                                                                                                                                                                                                                                                                                                     | —                    | —                                                      |
 
 ## §7. Riesgos vivos de la ejecución
 
