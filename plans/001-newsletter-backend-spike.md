@@ -149,7 +149,9 @@ On the unmodified checkout, run `npm run lint`, `npm run validate:content`,
   checkout: **STOP and report** — include command + exact output. Do not fix
   the build to get moving.
 
-**Verify**: all three commands exit 0 on the unmodified checkout.
+**Verify**: all three commands exit 0 on the unmodified checkout. Also record
+`git rev-parse --short HEAD` as `<start-SHA>` — the Done-criteria scope
+check uses it, not `8af478b`.
 
 ### Step 1: Confirm the stub is still live
 
@@ -183,16 +185,18 @@ No command; the Step 4 done-criteria check covers it.
 ### Step 3: Define the wire contract for the later build
 
 Specify, without implementing: the exact `newsletter_endpoint` value shape
-(URL), request method/fields (must match the existing form's `email` field
-name in `NewsletterCapture.astro:43-49`), success/duplicate/error response
+(URL), request method/fields (must match the submitted field
+`name="email"` in `NewsletterCapture.astro:43-49` — note `newsletter-email`
+is only the input's `id` for the `<label>`, NOT a submitted field, so the
+contract must require `email` alone), success/duplicate/error response
 handling within a no-JS form POST (redirect targets), and how bounce/
 complaint handling works per provider. Also specify what the build plan must
 change file-by-file (`src/config.yaml`, CSP in `CommonMeta.astro`, active
 docs per the doc-drift rule).
 
-**Verify**: contract section drafted with field names copied verbatim from
-`NewsletterCapture.astro` (`email`, `newsletter-email`). If the form's field
-names differ from this plan's excerpt, **STOP and report** (drift).
+**Verify**: contract section names the submitted field `email` (verbatim
+`name` attribute). If the form's submitted field differs from this plan's
+excerpt, **STOP and report** (drift).
 
 ### Step 4: Write `docs/adr/0009-newsletter-backend.md`
 
@@ -228,7 +232,7 @@ Machine-checkable. ALL must hold:
 - [ ] `npm run check:doc-drift` exits 0
 - [ ] `npm run test:audit` exits 0, no new failures
 - [ ] `docs/adr/0009-newsletter-backend.md` exists, follows the 0000 template sections, names one recommended provider with six-criterion scoring
-- [ ] `git diff --name-only 8af478b...HEAD` (three dots) lists only `docs/adr/0009-newsletter-backend.md` and `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- docs/adr/0009-newsletter-backend.md plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings such as `data/metrics/pipeline-metrics.json` and would fail this gate) lists only those two files
 - [ ] `plans/README.md` status row for 001 updated
 - [ ] No secret values, account IDs, or API keys anywhere in the new file
 

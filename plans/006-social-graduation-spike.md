@@ -109,15 +109,16 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 Run `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`
 unmodified. **STOP and report** (command + output) on any failure.
 
-**Verify**: all three exit 0.
+**Verify**: all three exit 0. Also record `git rev-parse --short HEAD` as
+`<start-SHA>` — the Done-criteria scope check uses it, not `8af478b`.
 
 ### Step 1: Confirm the pilot is still gated
 
 **Verify**: `grep -n "SOCIAL_PUBLISH_ENABLED" .github/workflows/social-distribution.yml`
 shows the dry-run default + publish gate, and `ls scripts/social/providers/`
-shows the same two adapters. If the flag is on in the repo (it lives in
-repo vars, not code — note that honestly) or a third adapter exists,
-**STOP and report** — premise shifted.
+shows the same two adapters. Then check the LIVE flag value (grep cannot see
+it — it lives in repo settings, not code): `gh api repos/cortega26/noticiencias/actions/variables/SOCIAL_PUBLISH_ENABLED --jq .value`.
+If it prints `true`, or a third adapter exists, **STOP and report** — premise shifted.
 
 ### Step 2: Write the enablement checklist
 
@@ -125,8 +126,10 @@ Define flip criteria as checkable items: dry-run streak (e.g. N consecutive
 clean dry-runs on real deploys), `social: {publish, id}` coverage on recent
 posts (query: how many v2 posts carry opt-in today?), secret provisioning +
 rotation procedure (names only), rollback (flag off + ledger reconcile via
-existing `reconcile` mode — verify that mode exists in
-`scripts/social/operate.js` before citing it), and who owns the flag
+the `reconcile` mode of `node scripts/social/publish.js` — verified at
+`scripts/social/publish.js:86,139-146`, also exposed as workflow dispatch
+`mode=reconcile`; NOT `scripts/social/operate.js`, which only exposes
+`doctor`, `init-state` and `resolve-state`), and who owns the flag
 (single human, named role not person). Include a "first-publish" plan:
 manual dispatch, one article, business-hours monitoring.
 
@@ -182,7 +185,7 @@ Machine-checkable. ALL must hold:
 
 - [ ] `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`, `npm run test:audit` all exit 0 / pass
 - [ ] `docs/adr/0012-social-graduation.md` exists, follows the 0000 template, contains checkable enablement checklist + gap verdicts + observability sketch
-- [ ] `git diff --name-only 8af478b...HEAD` lists only the new ADR and `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- docs/adr/0012-social-graduation.md plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings and would fail this gate) lists only those two files
 - [ ] `plans/README.md` status row for 006 updated
 - [ ] No secret values, tokens, passwords, or channel IDs anywhere in the new file (names only)
 
@@ -192,7 +195,7 @@ Stop and report (do not improvise) if:
 
 - "Current state" excerpts don't match live code (drift).
 - Publishing is already enabled or a new adapter exists (premise shifted).
-- The `reconcile` mode cited for rollback doesn't exist in `scripts/social/operate.js`.
+- The `reconcile` mode cited for rollback doesn't exist in `scripts/social/publish.js` (it must accept `dry-run|publish|reconcile` per `publish.js:139`).
 - Verification fails twice after reasonable fix attempts.
 - Graduation spec appears to need out-of-scope edits.
 - A `declared` command is missing/broken on the unmodified checkout.

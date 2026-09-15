@@ -53,11 +53,23 @@ The facts the executor needs, inlined:
   anglicisms, informative-rigorous-accessible tone). Guides must read as
   "criterio lector" (how to read science), never as news or explainer
   duplication of article content.
-- Cross-link surfaces already built (no work needed, just targets):
-  `RelatedReading`, `TopicStrip`, article `ArticleRail`, newsletter CTAs.
-- Repo conventions: content pages validate through `npm run validate:content`
-  and `check:doc-drift` covers active docs — the spike's brief must name
-  which checks will gate future guides (frontmatter dates, slug quality).
+- Cross-link surfaces (constrained — verify before promising): `RelatedReading`
+  requires normalized `Post[]`, `TopicStrip` builds tag permalinks from
+  `TopicFrequency`, and `ArticleRail` renders only a post's summary /
+  glossary / sources — none accepts an arbitrary static-page target today.
+  Link-capable surfaces for guides (plain `<a>` links, no component
+  changes): DailyDesk cards, newsletter CTAs, detector-de-hype cross-links,
+  metodologia-style Markdown links. The brief must EITHER restrict its link
+  targets to these OR price the component/data-flow changes; it must not
+  assume `RelatedReading`/`TopicStrip`/`ArticleRail` can point at
+  `/recursos/*` as-is.
+- Repo conventions: the post-oriented validators (`check-frontmatter-dates.js`
+  walks `src/content/posts/` via `POSTS_DIR`; `check-slug-quality.js` rejects
+  `article-NNN` post slugs) do NOT inspect `src/pages/recursos/`. The brief
+  must identify which page-level checks (if any) cover future guides, or
+  require a dedicated recursos validator in the later build — it must not
+  cite post-only checks as guide gates. `check:doc-drift` covers active docs
+  as usual.
 
 ## Commands you will need
 
@@ -98,7 +110,8 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 Run `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`
 unmodified. **STOP and report** (command + output) on any failure.
 
-**Verify**: all three exit 0.
+**Verify**: all three exit 0. Also record `git rev-parse --short HEAD` as
+`<start-SHA>` — the Done-criteria scope check uses it, not `8af478b`.
 
 ### Step 1: Confirm the one-page reality
 
@@ -114,8 +127,10 @@ paper científico; preprint vs. revisado por pares; cómo citar y rastrear
 fuentes / DOI). For each: working title, 5-section outline mirroring the
 hype guide's question-led structure, why it fits "criterio lector" (and
 what adjacent topic it explicitly excludes to prevent blog-drift), target
-length, and which existing surfaces link to it (article rail? newsletter
-welcome? detector-de-hype cross-link?). Rank 1–3 with one-line reasons.
+length, and which link-capable surfaces point to it (DailyDesk cards,
+newsletter welcome/CTA, detector-de-hype cross-link — NOT `RelatedReading` /
+`TopicStrip` / `ArticleRail`, which cannot target static pages as-is; see
+Current state). Rank 1–3 with one-line reasons.
 
 **Verify**: 3 outlines drafted, each with explicit exclusion boundary.
 
@@ -124,7 +139,9 @@ welcome? detector-de-hype cross-link?). Rank 1–3 with one-line reasons.
 Sections: boundary statement (what recursos is/isn't, quoting the voice
 docs), the 3 ranked outlines, ownership + freshness cadence (who reviews
 each guide and how often — evergreen rots without an owner), validation
-gates for future guides (which `validate:content` checks apply), homepage
+gates for future guides (page-level checks that actually cover
+`src/pages/recursos/`, or a dedicated validator requirement for the build —
+NOT the post-only frontmatter/slug checks; see Current state), homepage
 section plan (what the 3 cards become once guides exist), success metric
 proposal (guide entrances via plan 003 analytics; without it, RSS/search
 referrals as proxy), and max 3 open questions.
@@ -147,7 +164,7 @@ Machine-checkable. ALL must hold:
 
 - [ ] `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`, `npm run test:audit` all exit 0 / pass
 - [ ] `docs/recursos-library-brief.md` exists with boundary + 3 ranked outlines (each with exclusion) + ownership/cadence + gates + homepage plan
-- [ ] `git diff --name-only 8af478b...HEAD` lists only the brief and `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- docs/recursos-library-brief.md plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings and would fail this gate) lists only those two files
 - [ ] `plans/README.md` status row for 005 updated
 
 ## STOP conditions

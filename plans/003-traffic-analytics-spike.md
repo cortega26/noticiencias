@@ -119,7 +119,8 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 Run `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`
 unmodified. **STOP and report** (command + output) on any failure.
 
-**Verify**: all three exit 0.
+**Verify**: all three exit 0. Also record `git rev-parse --short HEAD` as
+`<start-SHA>` — the Done-criteria scope check uses it, not `8af478b`.
 
 ### Step 1: Confirm analytics is still off
 
@@ -182,7 +183,7 @@ Machine-checkable. ALL must hold:
 
 - [ ] `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`, `npm run test:audit` all exit 0 / pass
 - [ ] `docs/adr/0011-traffic-analytics.md` exists, follows the 0000 template, scores 3 vendors × 6 criteria, answers whether the winner serves ADR-0008's deferred question
-- [ ] `git diff --name-only 8af478b...HEAD` lists only the new ADR and `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- docs/adr/0011-traffic-analytics.md plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings and would fail this gate) lists only those two files
 - [ ] `plans/README.md` status row for 003 updated
 - [ ] No measurement IDs, API keys, or account identifiers anywhere in the new file
 

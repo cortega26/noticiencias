@@ -120,7 +120,8 @@ Run `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`
 on the unmodified checkout. **STOP and report** (command + exact output) if
 any `declared` command is missing or fails here.
 
-**Verify**: all three exit 0.
+**Verify**: all three exit 0. Also record `git rev-parse --short HEAD` as
+`<start-SHA>` — the Done-criteria scope check uses it, not `8af478b`.
 
 ### Step 1: Confirm intake-without-output is still the reality
 
@@ -190,7 +191,7 @@ Machine-checkable. ALL must hold:
 
 - [ ] `npm run lint`, `npm run validate:content`, `npm run check:doc-drift`, `npm run test:audit` all exit 0 / pass
 - [ ] `docs/adr/0010-correction-policy.md` exists, follows the 0000 template, contains taxonomy + flow + UI sketch + LAW-F1/F2 section
-- [ ] `git diff --name-only 8af478b...HEAD` lists only the new ADR and `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- docs/adr/0010-correction-policy.md plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings and would fail this gate) lists only those two files
 - [ ] `plans/README.md` status row for 002 updated
 - [ ] No report contents, emails, or PII reproduced in the ADR (field names only)
 

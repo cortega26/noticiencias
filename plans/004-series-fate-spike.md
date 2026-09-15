@@ -106,7 +106,8 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 Run `npm run lint`, `npm run validate:content` unmodified. **STOP and
 report** (command + output) on any failure.
 
-**Verify**: both exit 0.
+**Verify**: both exit 0. Also record `git rev-parse --short HEAD` as
+`<start-SHA>` — the Done-criteria scope check uses it, not `8af478b`.
 
 ### Step 1: Re-run the usage audit
 
@@ -163,7 +164,7 @@ Machine-checkable. ALL must hold:
 - [ ] `npm run lint`, `npm run validate:content`, `npm run test:audit` all exit 0 / pass
 - [ ] Current `series:` usage count recorded in `plans/README.md` with the verdict (remove or activate) + priced file lists for both paths
 - [ ] Later-build test hooks named (removal grep assertion / activation schema test)
-- [ ] `git diff --name-only 8af478b...HEAD` lists only `plans/README.md`
+- [ ] `git diff --name-only <start-SHA>...HEAD -- plans/README.md` (three dots; `<start-SHA>` is the commit you recorded in Step 0, NOT `8af478b`, which predates unrelated landings and would fail this gate) lists only `plans/README.md`
 - [ ] `plans/README.md` status row for 004 updated
 
 ## STOP conditions
