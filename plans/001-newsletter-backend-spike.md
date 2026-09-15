@@ -52,7 +52,7 @@ The facts the executor needs, inlined:
 - `src/components/common/NewsletterCapture.astro:18-19,55-70` — empty
   endpoint means the form never renders; readers get fallback links:
 
-  ```astro
+  ```text
   const endpoint = APP_CONFIG?.form?.newsletter_endpoint || '';
   const isEnabled = endpoint.length > 0;
   ---
@@ -103,12 +103,12 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Doc-drift gate | `npm run check:doc-drift` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass |
+| Purpose                     | Command                    | Provenance | Expected on success |
+| --------------------------- | -------------------------- | ---------- | ------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0              |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0              |
+| Doc-drift gate              | `npm run check:doc-drift`  | declared   | exit 0              |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass            |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor (installs forbidden in the user's tree). A `declared` command
@@ -117,10 +117,12 @@ that fails on the unmodified checkout is a broken baseline — see Step 0.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `docs/adr/0009-newsletter-backend.md` (create — the spike deliverable)
 - `plans/README.md` (status row only)
 
 **Out of scope** (do NOT touch, even though they look related):
+
 - `src/config.yaml` — setting the endpoint is the later build plan's job.
 - `src/components/common/NewsletterCapture.astro`, `src/pages/newsletter.astro` — no markup changes in a spike.
 - `src/pages/privacidad.md`, `src/pages/transparencia.md` — the ADR may

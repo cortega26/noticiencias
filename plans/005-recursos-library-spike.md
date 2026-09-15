@@ -61,12 +61,12 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Doc-drift gate | `npm run check:doc-drift` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass |
+| Purpose                     | Command                    | Provenance | Expected on success |
+| --------------------------- | -------------------------- | ---------- | ------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0              |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0              |
+| Doc-drift gate              | `npm run check:doc-drift`  | declared   | exit 0              |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass            |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor. Broken on unmodified checkout → STOP, report, don't fix.
@@ -74,10 +74,12 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `docs/recursos-library-brief.md` (create — the spike deliverable)
 - `plans/README.md` (status row only)
 
 **Out of scope** (do NOT touch):
+
 - `src/pages/recursos/*` — no new guides written in a spike.
 - `DailyDesk.astro`, `MarkdownLayout.astro` — no layout/section changes.
 - `docs/EDITORIAL_VOICE.md`, `docs/EDITORIAL.md` — read the voice docs;

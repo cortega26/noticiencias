@@ -43,7 +43,7 @@ The facts the executor needs, inlined:
 - Index page with placeholder: `src/pages/series/index.astro:1-54`.
   It collects `post.data.series` into `seriesList` and renders:
 
-  ```astro
+  ```text
   {seriesList.length === 0 ? (
       <p class="text-center text-gray-500 col-span-full">
         Próximamente: Nuevas series en desarrollo.
@@ -69,11 +69,11 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass |
+| Purpose                     | Command                    | Provenance | Expected on success |
+| --------------------------- | -------------------------- | ---------- | ------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0              |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0              |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass            |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor. Broken on unmodified checkout → STOP, report, don't fix.
@@ -81,10 +81,12 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `plans/README.md` (status row + recording the recommendation — the spike
   deliverable lives in the index, not a new file; see Step 3)
 
 **Out of scope** (do NOT touch):
+
 - `src/pages/series/*`, `src/content.config.ts`, `src/utils/blog.ts` —
   removal or activation is the later build's job.
 - Backend repo — read-only inspection allowed (`../noticiencias_news_collector/`

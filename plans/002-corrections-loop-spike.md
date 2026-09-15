@@ -78,12 +78,12 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Doc-drift gate | `npm run check:doc-drift` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass |
+| Purpose                     | Command                    | Provenance | Expected on success |
+| --------------------------- | -------------------------- | ---------- | ------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0              |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0              |
+| Doc-drift gate              | `npm run check:doc-drift`  | declared   | exit 0              |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass            |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor. A `declared` command failing on the unmodified checkout is a
@@ -92,10 +92,12 @@ broken baseline — see Step 0.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `docs/adr/0010-correction-policy.md` (create — the spike deliverable)
 - `plans/README.md` (status row only)
 
 **Out of scope** (do NOT touch, even though they look related):
+
 - `src/content.config.ts`, `src/utils/blog.ts` — schema changes are the
   later build's job (LAW-F1 cross-repo contract).
 - `PostLayout.astro`, `TrustPanel.astro`, dashboard.astro — no UI changes

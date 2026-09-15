@@ -16,14 +16,14 @@ ships its feature — each names the later build it unblocks.
 
 ## Execution order & status
 
-| Plan | Title | Priority | Effort | Depends on | Status |
-|------|-------|----------|--------|------------|--------|
-| 001 | Newsletter backend spike (`001-newsletter-backend-spike.md`) | P1 | M | — | TODO |
-| 002 | Corrections loop spike (`002-corrections-loop-spike.md`) | P1 | M | — | TODO |
-| 003 | Traffic analytics spike (`003-traffic-analytics-spike.md`) | P2 | S–M | — | TODO |
-| 004 | Series fate spike (`004-series-fate-spike.md`) | P2 | S | — | TODO |
-| 005 | Recursos library spike (`005-recursos-library-spike.md`) | P3 | S–M | — | TODO |
-| 006 | Social graduation spike (`006-social-graduation-spike.md`) | P2 | M | — | TODO |
+| Plan | Title                                                        | Priority | Effort | Depends on | Status |
+| ---- | ------------------------------------------------------------ | -------- | ------ | ---------- | ------ |
+| 001  | Newsletter backend spike (`001-newsletter-backend-spike.md`) | P1       | M      | —          | TODO   |
+| 002  | Corrections loop spike (`002-corrections-loop-spike.md`)     | P1       | M      | —          | TODO   |
+| 003  | Traffic analytics spike (`003-traffic-analytics-spike.md`)   | P2       | S–M    | —          | TODO   |
+| 004  | Series fate spike (`004-series-fate-spike.md`)               | P2       | S      | —          | TODO   |
+| 005  | Recursos library spike (`005-recursos-library-spike.md`)     | P3       | S–M    | —          | TODO   |
+| 006  | Social graduation spike (`006-social-graduation-spike.md`)   | P2       | M      | —          | TODO   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale — finding fixed independently or approach abandoned)
 

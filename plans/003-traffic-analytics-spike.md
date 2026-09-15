@@ -48,14 +48,15 @@ The facts the executor needs, inlined:
 - `src/components/template/common/Analytics.astro:4-5` renders nothing
   without a valid ID:
 
-  ```astro
+  ```text
   const gaId = ANALYTICS?.vendors?.googleAnalytics?.id;
   const isEnabled = gaId && gaId !== 'null' && String(gaId).startsWith('G-');
   ```
 
   Config plumbing (`src/integration/utils/configBuilder.ts:128-135`) merges
   `config.analytics` over defaults, so any future vendor only needs config
-  + component support.
+  - component support.
+
 - CSP already anticipates a decision either way
   (`src/components/template/common/CommonMeta.astro:9-12`): `script-src`
   and `connect-src` allowlist `googletagmanager.com`/`google-analytics.com`.
@@ -80,12 +81,12 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Doc-drift gate | `npm run check:doc-drift` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass |
+| Purpose                     | Command                    | Provenance | Expected on success |
+| --------------------------- | -------------------------- | ---------- | ------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0              |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0              |
+| Doc-drift gate              | `npm run check:doc-drift`  | declared   | exit 0              |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass            |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor. Broken on unmodified checkout → STOP, report, don't fix.
@@ -93,10 +94,12 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `docs/adr/0011-traffic-analytics.md` (create — the spike deliverable)
 - `plans/README.md` (status row only)
 
 **Out of scope** (do NOT touch):
+
 - `src/config.yaml`, `Analytics.astro`, `CommonMeta.astro` — enabling or
   rewiring vendors is the later build's job.
 - `privacidad.md`, `transparencia.md` — propose wording, don't edit policy.

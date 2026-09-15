@@ -6,6 +6,7 @@
 > auditado; donde un plan lo toca, se marca como supuesto a confirmar.
 >
 > Este archivo cumple cuatro funciones a la vez:
+>
 > 1. **Backlog** — qué falta, en qué orden, con su estado (§2, §3).
 > 2. **Guía** — cómo ejecutar cada Wave sin improvisar (§4).
 > 3. **Scoreboard** — tablero de avance que se actualiza al cerrar cada plan (§3).
@@ -24,20 +25,20 @@ siguiente.
 
 ### Wave 1 — Señal y promesa mayor (arrancar aquí)
 
-| Plan | Título | Por qué va primero |
-|------|--------|--------------------|
-| 003 | Traffic analytics spike | Su respuesta (qué medir y con qué) ordena 004/005 y desbloquea la pregunta diferida de ADR-0008. Es el spike más barato (S–M) con mayor poder de secuenciación. |
-| 001 | Newsletter backend spike | La promesa incumplida más visible (página + guía de hype + homepage venden un boletín que no existe). P1. |
+| Plan | Título                   | Por qué va primero                                                                                                                                              |
+| ---- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 003  | Traffic analytics spike  | Su respuesta (qué medir y con qué) ordena 004/005 y desbloquea la pregunta diferida de ADR-0008. Es el spike más barato (S–M) con mayor poder de secuenciación. |
+| 001  | Newsletter backend spike | La promesa incumplida más visible (página + guía de hype + homepage venden un boletín que no existe). P1.                                                       |
 
 Paralelizables entre sí. Criterio de salida: ADRs 0009 y 0011 en `Proposed`
 y revisados por el maintainer.
 
 ### Wave 2 — Confianza operativa
 
-| Plan | Título | Por qué va en segundo lugar |
-|------|--------|-----------------------------|
-| 002 | Corrections loop spike | Cierra el ciclo reporte→corrección visible que `transparencia.md` promete. P1, pero su build toca proceso editorial humano: conviene decidirlo con la cabeza fría de Wave 1 ya cerrada. |
-| 006 | Social graduation spike | Modo espejo de 002: otro "sumidero invisible" (ledger en rama `social-state`, dashboard sin superficie social). Misma lente de revisión (observabilidad antes de automatizar). |
+| Plan | Título                  | Por qué va en segundo lugar                                                                                                                                                             |
+| ---- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 002  | Corrections loop spike  | Cierra el ciclo reporte→corrección visible que `transparencia.md` promete. P1, pero su build toca proceso editorial humano: conviene decidirlo con la cabeza fría de Wave 1 ya cerrada. |
+| 006  | Social graduation spike | Modo espejo de 002: otro "sumidero invisible" (ledger en rama `social-state`, dashboard sin superficie social). Misma lente de revisión (observabilidad antes de automatizar).          |
 
 Paralelizables entre sí. Criterio de salida: ADRs 0010 y 0012 en `Proposed`.
 Nota de eficiencia: 002-difiere-notificación-lector necesita 001 vivo; 006
@@ -46,10 +47,10 @@ hilos en §6 al cerrar.
 
 ### Wave 3 — Contenido y superficie
 
-| Plan | Título | Por qué va al final |
-|------|--------|---------------------|
-| 004 | Series fate spike | Decisión binaria barata (S) que rinde más con datos de 003 (¿se lee por secciones?). |
-| 005 | Recursos library spike | El brief de 3 guías se escribe mejor sabiendo qué proveedor de email (001) y qué métricas (003) existirán para distribuirlas y medirlas. |
+| Plan | Título                 | Por qué va al final                                                                                                                      |
+| ---- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 004  | Series fate spike      | Decisión binaria barata (S) que rinde más con datos de 003 (¿se lee por secciones?).                                                     |
+| 005  | Recursos library spike | El brief de 3 guías se escribe mejor sabiendo qué proveedor de email (001) y qué métricas (003) existirán para distribuirlas y medirlas. |
 
 Paralelizables entre sí. Criterio de salida: veredicto registrado (004) y
 brief aprobado (005).
@@ -65,19 +66,19 @@ su ADR en `Accepted`.
 
 Orden global recomendado (cruza las Waves por leverage):
 
-| # | Ítem | Tipo | Estado |
-|---|------|------|--------|
-| 1 | 003 traffic analytics spike | spike | TODO |
-| 2 | 001 newsletter backend spike | spike | TODO |
-| 3 | 002 corrections loop spike | spike | TODO |
-| 4 | 006 social graduation spike | spike | TODO |
-| 5 | 004 series fate spike | spike | TODO |
-| 6 | 005 recursos library spike | spike | TODO |
-| 7 | ADRs 0009–0012: revisión y `Accepted`/rechazo | decisión | BLOQUEADO por 1–6 |
-| 8 | Builds derivados de ADRs aceptados | build | BLOQUEADO por 7 |
-| 9 | Primer informe periódico de crecimiento (`transparencia.md:27`) | entregable | BLOQUEADO por 003-build + 1 período de datos |
-| 10 | Notificación a lectores de artículos corregidos (defer de 002) | entregable | BLOQUEADO por 001-build + 002-build |
-| 11 | Feedback de performance social a curaduría (defer de 006) | entregable | BLOQUEADO por 003-build + 006-graduación |
+| #   | Ítem                                                            | Tipo       | Estado                                       |
+| --- | --------------------------------------------------------------- | ---------- | -------------------------------------------- |
+| 1   | 003 traffic analytics spike                                     | spike      | TODO                                         |
+| 2   | 001 newsletter backend spike                                    | spike      | TODO                                         |
+| 3   | 002 corrections loop spike                                      | spike      | TODO                                         |
+| 4   | 006 social graduation spike                                     | spike      | TODO                                         |
+| 5   | 004 series fate spike                                           | spike      | TODO                                         |
+| 6   | 005 recursos library spike                                      | spike      | TODO                                         |
+| 7   | ADRs 0009–0012: revisión y `Accepted`/rechazo                   | decisión   | BLOQUEADO por 1–6                            |
+| 8   | Builds derivados de ADRs aceptados                              | build      | BLOQUEADO por 7                              |
+| 9   | Primer informe periódico de crecimiento (`transparencia.md:27`) | entregable | BLOQUEADO por 003-build + 1 período de datos |
+| 10  | Notificación a lectores de artículos corregidos (defer de 002)  | entregable | BLOQUEADO por 001-build + 002-build          |
+| 11  | Feedback de performance social a curaduría (defer de 006)       | entregable | BLOQUEADO por 003-build + 006-graduación     |
 
 Ítems diferidos heredados de los planes (no perder): guías #4+ y
 traducciones (005), índice público `/correcciones/` (002), elementos
@@ -91,14 +92,14 @@ Un ejecutor marca `DONE` solo cuando la fila de Done criteria de su plan
 está completa. Mantener una fila por plan; no borrar filas, solo avanzar
 el estado.
 
-| Plan | ADR/brief objetivo | Estado | Rama | Commit/PR | Verificado por | Fecha cierre |
-|------|--------------------|--------|------|-----------|----------------|--------------|
-| 001 | `docs/adr/0009-newsletter-backend.md` | TODO | — | — | — | — |
-| 002 | `docs/adr/0010-correction-policy.md` | TODO | — | — | — | — |
-| 003 | `docs/adr/0011-traffic-analytics.md` | TODO | — | — | — | — |
-| 004 | veredicto en `plans/README.md` | TODO | — | — | — | — |
-| 005 | `docs/recursos-library-brief.md` | TODO | — | — | — | — |
-| 006 | `docs/adr/0012-social-graduation.md` | TODO | — | — | — | — |
+| Plan | ADR/brief objetivo                    | Estado | Rama | Commit/PR | Verificado por | Fecha cierre |
+| ---- | ------------------------------------- | ------ | ---- | --------- | -------------- | ------------ |
+| 001  | `docs/adr/0009-newsletter-backend.md` | TODO   | —    | —         | —              | —            |
+| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —    | —         | —              | —            |
+| 003  | `docs/adr/0011-traffic-analytics.md`  | TODO   | —    | —         | —              | —            |
+| 004  | veredicto en `plans/README.md`        | TODO   | —    | —         | —              | —            |
+| 005  | `docs/recursos-library-brief.md`      | TODO   | —    | —         | —              | —            |
+| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —    | —         | —              | —            |
 
 Estados: TODO | IN PROGRESS (con fecha de inicio) | DONE | BLOCKED (motivo en una línea) | REJECTED (justificación en una línea).
 Salud de la Wave: una Wave está sana si ningún plan lleva >7 días en
@@ -136,26 +137,26 @@ Formato de registro (una línea por eslabón, con enlaces cuando existan):
 
 `- [plan] → spike <rama/commit> → ADR <estado> → build <plan/PR> → deploy <fecha> → verifica <comando>`
 
-| Plan | Hallazgo origen | Spike | ADR/brief (estado) | Build | Deploy/efecto |
-|------|-----------------|-------|--------------------|-------|---------------|
-| 001 | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes) | — | 0009 (pendiente) | — | — |
-| 002 | Correcciones prometidas sin salida visible (intake R2 sí, display no) | — | 0010 (pendiente) | — | — |
-| 003 | Cero señal de tráfico; pregunta diferida ADR-0008 | — | 0011 (pendiente) | — | — |
-| 004 | `/series/` placeholder con 0 posts usando `series:` | — | veredicto (pendiente) | — | — |
-| 005 | `/recursos/` con 1 sola página; sección con relleno | — | brief (pendiente) | — | — |
-| 006 | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad | — | 0012 (pendiente) | — | — |
+| Plan | Hallazgo origen                                                                          | Spike | ADR/brief (estado)    | Build | Deploy/efecto |
+| ---- | ---------------------------------------------------------------------------------------- | ----- | --------------------- | ----- | ------------- |
+| 001  | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes) | —     | 0009 (pendiente)      | —     | —             |
+| 002  | Correcciones prometidas sin salida visible (intake R2 sí, display no)                    | —     | 0010 (pendiente)      | —     | —             |
+| 003  | Cero señal de tráfico; pregunta diferida ADR-0008                                        | —     | 0011 (pendiente)      | —     | —             |
+| 004  | `/series/` placeholder con 0 posts usando `series:`                                      | —     | veredicto (pendiente) | —     | —             |
+| 005  | `/recursos/` con 1 sola página; sección con relleno                                      | —     | brief (pendiente)     | —     | —             |
+| 006  | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad           | —     | 0012 (pendiente)      | —     | —             |
 
 Archivo: al cerrar cada eslabón se completa su celda y nunca se reescribe
 hacia atrás (si un ADR se supersede, se añade fila, no se borra historia).
 
 ## §6. Decision log — decisiones y supuestos
 
-| Fecha | Decisión / supuesto | Contexto | Estado |
-|-------|---------------------|----------|--------|
-| 2026-09-15 | Spikes primero, builds después (ningún build sin ADR `Accepted`) | Este roadmap | vigente |
-| 2026-09-15 | Back-end no auditado: sus contratos se toman de los docs del front-end como supuestos | Alcance del análisis | vigente — confirmar en builds 002/004/006 |
-| 2026-09-15 | Rechazados: dark mode/features genéricos, migrar buscador, consolidar repos (ADR-0007 lo zanjó) | `plans/README.md` | vigente |
-| — | — | — | — |
+| Fecha      | Decisión / supuesto                                                                             | Contexto             | Estado                                    |
+| ---------- | ----------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------- |
+| 2026-09-15 | Spikes primero, builds después (ningún build sin ADR `Accepted`)                                | Este roadmap         | vigente                                   |
+| 2026-09-15 | Back-end no auditado: sus contratos se toman de los docs del front-end como supuestos           | Alcance del análisis | vigente — confirmar en builds 002/004/006 |
+| 2026-09-15 | Rechazados: dark mode/features genéricos, migrar buscador, consolidar repos (ADR-0007 lo zanjó) | `plans/README.md`    | vigente                                   |
+| —          | —                                                                                               | —                    | —                                         |
 
 ## §7. Riesgos vivos de la ejecución
 

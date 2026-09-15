@@ -69,12 +69,12 @@ The facts the executor needs, inlined:
 
 ## Commands you will need
 
-| Purpose | Command | Provenance | Expected on success |
-|---|---|---|---|
-| Baseline lint | `npm run lint` | declared | exit 0 |
-| Baseline content validation | `npm run validate:content` | declared | exit 0 |
-| Doc-drift gate | `npm run check:doc-drift` | declared | exit 0 |
-| Audit suite | `npm run test:audit` | declared | all pass (note: `tests/social/` exists — run it unmodified as part of the suite) |
+| Purpose                     | Command                    | Provenance | Expected on success                                                              |
+| --------------------------- | -------------------------- | ---------- | -------------------------------------------------------------------------------- |
+| Baseline lint               | `npm run lint`             | declared   | exit 0                                                                           |
+| Baseline content validation | `npm run validate:content` | declared   | exit 0                                                                           |
+| Doc-drift gate              | `npm run check:doc-drift`  | declared   | exit 0                                                                           |
+| Audit suite                 | `npm run test:audit`       | declared   | all pass (note: `tests/social/` exists — run it unmodified as part of the suite) |
 
 **Provenance**: `declared` = read from `package.json`/`AGENTS.md`, not run by
 the advisor. Broken on unmodified checkout → STOP, report, don't fix.
@@ -82,10 +82,12 @@ the advisor. Broken on unmodified checkout → STOP, report, don't fix.
 ## Scope
 
 **In scope** (the only files you should modify):
+
 - `docs/adr/0012-social-graduation.md` (create — the spike deliverable)
 - `plans/README.md` (status row only)
 
 **Out of scope** (do NOT touch):
+
 - `.github/workflows/social-distribution.yml` — the flag stays off; no
   trigger/permission changes in a spike.
 - `scripts/social/*` — no adapter or publisher changes.
