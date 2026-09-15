@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-07T12:27:07.437Z",
+  "generated_at": "2026-09-15T11:41:09.935Z",
   "content": {
-    "total_articles": 35,
-    "v2_articles": 23,
-    "total_words": 22099,
-    "avg_words": 631,
+    "total_articles": 36,
+    "v2_articles": 24,
+    "total_words": 22891,
+    "avg_words": 636,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 12
+        "count": 13
       },
       {
         "name": "Salud",
@@ -212,6 +212,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — el informe se basa en análisis de seguridad y comunicados oficiales, pero incluye hipótesis no verificadas sobre el origen del ataque.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu",
+        "title": "Muse Glimmer: IA de 30 B que cabe en una sola GPU",
+        "date": "2026-08-10",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Alta — información provista por el blog técnico de Hugging Face con datos específicos de benchmarks, arquitectura y licencia, aunque el artículo no indica revisión por pares explícita.",
         "review_status": null
       },
       {
@@ -599,11 +611,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-07T12:27:07.437Z"
+    "generated_at": "2026-09-15T11:41:09.934Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 35,
+    "derivatives_available": 36,
     "missing_derivatives": 0
   }
 }
