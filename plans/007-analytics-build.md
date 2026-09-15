@@ -193,7 +193,9 @@ snippet attributes against current official Cloudflare docs; never invent
 `data-cf-beacon` shape from memory.
 
 **Verify**: with token `null` (committed state), built HTML contains no
-`cloudflareinsights` string (see Step 5). Presence-path check: locally and
+`beacon.min.js` string (the CSP meta tag legitimately mentions the
+`cloudflareinsights.com` hostname on every page, so grep the beacon
+filename, never the bare hostname — see Step 5). Presence-path check: locally and
 temporarily set a `TEST-TOKEN-PLACEHOLDER`, rebuild, grep dist for the
 beacon, then revert — the placeholder must never be committed (prove with
 `git diff` showing no config change + a final dist rebuild from clean state).
@@ -222,8 +224,10 @@ a comment so the next reader knows why.
 3. Run in order: `npm run lint`, `npm run validate:content`,
    `npm run build`, `npm run test:dist`, `npm run test:audit`.
 
-**Verify**: all green; `grep -r "cloudflareinsights" dist/ | head` returns
-nothing on the committed (token-null) build; new tests pass
+**Verify**: all green; `grep -r "beacon.min.js" dist/ | head` returns
+nothing on the committed (token-null) build (grep the beacon filename, not
+the bare `cloudflareinsights` hostname — the site-wide CSP meta tag contains
+the hostname on every page by design); new tests pass
 (`npx vitest run tests/config-builder.test.ts`).
 
 ## Test plan
@@ -239,7 +243,7 @@ nothing on the committed (token-null) build; new tests pass
 Machine-checkable. ALL must hold:
 
 - [ ] `npm run lint`, `npm run validate:content`, `npm run build`, `npm run test:dist`, `npm run test:audit` all exit 0 / pass
-- [ ] `grep -r "cloudflareinsights" dist/` empty on the committed-state build
+- [ ] `grep -r "beacon.min.js" dist/` empty on the committed-state build (beacon filename, not the CSP hostname — see Step 3)
 - [ ] New config-builder tests exist and pass
 - [ ] No real token, measurement ID, or account identifier anywhere (`grep -rniE "G-[A-Z0-9]{6,}|cf-.*token|api[_-]?key" src/ docs/ tests/` shows only benign prose)
 - [ ] Token in committed `src/config.yaml` is `null`

@@ -93,14 +93,14 @@ Un ejecutor marca `DONE` solo cuando la fila de Done criteria de su plan
 está completa. Mantener una fila por plan; no borrar filas, solo avanzar
 el estado.
 
-| Plan | ADR/brief objetivo                    | Estado | Rama                                   | Commit/PR                    | Verificado por                                                                              | Fecha cierre |
-| ---- | ------------------------------------- | ------ | -------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------- | ------------ |
-| 001  | `docs/adr/0009-newsletter-backend.md` | DONE   | `advisor/001-newsletter-backend-spike` | `714caa9` (worktree, sin PR) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
-| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —                                      | —                            | —                                                                                           | —            |
-| 003  | `docs/adr/0011-traffic-analytics.md`  | DONE   | `advisor/003-traffic-analytics-spike`  | `00f0b50` (worktree, sin PR) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
-| 004  | veredicto en `plans/README.md`        | TODO   | —                                      | —                            | —                                                                                           | —            |
-| 005  | `docs/recursos-library-brief.md`      | TODO   | —                                      | —                            | —                                                                                           | —            |
-| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —                                      | —                            | —                                                                                           | —            |
+| Plan | ADR/brief objetivo                    | Estado | Rama                                   | Commit/PR                                 | Verificado por                                                                              | Fecha cierre |
+| ---- | ------------------------------------- | ------ | -------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- | ------------ |
+| 001  | `docs/adr/0009-newsletter-backend.md` | DONE   | `advisor/001-newsletter-backend-spike` | `714caa9` + PR #169 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 003  | `docs/adr/0011-traffic-analytics.md`  | DONE   | `advisor/003-traffic-analytics-spike`  | `00f0b50` + PR #170 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 004  | veredicto en `plans/README.md`        | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 005  | `docs/recursos-library-brief.md`      | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
 
 Estados: TODO | IN PROGRESS (con fecha de inicio) | DONE | BLOCKED (motivo en una línea) | REJECTED (justificación en una línea).
 Salud de la Wave: una Wave está sana si ningún plan lleva >7 días en
