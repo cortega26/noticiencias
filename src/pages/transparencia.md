@@ -26,6 +26,24 @@ No almacenamos datos personales de visitantes en prompts. Solo usamos métricas 
 
 Publicaremos informes periódicos sobre crecimiento y sostenibilidad cuando la medición esté activa; hoy está pendiente de activación.
 
+## Calidad editorial agregada
+
+Muestreamos automáticamente una fracción de los artículos con un auditor
+editorial independiente del redactor (rigor epistémico, claridad, control
+de la especulación y engagement, cada uno de 0 a 10). Publicamos solo
+promedios agregados, nunca puntajes por artículo.
+
+Última ventana (5 auditorías, actualizada el 2026-09-16):
+
+- Rigor epistémico: 7,98
+- Claridad: 8,90
+- Control de la especulación: 8,76
+- Engagement: 8,26
+
+La muestra aún es pequeña: estos números describen las últimas
+auditorías, no todo el archivo, y se recalibran a medida que crece.
+Metodología y umbrales editoriales viven en el repositorio abierto.
+
 ## Contacto
 
 Para preguntas editoriales, escribe a nuestro correo o canal público de soporte.

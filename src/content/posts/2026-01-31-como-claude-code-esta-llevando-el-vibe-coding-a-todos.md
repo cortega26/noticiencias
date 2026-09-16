@@ -13,6 +13,7 @@ tags:
 image: '~/assets/images/2026-01-31-article-521.jpg'
 image_alt: 'Cómo Claude Code está llevando el vibe coding a todos'
 source_url: 'https://scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/'
+series: 'IA en la práctica'
 refinery_id: '521'
 headlines_variants:
   question: ''

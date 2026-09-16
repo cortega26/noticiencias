@@ -15,6 +15,7 @@ excerpt: Durante cinco días, un modelo de IA realizó más de 17 500 acciones
 image: ~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp
 image_alt: Ilustración editorial relacionada con AI Safety Regulations in the U.S. Could Give Hackers an Edge
 source_url: https://spectrum.ieee.org/hugging-face-openai-cyberattack
+series: 'IA en la práctica'
 refinery_id: AI Safety Regulations in the U.S. Could Give Hackers an Edge
 headlines_variants:
   question: ¿Qué implicaciones tiene un posible ataque de IA para la seguridad de los repositorios de modelos?

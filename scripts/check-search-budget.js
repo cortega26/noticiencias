@@ -13,6 +13,12 @@
  *   - gzip size under 150KB (deployment-friendly ceiling)
  *
  * Exits 0 on success, 1 on failure.
+ *
+ * Migration trigger (plan 114, measured 2026-09-16): 122047 bytes gzip at
+ * 36 posts (~3.4 KB/post). At current density the 150KB ceiling binds
+ * within ~10 new posts (~3 weeks at 3 posts/week). When this gate fails,
+ * migrate the browser search to Pagefind (or slim the store) in a
+ * dedicated plan — never raise GZIP_CEILING silently to make it pass.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';

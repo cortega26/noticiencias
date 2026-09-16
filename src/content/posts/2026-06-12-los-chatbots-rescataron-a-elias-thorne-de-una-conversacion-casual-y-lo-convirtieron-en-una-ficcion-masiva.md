@@ -15,6 +15,7 @@ excerpt: Elias Thorne no existía hasta que los modelos de IA lo repitieron mile
 image: ~/assets/images/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.jpg
 image_alt: Un hombre de espaldas observa el mar, con bañistas y pequeñas embarcaciones al fondo
 source_url: https://404media.co/elias-thorne-chatbots-llms-chatgpt-lighthouse-keeper-story/
+series: 'IA en la práctica'
 refinery_id: Chatbots Keep Telling Stories About Lighthouse Keeper 'Elias Thorne'. We Might Know Why
 headlines_variants:
   question: ¿Cómo un nombre casual en una chat de 2022 se convirtió en el personaje más repetido de la ficción generada por IA?

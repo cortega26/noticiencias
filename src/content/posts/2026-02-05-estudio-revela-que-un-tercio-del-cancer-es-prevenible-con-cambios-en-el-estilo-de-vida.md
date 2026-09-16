@@ -14,6 +14,7 @@ tags:
 image: '~/assets/images/2026-02-05-article-657.jpg'
 image_alt: 'Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida'
 source_url: 'https://scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/'
+series: 'Salud que importa'
 refinery_id: '657'
 headlines_variants:
   question: '¿Cuánto podría reducirse la incidencia del cáncer cambiando factores modificables?'
