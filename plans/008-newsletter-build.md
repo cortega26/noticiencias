@@ -138,6 +138,17 @@ recorded verbatim in your notes; baseline green; `<start-SHA>` recorded.
    comment, updated to past tense + ADR reference).
 2. Append `https://buttondown.com` to `form-action` in `CommonMeta.astro:11`
    (nothing else in the header changes).
+3. Production edge policy (operator step — the meta tag alone is NOT
+   sufficient): per `docs/DEPLOYMENT_SECURITY_HEADERS.md:26-33`, browsers
+   enforce the Cloudflare edge response-header CSP IN ADDITION to the meta
+   tag, so the Buttondown POST stays blocked until the edge rule's
+   `form-action` also allows `https://buttondown.com`. Record the required
+   edge-rule edit (Response Header Transform Rule for `noticiencias.com` +
+   `www`) as an explicit operator task in your report; the executor does not
+   touch Cloudflare dashboard config. Verify post-change with
+   `curl -sI https://noticiencias.com/ | grep -i "content-security-policy"`
+   showing the entry live (if the edge change has not been applied yet,
+   record it as a launch blocker, not as done).
 3. Apply the ADR's proposed `privacidad.md` (Buttondown LLC sub-processor +
    US transfer + export/deletion path via footer link and
    `privacidad@noticiencias.com`) and `transparencia.md` (newsletter
