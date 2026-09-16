@@ -154,6 +154,16 @@ What becomes harder or constrained:
   below); (5) active-doc check per AGENTS.md §8 (`npm run check:doc-drift`
   must stay green). No change needed in `NewsletterCapture.astro` or
   `newsletter.astro` — the form already matches this contract.
+- **Production edge CSP (operator task, Cloudflare dashboard — not the build
+  executor)**: the Response Header Transform Rule for `noticiencias.com` +
+  `www` must also allow `https://buttondown.com` in `form-action`. Browsers
+  enforce the edge response-header CSP in addition to the `<meta http-equiv>`
+  tag, so the meta-tag edit alone does not enable the form in production
+  (see `docs/DEPLOYMENT_SECURITY_HEADERS.md:26-33`).
+- **Live verification (launch blocker)**: `curl -sI https://noticiencias.com/
+| grep -i content-security-policy` must show the `form-action` entry, plus
+  one real end-to-end test submission with the double-opt-in email arriving,
+  before the build is called done. Unapplied edge change blocks launch.
 
 ## Required privacidad.md / transparencia.md follow-ups (listed, not made)
 
