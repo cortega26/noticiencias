@@ -24,7 +24,7 @@ No almacenamos datos personales de visitantes en prompts. Solo usamos métricas 
 
 ## Métricas y financiamiento
 
-Publicaremos informes periódicos sobre crecimiento y sostenibilidad cuando estén disponibles.
+Publicaremos informes periódicos sobre crecimiento y sostenibilidad cuando la medición esté activa; hoy está pendiente de activación.
 
 ## Contacto
 

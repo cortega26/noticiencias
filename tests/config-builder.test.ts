@@ -47,4 +47,21 @@ describe('configBuilder', () => {
     const result = configBuilder({ form: { endpoint: 'https://example.com/api/report' } });
     expect(result.APP_CONFIG!.form.endpoint).toBe('https://example.com/api/report');
   });
+
+  it('defaults the cloudflare analytics token to undefined (tracking stays off)', () => {
+    const result = configBuilder({});
+    expect(result.ANALYTICS?.vendors.cloudflare?.token).toBeUndefined();
+  });
+
+  it('lets an explicit cloudflare token override the default without dropping GA defaults', () => {
+    const result = configBuilder({
+      analytics: { vendors: { cloudflare: { token: 'TEST-TOKEN' } } },
+    });
+    const vendors = result.ANALYTICS?.vendors;
+    expect(vendors?.cloudflare?.token).toBe('TEST-TOKEN');
+    expect(vendors?.googleAnalytics).toMatchObject({
+      id: undefined,
+      partytown: true,
+    });
+  });
 });

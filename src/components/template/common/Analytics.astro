@@ -6,6 +6,16 @@ const isEnabled = gaId && gaId !== 'null' && String(gaId).startsWith('G-');
 const partytown = ANALYTICS?.vendors?.googleAnalytics?.partytown;
 const attrs = partytown ? { type: 'text/partytown' } : {};
 const id = String(gaId);
+
+// Cloudflare Web Analytics (plan 007, ADR-0011). Snippet shape verified
+// against official docs 2026-09-16 (web-analytics get-started + SPA pages):
+// manual `type="module"` beacon with `data-cf-beacon` token payload.
+// No Partytown: the beacon is a module/RUM script, Partytown is gtag-only.
+// SPA pageviews are automatic (History API patching covers ClientRouter).
+// Renders nothing while the token is null (tracking stays OFF).
+const cfToken = ANALYTICS?.vendors?.cloudflare?.token;
+const isCfEnabled = cfToken && cfToken !== 'null' && String(cfToken).length > 0;
+const cfBeacon = JSON.stringify({ token: String(cfToken) });
 ---
 
 {
@@ -29,5 +39,16 @@ gtag("js", new Date());
 gtag("config", id);`}
       />
     </>
+  ) : null
+}
+
+{
+  isCfEnabled ? (
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={cfBeacon}
+    />
   ) : null
 }

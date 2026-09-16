@@ -54,6 +54,8 @@ Los Datos de Uso pueden incluir información como la dirección de Protocolo de 
 
 Utilizamos Cookies y tecnologías de seguimiento similares para rastrear la actividad en Nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento utilizadas son balizas, etiquetas y scripts para recopilar y rastrear información y para mejorar y analizar Nuestro Servicio.
 
+Como proveedor de medición prevemos usar Cloudflare Web Analytics: baliza sin cookies, solo métricas agregadas y sin identificadores entre visitas. Esta medición aún no está activa y su operación sin banner de consentimiento está pendiente de confirmación legal (Ley 19.628); actualizaremos esta sección antes de activarla.
+
 Puede indicar a su navegador que rechace todas las Cookies o que indique cuándo se envía una Cookie. Sin embargo, si no acepta las Cookies, es posible que no pueda utilizar algunas partes de nuestro Servicio.
 
 ## Uso de sus Datos Personales
