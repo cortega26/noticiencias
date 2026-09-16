@@ -16,16 +16,16 @@ ships its feature — each names the later build it unblocks.
 
 ## Execution order & status
 
-| Plan | Title                                                        | Priority | Effort | Depends on                               | Status                                                       |
-| ---- | ------------------------------------------------------------ | -------- | ------ | ---------------------------------------- | ------------------------------------------------------------ |
-| 001  | Newsletter backend spike (`001-newsletter-backend-spike.md`) | P1       | M      | —                                        | DONE (ADR-0009 Proposed, Buttondown; reviewed 2026-09-15)    |
-| 002  | Corrections loop spike (`002-corrections-loop-spike.md`)     | P1       | M      | —                                        | TODO                                                         |
-| 003  | Traffic analytics spike (`003-traffic-analytics-spike.md`)   | P2       | S–M    | —                                        | DONE (ADR-0011 Proposed, Cloudflare WA; reviewed 2026-09-15) |
-| 004  | Series fate spike (`004-series-fate-spike.md`)               | P2       | S      | —                                        | TODO                                                         |
-| 005  | Recursos library spike (`005-recursos-library-spike.md`)     | P3       | S–M    | —                                        | TODO                                                         |
-| 006  | Social graduation spike (`006-social-graduation-spike.md`)   | P2       | M      | —                                        | TODO                                                         |
-| 007  | Analytics build (`007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | TODO (ejecutar primero; ver ROADMAP Wave 4)                  |
-| 008  | Newsletter build (`008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | TODO (tras 007; nunca en paralelo con 007)                   |
+| Plan | Title                                                        | Priority | Effort | Depends on                               | Status                                                          |
+| ---- | ------------------------------------------------------------ | -------- | ------ | ---------------------------------------- | --------------------------------------------------------------- |
+| 001  | Newsletter backend spike (`001-newsletter-backend-spike.md`) | P1       | M      | —                                        | DONE (ADR-0009 Proposed, Buttondown; reviewed 2026-09-15)       |
+| 002  | Corrections loop spike (`002-corrections-loop-spike.md`)     | P1       | M      | —                                        | TODO                                                            |
+| 003  | Traffic analytics spike (`003-traffic-analytics-spike.md`)   | P2       | S–M    | —                                        | DONE (ADR-0011 Proposed, Cloudflare WA; reviewed 2026-09-15)    |
+| 004  | Series fate spike (`004-series-fate-spike.md`)               | P2       | S      | —                                        | DONE (verdict: REMOVE, Path A — see below; recorded 2026-09-16) |
+| 005  | Recursos library spike (`005-recursos-library-spike.md`)     | P3       | S–M    | —                                        | TODO                                                            |
+| 006  | Social graduation spike (`006-social-graduation-spike.md`)   | P2       | M      | —                                        | TODO                                                            |
+| 007  | Analytics build (`007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | TODO (ejecutar primero; ver ROADMAP Wave 4)                     |
+| 008  | Newsletter build (`008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | TODO (tras 007; nunca en paralelo con 007)                      |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale — finding fixed independently or approach abandoned)
 
@@ -41,6 +41,48 @@ Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJE
     send) at build time, not spike time.
   - 002's deferred reader-notification item needs 001's backend live.
   - 006's deferred social-performance feedback needs 003 + graduation both live.
+
+## Spike verdicts
+
+### 004 — Series fate: REMOVE (Path A) — recorded 2026-09-16
+
+Usage audit: `grep -l "^series:" src/content/posts/*.md | wc -l` → **0**;
+`grep -rn "series" src/pages/index.astro src/components/common/DailyDesk.astro src/utils/hub.ts`
+→ no matches (no homepage rail, hub, or index consumer). Premise holds; no drift
+(`git diff --stat 8af478b..HEAD` over the plan's scope files is empty).
+
+Verdict: **Path A — remove the Series surface.** Zero posts use `series`,
+nothing on the homepage or hub consumes it, yet the header links every reader
+to `/series/` ("Series", `src/navigation.ts:43-46`), which serves only a
+"Próximamente" placeholder — a dead surface spending the investigative brand.
+Activation (Path B) is M, cross-repo (backend emission + vocabulary contract +
+editorial curation at ≥3 posts/series), with no evidence of curation capacity;
+removal is S, single-repo, and reversible. Backend sibling
+(`../noticiencias_news_collector/`) is absent in this environment, so Path B
+is priced from the frontend contract + `docs/tagging.md` precedent alone.
+
+- Path A (remove, effort S): delete `src/pages/series/index.astro` +
+  `src/pages/series/[series].astro`; remove `series` propagation
+  (`src/content.config.ts:79`, `src/utils/blog.ts:79,151`,
+  `src/types.d.ts:49` — LAW-F1: coordinate so the backend never emits it);
+  optional cleanup of search pass-through (`src/utils/build-search-index.ts:27,94`,
+  `src/utils/search.ts:9`, `src/pages/search.json.js:39`); remove the header
+  "Series" link (`src/navigation.ts:43-46`). No `astro.config.mjs` sitemap-filter
+  or `public/robots.txt` change needed (neither references series). Redirect
+  decision: `/series/` gone entirely, no redirect — the detail route builds
+  zero pages today (`getStaticPaths` returns `[]`), so no indexed URLs die.
+  Test impact: update `tests/navigation.test.ts:35-37` (drops the trailing-"Series"
+  assertion); lowercase `grep -rn "series" tests/` is otherwise empty.
+- Path B (activate, effort M cross-repo): backend emits curated `series`
+  values under a `docs/tagging.md`-style vocabulary contract; frontend reworks
+  `src/pages/series/index.astro` (≥3-posts-per-series gate so the index never
+  shows singletons) + `src/pages/series/[series].astro` SEO copy; homepage
+  rail stays deferred until ≥2 series reach ≥3 posts.
+- Later-build test hooks: removal — `grep -rni "series" src/pages/ src/utils/blog.ts src/content.config.ts`
+  returns only intended survivors,
+  plus `npm run build && npm run test:dist` asserting no `/series/` sitemap URLs;
+  activation — content-shape test mirroring `tests/content-config-schema.test.ts`
+  for the series contract (vocabulary + minimum-posts gate).
 
 ## Findings considered and rejected
 
