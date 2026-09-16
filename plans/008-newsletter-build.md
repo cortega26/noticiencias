@@ -149,12 +149,12 @@ recorded verbatim in your notes; baseline green; `<start-SHA>` recorded.
    `curl -sI https://noticiencias.com/ | grep -i "content-security-policy"`
    showing the entry live (if the edge change has not been applied yet,
    record it as a launch blocker, not as done).
-3. Apply the ADR's proposed `privacidad.md` (Buttondown LLC sub-processor +
+4. Apply the ADR's proposed `privacidad.md` (Buttondown LLC sub-processor +
    US transfer + export/deletion path via footer link and
    `privacidad@noticiencias.com`) and `transparencia.md` (newsletter
    carve-out: email stored only for the weekly edition, no open/click
    pixels) wording, in Spanish, matching surrounding voice.
-4. Update the stale `README.md:55-60` fallback paragraph to describe the
+5. Update the stale `README.md:55-60` fallback paragraph to describe the
    live behavior.
 
 **Verify**: `npm run check:doc-drift` exits 0; `git diff --stat` shows only
