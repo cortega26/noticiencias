@@ -15,6 +15,7 @@ excerpt: El eclipse solar del 2 de agosto de 2027 tendrá seis minutos y veintit
 image: ~/assets/images/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.jpg
 image_alt: Ilustración editorial relacionada con El eclipse solar de 2027 durará seis minutos y veintitrés segundos
 source_url: https://newscientist.com/article/2586640-where-and-when-to-see-2027s-solar-eclipse-of-the-century/
+series: 'Espacio'
 refinery_id: '1030'
 headlines_variants:
   question: ¿Cuánto durará la oscuridad total del eclipse solar de 2027?

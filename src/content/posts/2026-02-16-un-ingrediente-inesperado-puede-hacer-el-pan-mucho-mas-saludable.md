@@ -15,6 +15,7 @@ tags:
 image: ~/assets/images/2026-02-16-677.jpg
 image_alt: 'Un ingrediente inesperado puede hacer el pan mucho más saludable'
 source_url: https://scitechdaily.com/this-unexpected-ingredient-makes-bread-much-healthier/
+series: 'Salud que importa'
 refinery_id: '677'
 headlines_variants:
   question: ¿Puede la harina de semilla de girasol enriquecer el pan sin sacrificar su calidad?
