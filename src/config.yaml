@@ -72,6 +72,12 @@ analytics:
   vendors:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
+    # Cloudflare Web Analytics beacon (plan 007, ADR-0011). Stays null
+    # until legal Q2 (no-banner position, Chile Ley 19.628) clears
+    # enablement; when set, use the token from the dashboard "Manage site"
+    # snippet. Tracking stays OFF while null.
+    cloudflare:
+      token: null
 
 form:
   # Report-a-problem endpoint. Enabled after the Worker's durable sink

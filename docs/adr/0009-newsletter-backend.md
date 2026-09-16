@@ -1,7 +1,7 @@
 # ADR-0009: Newsletter backend — Buttondown via plain-HTML form POST
 
 - **Date**: 2026-09-15
-- **Status**: Proposed
+- **Status**: Accepted (operator 2026-09-16; build gated separately on endpoint URL + Friday/billing owners)
 
 ## Context
 

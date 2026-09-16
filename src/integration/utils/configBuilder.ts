@@ -129,6 +129,9 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
         id: undefined,
         partytown: true,
       },
+      cloudflare: {
+        token: undefined,
+      },
     },
   };
 

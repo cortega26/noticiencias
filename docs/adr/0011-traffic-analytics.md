@@ -1,7 +1,7 @@
 # ADR-0011: Traffic analytics via Cloudflare Web Analytics (spike — tracking stays off)
 
 - **Date**: 2026-09-15
-- **Status**: Proposed
+- **Status**: Accepted (operator 2026-09-16; tracking stays off until a token is configured + legal Q2 clears)
 
 ## Context
 
