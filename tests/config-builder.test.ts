@@ -48,6 +48,17 @@ describe('configBuilder', () => {
     expect(result.APP_CONFIG!.form.endpoint).toBe('https://example.com/api/report');
   });
 
+  it('lets an explicit newsletter endpoint override the empty default without dropping the sibling form endpoint', () => {
+    const result = configBuilder({
+      form: { newsletter_endpoint: 'https://buttondown.com/api/emails/embed-subscribe/example' },
+    });
+    expect(result.APP_CONFIG!.form.newsletter_endpoint).toBe(
+      'https://buttondown.com/api/emails/embed-subscribe/example'
+    );
+    // Untouched sibling default field must survive the merge.
+    expect(result.APP_CONFIG!.form.endpoint).toBe('');
+  });
+
   it('defaults the cloudflare analytics token to undefined (tracking stays off)', () => {
     const result = configBuilder({});
     expect(result.ANALYTICS?.vendors.cloudflare?.token).toBeUndefined();
