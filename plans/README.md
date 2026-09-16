@@ -25,7 +25,7 @@ ships its feature — each names the later build it unblocks.
 | 005  | Recursos library spike (`005-recursos-library-spike.md`)     | P3       | S–M    | —                                        | TODO                                                                                                |
 | 006  | Social graduation spike (`006-social-graduation-spike.md`)   | P2       | M      | —                                        | TODO                                                                                                |
 | 007  | Analytics build (`007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | DONE (beacon behind token gate, ships disabled; manual snippet, edge-CSP task recorded; 2026-09-16) |
-| 008  | Newsletter build (`008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | TODO (tras 007; nunca en paralelo con 007)                                                          |
+| 008  | Newsletter build (`008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | IN PROGRESS (build complete on branch `advisor/008-newsletter-build`, PR pending; edge-CSP Cloudflare rule + live double-opt-in email verification recorded as operator follow-up; 2026-09-16) |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale — finding fixed independently or approach abandoned)
 
