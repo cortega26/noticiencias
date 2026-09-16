@@ -8,6 +8,9 @@ const allowedTemplateFiles = new Set([
   'src/components/template/common/CommonMeta.astro',
   'src/components/template/common/buildHead.ts',
   'src/components/template/common/seo.ts',
+  // Plan 112 mounts the share component in PostLayout (copy-link added);
+  // its click handling already lives in ds/ BasicScripts via data attrs.
+  'src/components/template/common/SocialShare.astro',
   'src/components/template/CustomStyles.astro',
   'src/components/template/blog/Pagination.astro',
   'src/components/template/blog/ToBlogLink.astro',
@@ -15,13 +18,12 @@ const allowedTemplateFiles = new Set([
   'src/components/template/ui/Form.astro',
   'src/components/template/ui/ItemGrid.astro',
   'src/components/template/ui/ItemGrid2.astro',
-  'src/components/template/widgets/CallToAction.astro',
+  // Plan 112 deleted the unused widgets (Pricing, Testimonials, Brands,
+  // CallToAction) — entries removed with the files, not kept stale.
   'src/components/template/widgets/Content.astro',
   'src/components/template/widgets/Header.astro',
   'src/components/template/widgets/Hero.astro',
   'src/components/template/widgets/HeroText.astro',
-  'src/components/template/widgets/Pricing.astro',
-  'src/components/template/widgets/Testimonials.astro',
   // Plan 023 (durable reader reports) owns the report-problem form; it stays
   // in the template layer until the form is migrated to ds/ in a later plan.
   'src/components/template/widgets/ReportForm.astro',
