@@ -40,10 +40,11 @@ y revisados por el maintainer.
 | 002  | Corrections loop spike  | Cierra el ciclo reporte→corrección visible que `transparencia.md` promete. P1, pero su build toca proceso editorial humano: conviene decidirlo con la cabeza fría de Wave 1 ya cerrada. |
 | 006  | Social graduation spike | Modo espejo de 002: otro "sumidero invisible" (ledger en rama `social-state`, dashboard sin superficie social). Misma lente de revisión (observabilidad antes de automatizar).          |
 
-Paralelizables entre sí. Criterio de salida: ADRs 0010 y 0012 en `Proposed`.
-Nota de eficiencia: 002-difiere-notificación-lector necesita 001 vivo; 006
-difiriere-feedback-de-performance necesita 003 + graduación. Registrar esos
-hilos en §6 al cerrar.
+Paralelizables entre sí. Criterio de salida: ADR 0010 en `Proposed` + decisión
+de reframe 006 registrada (auditoría retroactiva en vez de ADR-0012; ver §6).
+Nota de eficiencia: 002-difiere-notificación-lector necesita 001 vivo; el
+defer de feedback social de 006 necesita 003 + reframe/auditoría (ya no
+"graduación"). Registrar esos hilos en §6 al cerrar.
 
 ### Wave 3 — Contenido y superficie
 
@@ -59,7 +60,7 @@ brief aprobado (005).
 
 Orden de builds decidido (revisión Wave 1, §6): 007 (003-build, observabilidad
 aditiva, sin prerrequisitos) → 008 (001-build, puerta: pregunta abierta 3
-resuelta) → 002-build → 006-graduación → 005-guías → 004-veredicto. 007 y 008
+resuelta) → 002-build → 006-reframe (auditoría retroactiva + observabilidad, candidato plan 009) → 005-guías → 004-veredicto. 007 y 008
 nunca en paralelo (ambos tocan `src/config.yaml` + `CommonMeta.astro:11`).
 Regla: ningún build arranca sin su ADR en `Accepted`.
 
@@ -67,19 +68,19 @@ Regla: ningún build arranca sin su ADR en `Accepted`.
 
 Orden global recomendado (cruza las Waves por leverage):
 
-| #   | Ítem                                                            | Tipo       | Estado                                                                                          |
-| --- | --------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
-| 1   | 003 traffic analytics spike                                     | spike      | DONE 2026-09-15 (ADR-0011 Proposed)                                                             |
-| 2   | 001 newsletter backend spike                                    | spike      | DONE 2026-09-15 (ADR-0009 Proposed)                                                             |
-| 3   | 002 corrections loop spike                                      | spike      | DONE 2026-09-15 (ADR-0010 Proposed)                                                             |
-| 4   | 006 social graduation spike                                     | spike      | BLOCKED — flag `true` desde 2026-09-14, premisa respondida; reframe pendiente (§6)              |
-| 5   | 004 series fate spike                                           | spike      | TODO                                                                                            |
-| 6   | 005 recursos library spike                                      | spike      | TODO                                                                                            |
-| 7   | ADRs 0009–0012: revisión y `Accepted`/rechazo                   | decisión   | BLOQUEADO por 1–6                                                                               |
-| 8   | Builds 007 (003-build) y 008 (001-build)                        | build      | TODO (007 listo para ejecutar tras ADR-0011 Accepted; 008 tras ADR-0009 Accepted + Q3 resuelta) |
-| 9   | Primer informe periódico de crecimiento (`transparencia.md:27`) | entregable | BLOQUEADO por 003-build + 1 período de datos                                                    |
-| 10  | Notificación a lectores de artículos corregidos (defer de 002)  | entregable | BLOQUEADO por 001-build + 002-build                                                             |
-| 11  | Feedback de performance social a curaduría (defer de 006)       | entregable | BLOQUEADO por 003-build + 006-graduación                                                        |
+| #   | Ítem                                                                         | Tipo       | Estado                                                                                          |
+| --- | ---------------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| 1   | 003 traffic analytics spike                                                  | spike      | DONE 2026-09-15 (ADR-0011 Proposed)                                                             |
+| 2   | 001 newsletter backend spike                                                 | spike      | DONE 2026-09-15 (ADR-0009 Proposed)                                                             |
+| 3   | 002 corrections loop spike                                                   | spike      | DONE 2026-09-15 (ADR-0010 Proposed)                                                             |
+| 4   | 006 social graduation spike                                                  | spike      | BLOCKED — flag `true` desde 2026-09-14, premisa respondida; reframe pendiente (§6)              |
+| 5   | 004 series fate spike                                                        | spike      | TODO                                                                                            |
+| 6   | 005 recursos library spike                                                   | spike      | TODO                                                                                            |
+| 7   | ADRs 0009–0011: revisión y `Accepted`/rechazo (+ reframe 006 en vez de 0012) | decisión   | BLOQUEADO por 1–6                                                                               |
+| 8   | Builds 007 (003-build) y 008 (001-build)                                     | build      | TODO (007 listo para ejecutar tras ADR-0011 Accepted; 008 tras ADR-0009 Accepted + Q3 resuelta) |
+| 9   | Primer informe periódico de crecimiento (`transparencia.md:27`)              | entregable | BLOQUEADO por 003-build + 1 período de datos                                                    |
+| 10  | Notificación a lectores de artículos corregidos (defer de 002)               | entregable | BLOQUEADO por 001-build + 002-build                                                             |
+| 11  | Feedback de performance social a curaduría (defer de 006)                    | entregable | BLOQUEADO por 003-build + 006-reframe (auditoría)                                               |
 
 Ítems diferidos heredados de los planes (no perder): guías #4+ y
 traducciones (005), índice público `/correcciones/` (002), elementos
@@ -96,7 +97,7 @@ el estado.
 | Plan | ADR/brief objetivo                    | Estado  | Rama                                   | Commit/PR                                 | Verificado por                                                                                                                                                                          | Fecha cierre |
 | ---- | ------------------------------------- | ------- | -------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | 001  | `docs/adr/0009-newsletter-backend.md` | DONE    | `advisor/001-newsletter-backend-spike` | `714caa9` + PR #169 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos                                                                                             | 2026-09-15   |
-| 002  | `docs/adr/0010-correction-policy.md`  | DONE    | `advisor/002-correction-policy-spike`  | `c617fc0` (worktree, sin PR)              | advisor re-run: lint+validate+doc-drift+test:audit OK; alcance 1 archivo; record R2 verificado línea por línea; sin PII                                                                 | 2026-09-15   |
+| 002  | `docs/adr/0010-correction-policy.md`  | DONE    | `advisor/002-correction-policy-spike`  | `c617fc0` + PR #171 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit OK; alcance 1 archivo; record R2 verificado línea por línea; sin PII                                                                 | 2026-09-15   |
 | 003  | `docs/adr/0011-traffic-analytics.md`  | DONE    | `advisor/003-traffic-analytics-spike`  | `00f0b50` + PR #170 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos                                                                                             | 2026-09-15   |
 | 004  | veredicto en `plans/README.md`        | TODO    | —                                      | —                                         | —                                                                                                                                                                                       | —            |
 | 005  | `docs/recursos-library-brief.md`      | TODO    | —                                      | —                                         | —                                                                                                                                                                                       | —            |
@@ -160,6 +161,7 @@ hacia atrás (si un ADR se supersede, se añade fila, no se borra historia).
 | 2026-09-15 | Arquitectura: ACEPTAR ADR-0009 (Buttondown) y ADR-0011 (Cloudflare WA) — afirmaciones load-bearing verificadas contra docs oficiales (embed endpoint + double-opt-in mandatorio; beacon cookieless/free + CSP exacto) y contra código (Partytown default true, privacidad País :27). Sin cambios bloqueantes                                                          | Revisión Wave 1      | vigente — falta `Proposed` → `Accepted` del maintainer         |
 | 2026-09-15 | Orden de builds: 003-build primero (observabilidad aditiva, sin dependencia externa), 001-build después (puerta: pregunta abierta 3 — humano dueño, billing, cuenta — resuelta ANTES del merge). No paralelizar builds: ambos tocan `src/config.yaml` + `CommonMeta.astro:11`. Wave 2 spikes (002+006) en paralelo en cualquier momento: solo crean ADRs, cero solape | Revisión Wave 1      | vigente                                                        |
 | 2026-09-15 | Hallazgo: `SOCIAL_PUBLISH_ENABLED=true` desde 2026-09-14 (verificado vía API por advisor) + 2 posts con `social.publish` ⇒ el publisher YA está live sin checklist ni observabilidad. Plan 006 BLOCKED tras STOP correcto del ejecutor; reframe propuesto: auditoría retroactiva de lo publicado desde el 14-09 + observabilidad, en vez de checklist de graduación   | Ejecución Wave 2     | vigente — decidir reframe (candidato plan 009) antes de Wave 3 |
+| 2026-09-16 | Revisión PR #174: 006-reframe propagado (salida Wave 2, orden Wave 4, ítems 7/11 ya no referencian graduación/0012); plan 008 con gate de cierre live (edge CSP en ambos hosts + envío en producción, sin DONE sin ello); fila 002 calificada con PR #171                                                                                                             | Revisión Wave 2      | vigente                                                        |
 
 ## §7. Riesgos vivos de la ejecución
 
