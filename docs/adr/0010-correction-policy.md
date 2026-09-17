@@ -1,7 +1,7 @@
 # ADR-0010: Correction Policy and Moderation Flow (Spike)
 
 - **Date**: 2026-09-15
-- **Status**: Proposed
+- **Status**: Accepted (operator 2026-09-17; build unscheduled — waits for coordinated schema-change capacity, see Resolved questions Q2)
 
 ## Context
 
@@ -168,6 +168,22 @@ only — no reporter identities, contact details, or report bodies in metrics.
 | Sidecar file instead of frontmatter (Option B)    | Second source of truth; orphans on renames/permalink overrides; duplicates join logic against the permalink helpers          |
 
 ## Open questions
+
+> Resolved by operator 2026-09-17 (solo-maintainer ruling: minimize process
+> overhead and tech debt; revisit only when a second editor exists or a real
+> correction forces the issue).
+>
+> 1. **T2/T3 approval: single-editor approval is sufficient.** A
+>    second-reviewer rule is unenforceable with one maintainer. Revisit when
+>    a second editor joins.
+> 2. **No interim sidecar.** Shipping a temporary sidecar buys exactly the
+>    second-source-of-truth drift this ADR rejects under Option B. Visible
+>    corrections wait for backend `corrections:` republication support; the
+>    build stays unscheduled until coordinated schema-change capacity exists.
+> 3. **T1 stays invisible to `dateModified`.** Bumping modification dates for
+>    typo fixes pollutes sitemaps/feeds for zero reader value.
+
+Original questions (kept for the record):
 
 1. Should T2/T3 approval require a second reviewer, or is single-editor approval sufficient at current volume?
 2. Should a lightweight sidecar ship as an interim before the backend supports `corrections:` republication, with a defined sunset?
