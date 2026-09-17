@@ -211,11 +211,16 @@ describe('quick wins regression coverage', () => {
     expect(renderedStrips).toBeGreaterThan(0);
   });
 
-  it('offers accessible newsletter alternatives when no provider endpoint is configured', () => {
-    const page = load(readDistHtml('/newsletter/'));
-    const form = page('form[aria-label="Suscripción al boletín"]');
-    expect(form.length).toBe(0);
-    expect(page('a[href="/rss.xml"]').length).toBeGreaterThan(0);
-    expect(page('a[href="/blog/"]').length).toBeGreaterThan(0);
+  it('renders a working no-JS Buttondown subscribe form now that the provider endpoint is configured (plan 008)', () => {
+    for (const route of ['/newsletter/', '/']) {
+      const page = load(readDistHtml(route));
+      const form = page('form[aria-label="Suscripción al boletín"]');
+      expect(form.length, route).toBeGreaterThan(0);
+      expect(form.attr('method'), route).toBe('post');
+      expect(form.attr('action'), route).toBe(
+        'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
+      );
+      expect(form.find('input[name="email"][type="email"][required]').length, route).toBe(1);
+    }
   });
 });

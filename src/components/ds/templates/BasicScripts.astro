@@ -107,6 +107,21 @@ import { UI } from 'astrowind:config';
           case 'mail':
             href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
             break;
+          case 'copy': {
+            const raw = elem.getAttribute('data-aw-url') || window.location.href;
+            const done = () => {
+              elem.setAttribute('title', '¡Enlace copiado!');
+              window.setTimeout(() => elem.setAttribute('title', 'Copiar enlace'), 2000);
+            };
+            if (navigator.clipboard?.writeText) {
+              navigator.clipboard
+                .writeText(raw)
+                .then(done, () => window.prompt('Copiar enlace:', raw));
+            } else {
+              window.prompt('Copiar enlace:', raw);
+            }
+            return;
+          }
 
           default:
             return;

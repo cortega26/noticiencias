@@ -12,6 +12,7 @@ tags:
 image: '~/assets/images/2026-01-18-artemis-ii-mission.jpg'
 image_alt: 'NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II'
 source_url: 'https://nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/'
+series: 'Espacio'
 refinery_id: '64'
 headlines_variants:
   question: '¿Cuál es el objetivo verdadero de la misión Artemis II de NASA?'

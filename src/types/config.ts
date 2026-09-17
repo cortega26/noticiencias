@@ -66,6 +66,9 @@ export interface AnalyticsConfig {
       id?: string;
       partytown?: boolean;
     };
+    cloudflare?: {
+      token?: string;
+    };
   };
 }
 

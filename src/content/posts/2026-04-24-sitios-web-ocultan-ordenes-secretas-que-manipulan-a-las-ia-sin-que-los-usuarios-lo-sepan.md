@@ -13,6 +13,7 @@ excerpt: Investigadores de Google descubrieron que sitios públicos insertan ins
 image: ~/assets/images/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.png
 image_alt: 'Esquema de amenazas de inyección de prompts en la web mostrando cómo instrucciones ocultas en sitios web manipulan sistemas de inteligencia artificial'
 source_url: https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html
+series: 'IA en la práctica'
 refinery_id: 'AI threats in the wild: The current state of prompt injections on the web'
 headlines_variants:
   question: ¿Cómo pueden sitios web invisibles estar instruyendo a las IA sin que nadie lo note?

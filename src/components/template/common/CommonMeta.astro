@@ -6,9 +6,15 @@ import { getAsset } from '~/utils/permalinks';
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
+<!-- Plan 007: script-src gains the Cloudflare beacon host. connect-src stays
+  'self' only: the zone is proxied (server: cloudflare + cf-ray observed
+  2026-09-16), so beacon data goes to own-domain /cdn-cgi/rum. If proxying
+  ever stops, add https://cloudflareinsights.com to connect-src. Mirror this
+  delta in the edge Response Header Transform Rule (operator task) or the
+  beacon stays blocked in production. Google entries kept: GA branch exists. -->
 <meta
   http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;"
 />
 
 <link rel="preconnect" href="https://www.cdn.noticiencias.com" />

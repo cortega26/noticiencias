@@ -47,4 +47,33 @@ describe('configBuilder', () => {
     const result = configBuilder({ form: { endpoint: 'https://example.com/api/report' } });
     expect(result.APP_CONFIG!.form.endpoint).toBe('https://example.com/api/report');
   });
+
+  it('lets an explicit newsletter endpoint override the empty default without dropping the sibling form endpoint', () => {
+    const result = configBuilder({
+      form: { newsletter_endpoint: 'https://buttondown.com/api/emails/embed-subscribe/example' },
+    });
+    const form = result.APP_CONFIG?.form;
+    expect(form?.newsletter_endpoint).toBe(
+      'https://buttondown.com/api/emails/embed-subscribe/example'
+    );
+    // Untouched sibling default field must survive the merge.
+    expect(form?.endpoint).toBe('');
+  });
+
+  it('defaults the cloudflare analytics token to undefined (tracking stays off)', () => {
+    const result = configBuilder({});
+    expect(result.ANALYTICS?.vendors.cloudflare?.token).toBeUndefined();
+  });
+
+  it('lets an explicit cloudflare token override the default without dropping GA defaults', () => {
+    const result = configBuilder({
+      analytics: { vendors: { cloudflare: { token: 'TEST-TOKEN' } } },
+    });
+    const vendors = result.ANALYTICS?.vendors;
+    expect(vendors?.cloudflare?.token).toBe('TEST-TOKEN');
+    expect(vendors?.googleAnalytics).toMatchObject({
+      id: undefined,
+      partytown: true,
+    });
+  });
 });
