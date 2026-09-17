@@ -50,7 +50,7 @@ fact_check:
 why_it_matters:
   - Un fortalecimiento de El Niño puede intensificar sequías en el noreste de Brasil y el altiplano andino, amenazando la producción de alimentos básicos como el maíz y la soja.
   - En la costa del Pacífico sudamericano, lluvias extremas asociadas a El Niño provocan inundaciones que dañan infraestructura y desplazan comunidades en Perú y Ecuador.
-  - La mayor variabilidad climática afecta las pesquerías regionales, cuyaproductividad depende de las temperaturas del mar, impactando la seguridad alimentaria y los medios de vida de millones de personas.
+  - La mayor variabilidad climática afecta las pesquerías regionales, cuya productividad depende de las temperaturas del mar, impactando la seguridad alimentaria y los medios de vida de millones de personas.
 confidence: Alta — estudio basado en análisis geoquímico de corales vivos y fósiles con calibraciones ampliamente validadas, comparado con registros instrumentales y modelos climáticos, aunque reconoce incertidumbres locales en la química del agua.
 sources:
   - title: Galápagos corals show El Niño events are more extreme now than in past 1,000 years – here’s how my team made the discovery
@@ -79,7 +79,7 @@ Los valores de esas relaciones mostraron ciclos estacionales que se repiten año
 
 ## Límites y alcance real
 
-El estudio se basa en la presumida estabilidad de las relaciones químicas como termómetros naturales; aunque estas se han calibrado ampliamente, siempre existe una pequeña incertidumble asociada a variaciones locales en la química del agua de mar. Además, los corales fósiles proporcionan información puntual y no un registro continuo año a año en todos los lugares del archipiélago; sin embargo, la combinación de múltiples sitios y la consistencia entre los dos indicadores químicos refuerzan la señal observada.
+El estudio se basa en la presumida estabilidad de las relaciones químicas como termómetros naturales; aunque estas se han calibrado ampliamente, siempre existe una pequeña incertidumbre asociada a variaciones locales en la química del agua de mar. Además, los corales fósiles proporcionan información puntual y no un registro continuo año a año en todos los lugares del archipiélago; sin embargo, la combinación de múltiples sitios y la consistencia entre los dos indicadores químicos refuerzan la señal observada.
 
 ## Cómo encaja en el conocimiento existente
 
