@@ -47,10 +47,11 @@ an uncertainty note marks what is still unknown.
 
 ### Moderation flow: R2 sink to published correction
 
-Triage states: `received` → `triaged` → (`verified` | `rejected` |
-`duplicate` | `abuse`) → `approved` → `published`. Only `approved` records
-become visible, and only as an editor-written correction entry — never as
-verbatim reporter text.
+Triage states: `received` → `triaged` → `verified` → `approved` →
+`published`. The sibling outcomes `rejected`, `duplicate`, and `abuse` are
+terminal: they never enter `approved`, and `abuse` records are dropped from
+the queue entirely. Only `approved` records become visible, and only as an
+editor-written correction entry — never as verbatim reporter text.
 
 - Human-in-the-loop approval is mandatory. There is no auto-publish path from
   R2 (or email notification) to the rendered article. An editor verifies the
@@ -79,6 +80,16 @@ Frontend delivery (2 options priced):
 
 Recommend Option A despite its higher coordination cost, because corrections
 are editorial content that belongs with the article revision history.
+
+`dateModified` mechanics (build-time requirement, not solved by this spike):
+today `src/content.config.ts` carries no modification timestamp,
+`getNormalizedPost` leaves `updateDate` undefined, and `PostLayout` falls back
+to the publication date — so rendering a `corrections:` array alone would NOT
+bump `dateModified`. The later build must either add an explicit updated-at
+contract to the schema or derive it (e.g. max `corrections[].date` for T2/T3
+entries; T1 fixes stay invisible per the resolved Q3 above). Recorded here so
+the build does not ship a "correction with date" that search engines read as
+unmodified.
 
 Abuse handling: the existing intake context is validation-first
 (`validateReportPayload`), a 20KB cap, per-IP rate limiting via KV, a
