@@ -75,7 +75,7 @@ La Compañía retendrá sus Datos Personales solo durante el tiempo que sea nece
 
 Su información, incluidos los Datos Personales, se procesa en las oficinas operativas de la Compañía y en cualquier otro lugar donde se encuentren las partes involucradas en el procesamiento.
 
-Para el envío del boletín semanal utilizamos **Buttondown LLC** (Estados Unidos) como proveedor de servicios (sub-procesador). Almacena únicamente su dirección de correo electrónico para el envío de la edición semanal; no recopilamos ni almacenamos métricas de apertura o clics, ya que ese seguimiento permanece desactivado. La transferencia internacional de datos hacia Buttondown se ampara en un acuerdo de procesamiento de datos (DPA). Puede solicitar la exportación o eliminación de sus datos del boletín usando el enlace "Unsubscribe" en el pie de cada correo o escribiendo a privacidad@noticiencias.com.
+Para el envío del boletín semanal utilizamos **Buttondown LLC** (Estados Unidos) como proveedor de servicios (sub-procesador). Almacena únicamente su dirección de correo electrónico para el envío de la edición semanal; no recopilamos ni almacenamos métricas de apertura o clics, ya que ese seguimiento permanece desactivado. La transferencia internacional de datos hacia Buttondown se ampara en un acuerdo de procesamiento de datos (DPA). Puede solicitar la exportación o eliminación de sus datos del boletín usando el enlace "Unsubscribe" en el pie de cada correo o escribiendo a `privacidad@noticiencias.com`.
 
 ## Eliminación de sus Datos Personales
 

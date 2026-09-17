@@ -52,11 +52,12 @@ describe('configBuilder', () => {
     const result = configBuilder({
       form: { newsletter_endpoint: 'https://buttondown.com/api/emails/embed-subscribe/example' },
     });
-    expect(result.APP_CONFIG!.form.newsletter_endpoint).toBe(
+    const form = result.APP_CONFIG?.form;
+    expect(form?.newsletter_endpoint).toBe(
       'https://buttondown.com/api/emails/embed-subscribe/example'
     );
     // Untouched sibling default field must survive the merge.
-    expect(result.APP_CONFIG!.form.endpoint).toBe('');
+    expect(form?.endpoint).toBe('');
   });
 
   it('defaults the cloudflare analytics token to undefined (tracking stays off)', () => {
