@@ -22,6 +22,8 @@ Declaramos cualquier conflicto de interés relevante en la fuente original o en 
 
 No almacenamos datos personales de visitantes en prompts. Solo usamos métricas agregadas sin PII.
 
+El boletín es la excepción declarada: almacena tu correo electrónico solo para enviarte la edición semanal; no usamos píxeles de apertura ni seguimiento de clics. Ver [Política de Privacidad](/privacidad/) para el detalle del proveedor y tus derechos sobre esos datos.
+
 ## Métricas y financiamiento
 
 Publicaremos informes periódicos sobre crecimiento y sostenibilidad cuando la medición esté activa; hoy está pendiente de activación.
