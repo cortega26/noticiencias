@@ -11,6 +11,7 @@ import Metadata from '~/components/template/common/Metadata.astro';
 import SiteVerification from '~/components/template/common/SiteVerification.astro';
 import Analytics from '~/components/template/common/Analytics.astro';
 import ConsentBanner from '~/components/ds/organisms/ConsentBanner.astro';
+import AnalyticsEvents from '~/components/ds/templates/AnalyticsEvents.astro';
 import BasicScripts from '~/components/ds/templates/BasicScripts.astro';
 import { footerData } from '~/navigation';
 
@@ -90,6 +91,7 @@ const webSiteSchema = JSON.stringify({
     <slot />
 
     <ConsentBanner />
+    <AnalyticsEvents />
     <BasicScripts />
   </body>
 </html>

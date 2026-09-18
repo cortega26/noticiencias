@@ -1,0 +1,68 @@
+<script>
+  import {
+    SCROLL_DEPTH_THRESHOLD,
+    externalHost,
+    readProgress,
+    trackEvent,
+  } from '~/utils/browser/analytics-events';
+
+  // Module scripts run once per full page load while ClientRouter swaps the body,
+  // so interactions use delegated listeners bound once (LAW-F3), and per-page state
+  // (scroll depth) is rebuilt on every `astro:page-load`.
+  //
+  // Hooks are data attributes owned by the components that render the interaction:
+  //   [data-analytics-newsletter]  <form>  -> newsletter_signup
+  //   [data-analytics-source]      <a>     -> outbound_source_click
+  //   [data-analytics-scroll]      element -> scroll_75 (once per page)
+  // The `search` event is sent by SearchInterface, which owns the query.
+
+  document.addEventListener('submit', (event) => {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    // A submit, not a confirmed subscription: Buttondown uses double opt-in.
+    if (form?.matches('[data-analytics-newsletter]')) {
+      trackEvent('newsletter_signup', { method: 'form_submit' });
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const link = target?.closest<HTMLAnchorElement>('a[data-analytics-source]');
+    if (!link) return;
+    const host = externalHost(link.href, window.location.origin);
+    if (host) trackEvent('outbound_source_click', { link_domain: host, link_url: link.href });
+  });
+
+  let stopScroll: (() => void) | null = null;
+
+  const bindScrollDepth = () => {
+    stopScroll?.();
+    stopScroll = null;
+
+    const target = document.querySelector('[data-analytics-scroll]');
+    if (!target) return;
+
+    let queued = false;
+    const check = () => {
+      queued = false;
+      const { top, height } = target.getBoundingClientRect();
+      if (readProgress({ top, height }, window.innerHeight) >= SCROLL_DEPTH_THRESHOLD) {
+        trackEvent('scroll_75');
+        stopScroll?.();
+        stopScroll = null;
+      }
+    };
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(check);
+    };
+
+    // Deliberately no immediate check: this measures scrolling, so a short article
+    // that already fits the viewport does not count as "read".
+    window.addEventListener('scroll', onScroll, { passive: true });
+    stopScroll = () => window.removeEventListener('scroll', onScroll);
+  };
+
+  document.addEventListener('astro:page-load', bindScrollDepth);
+  bindScrollDepth();
+</script>

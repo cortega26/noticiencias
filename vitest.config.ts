@@ -65,6 +65,12 @@ export default defineConfig({
           functions: 100,
           lines: 100,
         },
+        'src/utils/browser/analytics-events.ts': {
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
+        },
         'src/utils/browser/consent.ts': {
           statements: 100,
           branches: 100,

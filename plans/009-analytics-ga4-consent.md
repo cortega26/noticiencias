@@ -166,12 +166,34 @@ promises.
   **Verify in production**: a configured token is not proof the script runs.
   Confirm in the browser and in the GA4 realtime report.
 
-### Phase 3 — Events
+### Phase 3 — Events (DONE 2026-09-18, ships with the rest disabled)
 
-Only once real traffic arrives. All gated on consent, with the script owned by
-the component that owns the interaction (LAW-F8 forbids a page-wide script
-where a scoped one suffices): `newsletter_signup` (mark as conversion),
-`outbound_source_click`, `scroll_75`, `search_query`.
+All events go through `window.gtag`, which only exists while GA4 is on, so with
+the id null every call is a silent no-op. `src/utils/browser/analytics-events.ts`
+holds `trackEvent` plus two pure helpers; the interactions use `data-analytics-*`
+hooks owned by the components that render them, and one delegated script
+(`ds/templates/AnalyticsEvents.astro` → `AnalyticsEventsScript.astro`, gated the
+same way as the banner so nothing ships while GA is off).
+
+| Event                   | Hook                                                        | Notes                                                                                                                                                                                                      |
+| ----------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `newsletter_signup`     | `data-analytics-newsletter` on the `NewsletterCapture` form | **A submit, not a confirmed subscription** — Buttondown uses double opt-in, so this over-counts. Mark it as a conversion knowing that. Sent with `transport_type: beacon` because the form navigates away. |
+| `outbound_source_click` | `data-analytics-source` on `TrustPanel` source links        | Params `link_domain`, `link_url`. Measures the trust layer; basis for any affiliate reasoning.                                                                                                             |
+| `scroll_75`             | `data-analytics-scroll` on the article body in `PostLayout` | Once per page; **no check on load**, so a short article that fits the viewport does not count as read.                                                                                                     |
+| `search`                | sent from `SearchInterface`                                 | GA4's recommended event name instead of the planned `search_query`, so GA4 reports it natively. Params `search_term`, `results_count`.                                                                     |
+
+**Privacy consequence for phase 2:** `search_term` is free text typed by the
+visitor and is sent to Google. `privacidad.md` must say so, and the newsletter
+event should be described as a form submit. Nothing else identifying is sent.
+
+Verified by `tests/analytics-events.test.ts` (100% coverage entry) and four e2e
+tests in `tests/playwright-consent/`. Two mutants were checked: removing the
+newsletter hook, and removing the post-fire `stopScroll` so `scroll_75` repeats;
+each fails its test.
+
+**Operator task added:** in GA4, register `newsletter_signup` as a key event, and
+create `link_domain` / `search_term` / `results_count` as custom dimensions if you
+want them in reports (event parameters are not reportable by default).
 
 ## Test plan
 
@@ -231,11 +253,11 @@ process exit early and aborts. Locally, start `npm run preview` first and run
   lives in `ConsentBannerScript.astro`, rendered only from inside the
   `{enabled && ...}` block of `ConsentBanner.astro`; with the id null the built
   `dist/` contains no banner script, element, footer control or gtag.js.
-- **Unresolved flake, not attributed**: `accessibility.test.ts` (axe
-  `target-size`, a tag pill "partially obscured") failed in ~3 of ~13 local runs
-  while the machine was loaded, then 0/10 on the same branch and 0/10 on the
-  pre-phase-1 commit. The page under test has no banner (id null). Suspected
-  animation-timing (`intersect` fade-in), not confirmed.
+- **Unresolved flake, not attributed** — tracked in
+  `docs/backlog/a11y-target-size-flake.md` with the data, three untested
+  hypotheses and a reproduction loop. Summary: axe `target-size` on a tag pill
+  failed in ~3 of ~13 local runs under machine load, then 0/10 on this branch and
+  0/10 on the pre-phase-1 commit; the failing pages carry no phase 1 markup.
 - **Deferred**: the Worker already intercepts all zone HTML
   (`workers/src/index.ts`) and could emit the CSP instead of the manual
   Transform Rule (ADR-0012 Q3). Dashboard surfacing of metrics remains deferred

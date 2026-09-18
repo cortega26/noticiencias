@@ -129,3 +129,77 @@ test('ClientRouter navigation: banner re-evaluates and listeners are not duplica
   await page.waitForURL('**/nosotros/');
   await expect(banner(page)).toBeHidden();
 });
+
+// ---- Phase 3: custom events -------------------------------------------------
+// gtag.js is stubbed, but the bootstrap defines `window.gtag`, so these assert the
+// `event` entries the page queues on the dataLayer.
+const events = async (page: Page, name: string) =>
+  (await dataLayer(page)).filter((e) => e[0] === 'event' && e[1] === name).map((e) => e[2]);
+
+const stubExternal = (page: Page) =>
+  page.route(/^https:\/\/(?!(www\.)?(googletagmanager|google-analytics))[^/]+\//, (route) =>
+    route.fulfill({ status: 200, contentType: 'text/html', body: '<html><body>stub</body></html>' })
+  );
+
+// Fixed article known to render a sources list (TrustPanel) and the scroll hook.
+const ARTICLE =
+  '/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/';
+
+test('newsletter submit queues one newsletter_signup event', async ({ page }) => {
+  await page.goto('/newsletter/');
+  // Cancel the real POST to Buttondown; the delegated tracker still sees the submit.
+  await page.locator('form[data-analytics-newsletter]').evaluate((form) => {
+    form.addEventListener('submit', (e) => e.preventDefault());
+  });
+  await page.getByLabel('Correo electrónico').fill('lector@example.com');
+  await page.getByRole('button', { name: 'Suscribirme' }).click();
+  expect(await events(page, 'newsletter_signup')).toEqual([
+    { transport_type: 'beacon', method: 'form_submit' },
+  ]);
+});
+
+test('search sends a `search` event with the term and result count', async ({ page }) => {
+  await page.goto('/buscar/?q=ciencia');
+  await expect
+    .poll(async () => (await events(page, 'search')).length, { timeout: 8000 })
+    .toBeGreaterThan(0);
+  const [first] = await events(page, 'search');
+  expect(first).toMatchObject({ search_term: 'ciencia', transport_type: 'beacon' });
+  expect(typeof (first as { results_count: number }).results_count).toBe('number');
+});
+
+test('an external source link queues outbound_source_click with its domain', async ({ page }) => {
+  await stubExternal(page);
+  await page.goto(ARTICLE);
+  const source = page.locator('a[data-analytics-source]').first();
+  await expect(source).toBeVisible();
+  const [popup] = await Promise.all([page.waitForEvent('popup'), source.click()]);
+  await popup.close();
+  const [event] = await events(page, 'outbound_source_click');
+  expect(event).toMatchObject({ transport_type: 'beacon' });
+  expect((event as { link_domain: string }).link_domain).not.toContain('noticiencias');
+});
+
+test('scroll_75 fires once after reading three quarters of an article, not on load', async ({
+  page,
+}) => {
+  await page.goto(ARTICLE);
+  await expect(page.locator('[data-analytics-scroll]')).toBeAttached();
+  expect(await events(page, 'scroll_75')).toHaveLength(0);
+
+  const box = await page.locator('[data-analytics-scroll]').evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    return { top: r.top + window.scrollY, height: r.height };
+  });
+  const viewport = page.viewportSize()!.height;
+  // Put the 80% mark of the article at the bottom edge of the viewport.
+  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.8 - viewport);
+  await expect
+    .poll(async () => (await events(page, 'scroll_75')).length, { timeout: 5000 })
+    .toBe(1);
+
+  // Scrolling further must not fire it again.
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForTimeout(300);
+  expect(await events(page, 'scroll_75')).toHaveLength(1);
+});
