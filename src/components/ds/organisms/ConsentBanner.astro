@@ -1,6 +1,7 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
 import { isAnalyticsEnabled } from '~/utils/browser/consent';
+import ConsentBannerScript from './ConsentBannerScript.astro';
 
 // Plan 009 / ADR-0012. Renders nothing while GA4 is off, so the banner never
 // asks about a tracker that is not there.
@@ -11,79 +12,36 @@ const buttonClass =
 
 {
   enabled && (
-    <div
-      id="consent-banner"
-      data-consent-banner
-      role="region"
-      aria-label="Preferencias de privacidad"
-      hidden
-      class="fixed inset-x-0 bottom-0 z-40 border-t border-border-subtle bg-page p-4 shadow-lg not-prose"
-    >
-      <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p class="text-sm text-text-muted sm:max-w-3xl">
-          Usamos Google Analytics para medir qué artículos se leen y de dónde llega la gente. Solo
-          activa las cookies de medición si aceptas; si no, Google recibe únicamente señales
-          anónimas sin cookies. Puedes cambiar tu elección cuando quieras desde el pie de página.
-          <a class="underline hover:text-primary" href="/privacidad/">
-            Más información
-          </a>
-          .
-        </p>
-        <div class="flex shrink-0 gap-3">
-          <button type="button" data-consent-choice="denied" class={buttonClass}>
-            Rechazar
-          </button>
-          <button type="button" data-consent-choice="granted" class={buttonClass}>
-            Aceptar
-          </button>
+    <>
+      <div
+        id="consent-banner"
+        data-consent-banner
+        role="region"
+        aria-label="Preferencias de privacidad"
+        hidden
+        class="fixed inset-x-0 bottom-0 z-40 border-t border-border-subtle bg-page p-4 shadow-lg not-prose"
+      >
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm text-text-muted sm:max-w-3xl">
+            Usamos Google Analytics para medir qué artículos se leen y de dónde llega la gente. Solo
+            activa las cookies de medición si aceptas; si no, Google recibe únicamente señales
+            anónimas sin cookies. Puedes cambiar tu elección cuando quieras desde el pie de página.
+            <a class="underline hover:text-primary" href="/privacidad/">
+              Más información
+            </a>
+            .
+          </p>
+          <div class="flex shrink-0 gap-3">
+            <button type="button" data-consent-choice="denied" class={buttonClass}>
+              Rechazar
+            </button>
+            <button type="button" data-consent-choice="granted" class={buttonClass}>
+              Aceptar
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      <ConsentBannerScript />
+    </>
   )
 }
-
-<script>
-  import { consentUpdateFor, readConsent, writeConsent } from '~/utils/browser/consent';
-  import type { ConsentDecision } from '~/utils/browser/consent';
-
-  // Module scripts run once per full page load, not per ClientRouter swap, while
-  // the banner element is replaced with the body on every navigation. So: one
-  // delegated listener bound a single time, plus a re-evaluation on each
-  // `astro:page-load` (fires on first load and after every swap). LAW-F3.
-  const banner = () => document.querySelector<HTMLElement>('[data-consent-banner]');
-
-  const syncBanner = () => {
-    const el = banner();
-    if (el) el.hidden = readConsent() !== null;
-  };
-
-  document.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-
-    const choice = target?.closest<HTMLElement>('[data-consent-choice]');
-    if (choice) {
-      const decision = choice.dataset.consentChoice as ConsentDecision;
-      writeConsent(decision);
-      (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag?.(
-        'consent',
-        'update',
-        consentUpdateFor(decision)
-      );
-      const el = banner();
-      if (el) el.hidden = true;
-      return;
-    }
-
-    if (target?.closest('[data-consent-open]')) {
-      const el = banner();
-      if (el) {
-        el.hidden = false;
-        el.querySelector<HTMLElement>('button')?.focus();
-      }
-    }
-  });
-
-  document.addEventListener('astro:page-load', syncBanner);
-  // Also covers the first paint if page-load already fired before this module ran.
-  syncBanner();
-</script>

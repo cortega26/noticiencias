@@ -225,10 +225,12 @@ process exit early and aborts. Locally, start `npm run preview` first and run
   `newsletter_signup` as a conversion; link Search Console to GA4; verify the
   GSC property; get the Cloudflare Web Analytics token; update the edge
   Response Header Transform Rule with the new CSP.
-- **Known cost while GA is off**: `ConsentBanner.astro`'s module script still
-  ships (~0.9 KB inline, uncompressed) because Astro hoists `<script>` blocks
-  regardless of the surrounding conditional. The banner element, the footer
-  button and gtag.js are all absent; the script is inert without the element.
+- **Banner script is gated on the id (LAW-F8).** Astro hoists a component's own
+  `<script>` regardless of a conditional inside its template, which shipped an
+  inert ~0.9 KB module on all 216 pages while GA was off. The script therefore
+  lives in `ConsentBannerScript.astro`, rendered only from inside the
+  `{enabled && ...}` block of `ConsentBanner.astro`; with the id null the built
+  `dist/` contains no banner script, element, footer control or gtag.js.
 - **Unresolved flake, not attributed**: `accessibility.test.ts` (axe
   `target-size`, a tag pill "partially obscured") failed in ~3 of ~13 local runs
   while the machine was loaded, then 0/10 on the same branch and 0/10 on the
