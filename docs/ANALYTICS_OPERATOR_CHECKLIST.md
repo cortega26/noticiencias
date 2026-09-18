@@ -1,5 +1,7 @@
 # Medición: checklist del operador (plan 009, fase 2)
 
+> **Estado (2026-09-18):** los pasos 1 a 4 y 6 están hechos. La propiedad GA4 es `G-BP9KG11S3W` (retención de 14 meses, Google Signals apagado), el token del beacon de Cloudflare está registrado (modo _JS snippet_ manual), Search Console ya tenía una propiedad de **dominio** verificada (por eso `googleSiteVerificationId` sigue vacío: no hace falta la etiqueta HTML) y el texto legal fue confirmado. Queda el paso 5 (opcional) y la **verificación posterior al deploy** de la sección 7. Lo que sigue abajo se conserva como referencia.
+
 Todo el código de medición ya está en `main` y **apagado**. Encenderlo requiere tres valores que solo salen de tus cuentas, más cuatro decisiones o ajustes. Este documento es el orden exacto. Contexto y decisiones: `docs/adr/0012-ga4-consent-mode.md` y `plans/009-analytics-ga4-consent.md`.
 
 ## Orden recomendado

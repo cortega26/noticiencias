@@ -150,7 +150,7 @@ GA id stays `null`.
   while the id is null (not `googletagmanager`, which the CSP allowlists on
   every page).
 
-### Phase 2 — Enablement (needs the Measurement ID)
+### Phase 2 — Enablement (config applied 2026-09-18; post-deploy checks pending)
 
 A small separate PR: the only one that changes visible behaviour and public
 promises.
@@ -259,6 +259,18 @@ process exit early and aborts. Locally, start `npm run preview` first and run
   hypotheses and a reproduction loop. Summary: axe `target-size` on a tag pill
   failed in ~3 of ~13 local runs under machine load, then 0/10 on this branch and
   0/10 on the pre-phase-1 commit; the failing pages carry no phase 1 markup.
+- **Enablement findings (2026-09-18).** (1) With the real config, the regular
+  e2e suite loaded the live Google/Cloudflare scripts: from `localhost` the
+  Cloudflare beacon POST is rejected by CORS (origin is not the registered host)
+  and floods the console, and the visible banner covers the footer during axe
+  audits. Fixed with `tests/playwright/fixtures.ts`: analytics hosts stubbed and a
+  consent choice pre-stored; the visible banner is audited in
+  `tests/playwright-consent/`. (2) The beacon reports to
+  `https://cloudflareinsights.com/cdn-cgi/rum`, not own-domain `/cdn-cgi/rum`
+  as ADR-0011 assumed, so `connect-src` now allows `https://cloudflareinsights.com`.
+  (3) The apex is proxied by Cloudflare; only `www` is served directly by GitHub
+  Pages (it 301s to the apex). (4) Search Console needs no meta tag: a domain
+  property is already verified.
 - **Deferred**: the Worker already intercepts all zone HTML
   (`workers/src/index.ts`) and could emit the CSP instead of the manual
   Transform Rule (ADR-0012 Q3). Dashboard surfacing of metrics remains deferred

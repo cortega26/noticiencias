@@ -6,15 +6,16 @@ import { getAsset } from '~/utils/permalinks';
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<!-- Plan 007: script-src gains the Cloudflare beacon host. connect-src stays
-  'self' only: the zone is proxied (server: cloudflare + cf-ray observed
-  2026-09-16), so beacon data goes to own-domain /cdn-cgi/rum. If proxying
-  ever stops, add https://cloudflareinsights.com to connect-src. Mirror this
-  delta in the edge Response Header Transform Rule (operator task) or the
-  beacon stays blocked in production. Google entries kept: GA branch exists. -->
+<!-- Plans 007/009: script-src allows the Cloudflare beacon host. connect-src
+  allows GA4 (regional *.google-analytics.com / *.analytics.google.com) and,
+  as a fallback, https://cloudflareinsights.com: the apex zone is proxied (so
+  the beacon normally reports to own-domain /cdn-cgi/rum) but `www` is served
+  directly by GitHub Pages, and a fallback costs nothing. Mirror any change in
+  public/_headers, docs/DEPLOYMENT_SECURITY_HEADERS.md and the edge Response
+  Header Transform Rule; tests/compliance.test.ts keeps the first two in sync. -->
 <meta
   http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;"
 />
 
 <link rel="preconnect" href="https://www.cdn.noticiencias.com" />
