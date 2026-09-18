@@ -16,16 +16,17 @@ ships its feature — each names the later build it unblocks.
 
 ## Execution order & status
 
-| Plan | Title                                                        | Priority | Effort | Depends on                               | Status                                                                                               |
-| ---- | ------------------------------------------------------------ | -------- | ------ | ---------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| 001  | Newsletter backend spike (`001-newsletter-backend-spike.md`) | P1       | M      | —                                        | DONE (ADR-0009 Accepted 2026-09-16, Buttondown; reviewed 2026-09-15)                                 |
-| 002  | Corrections loop spike (`002-corrections-loop-spike.md`)     | P1       | M      | —                                        | DONE (ADR-0010 Accepted 2026-09-17; build unscheduled, waits for schema-change capacity)             |
-| 003  | Traffic analytics spike (`003-traffic-analytics-spike.md`)   | P2       | S–M    | —                                        | DONE (ADR-0011 Accepted 2026-09-16, Cloudflare WA; reviewed 2026-09-15)                              |
-| 004  | Series fate spike (`004-series-fate-spike.md`)               | P2       | S      | —                                        | TODO                                                                                                 |
-| 005  | Recursos library spike (`005-recursos-library-spike.md`)     | P3       | S–M    | —                                        | TODO                                                                                                 |
-| 006  | Social graduation spike (`006-social-graduation-spike.md`)   | P2       | M      | —                                        | TODO                                                                                                 |
-| 007  | Analytics build (`007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | DONE (beacon behind token gate, ships disabled; manual snippet, edge-CSP task recorded; 2026-09-16)  |
-| 008  | Newsletter build (`008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | DONE (Buttondown wired via PR #179; edge-CSP rule + live double-opt-in check are operator follow-up) |
+| Plan | Title                                                         | Priority | Effort | Depends on                               | Status                                                                                               |
+| ---- | ------------------------------------------------------------- | -------- | ------ | ---------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 001  | Newsletter backend spike (`001-newsletter-backend-spike.md`)  | P1       | M      | —                                        | DONE (ADR-0009 Accepted 2026-09-16, Buttondown; reviewed 2026-09-15)                                 |
+| 002  | Corrections loop spike (`002-corrections-loop-spike.md`)      | P1       | M      | —                                        | DONE (ADR-0010 Accepted 2026-09-17; build unscheduled, waits for schema-change capacity)             |
+| 003  | Traffic analytics spike (`003-traffic-analytics-spike.md`)    | P2       | S–M    | —                                        | DONE (ADR-0011 Accepted 2026-09-16, Cloudflare WA; reviewed 2026-09-15)                              |
+| 004  | Series fate spike (`004-series-fate-spike.md`)                | P2       | S      | —                                        | TODO                                                                                                 |
+| 005  | Recursos library spike (`005-recursos-library-spike.md`)      | P3       | S–M    | —                                        | TODO                                                                                                 |
+| 006  | Social graduation spike (`006-social-graduation-spike.md`)    | P2       | M      | —                                        | TODO                                                                                                 |
+| 007  | Analytics build (`007-analytics-build.md`)                    | P1       | S      | ADR-0011 Accepted                        | DONE (beacon behind token gate, ships disabled; manual snippet, edge-CSP task recorded; 2026-09-16)  |
+| 008  | Newsletter build (`008-newsletter-build.md`)                  | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | DONE (Buttondown wired via PR #179; edge-CSP rule + live double-opt-in check are operator follow-up) |
+| 009  | Analytics GA4 + Consent Mode (`009-analytics-ga4-consent.md`) | P1       | M      | ADR-0012 Accepted                        | IN PROGRESS (phase 0 done: partytown bug fixed, CSP synced + guarded by test; consent infra next)    |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale — finding fixed independently or approach abandoned)
 

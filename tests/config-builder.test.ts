@@ -10,7 +10,7 @@ describe('configBuilder', () => {
     expect(result.APP_BLOG.isEnabled).toBe(false);
     expect(result.APP_BLOG.post.permalink).toBe('/blog/%slug%');
     expect(result.UI).toEqual({ theme: 'system' });
-    expect(result.ANALYTICS.vendors.googleAnalytics.partytown).toBe(true);
+    expect(result.ANALYTICS.vendors.googleAnalytics.id).toBeUndefined();
     expect(result.APP_CONFIG!.form.endpoint).toBe('');
   });
 
@@ -60,6 +60,16 @@ describe('configBuilder', () => {
     expect(form?.endpoint).toBe('');
   });
 
+  // Regression guard (plan 009): `partytown: true` used to be the default while
+  // `@astrojs/partytown` was never installed, so Analytics.astro tagged both GA
+  // scripts with an unknown `text/partytown` MIME type and the browser never ran
+  // them — the GA branch was dead, not merely disabled. Re-introducing the flag
+  // without the integration would silently break GA again.
+  it('does not carry a partytown flag (the integration is not installed)', () => {
+    const result = configBuilder({});
+    expect(result.ANALYTICS.vendors.googleAnalytics).not.toHaveProperty('partytown');
+  });
+
   it('defaults the cloudflare analytics token to undefined (tracking stays off)', () => {
     const result = configBuilder({});
     expect(result.ANALYTICS?.vendors.cloudflare?.token).toBeUndefined();
@@ -73,7 +83,6 @@ describe('configBuilder', () => {
     expect(vendors?.cloudflare?.token).toBe('TEST-TOKEN');
     expect(vendors?.googleAnalytics).toMatchObject({
       id: undefined,
-      partytown: true,
     });
   });
 });

@@ -127,7 +127,6 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
     vendors: {
       googleAnalytics: {
         id: undefined,
-        partytown: true,
       },
       cloudflare: {
         token: undefined,
