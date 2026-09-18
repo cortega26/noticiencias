@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-15T11:41:09.935Z",
+  "generated_at": "2026-09-18T11:10:24.623Z",
   "content": {
-    "total_articles": 36,
-    "v2_articles": 24,
-    "total_words": 22891,
-    "avg_words": 636,
+    "total_articles": 37,
+    "v2_articles": 25,
+    "total_words": 23579,
+    "avg_words": 637,
     "categories": [
       {
         "name": "Tecnología",
         "count": 13
       },
       {
-        "name": "Salud",
-        "count": 5
+        "name": "Ciencia",
+        "count": 6
       },
       {
-        "name": "Ciencia",
+        "name": "Salud",
         "count": 5
       },
       {
@@ -50,6 +50,10 @@
       },
       {
         "name": "universo",
+        "count": 2
+      },
+      {
+        "name": "galápagos",
         "count": 2
       },
       {
@@ -159,10 +163,6 @@
       {
         "name": "sarampión",
         "count": 1
-      },
-      {
-        "name": "vacunación",
-        "count": 1
       }
     ],
     "articles_by_date": [
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino",
+        "title": "Los corales de Galápagos ocultan un secreto de El Niño",
+        "date": "2026-08-27",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Alta — estudio basado en análisis geoquímico de corales vivos y fósiles con calibraciones ampliamente validadas, comparado con registros instrumentales y modelos climáticos, aunque reconoce incertidumbres locales en la química del agua.",
         "review_status": null
       },
       {
@@ -611,11 +623,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-15T11:41:09.934Z"
+    "generated_at": "2026-09-18T11:10:24.623Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 36,
+    "derivatives_available": 37,
     "missing_derivatives": 0
   }
 }
