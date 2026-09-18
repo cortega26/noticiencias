@@ -22,7 +22,7 @@ source of truth and fails if this document or `public/_headers` drifts from it,
 so edit the component first and mirror the change here.
 
 ```text
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;
 X-Frame-Options: SAMEORIGIN
 X-Content-Type-Options: nosniff
 Referrer-Policy: strict-origin-when-cross-origin

@@ -1,5 +1,6 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
+import { buildConsentBootstrap, isAnalyticsEnabled } from '~/utils/browser/consent';
 
 // Google Analytics 4 (plan 009, ADR-0012). No Partytown: `@astrojs/partytown`
 // was never installed, so the former `type="text/partytown"` attribute was an
@@ -8,7 +9,7 @@ import { ANALYTICS } from 'astrowind:config';
 // which needs `gtag('consent', 'default', ...)` to run on the main thread
 // before gtag.js loads. Renders nothing while the id is null (tracking OFF).
 const gaId = ANALYTICS?.vendors?.googleAnalytics?.id;
-const isEnabled = gaId && gaId !== 'null' && String(gaId).startsWith('G-');
+const isEnabled = isAnalyticsEnabled(gaId);
 const id = String(gaId);
 
 // Cloudflare Web Analytics (plan 007, ADR-0011). Snippet shape verified
@@ -25,17 +26,11 @@ const cfBeacon = JSON.stringify({ token: String(cfToken) });
 {
   isEnabled ? (
     <>
+      {/* Consent Mode v2 advanced (ADR-0012): the bootstrap queues consent default
+          (all denied) + any stored grant + config BEFORE gtag.js loads, so it must
+          stay ahead of the async script below. */}
+      <script is:inline set:html={buildConsentBootstrap(id)} />
       <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
-      <script
-        is:inline
-        define:vars={{ id }}
-        set:html={`window.dataLayer = window.dataLayer || [];
-function gtag() {
-  window.dataLayer.push(arguments);
-}
-gtag("js", new Date());
-gtag("config", id);`}
-      />
     </>
   ) : null
 }

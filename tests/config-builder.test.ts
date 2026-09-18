@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import configBuilder from '../src/integration/utils/configBuilder';
 
 describe('configBuilder', () => {
@@ -83,6 +83,31 @@ describe('configBuilder', () => {
     expect(vendors?.cloudflare?.token).toBe('TEST-TOKEN');
     expect(vendors?.googleAnalytics).toMatchObject({
       id: undefined,
+    });
+  });
+
+  describe('NOTICIENCIAS_GA_ID build-time override', () => {
+    afterEach(() => vi.unstubAllEnvs());
+
+    it('beats the id committed in config.yaml without dropping sibling vendors', () => {
+      vi.stubEnv('NOTICIENCIAS_GA_ID', ' G-FROMENV ');
+      const result = configBuilder({
+        analytics: {
+          vendors: { googleAnalytics: { id: 'G-COMMITTED' }, cloudflare: { token: 'T' } },
+        },
+      });
+      expect(result.ANALYTICS.vendors.googleAnalytics.id).toBe('G-FROMENV');
+      expect(result.ANALYTICS.vendors.cloudflare?.token).toBe('T');
+    });
+
+    it('is ignored when unset or blank', () => {
+      vi.stubEnv('NOTICIENCIAS_GA_ID', '   ');
+      expect(
+        configBuilder({ analytics: { vendors: { googleAnalytics: { id: 'G-COMMITTED' } } } })
+          .ANALYTICS.vendors.googleAnalytics.id
+      ).toBe('G-COMMITTED');
+      vi.unstubAllEnvs();
+      expect(configBuilder({}).ANALYTICS.vendors.googleAnalytics.id).toBeUndefined();
     });
   });
 });

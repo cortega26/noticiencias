@@ -1,4 +1,5 @@
 dist/
+dist-consent/
 .editorconfig
 .astro/
 .codacy/

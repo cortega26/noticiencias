@@ -82,7 +82,7 @@ per phase. Do not push without being told to.
 - **Step 0.4 — ADR-0012 (DONE).** `docs/adr/0012-ga4-consent-mode.md`, with
   ADR-0011's status updated to superseded-in-part.
 
-### Phase 1 — Consent infrastructure (ships disabled)
+### Phase 1 — Consent infrastructure (ships disabled) (DONE 2026-09-18)
 
 Same posture as plan 007: additive code that changes nothing visible while the
 GA id stays `null`.
@@ -98,10 +98,16 @@ GA id stays `null`.
 - **Step 1.2 — Consent Mode signals in `Analytics.astro`.** In order, before
   `gtag.js` loads: define `dataLayer`; `gtag('consent', 'default', ...)` with
   `ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization` all
-  `denied` plus `wait_for_update`; then `gtag('consent', 'update', ...)` if a
+  `denied`; then `gtag('consent', 'update', ...)` if a
   stored decision exists; only then `gtag.js` and `gtag('config', id)`.
   Ordering is load-bearing — a `default` after `config` leaves a window in
-  which `_ga` was already written.
+  which `_ga` was already written. **Deviation:** no `wait_for_update`. That
+  parameter is for a consent update that arrives asynchronously (a CMP loading
+  late); here the stored decision is read from `localStorage` and applied
+  synchronously in the same script, before `config`, so there is nothing to
+  wait for. The script is built by `buildConsentBootstrap()` in
+  `src/utils/browser/consent.ts` and `tests/consent.test.ts` executes it against
+  a fake `window` to assert the dataLayer order.
 - **Step 1.3 — Banner.** A component in the **`ds/` layer**, mounted in
   `Layout.astro` near `<Analytics />` (line 76). It must not go under
   `src/components/template/common/`: `scripts/freeze-template.js` gates that
@@ -123,13 +129,23 @@ GA id stays `null`.
 - **Step 1.5 — Testing the enabled branch.** `src/config.yaml` ships with
   `id: null`, there is no `.astro` render harness in vitest, and Playwright
   builds from the committed config — so without an override every consent test
-  would assert "nothing rendered". Add an environment-variable override for the
+  would assert "nothing rendered". Add an environment-variable override (`NOTICIENCIAS_GA_ID`) for the
   GA id in `getAnalytics` (`configBuilder.ts`), and a dedicated Playwright
-  project that builds with it set. The override doubles as a way to enable GA4
+  config (`playwright.consent.config.ts`) that builds with it set into
+  `dist-consent/` and serves it with `scripts/serve-static.mjs` (`astro preview`
+  daemonizes and always serves `dist/`). Run with `npm run test:e2e:consent`; it
+  is wired into `content-guard.yml` and `verify:ci`. The override doubles as a way to enable GA4
   from a CI secret instead of committing the id.
 - **Step 1.6 — Tests.** Extend `tests/config-builder.test.ts` for the override;
-  a Playwright test asserting no `_ga` cookie before consent, one after
-  accepting, and that the decision survives a transition and a reload; a
+  `tests/playwright-consent/consent.test.ts` asserting consent starts denied
+  before `config`, accept/reject parity, that an accept sends exactly one update,
+  that the choice survives a reload, that the footer link reopens the banner, and
+  that `ClientRouter` navigations neither hide the banner nor duplicate the click
+  listener. **Deviation:** gtag.js is stubbed so the suite is hermetic, which
+  means it asserts what the page _asks_ Google to do (the dataLayer), not that
+  `_ga` is absent. **The `_ga`-cookie check therefore stays a post-deploy manual
+  check** (see Done criteria). The duplicated-listener test was mutation-checked:
+  binding a fresh anonymous handler on every `astro:page-load` makes it fail; a
   `scripts/dist-sanity.js` assertion that `gtag/js` is absent from `dist/`
   while the id is null (not `googletagmanager`, which the CSP allowlists on
   every page).
@@ -187,8 +203,9 @@ process exit early and aborts. Locally, start `npm run preview` first and run
 - [x] ADR-0012 exists and ADR-0011 records being superseded in part.
 - [ ] `googleSiteVerificationId` is set and the property is verified in Search Console.
 - [x] With the GA id null, `grep -rl "gtag/js" dist/` and `grep -rl "text/partytown" dist/` are both empty. (Do **not** grep for `googletagmanager` alone — the CSP allowlists that host, so it matches every page.)
-- [ ] With the id set via the env override, no `_ga` cookie exists before consent and one exists after.
-- [ ] The banner does not double-bind across a `ClientRouter` transition.
+- [x] With the id set via `NOTICIENCIAS_GA_ID`, consent starts denied and is queued before `config` (e2e, gtag stubbed).
+- [ ] **Post-deploy, real gtag.js:** no `_ga` cookie before accepting, one after (browser devtools).
+- [x] The banner does not double-bind across a `ClientRouter` transition (mutation-checked).
 - [ ] `privacidad.md` and `transparencia.md` describe what actually runs.
 
 ## STOP conditions
@@ -208,6 +225,15 @@ process exit early and aborts. Locally, start `npm run preview` first and run
   `newsletter_signup` as a conversion; link Search Console to GA4; verify the
   GSC property; get the Cloudflare Web Analytics token; update the edge
   Response Header Transform Rule with the new CSP.
+- **Known cost while GA is off**: `ConsentBanner.astro`'s module script still
+  ships (~0.9 KB inline, uncompressed) because Astro hoists `<script>` blocks
+  regardless of the surrounding conditional. The banner element, the footer
+  button and gtag.js are all absent; the script is inert without the element.
+- **Unresolved flake, not attributed**: `accessibility.test.ts` (axe
+  `target-size`, a tag pill "partially obscured") failed in ~3 of ~13 local runs
+  while the machine was loaded, then 0/10 on the same branch and 0/10 on the
+  pre-phase-1 commit. The page under test has no banner (id null). Suspected
+  animation-timing (`intersect` fade-in), not confirmed.
 - **Deferred**: the Worker already intercepts all zone HTML
   (`workers/src/index.ts`) and could emit the CSP instead of the manual
   Transform Rule (ADR-0012 Q3). Dashboard surfacing of metrics remains deferred

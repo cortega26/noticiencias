@@ -10,7 +10,7 @@ export default defineConfig({
   },
   test: {
     include: ['tests/**/*.test.ts'],
-    exclude: ['tests/playwright/**'],
+    exclude: ['tests/playwright/**', 'tests/playwright-consent/**'],
     testTimeout: 60000, // 60s for full site scan
     coverage: {
       provider: 'v8',
@@ -60,6 +60,12 @@ export default defineConfig({
         'src/utils/safeFs.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
         'src/utils/utils.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
         'src/utils/browser/search-url.ts': {
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
+        },
+        'src/utils/browser/consent.ts': {
           statements: 100,
           branches: 100,
           functions: 100,

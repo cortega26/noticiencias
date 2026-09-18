@@ -10,6 +10,7 @@ import ApplyColorMode from '~/components/template/common/ApplyColorMode.astro';
 import Metadata from '~/components/template/common/Metadata.astro';
 import SiteVerification from '~/components/template/common/SiteVerification.astro';
 import Analytics from '~/components/template/common/Analytics.astro';
+import ConsentBanner from '~/components/ds/organisms/ConsentBanner.astro';
 import BasicScripts from '~/components/ds/templates/BasicScripts.astro';
 import { footerData } from '~/navigation';
 
@@ -88,6 +89,7 @@ const webSiteSchema = JSON.stringify({
     </a>
     <slot />
 
+    <ConsentBanner />
     <BasicScripts />
   </body>
 </html>
