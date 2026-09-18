@@ -54,6 +54,8 @@ Los Datos de Uso pueden incluir información como la dirección de Protocolo de 
 
 Utilizamos Cookies y tecnologías de seguimiento similares para rastrear la actividad en Nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento utilizadas son balizas, etiquetas y scripts para recopilar y rastrear información y para mejorar y analizar Nuestro Servicio.
 
+Como proveedor de medición prevemos usar Cloudflare Web Analytics: baliza sin cookies, solo métricas agregadas y sin identificadores entre visitas. Esta medición aún no está activa y su operación sin banner de consentimiento está pendiente de confirmación legal (Ley 19.628); actualizaremos esta sección antes de activarla.
+
 Puede indicar a su navegador que rechace todas las Cookies o que indique cuándo se envía una Cookie. Sin embargo, si no acepta las Cookies, es posible que no pueda utilizar algunas partes de nuestro Servicio.
 
 ## Uso de sus Datos Personales
@@ -72,6 +74,8 @@ La Compañía retendrá sus Datos Personales solo durante el tiempo que sea nece
 ## Transferencia de sus Datos Personales
 
 Su información, incluidos los Datos Personales, se procesa en las oficinas operativas de la Compañía y en cualquier otro lugar donde se encuentren las partes involucradas en el procesamiento.
+
+Para el envío del boletín semanal utilizamos **Buttondown LLC** (Estados Unidos) como proveedor de servicios (sub-procesador). Almacena únicamente su dirección de correo electrónico para el envío de la edición semanal; no recopilamos ni almacenamos métricas de apertura o clics, ya que ese seguimiento permanece desactivado. La transferencia internacional de datos hacia Buttondown se ampara en un acuerdo de procesamiento de datos (DPA). Puede solicitar la exportación o eliminación de sus datos del boletín usando el enlace "Unsubscribe" en el pie de cada correo o escribiendo a `privacidad@noticiencias.com`.
 
 ## Eliminación de sus Datos Personales
 

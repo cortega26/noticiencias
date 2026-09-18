@@ -14,6 +14,7 @@ excerpt: 'Estudio MIT: las empresas usan con frecuencia la automatización para 
 image: ~/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg
 image_alt: 'Trabajadores y sistemas automatizados en una planta industrial, ilustrando el debate sobre productividad y salarios'
 source_url: https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507
+series: 'IA en la práctica'
 refinery_id: 'Study: Firms often use automation to control certain workers’ wages'
 headlines_variants:
   question: ¿Por qué las empresas usan la automatización más para recortar salarios que para mejorar la productividad?
