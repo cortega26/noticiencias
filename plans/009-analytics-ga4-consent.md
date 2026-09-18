@@ -241,6 +241,7 @@ process exit early and aborts. Locally, start `npm run preview` first and run
 
 ## Maintenance notes
 
+- **Operator checklist**: `docs/ANALYTICS_OPERATOR_CHECKLIST.md` has the ordered steps, the exact `config.yaml` change and the post-deploy verification.
 - **Operator tasks** (outside the code): create the GA4 property and get the
   Measurement ID; **raise data retention from the 2-month default to 14 months**
   — not retroactive, so it must happen before traffic accumulates; mark
