@@ -79,7 +79,7 @@ import { UI } from 'astrowind:config';
           return;
         }
 
-        Observer.removeAnimationDelay();
+        window.Observer?.removeAnimationDelay();
 
         document.documentElement.classList.toggle('dark');
         localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
@@ -194,14 +194,22 @@ import { UI } from 'astrowind:config';
   /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
   type IntersectElement = HTMLElement & { _intersectionThreshold?: number };
 
-  const Observer: {
+  type ObserverController = {
     observer: IntersectionObserver | null;
     delayBetweenAnimations: number;
     animationCounter: number;
     elements: IntersectElement[];
     start: () => void;
     removeAnimationDelay: () => void;
-  } = {
+  };
+
+  declare global {
+    interface Window {
+      Observer?: ObserverController;
+    }
+  }
+
+  const Observer: ObserverController = {
     observer: null,
     delayBetweenAnimations: 100,
     animationCounter: 0,
@@ -308,6 +316,8 @@ import { UI } from 'astrowind:config';
       });
     },
   };
+
+  window.Observer = Observer;
 
   Observer.start();
 
