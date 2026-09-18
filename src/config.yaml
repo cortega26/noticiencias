@@ -71,13 +71,14 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
-    # Cloudflare Web Analytics beacon (plan 007, ADR-0011). Stays null
-    # until legal Q2 (no-banner position, Chile Ley 19.628) clears
-    # enablement; when set, use the token from the dashboard "Manage site"
-    # snippet. Tracking stays OFF while null.
+      # GA4 + Consent Mode v2 advanced (plan 009, ADR-0012). Null = OFF.
+      id: 'G-BP9KG11S3W'
+    # Cloudflare Web Analytics beacon (plan 007, ADR-0011), cookieless
+    # baseline kept alongside GA4 (ADR-0012). The token comes from the
+    # dashboard "Manage site" snippet (manual JS snippet installation) and is
+    # public — it ships in every page. Tracking is OFF while null.
     cloudflare:
-      token: null
+      token: '27d6606f22c945c597c080a43bdbf415'
 
 form:
   # Report-a-problem endpoint. Enabled after the Worker's durable sink

@@ -3,7 +3,7 @@
  * Verifies key pages load and return 200 with correct structure.
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 
 test('home page loads', async ({ page }) => {
   const response = await page.goto('/');

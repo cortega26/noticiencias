@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
 // Plan 009. gtag.js is stubbed so the suite is hermetic: it asserts what the page
@@ -5,8 +6,9 @@ import { expect, test, type Page } from '@playwright/test';
 // Cookie behaviour (`_ga` absent before consent) needs the real gtag.js and is a
 // post-deploy check, recorded in plans/009.
 const stubGoogle = (page: Page) =>
-  page.route(/googletagmanager\.com|google-analytics\.com/, (route) =>
-    route.fulfill({ status: 200, contentType: 'text/javascript', body: '' })
+  page.route(
+    /(googletagmanager|google-analytics|analytics\.google|cloudflareinsights)\.com/,
+    (route) => route.fulfill({ status: 200, contentType: 'text/javascript', body: '' })
   );
 
 const dataLayer = (page: Page) =>
@@ -202,4 +204,19 @@ test('scroll_75 fires once after reading three quarters of an article, not on lo
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await page.waitForTimeout(300);
   expect(await events(page, 'scroll_75')).toHaveLength(1);
+});
+
+// The regular suite stores a consent choice up front so the banner does not cover
+// the page; this is the one place the visible banner itself gets audited.
+test('the undecided banner has no accessibility violations', async ({ page }) => {
+  await page.goto('/');
+  await expect(banner(page)).toBeVisible();
+  const results = await new AxeBuilder({ page })
+    .include('#consent-banner')
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
+    .analyze();
+  expect(
+    results.violations.map((v) => ({ id: v.id, nodes: v.nodes.map((n) => n.html) })),
+    'banner a11y violations'
+  ).toEqual([]);
 });

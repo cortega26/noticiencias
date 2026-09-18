@@ -3,7 +3,7 @@
  * Tests the problem reporting form on the reportar-problema page.
  */
 
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from './fixtures';
 
 // Same-origin path — the page's CSP (connect-src 'self') would block fetch()
 // to an external test domain, same as it would in production for anything
