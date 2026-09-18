@@ -13,7 +13,7 @@ tags:
   - estroncio calcio
 excerpt: Coral de Galápagos de hasta 4500 años revela la intensidad pasada de El Niño mediante isótopos de oxígeno y Sr/Ca
 image: ~/assets/images/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.avif
-image_alt: Ilustración editorial relacionada con Los corales de Galápagos ocultan un secreto de El Niño
+image_alt: Un buzo extrae con un taladro una muestra cilíndrica del esqueleto de un coral en un arrecife de las islas Galápagos
 source_url: https://theconversation.com/galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery-272318
 refinery_id: '1181'
 headlines_variants:
@@ -38,7 +38,7 @@ glossary:
     definition: Variabilidad climática del Pacífico que incluye las fases cálidas de El Niño y las frías de La Niña, afectando el clima mundial.
 fact_check:
   - label: El evento de El Niño de 1982‑83 blanqueó el 95 % de los corales que rodean las Islas Galápagos.
-    status: uncertain
+    status: confirmed
   - label: Los eventos El Niño modernos son más intensos que cualquier episodio registrado en los últimos 1,000 años.
     status: confirmed
   - label: Los investigadores usaron las relaciones de isótopos de oxígeno y de estroncio/calcio en los corales como indicadores de temperatura del agua.
@@ -56,7 +56,7 @@ sources:
   - title: Galápagos corals show El Niño events are more extreme now than in past 1,000 years – here’s how my team made the discovery
     url: https://theconversation.com/galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery-272318
     publisher: The Conversation
-    date: '2024-06-13'
+    date: '2026-08-27'
 requires_uncertainty_note: false
 social:
   publish: true
