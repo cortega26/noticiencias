@@ -102,9 +102,14 @@ GA id stays `null`.
   stored decision exists; only then `gtag.js` and `gtag('config', id)`.
   Ordering is load-bearing — a `default` after `config` leaves a window in
   which `_ga` was already written.
-- **Step 1.3 — Banner.** A component under
-  `src/components/template/common/`, mounted in `Layout.astro` near
-  `<Analytics />` (line 76). Static HTML plus a scoped inline script, no island
+- **Step 1.3 — Banner.** A component in the **`ds/` layer**, mounted in
+  `Layout.astro` near `<Analytics />` (line 76). It must not go under
+  `src/components/template/common/`: `scripts/freeze-template.js` gates that
+  directory with a path allowlist, and a new file there fails
+  `npm run check:freeze` (part of `validate:content`). `Analytics.astro` and
+  `CommonMeta.astro` are already on that allowlist, so editing them is fine.
+  `ds/` is also the correct layer by LAW-F2 — this is project-owned UI, and
+  `template` may import `ds` but not the reverse. Static HTML plus a scoped inline script, no island
   (LAW-F3:117). **Idempotent across `ClientRouter` page transitions**
   (`Layout.astro:79`, LAW-F3:120) — do not double-bind listeners on swap, and
   re-read stored consent afterwards. Accept and reject get equal visual weight.
@@ -163,8 +168,17 @@ npm run lint && npm run validate:content && npm run build \
 
 Plus `npm run test:coverage` — `vitest.config.ts` pins `configBuilder.ts` at
 statements 100 / branches 93 / functions 100 with `perFile: true`, so every new
-branch needs a test in the same commit. Manual check at 375px and 1280px with
-no console errors (`AGENTS.md` §7).
+branch needs a test in the same commit. Phase 0 left it at 100 / 93.75 / 100 /
+100, i.e. barely over the branch floor: the next branch added to that file
+needs its test in the same commit or the gate trips. Manual check at 375px and
+1280px with no console errors (`AGENTS.md` §7).
+
+**Local e2e caveat**: `CI=1 npm run test:e2e` does not work on a dev machine
+here. `astro preview` in this project daemonizes and returns immediately, so
+Playwright's `webServer` (with `reuseExistingServer: false` under CI) sees the
+process exit early and aborts. Locally, start `npm run preview` first and run
+`npm run test:e2e` without `CI=1` — noting that this drops `retries: 2` and
+`workers: 2`, so it is not byte-identical to the CI run.
 
 ## Done criteria
 
