@@ -20,13 +20,13 @@ Declaramos cualquier conflicto de interés relevante en la fuente original o en 
 
 ## Privacidad
 
-No almacenamos datos personales de visitantes en prompts. Solo usamos métricas agregadas sin PII.
+No almacenamos datos personales de visitantes en prompts. Para medir el uso del sitio usamos Google Analytics 4, con cookies de medición solo si las aceptas, y Cloudflare Web Analytics, sin cookies. Detalle, eventos que registramos y cómo cambiar tu elección en la [Política de Privacidad](/privacidad/).
 
 El boletín es la excepción declarada: almacena tu correo electrónico solo para enviarte la edición semanal; no usamos píxeles de apertura ni seguimiento de clics. Ver [Política de Privacidad](/privacidad/) para el detalle del proveedor y tus derechos sobre esos datos.
 
 ## Métricas y financiamiento
 
-Publicaremos informes periódicos sobre crecimiento y sostenibilidad cuando la medición esté activa; hoy está pendiente de activación.
+La medición está activa. Publicaremos informes periódicos sobre crecimiento y sostenibilidad a partir de esos datos.
 
 ## Calidad editorial agregada
 
