@@ -12,10 +12,17 @@ The example below is an edge-policy starting point, not the exact assertion
 set or evidence of live configuration. `scripts/post-deploy-check-lib.js`
 owns enforced header checks; its custom-domain CSP check requires a response
 header but does not validate every directive. Reconcile any deployed CSP
-with current image, analytics and API origins before applying it:
+with current image, analytics and API origins before applying it.
+
+The `Content-Security-Policy` line below is kept byte-identical to the
+`<meta http-equiv="Content-Security-Policy">` tag in
+`src/components/template/common/CommonMeta.astro`, which is the enforcing copy
+on GitHub Pages. `tests/compliance.test.ts` treats that meta tag as the single
+source of truth and fails if this document or `public/_headers` drifts from it,
+so edit the component first and mirror the change here.
 
 ```text
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com; object-src 'none'; base-uri 'self'; form-action 'self';
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;
 X-Frame-Options: SAMEORIGIN
 X-Content-Type-Options: nosniff
 Referrer-Policy: strict-origin-when-cross-origin

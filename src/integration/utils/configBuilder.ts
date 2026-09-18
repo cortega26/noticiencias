@@ -127,7 +127,6 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
     vendors: {
       googleAnalytics: {
         id: undefined,
-        partytown: true,
       },
       cloudflare: {
         token: undefined,
@@ -135,7 +134,13 @@ const getAnalytics = (config: Config): AnalyticsConfig => {
     },
   };
 
-  return merge({}, _default, config.analytics ?? {}) as AnalyticsConfig;
+  // Build-time override (plan 009): lets a CI secret enable GA4 without
+  // committing the id, and lets the e2e suite build a GA-enabled variant while
+  // src/config.yaml keeps `id: null`.
+  const idOverride = process.env.NOTICIENCIAS_GA_ID?.trim();
+  const override = idOverride ? { vendors: { googleAnalytics: { id: idOverride } } } : {};
+
+  return merge({}, _default, config.analytics ?? {}, override) as AnalyticsConfig;
 };
 
 const getFormConfig = (config: Config): FormConfig => {

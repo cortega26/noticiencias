@@ -64,7 +64,6 @@ export interface AnalyticsConfig {
   vendors: {
     googleAnalytics: {
       id?: string;
-      partytown?: boolean;
     };
     cloudflare?: {
       token?: string;

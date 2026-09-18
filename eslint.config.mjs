@@ -16,6 +16,7 @@ export default [
   {
     ignores: [
       'dist/',
+      'dist-consent/',
       '_site/',
       'node_modules/',
       'coverage/',

@@ -181,6 +181,14 @@ jobs:
           PLAYWRIGHT_BASE_URL: http://localhost:4321
         run: npx playwright test --project=mobile-375 --project=desktop-1280
 
+      - name: 🍪 Consent flow suite (GA4-enabled fixture build, gtag stubbed — plan 009)
+        # config.yaml ships `googleAnalytics.id: null`, so the suite above never
+        # renders the banner. This builds dist-consent/ with NOTICIENCIAS_GA_ID
+        # set and serves it locally; Google hosts are stubbed, no network calls.
+        env:
+          CI: true
+        run: npm run test:e2e:consent
+
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
