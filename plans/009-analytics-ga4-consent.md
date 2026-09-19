@@ -60,11 +60,12 @@ per phase. Do not push without being told to.
 
 ### Phase 0 — Unblocked work (DONE 2026-09-18)
 
-- **Step 0.1 — Search Console.** Set `googleSiteVerificationId` in
-  `src/config.yaml:13`. `SiteVerification.astro` is already mounted at
-  `Layout.astro:75` and emits the meta as soon as the value is non-empty; no
-  code to write. **BLOCKED on the operator supplying the value.**
-  **Verify**: after deploy, `curl -s https://noticiencias.com/ | grep google-site-verification`.
+- **Step 0.1 — Search Console.** ~~Set `googleSiteVerificationId` in
+  `src/config.yaml:13`.~~ SUPERSEDED 2026-09-18: Search Console already had
+  a verified **domain** property, so no HTML tag is needed and
+  `googleSiteVerificationId` stays empty (`SiteVerification.astro` renders
+  nothing while empty — verified). Kept as record; do not "fix" by adding
+  a tag.
 - **Step 0.2 — Partytown fix (DONE).** Removed the `partytown` default from
   `configBuilder.ts`, the field from `AnalyticsConfig` in `src/types/config.ts`,
   and the `type="text/partytown"` attributes from `Analytics.astro`. Inverted
@@ -220,10 +221,10 @@ process exit early and aborts. Locally, start `npm run preview` first and run
 
 ## Done criteria
 
-- [x] No `partytown` reference remains in `src/` (`grep -rn partytown src/` is empty).
+- [x] No Partytown code remains in `src/` (`grep -rn 'partytown' src/ | grep -v '://'` is empty — prose mentions in `Analytics.astro` comments are intentional documentation, not code).
 - [x] `tests/compliance.test.ts` fails if the CSP drifts between the meta tag, `public/_headers` and `docs/DEPLOYMENT_SECURITY_HEADERS.md`.
 - [x] ADR-0012 exists and ADR-0011 records being superseded in part.
-- [ ] `googleSiteVerificationId` is set and the property is verified in Search Console.
+- [x] Search Console covered by the pre-existing verified domain property — no meta tag needed (`googleSiteVerificationId` stays empty by design, see Step 0.1).
 - [x] With the GA id null, `grep -rl "gtag/js" dist/` and `grep -rl "text/partytown" dist/` are both empty. (Do **not** grep for `googletagmanager` alone — the CSP allowlists that host, so it matches every page.)
 - [x] With the id set via `NOTICIENCIAS_GA_ID`, consent starts denied and is queued before `config` (e2e, gtag stubbed).
 - [ ] **Post-deploy, real gtag.js:** no `_ga` cookie before accepting, one after (browser devtools).
