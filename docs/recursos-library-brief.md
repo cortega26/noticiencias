@@ -41,6 +41,13 @@ Consequences for the library:
 - New guides reuse the hype-guide shape: `MarkdownLayout.astro` frontmatter,
   question-led sections, plain-Markdown links, closing newsletter CTA to
   `src/pages/newsletter.astro`.
+- New guides must also be added to both LLM resource routes
+  (`src/pages/llms.txt.ts`, one-line entry mirroring the detector line, +
+  `src/pages/llms-full.txt.ts`, full-content section via `readStaticPage`),
+  priced as part of each guide build — not as a component change, but the
+  `llms-full.txt` regression coverage for the new route must be extended in
+  the same PR, or the guides stay undiscoverable to LLM consumers while
+  `llms-full.txt` keeps claiming the full corpus.
 
 Link constraint (verified, not assumed):
 
@@ -148,14 +155,19 @@ Required gates for each new guide (page-level or dedicated validator):
 1. `npm run lint` exits 0 (includes prettier + eslint + doc checks).
 2. `npm run validate:content` exits 0 (includes `astro check` so the new
    Markdown route compiles under `MarkdownLayout.astro`).
-3. `npm run check:doc-drift` exits 0.
-4. `npm run test:audit` passes.
-5. Manual page-level checks until a dedicated validator exists in the build:
+3. `npm run build` exits 0 — new guides are public routes, and only a full
+   build proves the generated route, sitemap entry, and search index
+   survive production output.
+4. `npm run test:dist` exits 0 — dist regression coverage for the new route
+   (renders, no broken assets, indexed where expected).
+5. `npm run check:doc-drift` exits 0.
+6. `npm run test:audit` passes.
+7. Manual page-level checks until a dedicated validator exists in the build:
    permalink collision check against existing posts/pages, cross-link target
    check (DailyDesk / detector / metodologia / newsletter targets resolve),
    mobile 375px + desktop 1280px render with no console errors, no broken
    images, meaningful `alt` text policy honored.
-6. If guides recur, add a dedicated page-level validator to the build (route
+8. If guides recur, add a dedicated page-level validator to the build (route
    exists, frontmatter shape matches the hype guide, outbound links resolve)
    rather than stretching post-only scripts to cover pages.
 
@@ -177,15 +189,18 @@ Required gates for each new guide (page-level or dedicated validator):
 
 ## Success metric
 
-Primary (until plan-003 analytics lands): proxy engagement per
-`docs/EDITORIAL_VOICE.md` section 7 (voice metrics) — newsletter
-subscriptions per session ("Útil" proxy), CTR from detector to companion
-guides, CTR from guides to newsletter, and return-weekly behavior.
+Measurable at ship time (no instrumentation needed): all 8 gates above
+green, each guide reachable at its permalink with working cross-links,
+listed in both LLM routes, and present in the sitemap. These are output
+criteria — they prove the guides exist and are discoverable, nothing more.
 
-Acceptable proxies with current tooling: RSS subscription clicks and
-`src/pages/buscar.astro` search usage originating from recursos pages
-(plain-link referral), plus time-on-page ≥60s once instrumented. Do not
-claim post-pipeline metrics (editorial score, confidence) for static pages.
+Engagement outcomes (subscriptions/session, detector→guide CTR,
+guide→newsletter CTR, return-weekly) are explicitly deferred until plan-003
+analytics lands: with analytics off, pageview-only tooling cannot observe
+RSS clicks or time-on-page, so any "proxy with current tooling" claim would
+be unverifiable. Do not claim post-pipeline metrics (editorial score,
+confidence) for static pages. Revisit this section the day the beacon
+ships real data.
 
 ## Open questions (3 max)
 
