@@ -15,6 +15,7 @@ tags:
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
 image_alt: Terminal de comunicación láser de Lincoln Laboratory preparado para enviar datos de alta capacidad en misiones lunares
 source_url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
+series: 'Espacio'
 refinery_id: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
 headlines_variants:
   question: ¿Cómo Superará la Comunicación Láser los Límites de Datos para las Misiones Tripuladas a la Luna?

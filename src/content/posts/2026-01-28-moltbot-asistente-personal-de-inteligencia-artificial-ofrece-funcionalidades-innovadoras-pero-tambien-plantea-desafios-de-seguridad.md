@@ -13,6 +13,7 @@ tags:
 image: '~/assets/images/2026-01-28-article-343.webp'
 image_alt: 'Moltbot, asistente personal de inteligencia artificial, ofrece funcionalidades innovadoras pero también plantea desafíos de seguridad'
 source_url: 'https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot/'
+series: 'IA en la práctica'
 refinery_id: '343'
 headlines_variants:
   question: ''

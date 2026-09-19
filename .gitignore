@@ -51,3 +51,4 @@ data/*.db-shm
 
 # Astro cache
 .astro/
+dist-consent/

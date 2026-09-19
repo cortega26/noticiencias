@@ -71,7 +71,14 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      # GA4 + Consent Mode v2 advanced (plan 009, ADR-0012). Null = OFF.
+      id: 'G-BP9KG11S3W'
+    # Cloudflare Web Analytics beacon (plan 007, ADR-0011), cookieless
+    # baseline kept alongside GA4 (ADR-0012). The token comes from the
+    # dashboard "Manage site" snippet (manual JS snippet installation) and is
+    # public — it ships in every page. Tracking is OFF while null.
+    cloudflare:
+      token: '27d6606f22c945c597c080a43bdbf415'
 
 form:
   # Report-a-problem endpoint. Enabled after the Worker's durable sink
@@ -79,10 +86,13 @@ form:
   # (plan 023, 2026-08-11): POST -> 201 with report id, idempotent retries.
   endpoint: 'https://noticiencias.com/api/report'
   # Newsletter capture endpoint — deliberately separate from the report
-  # endpoint (the two forms have different wire contracts). Stays empty
-  # until a newsletter backend exists; the page then shows RSS/blog
-  # alternatives instead of a form that would POST to /api/report.
-  newsletter_endpoint: ''
+  # endpoint (the two forms have different wire contracts). Wired to
+  # Buttondown (plan 008, ADR-0009, 2026-09-16): plain-HTML form POST,
+  # single "email" field, double opt-in on by default, open/click
+  # tracking left off. Operator-supplied username; billing and Friday
+  # send owned by Carlos Ortega. Sending domain: Buttondown subdomain
+  # (no custom-domain DNS configured).
+  newsletter_endpoint: 'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

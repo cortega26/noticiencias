@@ -15,7 +15,7 @@
  * Runs at both mobile-375 (Pixel 5) and desktop-1280 (Desktop Chrome).
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 
 const ROUNDS = 10;
 

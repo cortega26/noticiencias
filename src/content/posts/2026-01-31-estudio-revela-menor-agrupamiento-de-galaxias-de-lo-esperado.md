@@ -14,6 +14,7 @@ tags:
 image: '~/assets/images/2026-01-31-article-520.jpg'
 image_alt: 'Estudio revela menor agrupamiento de galaxias de lo esperado'
 source_url: 'https://scientificamerican.com/article/largest-galaxy-survey-yet-confirms-that-the-universe-is-not-clumpy-enough/'
+series: 'Espacio'
 refinery_id: '520'
 headlines_variants:
   question: '¿Por qué las galaxias se agrupan menos de lo previsto en el Universo?'
