@@ -2,10 +2,10 @@
 import { ANALYTICS } from 'astrowind:config';
 import { buildConsentBootstrap, isAnalyticsEnabled } from '~/utils/browser/consent';
 
-// Google Analytics 4 (plan 009, ADR-0012). No Partytown: `@astrojs/partytown`
-// was never installed, so the former `type="text/partytown"` attribute was an
-// unknown MIME type the browser silently refused to execute — the GA branch
-// could not have worked. Partytown is also incompatible with Consent Mode,
+// Google Analytics 4 (plan 009, ADR-0012). No Partytown shim: the package
+// `@astrojs/partytown` was never installed, so the old async scripts carried
+// a MIME type no browser executes — the GA branch could not have worked.
+// Partytown is also incompatible with Consent Mode,
 // which needs `gtag('consent', 'default', ...)` to run on the main thread
 // before gtag.js loads. Renders nothing while the id is null (tracking OFF).
 const gaId = ANALYTICS?.vendors?.googleAnalytics?.id;
