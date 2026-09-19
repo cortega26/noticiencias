@@ -85,8 +85,9 @@ jobs:
         uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
         with:
           # Retries ride through transient HTTP 429 rate limits; security.googleblog.com
-          # is excluded because Google persistently rate-limits runner IPs.
-          args: --no-progress --max-retries 3 --retry-wait-time 10 --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov --exclude security.googleblog.com './src/content/**/*.md'
+          # is excluded because Google persistently rate-limits runner IPs, and biorxiv.org
+          # because it answers 429 to runner IPs (preprint source links would fail every PR).
+          args: --no-progress --max-retries 3 --retry-wait-time 10 --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov --exclude security.googleblog.com --exclude biorxiv.org './src/content/**/*.md'
           fail: true
 
       - name: 📣 Notify Backend on Validation Failure
