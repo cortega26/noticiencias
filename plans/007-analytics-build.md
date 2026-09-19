@@ -208,6 +208,15 @@ for `connect-src`, use `'self'` only if data goes to own-domain `/cdn-cgi/rum`
 nothing Google (GA branch still exists). State the chosen variant inline as
 a comment so the next reader knows why.
 
+Production edge policy (operator step — same reason as above, per
+`docs/DEPLOYMENT_SECURITY_HEADERS.md:26-33`): the Cloudflare edge response
+header is enforced alongside the meta tag, so the Step-4 additions must be
+mirrored in the edge Response Header Transform Rule, or the beacon/events
+stay blocked in production. Record the required edge-rule edit as an
+explicit operator task; verify with
+`curl -sI https://noticiencias.com/ | grep -i "content-security-policy"`
+once applied (unapplied = launch blocker for enablement, not a silent gap).
+
 **Verify**: header string copied verbatim into your report; `npm run lint`
 (format + drift) green.
 

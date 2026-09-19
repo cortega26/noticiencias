@@ -138,12 +138,23 @@ recorded verbatim in your notes; baseline green; `<start-SHA>` recorded.
    comment, updated to past tense + ADR reference).
 2. Append `https://buttondown.com` to `form-action` in `CommonMeta.astro:11`
    (nothing else in the header changes).
-3. Apply the ADR's proposed `privacidad.md` (Buttondown LLC sub-processor +
+3. Production edge policy (operator step — the meta tag alone is NOT
+   sufficient): per `docs/DEPLOYMENT_SECURITY_HEADERS.md:26-33`, browsers
+   enforce the Cloudflare edge response-header CSP IN ADDITION to the meta
+   tag, so the Buttondown POST stays blocked until the edge rule's
+   `form-action` also allows `https://buttondown.com`. Record the required
+   edge-rule edit (Response Header Transform Rule for `noticiencias.com` +
+   `www`) as an explicit operator task in your report; the executor does not
+   touch Cloudflare dashboard config. Verify post-change with
+   `curl -sI https://noticiencias.com/ | grep -i "content-security-policy"`
+   showing the entry live (if the edge change has not been applied yet,
+   record it as a launch blocker, not as done).
+4. Apply the ADR's proposed `privacidad.md` (Buttondown LLC sub-processor +
    US transfer + export/deletion path via footer link and
    `privacidad@noticiencias.com`) and `transparencia.md` (newsletter
    carve-out: email stored only for the weekly edition, no open/click
    pixels) wording, in Spanish, matching surrounding voice.
-4. Update the stale `README.md:55-60` fallback paragraph to describe the
+5. Update the stale `README.md:55-60` fallback paragraph to describe the
    live behavior.
 
 **Verify**: `npm run check:doc-drift` exits 0; `git diff --stat` shows only
@@ -160,9 +171,22 @@ in-scope files.
    `grep -o 'action="https://buttondown.com[^"]*"' dist/newsletter/index.html`
    returns the exact endpoint URL; same grep on `dist/index.html` (homepage
    capture); `grep -c 'name="email"'` ≥ 1 on both pages.
+4. Production closure gate (NOT optional — repo tests alone cannot prove the
+   form works live): confirm with the operator that the Step-1 edge rule has
+   been applied, then run `curl -sI https://noticiencias.com/ | grep -i
+"content-security-policy"` AND `curl -sI https://www.noticiencias.com/ |
+grep -i "content-security-policy"` — both must show `form-action`
+   allowing `https://buttondown.com`. Then perform one real production
+   submission (double-opt-in email arrives, unsubscribe footer works).
+   If the edge rule is not applied or the live submission fails: do NOT mark
+   this plan DONE. Leave the status row IN PROGRESS, report BLOCKED with the
+   edge change as the launch blocker, and stop. A green repo suite with a
+   blocked production POST is not done.
 
 **Verify**: all gates green; dist greps match; new tests pass
-(`npx vitest run tests/config-builder.test.ts`).
+(`npx vitest run tests/config-builder.test.ts`); live edge CSP confirmed on
+both hosts + production submission received (Step 2.4) — or status left IN
+PROGRESS/BLOCKED with the edge change recorded as launch blocker.
 
 ## Test plan
 
@@ -182,6 +206,7 @@ Machine-checkable. ALL must hold:
 - [ ] Dist greps: exact endpoint action on `dist/newsletter/index.html` and `dist/index.html`; `name="email"` present
 - [ ] New config-builder tests exist and pass
 - [ ] No API keys or secrets anywhere (`grep -rniE "api[_-]?key|sk-live|Bearer [A-Za-z0-9]" src/ tests/ docs/` clean apart from benign prose)
+- [ ] Live closure gate: edge response-header CSP on BOTH `noticiencias.com` and `www` shows `form-action` allowing `https://buttondown.com` (curl, Step 2.4), and one real production submission completed double opt-in; if either is missing the row stays IN PROGRESS/BLOCKED, never DONE
 - [ ] `git diff --name-only <start-SHA>...HEAD` lists only in-scope files; zero component/markup diffs
 - [ ] `plans/README.md` status row for 008 updated
 
@@ -194,6 +219,7 @@ Stop and report (do not improvise) if:
 - The endpoint URL / owner answers from Step 0 are missing.
 - The form does not render with the endpoint filled (contract drift — do not edit components to compensate).
 - Custom sending domain chosen without confirmed DNS (ship subdomain default instead ONLY with explicit operator override; otherwise STOP).
+- The production edge rule is unapplied at closure time (Step 2.4 fails) — do NOT mark DONE to compensate; report BLOCKED with the edge change as launch blocker.
 - A step's verification fails twice after reasonable fix attempts.
 - Out-of-scope file needed, or a `declared` command broken on clean checkout.
 
