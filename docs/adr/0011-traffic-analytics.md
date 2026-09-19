@@ -1,7 +1,12 @@
 # ADR-0011: Traffic analytics via Cloudflare Web Analytics (spike — tracking stays off)
 
 - **Date**: 2026-09-15
-- **Status**: Proposed
+- **Status**: Superseded in part by [ADR-0012](./0012-ga4-consent-mode.md)
+  (2026-09-18). The Cloudflare Web Analytics decision stands and its beacon is
+  kept; the exclusion of GA4 is reversed, because this ADR weighed the cost of
+  collecting pageviews but not the value of what is collected, and the operator
+  now needs event and conversion data to evaluate monetization. Tracking still
+  stays off until a token is configured + legal Q2 clears.
 
 ## Context
 

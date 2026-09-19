@@ -71,9 +71,9 @@ Orden global recomendado (cruza las Waves por leverage):
 | --- | --------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------- |
 | 1   | 003 traffic analytics spike                                     | spike      | DONE 2026-09-15 (ADR-0011 Proposed)                                                             |
 | 2   | 001 newsletter backend spike                                    | spike      | DONE 2026-09-15 (ADR-0009 Proposed)                                                             |
-| 3   | 002 corrections loop spike                                      | spike      | TODO                                                                                            |
+| 3   | 002 corrections loop spike                                      | spike      | DONE (ADR-0010 Accepted 2026-09-17, PR #171)                                                    |
 | 4   | 006 social graduation spike                                     | spike      | TODO                                                                                            |
-| 5   | 004 series fate spike                                           | spike      | TODO                                                                                            |
+| 5   | 004 series fate spike                                           | spike      | DONE (SUPERSEDED — 3 series vivas, veredicto en README)                                         |
 | 6   | 005 recursos library spike                                      | spike      | TODO                                                                                            |
 | 7   | ADRs 0009–0012: revisión y `Accepted`/rechazo                   | decisión   | BLOQUEADO por 1–6                                                                               |
 | 8   | Builds 007 (003-build) y 008 (001-build)                        | build      | TODO (007 listo para ejecutar tras ADR-0011 Accepted; 008 tras ADR-0009 Accepted + Q3 resuelta) |
@@ -93,14 +93,14 @@ Un ejecutor marca `DONE` solo cuando la fila de Done criteria de su plan
 está completa. Mantener una fila por plan; no borrar filas, solo avanzar
 el estado.
 
-| Plan | ADR/brief objetivo                    | Estado | Rama                                   | Commit/PR                                 | Verificado por                                                                              | Fecha cierre |
-| ---- | ------------------------------------- | ------ | -------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- | ------------ |
-| 001  | `docs/adr/0009-newsletter-backend.md` | DONE   | `advisor/001-newsletter-backend-spike` | `714caa9` + PR #169 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
-| 002  | `docs/adr/0010-correction-policy.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
-| 003  | `docs/adr/0011-traffic-analytics.md`  | DONE   | `advisor/003-traffic-analytics-spike`  | `00f0b50` + PR #170 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
-| 004  | veredicto en `plans/README.md`        | TODO   | —                                      | —                                         | —                                                                                           | —            |
-| 005  | `docs/recursos-library-brief.md`      | TODO   | —                                      | —                                         | —                                                                                           | —            |
-| 006  | `docs/adr/0012-social-graduation.md`  | TODO   | —                                      | —                                         | —                                                                                           | —            |
+| Plan | ADR/brief objetivo                    | Estado                       | Rama                                   | Commit/PR                                 | Verificado por                                                                              | Fecha cierre |
+| ---- | ------------------------------------- | ---------------------------- | -------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- | ------------ |
+| 001  | `docs/adr/0009-newsletter-backend.md` | DONE                         | `advisor/001-newsletter-backend-spike` | `714caa9` + PR #169 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 002  | `docs/adr/0010-correction-policy.md`  | DONE (Accepted 2026-09-17)   | `advisor/002-correction-policy-spike`  | PR #171                                   | Codex P1/P2 atendidos                                                                       | 2026-09-17   |
+| 003  | `docs/adr/0011-traffic-analytics.md`  | DONE                         | `advisor/003-traffic-analytics-spike`  | `00f0b50` + PR #170 (revisión/acceptance) | advisor re-run: lint+validate+doc-drift+test:audit(648) OK; alcance 1 archivo; sin secretos | 2026-09-15   |
+| 004  | veredicto en `plans/README.md`        | DONE (SUPERSEDED 2026-09-17) | `advisor/004-series-fate-spike`        | PR #172                                   | serie viva verificada (21 posts)                                                            | 2026-09-17   |
+| 005  | `docs/recursos-library-brief.md`      | TODO                         | —                                      | —                                         | —                                                                                           | —            |
+| 006  | `docs/adr/0012-social-graduation.md`  | TODO                         | —                                      | —                                         | —                                                                                           | —            |
 
 Estados: TODO | IN PROGRESS (con fecha de inicio) | DONE | BLOCKED (motivo en una línea) | REJECTED (justificación en una línea).
 Salud de la Wave: una Wave está sana si ningún plan lleva >7 días en
@@ -138,14 +138,14 @@ Formato de registro (una línea por eslabón, con enlaces cuando existan):
 
 `- [plan] → spike <rama/commit> → ADR <estado> → build <plan/PR> → deploy <fecha> → verifica <comando>`
 
-| Plan | Hallazgo origen                                                                          | Spike                | ADR/brief (estado)            | Build | Deploy/efecto |
-| ---- | ---------------------------------------------------------------------------------------- | -------------------- | ----------------------------- | ----- | ------------- |
-| 001  | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes) | `714caa9` 2026-09-15 | 0009 Proposed (Buttondown)    | —     | —             |
-| 002  | Correcciones prometidas sin salida visible (intake R2 sí, display no)                    | —                    | 0010 (pendiente)              | —     | —             |
-| 003  | Cero señal de tráfico; pregunta diferida ADR-0008                                        | `00f0b50` 2026-09-15 | 0011 Proposed (Cloudflare WA) | —     | —             |
-| 004  | `/series/` placeholder con 0 posts usando `series:`                                      | —                    | veredicto (pendiente)         | —     | —             |
-| 005  | `/recursos/` con 1 sola página; sección con relleno                                      | —                    | brief (pendiente)             | —     | —             |
-| 006  | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad           | —                    | 0012 (pendiente)              | —     | —             |
+| Plan | Hallazgo origen                                                                                         | Spike                | ADR/brief (estado)            | Build | Deploy/efecto |
+| ---- | ------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------- | ----- | ------------- |
+| 001  | Boletín prometido sin backend (`config.yaml:85` vacío; hype-guide promete envío viernes)                | `714caa9` 2026-09-15 | 0009 Proposed (Buttondown)    | —     | —             |
+| 002  | Correcciones prometidas sin salida visible (intake R2 sí, display no)                                   | —                    | 0010 Accepted 2026-09-17      | —     | —             |
+| 003  | Cero señal de tráfico; pregunta diferida ADR-0008                                                       | `00f0b50` 2026-09-15 | 0011 Proposed (Cloudflare WA) | —     | —             |
+| 004  | `/series/` placeholder con 0 posts usando `series:` (SUPERSEDED 2026-09-17: 21 posts en 3 series vivas) | —                    | veredicto SUPERSEDED          | —     | —             |
+| 005  | `/recursos/` con 1 sola página; sección con relleno                                                     | —                    | brief (pendiente)             | —     | —             |
+| 006  | Publisher piloto con freno (`SOCIAL_PUBLISH_ENABLED` off) y sin observabilidad                          | —                    | 0012 (pendiente)              | —     | —             |
 
 Archivo: al cerrar cada eslabón se completa su celda y nunca se reescribe
 hacia atrás (si un ADR se supersede, se añade fila, no se borra historia).

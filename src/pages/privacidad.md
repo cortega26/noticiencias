@@ -5,7 +5,7 @@ layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 
-_Última actualización_: 15 de Enero de 2026
+_Última actualización_: 18 de Septiembre de 2026
 
 Esta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el Servicio y le informa sobre sus derechos de privacidad y cómo la ley lo protege.
 
@@ -54,6 +54,19 @@ Los Datos de Uso pueden incluir información como la dirección de Protocolo de 
 
 Utilizamos Cookies y tecnologías de seguimiento similares para rastrear la actividad en Nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento utilizadas son balizas, etiquetas y scripts para recopilar y rastrear información y para mejorar y analizar Nuestro Servicio.
 
+##### Medición de audiencia
+
+Medimos cómo se usa el sitio con dos herramientas, con fines estadísticos y editoriales (saber qué se lee, de dónde llega la gente y qué temas interesan):
+
+- **Google Analytics 4 (Google LLC).** Funciona con _Consent Mode_ de Google en modo avanzado. Al entrar por primera vez le mostramos un aviso con los botones "Aceptar" y "Rechazar", con el mismo peso visual. Debe saber que **el código de Google Analytics se carga en todas las visitas, incluso antes de que elija**: hasta que acepte, lo hace con el almacenamiento de cookies denegado y solo envía señales sin cookies (la dirección de la página, la hora y datos técnicos del navegador), que Google usa para estimaciones estadísticas. Si acepta, Google Analytics guarda las cookies `_ga` y `_ga_<ID>` (con una duración de hasta dos años) para reconocer visitas repetidas y medir sesiones. Nunca concedemos almacenamiento publicitario ni personalización de anuncios: esas señales permanecen denegadas y Google Signals está desactivado. Según la documentación de Google, Google Analytics 4 no registra ni almacena direcciones IP individuales.
+- **Cloudflare Web Analytics.** Baliza sin cookies que entrega métricas agregadas de tráfico y rendimiento, sin identificadores que sigan a una persona entre visitas. Por no usar cookies ni almacenamiento del navegador, no depende de su elección en el aviso.
+
+Los eventos que registramos, además de las visitas a páginas, son: el envío del formulario del boletín (solo el hecho del envío; nunca su correo), los clics en los enlaces a las fuentes originales de un artículo, haber leído hasta el 75 % de un artículo y las búsquedas que hace en el sitio. **El texto que escribe en el buscador se envía a Google Analytics**, así que le pedimos no escribir en él datos personales.
+
+Conservamos los datos de eventos en Google Analytics durante 14 meses, el máximo que permite la herramienta.
+
+**Cómo cambiar o retirar su elección.** Puede hacerlo en cualquier momento desde el enlace "Preferencias de privacidad" del pie de página. Su elección se guarda únicamente en el almacenamiento local de su navegador (no en nuestros servidores) y podemos volver a preguntarle si cambian los fines descritos aquí. También puede borrar las cookies `_ga` desde la configuración de su navegador.
+
 Puede indicar a su navegador que rechace todas las Cookies o que indique cuándo se envía una Cookie. Sin embargo, si no acepta las Cookies, es posible que no pueda utilizar algunas partes de nuestro Servicio.
 
 ## Uso de sus Datos Personales
@@ -67,11 +80,15 @@ La Compañía puede utilizar los Datos Personales para los siguientes propósito
 
 ## Retención de sus Datos Personales
 
-La Compañía retendrá sus Datos Personales solo durante el tiempo que sea necesario para los fines establecidos en esta Política de Privacidad.
+La Compañía retendrá sus Datos Personales solo durante el tiempo que sea necesario para los fines establecidos en esta Política de Privacidad. Los datos de medición en Google Analytics se conservan 14 meses.
 
 ## Transferencia de sus Datos Personales
 
 Su información, incluidos los Datos Personales, se procesa en las oficinas operativas de la Compañía y en cualquier otro lugar donde se encuentren las partes involucradas en el procesamiento.
+
+Para la medición de audiencia utilizamos **Google LLC** (Estados Unidos, Google Analytics 4) y **Cloudflare, Inc.** (Estados Unidos, Cloudflare Web Analytics), que tratan los datos descritos en la sección "Medición de audiencia" conforme a sus propios términos de tratamiento de datos.
+
+Para el envío del boletín semanal utilizamos **Buttondown LLC** (Estados Unidos) como proveedor de servicios (sub-procesador). Almacena únicamente su dirección de correo electrónico para el envío de la edición semanal; no recopilamos ni almacenamos métricas de apertura o clics, ya que ese seguimiento permanece desactivado. La transferencia internacional de datos hacia Buttondown se ampara en un acuerdo de procesamiento de datos (DPA). Puede solicitar la exportación o eliminación de sus datos del boletín usando el enlace "Unsubscribe" en el pie de cada correo o escribiendo a `privacidad@noticiencias.com`.
 
 ## Eliminación de sus Datos Personales
 

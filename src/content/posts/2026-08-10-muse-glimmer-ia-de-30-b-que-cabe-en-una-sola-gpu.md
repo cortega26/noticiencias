@@ -15,6 +15,7 @@ excerpt: Meta lanza Muse Glimmer, modelo multimodal de 30 000 millones de pa
 image: ~/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png
 image_alt: 'Ilustración editorial relacionada con Muse Glimmer: IA de 30 B que cabe en una sola GPU'
 source_url: https://huggingface.co/blog/muse-glimmer
+series: 'IA en la práctica'
 refinery_id: '492'
 headlines_variants:
   question: ¿Cómo logró Meta que un modelo de 30 B quepa en una sola GPU?

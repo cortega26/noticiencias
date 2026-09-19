@@ -1,33 +1,47 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
+import { buildConsentBootstrap, isAnalyticsEnabled } from '~/utils/browser/consent';
 
+// Google Analytics 4 (plan 009, ADR-0012). No Partytown: `@astrojs/partytown`
+// was never installed, so the former `type="text/partytown"` attribute was an
+// unknown MIME type the browser silently refused to execute — the GA branch
+// could not have worked. Partytown is also incompatible with Consent Mode,
+// which needs `gtag('consent', 'default', ...)` to run on the main thread
+// before gtag.js loads. Renders nothing while the id is null (tracking OFF).
 const gaId = ANALYTICS?.vendors?.googleAnalytics?.id;
-const isEnabled = gaId && gaId !== 'null' && String(gaId).startsWith('G-');
-const partytown = ANALYTICS?.vendors?.googleAnalytics?.partytown;
-const attrs = partytown ? { type: 'text/partytown' } : {};
+const isEnabled = isAnalyticsEnabled(gaId);
 const id = String(gaId);
+
+// Cloudflare Web Analytics (plan 007, ADR-0011). Snippet shape verified
+// against official docs 2026-09-16 (web-analytics get-started + SPA pages):
+// manual `type="module"` beacon with `data-cf-beacon` token payload.
+// No Partytown: the beacon is a module/RUM script, Partytown is gtag-only.
+// SPA pageviews are automatic (History API patching covers ClientRouter).
+// Renders nothing while the token is null (tracking stays OFF).
+const cfToken = ANALYTICS?.vendors?.cloudflare?.token;
+const isCfEnabled = cfToken && cfToken !== 'null' && String(cfToken).length > 0;
+const cfBeacon = JSON.stringify({ token: String(cfToken) });
 ---
 
 {
   isEnabled ? (
     <>
-      <script
-        is:inline
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
-        {...attrs}
-      />
-      <script
-        is:inline
-        define:vars={{ id }}
-        {...attrs}
-        set:html={`window.dataLayer = window.dataLayer || [];
-function gtag() {
-  window.dataLayer.push(arguments);
-}
-gtag("js", new Date());
-gtag("config", id);`}
-      />
+      {/* Consent Mode v2 advanced (ADR-0012): the bootstrap queues consent default
+          (all denied) + any stored grant + config BEFORE gtag.js loads, so it must
+          stay ahead of the async script below. */}
+      <script is:inline set:html={buildConsentBootstrap(id)} />
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
     </>
+  ) : null
+}
+
+{
+  isCfEnabled ? (
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={cfBeacon}
+    />
   ) : null
 }

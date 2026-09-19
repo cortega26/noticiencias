@@ -15,6 +15,7 @@ excerpt: Starship V3 voló con un motor apagado y otro fallando, alcanzó 195 km
 image: ~/assets/images/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.webp
 image_alt: Starship V3 de SpaceX en la plataforma de lanzamiento, el cohete más potente y alto jamás construido
 source_url: https://scientificamerican.com/article/spacex-launches-starship-v3-the-worlds-most-powerful-and-tallest-rocket-ever/
+series: 'Espacio'
 refinery_id: SpaceX launches Starship V3—the world's most powerful and tallest rocket ever
 headlines_variants:
   question: ¿Cómo pudo un cohete con dos motores fallidos alcanzar el espacio y reingresar?

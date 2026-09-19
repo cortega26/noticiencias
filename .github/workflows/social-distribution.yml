@@ -114,3 +114,47 @@ jobs:
           BLUESKY_DID: ${{ vars.BLUESKY_DID }}
           BLUESKY_PDS_URL: ${{ vars.BLUESKY_PDS_URL }}
         run: node scripts/social/publish.js --execute
+
+  reconcile:
+    name: Reconcile (ledger writes, no provider sends)
+    needs: dry-run
+    # Manual dispatch with mode=reconcile only. Polls ACCEPTED provider
+    # states into the social-state ledger; never sends new posts.
+    if: >-
+      vars.SOCIAL_PUBLISH_ENABLED == 'true' &&
+      github.event_name == 'workflow_dispatch' && inputs.mode == 'reconcile'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Social publisher reconcile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Keys are read-only in reconcile mode (poll ACCEPTED states);
+          # the mode never sends. Same set as publish, no new secrets.
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          SOCIAL_PUBLISH_ENABLED: ${{ vars.SOCIAL_PUBLISH_ENABLED }}
+          SOCIAL_PLATFORMS: ${{ vars.SOCIAL_PLATFORMS }}
+          SOCIAL_MANIFEST_URL: ${{ vars.SOCIAL_MANIFEST_URL }}
+          BUFFER_ORGANIZATION_ID: ${{ vars.BUFFER_ORGANIZATION_ID }}
+          BUFFER_FACEBOOK_CHANNEL_ID: ${{ vars.BUFFER_FACEBOOK_CHANNEL_ID }}
+          BUFFER_X_CHANNEL_ID: ${{ vars.BUFFER_X_CHANNEL_ID }}
+          BUFFER_LINKEDIN_CHANNEL_ID: ${{ vars.BUFFER_LINKEDIN_CHANNEL_ID }}
+          BLUESKY_DID: ${{ vars.BLUESKY_DID }}
+          BLUESKY_PDS_URL: ${{ vars.BLUESKY_PDS_URL }}
+        run: node scripts/social/publish.js --execute --reconcile

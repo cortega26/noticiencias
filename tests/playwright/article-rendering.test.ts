@@ -7,7 +7,7 @@
  * legitimate "no article found" case to skip past.
  */
 
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page } from './fixtures';
 
 async function getFirstArticleUrl(page: Page): Promise<string> {
   const response = await page.request.get('/search.json');
