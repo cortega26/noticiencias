@@ -178,6 +178,38 @@ function validateHtml(filePath) {
     }
   }
 
+  // Plan 009 / ADR-0012 — GA4 consent invariants, valid for any build:
+  //  - a page that loads gtag.js must ship the consent banner, and vice versa;
+  //  - `gtag('consent', 'default', ...)` must be queued BEFORE gtag.js loads,
+  //    or `_ga` can be written before consent is known;
+  //  - never `text/partytown` (that integration is not installed; see ADR-0012).
+  const scripts = $('script').toArray();
+  const gtagIndex = scripts.findIndex((el) => ($(el).attr('src') || '').includes('gtag/js'));
+  const hasBanner = $('#consent-banner').length > 0;
+  if (gtagIndex >= 0 !== hasBanner) {
+    console.error(
+      `${RED}[FAIL] ${relativePath}: gtag.js and the consent banner must ship together (gtag: ${gtagIndex >= 0}, banner: ${hasBanner}).${RESET}`
+    );
+    errorCount++;
+  }
+  if (gtagIndex >= 0) {
+    const defaultIndex = scripts.findIndex((el) =>
+      ($(el).html() || '').includes("gtag('consent', 'default'")
+    );
+    if (defaultIndex < 0 || defaultIndex > gtagIndex) {
+      console.error(
+        `${RED}[FAIL] ${relativePath}: consent default must be queued before gtag.js loads.${RESET}`
+      );
+      errorCount++;
+    }
+  }
+  if ($('script[type="text/partytown"]').length > 0) {
+    console.error(
+      `${RED}[FAIL] ${relativePath}: text/partytown script found; @astrojs/partytown is not installed so it would never execute.${RESET}`
+    );
+    errorCount++;
+  }
+
   $('img').each((_i, el) => {
     const src = $(el).attr('src');
     const alt = $(el).attr('alt');

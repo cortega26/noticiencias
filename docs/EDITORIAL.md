@@ -29,3 +29,10 @@ En el ámbito de Ciencia y Tecnología, es común encontrar términos en inglés
 - **Objetivo**: Informativo, riguroso pero accesible.
 - **Voz**: Tercera persona, neutral.
 - **Evitar**: Sensacionalismo, clickbait engañoso.
+
+## 3. Línea roja de monetización
+
+- Sin publicidad programática ni rastreo de terceros, en salud o en general.
+- El patrocinio aceptable (boletín semanal, series etiquetadas) nunca compra
+  cobertura ni tono. Detalle público en [/patrocinios/](/patrocinios/).
+- La categoría `Editorial` queda reservada a piezas propias de Noticiencias.

@@ -3,7 +3,7 @@
  * Verifies the search index loads and the search interface works.
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 
 // Trailing-slash investigation concluded 2026-08-11 (plan 031): production
 // serves the slash form as canonical (301s no-slash routes, 200 on the

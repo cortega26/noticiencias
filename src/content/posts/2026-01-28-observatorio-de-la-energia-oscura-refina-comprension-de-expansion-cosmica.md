@@ -14,6 +14,7 @@ tags:
 image: '~/assets/images/2026-01-28-article-279.jpg'
 image_alt: 'Observatorio de la Energía Oscura refina comprensión de expansión cósmica'
 source_url: 'https://livescience.com/physics-mathematics/dark-energy/the-dream-has-come-true-standard-model-of-cosmology-holds-up-in-massive-6-year-study-of-the-universe-with-one-big-caveat'
+series: 'Espacio'
 refinery_id: '279'
 headlines_variants:
   question: '¿Cómo contribuyen los datos recopilados por el Observatorio de la Energía Oscura a nuestra comprensión del universo?'

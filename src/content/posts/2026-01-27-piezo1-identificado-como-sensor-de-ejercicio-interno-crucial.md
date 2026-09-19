@@ -16,6 +16,7 @@ tags:
 image: ~/assets/images/2026-01-27-250.webp
 image_alt: "Piezo1 identificado como 'sensor de ejercicio' interno crucial"
 source_url: https://sciencedaily.com/releases/2026/01/260127010149.htm
+series: 'Salud que importa'
 refinery_id: '250'
 headlines_variants:
   question: ¿Cómo ayuda Piezo1 a prevenir la osteoporosis?

@@ -14,6 +14,7 @@ tags:
 image: '~/assets/images/2026-01-27-article-349.jpg'
 image_alt: 'Desafío global contra el sarampión por falta de confianza en las vacunas'
 source_url: 'https://newscientist.com/article/2513398-to-halt-measles-resurgence-we-must-fight-the-plague-of-misinformation/'
+series: 'Salud que importa'
 refinery_id: '349'
 headlines_variants:
   question: '¿Cómo puede detenerse el resurgimiento del sarampión a nivel mundial?'

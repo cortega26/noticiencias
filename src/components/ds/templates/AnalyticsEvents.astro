@@ -1,0 +1,12 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+import { isAnalyticsEnabled } from '~/utils/browser/consent';
+import AnalyticsEventsScript from './AnalyticsEventsScript.astro';
+
+// Plan 009 phase 3. The script lives in a child component so it is only emitted
+// while GA4 is on: Astro hoists a component's own <script> regardless of a
+// conditional inside its template (LAW-F8, same reasoning as ConsentBanner).
+const enabled = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics?.id);
+---
+
+{enabled && <AnalyticsEventsScript />}

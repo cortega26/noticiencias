@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
+import { ANALYTICS, SITE } from 'astrowind:config';
+import { isAnalyticsEnabled } from '~/utils/browser/consent';
 import { getHomePermalink } from '~/utils/permalinks';
 
 interface Link {
@@ -30,6 +31,9 @@ const {
   footNote = '',
   theme = 'light',
 } = Astro.props;
+
+// Plan 009: lets people change their analytics choice; only meaningful while GA4 is on.
+const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics?.id);
 ---
 
 <footer
@@ -56,6 +60,20 @@ const {
                 />
               </>
             ))
+          }
+          {
+            showConsentToggle && (
+              <>
+                {secondaryLinks.length ? ' · ' : ''}
+                <button
+                  type="button"
+                  data-consent-open
+                  class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
+                >
+                  Preferencias de privacidad
+                </button>
+              </>
+            )
           }
         </div>
       </div>
