@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-09-18T11:10:24.623Z",
+  "generated_at": "2026-09-20T11:19:07.171Z",
   "content": {
-    "total_articles": 37,
-    "v2_articles": 25,
-    "total_words": 23579,
-    "avg_words": 637,
+    "total_articles": 38,
+    "v2_articles": 26,
+    "total_words": 24070,
+    "avg_words": 633,
     "categories": [
       {
         "name": "Tecnología",
         "count": 13
       },
       {
-        "name": "Ciencia",
+        "name": "Salud",
         "count": 6
       },
       {
-        "name": "Salud",
-        "count": 5
+        "name": "Ciencia",
+        "count": 6
       },
       {
         "name": "Astronomía",
@@ -166,6 +166,18 @@
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-09-18-noticia-cientifica",
+        "title": "Microesferas de alginato protegen células productoras de insulina durante el cultivo en biorreactor",
+        "date": "2026-09-18",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — preprint con resultados prometedores pero aún sin revisión por pares y necesidad de validación en modelos de inmunidad humana y optimización de la permeabilidad del gel.",
+        "review_status": null
+      },
       {
         "slug": "2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos",
         "title": "El eclipse solar de 2027 durará seis minutos y veintitrés segundos",
@@ -623,11 +635,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-18T11:10:24.623Z"
+    "generated_at": "2026-09-20T11:19:07.170Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 37,
+    "derivatives_available": 38,
     "missing_derivatives": 0
   }
 }
