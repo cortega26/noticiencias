@@ -1070,6 +1070,41 @@
       }
     ]
   },
+  "~/assets/images/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.jpg": {
+    "originalWidth": 1600,
+    "originalHeight": 900,
+    "hash": "bc039dee2fe67c12",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.1400.avif"
+      },
+      {
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "objectKey": "posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.1600.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.bc039dee2fe67c12.1600.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
