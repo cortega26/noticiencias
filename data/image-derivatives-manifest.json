@@ -1105,6 +1105,27 @@
       }
     ]
   },
+  "~/assets/images/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.webp": {
+    "originalWidth": 777,
+    "originalHeight": 514,
+    "hash": "9c04527d8120025b",
+    "variants": [
+      {
+        "width": 400,
+        "height": 265,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.400.avif"
+      },
+      {
+        "width": 777,
+        "height": 514,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
