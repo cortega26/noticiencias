@@ -39,7 +39,7 @@ glossary:
 fact_check:
   - label: Los pergaminos de Herculano fueron enterrados por la erupción del Vesubio en el año 79 d.C.
     status: confirmed
-  - label: La tinta de los rollos contiene plomo detectable mediante fluorescencia de rayos X.
+  - label: La tinta con plomo de las réplicas elaboradas en el estudio sigue detectable mediante fluorescencia de rayos X tras la carbonización.
     status: confirmed
   - label: El método propuesto permite distinguir la tinta del papiro usando plomo como marcador.
     status: confirmed
