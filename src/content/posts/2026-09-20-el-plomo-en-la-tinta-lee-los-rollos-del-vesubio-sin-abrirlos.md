@@ -13,7 +13,7 @@ tags:
   - vesubio
 excerpt: Investigadores prueban que añadir plomo a la tinta de pergaminos carbonizados permite leer su contenido mediante rayos X sin abrirlos, abriendo camino a descifrar los rollos de Herculano.
 image: ~/assets/images/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.webp
-image_alt: Ilustración editorial relacionada con ¿El plomo en la tinta lee los rollos del Vesubio sin abrirlos?
+image_alt: 'Fotografía comparativa de dos rollos réplica de papiro vistos desde arriba: a la izquierda (a), un rollo sin carbonizar de color beige; a la derecha (b), su contraparte carbonizada y ennegrecida sostenida por una mano.'
 source_url: https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/
 refinery_id: '2451'
 headlines_variants:
@@ -22,7 +22,7 @@ headlines_variants:
 summary_points:
   - Los rollos de Herculano, carbonizados por la erupción del Vesubio en 79 d.C., permanecen ilegibles porque la tinta y el papiro son ambos de carbono y no se distinguen en tomografías convencionales.
   - Investigadores descubrieron que la tinta contiene plomo, detectable mediante fluorescencia de rayos X, lo que crea contraste con el soporte de carbono.
-  - Al escanear los rollos en busca de plomo y aplicar tomografía de rayos X con software especializado, lograron separar virtualmente las láminas y recuperar palabras legibles.
+  - Al escanear las réplicas en busca de plomo y aplicar tomografía de rayos X con software especializado, lograron separar virtualmente las láminas y recuperar palabras legibles de los textos de prueba.
   - El método permite seleccionar solo aquellos rollos con señal de plomo para el desenrollado virtual, optimizando recursos y aumentando las probabilidades de éxito.
   - Aunque no garantiza leer textos completos, abre la posibilidad de recuperar fragmentos actualmente inaccesibles.
 glossary:
