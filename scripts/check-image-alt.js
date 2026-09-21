@@ -43,6 +43,28 @@ function isGenericHeroAlt(value) {
   return /^imagen\s+de\b/i.test(value.trim());
 }
 
+function altErrorForFile(relPath, imageAlt) {
+  if (!imageAlt) {
+    return `${relPath}: missing 'image_alt' (required when 'image' is set)`;
+  }
+
+  if (isGenericHeroAlt(imageAlt)) {
+    return (
+      `${relPath}: image_alt starts with "Imagen de" — use a descriptive Spanish ` +
+      `phrase instead: "${imageAlt}"`
+    );
+  }
+
+  if (isBoilerplateHeroAlt(imageAlt)) {
+    return (
+      `${relPath}: image_alt is the pipeline boilerplate ("Ilustración editorial ` +
+      `relacionada con …") — describe the actual image instead: "${imageAlt}"`
+    );
+  }
+
+  return null;
+}
+
 function collectDiagnostics(repoRoot) {
   const errors = [];
   const files = walkPostFiles(resolveHeroPlaceholderPaths(repoRoot));
@@ -55,18 +77,8 @@ function collectDiagnostics(repoRoot) {
 
     const relPath = path.relative(repoRoot, file);
     const imageAlt = typeof parsed.image_alt === 'string' ? parsed.image_alt.trim() : '';
-
-    if (!imageAlt) {
-      errors.push(`${relPath}: missing 'image_alt' (required when 'image' is set)`);
-    } else if (isGenericHeroAlt(imageAlt)) {
-      errors.push(
-        `${relPath}: image_alt starts with "Imagen de" — use a descriptive Spanish phrase instead: "${imageAlt}"`
-      );
-    } else if (isBoilerplateHeroAlt(imageAlt)) {
-      errors.push(
-        `${relPath}: image_alt is the pipeline boilerplate ("Ilustración editorial relacionada con …") — describe the actual image instead: "${imageAlt}"`
-      );
-    }
+    const error = altErrorForFile(relPath, imageAlt);
+    if (error) errors.push(error);
   }
 
   return { filesCount: files.length, errors };
