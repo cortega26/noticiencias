@@ -13,7 +13,7 @@ tags:
   - censo oceánico nippon foundation
 excerpt: 'Más de mil nuevas especies marinas fueron identificadas no en expediciones profundas, sino revisando colecciones olvidadas en museos: gusanos transparentes, peces únicos y camarones de neón, esperando ser vistos.'
 image: ~/assets/images/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.webp
-image_alt: Ilustración editorial relacionada con Ocean census reveals more than 1,100 new species
+image_alt: Fotografía de un gusano marino anaranjado de cuerpo segmentado con apéndices plumosos, sobre fondo negro.
 source_url: https://scientificamerican.com/article/ocean-census-reveals-more-than-1-100-new-species/
 refinery_id: Ocean census reveals more than 1,100 new species
 headlines_variants:

@@ -13,7 +13,7 @@ tags:
   - parámetros 30b
 excerpt: Meta lanza Muse Glimmer, modelo multimodal de 30 000 millones de parámetros que según Meta funcionaría en una sola GPU H100 bajo licencia Apache 2.0, permitiendo uso local y abierto.
 image: ~/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png
-image_alt: 'Ilustración editorial relacionada con Muse Glimmer: IA de 30 B que cabe en una sola GPU'
+image_alt: 'Gráfico promocional con el emoji de abrazo de Hugging Face junto al logotipo de Meta y el titular Muse Glimmer sobre fondo azul.'
 source_url: https://huggingface.co/blog/muse-glimmer
 series: 'IA en la práctica'
 refinery_id: '492'
