@@ -21,7 +21,7 @@ headlines_variants:
   benefit: Esta técnica podría recuperar obras filosóficas perdidas hace dos milenios sin dañar los frágiles rollos.
 summary_points:
   - Los rollos de Herculano, carbonizados por la erupción del Vesubio en 79 d.C., permanecen ilegibles porque la tinta y el papiro son ambos de carbono y no se distinguen en tomografías convencionales.
-  - Investigadores descubrieron que la tinta contiene plomo, detectable mediante fluorescencia de rayos X, lo que crea contraste con el soporte de carbono.
+  - Se ha detectado plomo en algunas letras de fragmentos de la colección, visible mediante fluorescencia de rayos X, lo que ofrece contraste frente al soporte de carbono.
   - Al escanear las réplicas en busca de plomo y aplicar tomografía de rayos X con software especializado, lograron separar virtualmente las láminas y recuperar palabras legibles de los textos de prueba.
   - El método permite seleccionar solo aquellos rollos con señal de plomo para el desenrollado virtual, optimizando recursos y aumentando las probabilidades de éxito.
   - Aunque no garantiza leer textos completos, abre la posibilidad de recuperar fragmentos actualmente inaccesibles.
