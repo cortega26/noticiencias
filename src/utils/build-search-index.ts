@@ -18,6 +18,14 @@ import { normalizeSearchDocument } from './search';
 
 export const SEARCH_ARTIFACT_VERSION = 1;
 
+/**
+ * Maximum description length kept in the result store (Stream C slim).
+ * Full excerpts remain in frontmatter/RSS; the search store only needs a
+ * short snippet for list rendering. Truncation happens at build time so the
+ * 150KB gzip ceiling (scripts/check-search-budget.js) survives 10/week cadence.
+ */
+export const SEARCH_STORE_DESCRIPTION_MAX_LENGTH = 160;
+
 export interface SearchStoreEntry {
   title: string;
   url: string;
@@ -25,7 +33,10 @@ export interface SearchStoreEntry {
   tags?: string | string[];
   date?: string;
   series?: string;
-  image?: string;
+  // NOTE (Stream C): no `image` field by design. Result thumbnails were the
+  // largest per-doc store cost (~400px resolved URLs) and
+  // `SearchInterface.astro` already null-guards `doc.image`. The Lunr index
+  // still searches title/description/content/tags — display only is slimmed.
 }
 
 export interface SearchArtifact {
@@ -82,17 +93,22 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
   // Sort by URL for deterministic output across builds.
   const sorted = [...documents].sort((a, b) => a.url.localeCompare(b.url));
 
-  // Build the compact store (display fields only — no raw content/body).
+  // Build the compact store (display fields only — no raw content/body,
+  // no image URLs). Descriptions truncated to the snippet ceiling.
   const store: Record<string, SearchStoreEntry> = {};
   for (const doc of sorted) {
+    const rawDescription = typeof doc.description === 'string' ? doc.description : '';
+    const description =
+      rawDescription.length > SEARCH_STORE_DESCRIPTION_MAX_LENGTH
+        ? `${rawDescription.slice(0, SEARCH_STORE_DESCRIPTION_MAX_LENGTH - 1).trimEnd()}…`
+        : rawDescription;
     store[doc.url] = {
       title: doc.title,
       url: doc.url,
-      description: doc.description,
+      description,
       tags: doc.tags,
       date: doc.date,
       series: doc.series,
-      image: doc.image,
     };
   }
 

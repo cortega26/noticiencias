@@ -175,8 +175,13 @@ import Button from '~/components/ds/atoms/Button.astro';
 
       results.slice(0, 20).forEach(({ doc }) => {
         const li = document.createElement('li');
-        li.className =
-          'group grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]';
+        // Two-column grid only when a thumbnail exists; otherwise the content
+        // would land in the fixed 160px column and render cramped (Stream C
+        // slim ships imageless store entries). Kept backward-compatible with
+        // older cached artifacts that still carry `image`.
+        li.className = doc.image
+          ? 'group grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]'
+          : 'group grid gap-4 border-b border-border-subtle pb-5';
 
         if (doc.image) {
           const imgLink = document.createElement('a');

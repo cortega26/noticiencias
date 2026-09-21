@@ -19,6 +19,11 @@
  * within ~10 new posts (~3 weeks at 3 posts/week). When this gate fails,
  * migrate the browser search to Pagefind (or slim the store) in a
  * dedicated plan — never raise GZIP_CEILING silently to make it pass.
+ *
+ * Stream C slim (2026-09-21, solo 10/week): store drops per-doc `image` URLs
+ * and truncates descriptions to 160 chars at build time
+ * (`SEARCH_STORE_DESCRIPTION_MAX_LENGTH`). Re-measure after slim; if gzip
+ * still crosses WARN_BYTES (135KB), schedule the Pagefind migration next.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
@@ -28,6 +33,7 @@ const distPath = resolve(process.argv[2] || 'dist');
 const searchJsonPath = resolve(distPath, 'search.json');
 
 const GZIP_CEILING = 150 * 1024; // 150KB deployment-friendly ceiling
+const GZIP_WARN = 135 * 1024; // early warning: schedule Pagefind migration next
 
 function fail(msg) {
   console.error(`❌ ${msg}`);
@@ -90,6 +96,11 @@ const gzipped = gzipSync(Buffer.from(raw, 'utf-8'));
 console.log(`  artifact: ${raw.length} bytes raw, ${gzipped.length} bytes gzip`);
 if (gzipped.length > GZIP_CEILING) {
   fail(`gzip size ${gzipped.length} exceeds ${GZIP_CEILING} ceiling (deployment-friendly)`);
+}
+if (gzipped.length > GZIP_WARN) {
+  console.warn(
+    `⚠️  gzip size ${gzipped.length} exceeds ${GZIP_WARN} warn threshold — schedule Pagefind migration next (Stream C slim already applied)`
+  );
 }
 
 // Check bloated fixture (for the regression-injection test)
