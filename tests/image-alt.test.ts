@@ -1,24 +1,21 @@
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { afterEach, describe, expect, it } from 'vitest';
 
-import {
-  collectImageAltDiagnostics,
-  isBoilerplateHeroAlt,
-  isGenericHeroAlt,
-} from '../scripts/utils/hero-alt.js';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const CHECK_SCRIPT = path.resolve(__dirname, '..', 'scripts', 'check-image-alt.js');
 
 const tempDirs: string[] = [];
 
 function makeRepo(): string {
-  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'noti-hero-alt-'));
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'noti-image-alt-'));
   tempDirs.push(repoRoot);
-
   fs.mkdirSync(path.join(repoRoot, 'src', 'content', 'posts'), { recursive: true });
-  fs.mkdirSync(path.join(repoRoot, 'data'), { recursive: true });
-
   return repoRoot;
 }
 
@@ -52,12 +49,22 @@ Body
   );
 }
 
-function writeAllowlist(repoRoot: string, entries: Record<string, string>): void {
-  fs.writeFileSync(
-    path.join(repoRoot, 'data', 'hero-image-alt-allowlist.json'),
-    `${JSON.stringify({ allowedAlts: entries }, null, 2)}\n`,
-    'utf8'
-  );
+function runCheck(repoRoot: string): {
+  status: string;
+  errors: { file: string; message: string }[];
+  exitCode: number;
+} {
+  try {
+    const stdout = execFileSync(
+      process.execPath,
+      [CHECK_SCRIPT, '--json', `--repoRoot=${repoRoot}`],
+      { encoding: 'utf8' }
+    );
+    return { ...JSON.parse(stdout), exitCode: 0 };
+  } catch (err: unknown) {
+    const { stdout } = err as { stdout: string };
+    return { ...JSON.parse(stdout), exitCode: 1 };
+  }
 }
 
 afterEach(() => {
@@ -66,84 +73,53 @@ afterEach(() => {
   }
 });
 
-describe('hero-alt boilerplate detection', () => {
-  it('detects the pipeline boilerplate regardless of case or surrounding spaces', () => {
-    expect(isBoilerplateHeroAlt('Ilustración editorial relacionada con Algo')).toBe(true);
-    expect(isBoilerplateHeroAlt('  ilustración editorial relacionada con algo  ')).toBe(true);
-    expect(isBoilerplateHeroAlt('Fotografía de un rollo réplica de papiro.')).toBe(false);
-    expect(isBoilerplateHeroAlt('')).toBe(false);
-    expect(isBoilerplateHeroAlt(undefined)).toBe(false);
-  });
-
-  it('keeps banning the "Imagen de" prefix', () => {
-    expect(isGenericHeroAlt('Imagen de un laboratorio')).toBe(true);
-    expect(isGenericHeroAlt('Fotografía de un laboratorio')).toBe(false);
-  });
-
-  it('passes a descriptive alt with no allowlist', () => {
+describe('check-image-alt', () => {
+  it('passes a descriptive alt', () => {
     const repoRoot = makeRepo();
     writePost(repoRoot, '2026-04-02-good.md', {
       imageAlt: 'Fotografía comparativa de dos rollos réplica de papiro.',
     });
 
-    const result = collectImageAltDiagnostics({ repoRoot });
+    const result = runCheck(repoRoot);
 
+    expect(result.exitCode).toBe(0);
+    expect(result.status).toBe('pass');
     expect(result.errors).toEqual([]);
   });
 
-  it('fails a boilerplate alt that is not allowlisted', () => {
+  it('fails a missing alt', () => {
+    const repoRoot = makeRepo();
+    writePost(repoRoot, '2026-04-02-missing.md', { imageAlt: '' });
+
+    const result = runCheck(repoRoot);
+
+    expect(result.exitCode).toBe(1);
+    expect(result.errors).toHaveLength(1);
+    expect(result.errors[0].message).toContain("missing 'image_alt'");
+  });
+
+  it('fails the "Imagen de" prefix', () => {
+    const repoRoot = makeRepo();
+    writePost(repoRoot, '2026-04-02-generic.md', { imageAlt: 'Imagen de un laboratorio' });
+
+    const result = runCheck(repoRoot);
+
+    expect(result.exitCode).toBe(1);
+    expect(result.errors).toHaveLength(1);
+    expect(result.errors[0].message).toContain('Imagen de');
+  });
+
+  it('fails the pipeline boilerplate', () => {
     const repoRoot = makeRepo();
     writePost(repoRoot, '2026-04-02-boilerplate.md', {
       imageAlt: 'Ilustración editorial relacionada con Algo',
     });
 
-    const result = collectImageAltDiagnostics({ repoRoot });
+    const result = runCheck(repoRoot);
 
+    expect(result.exitCode).toBe(1);
     expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toContain('pipeline boilerplate');
-  });
-
-  it('passes an allowlisted boilerplate alt with an explicit reason', () => {
-    const repoRoot = makeRepo();
-    writePost(repoRoot, '2026-04-02-legacy.md', {
-      imageAlt: 'Ilustración editorial relacionada con Algo',
-    });
-    writeAllowlist(repoRoot, {
-      'src/content/posts/2026-04-02-legacy.md': 'Legacy post, needs a rewrite.',
-    });
-
-    const result = collectImageAltDiagnostics({ repoRoot });
-
-    expect(result.errors).toEqual([]);
-  });
-
-  it('fails an allowlisted entry with an empty reason', () => {
-    const repoRoot = makeRepo();
-    writePost(repoRoot, '2026-04-02-legacy.md', {
-      imageAlt: 'Ilustración editorial relacionada con Algo',
-    });
-    writeAllowlist(repoRoot, { 'src/content/posts/2026-04-02-legacy.md': '   ' });
-
-    const result = collectImageAltDiagnostics({ repoRoot });
-
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toContain('pipeline boilerplate');
-  });
-
-  it('fails stale allowlist entries for posts that no longer use a boilerplate alt', () => {
-    const repoRoot = makeRepo();
-    writePost(repoRoot, '2026-04-02-fixed.md', {
-      imageAlt: 'Fotografía real del experimento.',
-    });
-    writeAllowlist(repoRoot, {
-      'src/content/posts/2026-04-02-fixed.md': 'Old reason.',
-    });
-
-    const result = collectImageAltDiagnostics({ repoRoot });
-
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toContain('stale');
-    expect(result.staleAllowlistEntries).toEqual(['src/content/posts/2026-04-02-fixed.md']);
+    expect(result.errors[0].message).toContain('pipeline boilerplate');
   });
 
   it('skips posts without an image', () => {
@@ -159,8 +135,9 @@ Body
       'utf8'
     );
 
-    const result = collectImageAltDiagnostics({ repoRoot });
+    const result = runCheck(repoRoot);
 
+    expect(result.exitCode).toBe(0);
     expect(result.errors).toEqual([]);
   });
 });

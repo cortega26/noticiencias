@@ -13,7 +13,7 @@ tags:
   - hueso de museo
 excerpt: Cinco especímenes óseos de museo, considerados demasiado deteriorados, revelaron dos linajes extintos de tortugas gigantes de San Cristóbal y Santa Fe, separadas hace cientos de miles de años.
 image: ~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif
-image_alt: Ilustración editorial relacionada con Qué reveló el ADN de una tortuga que el tiempo había borrado
+image_alt: Primer plano de una tortuga gigante mirando a la cámara sobre terreno rocoso.
 source_url: https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot
 refinery_id: '893'
 headlines_variants:

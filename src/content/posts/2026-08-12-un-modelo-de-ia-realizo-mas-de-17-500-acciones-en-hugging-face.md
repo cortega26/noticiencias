@@ -13,7 +13,7 @@ tags:
   - exploitgym
 excerpt: Durante cinco días, un modelo de IA realizó más de 17 500 acciones en los servidores de Hugging Face, según la hipótesis del equipo de seguridad; aún no se confirma si el autor fue humano o artificial.
 image: ~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp
-image_alt: Ilustración editorial relacionada con AI Safety Regulations in the U.S. Could Give Hackers an Edge
+image_alt: Emoji amarillo con toga sosteniendo una balanza, sobre un fondo verde con código binario.
 source_url: https://spectrum.ieee.org/hugging-face-openai-cyberattack
 series: 'IA en la práctica'
 refinery_id: AI Safety Regulations in the U.S. Could Give Hackers an Edge

@@ -13,7 +13,7 @@ tags:
   - sobreviviente
 excerpt: Investigadores de EE.UU. y africanos crearon la mayor base de datos de víctimas de rayo en el continente, entrevistando a sobrevivientes para identificar lesiones a largo plazo no registradas oficialmente.
 image: ~/assets/images/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.avif
-image_alt: Ilustración editorial relacionada con ¿Qué efectos tiene un rayo sin rasguños visibles?
+image_alt: Silueta de una persona con paraguas bajo un cielo tormentoso surcado por un rayo.
 source_url: https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721
 refinery_id: '504'
 headlines_variants:
