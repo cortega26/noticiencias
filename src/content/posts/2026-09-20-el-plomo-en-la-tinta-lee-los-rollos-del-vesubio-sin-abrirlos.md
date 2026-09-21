@@ -104,6 +104,6 @@ Antes de este trabajo, la principal estrategia para acceder a los pergaminos de 
 
 El hallazgo también se conecta con investigaciones previas que identificaron trazas de metales en tintas antiguas de otras culturas; aquí se muestra que ese mismo principio puede aplicarse a una colección específica cuyo valor histórico es enorme.
 
-Con el plomo como posible marcador, la pregunta ya no es si podemos leer esos textos, sino cuántos de ellos podremos recuperar antes de que el tiempo los haga polvo. [Fuente](https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/)
+Con el plomo como posible marcador, la pregunta abierta es si esta lectura funcionará también en los rollos auténticos y, de ser así, cuántos de esos textos podremos recuperar antes de que el tiempo los haga polvo. [Fuente](https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/)
 
 <!-- source_identity: source_id=scitechdaily; source_name=SciTechDaily -->
