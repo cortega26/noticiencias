@@ -1,7 +1,6 @@
 import { getCollection } from 'astro:content';
 import { getPermalink } from '~/utils/permalinks';
 import { resolvePostPermalink } from '~/utils/blog';
-import { resolveImageUrl } from '~/utils/images';
 import { buildSearchArtifact, stripMarkdown } from '~/utils/build-search-index';
 
 export async function GET() {
@@ -17,6 +16,9 @@ export async function GET() {
 
     // Transform posts into search documents with stripped Markdown content
     // (not raw post.body, which includes frontmatter artifacts and MDX syntax).
+    // NOTE (Stream C slim): no per-doc image resolution. Thumbnails were the
+    // largest store cost and SearchInterface renders without them. This also
+    // removes N image-pipeline calls from the build at 10/week cadence.
     const documents = (
       await Promise.all(
         posts.map(async (post) => {
@@ -38,12 +40,6 @@ export async function GET() {
             tags: post.data.tags,
             series: post.data.series,
             date: post.data.date,
-            image: await resolveImageUrl(
-              typeof post.data.image === 'string'
-                ? post.data.image
-                : (post.data.image?.src ?? null),
-              { width: 400 }
-            ),
           };
         })
       )
