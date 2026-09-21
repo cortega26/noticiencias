@@ -36,7 +36,7 @@ jobs:
       (github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main' &&
       github.repository == 'cortega26/noticiencias')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: read
@@ -81,7 +81,7 @@ jobs:
       github.event.workflow_run.head_branch == 'main' &&
       github.repository == 'cortega26/noticiencias') ||
       (github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: write
@@ -123,7 +123,7 @@ jobs:
     if: >-
       vars.SOCIAL_PUBLISH_ENABLED == 'true' &&
       github.event_name == 'workflow_dispatch' && inputs.mode == 'reconcile'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: write

@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   sync-snapshot:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # 25 min: checkout + npm ci (~2-3 min) plus the 15-min PR-check poll loop
     # in scripts/ci-land-bot-pr.sh (runner queue delays can push Content Guard
     # far past the PR creation time).
