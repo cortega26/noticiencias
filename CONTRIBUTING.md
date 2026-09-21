@@ -62,6 +62,11 @@ npm run test:dist         # dist sanity checks (run after build)
 
 ## Scheduled maintenance workflows
 
+CI runner baseline: all workflows pin `runs-on: ubuntu-24.04` (pinned ahead of
+GitHub's `ubuntu-latest` → Ubuntu 26 migration on 2026-10-19). Rollback is a
+revert of the pin commit; unpin deliberately only after a trial run validates
+CI on Ubuntu 26.
+
 - `perf-monitor.yml` runs Lighthouse monthly (15th, 09:37 UTC, plus manual
   dispatch): it builds the site, serves `dist/` locally, and writes the
   report under the runtime `reports/` directory (the job creates it
