@@ -4,7 +4,7 @@ schema_version: 2
 date: 2026-09-20
 author: Noticiencias AI
 categories:
-  - Tecnología
+  - Biología
 tags:
   - coral
   - cilio
@@ -20,8 +20,8 @@ headlines_variants:
   question: ¿Cómo sobreviven los corales de noche si sus cilios dejan de mover agua a alta temperatura?
   benefit: Entiende por qué el calentamiento oceánico amenaza la respiración nocturna de los corales
 summary_points:
-  - Un estudio con colonias de *Porites lutea* criadas en acuarios reveló que los diminutos cilios en los pólipos de coral, esenciales para su oxigenación, aumentan su velocidad al calentarse el agua para compensar la menor solubilidad del oxígeno.
-  - En estas colonias de *Porites lutea*, la demanda de oxígeno superó el aporte de los cilios alrededor de los 37 °C, y por encima de los 39 °C, los cilios dejaron de moverse y los pólipos murieron.
+  - Un estudio con colonias de Porites lutea criadas en acuarios reveló que los diminutos cilios en los pólipos de coral, esenciales para su oxigenación, aumentan su velocidad al calentarse el agua para compensar la menor solubilidad del oxígeno.
+  - En estas colonias de Porites lutea, la demanda de oxígeno superó el aporte de los cilios alrededor de los 37 °C, y por encima de los 39 °C, los cilios dejaron de moverse y los pólipos murieron.
   - Los investigadores observaron que los cilios del coral están organizados en patrones hexagonales que sincronizan su batido para crear vórtices eficientes, sugiriendo una integración funcional entre el esqueleto y el tejido vivo del coral.
   - Este hallazgo plantea que la capacidad de los cilios para renovar el oxígeno podría ser un punto de quiebre crítico para la supervivencia de los corales ante el calentamiento oceánico, incluso antes de que aparezcan signos de blanqueamiento.
   - El estudio subraya que los umbrales de temperatura identificados para la falla ciliar no son universales, y que el calentamiento global ya está llevando a muchos arrecifes hacia sus límites de tolerancia.
@@ -39,7 +39,7 @@ fact_check:
     status: confirmed
   - label: Hasta 2014, se pensaba que los cilios de coral solo limpiaban la superficie.
     status: confirmed
-  - label: Por encima de los 39 °C, los cilios de las colonias de *Porites lutea* estudiadas dejaron de moverse por completo y los pólipos murieron.
+  - label: Por encima de los 39 °C, los cilios de las colonias de Porites lutea estudiadas dejaron de moverse por completo y los pólipos murieron.
     status: confirmed
   - label: Los valores de temperatura de tolerancia para los cilios de coral no son un umbral universal para todas las especies.
     status: confirmed
@@ -49,7 +49,7 @@ why_it_matters:
   - Los arrecifes de coral son ecosistemas vitales para la biodiversidad marina y la protección costera en muchas regiones de Latinoamérica, y su declive afectaría directamente la pesca, el turismo y la economía local.
   - Comprender cómo los corales se ven afectados por el calentamiento del agua puede ayudar a desarrollar estrategias de conservación más efectivas para los arrecifes de la región, que ya están bajo estrés climático.
   - Este conocimiento permite un monitoreo más preciso de la salud de los corales, identificando señales tempranas de daño antes de que el blanqueamiento sea visible, lo cual es crucial para la gestión ambiental en países con costas coralinas.
-confidence: Moderada a alta — estudio revisado por pares publicado en *Science* con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.
+confidence: Moderada a alta — estudio revisado por pares publicado en Science con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.
 sources:
   - title: Tiny Hairs That Help Corals Breathe May Malfunction in Warming Oceans
     url: https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/
