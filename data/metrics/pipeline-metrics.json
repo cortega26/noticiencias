@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-20T11:19:07.171Z",
+  "generated_at": "2026-09-21T12:43:46.397Z",
   "content": {
-    "total_articles": 38,
-    "v2_articles": 26,
-    "total_words": 24070,
-    "avg_words": 633,
+    "total_articles": 39,
+    "v2_articles": 27,
+    "total_words": 24879,
+    "avg_words": 638,
     "categories": [
       {
         "name": "Tecnología",
@@ -23,11 +23,11 @@
         "count": 4
       },
       {
-        "name": "Biología",
-        "count": 2
+        "name": "Arqueología",
+        "count": 3
       },
       {
-        "name": "Arqueología",
+        "name": "Biología",
         "count": 2
       },
       {
@@ -166,6 +166,18 @@
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos",
+        "title": "¿El plomo en la tinta lee los rollos del Vesubio sin abrirlos?",
+        "date": "2026-09-20",
+        "categories": [
+          "Arqueología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — basada en un estudio experimental con réplicas y técnicas de imagen, aunque aún en fase de prueba y requiere equipamiento especializado.",
+        "review_status": null
+      },
       {
         "slug": "2026-09-18-noticia-cientifica",
         "title": "Microesferas de alginato protegen células productoras de insulina durante el cultivo en biorreactor",
@@ -635,11 +647,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-20T11:19:07.170Z"
+    "generated_at": "2026-09-21T12:43:46.397Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 38,
+    "derivatives_available": 39,
     "missing_derivatives": 0
   }
 }
