@@ -10,7 +10,6 @@ tags:
   - 'microbioma'
   - 'guardería'
   - 'infantil'
-  - 'salud'
 image: '~/assets/images/2026-01-25-article-86.webp'
 image_alt: 'La guardería: un lugar donde los bebés intercambian microorganismos y desarrollan su microbioma'
 source_url: 'https://scientificamerican.com/article/babies-who-attend-daycare-share-good-germs-too/'
