@@ -1126,6 +1126,34 @@
       }
     ]
   },
+  "~/assets/images/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.webp": {
+    "originalWidth": 1280,
+    "originalHeight": 670,
+    "hash": "bba550974943894f",
+    "variants": [
+      {
+        "width": 400,
+        "height": 209,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 471,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.900.avif"
+      },
+      {
+        "width": 1280,
+        "height": 670,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.1280.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.1280.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
