@@ -20,7 +20,8 @@ export default defineConfig({
         !page.includes('/search.json') &&
         !page.includes('/social-manifest.json') &&
         !page.includes('/admin/') &&
-        !page.includes('/llm-md/'),
+        !page.includes('/llm-md/') &&
+        !page.includes('/temas/'),
     }),
     mdx(),
     icon({
