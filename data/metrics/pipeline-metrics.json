@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-21T12:43:46.397Z",
+  "generated_at": "2026-09-22T11:34:13.379Z",
   "content": {
-    "total_articles": 39,
-    "v2_articles": 27,
-    "total_words": 24879,
-    "avg_words": 638,
+    "total_articles": 40,
+    "v2_articles": 28,
+    "total_words": 25430,
+    "avg_words": 636,
     "categories": [
       {
         "name": "Tecnología",
@@ -23,12 +23,12 @@
         "count": 4
       },
       {
-        "name": "Arqueología",
+        "name": "Biología",
         "count": 3
       },
       {
-        "name": "Biología",
-        "count": 2
+        "name": "Arqueología",
+        "count": 3
       },
       {
         "name": "Química",
@@ -54,6 +54,10 @@
       },
       {
         "name": "galápagos",
+        "count": 2
+      },
+      {
+        "name": "coral",
         "count": 2
       },
       {
@@ -137,10 +141,6 @@
         "count": 1
       },
       {
-        "name": "salud",
-        "count": 1
-      },
-      {
         "name": "electridos",
         "count": 1
       },
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — basada en un estudio experimental con réplicas y técnicas de imagen, aunque aún en fase de prueba y requiere equipamiento especializado.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral",
+        "title": "Los cilios del coral crean remolinos de oxígeno nocturnos y fallan cerca de 37 °C",
+        "date": "2026-09-20",
+        "categories": [
+          "Biología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada a alta — estudio revisado por pares publicado en Science con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.",
         "review_status": null
       },
       {
@@ -647,11 +659,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-21T12:43:46.397Z"
+    "generated_at": "2026-09-22T11:34:13.379Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 39,
+    "derivatives_available": 40,
     "missing_derivatives": 0
   }
 }
