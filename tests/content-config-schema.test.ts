@@ -122,6 +122,14 @@ describe('content.config posts schema', () => {
         });
         expect(result.success).toBe(false);
       });
+
+      it('rejects a DOI without primary role', () => {
+        const result = schema.safeParse({
+          ...basePost,
+          sources: [{ ...sourceBase, doi: '10.1371/journal.pone.0353485' }],
+        });
+        expect(result.success).toBe(false);
+      });
     });
 
     describe('evidence subject type (P0-02)', () => {

@@ -132,6 +132,19 @@ const posts = defineCollection({
         .optional(),
     })
     .superRefine((data, ctx) => {
+      // --- sources cross-field validation (P0-01) ---
+      // A doi without role=primary is a meaningless state: the DOI only
+      // renders in the primary block, so reject it instead of silently
+      // dropping data at render time.
+      (data.sources ?? []).forEach((source, index) => {
+        if (source.doi && source.role !== 'primary') {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['sources', index, 'role'],
+            message: 'sources with doi must declare role: primary',
+          });
+        }
+      });
       // --- image_alt cross-field validation ---
       const objectAlt = typeof data.image === 'object' ? data.image.alt?.trim() : '';
       const frontmatterAlt = data.image_alt?.trim() ?? '';
