@@ -12,26 +12,7 @@ vi.mock('astrowind:config', () => ({
 }));
 
 import { buildSeriesDossiers, getSeriesDossier } from '../src/utils/series';
-import type { Post } from '../src/types';
-
-function post(overrides: Partial<Post>): Post {
-  return {
-    id: overrides.id ?? 'post',
-    slug: overrides.slug ?? 'post',
-    permalink: overrides.permalink ?? 'ciencia/post',
-    publishDate: overrides.publishDate ?? new Date('2026-01-01T00:00:00Z'),
-    title: overrides.title ?? 'Post title',
-    excerpt: overrides.excerpt ?? 'Excerpt',
-    image: overrides.image,
-    image_alt: overrides.image_alt,
-    category: overrides.category,
-    tags: overrides.tags ?? [],
-    author: overrides.author,
-    metadata: {},
-    draft: false,
-    ...overrides,
-  };
-}
+import { makePost as post } from './helpers/post-factory';
 
 describe('series dossiers', () => {
   it('groups posts per series in reading order with count and latest date', () => {

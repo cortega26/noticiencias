@@ -25,9 +25,13 @@ const SERIES_DESCRIPTIONS: Record<string, string> = {
     'Medicina, biología humana y salud pública, con el modelo experimental a la vista.',
 };
 
-const fallbackDescription = (name: string) => `Serie de Noticiencias sobre ${name}.`;
+function fallbackDescription(name: string): string {
+  return `Serie de Noticiencias sobre ${name}.`;
+}
 
-const byOldest = (a: Post, b: Post) => a.publishDate.valueOf() - b.publishDate.valueOf();
+function byOldest(a: Post, b: Post): number {
+  return a.publishDate.valueOf() - b.publishDate.valueOf();
+}
 
 export function buildSeriesDossiers(posts: Post[]): SeriesDossier[] {
   const grouped = new Map<string, Post[]>();
