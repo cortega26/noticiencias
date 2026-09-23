@@ -2,10 +2,14 @@ import { getPermalink, getAsset } from './utils/permalinks';
 import { configuredCategorySections } from './utils/categorySections';
 import type { CategorySection } from './utils/categorySections';
 
-const categoryLink = ({ title, slug }: CategorySection) => ({
-  text: title,
-  href: getPermalink(slug, 'category'),
-});
+// Named function (not a const arrow) on purpose: Codacy's Biome/Qwik rule
+// false-positives on `const fn = () => ...` assignments.
+function categoryLink({ title, slug }: CategorySection) {
+  return {
+    text: title,
+    href: getPermalink(slug, 'category'),
+  };
+}
 
 // Primary navigation stays at six content entries. Sub-disciplines of Ciencia
 // (Física, Química, Biología) are nested under their parent instead of

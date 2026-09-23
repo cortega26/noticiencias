@@ -107,6 +107,13 @@ export function selectArchivePosts(
     .slice(0, count);
 }
 
+function compareSeries(a: FeaturedSeries, b: FeaturedSeries): number {
+  if (a.count !== b.count) return b.count - a.count;
+  const dateDiff = b.latestDate.valueOf() - a.latestDate.valueOf();
+  if (dateDiff !== 0) return dateDiff;
+  return a.name.localeCompare(b.name, 'es');
+}
+
 /** Most substantial series, tie-broken by latest update and name. */
 export function selectFeaturedSeries(posts: Post[]): FeaturedSeries | null {
   const series = new Map<string, FeaturedSeries>();
@@ -124,14 +131,7 @@ export function selectFeaturedSeries(posts: Post[]): FeaturedSeries | null {
     });
   }
 
-  const ranked = [...series.values()].sort(
-    (a, b) =>
-      b.count - a.count ||
-      b.latestDate.valueOf() - a.latestDate.valueOf() ||
-      a.name.localeCompare(b.name, 'es')
-  );
-
-  return ranked[0] ?? null;
+  return [...series.values()].sort(compareSeries)[0] ?? null;
 }
 
 export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {
