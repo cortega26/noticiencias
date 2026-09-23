@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
+const REPO_ROOT = path.resolve(__dirname, '..');
 const POSTS_DIR = path.resolve(__dirname, '../src/content/posts');
 const SRC_DIR = path.resolve(__dirname, '../src');
 const DEFAULT_HERO_IMAGE = '~/assets/images/default.png';
@@ -605,11 +606,79 @@ function auditSocialManifest() {
   }
 }
 
+function auditTagSitemapExclusion() {
+  // Guards the /temas/ sitemap exclusion without a YAML parser (static
+  // analysis forbids yaml.load in config-adjacent code; astro.config.mjs
+  // hardcodes the same literal instead). Two invariants:
+  //   1. the hardcoded literal matches src/config.yaml apps.blog.tag.pathname
+  //   2. no tag-archive URL for the configured base leaks into the sitemap
+  // A config rename without updating astro.config.mjs fails loudly here
+  // instead of silently re-listing noindex URLs.
+  const errorsBefore = errorCount;
+  const configText = fs.readFileSync(path.join(REPO_ROOT, 'src', 'config.yaml'), 'utf8');
+  const configPathname = (() => {
+    const lines = configText.split('\n');
+    let inTagBlock = false;
+    for (const line of lines) {
+      if (/^\s{4}tag:\s*$/.test(line)) {
+        inTagBlock = true;
+        continue;
+      }
+      if (inTagBlock) {
+        const m = line.match(/^\s{6}pathname:\s*['"]?([^'"#\s]+)['"]?/);
+        if (m) return m[1].replace(/^\/+|\/+$/g, '').toLowerCase();
+        if (/^\s{4}\S/.test(line)) break;
+      }
+    }
+    return null;
+  })();
+  if (!configPathname) {
+    console.error(
+      `${RED}[FAIL] Could not resolve apps.blog.tag.pathname from src/config.yaml.${RESET}`
+    );
+    errorCount++;
+    return;
+  }
+  const expectedBase = `/${configPathname}/`;
+  const astroConfig = fs.readFileSync(path.join(REPO_ROOT, 'astro.config.mjs'), 'utf8');
+  if (!astroConfig.includes(`'${expectedBase}'`) && !astroConfig.includes(`"${expectedBase}"`)) {
+    console.error(
+      `${RED}[FAIL] astro.config.mjs tagBasePath diverges from src/config.yaml (${expectedBase}). Update the literal.${RESET}`
+    );
+    errorCount++;
+  }
+  const sitemapFiles = fs
+    .readdirSync(DIST_DIR)
+    .filter((name) => /^sitemap.*\.xml$/.test(name))
+    .map((name) => path.join(DIST_DIR, name));
+  for (const sitemapFile of sitemapFiles) {
+    const body = fs.readFileSync(sitemapFile, 'utf8');
+    const leaked = body.match(new RegExp(`<loc>[^<]*${expectedBase}[^<]*</loc>`, 'g')) ?? [];
+    if (leaked.length > 0) {
+      console.error(
+        `${RED}[FAIL] ${path.basename(sitemapFile)} lists ${leaked.length} noindex tag URL(s) under ${expectedBase}.${RESET}`
+      );
+      errorCount++;
+    }
+  }
+
+  if (errorCount > errorsBefore) {
+    console.error(
+      `${RED}FAILED: tag sitemap exclusion audit found ${errorCount - errorsBefore} violation(s).${RESET}`
+    );
+  } else {
+    console.log(
+      `${GREEN}PASSED: no ${expectedBase} URLs in sitemap; astro.config literal matches config.yaml.${RESET}`
+    );
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
 auditSocialManifest();
+auditTagSitemapExclusion();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);
