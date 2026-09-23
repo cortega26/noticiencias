@@ -26,7 +26,7 @@ El boletín es la excepción declarada: almacena tu correo electrónico solo par
 
 ## Métricas y financiamiento
 
-La medición está activa. Publicaremos informes periódicos sobre crecimiento y sostenibilidad a partir de esos datos.
+La medición está activa. Publicamos un informe trimestral abierto sobre crecimiento y sostenibilidad con estos contenidos: páginas más leídas, canales de llegada, consultas de búsqueda que traen lectores, y costo de infraestructura frente a presupuesto. Próximo informe: enero de 2026.
 
 ## Calidad editorial agregada
 
