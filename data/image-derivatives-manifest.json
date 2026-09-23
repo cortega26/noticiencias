@@ -1070,6 +1070,41 @@
       }
     ]
   },
+  "~/assets/images/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.jpg": {
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "hash": "8f1cbec2084f4ae2",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1400.avif"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1920.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1920.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.jpg": {
     "originalWidth": 1600,
     "originalHeight": 900,
