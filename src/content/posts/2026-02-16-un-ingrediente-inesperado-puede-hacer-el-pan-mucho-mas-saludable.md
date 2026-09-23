@@ -1,5 +1,5 @@
 ---
-title: Un ingrediente inesperado puede hacer el pan mucho más saludable
+title: 'Harina de semilla de girasol: pan con más proteína y antioxidantes'
 schema_version: 2
 excerpt: La harina de semilla de girasol, un subproducto del aceite de girasol, puede enriquecer el pan con proteínas y antioxidantes sin afectar su calidad.
 author: Noticiencias
@@ -56,7 +56,7 @@ sources:
     date: '2026-02-16'
 ---
 
-**Investigadores Descubren un Ingrediente Inesperado que Mejora Dramáticamente el Valor Nutricional del Pan**
+**Harina de semilla de girasol: pan con más proteína y antioxidantes**
 
 En un esfuerzo por hacer que los productos de panadería sean más saludables y sostenibles, investigadores han descubierto que un subproducto de la producción de aceite de girasol podría ser la clave para crear pan más nutritivo. La harina de semilla de girasol parcialmente desgrasada, un residuo de la extracción industrial de aceite de girasol, ha demostrado contener altos niveles de proteínas, fibra y compuestos antioxidantes, lo que la convierte en un candidato prometedor para enriquecer el pan.
 

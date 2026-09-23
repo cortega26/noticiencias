@@ -1,5 +1,5 @@
 ---
-title: 'Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida'
+title: 'El 38 % de los casos de cáncer de 2022 se atribuye a factores de riesgo evitables'
 schema_version: 2
 excerpt: 'Un estudio sugiere que alrededor del 38% de nuevos casos de cáncer son prevenibles mediante cambios en hábitos.'
 author: Noticiencias

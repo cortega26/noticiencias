@@ -81,3 +81,12 @@ an unscheduled future build decision, not part of this verdict.
   search dialog PR-5, cadence fix PR-3, D6/D7 visual differentiation,
   Bluesky/Buffer adapters pkgs 3–7, Markdown-for-agents ADR-0008) are done;
   do not re-propose them.
+
+## Triage 2026-09-23
+
+Plans 005 (recursos library) and 006 (social graduation) remain **TODO**:
+they are product-direction spikes, not technical debt, and need a planning
+cycle to scope them. The technical-debt closure of the 2026-09 program
+(e2e flakes, editorial checker, related-content measurement, stale backlogs)
+is recorded in `docs/products/audit-2026-09/IMPLEMENTATION_LEDGER.md` and
+does not change this index.

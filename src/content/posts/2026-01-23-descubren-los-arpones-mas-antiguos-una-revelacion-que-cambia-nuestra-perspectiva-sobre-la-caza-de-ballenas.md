@@ -1,5 +1,5 @@
 ---
-title: 'Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nuestra Perspectiva sobre la Caza de Ballenas'
+title: 'Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado'
 schema_version: 1
 excerpt: 'Descubren arpones de 5.000 años en Brasil, revelando que indígenas locales cazaban ballenas mucho antes de lo pensado.'
 author: Noticiencias
@@ -22,7 +22,7 @@ investigation: false
 featured: false
 ---
 
-**Descubren los Arpones Más Antiguos: Indígenas Brasileños Cazaban Ballenas con 5.000 Años de Antigüedad**
+**Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado**
 
 En un hallazgo arqueológico que está revolucionando nuestra comprensión de la caza de ballenas en el mundo, un equipo de investigadores ha descubierto arpones de huesos de ballena hechos a partir de las costillas de ballenas jorobadas y ballenas francas australes con 5.000 años de antigüedad. Esta descubierta no solo desafía la idea de que la caza de ballenas era una práctica exclusiva del Hemisferio Norte, sino que también ofrece una ventana única a las tradiciones culturales y económicas de las comunidades indígenas en Brasil.
 

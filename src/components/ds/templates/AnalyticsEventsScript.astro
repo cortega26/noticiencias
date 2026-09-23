@@ -17,7 +17,7 @@
   //   [data-analytics-source]         <a>     -> outbound_source_click
   //   [data-analytics-topic]          <a>     -> topic_click
   //   [data-analytics-series]         <a>     -> series_click
-  //   [data-analytics-related]        section -> related_article_click
+  //   [data-analytics-related]        section -> related_impression + related_article_click
   //   [data-newsletter-form]          <form>  -> newsletter_impression/start
   //   [data-analytics-newsletter]     <form>  -> newsletter_submit
   // The `search` event is sent by SearchInterface, which owns the query.
@@ -92,7 +92,23 @@
       });
   };
 
-  const bindNewsletterSignals = () => {
+  const checkRelatedImpression = () => {
+    const block = document.querySelector<HTMLElement>(
+      '[data-analytics-related]:not([data-related-seen])'
+    );
+    if (!block) return;
+    const rect = block.getBoundingClientRect();
+    if (rect.height <= 0) return;
+    const visible =
+      (Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)) / rect.height;
+    if (visible < 0.5) return;
+    block.dataset.relatedSeen = 'true';
+    trackEvent('related_impression', {
+      related_kind: block.getAttribute('data-analytics-related') ?? '',
+    });
+  };
+
+  const bindImpressionSignals = () => {
     stopImpressions?.();
     stopImpressions = null;
 
@@ -117,18 +133,20 @@
       requestAnimationFrame(() => {
         queued = false;
         checkNewsletterImpressions();
+        checkRelatedImpression();
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     stopImpressions = () => window.removeEventListener('scroll', onScroll);
 
     checkNewsletterImpressions();
+    checkRelatedImpression();
   };
 
   const onPageLoad = () => {
     trackArticleView();
     bindArticleReadDepth();
-    bindNewsletterSignals();
+    bindImpressionSignals();
   };
 
   document.addEventListener('submit', (event) => {

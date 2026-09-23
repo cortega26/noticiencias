@@ -44,6 +44,7 @@ test('article view and read depth fire on an article page', async ({ page }) => 
 
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await expect.poll(() => eventNames(page)).toContain('article_90');
+  await expect.poll(() => eventNames(page)).toContain('related_impression');
 
   const events = await eventNames(page);
   expect(events).toContain('article_50');

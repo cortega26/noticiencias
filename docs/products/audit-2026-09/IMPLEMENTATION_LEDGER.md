@@ -811,3 +811,55 @@ Evidencias en `dist/` y bundle:
 - [x] Ledger updated
 - [x] Decisions updated
 - [x] Ready for human review
+
+## Cierre de deuda técnica — 2026-09-23 (post-programa)
+
+Fuera de wave, se cierran los follow-ups que quedaban abiertos. Rama
+`chore/tech-debt-closure`; el backend cierra su único pendiente en PR #326.
+
+### Resueltos con código y evidencia
+
+- **FU-023** (`5a3cf98`): el bloque relacionado emite `related_impression`
+  al 50 % de visibilidad; `docs/EDITORIAL_METRICS.md` define el CTR contra
+  esa impresión. Verificado en e2e (dataLayer real).
+- **FU-010** (`2eb441a`): `check-editorial-fields.js` valida el contrato v2
+  nuevo (role/doi, evidencia, institución/estado, reviewer, sabidos/
+  preguntas, correcciones, incertidumbre) con `--repoRoot` y 8 tests.
+- **FU-001 + flake `target-size`** (`0fb20b3`): `checkA11y` mide solo tras
+  `load` + fuentes + altura estable y vuelve arriba. Evidencia: a11y 8/8
+  bajo carga (14/14 cada uno) y consentimiento 3/3 bajo carga (22/22).
+  `docs/backlog/a11y-target-size-flake.md` queda resuelto.
+- **FU-015** (`a2c91f9`): pasada editorial verificada sobre los 16
+  titulares marcados (antes/después en `HEADLINE_INVENTORY.md`); sin
+  cambios de URL y con los encabezados duplicados alineados.
+
+### Cerrados por decisión
+
+- **FU-014, FU-016, FU-021** → `docs/adr/0013-editorial-metadata-ownership.md`:
+  `featured` es del backend (fallback aceptado); las descripciones de serie
+  y tema viven en mapas frontend hasta un modelo de contenido de primera
+  clase. Dejan de ser deuda abierta.
+- **FU-019** (tag «misión»): el post legacy ya no lo declara y el tag es
+  legítimo para misiones espaciales; no hay cambio de taxonomía backend que
+  hacer. Cerrado con rationale.
+- **FU-017, FU-022, FU-024 y la verificación post-deploy del plan 009** son
+  acciones de operador (Transform Rule del edge, dimensiones GA4, contraste
+  Buttondown, cookies reales). Están en
+  `docs/ANALYTICS_OPERATOR_CHECKLIST.md` y `docs/DEPLOYMENT_SECURITY_HEADERS.md`;
+  no son deuda de código.
+- **Backlogs obsoletos** (`editorial-visual-refresh-backlog.md`,
+  `source-of-truth-backlog.md`): cerrados con tabla de resoluciones.
+- **Planes 005/006**: triados como roadmap de producto, no deuda
+  (`plans/README.md`).
+
+### Backend
+
+- **PR #326** (`9224124`): registra `reports/evaluation/enrichment-pattern-v1.json`,
+  baseline reproducible de plan 048 (44 registros, no decisorio; umbral 200).
+  El árbol de backend queda limpio.
+
+### Estado final
+
+Ningún follow-up del programa queda abierto como deuda técnica. Lo único
+pendiente son las acciones de operador listadas arriba y el roadmap
+(planes 005/006, plan 048 a ≥200 registros, revisita del benchmark LLM).

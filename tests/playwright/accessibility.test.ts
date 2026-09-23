@@ -20,14 +20,34 @@ async function getFirstArticleUrl(page: Page): Promise<string | null> {
   return urls[0] ?? null;
 }
 
+// Waits until the body height stops changing across animation frames. Axe's
+// target-size audit measures geometry, and running it while lazy content or
+// fonts were still landing produced intermittent "partially obscured" /
+// "insufficient space" failures under load (a11y-target-size-flake).
+async function waitForStableLayout(page: Page) {
+  await page.evaluate(async () => {
+    function height() {
+      return document.body.scrollHeight;
+    }
+    let last = height();
+    for (let i = 0; i < 40; i++) {
+      await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+      const next = height();
+      if (next === last) return;
+      last = next;
+    }
+  });
+}
+
 // Helper to check accessibility and format output
 async function checkA11y(page: Page, path: string) {
   // Go to page
   const response = await page.goto(path);
   expect(response?.status()).toBe(200);
 
-  // Wait for content/hydration if needed
-  await page.waitForLoadState('domcontentloaded');
+  // Settle the document and its subresources before measuring geometry.
+  await page.waitForLoadState('load');
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
 
   // Disable all transitions and animations to ensure colors are stable for contrast checks
   await page.addStyleTag({
@@ -42,11 +62,13 @@ async function checkA11y(page: Page, path: string) {
     `,
   });
 
-  // Scroll to the bottom of the page to trigger any intersection observers / lazy loading of footer
+  // Scroll to the bottom to trigger intersection observers / lazy loading of
+  // the footer, then return to the top so no pill sits under the sticky header
+  // when axe measures it.
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-
-  // Small delay to let rendering engine repaint with stable styles
-  await page.waitForTimeout(100);
+  await waitForStableLayout(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await waitForStableLayout(page);
 
   // Analyze page accessibility
   const results = await new AxeBuilder({ page })

@@ -1,5 +1,5 @@
 ---
-title: 'Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos'
+title: 'Bienvenidos a Noticiencias: la ciencia al alcance de todos'
 schema_version: 1
 excerpt: 'En un mundo saturado de información, Noticiencias se erige como un faro de rigor y claridad. Descubre cómo transformamos la investigación global en conocimiento accesible.'
 author: 'Equipo Editorial'

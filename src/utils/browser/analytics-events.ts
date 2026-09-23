@@ -19,6 +19,7 @@ export type AnalyticsEventName =
   | 'article_90'
   | 'primary_source_click'
   | 'outbound_source_click'
+  | 'related_impression'
   | 'related_article_click'
   | 'newsletter_impression'
   | 'newsletter_start'
