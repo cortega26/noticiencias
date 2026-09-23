@@ -1,4 +1,4 @@
-import type { Post, Taxonomy } from '~/types';
+import type { Post } from '~/types';
 
 export interface TopicFrequency {
   slug: string;
@@ -6,11 +6,19 @@ export interface TopicFrequency {
   count: number;
 }
 
-export interface CategoryRail {
-  category: Taxonomy;
+export interface RecentSelection {
+  /** true when the edition window itself had stories; false means the fallback ran. */
+  inWindow: boolean;
   posts: Post[];
-  topics: TopicFrequency[];
 }
+
+export interface FeaturedSeries {
+  name: string;
+  count: number;
+  latestDate: Date;
+}
+
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 const byNewest = (a: Post, b: Post) => b.publishDate.valueOf() - a.publishDate.valueOf();
 
@@ -47,20 +55,83 @@ export function selectFeaturedPosts(posts: Post[], count = 3): Post[] {
   return selected.slice(0, count);
 }
 
-export function selectContextPosts(posts: Post[], count = 3): Post[] {
-  return posts
+/**
+ * Stories published inside the edition window (default: the seven days
+ * ending at the newest publish date). When the window is empty — e.g. the
+ * site went a week without publishing — falls back to the newest stories
+ * and reports `inWindow: false` so the caller can label them honestly
+ * ("Lo más reciente", not "Esta semana").
+ */
+export function selectRecentPosts(
+  posts: Post[],
+  editionDate: Date,
+  {
+    days = 7,
+    count = 6,
+    excludeIds = [],
+  }: { days?: number; count?: number; excludeIds?: string[] } = {}
+): RecentSelection {
+  const excluded = new Set(excludeIds);
+  const cutoff = editionDate.valueOf() - days * DAY_MS;
+  const editionValue = editionDate.valueOf();
+  const inWindow = posts
     .filter(
-      (post) => (post.why_it_matters?.length ?? 0) > 0 || (post.summary_points?.length ?? 0) > 0
+      (post) =>
+        !excluded.has(post.id) &&
+        post.publishDate.valueOf() >= cutoff &&
+        post.publishDate.valueOf() <= editionValue
     )
-    .sort((a, b) => {
-      const hasWhyA = (a.why_it_matters?.length ?? 0) > 0;
-      const hasWhyB = (b.why_it_matters?.length ?? 0) > 0;
-      if (hasWhyA !== hasWhyB) {
-        return hasWhyA ? -1 : 1;
-      }
-      return byNewest(a, b);
-    })
+    .sort(byNewest)
     .slice(0, count);
+
+  if (inWindow.length > 0) return { inWindow: true, posts: inWindow };
+
+  return {
+    inWindow: false,
+    posts: posts
+      .filter((post) => !excluded.has(post.id))
+      .sort(byNewest)
+      .slice(0, count),
+  };
+}
+
+/** Newest stories not already promoted on the page (home archive block). */
+export function selectArchivePosts(
+  posts: Post[],
+  { count = 3, excludeIds = [] }: { count?: number; excludeIds?: string[] } = {}
+): Post[] {
+  const excluded = new Set(excludeIds);
+  return posts
+    .filter((post) => !excluded.has(post.id))
+    .sort(byNewest)
+    .slice(0, count);
+}
+
+/** Most substantial series, tie-broken by latest update and name. */
+export function selectFeaturedSeries(posts: Post[]): FeaturedSeries | null {
+  const series = new Map<string, FeaturedSeries>();
+
+  for (const post of posts) {
+    if (!post.series) continue;
+    const existing = series.get(post.series);
+    series.set(post.series, {
+      name: post.series,
+      count: (existing?.count ?? 0) + 1,
+      latestDate:
+        existing && existing.latestDate.valueOf() > post.publishDate.valueOf()
+          ? existing.latestDate
+          : post.publishDate,
+    });
+  }
+
+  const ranked = [...series.values()].sort(
+    (a, b) =>
+      b.count - a.count ||
+      b.latestDate.valueOf() - a.latestDate.valueOf() ||
+      a.name.localeCompare(b.name, 'es')
+  );
+
+  return ranked[0] ?? null;
 }
 
 export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {
@@ -92,25 +163,4 @@ export function getRelatedTopics(
   return getTopicFrequency(scopedPosts, count + 1)
     .filter((topic) => topic.slug !== activeTagSlug)
     .slice(0, count);
-}
-
-export function buildCategoryRails(
-  posts: Post[],
-  categories: Taxonomy[],
-  perCategory = 3
-): CategoryRail[] {
-  return categories
-    .map((category) => {
-      const categoryPosts = posts
-        .filter((post) => post.category?.slug === category.slug)
-        .sort(byNewest)
-        .slice(0, perCategory);
-
-      return {
-        category,
-        posts: categoryPosts,
-        topics: getTopicFrequency(categoryPosts, 5),
-      };
-    })
-    .filter((rail) => rail.posts.length > 0);
 }

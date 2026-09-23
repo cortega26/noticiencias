@@ -1,26 +1,31 @@
 ---
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
+import Button from '~/components/ds/atoms/Button.astro';
 import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
 import TopicStrip from '~/components/common/TopicStrip.astro';
-import { getAsset, getPermalink } from '~/utils/permalinks';
+import { cleanSlug, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
-import type { CategoryRail, TopicFrequency } from '~/utils/hub';
+import { configuredCategorySections } from '~/utils/categorySections';
+import type { FeaturedSeries, RecentSelection, TopicFrequency } from '~/utils/hub';
 import type { Post } from '~/types';
 
 interface Props {
   editionDate: Date;
   leadPosts: Post[];
-  latestPosts: Post[];
-  contextPosts: Post[];
-  categoryRails: CategoryRail[];
+  weekly: RecentSelection;
+  archivePosts: Post[];
+  featuredSeries: FeaturedSeries | null;
   topicRadar: TopicFrequency[];
 }
 
-const { editionDate, leadPosts, latestPosts, contextPosts, categoryRails, topicRadar } =
-  Astro.props;
+const { editionDate, leadPosts, weekly, archivePosts, featuredSeries, topicRadar } = Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
 const editionLabel = getFormattedDate(editionDate, 'long');
+const weeklyTitle = weekly.inWindow ? 'Esta semana' : 'Lo más reciente';
+const weeklyDescription = weekly.inWindow
+  ? 'Lo publicado en los últimos siete días, con la fuente a un clic.'
+  : 'Las historias más recientes del archivo, con la fuente a un clic.';
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
@@ -56,92 +61,112 @@ const editionLabel = getFormattedDate(editionDate, 'long');
     )
   }
 
-  <TopicStrip
-    topics={topicRadar}
-    showCounts
-    class="mt-8"
-    description="Los temas que más se repiten en la edición reciente."
-  />
-
-  <section class="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
-    <div>
-      <SectionHeading title="Última edición" href="/blog/" linkText="Archivo completo" />
-      <div class="mt-6 grid gap-6 md:grid-cols-2">
-        {latestPosts.map((post) => <ArticleCard post={post} variant="standard" showTags={false} />)}
-      </div>
-    </div>
-
-    <aside class="lg:border-l lg:border-border-subtle lg:pl-8">
-      <SectionHeading title="Una vez por semana, solo lo que vale guardar" level={2} />
-      <div class="mt-5 grid gap-4 text-sm leading-relaxed text-text-muted">
-        <p>
-          El boletín reúne las piezas que valió la pena leer dos veces del archivo reciente. RSS
-          también disponible para quien prefiere su propio lector.
+  <section
+    class="mt-8 rounded-xl border border-border-subtle bg-surface-paper px-5 py-6 sm:px-8"
+    aria-labelledby="home-newsletter-cta"
+  >
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h2
+          id="home-newsletter-cta"
+          class="font-heading text-xl font-bold leading-tight text-text-body sm:text-2xl"
+        >
+          El resumen semanal, en tu correo
+        </h2>
+        <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
+          Una edición por semana con los hallazgos que valió la pena leer dos veces.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="/newsletter/"
-            class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
-          >
-            Boletín
-          </a>
-          <a
-            href={getAsset('/rss.xml')}
-            class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
-          >
-            RSS
-          </a>
-        </div>
       </div>
-    </aside>
+      <Button
+        variant="primary"
+        href="/newsletter/"
+        text="Suscribirme"
+        class="shrink-0 self-start sm:self-auto"
+      />
+    </div>
   </section>
 
   {
-    contextPosts.length > 0 && (
+    weekly.posts.length > 0 && (
       <section class="mt-12">
         <SectionHeading
-          title="Qué cambia"
-          description="Historias recientes que dejan una consecuencia clara sobre la mesa."
+          title={weeklyTitle}
+          description={weeklyDescription}
+          href="/blog/"
+          linkText="Archivo completo"
         />
-        <div class="mt-6 grid gap-6 md:grid-cols-3">
-          {contextPosts.map((post) => (
-            <ArticleCard post={post} variant="consequence" />
+        <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {weekly.posts.map((post) => (
+            <ArticleCard post={post} variant="standard" showTags={false} />
           ))}
         </div>
       </section>
     )
   }
 
-  <section class="mt-14 rounded-xl border border-border-subtle/50 bg-surface-paper p-6 sm:p-8">
-    <SectionHeading
-      title="Secciones"
-      description="La portada también se puede leer por área, de la actualidad al archivo."
-    />
-    <div class="mt-6 grid gap-8 lg:grid-cols-2">
-      {
-        categoryRails.map((rail) => (
-          <section class="border-t border-border-subtle pt-5">
-            <div class="mb-4 flex items-baseline justify-between gap-4">
-              <h2 class="font-heading text-2xl font-bold text-text-body">{rail.category.title}</h2>
-              <a
-                href={getPermalink(rail.category.slug, 'category')}
-                class="text-sm font-semibold text-primary underline-offset-4 hover:underline"
-              >
-                Ver sección
-              </a>
-            </div>
-            <div class="grid gap-5">
-              {rail.posts.map((post) => (
-                <ArticleCard post={post} variant="row" showExcerpt={false} showTags={false} />
-              ))}
-            </div>
-          </section>
-        ))
-      }
-    </div>
-  </section>
+  {
+    featuredSeries && (
+      <section class="mt-12">
+        <SectionHeading
+          title="Serie destacada"
+          description="Una colección para seguir un hilo completo, del primer artículo al último."
+        />
+        <div class="mt-6 flex flex-col gap-4 rounded-xl border border-border-subtle bg-surface-paper p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 class="font-heading text-2xl font-bold text-text-body">{featuredSeries.name}</h3>
+            <p class="mt-1 text-sm text-text-muted">
+              {`${featuredSeries.count} ${featuredSeries.count === 1 ? 'artículo' : 'artículos'}`} ·
+              Actualizada el {getFormattedDate(featuredSeries.latestDate, 'long')}
+            </p>
+          </div>
+          <a
+            href={getPermalink(`/series/${cleanSlug(featuredSeries.name)}`, 'page')}
+            class="shrink-0 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Ver la serie →
+          </a>
+        </div>
+      </section>
+    )
+  }
 
-  <section class="mt-6 rounded-xl border border-border-subtle/50 bg-surface-highlight p-6 sm:p-8">
+  {
+    archivePosts.length > 0 && (
+      <section class="mt-12">
+        <SectionHeading
+          title="Del archivo"
+          description="Piezas que ya salieron de la edición semanal, elegidas para volver a leerlas."
+        />
+        <div class="mt-6 grid gap-5">
+          {archivePosts.map((post) => (
+            <ArticleCard post={post} variant="row" showExcerpt={false} showTags={false} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <TopicStrip
+    topics={topicRadar}
+    showCounts
+    class="mt-10"
+    description="Los temas que más se repiten en la edición reciente."
+  />
+
+  <nav aria-label="Secciones" class="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+    {
+      configuredCategorySections.map(({ title, slug }) => (
+        <a
+          href={getPermalink(slug, 'category')}
+          class="font-semibold text-text-muted hover:text-primary"
+        >
+          {title}
+        </a>
+      ))
+    }
+  </nav>
+
+  <section class="mt-14 rounded-xl border border-border-subtle/50 bg-surface-highlight p-6 sm:p-8">
     <SectionHeading
       title="Para leer con criterio"
       description="Piezas para volver cuando una noticia científica llega demasiado vestida de promesa."

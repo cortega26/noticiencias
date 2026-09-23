@@ -3,26 +3,26 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import DailyDesk from '~/components/common/DailyDesk.astro';
 import { fetchPosts } from '~/utils/blog';
 import {
-  buildCategoryRails,
   getEditionDate,
   getTopicFrequency,
-  selectContextPosts,
+  selectArchivePosts,
   selectFeaturedPosts,
+  selectFeaturedSeries,
+  selectRecentPosts,
 } from '~/utils/hub';
-import { configuredCategorySections } from '~/utils/categorySections';
 
 const allPosts = await fetchPosts();
 const editionDate = getEditionDate(allPosts);
 const leadPosts = selectFeaturedPosts(allPosts, 3);
-const leadPostIds = new Set(leadPosts.map((post) => post.id));
-const latestPosts = allPosts.filter((post) => !leadPostIds.has(post.id)).slice(0, 6);
-const contextPosts = selectContextPosts(allPosts, 3);
+const leadPostIds = leadPosts.map((post) => post.id);
+const weekly = selectRecentPosts(allPosts, editionDate, { count: 6, excludeIds: leadPostIds });
+const weeklyPostIds = weekly.posts.map((post) => post.id);
+const archivePosts = selectArchivePosts(allPosts, {
+  count: 3,
+  excludeIds: [...leadPostIds, ...weeklyPostIds],
+});
+const featuredSeries = selectFeaturedSeries(allPosts);
 const topicRadar = getTopicFrequency(allPosts.slice(0, 18));
-const categoryRails = buildCategoryRails(
-  allPosts,
-  configuredCategorySections.map(({ slug, title }) => ({ slug, title })),
-  3
-);
 
 const metadata = {
   title: 'Noticiencias - Portada científica en español.',
@@ -36,9 +36,9 @@ const metadata = {
   <DailyDesk
     editionDate={editionDate}
     leadPosts={leadPosts}
-    latestPosts={latestPosts}
-    contextPosts={contextPosts}
-    categoryRails={categoryRails}
+    weekly={weekly}
+    archivePosts={archivePosts}
+    featuredSeries={featuredSeries}
     topicRadar={topicRadar}
   />
 </BaseLayout>
