@@ -55,11 +55,15 @@ why_it_matters:
   - Al demostrar que los SC-islets pueden cultivarse en biorreactor y mantener su función después de meses in vivo, el estudio abre la posibilidad de producir suficiente tejido para tratar a varios receptores con un solo lote.
   - Si se superan los desafíos de protección inmune y permeabilidad del gel, esta estrategia podría llegar a ser una opción terapéutica más accesible; por ahora son resultados de un preprint sin revisión por pares.
 confidence: Moderada — preprint con resultados prometedores pero aún sin revisión por pares y necesidad de validación en modelos de inmunidad humana y optimización de la permeabilidad del gel.
+evidence_subject_type: mixed
+evidence_detail: Cultivo celular humano (SC-islets) y trasplantes en ratones inmunodeficientes NOD SCID; sin participantes humanos.
 sources:
   - title: 'Bridging scale-up to transplantation: pluripotent stem cell-derived pancreatic islet encapsulation in emulsion-generated high concentration alginate beads'
     url: https://biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1
     publisher: bioRxiv
     date: '2026-09-12'
+    role: primary
+    doi: 10.64898/2026.09.12.751148
 requires_uncertainty_note: true
 uncertainty_note: Los resultados se obtuvieron en cultivo celular y en ratones inmunodeficientes; aún se deben validar en modelos con sistema inmune competente y en ensayos humanos antes de considerar aplicación clínica.
 social:

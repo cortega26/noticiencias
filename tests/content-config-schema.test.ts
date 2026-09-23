@@ -88,6 +88,73 @@ describe('content.config posts schema', () => {
       expect(result.success).toBe(true);
     });
 
+    describe('primary source fields (P0-01)', () => {
+      const sourceBase = { title: 'Source', url: 'https://example.com' };
+
+      it('accepts legacy sources without role or doi', () => {
+        const result = schema.safeParse({ ...basePost, sources: [sourceBase] });
+        expect(result.success).toBe(true);
+      });
+
+      it('accepts a primary source with DOI', () => {
+        const result = schema.safeParse({
+          ...basePost,
+          sources: [
+            { ...sourceBase, role: 'primary', doi: '10.1371/journal.pone.0353485' },
+            { ...sourceBase, role: 'secondary' },
+          ],
+        });
+        expect(result.success).toBe(true);
+      });
+
+      it('rejects a malformed DOI', () => {
+        const result = schema.safeParse({
+          ...basePost,
+          sources: [{ ...sourceBase, role: 'primary', doi: 'not-a-doi' }],
+        });
+        expect(result.success).toBe(false);
+      });
+
+      it('rejects an unknown source role', () => {
+        const result = schema.safeParse({
+          ...basePost,
+          sources: [{ ...sourceBase, role: 'tertiary' }],
+        });
+        expect(result.success).toBe(false);
+      });
+    });
+
+    describe('evidence subject type (P0-02)', () => {
+      it.each([
+        ['humans'],
+        ['animals'],
+        ['in_vitro'],
+        ['computational'],
+        ['observational'],
+        ['experimental'],
+        ['mixed'],
+        ['unknown'],
+      ])('accepts %p', (evidence_subject_type) => {
+        const result = schema.safeParse({ ...basePost, evidence_subject_type });
+        expect(result.success).toBe(true);
+      });
+
+      it('rejects an unknown evidence value (no silent inference)', () => {
+        const result = schema.safeParse({
+          ...basePost,
+          evidence_subject_type: 'clinical-trial',
+        });
+        expect(result.success).toBe(false);
+      });
+
+      it('accepts an optional detail string and rejects an empty one', () => {
+        expect(
+          schema.safeParse({ ...basePost, evidence_detail: 'Ratones NOD SCID.' }).success
+        ).toBe(true);
+        expect(schema.safeParse({ ...basePost, evidence_detail: '' }).success).toBe(false);
+      });
+    });
+
     describe('why_it_matters cardinalities (P0-06 / DEC-003)', () => {
       const validV2Base = {
         ...basePost,

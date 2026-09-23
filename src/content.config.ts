@@ -13,6 +13,21 @@ import { z } from 'astro/zod';
 // rejects unknown keys — both mirror the backend `SocialConfig` model.
 const SOCIAL_ID_RE = /^[0-9a-f]{64}$/;
 
+// Wave 2 editorial contract notes (kept at module scope: the line-based
+// parser in scripts/check-contract-sync.js cannot skip `//` comments inside
+// the z.object body, so schema comments must live outside it).
+//
+// P0-01: sources[] items accept optional `role` (primary/secondary) + `doi`.
+// Absent role = legacy entry, rendered as secondary. Never invented: entries
+// without verified primary data simply omit role/doi.
+//
+// P0-02: `evidence_subject_type` is optional; absent = legacy (rendered as
+// "no clasificado", never inferred). Salud posts with a non-clinical or
+// unknown type get a strong guardrail at render (TrustPanel).
+//
+// P0-06 / DEC-003: `why_it_matters` ("Qué cambia") allows 0-3 items with no
+// minimum; cardinality is enforced at field level below.
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
@@ -75,6 +90,20 @@ const posts = defineCollection({
         )
         .optional(),
 
+      evidence_subject_type: z
+        .enum([
+          'humans',
+          'animals',
+          'in_vitro',
+          'computational',
+          'observational',
+          'experimental',
+          'mixed',
+          'unknown',
+        ])
+        .optional(),
+      evidence_detail: z.string().min(1).max(280).optional(),
+
       why_it_matters: z.array(z.string().min(1)).max(3).optional(),
       series: z.string().optional(),
 
@@ -85,6 +114,11 @@ const posts = defineCollection({
             url: z.url(),
             publisher: z.string().optional(),
             date: z.string().optional(),
+            role: z.enum(['primary', 'secondary']).optional(),
+            doi: z
+              .string()
+              .regex(/^10\.\d{4,}\/.+/, 'doi must look like 10.xxxx/...')
+              .optional(),
           })
         )
         .optional(),

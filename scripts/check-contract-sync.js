@@ -383,6 +383,15 @@ function parsePythonSchema(source) {
   const constants = extractPythonConstants(source);
   const models = {};
 
+  // str-Enum subclasses (e.g. `class SourceRole(str, Enum)`) serialize as
+  // plain strings — treat them as string fields, not nested models.
+  const strEnums = new Set();
+  const enumRe = /^class (\w+)\(\s*str\s*,\s*Enum\s*\):/gm;
+  let enumMatch;
+  while ((enumMatch = enumRe.exec(source)) !== null) {
+    strEnums.add(enumMatch[1]);
+  }
+
   // Find all class Xxx(BaseModel): blocks
   const classRe = /^class (\w+)\(BaseModel\):/gm;
   let classMatch;
@@ -429,6 +438,18 @@ function parsePythonSchema(source) {
 
       const { type, optional, unionTypes, nestedModel, itemType, itemNestedModel, isInteger } =
         parsePythonType(cleanType);
+
+      // Map str-Enum references to plain strings
+      let fType = type;
+      let fNestedModel = nestedModel;
+      const enumBase = cleanType
+        .replace(/^Optional\[(.+)\]$/, '$1')
+        .replace(/^List\[(.+)\]$/, '$1')
+        .trim();
+      if (strEnums.has(enumBase)) {
+        fType = 'string';
+        fNestedModel = null;
+      }
       const { constraints, defaultValue, isRequired } = parseFieldArgs(fieldArgs, constants);
 
       // Determine optionality
@@ -456,12 +477,12 @@ function parsePythonSchema(source) {
 
       fields.push({
         name,
-        type,
+        type: fType,
         optional: isOptional,
         default: finalDefault,
         constraints,
         unionTypes,
-        nestedModel,
+        nestedModel: fNestedModel,
         itemType,
         itemNestedModel,
       });

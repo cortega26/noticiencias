@@ -221,6 +221,9 @@ const breadcrumbItems = [
           requiresUncertaintyNote={post.requires_uncertainty_note}
           translationMethod={post.translation_method}
           reviewStatus={post.review_status}
+          evidenceSubjectType={post.evidence_subject_type}
+          evidenceDetail={post.evidence_detail}
+          isHealthCategory={post.category?.slug === 'salud'}
         />
 
         <TopicStrip
