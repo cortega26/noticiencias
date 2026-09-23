@@ -562,3 +562,55 @@ Sin cuenta, sin correo, sin backend nuevo.
 El «unfollow» es responsabilidad del lector de RSS y se declara en la
 propia página. Preferencias de newsletter por tema quedan como opción
 futura solo si Buttondown las garantiza.
+
+## DEC-027 — Contrato de eventos del embudo GA4
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-03 pide un embudo reconstruible con nombres/params consistentes y sin
+PII. Existían `newsletter_signup`, `outbound_source_click`, `scroll_75` y
+`search`, con `scroll_75` ya renombrado en el papel pero acoplado a un
+umbral único.
+
+### Decision
+
+El contrato son los eventos de `src/utils/browser/analytics-events.ts`:
+`article_view`, `article_50`, `article_90`, `primary_source_click`,
+`outbound_source_click`, `related_article_click`,
+`newsletter_impression`, `newsletter_start`, `newsletter_submit`,
+`series_click`, `topic_click`, `search`. Params: rutas, slugs, dominios,
+`form_id` y `related_kind`; nunca correo ni identidad.
+`newsletter_signup` → `newsletter_submit`; `scroll_75` →
+`article_50`/`article_90` (50/90 %). `article_view` se deduplica por
+artículo y sesión. La impresión del boletín se mide por visibilidad en
+scroll, sin IntersectionObserver.
+
+### Consequences
+
+Renombrar un evento exige actualizar `docs/EDITORIAL_METRICS.md` en el
+mismo cambio. Los datos históricos de `newsletter_signup`/`scroll_75`
+quedan como serie antigua. El operador crea las dimensiones nuevas en
+GA4 (FU-022).
+
+## DEC-028 — KPIs editoriales en docs/EDITORIAL_METRICS.md
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Decision
+
+`docs/EDITORIAL_METRICS.md` es la definición canónica de los 8 KPIs
+(retorno 7/28 días, conversión del boletín, CTR de relacionadas y de
+fuente primaria, finalización de artículo, segunda lectura), cada uno con
+definición, fórmula, evento fuente, interpretación y limitaciones.
+Buttondown es la autoridad para suscripciones confirmadas; GA4 mide
+intención. Todo total es un piso por Consent Mode, no un censo.
+
+### Consequences
+
+Los informes deben citar la fórmula del documento; si un evento cambia,
+el KPI se revisa en el mismo cambio. Las limitaciones declaradas evitan
+leer los números como métricas exactas.

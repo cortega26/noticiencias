@@ -26,7 +26,7 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
 | 6    | Conversion & Collections     |   DONE | —                            | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
 | 7    | Discovery & Retention        |   DONE | —                            | f90dd8a (#214)                   | 3/3 findings mergeados; validación integral PASS; Codacy 0 tras fix f84cf94                | Ver reporte Wave 7 arriba |
-| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
+| 8    | Measurement                  | REVIEW | audit/wave-08-measurement    | —                                | 2/2 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 8 abajo  |
 
 ## Findings
 
@@ -57,8 +57,8 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P2-01 |    7 | REVIEW | P0-08       | fcde137 | unit related 6/6 + dist 3/3; umbral 2; fallback «Más reciente» verificado                                                        | ranking semántico; cadena muerta eliminada                                        |
 | P2-06 |    7 | REVIEW | P1-03       | d9611e8 | unit+dist hub; 3 hubs curados; tags singleton sin bloques; axe /temas/coral/ PASS                                                | masa crítica >=2; noindex intacto                                                 |
 | P2-05 |    7 | REVIEW | P1-08,P2-06 | f4ec04f | 157 feeds por tema; dist follow PASS; unfollow explícito                                                                         | RSS temático sin cuenta                                                           |
-| P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                                | GA4 funnel                                                                        |
-| P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                                | KPIs                                                                              |
+| P2-03 |    8 | REVIEW | P1-06,P2-01 | 1748bd1 | unit+dist+e2e (analytics 6/6, consent 22/22); 11 eventos en el bundle; nombres viejos fuera                                      | embudo GA4 sin PII                                                                |
+| P2-04 |    8 | REVIEW | P2-03       | 7b4ca4d | docs/EDITORIAL_METRICS.md con 8 KPIs (definición/fórmula/evento/límites)                                                         | entregable documental                                                             |
 
 ## Wave report template
 
@@ -725,6 +725,88 @@ Evidencias DOM en `dist/`:
 
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (759/760; fallo ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 8 — Measurement
+
+Date: 2026-09-23
+Branch: audit/wave-08-measurement (base: main @ d8a34dd)
+Status: REVIEW
+
+### Findings
+
+- P2-03 — REVIEW — 1748bd1
+- P2-04 — REVIEW — 7b4ca4d
+
+### Validation
+
+- unit: `npm run test:audit` → 764 de 765 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos:
+  `analytics-wiring.test.ts` 4/4 y `analytics-events.test.ts`
+  actualizado (11/11).
+- e2e regular: `npx playwright test` → 77 PASS, 1 skip preexistente
+  (incluye `analytics.test.ts` 6/6 con dataLayer real: article_view,
+  article_50/90, newsletter_impression/start/submit, topic_click,
+  related_article_click y primary_source_click).
+- e2e consentimiento: `npm run test:e2e:consent` → 22/22 PASS (incluye
+  `newsletter_submit` con `form_id` y el nuevo read depth).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas
+- visual: sin cambios visuales (solo data attributes y docs)
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS
+- contract: sin cambios de schema (N/A)
+
+Evidencias en `dist/` y bundle:
+
+- 11 eventos del embudo presentes en el JS compilado; `newsletter_signup`
+  y `scroll_75` ya no existen.
+- Artículo: `[data-analytics-article]` ×1, `[data-analytics-primary-source]`
+  ×1 (sin `data-analytics-source` en primaria), `[data-analytics-related]`
+  con `related_kind`.
+- Portada: hooks `data-analytics-topic`/`data-analytics-series` y
+  formularios con `data-newsletter-form-id` (hero/final).
+- `privacidad.md` declara los eventos nuevos; checklist del operador
+  actualizado (evento clave, dimensiones y smoke test).
+
+### Regressions checked
+
+- La impresión del boletín se mide en scroll (sin IntersectionObserver)
+  para no romper el invariante del lifecycle suite (observers lineales);
+  verificado 77/77 en la suite regular.
+- `article_view` se deduplica por artículo y sesión (no infla la segunda
+  lectura); el read depth conserva el «sin chequeo inmediato» para
+  artículos cortos.
+- Los enlaces primarios ya no disparan `outbound_source_click` (evento
+  específico); la cobertura sigue disparándolo.
+- Sin JS nuevo de terceros; sin cambios de consentimiento ni de CSP.
+
+### Decisions added
+
+- DEC-027 (contrato de eventos del embudo GA4)
+- DEC-028 (KPIs editoriales en `docs/EDITORIAL_METRICS.md`)
+
+### Follow-ups
+
+- FU-001, FU-010, FU-011, FU-012, FU-014, FU-015, FU-016, FU-017,
+  FU-019, FU-020, FU-021 vigentes.
+- FU-018 resuelto (resultado del boletín: impresión, inicio y envío).
+- FU-022 (nuevo): el operador debe crear en GA4 las dimensiones
+  personalizadas nuevas (`form_id`, `article_path`, `target_path`,
+  `related_kind`, `series_slug`, `topic_slug`) y marcar
+  `newsletter_submit` como evento clave (checklist actualizado).
+- FU-023 (nuevo): no hay evento de impresión del bloque relacionado; el
+  CTR usa `article_view` como denominador proxy.
+- FU-024 (nuevo): comparar `newsletter_submit` (intención) con las
+  suscripciones confirmadas de Buttondown para la conversión real.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (764/765; fallo ambiental FU-012)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated
