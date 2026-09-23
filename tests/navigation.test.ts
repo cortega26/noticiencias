@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('astrowind:config', () => ({
-  SITE: { base: '/' },
+  SITE: { base: '/', trailingSlash: true },
   I18N: { language: 'es' },
   APP_BLOG: {
     list: { pathname: 'blog' },
@@ -11,33 +11,49 @@ vi.mock('astrowind:config', () => ({
   },
 }));
 
-import { headerData, footerData, homeSectionItems } from '../src/navigation';
+import { headerData, footerData } from '../src/navigation';
 import { configuredCategorySections } from '../src/utils/categorySections';
 
+interface MenuEntry {
+  text?: string;
+  href?: string;
+  links?: MenuEntry[];
+}
+
 describe('navigation data', () => {
-  it('builds one home section item per configured category', () => {
-    expect(homeSectionItems).toHaveLength(configuredCategorySections.length);
-    expect(homeSectionItems[0]).toMatchObject({
-      title: configuredCategorySections[0].title,
-      description: configuredCategorySections[0].description,
-    });
+  it('keeps the primary header at six content entries', () => {
+    expect(headerData.links.map((link) => link.text)).toEqual([
+      'Ciencia',
+      'Astronomía',
+      'Salud',
+      'Tecnología',
+      'Editorial',
+      'Más',
+    ]);
   });
 
-  it('only puts showInHeader categories directly in the header, the rest under "Más"', () => {
-    const directLinks = headerData.links.filter((link) => !('links' in link));
-    const overflowGroup = headerData.links.find((link) => 'links' in link) as
-      | { links: { text: string }[] }
-      | undefined;
+  it('nests science sub-disciplines under Ciencia instead of competing with it', () => {
+    const ciencia = headerData.links.find((link) => link.text === 'Ciencia') as MenuEntry;
 
-    const expectedPrimary = configuredCategorySections.filter((c) => c.showInHeader);
-    const expectedOverflow = configuredCategorySections.filter((c) => !c.showInHeader);
+    expect(ciencia.links?.map((link) => link.text)).toEqual([
+      'Toda la sección',
+      'Física',
+      'Química',
+      'Biología',
+    ]);
 
-    // directLinks also includes the trailing static "Series" link.
-    expect(directLinks.length).toBe(expectedPrimary.length + 1);
-    expect(directLinks.at(-1)).toMatchObject({ text: 'Series' });
+    const topLevelTexts = headerData.links
+      .filter((link) => !('links' in link))
+      .map((link) => link.text);
+    expect(topLevelTexts).not.toContain('Física');
+    expect(topLevelTexts).not.toContain('Química');
+    expect(topLevelTexts).not.toContain('Biología');
+  });
 
-    expect(expectedOverflow.length).toBeGreaterThan(0);
-    expect(overflowGroup?.links).toHaveLength(expectedOverflow.length);
+  it('keeps Arqueología and Series under the overflow menu', () => {
+    const overflow = headerData.links.find((link) => link.text === 'Más') as MenuEntry;
+
+    expect(overflow.links?.map((link) => link.text)).toEqual(['Arqueología', 'Series']);
   });
 
   it('always exposes a Buscar action', () => {
