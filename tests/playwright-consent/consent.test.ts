@@ -22,10 +22,10 @@ const banner = (page: Page) => page.locator('#consent-banner');
 // keeps shifting after `load`, which makes banner clicks expire mid-flight
 // (stale "intercepts pointer events" reports). Settle network AND fonts
 // before interacting. Assertions below are unchanged.
-const gotoSettled = (page: Page, url = '/') =>
-  page
-    .goto(url, { waitUntil: 'networkidle' })
-    .then(() => page.evaluate(() => document.fonts.ready.then(() => undefined)));
+async function gotoSettled(page: Page, url = '/'): Promise<void> {
+  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+}
 
 test.beforeEach(async ({ page }) => {
   await stubGoogle(page);
