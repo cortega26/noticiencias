@@ -23,8 +23,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const siteYamlConfig = yaml.load(safeRead('src/config.yaml'));
 const tagPathname = siteYamlConfig?.apps?.blog?.tag?.pathname ?? 'tag';
 const tagBasePath = `/${String(tagPathname)
-                        .replace(/^\/+|\/+$/g, '')
-                        .toLowerCase()}/`;
+  .replace(/^\/+|\/+$/g, '')
+  .toLowerCase()}/`;
 
 // https://astro.build/config
 export default defineConfig({
@@ -54,11 +54,11 @@ export default defineConfig({
           'voice-presentation',
           'business-contact',
           'database',
-          ],
+        ],
       },
     }),
     astrowind({ config: './src/config.yaml' }),
-    ],
+  ],
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
@@ -80,7 +80,7 @@ export default defineConfig({
       'upload.wikimedia.org',
       'static.scientificamerican.com',
       'images.newscientist.com',
-      ],
+    ],
   },
   vite: {
     plugins: [tailwindcss()],
