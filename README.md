@@ -67,6 +67,7 @@ Useful local commands:
 - [`docs/tagging.md`](docs/tagging.md): cross-repo tagging contract.
 - [`docs/audits/2026-04-source-of-truth-audit.md`](docs/audits/2026-04-source-of-truth-audit.md): historical April 2026 documentation audit (not current governance).
 - [`docs/backlog/source-of-truth-backlog.md`](docs/backlog/source-of-truth-backlog.md): historical follow-up backlog from that audit; current plan statuses live in the backend's [`../noticiencias_news_collector/plans/README.md`](https://github.com/cortega26/noticiencias_news_collector/blob/main/plans/README.md).
+- [`docs/OPERATOR_PENDING.md`](docs/OPERATOR_PENDING.md): pending operator actions (GA4, edge CSP, growth report, benchmark ranking) with steps and verification.
 
 ## Back-End System
 

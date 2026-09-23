@@ -862,6 +862,7 @@ Fuera de wave, se cierran los follow-ups que quedaban abiertos. Rama
 
 ### Estado final
 
-Ningún follow-up del programa queda abierto como deuda técnica. Lo único
-pendiente son las acciones de operador listadas arriba y el roadmap
-(planes 005/006, plan 048 a ≥200 registros, revisita del benchmark LLM).
+Ningún follow-up del programa queda abierto como deuda técnica. Las
+acciones de operador quedan consolidadas, con pasos y verificación, en
+`docs/OPERATOR_PENDING.md`; el resto es roadmap (planes 005/006, plan 048 a
+≥200 registros, revisita del benchmark LLM).

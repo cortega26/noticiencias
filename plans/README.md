@@ -16,17 +16,17 @@ ships its feature — each names the later build it unblocks.
 
 ## Execution order & status
 
-| Plan | Title                                                                | Priority | Effort | Depends on                               | Status                                                                                                                  |
-| ---- | -------------------------------------------------------------------- | -------- | ------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 001  | Newsletter backend spike (`archive/001-newsletter-backend-spike.md`) | P1       | M      | —                                        | DONE (ADR-0009 Accepted 2026-09-16, Buttondown; reviewed 2026-09-15)                                                    |
-| 002  | Corrections loop spike (`archive/002-corrections-loop-spike.md`)     | P1       | M      | —                                        | DONE (ADR-0010 Accepted 2026-09-17; build unscheduled, waits for schema-change capacity)                                |
-| 003  | Traffic analytics spike (`archive/003-traffic-analytics-spike.md`)   | P2       | S–M    | —                                        | DONE (ADR-0011 Accepted 2026-09-16, Cloudflare WA; reviewed 2026-09-15)                                                 |
-| 004  | Series fate spike (`archive/004-series-fate-spike.md`)               | P2       | S      | —                                        | DONE (verdict SUPERSEDED 2026-09-17 — 21 posts in 3 live series via 114/#178; REMOVE path closed; see below)            |
-| 005  | Recursos library spike (`005-recursos-library-spike.md`)             | P3       | S–M    | —                                        | TODO                                                                                                                    |
-| 006  | Social graduation spike (`006-social-graduation-spike.md`)           | P2       | M      | —                                        | TODO                                                                                                                    |
-| 007  | Analytics build (`archive/007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | DONE (beacon behind token gate, ships disabled; manual snippet, edge-CSP task recorded; 2026-09-16)                     |
-| 008  | Newsletter build (`archive/008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | DONE (Buttondown wired via PR #179; edge-CSP rule + live double-opt-in check are operator follow-up)                    |
-| 009  | Analytics GA4 + Consent Mode (`009-analytics-ga4-consent.md`)        | P1       | M      | ADR-0012 Accepted                        | IN PROGRESS (built and enabled 2026-09-18; post-deploy verification pending — see docs/ANALYTICS_OPERATOR_CHECKLIST.md) |
+| Plan | Title                                                                | Priority | Effort | Depends on                               | Status                                                                                                                                             |
+| ---- | -------------------------------------------------------------------- | -------- | ------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 001  | Newsletter backend spike (`archive/001-newsletter-backend-spike.md`) | P1       | M      | —                                        | DONE (ADR-0009 Accepted 2026-09-16, Buttondown; reviewed 2026-09-15)                                                                               |
+| 002  | Corrections loop spike (`archive/002-corrections-loop-spike.md`)     | P1       | M      | —                                        | DONE (ADR-0010 Accepted 2026-09-17; build unscheduled, waits for schema-change capacity)                                                           |
+| 003  | Traffic analytics spike (`archive/003-traffic-analytics-spike.md`)   | P2       | S–M    | —                                        | DONE (ADR-0011 Accepted 2026-09-16, Cloudflare WA; reviewed 2026-09-15)                                                                            |
+| 004  | Series fate spike (`archive/004-series-fate-spike.md`)               | P2       | S      | —                                        | DONE (verdict SUPERSEDED 2026-09-17 — 21 posts in 3 live series via 114/#178; REMOVE path closed; see below)                                       |
+| 005  | Recursos library spike (`005-recursos-library-spike.md`)             | P3       | S–M    | —                                        | TODO                                                                                                                                               |
+| 006  | Social graduation spike (`006-social-graduation-spike.md`)           | P2       | M      | —                                        | BLOCKED — premisa invertida (flag `true` desde 2026-09-14, verificado 2026-09-17); va por reframe/auditoría, no por ADR-0012 (ver `ROADMAP.md` §2) |
+| 007  | Analytics build (`archive/007-analytics-build.md`)                   | P1       | S      | ADR-0011 Accepted                        | DONE (beacon behind token gate, ships disabled; manual snippet, edge-CSP task recorded; 2026-09-16)                                                |
+| 008  | Newsletter build (`archive/008-newsletter-build.md`)                 | P1       | S      | ADR-0009 Accepted + Q3 (endpoint/dueños) | DONE (Buttondown wired via PR #179; edge-CSP rule + live double-opt-in check are operator follow-up)                                               |
+| 009  | Analytics GA4 + Consent Mode (`009-analytics-ga4-consent.md`)        | P1       | M      | ADR-0012 Accepted                        | IN PROGRESS (built and enabled 2026-09-18; post-deploy verification pending — see docs/ANALYTICS_OPERATOR_CHECKLIST.md)                            |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale — finding fixed independently or approach abandoned)
 
@@ -84,9 +84,9 @@ an unscheduled future build decision, not part of this verdict.
 
 ## Triage 2026-09-23
 
-Plans 005 (recursos library) and 006 (social graduation) remain **TODO**:
-they are product-direction spikes, not technical debt, and need a planning
-cycle to scope them. The technical-debt closure of the 2026-09 program
+Plans 005 (recursos library) remains **TODO** and 006 (social graduation)
+is **BLOCKED** pending its reframe/audit: both are product-direction work,
+not technical debt, and need a planning cycle to scope them. The technical-debt closure of the 2026-09 program
 (e2e flakes, editorial checker, related-content measurement, stale backlogs)
 is recorded in `docs/products/audit-2026-09/IMPLEMENTATION_LEDGER.md` and
 does not change this index.
