@@ -322,3 +322,27 @@ cobertura → sabidos → pendientes.
 Wave 4+ reutiliza estos campos (chips, pre-body) sin duplicar fuentes de
 verdad. Si el panel crece demasiado, dividir por secciones con datos,
 no por componentes paralelos.
+
+## DEC-018 — El bloque se llama «Qué cambia», no «Por qué importa»
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+El backlog (P1-05) sugería «Por qué importa», pero el guardarraíl de voz
+`tests/quick-wins-regression.test.ts` prohíbe esa frase exacta por
+genérica de revista-IA. El fallo se detectó al correr la suite (causa
+raíz: colisión entre programa y gobernanza activa del repo).
+
+### Decision
+
+Nombrar el bloque «Qué cambia»: vocabulario canónico del programa
+(P0-06/DEC-003) para `why_it_matters`, no baneado, preciso. Se preserva
+el objetivo y los acceptance criteria de P1-05 (nombre = orientativo,
+criterios = contrato, DEC-002).
+
+### Consequences
+
+Futuras waves que citen «Por qué importa» del backlog deben leer «Qué
+cambia». No debilitar el guardarraíl de voz para acomodar copy.

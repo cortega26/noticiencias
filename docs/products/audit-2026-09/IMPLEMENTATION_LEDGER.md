@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                                  | Gate                             | Notas                                            |
-| ---- | ---------------------------- | -----: | ------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------ |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline                | —                                | Docs-only; sin cambios de producto               |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes          | —                                | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      |   DONE | —                                     | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)  |
-| 3    | Evidence & Accountability UX | REVIEW | audit/wave-03-evidence-accountability | —                                | 4/4 findings en REVIEW; backend PR #325          | Ver reporte Wave 3 abajo |
-| 4    | Article UX                   |   TODO | —                                     | —                                | Depende de P0-01/P0-02/P0-06                     |
-| 5    | Home, Recency & IA           |   TODO | —                                     | —                                | Después de Article UX                            |
-| 6    | Conversion & Collections     |   TODO | —                                     | —                                | Después de Home                                  |
-| 7    | Discovery & Retention        |   TODO | —                                     | —                                | Depende de taxonomía                             |
-| 8    | Measurement                  |   TODO | —                                     | —                                | Última wave del programa inicial                 |
+| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                 |
+| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | --------------------------------------------------------------------- | ------------------------ |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                    |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                      | Ver reporte Wave 1 abajo |
+| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                       |
+| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0 |
+| 4    | Article UX                   | REVIEW | audit/wave-04-article-ux     | —                                | 2/2 findings en REVIEW                                                | Ver reporte Wave 4 abajo |
+| 5    | Home, Recency & IA           |   TODO | —                            | —                                | Después de Article UX                                                 |
+| 6    | Conversion & Collections     |   TODO | —                            | —                                | Después de Home                                                       |
+| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                  |
+| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                      |
 
 ## Findings
 
@@ -44,8 +44,8 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P0-09 |    3 | REVIEW | —           | be3f248 | IA solo en piezas AI; sin reviewer (no inventado); fallback institucional                                                        | ningún post declara reviewer (sin dato verificado)                                |
 | P2-02 |    3 | REVIEW | P0-06       | be3f248 | bloques omisibles; backfill 3+2/3+3 desde fuentes                                                                                | sin especulación; legacy sin bloques                                              |
 | P2-07 |    3 | REVIEW | —           | be3f248 | par viaja junto (schema+espejo); nota visible fechada; legacy sin caja                                                           | sin correcciones pendientes en corpus                                             |
-| P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                                | Pre-body                                                                          |
-| P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Header evidencia                                                                  |
+| P1-05 |    4 | REVIEW | P0-06       | 8bff3af | Lo esencial ≤3 + Qué cambia (DEC-018); dist+visual                                                                               | pre-body consolidado sin perder info                                              |
+| P1-04 |    4 | REVIEW | P0-01,P0-02 | 8bff3af | chips ≤3 vía TopicBadge; dist+visual 375/1280                                                                                    | sin dashboard; legacy sin chips                                                   |
 | P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                                | Home                                                                              |
 | P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                                | Recency                                                                           |
 | P1-03 |    5 | TODO   | —           | —       | —                                                                                                                                | Taxonomía                                                                         |
@@ -388,6 +388,72 @@ Evidencias DOM en `dist/`:
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (727/727 con espejo; fallo local
       ambiental documentado)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 4 — Article UX
+
+Date: 2026-09-24
+Branch: audit/wave-04-article-ux (base: main @ d0d8168)
+Status: REVIEW
+
+### Findings
+
+- P1-05 — REVIEW — pendiente commit
+- P1-04 — REVIEW — pendiente commit
+
+### Validation
+
+- unit: `npm run test:audit` → 62 ficheros / 731 tests PASS con espejo
+  vigente (nuevo `article-header-wave4` 4/4)
+- integration: `npm run validate:content` → exit 0
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check`
+- build: exit 0, 232 páginas
+- visual: screenshots 375 + 1280 del artículo biomédico, 0 errores de
+  consola; chips en fila compacta (desktop) y wrap limpio (móvil)
+- SEO/SSR: `test:dist` 232 PASS; sin cambios URL/títulos/metadata
+- contract: sin cambios de schema (N/A)
+- other: e2e consent no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Biomédico: chips [Modelo: fases mixtas, Preprint, Fuente primaria];
+  Lo esencial ×1 bloque; Qué cambia ×1; En breve/En la práctica ×0.
+- Herculano (5 summary_points): cada bloque Lo esencial visible con
+  exactamente 3 bullets.
+- Legacy: sin fila de chips; bloques renombrados igual (componente
+  compartido).
+
+### Regressions checked
+
+- `quick-wins-regression` detectó «Por qué importa» baneado → renombrado
+  a «Qué cambia» (DEC-018), guardarraíl intacto y verde.
+- Labels compartidos en `src/utils/evidence-labels.ts` (segundo uso
+  concreto; TrustPanel importa del mismo mapa, sin duplicar).
+- `metodologia.md` actualizado (docs siguen a código).
+- Legacy sin datos: sin chips, sin bloques vacíos.
+- Sin JS nuevo; sin cambios consentimiento/analytics/URLs/RSS.
+
+### Decisions added
+
+- DEC-018 («Qué cambia» vs guardarraíl de voz)
+
+### Follow-ups
+
+- FU-001 vigente; FU-004 vigente; FU-006 (→W6); FU-008 (→primaria
+  registrada); FU-009 (→W7); FU-010; FU-011 (stale branch backend);
+  FU-012 (test local ambiental).
+- Sin espejo backend en esta wave (sin cambios de schema).
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (731/731 con espejo vigente de main;
+      el fallo local de contract-sync-test es ambiental por checkout hermano
+      desactualizado, FU-012; el de voz se resolvió con DEC-018)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated
