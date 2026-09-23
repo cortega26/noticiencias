@@ -30,35 +30,35 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Findings
 
-| ID    | Wave | Estado | Depends on  | Commit | Tests/Validation | Notas                     |
-| ----- | ---: | ------ | ----------- | ------ | ---------------- | ------------------------- |
-| P0-04 |    1 | TODO   | —           | —      | —                | Herculano                 |
-| P0-05 |    1 | TODO   | —           | —      | —                | Biomédico                 |
-| P0-07 |    1 | TODO   | —           | —      | —                | DOM duplicado             |
-| P0-08 |    1 | TODO   | —           | —      | —                | “Relacionado”             |
-| P0-10 |    1 | TODO   | —           | —      | —                | Privacidad                |
-| P0-01 |    2 | TODO   | —           | —      | —                | Fuente primaria           |
-| P0-02 |    2 | TODO   | —           | —      | —                | Tipo de evidencia         |
-| P0-06 |    2 | TODO   | —           | —      | —                | Qué cambia                |
-| P0-03 |    3 | TODO   | P0-01,P0-02 | —      | —                | Ficha científica          |
-| P0-09 |    3 | TODO   | —           | —      | —                | Responsabilidad editorial |
-| P2-02 |    3 | TODO   | P0-06       | —      | —                | Sabemos/no sabemos        |
-| P2-07 |    3 | TODO   | —           | —      | —                | Correcciones              |
-| P1-05 |    4 | TODO   | P0-06       | —      | —                | Pre-body                  |
-| P1-04 |    4 | TODO   | P0-01,P0-02 | —      | —                | Header evidencia          |
-| P1-01 |    5 | TODO   | P1-04,P1-05 | —      | —                | Home                      |
-| P1-02 |    5 | TODO   | P1-01       | —      | —                | Recency                   |
-| P1-03 |    5 | TODO   | —           | —      | —                | Taxonomía                 |
-| P1-09 |    5 | TODO   | —           | —      | —                | Headlines                 |
-| P1-06 |    6 | TODO   | P1-01       | —      | —                | Newsletter inline         |
-| P1-07 |    6 | TODO   | P1-06       | —      | —                | Newsletter landing        |
-| P1-08 |    6 | TODO   | —           | —      | —                | Seguir temas              |
-| P1-10 |    6 | TODO   | —           | —      | —                | Series                    |
-| P2-01 |    7 | TODO   | P0-08       | —      | —                | Related semántico         |
-| P2-06 |    7 | TODO   | P1-03       | —      | —                | Topic hubs                |
-| P2-05 |    7 | TODO   | P1-08,P2-06 | —      | —                | Follow real               |
-| P2-03 |    8 | TODO   | P1-06,P2-01 | —      | —                | GA4 funnel                |
-| P2-04 |    8 | TODO   | P2-03       | —      | —                | KPIs                      |
+| ID    | Wave | Estado | Depends on  | Commit  | Tests/Validation                                                                                                              | Notas                                                                             |
+| ----- | ---: | ------ | ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| P0-04 |    1 | REVIEW | —           | bb3e860 | lint + validate:content PASS; fuente scitechdaily verificada (PLOS ONE DOI 10.1371/journal.pone.0353485 guardado para Wave 2) | papiro/pergamino, attenuación, eruptó; Epicuro se conserva fiel a fuente citada   |
+| P0-05 |    1 | REVIEW | —           | d4b6d5d | lint + validate:content PASS; claims contra preprint bioRxiv (PDF métodos/discusión)                                          | huésped NOD SCID declarado; nota ya no pide validación animal; KC n=2 descriptivo |
+| P0-07 |    1 | TODO   | —           | —       | —                                                                                                                             | DOM duplicado                                                                     |
+| P0-08 |    1 | TODO   | —           | —       | —                                                                                                                             | “Relacionado”                                                                     |
+| P0-10 |    1 | TODO   | —           | —       | —                                                                                                                             | Privacidad                                                                        |
+| P0-01 |    2 | TODO   | —           | —       | —                                                                                                                             | Fuente primaria                                                                   |
+| P0-02 |    2 | TODO   | —           | —       | —                                                                                                                             | Tipo de evidencia                                                                 |
+| P0-06 |    2 | TODO   | —           | —       | —                                                                                                                             | Qué cambia                                                                        |
+| P0-03 |    3 | TODO   | P0-01,P0-02 | —       | —                                                                                                                             | Ficha científica                                                                  |
+| P0-09 |    3 | TODO   | —           | —       | —                                                                                                                             | Responsabilidad editorial                                                         |
+| P2-02 |    3 | TODO   | P0-06       | —       | —                                                                                                                             | Sabemos/no sabemos                                                                |
+| P2-07 |    3 | TODO   | —           | —       | —                                                                                                                             | Correcciones                                                                      |
+| P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                             | Pre-body                                                                          |
+| P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                             | Header evidencia                                                                  |
+| P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                             | Home                                                                              |
+| P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                             | Recency                                                                           |
+| P1-03 |    5 | TODO   | —           | —       | —                                                                                                                             | Taxonomía                                                                         |
+| P1-09 |    5 | TODO   | —           | —       | —                                                                                                                             | Headlines                                                                         |
+| P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                             | Newsletter inline                                                                 |
+| P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                             | Newsletter landing                                                                |
+| P1-08 |    6 | TODO   | —           | —       | —                                                                                                                             | Seguir temas                                                                      |
+| P1-10 |    6 | TODO   | —           | —       | —                                                                                                                             | Series                                                                            |
+| P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                             | Related semántico                                                                 |
+| P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                             | Topic hubs                                                                        |
+| P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                             | Follow real                                                                       |
+| P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                             | GA4 funnel                                                                        |
+| P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                             | KPIs                                                                              |
 
 ## Wave report template
 
