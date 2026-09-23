@@ -7,8 +7,8 @@ import astrowind from './src/integration';
 
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
+import { safeRead } from './src/utils/safeFs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Ahrefs Site Audit flagged 150 noindexed /temas/[tag]/ URLs in the sitemap
@@ -18,11 +18,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // apps.blog.tag.pathname, mirrored by TAG_BASE in src/utils/permalinks.ts),
 // so it is read from that same file here instead of hardcoded, to avoid
 // silently reintroducing the defect if the pathname is ever renamed.
-const siteYamlConfig = yaml.load(
-  readFileSync(path.resolve(__dirname, './src/config.yaml'), 'utf8')
-  );
+// Uses the repo's own safeRead (src/utils/safeFs.ts) rather than a raw
+// fs.readFileSync call.
+const siteYamlConfig = yaml.load(safeRead('src/config.yaml'));
 const tagPathname = siteYamlConfig?.apps?.blog?.tag?.pathname ?? 'tag';
-const tagBasePath = `/${String(tagPathname).replace(/^\/+|\/+$/g, '').toLowerCase()}/`;
+const tagBasePath = `/${String(tagPathname)
+                        .replace(/^\/+|\/+$/g, '')
+                        .toLowerCase()}/`;
 
 // https://astro.build/config
 export default defineConfig({
