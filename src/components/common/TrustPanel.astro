@@ -1,11 +1,14 @@
 ---
 import { Icon } from 'astro-icon/components';
+import type { Post } from '~/types';
 
 interface Source {
   title: string;
   url: string;
   publisher?: string;
   date?: string;
+  role?: 'primary' | 'secondary';
+  doi?: string;
 }
 
 interface Props {
@@ -16,6 +19,9 @@ interface Props {
   requiresUncertaintyNote?: boolean;
   translationMethod?: string;
   reviewStatus?: string;
+  evidenceSubjectType?: Post['evidence_subject_type'];
+  evidenceDetail?: string;
+  isHealthCategory?: boolean;
 }
 
 const {
@@ -26,6 +32,9 @@ const {
   requiresUncertaintyNote,
   translationMethod,
   reviewStatus,
+  evidenceSubjectType,
+  evidenceDetail,
+  isHealthCategory = false,
 } = Astro.props;
 
 const confidenceLabel: Record<string, string> = {
@@ -34,15 +43,38 @@ const confidenceLabel: Record<string, string> = {
   baja: 'Evidencia en debate',
 };
 
+// P0-01: primary sources (verified paper/DOI) outrank secondary coverage.
+// Entries without an explicit role are legacy and render as secondary,
+// so legacy posts render exactly as before.
+const primarySources = (sources ?? []).filter((s) => s.role === 'primary');
+const secondarySources = (sources ?? []).filter((s) => s.role !== 'primary');
+
 const hasContent =
   Boolean(confidence) ||
   Boolean(uncertaintyNote) ||
   Boolean(translationMethod) ||
   Boolean(reviewStatus) ||
+  Boolean(evidenceSubjectType) ||
   (factCheck?.length ?? 0) > 0 ||
   (sources?.length ?? 0) > 0;
 
 if (!hasContent) return null;
+
+// P0-02: human-readable evidence labels. `unknown`/absent is never
+// upgraded: Salud posts without human evidence get a strong guardrail.
+const evidenceLabels: Record<NonNullable<Post['evidence_subject_type']>, string> = {
+  humans: 'personas',
+  animals: 'animales',
+  in_vitro: 'cultivo celular',
+  computational: 'simulación computacional',
+  observational: 'estudio observacional',
+  experimental: 'experimento de laboratorio',
+  mixed: 'fases mixtas (ver detalle)',
+  unknown: 'no clasificado',
+};
+
+const showHealthGuardrail =
+  isHealthCategory && !!evidenceSubjectType && evidenceSubjectType !== 'humans';
 ---
 
 <aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">
@@ -84,6 +116,34 @@ if (!hasContent) return null;
         ))
     }
     {
+      evidenceSubjectType && (
+        <p>
+          <strong class="text-text-body">Modelo experimental:</strong>{' '}
+          {evidenceLabels[evidenceSubjectType]}
+          {evidenceDetail ? ` — ${evidenceDetail}` : ''}.
+        </p>
+      )
+    }
+    {
+      showHealthGuardrail && (
+        <div class="my-2 rounded-md border-l-4 border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 p-4 text-amber-950 dark:text-amber-200">
+          <p class="text-sm leading-relaxed">
+            {evidenceSubjectType === 'mixed' ? (
+              <>
+                <strong>Evidencia mixta:</strong> parte de estos resultados no se probó en personas.
+                Verifica qué fase aplica antes de sacar conclusiones médicas.
+              </>
+            ) : (
+              <>
+                <strong>Estudio preclínico:</strong> estos resultados no se probaron en personas. No
+                es un tratamiento disponible ni una recomendación médica.
+              </>
+            )}
+          </p>
+        </div>
+      )
+    }
+    {
       (translationMethod || reviewStatus) && (
         <p>
           {translationMethod && (
@@ -115,11 +175,61 @@ if (!hasContent) return null;
       )
     }
     {
-      sources && sources.length > 0 && (
+      primarySources.length > 0 && (
         <div>
-          <h3 class="mb-2 font-semibold text-text-body">Fuentes</h3>
+          <h3 class="mb-2 font-semibold text-text-body">Fuente primaria</h3>
           <ul class="grid gap-2">
-            {sources.map((source) => (
+            {primarySources.map((source) => (
+              <li>
+                <a
+                  href={source.url}
+                  data-analytics-source
+                  class="font-medium text-primary underline-offset-4 hover:underline"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                  aria-label={`${source.title} (se abre en una pestaña nueva)`}
+                >
+                  {source.title}
+                </a>
+                {(source.publisher || source.date) && (
+                  <span class="block text-xs">
+                    {source.publisher}
+                    {source.publisher && source.date ? ' · ' : ''}
+                    {source.date}
+                  </span>
+                )}
+                {source.doi &&
+                  (source.url === `https://doi.org/${source.doi}` ? (
+                    <span class="block text-xs">DOI: {source.doi}</span>
+                  ) : (
+                    <span class="block text-xs">
+                      DOI:{' '}
+                      <a
+                        href={`https://doi.org/${source.doi}`}
+                        data-analytics-source
+                        class="underline-offset-4 hover:underline"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"
+                        aria-label={`DOI ${source.doi} (se abre en una pestaña nueva)`}
+                      >
+                        {source.doi}
+                      </a>
+                    </span>
+                  ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    {
+      secondarySources.length > 0 && (
+        <div>
+          <h3 class="mb-2 font-semibold text-text-body">
+            {primarySources.length > 0 ? 'Cobertura' : 'Fuentes'}
+          </h3>
+          <ul class="grid gap-2">
+            {secondarySources.map((source) => (
               <li>
                 <a
                   href={source.url}

@@ -56,7 +56,7 @@ Nos guían los siguientes compromisos:
 - **Trazabilidad total**: cada dato importante está enlazado a su fuente original.
 - **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
 - **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
-- **Privacidad real**: nuestra [política de privacidad](/privacidad/) es concreta, no un laberinto legal. No rastreamos, no vendemos datos, no usamos cookies de terceros.
+- **Privacidad real**: nuestra [política de privacidad](/privacidad/) es concreta, no un laberinto legal. Medimos lectura de forma agregada, sin rastreo publicitario, sin venta de datos y sin cookies de terceros.
 
 ## Contacto
 

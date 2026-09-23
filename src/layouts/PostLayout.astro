@@ -211,12 +211,7 @@ const breadcrumbItems = [
           <slot />
         </div>
 
-        <ArticleRail
-          post={post}
-          variant="inline"
-          sections={['glossary', 'sources']}
-          class="mt-10 lg:hidden"
-        />
+        <ArticleRail post={post} variant="inline" sections={['glossary']} class="mt-10 lg:hidden" />
 
         <TrustPanel
           confidence={post.confidence}
@@ -226,6 +221,9 @@ const breadcrumbItems = [
           requiresUncertaintyNote={post.requires_uncertainty_note}
           translationMethod={post.translation_method}
           reviewStatus={post.review_status}
+          evidenceSubjectType={post.evidence_subject_type}
+          evidenceDetail={post.evidence_detail}
+          isHealthCategory={post.category?.slug === 'salud'}
         />
 
         <TopicStrip
@@ -238,7 +236,18 @@ const breadcrumbItems = [
         <RelatedReading posts={relatedPosts} />
       </div>
 
-      <ArticleRail post={post} class="hidden lg:block lg:sticky lg:top-20 self-start" />
+      {
+        /*
+        Sources render only in TrustPanel (richer links + analytics hooks).
+        Keeping 'sources' out of the rail avoids rendering the same source
+        links twice in every viewport (P0-07).
+      */
+      }
+      <ArticleRail
+        post={post}
+        sections={['summary', 'glossary']}
+        class="hidden lg:block lg:sticky lg:top-20 self-start"
+      />
     </div>
   </article>
 </BaseLayout>

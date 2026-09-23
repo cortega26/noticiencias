@@ -13,6 +13,21 @@ import { z } from 'astro/zod';
 // rejects unknown keys — both mirror the backend `SocialConfig` model.
 const SOCIAL_ID_RE = /^[0-9a-f]{64}$/;
 
+// Wave 2 editorial contract notes (kept at module scope: the line-based
+// parser in scripts/check-contract-sync.js cannot skip `//` comments inside
+// the z.object body, so schema comments must live outside it).
+//
+// P0-01: sources[] items accept optional `role` (primary/secondary) + `doi`.
+// Absent role = legacy entry, rendered as secondary. Never invented: entries
+// without verified primary data simply omit role/doi.
+//
+// P0-02: `evidence_subject_type` is optional; absent = legacy (rendered as
+// "no clasificado", never inferred). Salud posts with a non-clinical or
+// unknown type get a strong guardrail at render (TrustPanel).
+//
+// P0-06 / DEC-003: `why_it_matters` ("Qué cambia") allows 0-3 items with no
+// minimum; cardinality is enforced at field level below.
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
@@ -75,7 +90,21 @@ const posts = defineCollection({
         )
         .optional(),
 
-      why_it_matters: z.array(z.string()).optional(),
+      evidence_subject_type: z
+        .enum([
+          'humans',
+          'animals',
+          'in_vitro',
+          'computational',
+          'observational',
+          'experimental',
+          'mixed',
+          'unknown',
+        ])
+        .optional(),
+      evidence_detail: z.string().min(1).max(280).optional(),
+
+      why_it_matters: z.array(z.string().min(1)).max(3).optional(),
       series: z.string().optional(),
 
       sources: z
@@ -85,6 +114,11 @@ const posts = defineCollection({
             url: z.url(),
             publisher: z.string().optional(),
             date: z.string().optional(),
+            role: z.enum(['primary', 'secondary']).optional(),
+            doi: z
+              .string()
+              .regex(/^10\.\d{4,}\/.+/, 'doi must look like 10.xxxx/...')
+              .optional(),
           })
         )
         .optional(),
@@ -98,6 +132,19 @@ const posts = defineCollection({
         .optional(),
     })
     .superRefine((data, ctx) => {
+      // --- sources cross-field validation (P0-01) ---
+      // A doi without role=primary is a meaningless state: the DOI only
+      // renders in the primary block, so reject it instead of silently
+      // dropping data at render time.
+      (data.sources ?? []).forEach((source, index) => {
+        if (source.doi && source.role !== 'primary') {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['sources', index, 'role'],
+            message: 'sources with doi must declare role: primary',
+          });
+        }
+      });
       // --- image_alt cross-field validation ---
       const objectAlt = typeof data.image === 'object' ? data.image.alt?.trim() : '';
       const frontmatterAlt = data.image_alt?.trim() ?? '';
@@ -134,6 +181,10 @@ const posts = defineCollection({
       // Progressive contract: v1 posts are grandfathered; v2+ require structured editorial fields.
       // Enforcement is unconditional (Plan 060 / Phase 2b): the full corpus has zero strict
       // editorial-field errors, so this branch always runs — there is no permissive/off state.
+      //
+      // P0-06 / DEC-003: `why_it_matters` ("Qué cambia") allows 0-3 items.
+      // There is no minimum: omitting an implication beats fabricating one.
+      // Cardinality is enforced at field level (`.max(3)`); absence is valid.
       if (data.schema_version && data.schema_version >= 2) {
         // summary_points: 2-5 non-empty strings
         if (!data.summary_points || data.summary_points.length === 0) {
@@ -168,14 +219,9 @@ const posts = defineCollection({
           });
         }
 
-        // why_it_matters: at least 1 string
-        if (!data.why_it_matters || data.why_it_matters.length === 0) {
-          ctx.addIssue({
-            code: 'custom',
-            path: ['why_it_matters'],
-            message: 'why_it_matters is required for schema_version >= 2 (≥1 item)',
-          });
-        }
+        // why_it_matters: 0-3 items, no minimum (P0-06 / DEC-003).
+        // Absence is valid; cardinality and non-empty items are enforced
+        // at field level above, so no superRefine branch is needed here.
 
         // confidence: required string
         if (!data.confidence) {

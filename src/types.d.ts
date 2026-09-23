@@ -52,7 +52,24 @@ export interface Post {
   glossary?: { term: string; definition: string }[];
   why_it_matters?: string[];
   fact_check?: { label: string; status: string }[];
-  sources?: { title: string; url: string; publisher?: string; date?: string }[];
+  evidence_subject_type?:
+    | 'humans'
+    | 'animals'
+    | 'in_vitro'
+    | 'computational'
+    | 'observational'
+    | 'experimental'
+    | 'mixed'
+    | 'unknown';
+  evidence_detail?: string;
+  sources?: {
+    title: string;
+    url: string;
+    publisher?: string;
+    date?: string;
+    role?: 'primary' | 'secondary';
+    doi?: string;
+  }[];
   source_url?: string;
   refinery_id?: string;
   confidence?: string;
