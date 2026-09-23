@@ -52,6 +52,16 @@ export interface Post {
   glossary?: { term: string; definition: string }[];
   why_it_matters?: string[];
   fact_check?: { label: string; status: string }[];
+  institution?: string;
+  publication_status?: 'peer_reviewed' | 'preprint' | 'conference' | 'other';
+  reviewer_name?: string;
+  reviewer_role?: string;
+  reviewer_profile_url?: string;
+  review_date?: string;
+  known_points?: string[];
+  open_questions?: string[];
+  corrected_at?: string;
+  correction_summary?: string;
   evidence_subject_type?:
     | 'humans'
     | 'animals'

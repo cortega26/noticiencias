@@ -20,8 +20,8 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | ---- | ---------------------------- | -----: | -------------------------------- | ---- | ------------------------------------------------ | ------------------------ |
 | 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline           | —    | Docs-only; sin cambios de producto               |
 | 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes     | —    | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      | REVIEW | audit/wave-02-editorial-contract | —    | 3/3 findings en REVIEW; paridad cross-repo OK    | Ver reporte Wave 2 abajo |
-| 3    | Evidence & Accountability UX |   TODO | —                                | —    | Depende parcialmente de Wave 2                   |
+| 2 | Editorial Data Contract | DONE | — | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend) |
+| 3 | Evidence & Accountability UX | IN_PROGRESS | audit/wave-03-evidence-accountability | — | P0-03 (dep P0-01/P0-02 ✓), P0-09, P2-02 (dep P0-06 ✓), P2-07 |
 | 4    | Article UX                   |   TODO | —                                | —    | Depende de P0-01/P0-02/P0-06                     |
 | 5    | Home, Recency & IA           |   TODO | —                                | —    | Después de Article UX                            |
 | 6    | Conversion & Collections     |   TODO | —                                | —    | Después de Home                                  |
