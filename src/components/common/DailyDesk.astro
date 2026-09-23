@@ -1,7 +1,6 @@
 ---
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
-import Button from '~/components/ds/atoms/Button.astro';
 import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
 import TopicStrip from '~/components/common/TopicStrip.astro';
 import { cleanSlug, getPermalink } from '~/utils/permalinks';
@@ -65,7 +64,7 @@ const weeklyDescription = weekly.inWindow
     class="mt-8 rounded-xl border border-border-subtle bg-surface-paper px-5 py-6 sm:px-8"
     aria-labelledby="home-newsletter-cta"
   >
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h2
           id="home-newsletter-cta"
@@ -75,13 +74,18 @@ const weeklyDescription = weekly.inWindow
         </h2>
         <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
           Una edición por semana con los hallazgos que valió la pena leer dos veces.
+          <a
+            href="/newsletter/"
+            class="font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Qué incluye
+          </a>
         </p>
       </div>
-      <Button
-        variant="primary"
-        href="/newsletter/"
-        text="Suscribirme"
-        class="shrink-0 self-start sm:self-auto"
+      <NewsletterCapture
+        variant="inline"
+        formId="newsletter-hero"
+        class="w-full sm:w-[380px] sm:shrink-0"
       />
     </div>
   </section>
@@ -204,6 +208,7 @@ const weeklyDescription = weekly.inWindow
 </div>
 
 <NewsletterCapture
+  formId="newsletter-final"
   title="Boletín Noticiencias"
   description="Una edición semanal con hallazgos, fuentes y temas para guardar."
   class="mt-4"
