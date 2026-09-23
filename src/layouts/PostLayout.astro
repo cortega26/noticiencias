@@ -16,15 +16,16 @@ import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
 import { resolveSourcePublisher, resolveSourceTitle } from '~/utils/source-publisher';
 import { evidenceLabels, publicationChipLabels } from '~/utils/evidence-labels';
+import type { RelatedSelection } from '~/utils/related';
 import type { MetaData, Post } from '~/types';
 
 interface Props {
   post: Post;
-  relatedPosts?: Post[];
+  related?: RelatedSelection;
   url: string | URL;
 }
 
-const { post, relatedPosts = [], url } = Astro.props;
+const { post, related, url } = Astro.props;
 const image = (await findImage(post.image)) ?? post.image;
 const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
 const imageAlt = post.image_alt ?? '';
@@ -270,7 +271,7 @@ const breadcrumbItems = [
           class="not-prose mt-8"
         />
 
-        <RelatedReading posts={relatedPosts} />
+        {related && <RelatedReading selection={related} />}
       </div>
 
       {

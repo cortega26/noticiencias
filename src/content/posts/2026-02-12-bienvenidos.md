@@ -8,7 +8,6 @@ categories:
   - 'Editorial'
 tags:
   - 'lanzamiento'
-  - 'misión'
   - 'periodismo científico'
 image: '~/assets/images/default.png'
 image_alt: 'Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos'

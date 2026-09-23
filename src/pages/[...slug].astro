@@ -1,6 +1,7 @@
 ---
 import { getPermalink } from '~/utils/permalinks';
-import { fetchPosts, getRelatedPosts } from '~/utils/blog';
+import { fetchPosts } from '~/utils/blog';
+import { rankRelatedPosts } from '~/utils/related';
 import PostLayout from '~/layouts/PostLayout.astro';
 import type { Post } from '~/types';
 
@@ -18,9 +19,9 @@ interface Props {
 
 const { post } = Astro.props;
 const url = post.permalink || getPermalink(post.slug, 'post');
-const relatedPosts = await getRelatedPosts(post, 4);
+const related = rankRelatedPosts(post, await fetchPosts(), 4);
 ---
 
-<PostLayout post={post} url={url} relatedPosts={relatedPosts}>
+<PostLayout post={post} url={url} related={related}>
   {post.Content ? <post.Content /> : <Fragment set:html={post.content} />}
 </PostLayout>

@@ -98,6 +98,10 @@ test.describe('Accessibility audits', () => {
     await checkA11y(page, '/newsletter/');
   });
 
+  test('topic hub has no a11y violations', async ({ page }) => {
+    await checkA11y(page, '/temas/coral/');
+  });
+
   test('article page has no a11y violations', async ({ page }) => {
     const articleUrl = await getFirstArticleUrl(page);
     await checkA11y(page, articleUrl as string);

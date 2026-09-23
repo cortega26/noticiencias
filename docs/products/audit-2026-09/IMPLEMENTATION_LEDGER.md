@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
-| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
-| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
-| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
-| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
-| 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
-| 6    | Conversion & Collections     |   DONE | —                            | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
-| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                                       |
-| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
+| Wave | Nombre                       | Estado | Rama                              | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | --------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline            | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes      | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                                 | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                                 | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                                 | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           |   DONE | —                                 | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
+| 6    | Conversion & Collections     |   DONE | —                                 | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
+| 7    | Discovery & Retention        | REVIEW | audit/wave-07-discovery-retention | —                                | 3/3 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 7 abajo  |
+| 8    | Measurement                  |   TODO | —                                 | —                                | Última wave del programa inicial                                                           |
 
 ## Findings
 
@@ -54,9 +54,9 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P1-07 |    6 | REVIEW | P1-06       | 563379c | axe /newsletter/ PASS; DOM: qué incluye + FAQ + historias representativas                                                        | landing de conversión                                                             |
 | P1-08 |    6 | REVIEW | —           | 1ed9d11 | grep: 0 «Seguir temas»/«En seguimiento» en src                                                                                   | labels de navegación honestos                                                     |
 | P1-10 |    6 | REVIEW | —           | 4e8037e | unit series 5/5 + dist dossier 3/3; 3 URLs en sitemap; título sin duplicar                                                       | dossiers editoriales                                                              |
-| P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                                | Related semántico                                                                 |
-| P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                                | Topic hubs                                                                        |
-| P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                                | Follow real                                                                       |
+| P2-01 |    7 | REVIEW | P0-08       | fcde137 | unit related 6/6 + dist 3/3; umbral 2; fallback «Más reciente» verificado                                                        | ranking semántico; cadena muerta eliminada                                        |
+| P2-06 |    7 | REVIEW | P1-03       | d9611e8 | unit+dist hub; 3 hubs curados; tags singleton sin bloques; axe /temas/coral/ PASS                                                | masa crítica >=2; noindex intacto                                                 |
+| P2-05 |    7 | REVIEW | P1-08,P2-06 | f4ec04f | 157 feeds por tema; dist follow PASS; unfollow explícito                                                                         | RSS temático sin cuenta                                                           |
 | P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                                | GA4 funnel                                                                        |
 | P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                                | KPIs                                                                              |
 
@@ -640,6 +640,91 @@ Evidencias DOM en `dist/`:
 
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (745/746; fallo ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 7 — Discovery & Retention
+
+Date: 2026-09-23
+Branch: audit/wave-07-discovery-retention (base: main @ 51ed592)
+Status: REVIEW
+
+### Findings
+
+- P2-01 — REVIEW — fcde137
+- P2-06 — REVIEW — d9611e8
+- P2-05 — REVIEW — f4ec04f
+
+### Validation
+
+- unit: `npm run test:audit` → 759 de 760 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos: `related.test.ts`
+  6/6, `related-dist.test.ts` 3/3, `topic-hub.test.ts` 3/3,
+  `topic-follow.test.ts` 2/2.
+- e2e: `npx playwright test tests/playwright/accessibility.test.ts` →
+  14/14 PASS en mobile-375 y desktop-1280 (incluye `/temas/coral/`).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas + 157 feeds de tema + `/rss.xml`
+- visual: screenshots 1280 de `/temas/coral/` (hub enriquecido) y del
+  bloque «Más reciente» en `/editorial/2026-02-12-bienvenidos/`
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; tags siguen fuera
+  del sitemap y con `robots: index:false`
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Herculano: bloque «Relacionado» con los 2 pares de Arqueología
+  (Arpones, Herramientas), sin relleno por recencia.
+- Bienvenidos: bloque «Más reciente» (0 señales sobre el umbral); no
+  aparece «Relacionado» ni «Posts Relacionados» en artículos.
+- `/temas/coral/`: descripción, «2 historias · Actualizada el 20 de
+  septiembre de 2026», áreas (Biología, Ciencia) y bloque «Seguir este
+  tema» con `/temas/coral/rss.xml`.
+- `/temas/materia-oscura/`: encabezado simple («1 historia publicada
+  sobre este hilo»), sin descripción inventada.
+- Feed de tema: `Noticiencias — coral` con solo las 2 historias del tag.
+
+### Regressions checked
+
+- Cadena muerta eliminada (RelatedPosts → BlogHighlightedPosts →
+  Grid/GridItem); `check:freeze` pasa (la congelación solo bloquea
+  modificaciones, no borrados de ficheros muertos).
+- `rankRelatedPosts` no muta `allPosts`; el fallback excluye el propio
+  post y se ordena por fecha.
+- El feed por tema reutiliza `buildFeed` (segundo consumidor concreto);
+  `/rss.xml` intacto.
+- Contenido: se retiró el tag «misión» de Bienvenidos (colisión de
+  sentidos); el resto de tags y URLs sin cambios.
+- Sin JS nuevo; sin cambios de consentimiento/analytics/URLs de posts.
+
+### Decisions added
+
+- DEC-024 (related con umbral y fallback explícito)
+- DEC-025 (hubs temáticos curados, masa crítica y noindex)
+- DEC-026 (seguimiento real por RSS temático)
+
+### Follow-ups
+
+- FU-001, FU-010, FU-011, FU-012, FU-014, FU-015, FU-016, FU-017,
+  FU-018 vigentes.
+- FU-009 resuelto (cadena de related muerta eliminada).
+- FU-019 (nuevo): la colisión del tag «misión» debe resolverse en la
+  taxonomía backend (`tags.yml`/pipeline); hoy se corrigió el frontmatter
+  y una republicación podría reintroducirla.
+- FU-020 (nuevo): señales de entidades/fenómeno requieren extracción en
+  backend; el ranking actual usa solo metadatos estructurados.
+- FU-021 (nuevo): descripciones de tema viven en `src/utils/topics.ts`
+  hasta que el contrato transporte metadatos de tema; los hubs nuevos
+  exigen curación explícita.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (759/760; fallo ambiental FU-012)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated
