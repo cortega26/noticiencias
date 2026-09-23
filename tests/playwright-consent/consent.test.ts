@@ -18,6 +18,15 @@ const dataLayer = (page: Page) =>
 
 const banner = (page: Page) => page.locator('#consent-banner');
 
+// FU-001: '/' serves 465 images plus webfonts; under runner load the layout
+// keeps shifting after `load`, which makes banner clicks expire mid-flight
+// (stale "intercepts pointer events" reports). Settle network AND fonts
+// before interacting. Assertions below are unchanged.
+const gotoSettled = (page: Page, url = '/') =>
+  page
+    .goto(url, { waitUntil: 'networkidle' })
+    .then(() => page.evaluate(() => document.fonts.ready.then(() => undefined)));
+
 test.beforeEach(async ({ page }) => {
   await stubGoogle(page);
 });
@@ -25,7 +34,7 @@ test.beforeEach(async ({ page }) => {
 test('first visit: banner is shown and consent starts fully denied, before config', async ({
   page,
 }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await expect(banner(page)).toBeVisible();
 
   const layer = await dataLayer(page);
@@ -43,7 +52,7 @@ test('first visit: banner is shown and consent starts fully denied, before confi
 });
 
 test('accept and reject are equally prominent controls', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   const accept = banner(page).getByRole('button', { name: 'Aceptar' });
   const reject = banner(page).getByRole('button', { name: 'Rechazar' });
   const [a, r] = await Promise.all([accept.boundingBox(), reject.boundingBox()]);
@@ -58,14 +67,14 @@ test('accept and reject are equally prominent controls', async ({ page }) => {
 test('accepting sends a consent update, hides the banner and survives a reload', async ({
   page,
 }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await banner(page).getByRole('button', { name: 'Aceptar' }).click();
   await expect(banner(page)).toBeHidden();
 
   const updates = (await dataLayer(page)).filter((e) => e[0] === 'consent' && e[1] === 'update');
   expect(updates).toEqual([['consent', 'update', { analytics_storage: 'granted' }]]);
 
-  await page.reload();
+  await page.reload({ waitUntil: 'networkidle' });
   await expect(banner(page)).toBeHidden();
   // The stored grant is applied in <head>, before config — never after.
   const order = (await dataLayer(page)).map((e) => e[0] + (e[1] === 'update' ? ':update' : ''));
@@ -73,17 +82,17 @@ test('accepting sends a consent update, hides the banner and survives a reload',
 });
 
 test('rejecting is remembered and never grants', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await banner(page).getByRole('button', { name: 'Rechazar' }).click();
   await expect(banner(page)).toBeHidden();
-  await page.reload();
+  await page.reload({ waitUntil: 'networkidle' });
   await expect(banner(page)).toBeHidden();
   const layer = await dataLayer(page);
   expect(layer.some((e) => e[0] === 'consent' && e[1] === 'update')).toBe(false);
 });
 
 test('the footer link reopens the banner so the choice can be changed', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await banner(page).getByRole('button', { name: 'Aceptar' }).click();
   await expect(banner(page)).toBeHidden();
 
@@ -100,7 +109,7 @@ test('the footer link reopens the banner so the choice can be changed', async ({
 test('ClientRouter navigation: banner re-evaluates and listeners are not duplicated', async ({
   page,
 }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   // Move across several soft navigations without a full reload.
   for (const path of ['/blog/', '/nosotros/', '/blog/']) {
     await page.evaluate((href) => {
@@ -148,7 +157,7 @@ const ARTICLE =
   '/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/';
 
 test('newsletter submit queues one newsletter_signup event', async ({ page }) => {
-  await page.goto('/newsletter/');
+  await gotoSettled(page, '/newsletter/');
   // Cancel the real POST to Buttondown; the delegated tracker still sees the submit.
   await page.locator('form[data-analytics-newsletter]').evaluate((form) => {
     form.addEventListener('submit', (e) => e.preventDefault());
@@ -161,7 +170,7 @@ test('newsletter submit queues one newsletter_signup event', async ({ page }) =>
 });
 
 test('search sends a `search` event with the term and result count', async ({ page }) => {
-  await page.goto('/buscar/?q=ciencia');
+  await gotoSettled(page, '/buscar/?q=ciencia');
   await expect
     .poll(async () => (await events(page, 'search')).length, { timeout: 8000 })
     .toBeGreaterThan(0);
@@ -172,7 +181,7 @@ test('search sends a `search` event with the term and result count', async ({ pa
 
 test('an external source link queues outbound_source_click with its domain', async ({ page }) => {
   await stubExternal(page);
-  await page.goto(ARTICLE);
+  await gotoSettled(page, ARTICLE);
   const source = page.locator('a[data-analytics-source]').first();
   await expect(source).toBeVisible();
   const [popup] = await Promise.all([page.waitForEvent('popup'), source.click()]);
@@ -185,7 +194,7 @@ test('an external source link queues outbound_source_click with its domain', asy
 test('scroll_75 fires once after reading three quarters of an article, not on load', async ({
   page,
 }) => {
-  await page.goto(ARTICLE);
+  await gotoSettled(page, ARTICLE);
   await expect(page.locator('[data-analytics-scroll]')).toBeAttached();
   expect(await events(page, 'scroll_75')).toHaveLength(0);
 
@@ -209,7 +218,7 @@ test('scroll_75 fires once after reading three quarters of an article, not on lo
 // The regular suite stores a consent choice up front so the banner does not cover
 // the page; this is the one place the visible banner itself gets audited.
 test('the undecided banner has no accessibility violations', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await expect(banner(page)).toBeVisible();
   const results = await new AxeBuilder({ page })
     .include('#consent-banner')
