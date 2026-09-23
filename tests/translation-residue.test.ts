@@ -8,7 +8,7 @@
  */
 
 import { execFileSync } from 'node:child_process';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const SCRIPT = resolve('scripts/check-translation-residue.js');

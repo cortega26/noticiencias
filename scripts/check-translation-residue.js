@@ -56,7 +56,9 @@ const FOREIGN_DIACRITIC = /[ãõçâêôàèù]/u;
 // Never called with an empty token (tokenize only yields non-empty runs),
 // but guard explicitly: static analysis cannot prove that invariant, and an
 // undefined index would throw on .toLowerCase().
-const isProperName = (token) => token.length > 0 && token[0] !== token[0].toLowerCase();
+function isProperName(token) {
+  return token.length > 0 && token[0] !== token[0].toLowerCase();
+}
 
 // Portuguese-exclusive tokens (no Spanish overlap by construction).
 // Cognates or near-miss Spanish words are deliberately ABSENT, even when
@@ -141,21 +143,24 @@ function walkFiles(dir, results = []) {
   return results;
 }
 
+// Stripping rules as data, applied in order. Kept as a table (instead of
+// one chained expression) so the function stays short and each rule is
+// independently readable and testable.
+const STRIP_RULES = [
+  [/```[\s\S]*?```/g, ' '], // fenced code blocks
+  [/`[^`]+`/g, ' '], // inline code
+  [/<!--[\s\S]*?-->/g, ' '], // HTML comments (e.g. source_identity) and tags
+  [/<[^>]+>/g, ' '],
+  [/https?:\/\/\S+/g, ' '], // URLs
+];
+
 function stripNonProse(text) {
-  return (
-    text
-      // fenced code blocks
-      .replace(/```[\s\S]*?```/g, ' ')
-      // inline code
-      .replace(/`[^`]+`/g, ' ')
-      // HTML comments (e.g. source_identity) and tags
-      .replace(/<!--[\s\S]*?-->/g, ' ')
-      .replace(/<[^>]+>/g, ' ')
-      // URLs
-      .replace(/https?:\/\/\S+/g, ' ')
-      // markdown links: keep the visible text, drop the target
-      .replace(/\[([^\]]*)\]\([^)]+\)/g, '$1 ')
-  );
+  let prose = text;
+  for (const [pattern, replacement] of STRIP_RULES) {
+    prose = prose.replace(pattern, replacement);
+  }
+  // markdown links: keep the visible text, drop the target
+  return prose.replace(/\[([^\]]*)\]\([^)]+\)/g, '$1 ');
 }
 
 function tokenize(text) {
