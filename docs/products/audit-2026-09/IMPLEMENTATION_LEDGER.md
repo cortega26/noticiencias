@@ -26,7 +26,7 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
 | 6    | Conversion & Collections     |   DONE | —                            | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
 | 7    | Discovery & Retention        |   DONE | —                            | f90dd8a (#214)                   | 3/3 findings mergeados; validación integral PASS; Codacy 0 tras fix f84cf94                | Ver reporte Wave 7 arriba |
-| 8    | Measurement                  | REVIEW | audit/wave-08-measurement    | —                                | 2/2 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 8 abajo  |
+| 8    | Measurement                  |   DONE | —                            | 1a7c428 (#216)                   | 2/2 findings mergeados; validación integral PASS; Codacy 0 tras fix 22b9447                | Programa inicial cerrado  |
 
 ## Findings
 
@@ -734,7 +734,7 @@ Evidencias DOM en `dist/`:
 
 Date: 2026-09-23
 Branch: audit/wave-08-measurement (base: main @ d8a34dd)
-Status: REVIEW
+Status: DONE (squash 1a7c428, PR #216)
 
 ### Findings
 
