@@ -1,23 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '~/layouts/BaseLayout.astro';
-import { cleanSlug } from '~/utils/permalinks';
+import { fetchPosts } from '~/utils/blog';
+import { buildSeriesDossiers } from '~/utils/series';
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/date';
 
-const posts = await getCollection('posts');
-const seriesSet = new Set<string>();
-const seriesList: string[] = [];
-
-posts.forEach((post) => {
-  if (post.data.series && !seriesSet.has(post.data.series)) {
-    seriesSet.add(post.data.series);
-    seriesList.push(post.data.series);
-  }
-});
+const posts = await fetchPosts();
+const seriesList = buildSeriesDossiers(posts);
 
 const metadata = {
-  title: 'Series de Investigación | Noticiencias',
+  title: 'Series de investigación',
   description:
-    'Cobertura a profundidad sobre los temas más complejos de la ciencia, la tecnología y el internet de interés público.',
+    'Colecciones editoriales para leer una historia científica o tecnológica con continuidad: descripción, número de artículos y por dónde empezar.',
 };
 ---
 
@@ -28,7 +22,7 @@ const metadata = {
         Series de investigación
       </h1>
       <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
-        Lecturas agrupadas para seguir una historia científica o tecnológica con más continuidad.
+        Lecturas agrupadas para leer una historia científica o tecnológica con más continuidad.
       </p>
     </header>
 
@@ -39,13 +33,21 @@ const metadata = {
             Próximamente: Nuevas series en desarrollo.
           </p>
         ) : (
-          seriesList.map((series) => (
+          seriesList.map((dossier) => (
             <a
-              href={`/series/${cleanSlug(series)}`}
-              class="block border border-border-subtle p-5 hover:border-primary"
+              href={getPermalink(`/series/${dossier.slug}`, 'page')}
+              data-analytics-series={dossier.slug}
+              class="flex flex-col border border-border-subtle p-5 hover:border-primary"
             >
-              <h2 class="font-heading text-xl font-bold text-text-body">{series}</h2>
-              <span class="mt-3 block text-sm font-semibold text-primary">Ver artículos →</span>
+              <h2 class="font-heading text-xl font-bold text-text-body">{dossier.name}</h2>
+              <p class="mt-2 flex-grow text-sm leading-relaxed text-text-muted">
+                {dossier.description}
+              </p>
+              <p class="mt-3 text-xs font-semibold uppercase tracking-wide text-text-muted">
+                {`${dossier.count} ${dossier.count === 1 ? 'artículo' : 'artículos'}`} · Actualizada
+                el {getFormattedDate(dossier.latestDate, 'long')}
+              </p>
+              <span class="mt-3 text-sm font-semibold text-primary">Ver la serie →</span>
             </a>
           ))
         )

@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                             | Gate | Notas                                            |
-| ---- | ---------------------------- | -----: | -------------------------------- | ---- | ------------------------------------------------ | ------------------------ |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline           | —    | Docs-only; sin cambios de producto               |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes     | —    | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      | REVIEW | audit/wave-02-editorial-contract | —    | 3/3 findings en REVIEW; paridad cross-repo OK    | Ver reporte Wave 2 abajo |
-| 3    | Evidence & Accountability UX |   TODO | —                                | —    | Depende parcialmente de Wave 2                   |
-| 4    | Article UX                   |   TODO | —                                | —    | Depende de P0-01/P0-02/P0-06                     |
-| 5    | Home, Recency & IA           |   TODO | —                                | —    | Después de Article UX                            |
-| 6    | Conversion & Collections     |   TODO | —                                | —    | Después de Home                                  |
-| 7    | Discovery & Retention        |   TODO | —                                | —    | Depende de taxonomía                             |
-| 8    | Measurement                  |   TODO | —                                | —    | Última wave del programa inicial                 |
+| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
+| 6    | Conversion & Collections     |   DONE | —                            | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
+| 7    | Discovery & Retention        |   DONE | —                            | f90dd8a (#214)                   | 3/3 findings mergeados; validación integral PASS; Codacy 0 tras fix f84cf94                | Ver reporte Wave 7 arriba |
+| 8    | Measurement                  |   DONE | —                            | 1a7c428 (#216)                   | 2/2 findings mergeados; validación integral PASS; Codacy 0 tras fix 22b9447                | Programa inicial cerrado  |
 
 ## Findings
 
@@ -40,25 +40,25 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P0-01 |    2 | REVIEW | —           | 41de936 | schema 38/38 + lint + validate + build + dist (primaria+DOI+Cobertura; legacy intacto); contract-sync PARITY OK; backend PR #324 | backfill verificado 2 artículos; sin invención                                    |
 | P0-02 |    2 | REVIEW | —           | 41de936 | schema enum 8 valores + unknown; dist (modelo+guardrail Salud; legacy sin línea); backend PR #324                                | experimental añadido (DEC-016); Salud no-humana con guardrail fuerte              |
 | P0-06 |    2 | REVIEW | —           | 7ae5133 | cardinalidades 0-3 en schema; corpus máx 3; render ya condicional                                                                | espejo max_length=3 en backend PR #324                                            |
-| P0-03 |    3 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Ficha científica                                                                  |
-| P0-09 |    3 | TODO   | —           | —       | —                                                                                                                                | Responsabilidad editorial                                                         |
-| P2-02 |    3 | TODO   | P0-06       | —       | —                                                                                                                                | Sabemos/no sabemos                                                                |
-| P2-07 |    3 | TODO   | —           | —       | —                                                                                                                                | Correcciones                                                                      |
-| P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                                | Pre-body                                                                          |
-| P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Header evidencia                                                                  |
-| P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                                | Home                                                                              |
-| P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                                | Recency                                                                           |
-| P1-03 |    5 | TODO   | —           | —       | —                                                                                                                                | Taxonomía                                                                         |
-| P1-09 |    5 | TODO   | —           | —       | —                                                                                                                                | Headlines                                                                         |
-| P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                                | Newsletter inline                                                                 |
-| P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                                | Newsletter landing                                                                |
-| P1-08 |    6 | TODO   | —           | —       | —                                                                                                                                | Seguir temas                                                                      |
-| P1-10 |    6 | TODO   | —           | —       | —                                                                                                                                | Series                                                                            |
-| P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                                | Related semántico                                                                 |
-| P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                                | Topic hubs                                                                        |
-| P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                                | Follow real                                                                       |
-| P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                                | GA4 funnel                                                                        |
-| P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                                | KPIs                                                                              |
+| P0-03 |    3 | REVIEW | —           | be3f248 | schema + TrustPanel (publicación/institución); dist verificado                                                                   | sin placeholders; institución omitida si multi-afiliación                         |
+| P0-09 |    3 | REVIEW | —           | be3f248 | IA solo en piezas AI; sin reviewer (no inventado); fallback institucional                                                        | ningún post declara reviewer (sin dato verificado)                                |
+| P2-02 |    3 | REVIEW | P0-06       | be3f248 | bloques omisibles; backfill 3+2/3+3 desde fuentes                                                                                | sin especulación; legacy sin bloques                                              |
+| P2-07 |    3 | REVIEW | —           | be3f248 | par viaja junto (schema+espejo); nota visible fechada; legacy sin caja                                                           | sin correcciones pendientes en corpus                                             |
+| P1-05 |    4 | REVIEW | P0-06       | 8bff3af | Lo esencial ≤3 + Qué cambia (DEC-018); dist+visual                                                                               | pre-body consolidado sin perder info                                              |
+| P1-04 |    4 | REVIEW | P0-01,P0-02 | 8bff3af | chips ≤3 vía TopicBadge; dist+visual 375/1280                                                                                    | sin dashboard; legacy sin chips                                                   |
+| P1-01 |    5 | REVIEW | P1-04,P1-05 | c144bf9 | lint+validate+build+dist+test:audit (738/739; contract-sync ambiental FU-012); DOM home: 9 promovidas antes de secundario        | portada reordenada; rails de categoría fuera; ~35→12 cards                        |
+| P1-02 |    5 | REVIEW | P1-01       | c144bf9 | DOM: sin «Última edición»; «Esta semana» solo con ventana real; fallback «Lo más reciente»                                       | fechas de edición visibles y honestas                                             |
+| P1-03 |    5 | REVIEW | —           | 02f2e9c | nav 6 entradas; hijos de Ciencia anidados; 9/9 categorías en sitemap; URLs intactas                                              | footer mantiene las 9 secciones                                                   |
+| P1-09 |    5 | REVIEW | —           | ce0e8d6 | `HEADLINE_INVENTORY.md` (40 títulos); 0 hype en portada; sin cambios de URL/título                                               | inventario entregado; sin sustitución ciega                                       |
+| P1-06 |    6 | REVIEW | P1-01       | 5500742 | lint+validate+build+dist+test:audit (745/746; contract-sync ambiental FU-012); e2e estados PASS (2 proyectos)                    | captura inline; CSP connect-src buttondown                                        |
+| P1-07 |    6 | REVIEW | P1-06       | 563379c | axe /newsletter/ PASS; DOM: qué incluye + FAQ + historias representativas                                                        | landing de conversión                                                             |
+| P1-08 |    6 | REVIEW | —           | 1ed9d11 | grep: 0 «Seguir temas»/«En seguimiento» en src                                                                                   | labels de navegación honestos                                                     |
+| P1-10 |    6 | REVIEW | —           | 4e8037e | unit series 5/5 + dist dossier 3/3; 3 URLs en sitemap; título sin duplicar                                                       | dossiers editoriales                                                              |
+| P2-01 |    7 | REVIEW | P0-08       | fcde137 | unit related 6/6 + dist 3/3; umbral 2; fallback «Más reciente» verificado                                                        | ranking semántico; cadena muerta eliminada                                        |
+| P2-06 |    7 | REVIEW | P1-03       | d9611e8 | unit+dist hub; 3 hubs curados; tags singleton sin bloques; axe /temas/coral/ PASS                                                | masa crítica >=2; noindex intacto                                                 |
+| P2-05 |    7 | REVIEW | P1-08,P2-06 | f4ec04f | 157 feeds por tema; dist follow PASS; unfollow explícito                                                                         | RSS temático sin cuenta                                                           |
+| P2-03 |    8 | REVIEW | P1-06,P2-01 | 1748bd1 | unit+dist+e2e (analytics 6/6, consent 22/22); 11 eventos en el bundle; nombres viejos fuera                                      | embudo GA4 sin PII                                                                |
+| P2-04 |    8 | REVIEW | P2-03       | 7b4ca4d | docs/EDITORIAL_METRICS.md con 8 KPIs (definición/fórmula/evento/límites)                                                         | entregable documental                                                             |
 
 ## Wave report template
 
@@ -309,6 +309,504 @@ consentimiento/analytics/URLs.
 
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (715/715 + paridad + 164 backend)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 3 — Evidence & Accountability UX
+
+Date: 2026-09-23
+Branch: audit/wave-03-evidence-accountability (base: main @ 6a50da8)
+Status: REVIEW
+
+### Findings
+
+- P0-03 — REVIEW — be3f248
+- P0-09 — REVIEW — be3f248
+- P2-02 — REVIEW — be3f248
+- P2-07 — REVIEW — be3f248
+
+Un commit por wave (archivos entrelazados, DEC-017); atomicidad en ledger.
+
+### Validation
+
+- unit: `npm run test:audit` → 61 ficheros / 727 tests PASS con espejo
+  vigente (51 schema incl. 12 Wave 3); sin espejo vigente el
+  `contract-sync.test.ts` falla por checkout hermano desactualizado
+  (ambiental, no regresión — CI usa main del backend)
+- integration: `npm run validate:content` → exit 0
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check` (1 error real corregido:
+  `publicationLabels` faltante)
+- build: exit 0, 232 páginas
+- visual: sin cambios de layout; DOM verificado en `dist/`
+- SEO/SSR: `test:dist` 232 PASS; sin cambios URL/títulos/metadata
+- contract: paridad OK contra espejo (backend PR #325); backend
+  `test-contracts` PASS + ruff/black OK
+- other: e2e consent no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Biomédico: Publicación/preprint/McGill; IA + Equipo Noticiencias;
+  Qué sabemos ×3 / Qué no sabemos ×3; sin Corrección.
+- Herculano: revisada por pares; Qué sabemos ×3 / ×2; IA; sin guardrail
+  Salud; sin Corrección.
+- Legacy: sin línea de modelo, sin sabidos/pendientes, sin caja de
+  corrección, sin línea de accountability (pieza no-AI sin reviewer).
+
+### Regressions checked
+
+- Legacy rinde igual (condicionales en todo bloque nuevo).
+- `hasContent` extendido (sin paneles vacíos).
+- Sin identidad humana fabricada (ningún `reviewer_name` en corpus).
+- Sin JS nuevo; sin cambios consentimiento/analytics/URLs/RSS.
+- Worktree backend de benchmark intacto (edición stray revertida;
+  proceso vivo verificado).
+
+### Decisions added
+
+- DEC-017 (TrustPanel superficie única)
+
+### Follow-ups
+
+- Backend PR #325 pendiente de merge: mergear antes o junto con la PR
+  frontend (mismo protocolo que Wave 2).
+- FU-001 vigente; FU-004 vigente (41 vs 40); FU-006 (Seguir temas → W6);
+  FU-008 (Epicuro → requiere primaria, ahora registrada);
+  FU-009 (RelatedPosts muerto → W7); FU-010 (check-editorial-fields no
+  valida campos nuevos — schema+tests cubren).
+- FU-011 (nuevo): worktree backend `spec/llm-routing-benchmark` quedó en
+  base anterior a #324 (stale); al terminar el benchmark, rebasear antes
+  de cualquier trabajo con contratos.
+- FU-012 (nuevo): `contract-sync.test.ts` local depende del checkout
+  hermano; con backends desactualizados falla ambientalmente. CI es la
+  referencia (usa main del backend).
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (727/727 con espejo; fallo local
+      ambiental documentado)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 4 — Article UX
+
+Date: 2026-09-24
+Branch: audit/wave-04-article-ux (base: main @ d0d8168)
+Status: REVIEW
+
+### Findings
+
+- P1-05 — REVIEW — pendiente commit
+- P1-04 — REVIEW — pendiente commit
+
+### Validation
+
+- unit: `npm run test:audit` → 62 ficheros / 731 tests PASS con espejo
+  vigente (nuevo `article-header-wave4` 4/4)
+- integration: `npm run validate:content` → exit 0
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check`
+- build: exit 0, 232 páginas
+- visual: screenshots 375 + 1280 del artículo biomédico, 0 errores de
+  consola; chips en fila compacta (desktop) y wrap limpio (móvil)
+- SEO/SSR: `test:dist` 232 PASS; sin cambios URL/títulos/metadata
+- contract: sin cambios de schema (N/A)
+- other: e2e consent no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Biomédico: chips [Modelo: fases mixtas, Preprint, Fuente primaria];
+  Lo esencial ×1 bloque; Qué cambia ×1; En breve/En la práctica ×0.
+- Herculano (5 summary_points): cada bloque Lo esencial visible con
+  exactamente 3 bullets.
+- Legacy: sin fila de chips; bloques renombrados igual (componente
+  compartido).
+
+### Regressions checked
+
+- `quick-wins-regression` detectó «Por qué importa» baneado → renombrado
+  a «Qué cambia» (DEC-018), guardarraíl intacto y verde.
+- Labels compartidos en `src/utils/evidence-labels.ts` (segundo uso
+  concreto; TrustPanel importa del mismo mapa, sin duplicar).
+- `metodologia.md` actualizado (docs siguen a código).
+- Legacy sin datos: sin chips, sin bloques vacíos.
+- Sin JS nuevo; sin cambios consentimiento/analytics/URLs/RSS.
+
+### Decisions added
+
+- DEC-018 («Qué cambia» vs guardarraíl de voz)
+
+### Follow-ups
+
+- FU-001 vigente; FU-004 vigente; FU-006 (→W6); FU-008 (→primaria
+  registrada); FU-009 (→W7); FU-010; FU-011 (stale branch backend);
+  FU-012 (test local ambiental).
+- Sin espejo backend en esta wave (sin cambios de schema).
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (731/731 con espejo vigente de main;
+      el fallo local de contract-sync-test es ambiental por checkout hermano
+      desactualizado, FU-012; el de voz se resolvió con DEC-018)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 5 — Home, Recency & Information Architecture
+
+Date: 2026-09-23
+Branch: audit/wave-05-home-recency-ia (base: main @ 065910a)
+Status: DONE (squash 195cb3c, PR #210)
+
+### Findings
+
+- P1-01 — REVIEW — c144bf9 (+ fix Codacy bf8f43c)
+- P1-02 — REVIEW — c144bf9
+- P1-03 — REVIEW — 02f2e9c (+ fix Codacy bf8f43c)
+- P1-09 — REVIEW — ce0e8d6
+
+### Validation
+
+- unit: `npm run test:audit` → 62 ficheros / 738 de 739 PASS; el único
+  fallo es `contract-sync.test.ts` ambiental (checkout backend en
+  `spec/llm-routing-benchmark`, previo a #324/#325 — FU-012)
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check` (1 error de test corregido:
+  narrowing `'links' in link`)
+- build: exit 0, 232 páginas
+- visual: screenshots full-page 375 y 1280 de `/`; axe-core
+  (`homepage has no a11y violations`) PASS en mobile-375 y desktop-1280;
+  consola sin errores (solo aviso preexistente de `autocomplete` en el
+  input del boletín — FU-013)
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; sitemap sin `/temas/`;
+  9/9 categorías presentes; RSS intacto; canonical intacto
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Home: hero 3 + «Lo más reciente» 6 = 9 historias promovidas antes de
+  contenido secundario; «Serie destacada» (0 historias) y «Del archivo» 3
+  después; 12 `article` en total (antes ~35 con los rails de 9 categorías).
+- Home: no existe «Última edición»; «Esta semana» solo se usa si la
+  ventana de 7 días tiene historias; en el corpus actual (ventana agotada
+  por el hero) el bloque cae honestamente a «Lo más reciente».
+- Home: 1 solo formulario de boletín y 1 solo `id="newsletter-email"`
+  (el CTA temprano es un enlace a `/newsletter/`).
+- Header: 6 entradas (Ciencia, Astronomía, Salud, Tecnología, Editorial,
+  Más); Ciencia anida «Toda la sección, Física, Química, Biología»; Más
+  anida «Arqueología, Series»; footer conserva las 9 secciones.
+- Portada P1-09: ningún titular clasificado `hype` es promovido; el único
+  marcado expuesto es el de chatbots (`factual issue`, no hype) en
+  «Del archivo» (ver `HEADLINE_INVENTORY.md`).
+
+### Regressions checked
+
+- Legacy: secciones y bloques nuevos son condicionales (sin datos no
+  renderizan); posts sin serie, sin tags, sin imagen siguen funcionando.
+- Duplicados: hero excluye «Lo más reciente» y este excluye «Del
+  archivo»; no hay tarjetas repetidas en la portada.
+- URLs/canonical/RSS/sitemap: sin cambios de rutas; 232 páginas; tag
+  pages siguen fuera del sitemap.
+- Voz: guardarraíl `quick-wins-regression` verde (el fallback se probó
+  primero con «Seguir leyendo» y colisionó con la lista de frases
+  prohibidas; se usó «Lo más reciente», ya validado en DEC-008).
+- Código muerto: `selectContextPosts`, `buildCategoryRails` y
+  `homeSectionItems` se retiraron junto con sus tests (único consumidor
+  era la portada anterior).
+- `showInHeader` se sustituyó por `navGroup` (primary/ciencia/mas); el
+  footer y las taxonomías no cambian.
+
+### Decisions added
+
+- DEC-019 (portada por bloques y recencia honesta)
+- DEC-020 (navegación primaria ≤6 con subdisciplinas anidadas)
+- DEC-021 (P1-09: inventario, sin sustitución ciega)
+
+### Follow-ups
+
+- FU-001 vigente (flaky consent).
+- FU-004 resuelto: el «fichero 41» de `src/content/posts/` es
+  `refinery_manifest.json` (manifiesto, no post); 40 posts → 40 rutas.
+- FU-006 (Seguir temas → W6); FU-008 (Epicuro → primaria registrada);
+  FU-009 (RelatedPosts muerto → W7); FU-010; FU-011 (branch backend
+  stale); FU-012 (contract-sync local ambiental) vigentes.
+- FU-013 (nuevo): el input de email de `NewsletterCapture` no declara
+  `autocomplete="email"` (aviso de consola preexistente); tocar en P1-06
+  (Wave 6).
+- FU-014 (nuevo): el corpus no puebla `featured`/`featured_rank`; el hero
+  usa el fallback «más recientes». La portada ya soporta curación
+  explícita cuando el backend emita los campos.
+- FU-015 (nuevo): 16 titulares legacy marcados en
+  `HEADLINE_INVENTORY.md` (hype, Title Case, causalidad) quedan para
+  reescritura editorial contra fuente; no sustituir a ciegas.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (738/739; el fallo restante es el
+      ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 6 — Conversion & Editorial Collections
+
+Date: 2026-09-23
+Branch: audit/wave-06-conversion-collections (base: main @ 524d911)
+Status: DONE (squash 63c6b56, PR #212)
+
+### Findings
+
+- P1-06 — REVIEW — 5500742
+- P1-07 — REVIEW — 563379c
+- P1-08 — REVIEW — 1ed9d11
+- P1-10 — REVIEW — 4e8037e
+
+### Validation
+
+- unit: `npm run test:audit` → 745 de 746 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos: `series.test.ts`
+  5/5, `series-dossier.test.ts` 3/3.
+- e2e: `npx playwright test tests/playwright/newsletter.test.ts
+tests/playwright/accessibility.test.ts` → 16/16 PASS en mobile-375 y
+  desktop-1280 (estados del boletín con Buttondown mockeado + axe).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas
+- visual: screenshots 375/1280 de home (CTA inline), landing y dossier
+  `/series/salud-que-importa/`; sin errores de consola nuevos
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; sitemap con las 3
+  series; tags siguen fuera; títulos de serie ya no duplican
+  «| Noticiencias»
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Home: 2 formularios de boletín con ids únicos
+  (`newsletter-hero-email`, `newsletter-final-email`), `autocomplete`,
+  `role=status` y botón con hook; CTA temprano inline.
+- CSP (meta + `_headers` + doc): `connect-src` incluye
+  `https://buttondown.com`; `form-action` intacto.
+- /newsletter/: «Qué incluye cada edición» (4), «Historias
+  representativas» (3 posts reales) y FAQ (5) antes del pie.
+- /series/espacio/: descripción, «8 artículos · Actualizada el …»,
+  «Empieza aquí» y partes 1–8 en orden cronológico.
+- Labels: 0 ocurrencias de «Seguir temas»/«En seguimiento» en `src/`.
+
+### Regressions checked
+
+- No-JS: el formulario conserva `method=post` y `action` de Buttondown
+  (custodiado por `quick-wins-regression`).
+- JS: estados con `role=status`; fallo de red → error + botón
+  rehabilitado; éxito → botón deshabilitado (sin doble envío).
+- CSP: `tests/compliance.test.ts` mantiene las tres copias idénticas.
+- Series: posts sin serie no generan dossier; corpus vacío cae al
+  mensaje «Próximamente»; URLs `/series/[slug]/` sin cambios.
+- Se elimina `Newsletter.astro` (wrapper muerto, sin consumidores) y
+  `selectFeaturedSeries`/`FeaturedSeries` de `hub.ts` (sin duplicar
+  lógica: la usa `buildSeriesDossiers`).
+
+### Decisions added
+
+- DEC-022 (mejora progresiva del boletín + CSP connect-src)
+- DEC-023 (descripciones de serie en mapa frontend hasta el contrato)
+
+### Follow-ups
+
+- FU-001, FU-009, FU-010, FU-011, FU-012, FU-014, FU-015 vigentes.
+- FU-006 resuelto (labels honestos en toda la navegación de temas).
+- FU-013 resuelto (`autocomplete="email"` en la captura).
+- FU-016 (nuevo): llevar `series_description` (y metadatos de serie) al
+  contrato de publicación para retirar el mapa de `src/utils/series.ts`.
+- FU-017 (nuevo): el operador debe actualizar la Response Header
+  Transform Rule del edge (Cloudflare) con el `connect-src` que ahora
+  incluye `https://buttondown.com`; las tres copias del repo ya están
+  sincronizadas.
+- FU-018 (nuevo): P2-03 (Wave 8) debe añadir un evento de resultado del
+  boletín; hoy solo existe `newsletter_signup` en el submit.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (745/746; fallo ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 7 — Discovery & Retention
+
+Date: 2026-09-23
+Branch: audit/wave-07-discovery-retention (base: main @ 51ed592)
+Status: DONE (squash f90dd8a, PR #214)
+
+### Findings
+
+- P2-01 — REVIEW — fcde137
+- P2-06 — REVIEW — d9611e8
+- P2-05 — REVIEW — f4ec04f
+
+### Validation
+
+- unit: `npm run test:audit` → 759 de 760 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos: `related.test.ts`
+  6/6, `related-dist.test.ts` 3/3, `topic-hub.test.ts` 3/3,
+  `topic-follow.test.ts` 2/2.
+- e2e: `npx playwright test tests/playwright/accessibility.test.ts` →
+  14/14 PASS en mobile-375 y desktop-1280 (incluye `/temas/coral/`).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas + 157 feeds de tema + `/rss.xml`
+- visual: screenshots 1280 de `/temas/coral/` (hub enriquecido) y del
+  bloque «Más reciente» en `/editorial/2026-02-12-bienvenidos/`
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; tags siguen fuera
+  del sitemap y con `robots: index:false`
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Herculano: bloque «Relacionado» con los 2 pares de Arqueología
+  (Arpones, Herramientas), sin relleno por recencia.
+- Bienvenidos: bloque «Más reciente» (0 señales sobre el umbral); no
+  aparece «Relacionado» ni «Posts Relacionados» en artículos.
+- `/temas/coral/`: descripción, «2 historias · Actualizada el 20 de
+  septiembre de 2026», áreas (Biología, Ciencia) y bloque «Seguir este
+  tema» con `/temas/coral/rss.xml`.
+- `/temas/materia-oscura/`: encabezado simple («1 historia publicada
+  sobre este hilo»), sin descripción inventada.
+- Feed de tema: `Noticiencias — coral` con solo las 2 historias del tag.
+
+### Regressions checked
+
+- Cadena muerta eliminada (RelatedPosts → BlogHighlightedPosts →
+  Grid/GridItem); `check:freeze` pasa (la congelación solo bloquea
+  modificaciones, no borrados de ficheros muertos).
+- `rankRelatedPosts` no muta `allPosts`; el fallback excluye el propio
+  post y se ordena por fecha.
+- El feed por tema reutiliza `buildFeed` (segundo consumidor concreto);
+  `/rss.xml` intacto.
+- Contenido: se retiró el tag «misión» de Bienvenidos (colisión de
+  sentidos); el resto de tags y URLs sin cambios.
+- Sin JS nuevo; sin cambios de consentimiento/analytics/URLs de posts.
+
+### Decisions added
+
+- DEC-024 (related con umbral y fallback explícito)
+- DEC-025 (hubs temáticos curados, masa crítica y noindex)
+- DEC-026 (seguimiento real por RSS temático)
+
+### Follow-ups
+
+- FU-001, FU-010, FU-011, FU-012, FU-014, FU-015, FU-016, FU-017,
+  FU-018 vigentes.
+- FU-009 resuelto (cadena de related muerta eliminada).
+- FU-019 (nuevo): la colisión del tag «misión» debe resolverse en la
+  taxonomía backend (`tags.yml`/pipeline); hoy se corrigió el frontmatter
+  y una republicación podría reintroducirla.
+- FU-020 (nuevo): señales de entidades/fenómeno requieren extracción en
+  backend; el ranking actual usa solo metadatos estructurados.
+- FU-021 (nuevo): descripciones de tema viven en `src/utils/topics.ts`
+  hasta que el contrato transporte metadatos de tema; los hubs nuevos
+  exigen curación explícita.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (759/760; fallo ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 8 — Measurement
+
+Date: 2026-09-23
+Branch: audit/wave-08-measurement (base: main @ d8a34dd)
+Status: DONE (squash 1a7c428, PR #216)
+
+### Findings
+
+- P2-03 — REVIEW — 1748bd1
+- P2-04 — REVIEW — 7b4ca4d
+
+### Validation
+
+- unit: `npm run test:audit` → 764 de 765 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos:
+  `analytics-wiring.test.ts` 4/4 y `analytics-events.test.ts`
+  actualizado (11/11).
+- e2e regular: `npx playwright test` → 77 PASS, 1 skip preexistente
+  (incluye `analytics.test.ts` 6/6 con dataLayer real: article_view,
+  article_50/90, newsletter_impression/start/submit, topic_click,
+  related_article_click y primary_source_click).
+- e2e consentimiento: `npm run test:e2e:consent` → 22/22 PASS (incluye
+  `newsletter_submit` con `form_id` y el nuevo read depth).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas
+- visual: sin cambios visuales (solo data attributes y docs)
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS
+- contract: sin cambios de schema (N/A)
+
+Evidencias en `dist/` y bundle:
+
+- 11 eventos del embudo presentes en el JS compilado; `newsletter_signup`
+  y `scroll_75` ya no existen.
+- Artículo: `[data-analytics-article]` ×1, `[data-analytics-primary-source]`
+  ×1 (sin `data-analytics-source` en primaria), `[data-analytics-related]`
+  con `related_kind`.
+- Portada: hooks `data-analytics-topic`/`data-analytics-series` y
+  formularios con `data-newsletter-form-id` (hero/final).
+- `privacidad.md` declara los eventos nuevos; checklist del operador
+  actualizado (evento clave, dimensiones y smoke test).
+
+### Regressions checked
+
+- La impresión del boletín se mide en scroll (sin IntersectionObserver)
+  para no romper el invariante del lifecycle suite (observers lineales);
+  verificado 77/77 en la suite regular.
+- `article_view` se deduplica por artículo y sesión (no infla la segunda
+  lectura); el read depth conserva el «sin chequeo inmediato» para
+  artículos cortos.
+- Los enlaces primarios ya no disparan `outbound_source_click` (evento
+  específico); la cobertura sigue disparándolo.
+- Sin JS nuevo de terceros; sin cambios de consentimiento ni de CSP.
+
+### Decisions added
+
+- DEC-027 (contrato de eventos del embudo GA4)
+- DEC-028 (KPIs editoriales en `docs/EDITORIAL_METRICS.md`)
+
+### Follow-ups
+
+- FU-001, FU-010, FU-011, FU-012, FU-014, FU-015, FU-016, FU-017,
+  FU-019, FU-020, FU-021 vigentes.
+- FU-018 resuelto (resultado del boletín: impresión, inicio y envío).
+- FU-022 (nuevo): el operador debe crear en GA4 las dimensiones
+  personalizadas nuevas (`form_id`, `article_path`, `target_path`,
+  `related_kind`, `series_slug`, `topic_slug`) y marcar
+  `newsletter_submit` como evento clave (checklist actualizado).
+- FU-023 (nuevo): no hay evento de impresión del bloque relacionado; el
+  CTR usa `article_view` como denominador proxy.
+- FU-024 (nuevo): comparar `newsletter_submit` (intención) con las
+  suscripciones confirmadas de Buttondown para la conversión real.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (764/765; fallo ambiental FU-012)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated

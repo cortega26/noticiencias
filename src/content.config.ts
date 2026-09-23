@@ -28,6 +28,20 @@ const SOCIAL_ID_RE = /^[0-9a-f]{64}$/;
 // P0-06 / DEC-003: `why_it_matters` ("Qué cambia") allows 0-3 items with no
 // minimum; cardinality is enforced at field level below.
 
+// Wave 3 editorial contract notes (same module-scope rule as above).
+//
+// P0-03: `institution` + `publication_status` feed the evidence record;
+// absent = omit, never placeholder.
+//
+// P0-09: `reviewer_*` identify a real human review; never invented. Without
+// reviewer data the render falls back to the institutional line.
+//
+// P2-02: `known_points` / `open_questions` (0-3 each, omissible) render the
+// "Qué sabemos / Qué no sabemos" block only when present.
+//
+// P2-07: `corrected_at` + `correction_summary` travel together; a
+// half-correction (one without the other) is rejected below.
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
@@ -130,8 +144,34 @@ const posts = defineCollection({
         })
         .strict()
         .optional(),
+
+      institution: z.string().min(1).max(160).optional(),
+      publication_status: z.enum(['peer_reviewed', 'preprint', 'conference', 'other']).optional(),
+      reviewer_name: z.string().min(1).max(120).optional(),
+      reviewer_role: z.string().min(1).max(120).optional(),
+      reviewer_profile_url: z.url().optional(),
+      review_date: z
+        .string()
+        .regex(/^\d{4}-\d{2}-\d{2}$/, 'review_date must be YYYY-MM-DD')
+        .optional(),
+      known_points: z.array(z.string().min(1)).max(3).optional(),
+      open_questions: z.array(z.string().min(1)).max(3).optional(),
+      corrected_at: z
+        .string()
+        .regex(/^\d{4}-\d{2}-\d{2}$/, 'corrected_at must be YYYY-MM-DD')
+        .optional(),
+      correction_summary: z.string().min(1).max(500).optional(),
     })
     .superRefine((data, ctx) => {
+      // --- P2-07: corrections travel together ---
+      if (!!data.corrected_at !== !!data.correction_summary) {
+        ctx.addIssue({
+          code: 'custom',
+          path: !data.corrected_at ? ['corrected_at'] : ['correction_summary'],
+          message: 'corrected_at and correction_summary must be set together',
+        });
+      }
+
       // --- sources cross-field validation (P0-01) ---
       // A doi without role=primary is a meaningless state: the DOI only
       // renders in the primary block, so reject it instead of silently

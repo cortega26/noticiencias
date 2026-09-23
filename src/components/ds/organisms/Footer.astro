@@ -48,6 +48,9 @@ const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
         </div>
+        <p class="text-sm text-text-muted leading-relaxed">
+          Ciencia en español claro, con fuentes a la vista y revisión editorial.
+        </p>
         <div class="text-sm text-muted flex gap-1">
           {
             secondaryLinks.map(({ text, href }, index) => (
@@ -125,7 +128,12 @@ const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics
       <div class="text-sm mr-4 text-text-muted">
         <Fragment set:html={footNote} />
         <div>
-          Desarrollado por <a
+          Código abierto en <a
+            class="underline text-text-muted hover:text-primary transition duration-150 ease-in-out"
+            href="https://github.com/cortega26/noticiencias"
+            target="_blank"
+            rel="noopener">GitHub</a
+          > · Desarrollado por <a
             class="underline text-text-muted hover:text-primary transition duration-150 ease-in-out"
             href="https://tooltician.com/"
             target="_blank"

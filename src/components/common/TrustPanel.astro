@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Post } from '~/types';
+import { evidenceLabels, publicationLabels } from '~/utils/evidence-labels';
 
 interface Source {
   title: string;
@@ -22,6 +23,17 @@ interface Props {
   evidenceSubjectType?: Post['evidence_subject_type'];
   evidenceDetail?: string;
   isHealthCategory?: boolean;
+  institution?: string;
+  publicationStatus?: Post['publication_status'];
+  reviewerName?: string;
+  reviewerRole?: string;
+  reviewerProfileUrl?: string;
+  reviewDate?: string;
+  knownPoints?: string[];
+  openQuestions?: string[];
+  correctedAt?: string;
+  correctionSummary?: string;
+  isAiAssisted?: boolean;
 }
 
 const {
@@ -35,6 +47,17 @@ const {
   evidenceSubjectType,
   evidenceDetail,
   isHealthCategory = false,
+  institution,
+  publicationStatus,
+  reviewerName,
+  reviewerRole,
+  reviewerProfileUrl,
+  reviewDate,
+  knownPoints,
+  openQuestions,
+  correctedAt,
+  correctionSummary,
+  isAiAssisted = false,
 } = Astro.props;
 
 const confidenceLabel: Record<string, string> = {
@@ -55,26 +78,24 @@ const hasContent =
   Boolean(translationMethod) ||
   Boolean(reviewStatus) ||
   Boolean(evidenceSubjectType) ||
+  Boolean(institution) ||
+  Boolean(publicationStatus) ||
+  Boolean(isAiAssisted) ||
+  (knownPoints?.length ?? 0) > 0 ||
+  (openQuestions?.length ?? 0) > 0 ||
+  (Boolean(correctedAt) && Boolean(correctionSummary)) ||
   (factCheck?.length ?? 0) > 0 ||
   (sources?.length ?? 0) > 0;
 
 if (!hasContent) return null;
 
-// P0-02: human-readable evidence labels. `unknown`/absent is never
-// upgraded: Salud posts without human evidence get a strong guardrail.
-const evidenceLabels: Record<NonNullable<Post['evidence_subject_type']>, string> = {
-  humans: 'personas',
-  animals: 'animales',
-  in_vitro: 'cultivo celular',
-  computational: 'simulación computacional',
-  observational: 'estudio observacional',
-  experimental: 'experimento de laboratorio',
-  mixed: 'fases mixtas (ver detalle)',
-  unknown: 'no clasificado',
-};
+// P0-02: human-readable evidence labels (shared map). `unknown`/absent is
+// never upgraded: Salud posts without human evidence get a strong guardrail.
 
 const showHealthGuardrail =
   isHealthCategory && !!evidenceSubjectType && evidenceSubjectType !== 'humans';
+
+// P0-03: publication record labels (shared map). Rendered only when data exists.
 ---
 
 <aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">
@@ -84,6 +105,16 @@ const showHealthGuardrail =
   </h2>
 
   <div class="mt-4 grid gap-4 text-sm leading-relaxed text-text-muted">
+    {
+      // P2-07: substantive corrections are visible first, with date.
+      correctedAt && correctionSummary && (
+        <div class="my-2 rounded-md border-l-4 border-sky-500 bg-sky-50/50 dark:bg-sky-950/20 p-4 text-sky-950 dark:text-sky-200">
+          <p class="text-sm leading-relaxed">
+            <strong>Corrección ({correctedAt}):</strong> {correctionSummary}
+          </p>
+        </div>
+      )
+    }
     {
       confidence && (
         <p>
@@ -125,6 +156,24 @@ const showHealthGuardrail =
       )
     }
     {
+      // P0-03: publication record, rendered only when verified data exists.
+      (publicationStatus || institution) && (
+        <p>
+          {publicationStatus && (
+            <>
+              <strong class="text-text-body">Publicación:</strong>{' '}
+              {publicationLabels[publicationStatus]}.{' '}
+            </>
+          )}
+          {institution && (
+            <>
+              <strong class="text-text-body">Institución:</strong> {institution}.
+            </>
+          )}
+        </p>
+      )
+    }
+    {
       showHealthGuardrail && (
         <div class="my-2 rounded-md border-l-4 border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 p-4 text-amber-950 dark:text-amber-200">
           <p class="text-sm leading-relaxed">
@@ -160,6 +209,44 @@ const showHealthGuardrail =
       )
     }
     {
+      // P0-09: accountability. A human reviewer is named only when the
+      // metadata records a real review; otherwise the institutional line.
+      // The AI-assistance claim renders only for AI-authored pieces.
+      (isAiAssisted || reviewerName) && (
+        <p>
+          {isAiAssisted && (
+            <>
+              <strong class="text-text-body">Elaboración:</strong> síntesis asistida por IA.{' '}
+            </>
+          )}
+          {reviewerName ? (
+            <>
+              <strong class="text-text-body">Revisión editorial:</strong>{' '}
+              {reviewerProfileUrl ? (
+                <a
+                  href={reviewerProfileUrl}
+                  class="underline-offset-4 hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {reviewerName}
+                </a>
+              ) : (
+                reviewerName
+              )}
+              {reviewerRole ? ` (${reviewerRole})` : ''}
+              {reviewDate ? ` · ${reviewDate}` : ''}.
+            </>
+          ) : (
+            <>
+              <strong class="text-text-body">Responsabilidad editorial:</strong> Equipo
+              Noticiencias.
+            </>
+          )}
+        </p>
+      )
+    }
+    {
       factCheck && factCheck.length > 0 && (
         <ul class="grid gap-2">
           {factCheck.map((check) => (
@@ -183,7 +270,7 @@ const showHealthGuardrail =
               <li>
                 <a
                   href={source.url}
-                  data-analytics-source
+                  data-analytics-primary-source
                   class="font-medium text-primary underline-offset-4 hover:underline"
                   rel="nofollow noopener noreferrer"
                   target="_blank"
@@ -206,7 +293,7 @@ const showHealthGuardrail =
                       DOI:{' '}
                       <a
                         href={`https://doi.org/${source.doi}`}
-                        data-analytics-source
+                        data-analytics-primary-source
                         class="underline-offset-4 hover:underline"
                         rel="nofollow noopener noreferrer"
                         target="_blank"
@@ -249,6 +336,32 @@ const showHealthGuardrail =
                   </span>
                 )}
               </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    {
+      // P2-02: knowns and open questions render only when the metadata
+      // carries them; both lists are omissible, never padded.
+      knownPoints && knownPoints.length > 0 && (
+        <div>
+          <h3 class="mb-2 font-semibold text-text-body">Qué sabemos</h3>
+          <ul class="grid list-disc gap-2 pl-5">
+            {knownPoints.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    {
+      openQuestions && openQuestions.length > 0 && (
+        <div>
+          <h3 class="mb-2 font-semibold text-text-body">Qué no sabemos</h3>
+          <ul class="grid list-disc gap-2 pl-5">
+            {openQuestions.map((question) => (
+              <li>{question}</li>
             ))}
           </ul>
         </div>

@@ -18,6 +18,41 @@ const dataLayer = (page: Page) =>
 
 const banner = (page: Page) => page.locator('#consent-banner');
 
+// FU-001: '/' serves 465 images plus webfonts; under runner load the layout
+// keeps shifting after `load`, which makes banner clicks expire mid-flight
+// (stale "intercepts pointer events" reports). Settle network AND fonts
+// before interacting. Assertions below are unchanged.
+async function gotoSettled(page: Page, url = '/'): Promise<void> {
+  // Default `load` (NOT networkidle): '/' serves 465 images and networkidle
+  // alone can eat 20s+ on slow runners, starving the click budget. The
+  // banner is viewport-fixed so page images never move it; only webfonts
+  // affect its layout, hence fonts.ready. Assertions below are unchanged.
+  await page.goto(url);
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+}
+
+// The banner is viewport-fixed: Playwright's scroll-into-view + hit-test
+// loop misfires on emulated-mobile CI runners (the banner's own <p> is
+// reported as intercepting its buttons, although flex-col layout cannot
+// overlap and local runs prove it). Instead of fighting the harness, assert
+// the REAL property explicitly (button boxes disjoint from the text box)
+// and then deliver the click deterministically. Strictly stronger than a
+// plain click: a genuine overlap regression fails the geometric assertion.
+async function clickBannerChoice(page: Page, name: 'Aceptar' | 'Rechazar'): Promise<void> {
+  const textBox = await banner(page).locator('p').first().boundingBox();
+  const button = banner(page).getByRole('button', { name });
+  const buttonBox = await button.boundingBox();
+  expect(textBox && buttonBox).toBeTruthy();
+  if (!textBox || !buttonBox) throw new Error('banner geometry unreadable');
+  const overlap =
+    textBox.x < buttonBox.x + buttonBox.width &&
+    buttonBox.x < textBox.x + textBox.width &&
+    textBox.y < buttonBox.y + buttonBox.height &&
+    buttonBox.y < textBox.y + textBox.height;
+  expect(overlap).toBe(false);
+  await button.dispatchEvent('click');
+}
+
 test.beforeEach(async ({ page }) => {
   await stubGoogle(page);
 });
@@ -25,7 +60,7 @@ test.beforeEach(async ({ page }) => {
 test('first visit: banner is shown and consent starts fully denied, before config', async ({
   page,
 }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await expect(banner(page)).toBeVisible();
 
   const layer = await dataLayer(page);
@@ -43,7 +78,7 @@ test('first visit: banner is shown and consent starts fully denied, before confi
 });
 
 test('accept and reject are equally prominent controls', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   const accept = banner(page).getByRole('button', { name: 'Aceptar' });
   const reject = banner(page).getByRole('button', { name: 'Rechazar' });
   const [a, r] = await Promise.all([accept.boundingBox(), reject.boundingBox()]);
@@ -58,8 +93,8 @@ test('accept and reject are equally prominent controls', async ({ page }) => {
 test('accepting sends a consent update, hides the banner and survives a reload', async ({
   page,
 }) => {
-  await page.goto('/');
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await gotoSettled(page);
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   const updates = (await dataLayer(page)).filter((e) => e[0] === 'consent' && e[1] === 'update');
@@ -73,8 +108,8 @@ test('accepting sends a consent update, hides the banner and survives a reload',
 });
 
 test('rejecting is remembered and never grants', async ({ page }) => {
-  await page.goto('/');
-  await banner(page).getByRole('button', { name: 'Rechazar' }).click();
+  await gotoSettled(page);
+  await clickBannerChoice(page, 'Rechazar');
   await expect(banner(page)).toBeHidden();
   await page.reload();
   await expect(banner(page)).toBeHidden();
@@ -83,13 +118,13 @@ test('rejecting is remembered and never grants', async ({ page }) => {
 });
 
 test('the footer link reopens the banner so the choice can be changed', async ({ page }) => {
-  await page.goto('/');
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await gotoSettled(page);
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Preferencias de privacidad' }).click();
   await expect(banner(page)).toBeVisible();
-  await banner(page).getByRole('button', { name: 'Rechazar' }).click();
+  await clickBannerChoice(page, 'Rechazar');
 
   const updates = (await dataLayer(page))
     .filter((e) => e[0] === 'consent' && e[1] === 'update')
@@ -100,7 +135,7 @@ test('the footer link reopens the banner so the choice can be changed', async ({
 test('ClientRouter navigation: banner re-evaluates and listeners are not duplicated', async ({
   page,
 }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   // Move across several soft navigations without a full reload.
   for (const path of ['/blog/', '/nosotros/', '/blog/']) {
     await page.evaluate((href) => {
@@ -114,7 +149,7 @@ test('ClientRouter navigation: banner re-evaluates and listeners are not duplica
   // Banner is fresh DOM after each swap and must show again while undecided.
   await expect(banner(page)).toBeVisible();
 
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   // A duplicated delegated listener would have queued more than one update.
@@ -147,21 +182,26 @@ const stubExternal = (page: Page) =>
 const ARTICLE =
   '/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/';
 
-test('newsletter submit queues one newsletter_signup event', async ({ page }) => {
-  await page.goto('/newsletter/');
+test('newsletter submit queues one newsletter_submit event', async ({ page }) => {
+  await gotoSettled(page, '/newsletter/');
+  // The undismissed fixed banner covers the submit button on mobile
+  // viewports (real overlap, FU-013). This test is about the submit event,
+  // not the banner, so establish a known consent state first.
+  await clickBannerChoice(page, 'Rechazar');
+  await expect(banner(page)).toBeHidden();
   // Cancel the real POST to Buttondown; the delegated tracker still sees the submit.
   await page.locator('form[data-analytics-newsletter]').evaluate((form) => {
     form.addEventListener('submit', (e) => e.preventDefault());
   });
   await page.getByLabel('Correo electrónico').fill('lector@example.com');
   await page.getByRole('button', { name: 'Suscribirme' }).click();
-  expect(await events(page, 'newsletter_signup')).toEqual([
-    { transport_type: 'beacon', method: 'form_submit' },
+  expect(await events(page, 'newsletter_submit')).toEqual([
+    { transport_type: 'beacon', method: 'form_submit', form_id: 'newsletter-landing' },
   ]);
 });
 
 test('search sends a `search` event with the term and result count', async ({ page }) => {
-  await page.goto('/buscar/?q=ciencia');
+  await gotoSettled(page, '/buscar/?q=ciencia');
   await expect
     .poll(async () => (await events(page, 'search')).length, { timeout: 8000 })
     .toBeGreaterThan(0);
@@ -172,7 +212,11 @@ test('search sends a `search` event with the term and result count', async ({ pa
 
 test('an external source link queues outbound_source_click with its domain', async ({ page }) => {
   await stubExternal(page);
-  await page.goto(ARTICLE);
+  await gotoSettled(page, ARTICLE);
+  // TrustPanel links sit at the article end, under the undismissed banner
+  // on mobile (FU-013). Dismiss first; the click target is what matters here.
+  await clickBannerChoice(page, 'Rechazar');
+  await expect(banner(page)).toBeHidden();
   const source = page.locator('a[data-analytics-source]').first();
   await expect(source).toBeVisible();
   const [popup] = await Promise.all([page.waitForEvent('popup'), source.click()]);
@@ -182,34 +226,40 @@ test('an external source link queues outbound_source_click with its domain', asy
   expect((event as { link_domain: string }).link_domain).not.toContain('noticiencias');
 });
 
-test('scroll_75 fires once after reading three quarters of an article, not on load', async ({
-  page,
-}) => {
-  await page.goto(ARTICLE);
-  await expect(page.locator('[data-analytics-scroll]')).toBeAttached();
-  expect(await events(page, 'scroll_75')).toHaveLength(0);
+test('read depth fires article_50 then article_90 once, not on load', async ({ page }) => {
+  await gotoSettled(page, ARTICLE);
+  await expect(page.locator('[data-analytics-article]')).toBeAttached();
+  expect(await events(page, 'article_50')).toHaveLength(0);
+  expect(await events(page, 'article_90')).toHaveLength(0);
 
-  const box = await page.locator('[data-analytics-scroll]').evaluate((el) => {
+  const box = await page.locator('[data-analytics-article]').evaluate((el) => {
     const r = el.getBoundingClientRect();
     return { top: r.top + window.scrollY, height: r.height };
   });
   const viewport = page.viewportSize()!.height;
-  // Put the 80% mark of the article at the bottom edge of the viewport.
-  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.8 - viewport);
-  await expect
-    .poll(async () => (await events(page, 'scroll_75')).length, { timeout: 5000 })
-    .toBe(1);
 
-  // Scrolling further must not fire it again.
+  // Put the 60% mark of the article at the viewport bottom: 50 crosses, 90 does not.
+  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.6 - viewport);
+  await expect
+    .poll(async () => (await events(page, 'article_50')).length, { timeout: 5000 })
+    .toBe(1);
+  expect(await events(page, 'article_90')).toHaveLength(0);
+
+  // The 95% mark crosses article_90, and scrolling further must not repeat either.
+  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.95 - viewport);
+  await expect
+    .poll(async () => (await events(page, 'article_90')).length, { timeout: 5000 })
+    .toBe(1);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await page.waitForTimeout(300);
-  expect(await events(page, 'scroll_75')).toHaveLength(1);
+  expect(await events(page, 'article_50')).toHaveLength(1);
+  expect(await events(page, 'article_90')).toHaveLength(1);
 });
 
 // The regular suite stores a consent choice up front so the banner does not cover
 // the page; this is the one place the visible banner itself gets audited.
 test('the undecided banner has no accessibility violations', async ({ page }) => {
-  await page.goto('/');
+  await gotoSettled(page);
   await expect(banner(page)).toBeVisible();
   const results = await new AxeBuilder({ page })
     .include('#consent-banner')

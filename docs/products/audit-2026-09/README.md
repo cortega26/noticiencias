@@ -1,6 +1,7 @@
 # Noticiencias — Programa de mejora editorial, UX y Growth
 
 Fecha de creación: 2026-09-22
+Estado: **programa inicial cerrado** (Waves 0–8 DONE al 2026-09-23; ver `IMPLEMENTATION_LEDGER.md`).
 
 Este directorio convierte la auditoría de Noticiencias en un programa de implementación incremental, auditable y testeable.
 
@@ -18,6 +19,7 @@ Copiar este directorio completo dentro del repositorio de Noticiencias:
             ├── IMPLEMENTATION_LEDGER.md
             ├── DECISIONS.md
             ├── BASELINE.md
+            ├── HEADLINE_INVENTORY.md
             └── WAVE_EXECUTION_PROMPT.md
 ```
 
@@ -31,6 +33,7 @@ No mover estos documentos a la raíz del repo salvo que la arquitectura document
 - `IMPLEMENTATION_LEDGER.md`: estado vivo de waves y findings, commits, tests, bloqueos y notas.
 - `DECISIONS.md`: decisiones de producto/arquitectura que no deben rediscutirse implícitamente entre sesiones.
 - `BASELINE.md`: estado técnico/editorial previo a cambios; sirve para distinguir regresiones de deuda preexistente.
+- `HEADLINE_INVENTORY.md`: inventario y clasificación de titulares legacy (entregable P1-09, Wave 5).
 - `WAVE_EXECUTION_PROMPT.md`: prompt operativo que se entrega al asistente/agente al iniciar o continuar una wave.
 - `README.md`: protocolo global y orden de ejecución.
 

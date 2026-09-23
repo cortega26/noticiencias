@@ -1,37 +1,25 @@
 ---
-import { fetchPosts } from '~/utils/blog';
-import type { Post } from '~/types';
 import Layout from '~/layouts/BaseLayout.astro';
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
-import { cleanSlug } from '~/utils/permalinks';
+import Button from '~/components/ds/atoms/Button.astro';
+import { fetchPosts } from '~/utils/blog';
+import { buildSeriesDossiers } from '~/utils/series';
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/date';
 
 export async function getStaticPaths() {
   const posts = await fetchPosts();
-  const series = posts.reduce((acc: Record<string, Post[]>, post) => {
-    const s = post.series;
-    if (s) {
-      if (!acc[s]) {
-        acc[s] = [];
-      }
-      acc[s].push(post);
-    }
-    return acc;
-  }, {});
-
-  return Object.keys(series).map((s) => ({
-    params: { series: cleanSlug(s) }, // Ensure slug is URL friendly
-    props: {
-      seriesName: s,
-      posts: series[s],
-    },
+  return buildSeriesDossiers(posts).map((dossier) => ({
+    params: { series: dossier.slug },
+    props: { dossier },
   }));
 }
 
-const { seriesName, posts } = Astro.props;
+const { dossier } = Astro.props;
 
 const metadata = {
-  title: `Series: ${seriesName} | Noticiencias`,
-  description: `Serie de Noticiencias sobre ${seriesName}.`,
+  title: `Serie: ${dossier.name}`,
+  description: dossier.description,
   robots: {
     index: true,
     follow: true,
@@ -42,15 +30,38 @@ const metadata = {
 <Layout metadata={metadata}>
   <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
     <header class="mb-8 border-b border-border-subtle pb-5">
+      <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">Serie</p>
       <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
-        {seriesName}
+        {dossier.name}
       </h1>
-      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
-        Cobertura a profundidad sobre un tema complejo, ordenada para leer con continuidad.
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">{dossier.description}</p>
+      <p class="mt-4 text-sm text-text-muted">
+        {`${dossier.count} ${dossier.count === 1 ? 'artículo' : 'artículos'}`} · Actualizada el{' '}
+        {getFormattedDate(dossier.latestDate, 'long')}
       </p>
+      <div class="mt-5">
+        <Button
+          variant="primary"
+          href={getPermalink(dossier.firstPost.permalink, 'post')}
+          text="Empieza aquí"
+          data-analytics-series={dossier.slug}
+          icon="tabler:arrow-right"
+          iconPosition="right"
+        />
+      </div>
     </header>
-    <div class="grid gap-6">
-      {posts.map((post) => <ArticleCard post={post} variant="row" />)}
-    </div>
+
+    <ol class="grid list-none gap-6">
+      {
+        dossier.posts.map((post, index) => (
+          <li>
+            <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+              Parte {index + 1}
+            </p>
+            <ArticleCard post={post} variant="row" />
+          </li>
+        ))
+      }
+    </ol>
   </section>
 </Layout>

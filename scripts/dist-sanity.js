@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
+const REPO_ROOT = path.resolve(__dirname, '..');
 const POSTS_DIR = path.resolve(__dirname, '../src/content/posts');
 const SRC_DIR = path.resolve(__dirname, '../src');
 const DEFAULT_HERO_IMAGE = '~/assets/images/default.png';
@@ -605,11 +606,71 @@ function auditSocialManifest() {
   }
 }
 
+function auditTagSitemapExclusion() {
+  // Guards the /temas/ sitemap exclusion: resolves the configured tag base
+  // from src/config.yaml with a minimal line scan (no YAML parser needed
+  // here) and fails if any tag-archive URL for that base leaks into the
+  // sitemap. The filter itself derives from the same config at build time
+  // (astro.config.mjs via safeYamlLoad), so a taxonomy rename is covered on
+  // both sides without hardcoded literals drifting apart.
+  const errorsBefore = errorCount;
+  const configText = fs.readFileSync(path.join(REPO_ROOT, 'src', 'config.yaml'), 'utf8');
+  const configPathname = (() => {
+    const lines = configText.split('\n');
+    let inTagBlock = false;
+    for (const line of lines) {
+      if (/^\s{4}tag:\s*$/.test(line)) {
+        inTagBlock = true;
+        continue;
+      }
+      if (inTagBlock) {
+        const m = line.match(/^\s{6}pathname:\s*['"]?([^'"#\s]+)['"]?/);
+        if (m) return m[1].replace(/^\/+|\/+$/g, '').toLowerCase();
+        if (/^\s{4}\S/.test(line)) break;
+      }
+    }
+    return null;
+  })();
+  if (!configPathname) {
+    console.error(
+      `${RED}[FAIL] Could not resolve apps.blog.tag.pathname from src/config.yaml.${RESET}`
+    );
+    errorCount++;
+    return;
+  }
+  const expectedBase = `/${configPathname}/`;
+  const sitemapFiles = fs
+    .readdirSync(DIST_DIR)
+    .filter((name) => /^sitemap.*\.xml$/.test(name))
+    .map((name) => path.join(DIST_DIR, name));
+  for (const sitemapFile of sitemapFiles) {
+    const body = fs.readFileSync(sitemapFile, 'utf8');
+    const leaked = body.match(new RegExp(`<loc>[^<]*${expectedBase}[^<]*</loc>`, 'g')) ?? [];
+    if (leaked.length > 0) {
+      console.error(
+        `${RED}[FAIL] ${path.basename(sitemapFile)} lists ${leaked.length} noindex tag URL(s) under ${expectedBase}.${RESET}`
+      );
+      errorCount++;
+    }
+  }
+
+  if (errorCount > errorsBefore) {
+    console.error(
+      `${RED}FAILED: tag sitemap exclusion audit found ${errorCount - errorsBefore} violation(s).${RESET}`
+    );
+  } else {
+    console.log(
+      `${GREEN}PASSED: no ${expectedBase} URLs in sitemap (tag base from config.yaml).${RESET}`
+    );
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
 auditSocialManifest();
+auditTagSitemapExclusion();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);

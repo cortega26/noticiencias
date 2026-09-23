@@ -1,33 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
 import {
-  buildCategoryRails,
   getEditionDate,
   getRelatedTopics,
   getTopicFrequency,
-  selectContextPosts,
+  selectArchivePosts,
   selectFeaturedPosts,
+  selectRecentPosts,
 } from '../src/utils/hub';
-import type { Post } from '../src/types';
-
-function post(overrides: Partial<Post>): Post {
-  return {
-    id: overrides.id ?? 'post',
-    slug: overrides.slug ?? 'post',
-    permalink: overrides.permalink ?? 'ciencia/post',
-    publishDate: overrides.publishDate ?? new Date('2026-01-01T00:00:00Z'),
-    title: overrides.title ?? 'Post title',
-    excerpt: overrides.excerpt ?? 'Excerpt',
-    image: overrides.image,
-    image_alt: overrides.image_alt,
-    category: overrides.category,
-    tags: overrides.tags ?? [],
-    author: overrides.author,
-    metadata: {},
-    draft: false,
-    ...overrides,
-  };
-}
+import { makePost as post } from './helpers/post-factory';
 
 describe('hub curation helpers', () => {
   it('selects featured posts by rank before falling back to date', () => {
@@ -103,16 +84,6 @@ describe('hub curation helpers', () => {
     expect(selectFeaturedPosts(posts, 1).map((item) => item.id)).toEqual(['investigation-older']);
   });
 
-  it('selects context posts from why-it-matters or summary points', () => {
-    const posts = [
-      post({ id: 'plain' }),
-      post({ id: 'summary', summary_points: ['Uno', 'Dos'] }),
-      post({ id: 'why', why_it_matters: ['Importa'] }),
-    ];
-
-    expect(selectContextPosts(posts, 3).map((item) => item.id)).toEqual(['why', 'summary']);
-  });
-
   it('computes topic frequency and related topics', () => {
     const posts = [
       post({
@@ -159,18 +130,6 @@ describe('hub curation helpers', () => {
     expect(getTopicFrequency([post({ id: 'untagged', tags: [] })], 5)).toEqual([]);
   });
 
-  it('builds category rails from matching posts', () => {
-    const posts = [
-      post({ id: 'ciencia', category: { slug: 'ciencia', title: 'Ciencia' } }),
-      post({ id: 'salud', category: { slug: 'salud', title: 'Salud' } }),
-    ];
-
-    const rails = buildCategoryRails(posts, [{ slug: 'ciencia', title: 'Ciencia' }], 3);
-
-    expect(rails).toHaveLength(1);
-    expect(rails[0].posts.map((item) => item.id)).toEqual(['ciencia']);
-  });
-
   it('falls back to the current time when the edition has no posts', () => {
     const before = Date.now();
     const date = getEditionDate([]);
@@ -208,24 +167,65 @@ describe('hub curation helpers', () => {
       'older-featured',
     ]);
   });
+});
 
-  it('breaks context ties by newest publish date', () => {
+describe('home recency helpers', () => {
+  it('selects only stories inside the edition window, newest first', () => {
     const posts = [
-      post({
-        id: 'older-context',
-        why_it_matters: ['Importa'],
-        publishDate: new Date('2026-01-01T00:00:00Z'),
-      }),
-      post({
-        id: 'newer-context',
-        why_it_matters: ['Importa'],
-        publishDate: new Date('2026-02-01T00:00:00Z'),
-      }),
+      post({ id: 'edition', publishDate: new Date('2026-09-20T00:00:00Z') }),
+      post({ id: 'inside', publishDate: new Date('2026-09-18T00:00:00Z') }),
+      post({ id: 'edge', publishDate: new Date('2026-09-13T00:00:00Z') }),
+      post({ id: 'outside', publishDate: new Date('2026-09-12T00:00:00Z') }),
     ];
 
-    expect(selectContextPosts(posts, 2).map((item) => item.id)).toEqual([
-      'newer-context',
-      'older-context',
-    ]);
+    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'));
+
+    expect(selection.inWindow).toBe(true);
+    expect(selection.posts.map((item) => item.id)).toEqual(['edition', 'inside', 'edge']);
+  });
+
+  it('honors excludeIds and the count cap inside the window', () => {
+    const posts = [
+      post({ id: 'hero', publishDate: new Date('2026-09-20T00:00:00Z') }),
+      post({ id: 'second', publishDate: new Date('2026-09-19T00:00:00Z') }),
+      post({ id: 'third', publishDate: new Date('2026-09-18T00:00:00Z') }),
+    ];
+
+    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'), {
+      count: 1,
+      excludeIds: ['hero'],
+    });
+
+    expect(selection.inWindow).toBe(true);
+    expect(selection.posts.map((item) => item.id)).toEqual(['second']);
+  });
+
+  it('falls back to newest stories and reports the fallback when the window is empty', () => {
+    const posts = [
+      post({ id: 'old', publishDate: new Date('2026-01-01T00:00:00Z') }),
+      post({ id: 'older', publishDate: new Date('2025-12-01T00:00:00Z') }),
+    ];
+
+    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'), {
+      excludeIds: ['old'],
+    });
+
+    expect(selection.inWindow).toBe(false);
+    expect(selection.posts.map((item) => item.id)).toEqual(['older']);
+  });
+
+  it('selects archive posts excluding what is already promoted', () => {
+    const posts = [
+      post({ id: 'hero', publishDate: new Date('2026-09-20T00:00:00Z') }),
+      post({ id: 'week', publishDate: new Date('2026-09-19T00:00:00Z') }),
+      post({ id: 'archive-1', publishDate: new Date('2026-08-28T00:00:00Z') }),
+      post({ id: 'archive-2', publishDate: new Date('2026-08-27T00:00:00Z') }),
+      post({ id: 'archive-3', publishDate: new Date('2026-08-26T00:00:00Z') }),
+      post({ id: 'archive-4', publishDate: new Date('2026-08-25T00:00:00Z') }),
+    ];
+
+    const archive = selectArchivePosts(posts, { count: 3, excludeIds: ['hero', 'week'] });
+
+    expect(archive.map((item) => item.id)).toEqual(['archive-1', 'archive-2', 'archive-3']);
   });
 });

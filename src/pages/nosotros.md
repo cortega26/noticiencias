@@ -41,21 +41,22 @@ Si alguna vez establecemos acuerdos de financiación, los haremos públicos en n
 
 ## Equipo
 
-Noticiencias opera con un modelo híbrido:
+Noticiencias es un medio unipersonal con automatización propia, dirigido y revisado por [Carlos Ortega](https://tooltician.com) ([código y proceso abiertos en GitHub](https://github.com/cortega26/noticiencias)). El modelo de trabajo es híbrido:
 
 - **Automatización editorial**: sistemas propios monitorizan fuentes científicas y técnicas, extraen hallazgos relevantes y generan borradores estructurados con referencias rastreables.
-- **Supervisión humana**: cada borrador pasa por revisión editorial antes de publicarse. Se verifican fuentes, se ajusta el tono, se añade contexto y se calibra el nivel de confianza.
-- **Dirección editorial**: responsable de la línea temática, los estándares de calidad y la mejora continua del proceso. Puedes revisar nuestro [marco de gobernanza editorial](https://github.com/cortega26/noticiencias) en GitHub.
+- **Supervisión humana firmada**: cada borrador pasa por revisión editorial de Carlos Ortega antes de publicarse. Se verifican fuentes, se ajusta el tono, se añade contexto y se calibra el nivel de confianza. Nada se publica sin ese visto bueno.
+- **Dirección editorial**: Carlos Ortega es responsable de la línea temática, los estándares de calidad y la mejora continua del proceso. Puedes revisar el [marco de gobernanza editorial](https://github.com/cortega26/noticiencias) en GitHub.
 
-Este modelo nos permite cubrir más ciencia relevante sin los sesgos y limitaciones de tiempo de las redacciones tradicionales, manteniendo la trazabilidad y la responsabilidad editorial.
+Este modelo permite cubrir más ciencia relevante sin los sesgos y limitaciones de tiempo de las redacciones tradicionales, manteniendo la trazabilidad y la responsabilidad editorial — con una persona concreta respondiendo por cada decisión.
 
 ## Credenciales y estándares
 
-Nos guían los siguientes compromisos:
+Nos guían los siguientes compromisos, cada uno verificable:
 
-- **Trazabilidad total**: cada dato importante está enlazado a su fuente original.
+- **Trazabilidad total**: cada dato importante está enlazado a su fuente original. Ver [cómo trabajamos](/metodologia/).
 - **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
 - **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
+- **Calidad auditada**: una muestra de artículos pasa por un auditor editorial independiente; los promedios son públicos en [transparencia](/transparencia/).
 - **Privacidad real**: nuestra [política de privacidad](/privacidad/) es concreta, no un laberinto legal. Medimos lectura de forma agregada, sin rastreo publicitario, sin venta de datos y sin cookies de terceros.
 
 ## Contacto

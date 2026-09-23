@@ -57,6 +57,16 @@ why_it_matters:
 confidence: Moderada — preprint con resultados prometedores pero aún sin revisión por pares y necesidad de validación en modelos de inmunidad humana y optimización de la permeabilidad del gel.
 evidence_subject_type: mixed
 evidence_detail: Cultivo celular humano (SC-islets) y trasplantes en ratones inmunodeficientes NOD SCID; sin participantes humanos.
+publication_status: preprint
+institution: McGill University
+known_points:
+  - La encapsulación elevó la recuperación celular al 91 ± 3 % frente al 60 ± 10 % sin encapsular, a 25 días de cultivo.
+  - La secreción de insulina en respuesta a la glucosa no se alteró con el gel de alginato.
+  - Los injertos mantuvieron péptido C humano sensible a la glucosa hasta el día 98 en ratones.
+open_questions:
+  - La protección frente al sistema inmune a largo plazo.
+  - La permeabilidad del gel para nutrientes y señales.
+  - La validación en ensayos con participantes humanos.
 sources:
   - title: 'Bridging scale-up to transplantation: pluripotent stem cell-derived pancreatic islet encapsulation in emulsion-generated high concentration alginate beads'
     url: https://biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1

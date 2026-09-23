@@ -297,3 +297,320 @@ mapeaba `str`-Enums de Python.
 P1-04 (Wave 4) puede usar `evidence_subject_type` para los chips
 metodológicos. P0-01 y P0-02 comparten commit (archivos entrelazados);
 la atomicidad por finding se preserva en ledger, no en hashes.
+
+## DEC-017 — TrustPanel como superficie única de ficha y accountability
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P0-03 pedía un “componente reutilizable” de ficha; P0-09, P2-02 y P2-07
+piden señales visibles al final del artículo. TrustPanel ya rendía
+confianza, incertidumbre, fact-check y fuentes.
+
+### Decision
+
+Extender TrustPanel en vez de crear componentes nuevos (anti-patrón:
+wrappers genéricos / tercera capa). Secciones condicionales, sin
+placeholders: corrección → confianza → incertidumbre → modelo →
+publicación → método/revisión → accountability → fact-check → primaria →
+cobertura → sabidos → pendientes.
+
+### Consequences
+
+Wave 4+ reutiliza estos campos (chips, pre-body) sin duplicar fuentes de
+verdad. Si el panel crece demasiado, dividir por secciones con datos,
+no por componentes paralelos.
+
+## DEC-018 — El bloque se llama «Qué cambia», no «Por qué importa»
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+El backlog (P1-05) sugería «Por qué importa», pero el guardarraíl de voz
+`tests/quick-wins-regression.test.ts` prohíbe esa frase exacta por
+genérica de revista-IA. El fallo se detectó al correr la suite (causa
+raíz: colisión entre programa y gobernanza activa del repo).
+
+### Decision
+
+Nombrar el bloque «Qué cambia»: vocabulario canónico del programa
+(P0-06/DEC-003) para `why_it_matters`, no baneado, preciso. Se preserva
+el objetivo y los acceptance criteria de P1-05 (nombre = orientativo,
+criterios = contrato, DEC-002).
+
+### Consequences
+
+Futuras waves que citen «Por qué importa» del backlog deben leer «Qué
+cambia». No debilitar el guardarraíl de voz para acomodar copy.
+
+## DEC-019 — Portada por bloques y recencia honesta
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-01 pedía reconstruir la jerarquía de la portada; P1-02 exigía que
+ningún bloque prometiera una actualidad incompatible con sus fechas. La
+portada anterior acumulaba hasta ~35 tarjetas (hero + 6 recientes + 3
+«Qué cambia» + rails de las 9 categorías) y titulaba «Última edición» a un
+simple recorte de las más recientes.
+
+### Decision
+
+La portada queda: hero (1 + 2) → CTA de boletín → «Esta semana» (máx. 6)
+→ «Serie destacada» → «Del archivo» (máx. 3) → temas → secciones →
+metodología → boletín final. Reglas:
+
+1. «Esta semana» solo se muestra si la ventana de 7 días (relativa a la
+   fecha de edición = post más reciente) tiene historias fuera del hero;
+   si no, el bloque cae a «Lo más reciente» y lo declara.
+2. Las categorías dejan de listarse como rails de tarjetas en la portada;
+   siguen existiendo en header, footer y rutas `/categorias/*`.
+3. Como máximo 9 historias promovidas antes de contenido secundario.
+
+### Consequences
+
+El CTA temprano es un enlace a `/newsletter/`; el formulario inline
+temprano es P1-06 (Wave 6), donde también se añadirá `autocomplete`.
+`selectContextPosts`/`buildCategoryRails`/`homeSectionItems` se retiran
+(sin consumidores). El hero usa `featured`/`featured_rank` cuando existan
+(FU-014).
+
+## DEC-020 — Navegación primaria ≤6 con subdisciplinas anidadas
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-03 exige ≤6 entradas de contenido en navegación primaria y que no haya
+padre/hijo compitiendo al mismo nivel. El header anterior mostraba 5
+categorías + «Más» (Física, Química, Biología, Arqueología) + Series = 7,
+con Física/Química/Biología como hermanas de Ciencia.
+
+### Decision
+
+El header queda en 6 entradas: Ciencia (desplegable con «Toda la
+sección», Física, Química, Biología), Astronomía, Salud, Tecnología,
+Editorial y Más (Arqueología, Series). `categorySections.ts` expone
+`navGroup` (`primary | ciencia | mas`) en lugar de `showInHeader`; el
+footer sigue listando las 9 secciones.
+
+### Consequences
+
+Las URLs de categoría no cambian y siguen en sitemap (9/9 verificadas).
+Cualquier categoría futura debe declarar su `navGroup` para aparecer en el
+header.
+
+## DEC-021 — P1-09: inventario de titulares, sin sustitución ciega
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-09 pide sanear titulares legacy visibles sin sustitución ciega. El
+corpus tiene 40 posts con títulos de tres épocas editoriales distintas
+(enero legacy, primavera v2, agosto-septiembre recientes).
+
+### Decision
+
+Wave 5 entrega `HEADLINE_INVENTORY.md` con los 40 títulos clasificados
+(`acceptable`, `hype`, `capitalization`, `misleading causality`,
+`factual issue`) y verifica que la portada no promueva ninguno marcado
+como `hype`. No se reescribe ningún título en esta wave.
+
+### Consequences
+
+Los 16 títulos marcados quedan como deuda editorial (FU-015) para
+corrección contra fuente. Cualquier reescritura futura no cambia URLs ni
+canonical (el permalink no depende del título).
+
+## DEC-022 — Mejora progresiva del boletín y CSP connect-src
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-06 exige estados loading/error/success accesibles en la suscripción
+inline. El formulario es un POST nativo a Buttondown (ADR-0009, LAW-F3) y
+la CSP solo permitía `connect-src` a GA4 y Cloudflare.
+
+### Decision
+
+1. `NewsletterCapture` mantiene el POST nativo como fallback sin JS y
+   añade un script delegado y acotado que intercepta el submit, hace
+   `fetch(..., { redirect: 'manual' })` y refleja el estado en un
+   `role="status"` (Enviando… / revisa tu correo / error). La respuesta
+   opaca del redirect de Buttondown cuenta como éxito.
+2. `connect-src` incorpora `https://buttondown.com` en las tres copias
+   sincronizadas (meta, `public/_headers`,
+   `docs/DEPLOYMENT_SECURITY_HEADERS.md`), custodiadas por
+   `tests/compliance.test.ts`.
+3. Cada instancia recibe `formId` para ids únicos y `autocomplete="email"`.
+
+### Consequences
+
+La CSP del edge (Cloudflare Transform Rule) debe actualizarse (FU-017).
+No hay isla ni dependencia de framework. Si el fetch falla por red, el
+usuario ve el error y puede reintentar; sin JS, el flujo original sigue.
+
+## DEC-023 — Descripciones de serie en mapa frontend hasta el contrato
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-10 pide descripción por serie, pero el schema `posts` solo transporta
+`series` (nombre); no existe `series_description` y añadirlo es un cambio
+de contrato sellado (LAW-F1, espejo backend).
+
+### Decision
+
+Las descripciones de las tres series vivas viven en
+`src/utils/series.ts` (mapa explícito) con fallback neutral para series
+desconocidas. El dossier se construye desde los posts reales
+(descripción, conteo, última actualización, primer post, orden
+cronológico); no se inventan imágenes ni identidades.
+
+### Consequences
+
+Cuando el contrato transporte `series_description`, el mapa se retira
+(FU-016). Añadir una serie nueva sin descripción usa el fallback en vez
+de inventar copy.
+
+## DEC-024 — Related-content con umbral y fallback explícito
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-01 exige que «Últimos posts» no domine el ranking y que exista un
+fallback explícito. El ranking anterior (categoría +5, tags +1) rellenaba
+hasta 4 resultados aunque el score fuera 0, así que la recencia decidía
+el bloque.
+
+### Decision
+
+`src/utils/related.ts` puntúa señales estructuradas: misma categoría +4,
+misma serie +3, cada tag compartido +2, mismo modelo experimental +1,
+mismo estado de publicación +1. Umbral `MIN_RELATED_SCORE = 2`: la
+recencia sola nunca clasifica. Con ≥1 candidato el bloque se rotula
+«Relacionado»; sin candidatos cae a «Más reciente» (nunca «Relacionado»).
+
+### Consequences
+
+Los pares sin señales (p. ej. la pieza editorial) muestran el fallback
+honesto. Señales de entidades/fenómeno necesitan extracción backend
+(FU-020). La cadena muerta de related del template se elimina (FU-009).
+
+## DEC-025 — Hubs temáticos curados, masa crítica y noindex
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-06 pide hubs de calidad sin crear hubs vacíos. El corpus tiene 157
+tags, de los que solo 4 alcanzan 2 historias; «misión» además colisiona
+entre misiones espaciales y la misión editorial.
+
+### Decision
+
+Un tag se enriquece como hub solo si está curado en
+`src/utils/topics.ts` (universo, galapagos, coral) y supera
+`MIN_TOPIC_HUB_POSTS = 2`. Los hubs muestran descripción, última
+actualización, áreas y series; el resto de tags conservan el listado
+simple. Los hubs siguen `robots: index:false` y fuera del sitemap para no
+canibalizar las categorías (config.yaml).
+
+### Consequences
+
+Un tag nuevo con masa crítica exige curación explícita (FU-021). Las
+descripciones viven en frontend hasta que el contrato transporte
+metadatos de tema (mismo patrón que DEC-023).
+
+## DEC-026 — Seguimiento real por RSS temático
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-05 exige que «Seguir» produzca persistencia o entrega real, sin cuenta
+si hay una alternativa más simple. El email por tema dependía de
+automatizaciones de Buttondown no verificadas; el seguimiento local no
+entrega contenido nuevo.
+
+### Decision
+
+El seguimiento es un feed RSS por tema (`/temas/[tag]/rss.xml`, 157 feeds
+generados) con instrucciones explícitas de baja («dejas de seguirlo
+eliminándolo de tu lector») y enlace al boletín semanal como alternativa.
+Sin cuenta, sin correo, sin backend nuevo.
+
+### Consequences
+
+El «unfollow» es responsabilidad del lector de RSS y se declara en la
+propia página. Preferencias de newsletter por tema quedan como opción
+futura solo si Buttondown las garantiza.
+
+## DEC-027 — Contrato de eventos del embudo GA4
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-03 pide un embudo reconstruible con nombres/params consistentes y sin
+PII. Existían `newsletter_signup`, `outbound_source_click`, `scroll_75` y
+`search`, con `scroll_75` ya renombrado en el papel pero acoplado a un
+umbral único.
+
+### Decision
+
+El contrato son los eventos de `src/utils/browser/analytics-events.ts`:
+`article_view`, `article_50`, `article_90`, `primary_source_click`,
+`outbound_source_click`, `related_article_click`,
+`newsletter_impression`, `newsletter_start`, `newsletter_submit`,
+`series_click`, `topic_click`, `search`. Params: rutas, slugs, dominios,
+`form_id` y `related_kind`; nunca correo ni identidad.
+`newsletter_signup` → `newsletter_submit`; `scroll_75` →
+`article_50`/`article_90` (50/90 %). `article_view` se deduplica por
+artículo y sesión. La impresión del boletín se mide por visibilidad en
+scroll, sin IntersectionObserver.
+
+### Consequences
+
+Renombrar un evento exige actualizar `docs/EDITORIAL_METRICS.md` en el
+mismo cambio. Los datos históricos de `newsletter_signup`/`scroll_75`
+quedan como serie antigua. El operador crea las dimensiones nuevas en
+GA4 (FU-022).
+
+## DEC-028 — KPIs editoriales en docs/EDITORIAL_METRICS.md
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Decision
+
+`docs/EDITORIAL_METRICS.md` es la definición canónica de los 8 KPIs
+(retorno 7/28 días, conversión del boletín, CTR de relacionadas y de
+fuente primaria, finalización de artículo, segunda lectura), cada uno con
+definición, fórmula, evento fuente, interpretación y limitaciones.
+Buttondown es la autoridad para suscripciones confirmadas; GA4 mide
+intención. Todo total es un piso por Consent Mode, no un censo.
+
+### Consequences
+
+Los informes deben citar la fórmula del documento; si un evento cambia,
+el KPI se revisa en el mismo cambio. Las limitaciones declaradas evitan
+leer los números como métricas exactas.

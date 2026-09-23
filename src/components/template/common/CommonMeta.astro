@@ -10,12 +10,14 @@ import { getAsset } from '~/utils/permalinks';
   allows GA4 (regional *.google-analytics.com / *.analytics.google.com) and,
   as a fallback, https://cloudflareinsights.com: the apex zone is proxied (so
   the beacon normally reports to own-domain /cdn-cgi/rum) but `www` is served
-  directly by GitHub Pages, and a fallback costs nothing. Mirror any change in
-  public/_headers, docs/DEPLOYMENT_SECURITY_HEADERS.md and the edge Response
+  directly by GitHub Pages, and a fallback costs nothing. connect-src also
+  allows https://buttondown.com for the progressive-enhancement newsletter
+  POST (the no-JS form fallback is governed by form-action). Mirror any change
+  in public/_headers, docs/DEPLOYMENT_SECURITY_HEADERS.md and the edge Response
   Header Transform Rule; tests/compliance.test.ts keeps the first two in sync. -->
 <meta
   http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://cloudflareinsights.com https://buttondown.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;"
 />
 
 <link rel="preconnect" href="https://www.cdn.noticiencias.com" />

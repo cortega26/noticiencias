@@ -211,16 +211,33 @@ describe('quick wins regression coverage', () => {
     expect(renderedStrips).toBeGreaterThan(0);
   });
 
-  it('renders a working no-JS Buttondown subscribe form now that the provider endpoint is configured (plan 008)', () => {
+  it('renders working no-JS Buttondown subscribe forms now that the provider endpoint is configured (plan 008)', () => {
     for (const route of ['/newsletter/', '/']) {
       const page = load(readDistHtml(route));
-      const form = page('form[aria-label="Suscripción al boletín"]');
-      expect(form.length, route).toBeGreaterThan(0);
-      expect(form.attr('method'), route).toBe('post');
-      expect(form.attr('action'), route).toBe(
-        'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
-      );
-      expect(form.find('input[name="email"][type="email"][required]').length, route).toBe(1);
+      const forms = page('form[aria-label="Suscripción al boletín"]');
+      expect(forms.length, route).toBeGreaterThan(0);
+      forms.each((_, form) => {
+        const $form = page(form);
+        expect($form.attr('method'), route).toBe('post');
+        expect($form.attr('action'), route).toBe(
+          'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
+        );
+        expect($form.find('input[name="email"][type="email"][required]').length, route).toBe(1);
+      });
     }
+  });
+
+  it('keeps an early inline capture and the closing capture on the home page', () => {
+    const page = load(readDistHtml('/'));
+    const forms = page('form[aria-label="Suscripción al boletín"]');
+
+    expect(forms.length).toBe(2);
+    expect(page('#home-newsletter-cta').length).toBe(1);
+    expect(page('#home-newsletter-cta').closest('section').find('form').length).toBe(1);
+
+    const emailIds = forms
+      .map((_, form) => page(form).find('input[name="email"]').attr('id'))
+      .get();
+    expect(new Set(emailIds).size).toBe(emailIds.length);
   });
 });

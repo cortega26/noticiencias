@@ -31,11 +31,12 @@
     "check:slug-quality": "node scripts/check-slug-quality.js",
     "check:runtime-artifacts": "node scripts/check-runtime-artifacts.js",
     "check:executable-content": "node scripts/check-executable-content.js",
-    "lint": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:tags && npm run check:editorial-fields && npm run check:doc-drift && npm run format:check && eslint .",
+    "lint": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:translation-residue && npm run check:tags && npm run check:editorial-fields && npm run check:doc-drift && npm run format:check && eslint .",
     "lint-fix": "prettier --write . && eslint . --fix",
     "check:contract-sync": "node scripts/check-contract-sync.js --strict ${BACKEND_SCHEMA_PATH:-../noticiencias_news_collector/news_collector/contracts/frontend_schema.py} src/content.config.ts",
     "sync:contract-snapshot": "node scripts/check-contract-sync.js --generate-snapshot .contract-snapshots/frontend_schema.snapshot.json ${BACKEND_SCHEMA_PATH:-../noticiencias_news_collector/news_collector/contracts/frontend_schema.py} src/content.config.ts",
     "check:tags": "node scripts/check-tags.js",
+    "check:translation-residue": "node scripts/check-translation-residue.js",
     "check:freeze": "node scripts/freeze-template.js",
     "check:search-budget": "node scripts/check-search-budget.js",
     "generate:metrics": "node scripts/generate-metrics.js",
@@ -45,7 +46,7 @@
     "test:e2e": "playwright test",
     "build:consent-fixture": "NOTICIENCIAS_GA_ID=G-E2ETEST00 astro build --outDir dist-consent",
     "test:e2e:consent": "npm run build:consent-fixture && playwright test -c playwright.consent.config.ts",
-    "validate:content": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:tags && npm run check:editorial-fields && astro sync && astro check && npm run check:freeze",
+    "validate:content": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:translation-residue && npm run check:tags && npm run check:editorial-fields && astro sync && astro check && npm run check:freeze",
     "verify:ci": "npm run lint && npm run validate:content && npm run build && npm run test:dist && npm run check:search-budget && npm run test:audit && CI=1 npm run test:e2e && npm run test:e2e:consent && npm run check:contract-sync"
   },
   "dependencies": {
