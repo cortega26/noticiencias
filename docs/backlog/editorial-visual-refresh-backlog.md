@@ -1,7 +1,31 @@
 # Editorial Visual Refresh — Continuation Backlog
 
-> Status: Open
+> Status: **All items resolved / superseded — closed 2026-09-23**
 > Created: 2026-05-17
+
+## Closure (2026-09-23)
+
+Every item below is done or superseded; this file stays as the record.
+
+| Item                      | Resolution                                                                                                        |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| D1/D2 tag chips + TagPill | `TagPill.astro` unifies cards and tag lists                                                                       |
+| D3 home copy hook         | Home header copy rewritten (Wave 5)                                                                               |
+| D4 sources via TrustPanel | `TrustPanel` renders primary + coverage sources                                                                   |
+| D5 uncertainty emphasis   | `requires_uncertainty_note` drives the emphasised block in `TrustPanel.astro`                                     |
+| D6 investigation visual   | `InvestigationBadge` + serif lead                                                                                 |
+| D7 "Qué cambia" visual    | `ArticleCard variant="consequence"` + `selectContextPosts` → home block removed in Wave 5 (superseded by DEC-019) |
+| D8 Button migration       | Already done (`ds/atoms/Button.astro`, no `.btn` left)                                                            |
+| D9 v2 fields unpopulated  | 28 v2 posts now carry `summary_points`/`glossary`/`fact_check`/`why_it_matters`/`sources`                         |
+| `.astro/` untracked       | In `.gitignore`, removed from the index                                                                           |
+| MD5 → SHA-256 (backend)   | No `hashlib.md5` left in `ai_editor.py`                                                                           |
+| dist-stale test fix       | Freshness check lives in `test:dist` (dist-sanity), not `test:audit`                                              |
+| PR-1 source line          | `ds/molecules/SourceLine.astro` mounted in cards + article header                                                 |
+| PR-2 category color map   | `getCategoryColors` closed map, unknown slug fails the build                                                      |
+| PR-3 cadence copy         | "edición diaria" gone; `getEditionDate` drives the edition label                                                  |
+| PR-4 sticky article rail  | `ds/molecules/ArticleRail.astro` + responsive pair (DEC-015)                                                      |
+| PR-5 header search dialog | `common/HeaderSearch.astro` with ⌘K / `/`                                                                         |
+
 > Source of truth: `docs/EDITORIAL_VOICE.md` (sections 3 archetypes + 4 D1-D8)
 > Pairs with backend: `noticiencias_news_collector/` (cross-repo items flagged below)
 

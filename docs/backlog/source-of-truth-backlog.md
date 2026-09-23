@@ -1,5 +1,17 @@
 # Source-Of-Truth Backlog
 
+> Status: **closed 2026-09-23** — all items resolved or rejected with rationale.
+
+## Closure summary (2026-09-23)
+
+| Item                                          | Resolution                                                                                                                                                                                                                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Enforce tag quality for frontend-only edits   | `check-tags.js` warns on hyphens/underscores, accent duplicates and stop-tags. Running the backend `backfill_tags.py` in frontend CI is **rejected**: it couples frontend CI to backend Python deps, and canonicalization authority stays in the backend pipeline. |
+| Docs drift checks                             | `scripts/check-doc-drift.js` runs in `npm run lint` over 13 active docs.                                                                                                                                                                                           |
+| Generic helper sprawl in `src/utils/utils.ts` | File is now a 10-line backward-compat re-export plus `trim`; `getFormattedDate` lives in `src/utils/date.ts`.                                                                                                                                                      |
+
+The original record follows.
+
 ## Resolved
 
 ### Cross-repo frontend schema parity gate ✅
