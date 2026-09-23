@@ -23,7 +23,11 @@ const banner = (page: Page) => page.locator('#consent-banner');
 // (stale "intercepts pointer events" reports). Settle network AND fonts
 // before interacting. Assertions below are unchanged.
 async function gotoSettled(page: Page, url = '/'): Promise<void> {
-  await page.goto(url, { waitUntil: 'networkidle' });
+  // Default `load` (NOT networkidle): '/' serves 465 images and networkidle
+  // alone can eat 20s+ on slow runners, starving the click budget. The
+  // banner is viewport-fixed so page images never move it; only webfonts
+  // affect its layout, hence fonts.ready. Assertions below are unchanged.
+  await page.goto(url);
   await page.evaluate(() => document.fonts.ready.then(() => undefined));
 }
 
@@ -74,7 +78,7 @@ test('accepting sends a consent update, hides the banner and survives a reload',
   const updates = (await dataLayer(page)).filter((e) => e[0] === 'consent' && e[1] === 'update');
   expect(updates).toEqual([['consent', 'update', { analytics_storage: 'granted' }]]);
 
-  await page.reload({ waitUntil: 'networkidle' });
+  await page.reload();
   await expect(banner(page)).toBeHidden();
   // The stored grant is applied in <head>, before config — never after.
   const order = (await dataLayer(page)).map((e) => e[0] + (e[1] === 'update' ? ':update' : ''));
@@ -85,7 +89,7 @@ test('rejecting is remembered and never grants', async ({ page }) => {
   await gotoSettled(page);
   await banner(page).getByRole('button', { name: 'Rechazar' }).click();
   await expect(banner(page)).toBeHidden();
-  await page.reload({ waitUntil: 'networkidle' });
+  await page.reload();
   await expect(banner(page)).toBeHidden();
   const layer = await dataLayer(page);
   expect(layer.some((e) => e[0] === 'consent' && e[1] === 'update')).toBe(false);
