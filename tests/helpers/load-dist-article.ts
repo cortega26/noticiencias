@@ -11,14 +11,15 @@ const distDir = path.join(__dirname, '..', '..', 'dist');
 
 export function loadDistArticle(slug: string): CheerioAPI {
   const candidates: string[] = [];
-  const walk = (dir: string) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) walk(full);
-      else if (entry.name === 'index.html' && full.includes(slug)) candidates.push(full);
-    }
-  };
-  walk(distDir);
+  walkDist(distDir, candidates, slug);
   expect(candidates, `No built HTML found for ${slug}`).not.toEqual([]);
   return load(fs.readFileSync(candidates[0], 'utf8'));
+}
+
+function walkDist(dir: string, candidates: string[], slug: string): void {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walkDist(full, candidates, slug);
+    else if (entry.name === 'index.html' && full.includes(slug)) candidates.push(full);
+  }
 }
