@@ -53,7 +53,10 @@ const VALID_EXTENSIONS = new Set(['.md', '.mdx']);
 // João Pessoa). Lowercase leaks are still caught, and the word list
 // below is case-insensitive for the rest.
 const FOREIGN_DIACRITIC = /[ãõçâêôàèù]/u;
-const isProperName = (token) => token[0] !== token[0].toLowerCase();
+// Never called with an empty token (tokenize only yields non-empty runs),
+// but guard explicitly: static analysis cannot prove that invariant, and an
+// undefined index would throw on .toLowerCase().
+const isProperName = (token) => token.length > 0 && token[0] !== token[0].toLowerCase();
 
 // Portuguese-exclusive tokens (no Spanish overlap by construction).
 // Cognates or near-miss Spanish words are deliberately ABSENT, even when
