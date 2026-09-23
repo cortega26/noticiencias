@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Post } from '~/types';
+import { evidenceLabels, publicationLabels } from '~/utils/evidence-labels';
 
 interface Source {
   title: string;
@@ -88,29 +89,13 @@ const hasContent =
 
 if (!hasContent) return null;
 
-// P0-02: human-readable evidence labels. `unknown`/absent is never
-// upgraded: Salud posts without human evidence get a strong guardrail.
-const evidenceLabels: Record<NonNullable<Post['evidence_subject_type']>, string> = {
-  humans: 'personas',
-  animals: 'animales',
-  in_vitro: 'cultivo celular',
-  computational: 'simulación computacional',
-  observational: 'estudio observacional',
-  experimental: 'experimento de laboratorio',
-  mixed: 'fases mixtas (ver detalle)',
-  unknown: 'no clasificado',
-};
+// P0-02: human-readable evidence labels (shared map). `unknown`/absent is
+// never upgraded: Salud posts without human evidence get a strong guardrail.
 
 const showHealthGuardrail =
   isHealthCategory && !!evidenceSubjectType && evidenceSubjectType !== 'humans';
 
-// P0-03: publication record labels. Rendered only when the data exists.
-const publicationLabels: Record<NonNullable<Post['publication_status']>, string> = {
-  peer_reviewed: 'revisada por pares',
-  preprint: 'preprint (sin revisión por pares)',
-  conference: 'ponencia de congreso',
-  other: 'otra vía de publicación',
-};
+// P0-03: publication record labels (shared map). Rendered only when data exists.
 ---
 
 <aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">

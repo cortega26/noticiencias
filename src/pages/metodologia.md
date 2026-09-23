@@ -27,7 +27,7 @@ Tres ideas guían todo lo que hacemos.
 
 1. **Selección.** Un sistema propio revisa de forma continua alrededor de sesenta fuentes: revistas y medios de divulgación con buena reputación, salas de prensa universitarias, blogs de laboratorios de investigación y servidores de preprints como arXiv y bioRxiv. Ordena los hallazgos por relevancia y descarta el ruido y las publicaciones dudosas.
 
-2. **Lectura y traducción.** Recogemos el contenido a través de los canales RSS oficiales y respetando las condiciones de cada sitio. Guardamos los datos del estudio —autores, institución, DOI— y unos modelos de lenguaje preparan una primera versión en español, con sus apartados: «En breve», «En la práctica» y un glosario de términos difíciles.
+2. **Lectura y traducción.** Recogemos el contenido a través de los canales RSS oficiales y respetando las condiciones de cada sitio. Guardamos los datos del estudio —autores, institución, DOI— y unos modelos de lenguaje preparan una primera versión en español, con sus apartados: «Lo esencial», «Qué cambia» y un glosario de términos difíciles.
 
 3. **Controles automáticos.** Cada borrador pasa por comprobaciones con un listón fijo: un crítico editorial que lo puntúa y lo rechaza si no llega al umbral, una medida de legibilidad que detecta los textos demasiado densos y un control de políticas de contenido que frena las promesas sin respaldo y los adjetivos sensacionalistas.
 

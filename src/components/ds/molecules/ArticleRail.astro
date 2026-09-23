@@ -42,11 +42,13 @@ const headingClass = isRail
 
 <Wrapper class:list={[className, isRail ? 'space-y-5' : '']}>
   {
+    // P1-05: "Lo esencial" caps at 3 bullets at render time. The schema
+    // still allows up to 5 summary_points; the rest lives in the body.
     activeSections.includes('summary') && summaryPoints.length > 0 && (
       <section class="rounded-md border border-border-subtle bg-surface-paper p-5">
-        <h2 class={headingClass}>En breve</h2>
+        <h2 class={headingClass}>Lo esencial</h2>
         <ul class="mt-3 grid gap-2 text-text-muted">
-          {summaryPoints.map((point) => (
+          {summaryPoints.slice(0, 3).map((point) => (
             <li class="pl-4 [text-indent:-1rem]">
               <span class="font-bold text-primary">•</span> {point}
             </li>
