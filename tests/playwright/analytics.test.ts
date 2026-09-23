@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-const captureDataLayer = () => {
+function captureDataLayer() {
   window.dataLayer = window.dataLayer || [];
   window.__gaEvents = [];
   const originalPush = window.dataLayer.push.bind(window.dataLayer);
@@ -27,7 +27,7 @@ const captureDataLayer = () => {
     }
     return originalPush(...args);
   };
-};
+}
 
 async function eventNames(page: Page): Promise<string[]> {
   return page.evaluate(() => window.__gaEvents.map((event) => event.name));
