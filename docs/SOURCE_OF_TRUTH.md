@@ -93,6 +93,7 @@ Cross-repo rule:
   - browser-only `lunr.Index.load()` deserialize in `src/components/common/SearchInterface.astro`
 - View transitions are globally enabled in `src/layouts/template/Layout.astro`; routed page scripts must therefore be idempotent across Astro navigations.
 - `src/pages/social-manifest.json.ts` builds `/social-manifest.json` — a public, operational JSON snapshot of every article route this build publishes with its normalized `social` config and canonical URL, plus build provenance. It is not linked from the site and is excluded from the sitemap (an explicit `/social-manifest.json` filter in `astro.config.mjs`, since `@astrojs/sitemap` does emit JSON endpoint routes — cf. the `/search.json` exclusion); `scripts/dist-sanity.js` asserts both.
+- Tag archive pages under `/temas/[tag]/` are `robots: { index: false }` (`src/pages/temas/[tag]/[...page].astro`); the sitemap filter in `astro.config.mjs` excludes them, reading the tag base path from `src/config.yaml`'s `apps.blog.tag.pathname` at build time (the same source `TAG_BASE` in `src/utils/permalinks.ts` derives from) rather than a hardcoded `/temas/` literal, so the exclusion still holds if the taxonomy pathname is ever renamed (Ahrefs Site Audit flagged 150 `/temas/` URLs as "noindex page in sitemap" before this filter existed).
 
 ## Fact Ownership
 
