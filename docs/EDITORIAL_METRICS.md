@@ -18,6 +18,7 @@ same change.
 | `article_90`            | 90 % of the article body scrolled past the viewport bottom | `article_path`                                |
 | `primary_source_click`  | click on a primary-source link                             | `link_domain`, `article_path`                 |
 | `outbound_source_click` | click on a coverage/secondary source link                  | `link_domain`, `link_url`                     |
+| `related_impression`    | the related block is at least 50 % visible                 | `related_kind`                                |
 | `related_article_click` | click inside the related block                             | `article_path`, `target_path`, `related_kind` |
 | `newsletter_impression` | the capture form is at least 50 % visible                  | `form_id`                                     |
 | `newsletter_start`      | first focus or keystroke in the email field                | `form_id`                                     |
@@ -27,7 +28,8 @@ same change.
 | `search`                | a search is executed                                       | `search_term`, `results_count`                |
 
 Reconstruction order (funnel exploration): `article_view` → `article_50` →
-`article_90` → `primary_source_click` / `related_article_click` →
+`article_90` → `primary_source_click` / `related_impression` →
+`related_article_click` →
 `newsletter_impression` → `newsletter_start` → `newsletter_submit`.
 
 ## KPIs
@@ -77,15 +79,15 @@ Reconstruction order (funnel exploration): `article_view` → `article_50` →
 
 ### 5. Related-content CTR
 
-- **Definition**: clicks on the related block per article view.
-- **Formula**: `related_article_click` ÷ `article_view`.
-- **Source events**: `related_article_click` (`related_kind` splits
-  `related` from `recent`), `article_view`.
+- **Definition**: clicks on the related block per impression of that block.
+- **Formula**: `related_article_click` ÷ `related_impression`.
+- **Source events**: `related_impression` and `related_article_click`
+  (`related_kind` splits `related` from `recent`).
 - **Interpretation**: whether the related/“Más reciente” block actually moves
   readers to a second story, and whether real relations beat the fallback.
-- **Limitations**: there is no impression event for the related block, so
-  `article_view` is a proxy denominator; a reader who never reached the block
-  still counts in the denominator.
+- **Limitations**: an impression requires the block to be at least half
+  visible; readers who never reached it are excluded by design. Compare with
+  KPI 8 for the session-level effect.
 
 ### 6. Primary-source CTR
 
