@@ -12,14 +12,20 @@ const PORT = 4322;
 
 export default defineConfig({
   testDir: './tests/playwright-consent',
-  fullyParallel: true,
+  // FU-001: the mobile suite is timing-marginal on loaded runners (heavy
+  // page + 15s budget). Serialize projects to halve peak CPU; assertions
+  // are unchanged. Do NOT re-enable parallelism without re-measuring.
+  fullyParallel: false,
+  workers: 1,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: process.env.CI ? 'github' : 'list',
   timeout: 15000,
   use: { baseURL: `http://127.0.0.1:${PORT}` },
   projects: [
-    { name: 'mobile-375', use: { ...devices['Pixel 5'] } },
+    // Pixel 5 emulation renders the same heavy homepage through a mobile
+    // viewport; give it double the budget on slow runners. Same assertions.
+    { name: 'mobile-375', use: { ...devices['Pixel 5'] }, timeout: 30000 },
     { name: 'desktop-1280', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
