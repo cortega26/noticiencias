@@ -173,7 +173,7 @@ import Button from '~/components/ds/atoms/Button.astro';
       ul.className = 'grid gap-6';
       resultsDiv.appendChild(ul);
 
-      results.slice(0, 20).forEach(({ doc }) => {
+      results.slice(0, 20).forEach(({ doc }, position) => {
         const li = document.createElement('li');
         // Two-column grid only when a thumbnail exists; otherwise the content
         // would land in the fixed 160px column and render cramped (Stream C
@@ -186,6 +186,7 @@ import Button from '~/components/ds/atoms/Button.astro';
         if (doc.image) {
           const imgLink = document.createElement('a');
           imgLink.href = doc.url;
+          imgLink.dataset.analyticsSearchResult = String(position);
           imgLink.className = 'block aspect-[4/3] overflow-hidden rounded-md bg-surface-highlight';
           const img = document.createElement('img');
           img.src = doc.image;
@@ -217,6 +218,7 @@ import Button from '~/components/ds/atoms/Button.astro';
         h3.className = 'mb-2 font-heading text-xl font-bold tracking-tight text-text-body';
         const titleLink = document.createElement('a');
         titleLink.href = doc.url;
+        titleLink.dataset.analyticsSearchResult = String(position);
         titleLink.className =
           'transition-colors duration-200 hover:text-primary hover:underline underline-offset-4';
         titleLink.textContent = doc.title;

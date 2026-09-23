@@ -842,11 +842,13 @@ Fuera de wave, se cierran los follow-ups que quedaban abiertos. Rama
 - **FU-019** (tag «misión»): el post legacy ya no lo declara y el tag es
   legítimo para misiones espaciales; no hay cambio de taxonomía backend que
   hacer. Cerrado con rationale.
-- **FU-017, FU-022, FU-024 y la verificación post-deploy del plan 009** son
-  acciones de operador (Transform Rule del edge, dimensiones GA4, contraste
-  Buttondown, cookies reales). Están en
-  `docs/ANALYTICS_OPERATOR_CHECKLIST.md` y `docs/DEPLOYMENT_SECURITY_HEADERS.md`;
-  no son deuda de código.
+- **FU-024** (lado cliente): `newsletter_success` /
+  `newsletter_error` cierran el resultado del envío; la suscripción
+  confirmada sigue siendo de Buttondown (operador).
+- **FU-017, FU-022 y la verificación post-deploy del plan 009** son acciones
+  de operador (Transform Rule del edge, dimensiones GA4, cookies reales).
+  Están en `docs/ANALYTICS_OPERATOR_CHECKLIST.md` y
+  `docs/DEPLOYMENT_SECURITY_HEADERS.md`; no son deuda de código.
 - **Backlogs obsoletos** (`editorial-visual-refresh-backlog.md`,
   `source-of-truth-backlog.md`): cerrados con tabla de resoluciones.
 - **Planes 005/006**: triados como roadmap de producto, no deuda

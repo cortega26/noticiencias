@@ -48,6 +48,7 @@ const fallbackDescription = `${total} ${total === 1 ? 'historia publicada' : 'hi
         {areas.map((area) => (
           <a
             href={getPermalink(area.slug, 'category')}
+            data-analytics-category={area.slug}
             class="font-semibold text-text-muted hover:text-primary"
           >
             {area.title}

@@ -168,6 +168,7 @@ const weeklyDescription = weekly.inWindow
       configuredCategorySections.map(({ title, slug }) => (
         <a
           href={getPermalink(slug, 'category')}
+          data-analytics-category={slug}
           class="font-semibold text-text-muted hover:text-primary"
         >
           {title}
