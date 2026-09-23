@@ -77,11 +77,15 @@ function isBoundedString(value, min, max) {
   return typeof value === 'string' && value.length >= min && value.length <= max;
 }
 
-function validateSourceRoleAndDoi(slug, source, index, errors) {
-  if (typeof source !== 'object' || source === null) return;
+function validateSourceRole(slug, source, index, errors) {
+  if (typeof source !== 'object' || source === null) return false;
   if (source.role !== undefined && !SOURCE_ROLES.has(source.role)) {
     errors.push(`${slug}: sources[${index}].role inválido (${source.role})`);
   }
+  return true;
+}
+
+function validateSourceDoi(slug, source, index, errors) {
   if (source.doi === undefined) return;
   if (typeof source.doi !== 'string' || !DOI_PATTERN.test(source.doi)) {
     errors.push(`${slug}: sources[${index}].doi debe tener formato 10.xxxx/...`);
@@ -233,9 +237,10 @@ function collectEditorialDiagnostics() {
       }
 
       // P0-01: role/doi coherence (mirrors the schema superRefine).
-      fm.sources.forEach((source, index) =>
-        validateSourceRoleAndDoi(slug, source, index, diagnostics.errors)
-      );
+      fm.sources.forEach((source, index) => {
+        validateSourceRole(slug, source, index, diagnostics.errors);
+        validateSourceDoi(slug, source, index, diagnostics.errors);
+      });
     }
 
     // P0-02: evidence model
