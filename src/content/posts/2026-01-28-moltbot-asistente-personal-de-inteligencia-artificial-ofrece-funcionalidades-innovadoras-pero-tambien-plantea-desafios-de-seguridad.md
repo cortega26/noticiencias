@@ -1,5 +1,5 @@
 ---
-title: 'Moltbot, asistente personal de inteligencia artificial, ofrece funcionalidades innovadoras pero también plantea desafíos de seguridad'
+title: 'Moltbot: un asistente personal de IA que puede ejecutar comandos en tu equipo'
 schema_version: 2
 excerpt: 'Moltbot: asistente personal de IA con desafíos de seguridad'
 author: Noticiencias
@@ -52,7 +52,7 @@ sources:
     date: '2026-01-27'
 ---
 
-**El asistente personal de inteligencia artificial Moltbot: Una herramienta innovadora con desafíos de seguridad**
+**Moltbot: un asistente personal de IA que puede ejecutar comandos en tu equipo**
 
 La reciente oleada de entusiasmo por la inteligencia artificial ha llevado a la creación de un asistente personal llamado Moltbot, anteriormente conocido como Clawdbot. Este proyecto, desarrollado por Peter Steinberger, un desarrollador austriaco, ha ganado popularidad rápidamente debido a su capacidad para gestionar tareas y realizar acciones en nombre del usuario. Sin embargo, antes de sumergirse en este mundo de inteligencia artificial, es importante entender qué es Moltbot, cómo funciona y cuáles son los desafíos de seguridad asociados con su uso.
 

@@ -1,5 +1,5 @@
 ---
-title: Sitios web ocultan órdenes secretas que manipulan a las IA sin que los usuarios lo sepan
+title: 'Google halla instrucciones ocultas para IA en sitios web públicos'
 schema_version: 2
 date: 2026-04-24
 author: Noticiencias AI

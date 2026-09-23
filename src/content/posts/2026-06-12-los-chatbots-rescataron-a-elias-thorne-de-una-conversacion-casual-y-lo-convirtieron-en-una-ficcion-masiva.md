@@ -1,5 +1,5 @@
 ---
-title: Los chatbots rescataron a Elias Thorne de una conversación casual y lo convirtieron en una ficción masiva
+title: 'Elias Thorne: el farero ficticio que las IA repiten como si existiera'
 schema_version: 1
 date: 2026-06-12
 author: Noticiencias AI

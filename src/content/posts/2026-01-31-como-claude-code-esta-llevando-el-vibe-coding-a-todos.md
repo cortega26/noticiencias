@@ -1,5 +1,5 @@
 ---
-title: 'Cómo Claude Code está llevando el vibe coding a todos'
+title: 'Qué es el vibe coding y qué aporta Claude Code'
 schema_version: 2
 excerpt: 'Claude Code promete revolucionar la forma en que creamos software con su facilidad de uso y velocidad'
 author: Noticiencias

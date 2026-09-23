@@ -88,3 +88,34 @@ Los títulos viven en frontmatter; las URLs derivan del nombre de archivo y
 `permalink`, no del título. Cualquier reescritura futura de titulares no
 cambia URLs ni canonical (verificado: `resolvePostPermalink` no usa
 `title`).
+
+## Pasada editorial verificada (2026-09-23, FU-015)
+
+Los 16 titulares marcados se reescribieron con verificación contra el propio
+contenido de cada pieza (excerpt, `summary_points` y `fact_check`), sin
+inventar datos ni cambiar el alcance del hallazgo. Ninguna URL cambió: el
+permalink no depende del título. Donde el cuerpo repetía el titular hype como
+encabezado duplicado, también se alineó.
+
+| Archivo (fecha)         | Antes                                                                           | Después                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 2026-06-12 chatbots     | Los chatbots rescataron a Elias Thorne…                                         | Elias Thorne: el farero ficticio que las IA repiten como si existiera                 |
+| 2026-05-15 asteroide    | …desafiando teorías astronómicas                                                | Un asteroide de 700 metros rota cada 1,88 minutos, más rápido de lo esperado          |
+| 2026-05-07 MIT          | El MIT descubre que las empresas usan la automatización… para recortar salarios | El MIT vincula la automatización con el 52 % del aumento de la desigualdad desde 1980 |
+| 2026-04-24 sitios web   | …órdenes secretas que manipulan a las IA…                                       | Google halla instrucciones ocultas para IA en sitios web públicos                     |
+| 2026-04-02 láser        | Comunicación Láser: Cómo Desbloqueará Datos Gigantes…                           | Comunicación láser: más datos y video para las misiones lunares tripuladas            |
+| 2026-03-27 Meta/YouTube | …el verdadero terremoto legal…                                                  | Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas  |
+| 2026-02-16 pan          | Un ingrediente inesperado puede hacer el pan mucho más saludable                | Harina de semilla de girasol: pan con más proteína y antioxidantes                    |
+| 2026-02-05 cáncer       | …un tercio del cáncer es prevenible…                                            | El 38 % de los casos de cáncer de 2022 se atribuye a factores de riesgo evitables     |
+| 2026-01-31 vibe coding  | Cómo Claude Code está llevando el vibe coding a todos                           | Qué es el vibe coding y qué aporta Claude Code                                        |
+| 2026-01-28 Moltbot      | …funcionalidades innovadoras pero también plantea desafíos…                     | Moltbot: un asistente personal de IA que puede ejecutar comandos en tu equipo         |
+| 2026-01-27 HAPS         | …podrían revolucionar la conectividad en áreas remotas                          | Dirigibles y drones estratosféricos buscan llevar internet a zonas remotas            |
+| 2026-01-27 Piezo1       | Piezo1 identificado como 'sensor de ejercicio' interno crucial                  | Piezo1, la proteína que detecta el ejercicio en las células madre del hueso           |
+| 2026-01-23 arpones      | Descubren los Arpones Más Antiguos: Una Revelación…                             | Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado            |
+| 2026-01-21 bienvenida   | Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos                      | Bienvenidos a Noticiencias: la ciencia al alcance de todos                            |
+| 2026-01-18 Artemis II   | NASA se prepara para un paso histórico…                                         | NASA prepara Artemis II, el regreso de humanos a la órbita lunar                      |
+| 2026-01-15 cursos       | Cursos en línea abren puertas a nuevas carreras                                 | El curso del MIT que llevó a un ingeniero a una nueva carrera                         |
+
+Pendiente menor (fuera de título): varios `excerpt` legacy conservan lenguaje
+promocional ("promete revolucionar", "innovador"). Se dejan como deuda
+editorial de resúmenes, no de titulares.

@@ -1,5 +1,5 @@
 ---
-title: Piezo1 identificado como 'sensor de ejercicio' interno crucial
+title: 'Piezo1, la proteína que detecta el ejercicio en las células madre del hueso'
 schema_version: 2
 excerpt: Investigadores hallan proteína Piezo1 vital en respuesta ósea al movimiento.
 author: Noticiencias
@@ -60,7 +60,7 @@ sources:
     date: '2026-01-27'
 ---
 
-**El Descubrimiento del "Sensor de Ejercicio" Interno: Una Nueva Esperanza para la Salud Ósea**
+**Piezo1: la proteína que detecta el ejercicio en las células madre del hueso**
 
 La relación entre el ejercicio y la salud ósea ha sido un tema de interés durante mucho tiempo. Se sabe que el movimiento físico regular ayuda a mantener los huesos fuertes, pero ¿cómo exactamente ocurre esto? Un equipo de investigadores de la Universidad de Hong Kong ha hecho un descubrimiento significativo que podría revolucionar nuestra comprensión de este proceso y abrir nuevas posibilidades para el tratamiento de la osteoporosis.
 

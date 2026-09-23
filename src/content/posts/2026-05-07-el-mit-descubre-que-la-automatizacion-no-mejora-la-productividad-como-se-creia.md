@@ -1,5 +1,5 @@
 ---
-title: El MIT descubre que las empresas usan la automatización con frecuencia para recortar salarios, no para maximizar la productividad
+title: 'El MIT vincula la automatización con el 52 % del aumento de la desigualdad desde 1980'
 schema_version: 2
 date: 2026-05-07
 author: Noticiencias AI

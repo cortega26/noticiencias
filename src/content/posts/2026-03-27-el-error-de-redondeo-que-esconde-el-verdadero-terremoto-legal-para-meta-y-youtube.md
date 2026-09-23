@@ -1,5 +1,5 @@
 ---
-title: El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube
+title: 'Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas'
 schema_version: 2
 excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
 author: Noticiencias
@@ -64,7 +64,7 @@ sources:
     publisher: The Conversation
 ---
 
-## El Verdadero Terremoto Legal: Cuando las Multas Millonarias son un "Error de Redondeo" para los Gigantes Tech
+## Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas
 
 Dos veredictos recientes en tribunales estadounidenses han sentenciado a Meta (propietaria de Facebook e Instagram) y a YouTube de Google a pagar multas millonarias por daños a niños. Una sentencia de 375 millones de dólares. Otra de casi 6 millones, con más por venir. Cifras que, para cualquier mortal, son astronómicas. Pero, ¿y si para estas empresas, valoradas en billones, estas cuantías fuesen poco más que un error de redondeo? La Bolsa lo tiene claro: las acciones de Meta incluso subieron un 5% tras uno de los veredictos.
 

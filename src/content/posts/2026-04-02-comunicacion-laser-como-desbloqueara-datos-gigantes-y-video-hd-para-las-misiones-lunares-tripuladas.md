@@ -1,5 +1,5 @@
 ---
-title: 'Comunicación Láser: Cómo Desbloqueará Datos Gigantes y Video HD para las Misiones Lunares Tripuladas'
+title: 'Comunicación láser: más datos y video para las misiones lunares tripuladas'
 schema_version: 1
 excerpt: La comunicación láser revoluciona las misiones lunares tripuladas. Permite video HD y grandes volúmenes de datos, crucial para Artemis II y futuras exploraciones.
 author: Noticiencias
@@ -24,7 +24,7 @@ investigation: false
 featured: false
 ---
 
-## Un Salto de Luz para la Humanidad: Así Revolucionará la Comunicación Láser las Misiones Tripuladas a la Luna
+## Comunicación láser: más datos y video para las misiones lunares tripuladas
 
 Hace más de medio siglo, el "pequeño paso" de Neil Armstrong en la Luna resonó en la Tierra a través de ondas de radio, marcando el cenit de la era Apolo. La comunicación era posible, pero limitada: un testimonio humano a cuentagotas desde los confines del espacio. Ahora, mientras la humanidad se prepara para volver a la Luna con la misión tripulada Artemis II, el desafío y las demandas de la comunicación se han vuelto exponencialmente más complejos. ¿Cómo enviar videos de alta definición y grandes volúmenes de datos desde las cercanías lunares, permitiendo a los astronautas una conexión en tiempo real que antes era inimaginable y al público una ventana sin precedentes a la exploración? La respuesta no reside en un simple avance incremental, sino en un cambio fundamental de tecnología: la comunicación láser.
 

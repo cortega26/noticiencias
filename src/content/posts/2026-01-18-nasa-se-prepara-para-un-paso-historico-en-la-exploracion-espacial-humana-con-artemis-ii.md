@@ -1,5 +1,5 @@
 ---
-title: 'NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II'
+title: 'NASA prepara Artemis II, el regreso de humanos a la órbita lunar'
 schema_version: 1
 excerpt: 'La NASA ultima detalles para Artemis II, la misión que llevará humanos de regreso a la órbita lunar y más allá.'
 author: Noticiencias
@@ -21,7 +21,7 @@ investigation: false
 featured: false
 ---
 
-**NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II**
+**NASA prepara Artemis II, el regreso de humanos a la órbita lunar**
 
 En un momento crucial de la historia del vuelo espacial humano, la agencia espacial norteamericana NASA está a punto de lanzar su segunda misión en el programa Artemis. Con Artemis II, la agencia espacial estadounidense hará un paso sin precedentes hacia la exploración lunar y más allá. Esta misión tiene como objetivo enviar a los astronautas más lejos de la Tierra que nunca antes, como parte del avance hacia una presencia lunar duradera; enviar estadounidenses a Marte sigue siendo una meta de misiones futuras del programa Artemis, no de Artemis II en sí.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Cursos en línea abren puertas a nuevas carreras'
+title: 'El curso del MIT que llevó a un ingeniero a una nueva carrera'
 schema_version: 1
 excerpt: 'Un curso MicroMasters del MIT impulsó la transformación profesional de un ingeniero hacia la gestión de cadenas de suministro.'
 author: Noticiencias
