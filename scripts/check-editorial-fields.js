@@ -7,23 +7,75 @@
  *   - fact_check (≥1 item)
  *   - why_it_matters (0-3 items, no minimum — P0-06 / DEC-003)
  *   - confidence (present)
- *   - sources (≥1 item)
+ *   - sources (≥1 item; role/doi coherence per P0-01)
+ *   - evidence_subject_type / evidence_detail (P0-02)
+ *   - institution / publication_status (P0-03)
+ *   - reviewer_* / review_date (P0-09, optional but typed when present)
+ *   - known_points / open_questions (P2-02, max 3 each)
+ *   - corrected_at + correction_summary (P2-07, travel together)
+ *   - requires_uncertainty_note / uncertainty_note
  *
  * Schema v1 posts are skipped — this is a progressive enforcement mechanism.
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import matter from './utils/frontmatter-parser.js';
 import { globSync } from 'glob';
 
-const CONTENT_DIR = path.resolve('src/content/posts');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DEFAULT_REPO_ROOT = path.resolve(__dirname, '..');
+
+/** Test seam: run the checker against a fixture repo (see tests/editorial-fields.test.ts). */
+function repoRootFromArgs(argv = process.argv) {
+  const flag = argv.find((arg) => arg.startsWith('--repoRoot='));
+  return flag ? path.resolve(flag.slice('--repoRoot='.length)) : DEFAULT_REPO_ROOT;
+}
+
+const REPO_ROOT = repoRootFromArgs();
+const CONTENT_DIR = path.resolve(REPO_ROOT, 'src/content/posts');
 const MIN_SUMMARY_POINTS = 2;
 const MAX_SUMMARY_POINTS = 5;
 const MIN_GLOSSARY_ITEMS = 1;
 const MIN_FACT_CHECK_ITEMS = 1;
 const MAX_WHY_IT_MATTERS_ITEMS = 3;
 const MIN_SOURCES = 1;
+
+// Mirrors of the sealed schema enums (src/content.config.ts). Kept as data so
+// the pre-publication gate and the zod schema cannot drift silently.
+const EVIDENCE_SUBJECT_TYPES = new Set([
+  'humans',
+  'animals',
+  'in_vitro',
+  'computational',
+  'observational',
+  'experimental',
+  'mixed',
+  'unknown',
+]);
+const PUBLICATION_STATUSES = new Set(['peer_reviewed', 'preprint', 'conference', 'other']);
+const SOURCE_ROLES = new Set(['primary', 'secondary']);
+const DOI_PATTERN = /^10\.\d{4,}\/.+/;
+
+function isAbsoluteUrl(value) {
+  if (typeof value !== 'string' || value.length === 0) return false;
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isIsoDate(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function isBoundedString(value, min, max) {
+  return typeof value === 'string' && value.length >= min && value.length <= max;
+}
 
 function collectEditorialDiagnostics() {
   const files = globSync('*.md', { cwd: CONTENT_DIR, absolute: true });
@@ -153,16 +205,111 @@ function collectEditorialDiagnostics() {
       const invalidItems = fm.sources.filter(
         (s) =>
           typeof s !== 'object' ||
+          s === null ||
           !s.title ||
           typeof s.title !== 'string' ||
           !s.url ||
-          typeof s.url !== 'string'
+          typeof s.url !== 'string' ||
+          !isAbsoluteUrl(s.url)
       );
       if (invalidItems.length > 0) {
         diagnostics.errors.push(
           `${slug}: sources contiene ${invalidItems.length} ítem(s) sin title/url válidos`
         );
       }
+
+      // P0-01: role/doi coherence (mirrors the schema superRefine).
+      fm.sources.forEach((source, index) => {
+        if (typeof source !== 'object' || source === null) return;
+        if (source.role !== undefined && !SOURCE_ROLES.has(source.role)) {
+          diagnostics.errors.push(`${slug}: sources[${index}].role inválido (${source.role})`);
+        }
+        if (source.doi !== undefined) {
+          if (typeof source.doi !== 'string' || !DOI_PATTERN.test(source.doi)) {
+            diagnostics.errors.push(
+              `${slug}: sources[${index}].doi debe tener formato 10.xxxx/...`
+            );
+          }
+          if (source.role !== 'primary') {
+            diagnostics.errors.push(
+              `${slug}: sources[${index}] con doi debe declarar role: primary`
+            );
+          }
+        }
+      });
+    }
+
+    // P0-02: evidence model
+    if (
+      fm.evidence_subject_type !== undefined &&
+      !EVIDENCE_SUBJECT_TYPES.has(fm.evidence_subject_type)
+    ) {
+      diagnostics.errors.push(
+        `${slug}: evidence_subject_type inválido (${fm.evidence_subject_type})`
+      );
+    }
+    if (fm.evidence_detail !== undefined && !isBoundedString(fm.evidence_detail, 1, 280)) {
+      diagnostics.errors.push(`${slug}: evidence_detail debe ser string de 1-280 caracteres`);
+    }
+
+    // P0-03: institution / publication_status
+    if (fm.institution !== undefined && !isBoundedString(fm.institution, 1, 160)) {
+      diagnostics.errors.push(`${slug}: institution debe ser string de 1-160 caracteres`);
+    }
+    if (fm.publication_status !== undefined && !PUBLICATION_STATUSES.has(fm.publication_status)) {
+      diagnostics.errors.push(`${slug}: publication_status inválido (${fm.publication_status})`);
+    }
+
+    // P0-09: reviewer metadata is optional but typed when present.
+    if (fm.reviewer_name !== undefined && !isBoundedString(fm.reviewer_name, 1, 120)) {
+      diagnostics.errors.push(`${slug}: reviewer_name debe ser string de 1-120 caracteres`);
+    }
+    if (fm.reviewer_role !== undefined && !isBoundedString(fm.reviewer_role, 1, 120)) {
+      diagnostics.errors.push(`${slug}: reviewer_role debe ser string de 1-120 caracteres`);
+    }
+    if (fm.reviewer_profile_url !== undefined && !isAbsoluteUrl(fm.reviewer_profile_url)) {
+      diagnostics.errors.push(`${slug}: reviewer_profile_url debe ser una URL válida`);
+    }
+    if (fm.review_date !== undefined && !isIsoDate(fm.review_date)) {
+      diagnostics.errors.push(`${slug}: review_date debe tener formato YYYY-MM-DD`);
+    }
+
+    // P2-02: known_points / open_questions (0-3, non-empty strings)
+    for (const key of ['known_points', 'open_questions']) {
+      const value = fm[key];
+      if (value === undefined) continue;
+      if (!Array.isArray(value)) {
+        diagnostics.errors.push(`${slug}: ${key} debe ser un array`);
+      } else if (value.length > 3) {
+        diagnostics.errors.push(`${slug}: ${key} tiene ${value.length} ítems (máx 3)`);
+      } else if (value.some((item) => typeof item !== 'string' || item.trim().length === 0)) {
+        diagnostics.errors.push(`${slug}: ${key} contiene ítem(s) vacío(s)`);
+      }
+    }
+
+    // P2-07: corrections travel together
+    if (!!fm.corrected_at !== !!fm.correction_summary) {
+      diagnostics.errors.push(`${slug}: corrected_at y correction_summary deben declararse juntos`);
+    }
+    if (fm.corrected_at !== undefined && !isIsoDate(fm.corrected_at)) {
+      diagnostics.errors.push(`${slug}: corrected_at debe tener formato YYYY-MM-DD`);
+    }
+    if (fm.correction_summary !== undefined && !isBoundedString(fm.correction_summary, 1, 500)) {
+      diagnostics.errors.push(`${slug}: correction_summary debe ser string de 1-500 caracteres`);
+    }
+
+    // Uncertainty flags
+    if (
+      fm.requires_uncertainty_note !== undefined &&
+      typeof fm.requires_uncertainty_note !== 'boolean'
+    ) {
+      diagnostics.errors.push(`${slug}: requires_uncertainty_note debe ser boolean`);
+    }
+    if (
+      fm.uncertainty_note !== undefined &&
+      (typeof fm.uncertainty_note !== 'string' || fm.uncertainty_note.trim().length === 0)
+    ) {
+      diagnostics.errors.push(`${slug}: uncertainty_note debe ser un string no vacío`);
     }
   }
 
