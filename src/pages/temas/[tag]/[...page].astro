@@ -6,7 +6,7 @@ import Pagination from '~/components/common/Pagination.astro';
 import TopicHubHeader from '~/components/common/TopicHubHeader.astro';
 import { getRelatedTopics } from '~/utils/hub';
 import { getTopicHub, MIN_TOPIC_HUB_POSTS } from '~/utils/topics';
-import { cleanSlug } from '~/utils/permalinks';
+import { cleanSlug, getAsset } from '~/utils/permalinks';
 import type { Taxonomy } from '~/types';
 
 export const getStaticPaths = getStaticPathsBlogTag;
@@ -71,5 +71,27 @@ const metadata = {
     </div>
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+
+    <aside class="mt-10 border-t border-border-subtle pt-5">
+      <h2 class="font-heading text-xl font-bold text-text-body">Seguir este tema</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-relaxed text-text-muted">
+        Un feed RSS con cada nueva historia etiquetada «{tag?.title}». Sin cuenta ni correo: dejas
+        de seguirlo eliminándolo de tu lector.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3 text-sm">
+        <a
+          href={getAsset(`/temas/${tag?.slug}/rss.xml`)}
+          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+        >
+          RSS del tema
+        </a>
+        <a
+          href="/newsletter/"
+          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
+        >
+          Boletín semanal
+        </a>
+      </div>
+    </aside>
   </section>
 </BaseLayout>
