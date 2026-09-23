@@ -184,6 +184,11 @@ const ARTICLE =
 
 test('newsletter submit queues one newsletter_signup event', async ({ page }) => {
   await gotoSettled(page, '/newsletter/');
+  // The undismissed fixed banner covers the submit button on mobile
+  // viewports (real overlap, FU-013). This test is about the submit event,
+  // not the banner, so establish a known consent state first.
+  await clickBannerChoice(page, 'Rechazar');
+  await expect(banner(page)).toBeHidden();
   // Cancel the real POST to Buttondown; the delegated tracker still sees the submit.
   await page.locator('form[data-analytics-newsletter]').evaluate((form) => {
     form.addEventListener('submit', (e) => e.preventDefault());
@@ -208,6 +213,10 @@ test('search sends a `search` event with the term and result count', async ({ pa
 test('an external source link queues outbound_source_click with its domain', async ({ page }) => {
   await stubExternal(page);
   await gotoSettled(page, ARTICLE);
+  // TrustPanel links sit at the article end, under the undismissed banner
+  // on mobile (FU-013). Dismiss first; the click target is what matters here.
+  await clickBannerChoice(page, 'Rechazar');
+  await expect(banner(page)).toBeHidden();
   const source = page.locator('a[data-analytics-source]').first();
   await expect(source).toBeVisible();
   const [popup] = await Promise.all([page.waitForEvent('popup'), source.click()]);
