@@ -1,26 +1,31 @@
 ---
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
-import type { Post } from '~/types';
+import type { RelatedSelection } from '~/utils/related';
 
 interface Props {
-  posts: Post[];
+  selection: RelatedSelection;
 }
 
-const { posts } = Astro.props;
+const { selection } = Astro.props;
+const isRelated = selection.kind === 'related';
+const title = isRelated ? 'Relacionado' : 'Más reciente';
+const description = isRelated
+  ? 'Historias conectadas por tema, serie o método.'
+  : 'Historias recientes de Noticiencias.';
 ---
 
 {
-  posts.length > 0 && (
+  selection.posts.length > 0 && (
     <section class="mt-14 border-t border-border-subtle pt-8">
       {/*
-        P0-08: el ranking actual (categoría + tags, con relleno hasta 4) no
-        garantiza relación semántica, así que no se rotula "Relacionado".
-        P2-01 (Wave 7) traerá ranking semántico real.
+        P2-01: ranking con umbral (categoría, tags, serie, método). Si nada
+        supera el umbral, el bloque se rotula «Más reciente», nunca
+        «Relacionado» (DEC-008/P0-08).
       */}
-      <SectionHeading title="Sigue leyendo" description="Más historias de Noticiencias." />
+      <SectionHeading title={title} description={description} />
       <div class="mt-6 grid gap-6 md:grid-cols-2">
-        {posts.map((post) => (
+        {selection.posts.map((post) => (
           <ArticleCard post={post} variant="compact" />
         ))}
       </div>
