@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                              | Gate                             | Notas                                                                                      |
-| ---- | ---------------------------- | -----: | --------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline            | —                                | Docs-only; sin cambios de producto                                                         |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes      | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
-| 2    | Editorial Data Contract      |   DONE | —                                 | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
-| 3    | Evidence & Accountability UX |   DONE | —                                 | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
-| 4    | Article UX                   |   DONE | —                                 | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
-| 5    | Home, Recency & IA           |   DONE | —                                 | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
-| 6    | Conversion & Collections     |   DONE | —                                 | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
-| 7    | Discovery & Retention        | REVIEW | audit/wave-07-discovery-retention | —                                | 3/3 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 7 abajo  |
-| 8    | Measurement                  |   TODO | —                                 | —                                | Última wave del programa inicial                                                           |
+| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
+| 6    | Conversion & Collections     |   DONE | —                            | 63c6b56 (#212)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix c101596                | Ver reporte Wave 6 arriba |
+| 7    | Discovery & Retention        |   DONE | —                            | f90dd8a (#214)                   | 3/3 findings mergeados; validación integral PASS; Codacy 0 tras fix f84cf94                | Ver reporte Wave 7 arriba |
+| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
 
 ## Findings
 
@@ -649,7 +649,7 @@ Evidencias DOM en `dist/`:
 
 Date: 2026-09-23
 Branch: audit/wave-07-discovery-retention (base: main @ 51ed592)
-Status: REVIEW
+Status: DONE (squash f90dd8a, PR #214)
 
 ### Findings
 
