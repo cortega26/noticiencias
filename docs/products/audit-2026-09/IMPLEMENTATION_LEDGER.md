@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
-| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
-| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
-| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
-| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
-| 5    | Home, Recency & IA           |   TODO | —                            | —                                | Después de Article UX                                                                      |
-| 6    | Conversion & Collections     |   TODO | —                            | —                                | Después de Home                                                                            |
-| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                                       |
-| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
+| Wave | Nombre                       | Estado | Rama                          | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | ----------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline        | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes  | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                             | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                             | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                             | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           | REVIEW | audit/wave-05-home-recency-ia | —                                | 4/4 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 5 abajo  |
+| 6    | Conversion & Collections     |   TODO | —                             | —                                | Después de Home                                                                            |
+| 7    | Discovery & Retention        |   TODO | —                             | —                                | Depende de taxonomía                                                                       |
+| 8    | Measurement                  |   TODO | —                             | —                                | Última wave del programa inicial                                                           |
 
 ## Findings
 
@@ -46,10 +46,10 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P2-07 |    3 | REVIEW | —           | be3f248 | par viaja junto (schema+espejo); nota visible fechada; legacy sin caja                                                           | sin correcciones pendientes en corpus                                             |
 | P1-05 |    4 | REVIEW | P0-06       | 8bff3af | Lo esencial ≤3 + Qué cambia (DEC-018); dist+visual                                                                               | pre-body consolidado sin perder info                                              |
 | P1-04 |    4 | REVIEW | P0-01,P0-02 | 8bff3af | chips ≤3 vía TopicBadge; dist+visual 375/1280                                                                                    | sin dashboard; legacy sin chips                                                   |
-| P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                                | Home                                                                              |
-| P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                                | Recency                                                                           |
-| P1-03 |    5 | TODO   | —           | —       | —                                                                                                                                | Taxonomía                                                                         |
-| P1-09 |    5 | TODO   | —           | —       | —                                                                                                                                | Headlines                                                                         |
+| P1-01 |    5 | REVIEW | P1-04,P1-05 | c144bf9 | lint+validate+build+dist+test:audit (738/739; contract-sync ambiental FU-012); DOM home: 9 promovidas antes de secundario        | portada reordenada; rails de categoría fuera; ~35→12 cards                        |
+| P1-02 |    5 | REVIEW | P1-01       | c144bf9 | DOM: sin «Última edición»; «Esta semana» solo con ventana real; fallback «Lo más reciente»                                       | fechas de edición visibles y honestas                                             |
+| P1-03 |    5 | REVIEW | —           | 02f2e9c | nav 6 entradas; hijos de Ciencia anidados; 9/9 categorías en sitemap; URLs intactas                                              | footer mantiene las 9 secciones                                                   |
+| P1-09 |    5 | REVIEW | —           | ce0e8d6 | `HEADLINE_INVENTORY.md` (40 títulos); 0 hype en portada; sin cambios de URL/título                                               | inventario entregado; sin sustitución ciega                                       |
 | P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                                | Newsletter inline                                                                 |
 | P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                                | Newsletter landing                                                                |
 | P1-08 |    6 | TODO   | —           | —       | —                                                                                                                                | Seguir temas                                                                      |
@@ -454,6 +454,106 @@ Evidencias DOM en `dist/`:
 - [x] No unexplained test failures (731/731 con espejo vigente de main;
       el fallo local de contract-sync-test es ambiental por checkout hermano
       desactualizado, FU-012; el de voz se resolvió con DEC-018)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 5 — Home, Recency & Information Architecture
+
+Date: 2026-09-23
+Branch: audit/wave-05-home-recency-ia (base: main @ 065910a)
+Status: REVIEW
+
+### Findings
+
+- P1-01 — REVIEW — c144bf9
+- P1-02 — REVIEW — c144bf9
+- P1-03 — REVIEW — 02f2e9c
+- P1-09 — REVIEW — ce0e8d6
+
+### Validation
+
+- unit: `npm run test:audit` → 62 ficheros / 738 de 739 PASS; el único
+  fallo es `contract-sync.test.ts` ambiental (checkout backend en
+  `spec/llm-routing-benchmark`, previo a #324/#325 — FU-012)
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check` (1 error de test corregido:
+  narrowing `'links' in link`)
+- build: exit 0, 232 páginas
+- visual: screenshots full-page 375 y 1280 de `/`; axe-core
+  (`homepage has no a11y violations`) PASS en mobile-375 y desktop-1280;
+  consola sin errores (solo aviso preexistente de `autocomplete` en el
+  input del boletín — FU-013)
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; sitemap sin `/temas/`;
+  9/9 categorías presentes; RSS intacto; canonical intacto
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Home: hero 3 + «Lo más reciente» 6 = 9 historias promovidas antes de
+  contenido secundario; «Serie destacada» (0 historias) y «Del archivo» 3
+  después; 12 `article` en total (antes ~35 con los rails de 9 categorías).
+- Home: no existe «Última edición»; «Esta semana» solo se usa si la
+  ventana de 7 días tiene historias; en el corpus actual (ventana agotada
+  por el hero) el bloque cae honestamente a «Lo más reciente».
+- Home: 1 solo formulario de boletín y 1 solo `id="newsletter-email"`
+  (el CTA temprano es un enlace a `/newsletter/`).
+- Header: 6 entradas (Ciencia, Astronomía, Salud, Tecnología, Editorial,
+  Más); Ciencia anida «Toda la sección, Física, Química, Biología»; Más
+  anida «Arqueología, Series»; footer conserva las 9 secciones.
+- Portada P1-09: ningún titular clasificado `hype` es promovido; el único
+  marcado expuesto es el de chatbots (`factual issue`, no hype) en
+  «Del archivo» (ver `HEADLINE_INVENTORY.md`).
+
+### Regressions checked
+
+- Legacy: secciones y bloques nuevos son condicionales (sin datos no
+  renderizan); posts sin serie, sin tags, sin imagen siguen funcionando.
+- Duplicados: hero excluye «Lo más reciente» y este excluye «Del
+  archivo»; no hay tarjetas repetidas en la portada.
+- URLs/canonical/RSS/sitemap: sin cambios de rutas; 232 páginas; tag
+  pages siguen fuera del sitemap.
+- Voz: guardarraíl `quick-wins-regression` verde (el fallback se probó
+  primero con «Seguir leyendo» y colisionó con la lista de frases
+  prohibidas; se usó «Lo más reciente», ya validado en DEC-008).
+- Código muerto: `selectContextPosts`, `buildCategoryRails` y
+  `homeSectionItems` se retiraron junto con sus tests (único consumidor
+  era la portada anterior).
+- `showInHeader` se sustituyó por `navGroup` (primary/ciencia/mas); el
+  footer y las taxonomías no cambian.
+
+### Decisions added
+
+- DEC-019 (portada por bloques y recencia honesta)
+- DEC-020 (navegación primaria ≤6 con subdisciplinas anidadas)
+- DEC-021 (P1-09: inventario, sin sustitución ciega)
+
+### Follow-ups
+
+- FU-001 vigente (flaky consent).
+- FU-004 resuelto: el «fichero 41» de `src/content/posts/` es
+  `refinery_manifest.json` (manifiesto, no post); 40 posts → 40 rutas.
+- FU-006 (Seguir temas → W6); FU-008 (Epicuro → primaria registrada);
+  FU-009 (RelatedPosts muerto → W7); FU-010; FU-011 (branch backend
+  stale); FU-012 (contract-sync local ambiental) vigentes.
+- FU-013 (nuevo): el input de email de `NewsletterCapture` no declara
+  `autocomplete="email"` (aviso de consola preexistente); tocar en P1-06
+  (Wave 6).
+- FU-014 (nuevo): el corpus no puebla `featured`/`featured_rank`; el hero
+  usa el fallback «más recientes». La portada ya soporta curación
+  explícita cuando el backend emita los campos.
+- FU-015 (nuevo): 16 titulares legacy marcados en
+  `HEADLINE_INVENTORY.md` (hype, Title Case, causalidad) quedan para
+  reescritura editorial contra fuente; no sustituir a ciegas.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (738/739; el fallo restante es el
+      ambiental FU-012)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated

@@ -346,3 +346,87 @@ criterios = contrato, DEC-002).
 
 Futuras waves que citen «Por qué importa» del backlog deben leer «Qué
 cambia». No debilitar el guardarraíl de voz para acomodar copy.
+
+## DEC-019 — Portada por bloques y recencia honesta
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-01 pedía reconstruir la jerarquía de la portada; P1-02 exigía que
+ningún bloque prometiera una actualidad incompatible con sus fechas. La
+portada anterior acumulaba hasta ~35 tarjetas (hero + 6 recientes + 3
+«Qué cambia» + rails de las 9 categorías) y titulaba «Última edición» a un
+simple recorte de las más recientes.
+
+### Decision
+
+La portada queda: hero (1 + 2) → CTA de boletín → «Esta semana» (máx. 6)
+→ «Serie destacada» → «Del archivo» (máx. 3) → temas → secciones →
+metodología → boletín final. Reglas:
+
+1. «Esta semana» solo se muestra si la ventana de 7 días (relativa a la
+   fecha de edición = post más reciente) tiene historias fuera del hero;
+   si no, el bloque cae a «Lo más reciente» y lo declara.
+2. Las categorías dejan de listarse como rails de tarjetas en la portada;
+   siguen existiendo en header, footer y rutas `/categorias/*`.
+3. Como máximo 9 historias promovidas antes de contenido secundario.
+
+### Consequences
+
+El CTA temprano es un enlace a `/newsletter/`; el formulario inline
+temprano es P1-06 (Wave 6), donde también se añadirá `autocomplete`.
+`selectContextPosts`/`buildCategoryRails`/`homeSectionItems` se retiran
+(sin consumidores). El hero usa `featured`/`featured_rank` cuando existan
+(FU-014).
+
+## DEC-020 — Navegación primaria ≤6 con subdisciplinas anidadas
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-03 exige ≤6 entradas de contenido en navegación primaria y que no haya
+padre/hijo compitiendo al mismo nivel. El header anterior mostraba 5
+categorías + «Más» (Física, Química, Biología, Arqueología) + Series = 7,
+con Física/Química/Biología como hermanas de Ciencia.
+
+### Decision
+
+El header queda en 6 entradas: Ciencia (desplegable con «Toda la
+sección», Física, Química, Biología), Astronomía, Salud, Tecnología,
+Editorial y Más (Arqueología, Series). `categorySections.ts` expone
+`navGroup` (`primary | ciencia | mas`) en lugar de `showInHeader`; el
+footer sigue listando las 9 secciones.
+
+### Consequences
+
+Las URLs de categoría no cambian y siguen en sitemap (9/9 verificadas).
+Cualquier categoría futura debe declarar su `navGroup` para aparecer en el
+header.
+
+## DEC-021 — P1-09: inventario de titulares, sin sustitución ciega
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-09 pide sanear titulares legacy visibles sin sustitución ciega. El
+corpus tiene 40 posts con títulos de tres épocas editoriales distintas
+(enero legacy, primavera v2, agosto-septiembre recientes).
+
+### Decision
+
+Wave 5 entrega `HEADLINE_INVENTORY.md` con los 40 títulos clasificados
+(`acceptable`, `hype`, `capitalization`, `misleading causality`,
+`factual issue`) y verifica que la portada no promueva ninguno marcado
+como `hype`. No se reescribe ningún título en esta wave.
+
+### Consequences
+
+Los 16 títulos marcados quedan como deuda editorial (FU-015) para
+corrección contra fuente. Cualquier reescritura futura no cambia URLs ni
+canonical (el permalink no depende del título).
