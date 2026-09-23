@@ -485,3 +485,80 @@ cronológico); no se inventan imágenes ni identidades.
 Cuando el contrato transporte `series_description`, el mapa se retira
 (FU-016). Añadir una serie nueva sin descripción usa el fallback en vez
 de inventar copy.
+
+## DEC-024 — Related-content con umbral y fallback explícito
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-01 exige que «Últimos posts» no domine el ranking y que exista un
+fallback explícito. El ranking anterior (categoría +5, tags +1) rellenaba
+hasta 4 resultados aunque el score fuera 0, así que la recencia decidía
+el bloque.
+
+### Decision
+
+`src/utils/related.ts` puntúa señales estructuradas: misma categoría +4,
+misma serie +3, cada tag compartido +2, mismo modelo experimental +1,
+mismo estado de publicación +1. Umbral `MIN_RELATED_SCORE = 2`: la
+recencia sola nunca clasifica. Con ≥1 candidato el bloque se rotula
+«Relacionado»; sin candidatos cae a «Más reciente» (nunca «Relacionado»).
+
+### Consequences
+
+Los pares sin señales (p. ej. la pieza editorial) muestran el fallback
+honesto. Señales de entidades/fenómeno necesitan extracción backend
+(FU-020). La cadena muerta de related del template se elimina (FU-009).
+
+## DEC-025 — Hubs temáticos curados, masa crítica y noindex
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-06 pide hubs de calidad sin crear hubs vacíos. El corpus tiene 157
+tags, de los que solo 4 alcanzan 2 historias; «misión» además colisiona
+entre misiones espaciales y la misión editorial.
+
+### Decision
+
+Un tag se enriquece como hub solo si está curado en
+`src/utils/topics.ts` (universo, galapagos, coral) y supera
+`MIN_TOPIC_HUB_POSTS = 2`. Los hubs muestran descripción, última
+actualización, áreas y series; el resto de tags conservan el listado
+simple. Los hubs siguen `robots: index:false` y fuera del sitemap para no
+canibalizar las categorías (config.yaml).
+
+### Consequences
+
+Un tag nuevo con masa crítica exige curación explícita (FU-021). Las
+descripciones viven en frontend hasta que el contrato transporte
+metadatos de tema (mismo patrón que DEC-023).
+
+## DEC-026 — Seguimiento real por RSS temático
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P2-05 exige que «Seguir» produzca persistencia o entrega real, sin cuenta
+si hay una alternativa más simple. El email por tema dependía de
+automatizaciones de Buttondown no verificadas; el seguimiento local no
+entrega contenido nuevo.
+
+### Decision
+
+El seguimiento es un feed RSS por tema (`/temas/[tag]/rss.xml`, 157 feeds
+generados) con instrucciones explícitas de baja («dejas de seguirlo
+eliminándolo de tu lector») y enlace al boletín semanal como alternativa.
+Sin cuenta, sin correo, sin backend nuevo.
+
+### Consequences
+
+El «unfollow» es responsabilidad del lector de RSS y se declara en la
+propia página. Preferencias de newsletter por tema quedan como opción
+futura solo si Buttondown las garantiza.
