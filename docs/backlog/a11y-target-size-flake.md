@@ -1,8 +1,25 @@
 # Intermittent axe `target-size` failure in the accessibility e2e suite
 
-> Status: Open — unresolved, not attributed
+> Status: **Resolved 2026-09-23** — deterministic helper fix + load verification
 > Recorded: 2026-09-18 (found while building plan 009 phase 1)
-> Owner: none. Pick this up when the accessibility suite next gets touched, or if it starts blocking CI.
+> Resolved in: `tests/playwright/accessibility.test.ts` (`checkA11y`)
+
+## Resolution (2026-09-23)
+
+`checkA11y` no longer measures geometry mid-layout: it waits for `load` and
+`document.fonts.ready`, injects the animation-killing style, scrolls to the
+bottom to fire lazy content, waits for the body height to stabilise across
+animation frames, then returns to the top and waits for stability again
+before running axe. The failing nodes were topic pills measured while lazy
+images/fonts were still changing the page height ("partially obscured",
+"insufficient space to closest neighbors").
+
+Verification: `npx playwright test tests/playwright/accessibility.test.ts`
+8 consecutive runs under CPU load (4 busy `yes` processes) → 8/8 clean,
+14/14 audits each. Hypotheses 1 and 2 in this file were the cause; hypothesis
+3 (real overlap) is ruled out by the same runs.
+
+The original record follows.
 
 ## Symptom
 
