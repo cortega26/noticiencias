@@ -607,13 +607,12 @@ function auditSocialManifest() {
 }
 
 function auditTagSitemapExclusion() {
-  // Guards the /temas/ sitemap exclusion without a YAML parser (static
-  // analysis forbids yaml.load in config-adjacent code; astro.config.mjs
-  // hardcodes the same literal instead). Two invariants:
-  //   1. the hardcoded literal matches src/config.yaml apps.blog.tag.pathname
-  //   2. no tag-archive URL for the configured base leaks into the sitemap
-  // A config rename without updating astro.config.mjs fails loudly here
-  // instead of silently re-listing noindex URLs.
+  // Guards the /temas/ sitemap exclusion: resolves the configured tag base
+  // from src/config.yaml with a minimal line scan (no YAML parser needed
+  // here) and fails if any tag-archive URL for that base leaks into the
+  // sitemap. The filter itself derives from the same config at build time
+  // (astro.config.mjs via safeYamlLoad), so a taxonomy rename is covered on
+  // both sides without hardcoded literals drifting apart.
   const errorsBefore = errorCount;
   const configText = fs.readFileSync(path.join(REPO_ROOT, 'src', 'config.yaml'), 'utf8');
   const configPathname = (() => {
@@ -640,13 +639,6 @@ function auditTagSitemapExclusion() {
     return;
   }
   const expectedBase = `/${configPathname}/`;
-  const astroConfig = fs.readFileSync(path.join(REPO_ROOT, 'astro.config.mjs'), 'utf8');
-  if (!astroConfig.includes(`'${expectedBase}'`) && !astroConfig.includes(`"${expectedBase}"`)) {
-    console.error(
-      `${RED}[FAIL] astro.config.mjs tagBasePath diverges from src/config.yaml (${expectedBase}). Update the literal.${RESET}`
-    );
-    errorCount++;
-  }
   const sitemapFiles = fs
     .readdirSync(DIST_DIR)
     .filter((name) => /^sitemap.*\.xml$/.test(name))
@@ -668,7 +660,7 @@ function auditTagSitemapExclusion() {
     );
   } else {
     console.log(
-      `${GREEN}PASSED: no ${expectedBase} URLs in sitemap; astro.config literal matches config.yaml.${RESET}`
+      `${GREEN}PASSED: no ${expectedBase} URLs in sitemap (tag base from config.yaml).${RESET}`
     );
   }
 }

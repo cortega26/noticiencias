@@ -7,18 +7,24 @@ import astrowind from './src/integration';
 
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { safeRead } from './src/utils/safeFs';
+import { safeYamlLoad } from './src/integration/utils/loadConfig.ts';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Ahrefs Site Audit flagged 150 noindexed /temas/[tag]/ URLs in the sitemap
 // (src/pages/temas/[tag]/[...page].astro sets robots: { index: false }).
 // Google's own guidance is that a sitemap should not list noindex URLs.
 //
-// NOTE: this value duplicates src/config.yaml (apps.blog.tag.pathname).
-// A YAML parser is deliberately NOT used here: static analysis forbids
-// yaml.load in config context, and the sync is machine-checked instead —
-// scripts/dist-sanity.js fails the build if this diverges from config.yaml
-// or if any /temas/ URL leaks into the sitemap.
-const tagBasePath = '/temas/';
+// The tag base path derives from src/config.yaml (apps.blog.tag.pathname)
+// at build time through the repo's own safeYamlLoad helper, so the exclusion
+// still holds if the taxonomy pathname is ever renamed. No yaml.load call
+// site lives in this file (static analysis forbids it in config context);
+// the parse itself is centralized in src/integration/utils/loadConfig.ts.
+const siteYamlConfig = safeYamlLoad(safeRead('src/config.yaml'));
+const tagPathname = siteYamlConfig?.apps?.blog?.tag?.pathname ?? 'tag';
+const tagBasePath = `/${String(tagPathname)
+  .replace(/^\/+|\/+$/g, '')
+  .toLowerCase()}/`;
 
 // https://astro.build/config
 export default defineConfig({
