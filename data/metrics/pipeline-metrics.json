@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-22T11:34:13.379Z",
+  "generated_at": "2026-09-23T11:31:20.156Z",
   "content": {
     "total_articles": 40,
     "v2_articles": 28,
-    "total_words": 25430,
-    "avg_words": 636,
+    "total_words": 25490,
+    "avg_words": 637,
     "categories": [
       {
         "name": "Tecnología",
@@ -659,7 +659,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-22T11:34:13.379Z"
+    "generated_at": "2026-09-23T11:31:20.156Z"
   },
   "images": {
     "delivery_mode": "github",
