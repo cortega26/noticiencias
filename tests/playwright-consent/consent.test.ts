@@ -43,11 +43,12 @@ async function clickBannerChoice(page: Page, name: 'Aceptar' | 'Rechazar'): Prom
   const button = banner(page).getByRole('button', { name });
   const buttonBox = await button.boundingBox();
   expect(textBox && buttonBox).toBeTruthy();
+  if (!textBox || !buttonBox) throw new Error('banner geometry unreadable');
   const overlap =
-    textBox!.x < buttonBox!.x + buttonBox!.width &&
-    buttonBox!.x < textBox!.x + textBox!.width &&
-    textBox!.y < buttonBox!.y + buttonBox!.height &&
-    buttonBox!.y < textBox!.y + textBox!.height;
+    textBox.x < buttonBox.x + buttonBox.width &&
+    buttonBox.x < textBox.x + textBox.width &&
+    textBox.y < buttonBox.y + buttonBox.height &&
+    buttonBox.y < textBox.y + textBox.height;
   expect(overlap).toBe(false);
   await button.dispatchEvent('click');
 }
