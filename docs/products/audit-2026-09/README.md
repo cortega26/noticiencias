@@ -1,6 +1,7 @@
 # Noticiencias — Programa de mejora editorial, UX y Growth
 
 Fecha de creación: 2026-09-22
+Estado: **programa inicial cerrado** (Waves 0–8 DONE al 2026-09-23; ver `IMPLEMENTATION_LEDGER.md`).
 
 Este directorio convierte la auditoría de Noticiencias en un programa de implementación incremental, auditable y testeable.
 
