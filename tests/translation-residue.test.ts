@@ -7,7 +7,7 @@
  * instead of the live corpus.
  */
 
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { resolve } from 'path';
 import { describe, expect, it } from 'vitest';
 
@@ -16,8 +16,11 @@ const MIXED = resolve('tests/fixtures/translation-residue/mixed');
 const CLEAN = resolve('tests/fixtures/translation-residue/clean');
 
 function runCheck(dir: string): { combined: string; exitCode: number } {
+  // execFileSync (no shell) instead of execSync with interpolation: removes
+  // the command-injection surface entirely rather than relying on the args
+  // being constants today.
   try {
-    const stdout = execSync(`node ${SCRIPT} ${dir} 2>&1`, {
+    const stdout = execFileSync('node', [SCRIPT, dir], {
       cwd: resolve('.'),
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
