@@ -20,7 +20,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // silently reintroducing the defect if the pathname is ever renamed.
 // Uses the repo's own safeRead (src/utils/safeFs.ts) rather than a raw
 // fs.readFileSync call.
-const siteYamlConfig = yaml.load(safeRead('src/config.yaml'));
+// Explicit safe schema: the default js-yaml schema evaluates JS-specific
+// tags (!!js/function et al). This file is first-party config without such
+// tags (verified: identical output under both schemas), so pin the safe
+// schema instead of relying on the loader default.
+const siteYamlConfig = yaml.load(safeRead('src/config.yaml'), {
+  schema: yaml.DEFAULT_SAFE_SCHEMA,
+});
 const tagPathname = siteYamlConfig?.apps?.blog?.tag?.pathname ?? 'tag';
 const tagBasePath = `/${String(tagPathname)
   .replace(/^\/+|\/+$/g, '')
