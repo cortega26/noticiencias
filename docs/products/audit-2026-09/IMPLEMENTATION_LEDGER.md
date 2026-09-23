@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                             | Gate | Notas                                            |
-| ---- | ---------------------------- | -----: | -------------------------------- | ---- | ------------------------------------------------ | ------------------------ |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline           | —    | Docs-only; sin cambios de producto               |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes     | —    | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      | REVIEW | audit/wave-02-editorial-contract | —    | 3/3 findings en REVIEW; paridad cross-repo OK    | Ver reporte Wave 2 abajo |
-| 3    | Evidence & Accountability UX |   TODO | —                                | —    | Depende parcialmente de Wave 2                   |
-| 4    | Article UX                   |   TODO | —                                | —    | Depende de P0-01/P0-02/P0-06                     |
-| 5    | Home, Recency & IA           |   TODO | —                                | —    | Después de Article UX                            |
-| 6    | Conversion & Collections     |   TODO | —                                | —    | Después de Home                                  |
-| 7    | Discovery & Retention        |   TODO | —                                | —    | Depende de taxonomía                             |
-| 8    | Measurement                  |   TODO | —                                | —    | Última wave del programa inicial                 |
+| Wave | Nombre                       | Estado | Rama                                  | Gate                             | Notas                                            |
+| ---- | ---------------------------- | -----: | ------------------------------------- | -------------------------------- | ------------------------------------------------ | ------------------------ |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline                | —                                | Docs-only; sin cambios de producto               |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes          | —                                | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
+| 2    | Editorial Data Contract      |   DONE | —                                     | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)  |
+| 3    | Evidence & Accountability UX | REVIEW | audit/wave-03-evidence-accountability | —                                | 4/4 findings en REVIEW; backend PR #325          | Ver reporte Wave 3 abajo |
+| 4    | Article UX                   |   TODO | —                                     | —                                | Depende de P0-01/P0-02/P0-06                     |
+| 5    | Home, Recency & IA           |   TODO | —                                     | —                                | Después de Article UX                            |
+| 6    | Conversion & Collections     |   TODO | —                                     | —                                | Después de Home                                  |
+| 7    | Discovery & Retention        |   TODO | —                                     | —                                | Depende de taxonomía                             |
+| 8    | Measurement                  |   TODO | —                                     | —                                | Última wave del programa inicial                 |
 
 ## Findings
 
@@ -40,10 +40,10 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P0-01 |    2 | REVIEW | —           | 41de936 | schema 38/38 + lint + validate + build + dist (primaria+DOI+Cobertura; legacy intacto); contract-sync PARITY OK; backend PR #324 | backfill verificado 2 artículos; sin invención                                    |
 | P0-02 |    2 | REVIEW | —           | 41de936 | schema enum 8 valores + unknown; dist (modelo+guardrail Salud; legacy sin línea); backend PR #324                                | experimental añadido (DEC-016); Salud no-humana con guardrail fuerte              |
 | P0-06 |    2 | REVIEW | —           | 7ae5133 | cardinalidades 0-3 en schema; corpus máx 3; render ya condicional                                                                | espejo max_length=3 en backend PR #324                                            |
-| P0-03 |    3 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Ficha científica                                                                  |
-| P0-09 |    3 | TODO   | —           | —       | —                                                                                                                                | Responsabilidad editorial                                                         |
-| P2-02 |    3 | TODO   | P0-06       | —       | —                                                                                                                                | Sabemos/no sabemos                                                                |
-| P2-07 |    3 | TODO   | —           | —       | —                                                                                                                                | Correcciones                                                                      |
+| P0-03 |    3 | REVIEW | —           | be3f248 | schema + TrustPanel (publicación/institución); dist verificado                                                                   | sin placeholders; institución omitida si multi-afiliación                         |
+| P0-09 |    3 | REVIEW | —           | be3f248 | IA solo en piezas AI; sin reviewer (no inventado); fallback institucional                                                        | ningún post declara reviewer (sin dato verificado)                                |
+| P2-02 |    3 | REVIEW | P0-06       | be3f248 | bloques omisibles; backfill 3+2/3+3 desde fuentes                                                                                | sin especulación; legacy sin bloques                                              |
+| P2-07 |    3 | REVIEW | —           | be3f248 | par viaja junto (schema+espejo); nota visible fechada; legacy sin caja                                                           | sin correcciones pendientes en corpus                                             |
 | P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                                | Pre-body                                                                          |
 | P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Header evidencia                                                                  |
 | P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                                | Home                                                                              |
@@ -309,6 +309,85 @@ consentimiento/analytics/URLs.
 
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (715/715 + paridad + 164 backend)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 3 — Evidence & Accountability UX
+
+Date: 2026-09-23
+Branch: audit/wave-03-evidence-accountability (base: main @ 6a50da8)
+Status: REVIEW
+
+### Findings
+
+- P0-03 — REVIEW — be3f248
+- P0-09 — REVIEW — be3f248
+- P2-02 — REVIEW — be3f248
+- P2-07 — REVIEW — be3f248
+
+Un commit por wave (archivos entrelazados, DEC-017); atomicidad en ledger.
+
+### Validation
+
+- unit: `npm run test:audit` → 61 ficheros / 727 tests PASS con espejo
+  vigente (51 schema incl. 12 Wave 3); sin espejo vigente el
+  `contract-sync.test.ts` falla por checkout hermano desactualizado
+  (ambiental, no regresión — CI usa main del backend)
+- integration: `npm run validate:content` → exit 0
+- lint: `npm run lint` → exit 0
+- typecheck: PASS vía `astro check` (1 error real corregido:
+  `publicationLabels` faltante)
+- build: exit 0, 232 páginas
+- visual: sin cambios de layout; DOM verificado en `dist/`
+- SEO/SSR: `test:dist` 232 PASS; sin cambios URL/títulos/metadata
+- contract: paridad OK contra espejo (backend PR #325); backend
+  `test-contracts` PASS + ruff/black OK
+- other: e2e consent no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Biomédico: Publicación/preprint/McGill; IA + Equipo Noticiencias;
+  Qué sabemos ×3 / Qué no sabemos ×3; sin Corrección.
+- Herculano: revisada por pares; Qué sabemos ×3 / ×2; IA; sin guardrail
+  Salud; sin Corrección.
+- Legacy: sin línea de modelo, sin sabidos/pendientes, sin caja de
+  corrección, sin línea de accountability (pieza no-AI sin reviewer).
+
+### Regressions checked
+
+- Legacy rinde igual (condicionales en todo bloque nuevo).
+- `hasContent` extendido (sin paneles vacíos).
+- Sin identidad humana fabricada (ningún `reviewer_name` en corpus).
+- Sin JS nuevo; sin cambios consentimiento/analytics/URLs/RSS.
+- Worktree backend de benchmark intacto (edición stray revertida;
+  proceso vivo verificado).
+
+### Decisions added
+
+- DEC-017 (TrustPanel superficie única)
+
+### Follow-ups
+
+- Backend PR #325 pendiente de merge: mergear antes o junto con la PR
+  frontend (mismo protocolo que Wave 2).
+- FU-001 vigente; FU-004 vigente (41 vs 40); FU-006 (Seguir temas → W6);
+  FU-008 (Epicuro → requiere primaria, ahora registrada);
+  FU-009 (RelatedPosts muerto → W7); FU-010 (check-editorial-fields no
+  valida campos nuevos — schema+tests cubren).
+- FU-011 (nuevo): worktree backend `spec/llm-routing-benchmark` quedó en
+  base anterior a #324 (stale); al terminar el benchmark, rebasear antes
+  de cualquier trabajo con contratos.
+- FU-012 (nuevo): `contract-sync.test.ts` local depende del checkout
+  hermano; con backends desactualizados falla ambientalmente. CI es la
+  referencia (usa main del backend).
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (727/727 con espejo; fallo local
+      ambiental documentado)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated

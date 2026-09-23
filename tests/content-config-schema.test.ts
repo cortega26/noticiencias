@@ -163,6 +163,65 @@ describe('content.config posts schema', () => {
       });
     });
 
+    describe('Wave 3 accountability fields (P0-03/P0-09/P2-02/P2-07)', () => {
+      it.each([['peer_reviewed'], ['preprint'], ['conference'], ['other']])(
+        'accepts publication_status %p',
+        (publication_status) => {
+          expect(schema.safeParse({ ...basePost, publication_status }).success).toBe(true);
+        }
+      );
+
+      it('rejects an unknown publication_status', () => {
+        expect(schema.safeParse({ ...basePost, publication_status: 'rumor' }).success).toBe(false);
+      });
+
+      it('accepts a full reviewer block and a reviewer-less post', () => {
+        expect(
+          schema.safeParse({
+            ...basePost,
+            reviewer_name: 'Ada Lovelace',
+            reviewer_role: 'Editora',
+            reviewer_profile_url: 'https://example.com/ada',
+            review_date: '2026-09-01',
+          }).success
+        ).toBe(true);
+        expect(schema.safeParse(basePost).success).toBe(true);
+      });
+
+      it.each([[['a']], [['a', 'b']], [['a', 'b', 'c']]])(
+        'accepts known_points/open_questions with %p',
+        (items) => {
+          expect(
+            schema.safeParse({ ...basePost, known_points: items, open_questions: items }).success
+          ).toBe(true);
+        }
+      );
+
+      it('rejects a fourth known_point', () => {
+        expect(schema.safeParse({ ...basePost, known_points: ['a', 'b', 'c', 'd'] }).success).toBe(
+          false
+        );
+      });
+
+      it('accepts a complete correction and rejects half-corrections', () => {
+        expect(
+          schema.safeParse({
+            ...basePost,
+            corrected_at: '2026-09-02',
+            correction_summary: 'Se corrigió una cifra.',
+          }).success
+        ).toBe(true);
+        expect(schema.safeParse({ ...basePost, corrected_at: '2026-09-02' }).success).toBe(false);
+        expect(
+          schema.safeParse({ ...basePost, correction_summary: 'Se corrigió una cifra.' }).success
+        ).toBe(false);
+      });
+
+      it('rejects malformed correction/review dates', () => {
+        expect(schema.safeParse({ ...basePost, review_date: '02/09/2026' }).success).toBe(false);
+      });
+    });
+
     describe('why_it_matters cardinalities (P0-06 / DEC-003)', () => {
       const validV2Base = {
         ...basePost,

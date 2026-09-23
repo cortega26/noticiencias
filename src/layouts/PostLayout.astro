@@ -224,6 +224,17 @@ const breadcrumbItems = [
           evidenceSubjectType={post.evidence_subject_type}
           evidenceDetail={post.evidence_detail}
           isHealthCategory={post.category?.slug === 'salud'}
+          institution={post.institution}
+          publicationStatus={post.publication_status}
+          reviewerName={post.reviewer_name}
+          reviewerRole={post.reviewer_role}
+          reviewerProfileUrl={post.reviewer_profile_url}
+          reviewDate={post.review_date}
+          knownPoints={post.known_points}
+          openQuestions={post.open_questions}
+          correctedAt={post.corrected_at}
+          correctionSummary={post.correction_summary}
+          isAiAssisted={isNoticienciasAi}
         />
 
         <TopicStrip

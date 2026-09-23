@@ -56,6 +56,14 @@ why_it_matters:
 confidence: Moderada — basada en un estudio experimental con réplicas y técnicas de imagen, aunque aún en fase de prueba y requiere equipamiento especializado.
 evidence_subject_type: experimental
 evidence_detail: Réplicas modernas de papiro carbonizadas en laboratorio; lectura con fluorescencia y tomografía de rayos X más desenrollado virtual.
+publication_status: peer_reviewed
+known_points:
+  - El plomo de las tintas modernas siguió detectable por fluorescencia de rayos X tras carbonizar las réplicas.
+  - La tomografía con software a medida recuperó palabras legibles de los textos de prueba.
+  - El cribado previo por señal de plomo permite priorizar qué rollos pasan al desenrollado virtual.
+open_questions:
+  - Si la técnica funciona en los rollos auténticos de Herculano, con dos milenios de alteraciones químicas.
+  - Cuánto texto podría recuperarse de los originales con este enfoque.
 sources:
   - title: A model carbonized papyrus scroll opens a novel path to identifying readable scrolls of the Herculaneum Library
     url: https://doi.org/10.1371/journal.pone.0353485

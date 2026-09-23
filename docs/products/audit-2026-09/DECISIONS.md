@@ -297,3 +297,28 @@ mapeaba `str`-Enums de Python.
 P1-04 (Wave 4) puede usar `evidence_subject_type` para los chips
 metodológicos. P0-01 y P0-02 comparten commit (archivos entrelazados);
 la atomicidad por finding se preserva en ledger, no en hashes.
+
+## DEC-017 — TrustPanel como superficie única de ficha y accountability
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P0-03 pedía un “componente reutilizable” de ficha; P0-09, P2-02 y P2-07
+piden señales visibles al final del artículo. TrustPanel ya rendía
+confianza, incertidumbre, fact-check y fuentes.
+
+### Decision
+
+Extender TrustPanel en vez de crear componentes nuevos (anti-patrón:
+wrappers genéricos / tercera capa). Secciones condicionales, sin
+placeholders: corrección → confianza → incertidumbre → modelo →
+publicación → método/revisión → accountability → fact-check → primaria →
+cobertura → sabidos → pendientes.
+
+### Consequences
+
+Wave 4+ reutiliza estos campos (chips, pre-body) sin duplicar fuentes de
+verdad. Si el panel crece demasiado, dividir por secciones con datos,
+no por componentes paralelos.
