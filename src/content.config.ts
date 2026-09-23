@@ -75,7 +75,7 @@ const posts = defineCollection({
         )
         .optional(),
 
-      why_it_matters: z.array(z.string()).optional(),
+      why_it_matters: z.array(z.string().min(1)).max(3).optional(),
       series: z.string().optional(),
 
       sources: z
@@ -134,6 +134,10 @@ const posts = defineCollection({
       // Progressive contract: v1 posts are grandfathered; v2+ require structured editorial fields.
       // Enforcement is unconditional (Plan 060 / Phase 2b): the full corpus has zero strict
       // editorial-field errors, so this branch always runs — there is no permissive/off state.
+      //
+      // P0-06 / DEC-003: `why_it_matters` ("Qué cambia") allows 0-3 items.
+      // There is no minimum: omitting an implication beats fabricating one.
+      // Cardinality is enforced at field level (`.max(3)`); absence is valid.
       if (data.schema_version && data.schema_version >= 2) {
         // summary_points: 2-5 non-empty strings
         if (!data.summary_points || data.summary_points.length === 0) {
@@ -168,14 +172,9 @@ const posts = defineCollection({
           });
         }
 
-        // why_it_matters: at least 1 string
-        if (!data.why_it_matters || data.why_it_matters.length === 0) {
-          ctx.addIssue({
-            code: 'custom',
-            path: ['why_it_matters'],
-            message: 'why_it_matters is required for schema_version >= 2 (≥1 item)',
-          });
-        }
+        // why_it_matters: 0-3 items, no minimum (P0-06 / DEC-003).
+        // Absence is valid; cardinality and non-empty items are enforced
+        // at field level above, so no superRefine branch is needed here.
 
         // confidence: required string
         if (!data.confidence) {

@@ -55,16 +55,18 @@ describe('content.config posts schema', () => {
       const result = schema.safeParse({ ...basePost, schema_version: 2 });
       expect(result.success).toBe(false);
       const paths = result.error?.issues.map((i) => i.path[0]);
+      // P0-06 / DEC-003: why_it_matters has no minimum, so its absence
+      // must NOT appear here.
       expect(paths).toEqual(
         expect.arrayContaining([
           'summary_points',
           'glossary',
           'fact_check',
-          'why_it_matters',
           'confidence',
           'sources',
         ])
       );
+      expect(paths).not.toContain('why_it_matters');
     });
 
     it('accepts a v2 post with every required editorial field present', () => {
@@ -84,6 +86,40 @@ describe('content.config posts schema', () => {
     it('does not enforce editorial fields for schema_version 1', () => {
       const result = schema.safeParse({ ...basePost, schema_version: 1 });
       expect(result.success).toBe(true);
+    });
+
+    describe('why_it_matters cardinalities (P0-06 / DEC-003)', () => {
+      const validV2Base = {
+        ...basePost,
+        schema_version: 2,
+        summary_points: ['Point one', 'Point two'],
+        glossary: [{ term: 'Term', definition: 'Definition' }],
+        fact_check: [{ label: 'Claim', status: 'verified' }],
+        confidence: 'high',
+        sources: [{ title: 'Source', url: 'https://example.com' }],
+      };
+
+      it.each([[undefined], [[]], [['One']], [['One', 'Two']], [['One', 'Two', 'Three']]])(
+        'accepts %p items',
+        (why_it_matters) => {
+          const result = schema.safeParse({ ...validV2Base, why_it_matters });
+          expect(result.success).toBe(true);
+        }
+      );
+
+      it('rejects more than 3 items', () => {
+        const result = schema.safeParse({
+          ...validV2Base,
+          why_it_matters: ['One', 'Two', 'Three', 'Four'],
+        });
+        expect(result.success).toBe(false);
+        expect(result.error?.issues.some((i) => i.path.includes('why_it_matters'))).toBe(true);
+      });
+
+      it('rejects empty-string items', () => {
+        const result = schema.safeParse({ ...validV2Base, why_it_matters: [''] });
+        expect(result.success).toBe(false);
+      });
     });
   });
 
