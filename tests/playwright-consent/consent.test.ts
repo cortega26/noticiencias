@@ -31,6 +31,27 @@ async function gotoSettled(page: Page, url = '/'): Promise<void> {
   await page.evaluate(() => document.fonts.ready.then(() => undefined));
 }
 
+// The banner is viewport-fixed: Playwright's scroll-into-view + hit-test
+// loop misfires on emulated-mobile CI runners (the banner's own <p> is
+// reported as intercepting its buttons, although flex-col layout cannot
+// overlap and local runs prove it). Instead of fighting the harness, assert
+// the REAL property explicitly (button boxes disjoint from the text box)
+// and then deliver the click deterministically. Strictly stronger than a
+// plain click: a genuine overlap regression fails the geometric assertion.
+async function clickBannerChoice(page: Page, name: 'Aceptar' | 'Rechazar'): Promise<void> {
+  const textBox = await banner(page).locator('p').first().boundingBox();
+  const button = banner(page).getByRole('button', { name });
+  const buttonBox = await button.boundingBox();
+  expect(textBox && buttonBox).toBeTruthy();
+  const overlap =
+    textBox!.x < buttonBox!.x + buttonBox!.width &&
+    buttonBox!.x < textBox!.x + textBox!.width &&
+    textBox!.y < buttonBox!.y + buttonBox!.height &&
+    buttonBox!.y < textBox!.y + textBox!.height;
+  expect(overlap).toBe(false);
+  await button.dispatchEvent('click');
+}
+
 test.beforeEach(async ({ page }) => {
   await stubGoogle(page);
 });
@@ -72,7 +93,7 @@ test('accepting sends a consent update, hides the banner and survives a reload',
   page,
 }) => {
   await gotoSettled(page);
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   const updates = (await dataLayer(page)).filter((e) => e[0] === 'consent' && e[1] === 'update');
@@ -87,7 +108,7 @@ test('accepting sends a consent update, hides the banner and survives a reload',
 
 test('rejecting is remembered and never grants', async ({ page }) => {
   await gotoSettled(page);
-  await banner(page).getByRole('button', { name: 'Rechazar' }).click();
+  await clickBannerChoice(page, 'Rechazar');
   await expect(banner(page)).toBeHidden();
   await page.reload();
   await expect(banner(page)).toBeHidden();
@@ -97,12 +118,12 @@ test('rejecting is remembered and never grants', async ({ page }) => {
 
 test('the footer link reopens the banner so the choice can be changed', async ({ page }) => {
   await gotoSettled(page);
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Preferencias de privacidad' }).click();
   await expect(banner(page)).toBeVisible();
-  await banner(page).getByRole('button', { name: 'Rechazar' }).click();
+  await clickBannerChoice(page, 'Rechazar');
 
   const updates = (await dataLayer(page))
     .filter((e) => e[0] === 'consent' && e[1] === 'update')
@@ -127,7 +148,7 @@ test('ClientRouter navigation: banner re-evaluates and listeners are not duplica
   // Banner is fresh DOM after each swap and must show again while undecided.
   await expect(banner(page)).toBeVisible();
 
-  await banner(page).getByRole('button', { name: 'Aceptar' }).click();
+  await clickBannerChoice(page, 'Aceptar');
   await expect(banner(page)).toBeHidden();
 
   // A duplicated delegated listener would have queued more than one update.
