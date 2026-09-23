@@ -217,3 +217,31 @@ ruido; documentar la divergencia elimina la suposición para waves futuras.
 Wave 1+ debe usar rutas `docs/products/...`. Si el operador prefiere
 `docs/product/`, mover en una wave dedicada y actualizar DEC-013 a
 `Superseded`.
+
+## DEC-014 — P0-10 se implementa mínimo sobre main; PR #201 rebasea después
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+PR #201 (`feat/trust-tone`, abierto, CI rojo por flake FU-001) ya cambia
+`nosotros.md` (“No rastreamos” → “Sin rastreo publicitario”) y reescribe
+`privacidad.md`. P0-10 exige alinear ese mismo copy en `main`.
+
+### Decision
+
+Wave 1 implementa P0-10 mínimo sobre `main` (alinear “Acerca de”/política
+con la implementación, sin reescribir la política). PR #201 rebasea
+después y resuelve el conflicto trivial de la línea coincidente.
+
+### Rationale
+
+La wave no se bloquea por un PR externo en rojo; el fix mínimo satisface
+los acceptance criteria sin duplicar la reescritura de #201.
+
+### Consequences
+
+Revisar en #201 que su reescritura de `privacidad.md` preserve las
+divulgaciones requeridas (GA4 antes de consentir, eventos, retención
+14 meses, Cloudflare) — follow-up de revisión, no de Wave 1.

@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                   | Gate | Notas                              |
-| ---- | ---------------------------- | -----: | ---------------------- | ---- | ---------------------------------- |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline | —    | Docs-only; sin cambios de producto |
-| 1    | Correctness & Trust Hotfixes |   TODO | —                      | —    | Requiere Wave 0                    |
-| 2    | Editorial Data Contract      |   TODO | —                      | —    | Después de hotfixes                |
-| 3    | Evidence & Accountability UX |   TODO | —                      | —    | Depende parcialmente de Wave 2     |
-| 4    | Article UX                   |   TODO | —                      | —    | Depende de P0-01/P0-02/P0-06       |
-| 5    | Home, Recency & IA           |   TODO | —                      | —    | Después de Article UX              |
-| 6    | Conversion & Collections     |   TODO | —                      | —    | Después de Home                    |
-| 7    | Discovery & Retention        |   TODO | —                      | —    | Depende de taxonomía               |
-| 8    | Measurement                  |   TODO | —                      | —    | Última wave del programa inicial   |
+| Wave | Nombre                       |      Estado | Rama                         | Gate | Notas                                                |
+| ---- | ---------------------------- | ----------: | ---------------------------- | ---- | ---------------------------------------------------- |
+| 0    | Baseline y guardrails        |      REVIEW | audit/wave-00-baseline       | —    | Docs-only; sin cambios de producto                   |
+| 1    | Correctness & Trust Hotfixes | IN_PROGRESS | audit/wave-01-trust-hotfixes | —    | P0-04/05/07/08/10; P0-10 mínimo sobre main (DEC-014) |
+| 2    | Editorial Data Contract      |        TODO | —                            | —    | Después de hotfixes                                  |
+| 3    | Evidence & Accountability UX |        TODO | —                            | —    | Depende parcialmente de Wave 2                       |
+| 4    | Article UX                   |        TODO | —                            | —    | Depende de P0-01/P0-02/P0-06                         |
+| 5    | Home, Recency & IA           |        TODO | —                            | —    | Después de Article UX                                |
+| 6    | Conversion & Collections     |        TODO | —                            | —    | Después de Home                                      |
+| 7    | Discovery & Retention        |        TODO | —                            | —    | Depende de taxonomía                                 |
+| 8    | Measurement                  |        TODO | —                            | —    | Última wave del programa inicial                     |
 
 ## Findings
 
