@@ -430,3 +430,58 @@ como `hype`. No se reescribe ningún título en esta wave.
 Los 16 títulos marcados quedan como deuda editorial (FU-015) para
 corrección contra fuente. Cualquier reescritura futura no cambia URLs ni
 canonical (el permalink no depende del título).
+
+## DEC-022 — Mejora progresiva del boletín y CSP connect-src
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-06 exige estados loading/error/success accesibles en la suscripción
+inline. El formulario es un POST nativo a Buttondown (ADR-0009, LAW-F3) y
+la CSP solo permitía `connect-src` a GA4 y Cloudflare.
+
+### Decision
+
+1. `NewsletterCapture` mantiene el POST nativo como fallback sin JS y
+   añade un script delegado y acotado que intercepta el submit, hace
+   `fetch(..., { redirect: 'manual' })` y refleja el estado en un
+   `role="status"` (Enviando… / revisa tu correo / error). La respuesta
+   opaca del redirect de Buttondown cuenta como éxito.
+2. `connect-src` incorpora `https://buttondown.com` en las tres copias
+   sincronizadas (meta, `public/_headers`,
+   `docs/DEPLOYMENT_SECURITY_HEADERS.md`), custodiadas por
+   `tests/compliance.test.ts`.
+3. Cada instancia recibe `formId` para ids únicos y `autocomplete="email"`.
+
+### Consequences
+
+La CSP del edge (Cloudflare Transform Rule) debe actualizarse (FU-017).
+No hay isla ni dependencia de framework. Si el fetch falla por red, el
+usuario ve el error y puede reintentar; sin JS, el flujo original sigue.
+
+## DEC-023 — Descripciones de serie en mapa frontend hasta el contrato
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P1-10 pide descripción por serie, pero el schema `posts` solo transporta
+`series` (nombre); no existe `series_description` y añadirlo es un cambio
+de contrato sellado (LAW-F1, espejo backend).
+
+### Decision
+
+Las descripciones de las tres series vivas viven en
+`src/utils/series.ts` (mapa explícito) con fallback neutral para series
+desconocidas. El dossier se construye desde los posts reales
+(descripción, conteo, última actualización, primer post, orden
+cronológico); no se inventan imágenes ni identidades.
+
+### Consequences
+
+Cuando el contrato transporte `series_description`, el mapa se retira
+(FU-016). Añadir una serie nueva sin descripción usa el fallback en vez
+de inventar copy.

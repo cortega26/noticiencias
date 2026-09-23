@@ -1,12 +1,59 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
 import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
+import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
+import { fetchPosts } from '~/utils/blog';
+
+const posts = await fetchPosts();
+const representativePosts = posts.slice(0, 3);
 
 const metadata = {
   title: 'Boletín Semanal de Ciencia y Tecnología',
   description:
-    'Suscripción al boletín semanal de Noticiencias: recibe una edición curada de ciencia y tecnología con resúmenes claros, rigurosos y enlaces directos a las fuentes.',
+    'El boletín semanal de Noticiencias: cada viernes, una selección de historias con hallazgos, límites, fuentes y temas para volver. Doble confirmación y baja en un clic.',
 };
+
+const includes = [
+  {
+    title: 'Selección corta',
+    body: 'Las historias que valió la pena leer dos veces del archivo reciente, sin relleno.',
+  },
+  {
+    title: 'Contexto y límites',
+    body: 'Qué cambia cada hallazgo y qué sigue sin saberse.',
+  },
+  {
+    title: 'Fuentes a un clic',
+    body: 'Papers, instituciones y cobertura original enlazados.',
+  },
+  {
+    title: 'Temas para volver',
+    body: 'Hilos y series para leer durante la semana.',
+  },
+];
+
+const faqs = [
+  {
+    q: '¿Qué recibo?',
+    a: 'Una selección de las historias que valió la pena leer dos veces, con sus fuentes y lo que todavía no sabemos.',
+  },
+  {
+    q: '¿Cada cuánto llega?',
+    a: 'Una edición por semana. No hay alertas ni envíos extra.',
+  },
+  {
+    q: '¿Cuándo?',
+    a: 'Los viernes.',
+  },
+  {
+    q: '¿En qué se diferencia del sitio?',
+    a: 'Reúne la semana en un solo correo para leer sin abrir el sitio; el archivo completo sigue disponible aquí.',
+  },
+  {
+    q: '¿Qué pasa con mis datos?',
+    a: 'Solo usamos tu correo para enviarte la edición. Sin píxeles de apertura ni seguimiento de clics; la baja toma un clic desde cada correo.',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -17,33 +64,57 @@ const metadata = {
       </h1>
       <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
         Cada viernes, una edición con lo que valió la pena leer dos veces: hallazgos, límites,
-        fuentes y temas abiertos. Sin píxeles de apertura ni seguimiento de clics; darte de baja
-        toma un clic.
+        fuentes y temas abiertos. Llega por correo y reúne la semana en un solo lugar.
       </p>
     </header>
 
-    <NewsletterCapture class="px-0" />
+    <NewsletterCapture formId="newsletter-landing" class="px-0" />
 
-    <div class="mt-10 grid gap-5 md:grid-cols-3">
-      <section class="border-t border-border-subtle pt-4">
-        <h2 class="font-heading text-xl font-bold text-text-body">Claridad</h2>
-        <p class="mt-2 text-sm leading-relaxed text-text-muted">
-          Menos jerga y más precisión para entender la noticia sin simplificarla de más.
-        </p>
-      </section>
-      <section class="border-t border-border-subtle pt-4">
-        <h2 class="font-heading text-xl font-bold text-text-body">Fuentes</h2>
-        <p class="mt-2 text-sm leading-relaxed text-text-muted">
-          Cada edición prioriza trazabilidad: papers, instituciones, laboratorios y enlaces
-          originales.
-        </p>
-      </section>
-      <section class="border-t border-border-subtle pt-4">
-        <h2 class="font-heading text-xl font-bold text-text-body">Ritmo</h2>
-        <p class="mt-2 text-sm leading-relaxed text-text-muted">
-          Una lectura semanal, no una avalancha de alertas.
-        </p>
-      </section>
-    </div>
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-bold text-text-body">Qué incluye cada edición</h2>
+      <div class="mt-6 grid gap-5 md:grid-cols-2">
+        {
+          includes.map((item) => (
+            <div class="border-t border-border-subtle pt-4">
+              <h3 class="font-heading text-xl font-bold text-text-body">{item.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-bold text-text-body">Historias representativas</h2>
+      <p class="mt-2 max-w-3xl text-sm leading-relaxed text-text-muted">
+        Tres piezas recientes para ver el tipo de historias que entran a la selección.
+      </p>
+      <div class="mt-6 grid gap-5">
+        {representativePosts.map((post) => <ArticleCard post={post} variant="row" />)}
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="font-heading text-2xl font-bold text-text-body">Preguntas frecuentes</h2>
+      <div class="mt-4">
+        {
+          faqs.map((faq) => (
+            <details class="group border-t border-border-subtle py-4">
+              <summary class="cursor-pointer font-heading text-lg font-bold text-text-body marker:text-primary">
+                {faq.q}
+              </summary>
+              <p class="mt-2 max-w-3xl text-sm leading-relaxed text-text-muted">{faq.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm leading-relaxed text-text-muted">
+        Más detalle en la <a
+          href="/privacidad/"
+          class="font-semibold text-primary underline-offset-4 hover:underline"
+          >política de privacidad</a
+        >.
+      </p>
+    </section>
   </section>
 </Layout>
