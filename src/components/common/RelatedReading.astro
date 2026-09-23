@@ -13,7 +13,12 @@ const { posts } = Astro.props;
 {
   posts.length > 0 && (
     <section class="mt-14 border-t border-border-subtle pt-8">
-      <SectionHeading title="Relacionado" description="Lecturas conectadas para seguir el hilo." />
+      {/*
+        P0-08: el ranking actual (categoría + tags, con relleno hasta 4) no
+        garantiza relación semántica, así que no se rotula "Relacionado".
+        P2-01 (Wave 7) traerá ranking semántico real.
+      */}
+      <SectionHeading title="Sigue leyendo" description="Más historias de Noticiencias." />
       <div class="mt-6 grid gap-6 md:grid-cols-2">
         {posts.map((post) => (
           <ArticleCard post={post} variant="compact" />
