@@ -1,6 +1,6 @@
 <script>
   import {
-    SCROLL_DEPTH_THRESHOLD,
+    ARTICLE_READ_EVENTS,
     externalHost,
     readProgress,
     trackEvent,
@@ -8,45 +8,56 @@
 
   // Module scripts run once per full page load while ClientRouter swaps the body,
   // so interactions use delegated listeners bound once (LAW-F3), and per-page state
-  // (scroll depth) is rebuilt on every `astro:page-load`.
+  // (article view, read depth, newsletter signals) is rebuilt on every
+  // `astro:page-load`.
   //
   // Hooks are data attributes owned by the components that render the interaction:
-  //   [data-analytics-newsletter]  <form>  -> newsletter_signup
-  //   [data-analytics-source]      <a>     -> outbound_source_click
-  //   [data-analytics-scroll]      element -> scroll_75 (once per page)
+  //   [data-analytics-article]        element -> article_view + article_50/90
+  //   [data-analytics-primary-source] <a>     -> primary_source_click
+  //   [data-analytics-source]         <a>     -> outbound_source_click
+  //   [data-analytics-topic]          <a>     -> topic_click
+  //   [data-analytics-series]         <a>     -> series_click
+  //   [data-analytics-related]        section -> related_article_click
+  //   [data-newsletter-form]          <form>  -> newsletter_impression/start
+  //   [data-analytics-newsletter]     <form>  -> newsletter_submit
   // The `search` event is sent by SearchInterface, which owns the query.
 
-  document.addEventListener('submit', (event) => {
-    const form = event.target instanceof HTMLFormElement ? event.target : null;
-    // A submit, not a confirmed subscription: Buttondown uses double opt-in.
-    if (form?.matches('[data-analytics-newsletter]')) {
-      trackEvent('newsletter_signup', { method: 'form_submit' });
-    }
-  });
+  const articlePath = () => window.location.pathname;
 
-  document.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-    const link = target?.closest<HTMLAnchorElement>('a[data-analytics-source]');
-    if (!link) return;
-    const host = externalHost(link.href, window.location.origin);
-    if (host) trackEvent('outbound_source_click', { link_domain: host, link_url: link.href });
-  });
+  const viewedArticles = new Set<string>();
+
+  const trackArticleView = () => {
+    if (!document.querySelector('[data-analytics-article]')) return;
+    const path = articlePath();
+    // One article_view per article per session, so the second-article rate
+    // cannot be inflated by revisiting the same story.
+    if (viewedArticles.has(path)) return;
+    viewedArticles.add(path);
+    trackEvent('article_view', { article_path: path });
+  };
 
   let stopScroll: (() => void) | null = null;
 
-  const bindScrollDepth = () => {
+  const bindArticleReadDepth = () => {
     stopScroll?.();
     stopScroll = null;
 
-    const target = document.querySelector('[data-analytics-scroll]');
+    const target = document.querySelector('[data-analytics-article]');
     if (!target) return;
 
+    const fired = new Set<number>();
     let queued = false;
     const check = () => {
       queued = false;
       const { top, height } = target.getBoundingClientRect();
-      if (readProgress({ top, height }, window.innerHeight) >= SCROLL_DEPTH_THRESHOLD) {
-        trackEvent('scroll_75');
+      const progress = readProgress({ top, height }, window.innerHeight) * 100;
+      for (const { threshold, event } of ARTICLE_READ_EVENTS) {
+        if (progress >= threshold && !fired.has(threshold)) {
+          fired.add(threshold);
+          trackEvent(event, { article_path: articlePath() });
+        }
+      }
+      if (fired.size === ARTICLE_READ_EVENTS.length) {
         stopScroll?.();
         stopScroll = null;
       }
@@ -63,6 +74,113 @@
     stopScroll = () => window.removeEventListener('scroll', onScroll);
   };
 
-  document.addEventListener('astro:page-load', bindScrollDepth);
-  bindScrollDepth();
+  let stopImpressions: (() => void) | null = null;
+
+  const checkNewsletterImpressions = () => {
+    document
+      .querySelectorAll<HTMLFormElement>('[data-newsletter-form]:not([data-newsletter-seen])')
+      .forEach((form) => {
+        const rect = form.getBoundingClientRect();
+        if (rect.height <= 0) return;
+        const visible =
+          (Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)) / rect.height;
+        if (visible < 0.5) return;
+        form.dataset.newsletterSeen = 'true';
+        trackEvent('newsletter_impression', {
+          form_id: form.getAttribute('data-newsletter-form-id') ?? '',
+        });
+      });
+  };
+
+  const bindNewsletterSignals = () => {
+    stopImpressions?.();
+    stopImpressions = null;
+
+    document.querySelectorAll<HTMLFormElement>('[data-newsletter-form]').forEach((form) => {
+      if (form.dataset.newsletterStartBound === 'true') return;
+      form.dataset.newsletterStartBound = 'true';
+
+      const formId = form.getAttribute('data-newsletter-form-id') ?? '';
+      const email = form.querySelector('input[name="email"]');
+      const onStart = () => trackEvent('newsletter_start', { form_id: formId });
+      email?.addEventListener('focus', onStart, { once: true });
+      email?.addEventListener('input', onStart, { once: true });
+    });
+
+    // Visibility is checked on scroll (no IntersectionObserver): the lifecycle
+    // suite guards observer count per page swap, and a handful of forms does
+    // not need one. A form already visible on load still counts.
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        checkNewsletterImpressions();
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    stopImpressions = () => window.removeEventListener('scroll', onScroll);
+
+    checkNewsletterImpressions();
+  };
+
+  const onPageLoad = () => {
+    trackArticleView();
+    bindArticleReadDepth();
+    bindNewsletterSignals();
+  };
+
+  document.addEventListener('submit', (event) => {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    // A submit, not a confirmed subscription: Buttondown uses double opt-in.
+    if (form?.matches('[data-analytics-newsletter]')) {
+      trackEvent('newsletter_submit', {
+        method: 'form_submit',
+        form_id: form.getAttribute('data-newsletter-form-id') ?? '',
+      });
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const link = target?.closest<HTMLAnchorElement>('a[href]');
+    if (!link) return;
+
+    const host = externalHost(link.href, window.location.origin);
+
+    if (link.matches('[data-analytics-primary-source]')) {
+      trackEvent('primary_source_click', { link_domain: host, article_path: articlePath() });
+      return;
+    }
+
+    if (link.matches('[data-analytics-source]')) {
+      trackEvent('outbound_source_click', { link_domain: host, link_url: link.href });
+      return;
+    }
+
+    const topicSlug = link.getAttribute('data-analytics-topic');
+    if (topicSlug) {
+      trackEvent('topic_click', { topic_slug: topicSlug });
+      return;
+    }
+
+    const seriesSlug = link.getAttribute('data-analytics-series');
+    if (seriesSlug) {
+      trackEvent('series_click', { series_slug: seriesSlug });
+      return;
+    }
+
+    const related = link.closest<HTMLElement>('[data-analytics-related]');
+    if (related) {
+      trackEvent('related_article_click', {
+        article_path: articlePath(),
+        target_path: new URL(link.href, window.location.origin).pathname,
+        related_kind: related.dataset.analyticsRelated ?? '',
+      });
+    }
+  });
+
+  document.addEventListener('astro:page-load', onPageLoad);
+  onPageLoad();
 </script>

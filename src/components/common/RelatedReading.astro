@@ -17,7 +17,10 @@ const description = isRelated
 
 {
   selection.posts.length > 0 && (
-    <section class="mt-14 border-t border-border-subtle pt-8">
+    <section
+      class="mt-14 border-t border-border-subtle pt-8"
+      data-analytics-related={selection.kind}
+    >
       {/*
         P2-01: ranking con umbral (categoría, tags, serie, método). Si nada
         supera el umbral, el bloque se rotula «Más reciente», nunca

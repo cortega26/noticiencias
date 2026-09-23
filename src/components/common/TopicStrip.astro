@@ -37,6 +37,7 @@ const {
           {topics.map((topic) => (
             <a
               href={getPermalink(topic.slug, 'tag')}
+              data-analytics-topic={topic.slug}
               class="group inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full border border-border-subtle bg-surface-paper text-text-muted hover:border-primary hover:text-primary hover:bg-surface-highlight transition-all duration-200"
             >
               {topic.title}

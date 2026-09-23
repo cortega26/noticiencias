@@ -36,6 +36,7 @@ const metadata = {
           seriesList.map((dossier) => (
             <a
               href={getPermalink(`/series/${dossier.slug}`, 'page')}
+              data-analytics-series={dossier.slug}
               class="flex flex-col border border-border-subtle p-5 hover:border-primary"
             >
               <h2 class="font-heading text-xl font-bold text-text-body">{dossier.name}</h2>

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
-  SCROLL_DEPTH_THRESHOLD,
+  ARTICLE_READ_EVENTS,
   externalHost,
   readProgress,
   trackEvent,
@@ -27,8 +27,8 @@ describe('trackEvent', () => {
   it('defaults to no extra params', () => {
     const gtag = vi.fn();
     vi.stubGlobal('window', { gtag });
-    trackEvent('scroll_75');
-    expect(gtag).toHaveBeenCalledWith('event', 'scroll_75', { transport_type: 'beacon' });
+    trackEvent('article_50');
+    expect(gtag).toHaveBeenCalledWith('event', 'article_50', { transport_type: 'beacon' });
   });
 
   it('never lets a throwing gtag break the page', () => {
@@ -37,7 +37,7 @@ describe('trackEvent', () => {
         throw new Error('boom');
       },
     });
-    expect(() => trackEvent('newsletter_signup')).not.toThrow();
+    expect(() => trackEvent('newsletter_submit')).not.toThrow();
   });
 });
 
@@ -72,10 +72,15 @@ describe('readProgress', () => {
     expect(readProgress({ top: -2000, height: 1000 }, 1000)).toBeGreaterThan(1);
   });
 
-  it('crosses the 75% threshold exactly at three quarters read', () => {
-    expect(readProgress({ top: 249, height: 1000 }, 1000)).toBeGreaterThanOrEqual(
-      SCROLL_DEPTH_THRESHOLD
-    );
-    expect(readProgress({ top: 251, height: 1000 }, 1000)).toBeLessThan(SCROLL_DEPTH_THRESHOLD);
+  it('maps read thresholds to the article funnel events', () => {
+    expect(ARTICLE_READ_EVENTS).toEqual([
+      { threshold: 50, event: 'article_50' },
+      { threshold: 90, event: 'article_90' },
+    ]);
+  });
+
+  it('crosses the 90% threshold exactly at nine tenths read', () => {
+    expect(readProgress({ top: 99, height: 1000 }, 1000)).toBeGreaterThanOrEqual(0.9);
+    expect(readProgress({ top: 101, height: 1000 }, 1000)).toBeLessThan(0.9);
   });
 });

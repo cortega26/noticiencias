@@ -182,7 +182,7 @@ const stubExternal = (page: Page) =>
 const ARTICLE =
   '/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/';
 
-test('newsletter submit queues one newsletter_signup event', async ({ page }) => {
+test('newsletter submit queues one newsletter_submit event', async ({ page }) => {
   await gotoSettled(page, '/newsletter/');
   // The undismissed fixed banner covers the submit button on mobile
   // viewports (real overlap, FU-013). This test is about the submit event,
@@ -195,8 +195,8 @@ test('newsletter submit queues one newsletter_signup event', async ({ page }) =>
   });
   await page.getByLabel('Correo electrónico').fill('lector@example.com');
   await page.getByRole('button', { name: 'Suscribirme' }).click();
-  expect(await events(page, 'newsletter_signup')).toEqual([
-    { transport_type: 'beacon', method: 'form_submit' },
+  expect(await events(page, 'newsletter_submit')).toEqual([
+    { transport_type: 'beacon', method: 'form_submit', form_id: 'newsletter-landing' },
   ]);
 });
 
@@ -226,28 +226,34 @@ test('an external source link queues outbound_source_click with its domain', asy
   expect((event as { link_domain: string }).link_domain).not.toContain('noticiencias');
 });
 
-test('scroll_75 fires once after reading three quarters of an article, not on load', async ({
-  page,
-}) => {
+test('read depth fires article_50 then article_90 once, not on load', async ({ page }) => {
   await gotoSettled(page, ARTICLE);
-  await expect(page.locator('[data-analytics-scroll]')).toBeAttached();
-  expect(await events(page, 'scroll_75')).toHaveLength(0);
+  await expect(page.locator('[data-analytics-article]')).toBeAttached();
+  expect(await events(page, 'article_50')).toHaveLength(0);
+  expect(await events(page, 'article_90')).toHaveLength(0);
 
-  const box = await page.locator('[data-analytics-scroll]').evaluate((el) => {
+  const box = await page.locator('[data-analytics-article]').evaluate((el) => {
     const r = el.getBoundingClientRect();
     return { top: r.top + window.scrollY, height: r.height };
   });
   const viewport = page.viewportSize()!.height;
-  // Put the 80% mark of the article at the bottom edge of the viewport.
-  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.8 - viewport);
-  await expect
-    .poll(async () => (await events(page, 'scroll_75')).length, { timeout: 5000 })
-    .toBe(1);
 
-  // Scrolling further must not fire it again.
+  // Put the 60% mark of the article at the viewport bottom: 50 crosses, 90 does not.
+  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.6 - viewport);
+  await expect
+    .poll(async () => (await events(page, 'article_50')).length, { timeout: 5000 })
+    .toBe(1);
+  expect(await events(page, 'article_90')).toHaveLength(0);
+
+  // The 95% mark crosses article_90, and scrolling further must not repeat either.
+  await page.evaluate((y) => window.scrollTo(0, y), box.top + box.height * 0.95 - viewport);
+  await expect
+    .poll(async () => (await events(page, 'article_90')).length, { timeout: 5000 })
+    .toBe(1);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await page.waitForTimeout(300);
-  expect(await events(page, 'scroll_75')).toHaveLength(1);
+  expect(await events(page, 'article_50')).toHaveLength(1);
+  expect(await events(page, 'article_90')).toHaveLength(1);
 });
 
 // The regular suite stores a consent choice up front so the banner does not cover
