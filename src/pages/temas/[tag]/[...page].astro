@@ -5,6 +5,9 @@ import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import Pagination from '~/components/common/Pagination.astro';
 import TopicHubHeader from '~/components/common/TopicHubHeader.astro';
 import { getRelatedTopics } from '~/utils/hub';
+import { getTopicHub, MIN_TOPIC_HUB_POSTS } from '~/utils/topics';
+import { cleanSlug } from '~/utils/permalinks';
+import type { Taxonomy } from '~/types';
 
 export const getStaticPaths = getStaticPathsBlogTag;
 
@@ -12,11 +15,40 @@ const { page, tag } = Astro.props;
 const allPosts = await fetchPosts();
 const relatedTopics = getRelatedTopics(allPosts, tag?.slug || '', 8);
 
+const tagPosts = tag
+  ? allPosts.filter((post) => post.tags?.some((item) => item.slug === tag.slug))
+  : [];
+const hub = tag ? getTopicHub(tag.slug) : undefined;
+const isHub = Boolean(hub) && tagPosts.length >= MIN_TOPIC_HUB_POSTS;
+
+const updatedAt = isHub
+  ? tagPosts.reduce(
+      (latest, post) => (post.publishDate.valueOf() > latest.valueOf() ? post.publishDate : latest),
+      tagPosts[0].publishDate
+    )
+  : undefined;
+
+const areaMap = new Map<string, Taxonomy>();
+const seriesMap = new Map<string, { name: string; slug: string }>();
+if (isHub) {
+  for (const post of tagPosts) {
+    if (post.category) areaMap.set(post.category.slug, post.category);
+    if (post.series) {
+      const slug = cleanSlug(post.series);
+      seriesMap.set(slug, { name: post.series, slug });
+    }
+  }
+}
+const areas = [...areaMap.values()];
+const series = [...seriesMap.values()];
+
 const metadata = {
   title: `Etiqueta: ${tag?.title || ''}`,
-  description: `Artículos, contexto y temas relacionados sobre ${tag?.title || 'este tema'} en Noticiencias.`,
+  description: isHub
+    ? hub?.description
+    : `Artículos, contexto y temas relacionados sobre ${tag?.title || 'este tema'} en Noticiencias.`,
   robots: {
-    index: false, // As per config.yaml
+    index: false, // As per config.yaml: tag pages stay out of the index and the sitemap
     follow: true,
   },
 };
@@ -24,30 +56,20 @@ const metadata = {
 
 <BaseLayout metadata={metadata}>
   <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
-    <TopicHubHeader title={tag?.title || 'Tema'} total={page.total} relatedTopics={relatedTopics} />
+    <TopicHubHeader
+      title={tag?.title || 'Tema'}
+      total={page.total}
+      description={isHub ? hub?.description : undefined}
+      updatedAt={updatedAt}
+      areas={areas}
+      series={series}
+      relatedTopics={relatedTopics}
+    />
 
     <div class="grid gap-6">
       {page.data.map((post) => <ArticleCard post={post} variant="row" />)}
     </div>
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-
-    <aside class="mt-10 border-t border-border-subtle pt-5">
-      <h2 class="font-heading text-xl font-bold text-text-body">Volver a este tema</h2>
-      <div class="mt-4 flex flex-wrap gap-3 text-sm">
-        <a
-          href="/newsletter/"
-          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
-        >
-          Boletín
-        </a>
-        <a
-          href="/rss.xml"
-          class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
-        >
-          RSS
-        </a>
-      </div>
-    </aside>
   </section>
 </BaseLayout>
