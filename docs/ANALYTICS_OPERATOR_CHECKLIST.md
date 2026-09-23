@@ -30,7 +30,7 @@ Los pasos 1 a 4 son independientes y se pueden hacer en cualquier orden.
 
 - **Retención**: Administrar → Configuración de datos → Retención de datos → **14 meses**. El valor por defecto son 2 meses y **el cambio no es retroactivo**, así que hazlo antes de que se acumule tráfico. El texto de privacidad ya declara 14 meses.
 - **Evento clave**: cuando llegue el primer `newsletter_submit` (puede tardar horas en aparecer), márcalo en Administrar → Eventos como evento clave. Recuerda que cuenta envíos del formulario, no suscripciones confirmadas: Buttondown usa doble confirmación.
-- **Dimensiones personalizadas** (ámbito _Evento_), para verlas en informes: `link_domain`, `search_term`, `results_count`, `form_id`, `article_path`, `target_path`, `related_kind`, `series_slug`, `topic_slug`. La definición de KPIs y el embudo están en `docs/EDITORIAL_METRICS.md`.
+- **Dimensiones personalizadas** (ámbito _Evento_), para verlas en informes: `link_domain`, `search_term`, `results_count`, `form_id`, `article_path`, `target_path`, `related_kind`, `series_slug`, `topic_slug`, `category_slug`, `network`, `position`, `error_type`. La definición de KPIs y el embudo están en `docs/EDITORIAL_METRICS.md`.
 
 ## 3. Search Console
 

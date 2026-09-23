@@ -18,8 +18,13 @@
   //   [data-analytics-topic]          <a>     -> topic_click
   //   [data-analytics-series]         <a>     -> series_click
   //   [data-analytics-related]        section -> related_impression + related_article_click
+  //   [data-analytics-category]       <a>     -> category_click
+  //   [data-analytics-topic-follow]   <a>     -> topic_follow_click
+  //   [data-analytics-search-result]  <a>     -> search_result_click
+  //   [data-aw-social-share]          <button>-> share_click
   //   [data-newsletter-form]          <form>  -> newsletter_impression/start
   //   [data-analytics-newsletter]     <form>  -> newsletter_submit
+  //   (newsletter_success/error come from the capture script, which owns the request)
   // The `search` event is sent by SearchInterface, which owns the query.
 
   const articlePath = () => window.location.pathname;
@@ -162,6 +167,17 @@
 
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element ? event.target : null;
+
+    // Share controls are buttons (SocialShare), not links.
+    const share = target?.closest<HTMLElement>('[data-aw-social-share]');
+    if (share) {
+      trackEvent('share_click', {
+        network: share.getAttribute('data-aw-social-share') ?? '',
+        article_path: articlePath(),
+      });
+      return;
+    }
+
     const link = target?.closest<HTMLAnchorElement>('a[href]');
     if (!link) return;
 
@@ -177,6 +193,18 @@
       return;
     }
 
+    const followSlug = link.getAttribute('data-analytics-topic-follow');
+    if (followSlug) {
+      trackEvent('topic_follow_click', { topic_slug: followSlug });
+      return;
+    }
+
+    const categorySlug = link.getAttribute('data-analytics-category');
+    if (categorySlug) {
+      trackEvent('category_click', { category_slug: categorySlug });
+      return;
+    }
+
     const topicSlug = link.getAttribute('data-analytics-topic');
     if (topicSlug) {
       trackEvent('topic_click', { topic_slug: topicSlug });
@@ -186,6 +214,17 @@
     const seriesSlug = link.getAttribute('data-analytics-series');
     if (seriesSlug) {
       trackEvent('series_click', { series_slug: seriesSlug });
+      return;
+    }
+
+    const searchPosition = link.getAttribute('data-analytics-search-result');
+    if (searchPosition) {
+      const searchBox = document.getElementById('search-box');
+      trackEvent('search_result_click', {
+        search_term: searchBox instanceof HTMLInputElement ? searchBox.value.trim() : '',
+        target_path: new URL(link.href, window.location.origin).pathname,
+        position: Number.parseInt(searchPosition, 10),
+      });
       return;
     }
 

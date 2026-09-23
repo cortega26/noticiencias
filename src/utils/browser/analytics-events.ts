@@ -24,9 +24,15 @@ export type AnalyticsEventName =
   | 'newsletter_impression'
   | 'newsletter_start'
   | 'newsletter_submit'
+  | 'newsletter_success'
+  | 'newsletter_error'
   | 'series_click'
   | 'topic_click'
-  | 'search';
+  | 'topic_follow_click'
+  | 'category_click'
+  | 'share_click'
+  | 'search'
+  | 'search_result_click';
 
 /** Read-depth thresholds of the article body and the event each one emits. */
 export const ARTICLE_READ_EVENTS: ReadonlyArray<{

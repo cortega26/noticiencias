@@ -23,14 +23,24 @@ same change.
 | `newsletter_impression` | the capture form is at least 50 % visible                  | `form_id`                                     |
 | `newsletter_start`      | first focus or keystroke in the email field                | `form_id`                                     |
 | `newsletter_submit`     | form submit (intent; not a confirmed subscription)         | `method`, `form_id`                           |
+| `newsletter_success`    | the provider accepted the request (pending double opt-in)  | `form_id`                                     |
+| `newsletter_error`      | the subscription request failed                            | `form_id`, `error_type`                       |
 | `series_click`          | click on a series link                                     | `series_slug`                                 |
 | `topic_click`           | click on a topic link                                      | `topic_slug`                                  |
+| `topic_follow_click`    | click on a topic RSS follow link                           | `topic_slug`                                  |
+| `category_click`        | click on a category link (card, hub area, home sections)   | `category_slug`                               |
+| `share_click`           | click on a share/copy control                              | `network`, `article_path`                     |
 | `search`                | a search is executed                                       | `search_term`, `results_count`                |
+| `search_result_click`   | a search result is opened                                  | `search_term`, `target_path`, `position`      |
 
 Reconstruction order (funnel exploration): `article_view` → `article_50` →
 `article_90` → `primary_source_click` / `related_impression` →
 `related_article_click` →
-`newsletter_impression` → `newsletter_start` → `newsletter_submit`.
+`newsletter_impression` → `newsletter_start` → `newsletter_submit` →
+`newsletter_success`.
+
+Discovery funnel: `search` → `search_result_click` → `article_view`;
+amplification: `share_click`; topic retention: `topic_follow_click`.
 
 ## KPIs
 
@@ -66,16 +76,19 @@ Reconstruction order (funnel exploration): `article_view` → `article_50` →
 
 ### 4. Newsletter conversion
 
-- **Definition**: share of sessions that saw the capture and submitted it.
-- **Formula**: sessions with `newsletter_submit` ÷ sessions with
+- **Definition**: share of sessions that saw the capture and completed it.
+- **Formula**: sessions with `newsletter_success` ÷ sessions with
   `newsletter_impression`. Split by `form_id` (hero, final, landing).
-- **Source events**: `newsletter_impression`, `newsletter_submit`.
-- **Interpretation**: submit is intent, not a confirmed subscription
-  (Buttondown uses double opt-in). Pair with the Buttondown subscriber count
-  for confirmed conversion.
+- **Source events**: `newsletter_impression`, `newsletter_submit`,
+  `newsletter_success`, `newsletter_error`.
+- **Interpretation**: three stages — intent (`newsletter_submit`), accepted
+  by the provider (`newsletter_success`, still pending double opt-in), and
+  confirmed subscription (Buttondown only). Pair the last stage with the
+  Buttondown subscriber count; GA4 cannot see the confirmation email click.
 - **Limitations**: impression requires the form to be at least half visible; a
   session can see several forms (dedupe by session before dividing);
-  consent-denied traffic is missing.
+  consent-denied traffic is missing; `newsletter_error` explains lost
+  conversion (network vs provider error).
 
 ### 5. Related-content CTR
 
@@ -138,3 +151,29 @@ Reconstruction order (funnel exploration): `article_view` → `article_50` →
   with enough date range before drawing conclusions from small numbers.
 - **Provider authority**: Buttondown is the authority for confirmed
   subscriptions; GA4 measures intent.
+
+## Event decisions (2026-09-23)
+
+Added to close the measurement gaps, each with a consuming KPI:
+
+- `newsletter_success` / `newsletter_error` — the capture script owns the
+  request, so it emits the outcome (KPI 4, two-stage conversion).
+- `share_click` — amplification signal per network (growth; read in
+  Explorations).
+- `search_result_click` — completes the search→read funnel (`search` alone
+  only measured demand).
+- `category_click` — section interest, distinct from `topic_click` (tag
+  interest) for editorial strategy.
+- `topic_follow_click` — adoption of the P2-05 topic RSS follow.
+
+Rejected on purpose (no event sprawl):
+
+- `content_click` / surface attribution: GA4 `page_referrer` plus the
+  specific click events (related/topic/series/category/search) already
+  attribute the main surfaces; a generic event would duplicate them.
+- `newsletter_confirmed`: the double opt-in happens on Buttondown; the site
+  cannot observe it (operator metric).
+- generic `rss_click`: `topic_follow_click` covers the actionable follow;
+  site-wide RSS links are low-signal.
+- `search_no_results`: derivable from `search` with `results_count = 0`.
+- scroll depth outside articles: no KPI consumes it.

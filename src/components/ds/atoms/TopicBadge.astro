@@ -37,7 +37,12 @@ const colors =
 
 {
   href ? (
-    <a href={href} class:list={[baseStyles, sizes[size], colors, className]} {...rest}>
+    <a
+      href={href}
+      data-analytics-category={slug}
+      class:list={[baseStyles, sizes[size], colors, className]}
+      {...rest}
+    >
       {topic}
     </a>
   ) : (

@@ -81,6 +81,7 @@ const metadata = {
       <div class="mt-4 flex flex-wrap gap-3 text-sm">
         <a
           href={getAsset(`/temas/${tag?.slug}/rss.xml`)}
+          data-analytics-topic-follow={tag?.slug}
           class="rounded-md border border-border-subtle px-3 py-2 font-semibold text-text-body hover:border-primary hover:text-primary"
         >
           RSS del tema

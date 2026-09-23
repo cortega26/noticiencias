@@ -106,10 +106,16 @@ const formClass = 'grid w-full gap-3 sm:grid-cols-[1fr_auto]';
 </Tag>
 
 <script>
+  import { trackEvent } from '~/utils/browser/analytics-events';
+
   // Progressive enhancement over the no-JS Buttondown POST (ADR-0009):
   // the native form stays the fallback, this only adds accessible
   // loading/success/error states. Bound once via delegation so Astro page
   // transitions (ClientRouter) and multiple captures keep working.
+  //
+  // `newsletter_success` means the provider accepted the request (pending
+  // double opt-in); `newsletter_error` carries the failure kind. trackEvent
+  // is a silent no-op while GA4 is off.
   function bindNewsletterForms() {
     if (document.documentElement.dataset.newsletterFormsBound === 'true') return;
     document.documentElement.dataset.newsletterFormsBound = 'true';
@@ -132,6 +138,8 @@ const formClass = 'grid w-full gap-3 sm:grid-cols-[1fr_auto]';
       if (submit instanceof HTMLButtonElement) submit.disabled = true;
       if (status) status.textContent = 'Enviando…';
 
+      const formId = form.getAttribute('data-newsletter-form-id') ?? '';
+      let errorType = 'network';
       try {
         // `redirect: manual` keeps Buttondown's confirmation redirect opaque:
         // the opaque response means the subscription request was accepted.
@@ -141,16 +149,19 @@ const formClass = 'grid w-full gap-3 sm:grid-cols-[1fr_auto]';
           redirect: 'manual',
         });
         if (response.type !== 'opaqueredirect' && !response.ok) {
+          errorType = 'http';
           throw new Error(`HTTP ${response.status}`);
         }
         form.dataset.newsletterState = 'success';
         form.removeAttribute('aria-busy');
         if (status) status.textContent = 'Revisa tu correo para confirmar tu suscripción.';
+        trackEvent('newsletter_success', { form_id: formId });
       } catch {
         form.dataset.newsletterState = 'error';
         form.removeAttribute('aria-busy');
         if (submit instanceof HTMLButtonElement) submit.disabled = false;
         if (status) status.textContent = 'No pudimos completar la suscripción. Inténtalo de nuevo.';
+        trackEvent('newsletter_error', { form_id: formId, error_type: errorType });
       }
     });
   }

@@ -71,17 +71,46 @@ test('newsletter impression, start and submit fire on the home capture', async (
 
   await form.locator('button[type="submit"]').click();
   await expect.poll(() => eventNames(page)).toContain('newsletter_submit');
+  await expect.poll(() => eventNames(page)).toContain('newsletter_success');
 
   const params = await page.evaluate(() =>
     window.__gaEvents.find((event) => event.name === 'newsletter_submit')
   );
   expect(params?.params).toMatchObject({ method: 'form_submit', form_id: 'newsletter-hero' });
+
+  const success = await page.evaluate(() =>
+    window.__gaEvents.find((event) => event.name === 'newsletter_success')
+  );
+  expect(success?.params).toMatchObject({ form_id: 'newsletter-hero' });
 });
 
-test('topic and related clicks carry their slugs without navigation', async ({ page }) => {
+test('a failed provider response emits newsletter_error', async ({ page }) => {
   await page.addInitScript(captureDataLayer);
-  // Keep the page in place so the captured dataLayer survives the assertion.
-  await page.addInitScript(() => {
+  await page.route('https://buttondown.com/**', (route) =>
+    route.fulfill({
+      status: 500,
+      headers: { 'access-control-allow-origin': '*' },
+      body: '',
+    })
+  );
+
+  await page.goto('/');
+  const form = page.locator('section[aria-labelledby="home-newsletter-cta"] form');
+  await form.locator('input[type="email"]').fill('lector@example.com');
+  await form.locator('button[type="submit"]').click();
+
+  await expect.poll(() => eventNames(page)).toContain('newsletter_error');
+  const error = await page.evaluate(() =>
+    window.__gaEvents.find((event) => event.name === 'newsletter_error')
+  );
+  expect(error?.params).toMatchObject({
+    form_id: 'newsletter-hero',
+    error_type: 'http',
+  });
+});
+
+function preventNavigations(page: Page) {
+  return page.addInitScript(() => {
     document.addEventListener(
       'click',
       (event) => {
@@ -92,6 +121,11 @@ test('topic and related clicks carry their slugs without navigation', async ({ p
       true
     );
   });
+}
+
+test('topic and related clicks carry their slugs without navigation', async ({ page }) => {
+  await page.addInitScript(captureDataLayer);
+  await preventNavigations(page);
 
   await page.goto(ARTICLE);
   await page.locator('[data-analytics-topic]').first().click();
@@ -108,4 +142,48 @@ test('topic and related clicks carry their slugs without navigation', async ({ p
 
   const primary = events.find((event) => event.name === 'primary_source_click');
   expect(primary?.params).toMatchObject({ article_path: ARTICLE });
+});
+
+test('category and share clicks are attributed on an article', async ({ page }) => {
+  await page.addInitScript(captureDataLayer);
+  await preventNavigations(page);
+
+  await page.goto(ARTICLE);
+  await page.locator('[data-analytics-category]').first().click();
+  await page.locator('[data-aw-social-share]').first().click();
+
+  const events = await page.evaluate(() => window.__gaEvents);
+  const category = events.find((event) => event.name === 'category_click');
+  expect(category?.params).toMatchObject({ category_slug: 'arqueologia' });
+
+  const share = events.find((event) => event.name === 'share_click');
+  expect(share?.params).toMatchObject({ network: 'twitter', article_path: ARTICLE });
+});
+
+test('topic follow clicks are attributed on a hub', async ({ page }) => {
+  await page.addInitScript(captureDataLayer);
+  await preventNavigations(page);
+
+  await page.goto('/temas/coral/');
+  await page.locator('[data-analytics-topic-follow]').first().click();
+
+  await expect.poll(() => eventNames(page)).toContain('topic_follow_click');
+  const events = await page.evaluate(() => window.__gaEvents);
+  const follow = events.find((event) => event.name === 'topic_follow_click');
+  expect(follow?.params).toMatchObject({ topic_slug: 'coral' });
+});
+
+test('search result clicks carry term and position', async ({ page }) => {
+  await page.addInitScript(captureDataLayer);
+  await preventNavigations(page);
+
+  await page.goto('/buscar/?q=ciencia');
+  const firstResult = page.locator('[data-analytics-search-result]').first();
+  await expect(firstResult).toBeVisible();
+  await firstResult.click();
+
+  await expect.poll(() => eventNames(page)).toContain('search_result_click');
+  const events = await page.evaluate(() => window.__gaEvents);
+  const result = events.find((event) => event.name === 'search_result_click');
+  expect(result?.params).toMatchObject({ search_term: 'ciencia', position: 0 });
 });
