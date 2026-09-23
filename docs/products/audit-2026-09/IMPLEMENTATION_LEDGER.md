@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
-| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
-| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
-| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
-| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
-| 5    | Home, Recency & IA           |   DONE | —                            | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
-| 6    | Conversion & Collections     |   TODO | —                            | —                                | Después de Home                                                                            |
-| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                                       |
-| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
+| Wave | Nombre                       | Estado | Rama                                 | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | ------------------------------------ | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline               | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes         | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                                    | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                                    | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                                    | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           |   DONE | —                                    | 195cb3c (#210)                   | 4/4 findings mergeados; validación integral PASS; Codacy 0 tras fix bf8f43c                | Ver reporte Wave 5 arriba |
+| 6    | Conversion & Collections     | REVIEW | audit/wave-06-conversion-collections | —                                | 4/4 findings en REVIEW; validación integral PASS (pendiente commit)                        | Ver reporte Wave 6 abajo  |
+| 7    | Discovery & Retention        |   TODO | —                                    | —                                | Depende de taxonomía                                                                       |
+| 8    | Measurement                  |   TODO | —                                    | —                                | Última wave del programa inicial                                                           |
 
 ## Findings
 
@@ -50,10 +50,10 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 | P1-02 |    5 | REVIEW | P1-01       | c144bf9 | DOM: sin «Última edición»; «Esta semana» solo con ventana real; fallback «Lo más reciente»                                       | fechas de edición visibles y honestas                                             |
 | P1-03 |    5 | REVIEW | —           | 02f2e9c | nav 6 entradas; hijos de Ciencia anidados; 9/9 categorías en sitemap; URLs intactas                                              | footer mantiene las 9 secciones                                                   |
 | P1-09 |    5 | REVIEW | —           | ce0e8d6 | `HEADLINE_INVENTORY.md` (40 títulos); 0 hype en portada; sin cambios de URL/título                                               | inventario entregado; sin sustitución ciega                                       |
-| P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                                | Newsletter inline                                                                 |
-| P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                                | Newsletter landing                                                                |
-| P1-08 |    6 | TODO   | —           | —       | —                                                                                                                                | Seguir temas                                                                      |
-| P1-10 |    6 | TODO   | —           | —       | —                                                                                                                                | Series                                                                            |
+| P1-06 |    6 | REVIEW | P1-01       | 5500742 | lint+validate+build+dist+test:audit (745/746; contract-sync ambiental FU-012); e2e estados PASS (2 proyectos)                    | captura inline; CSP connect-src buttondown                                        |
+| P1-07 |    6 | REVIEW | P1-06       | 563379c | axe /newsletter/ PASS; DOM: qué incluye + FAQ + historias representativas                                                        | landing de conversión                                                             |
+| P1-08 |    6 | REVIEW | —           | 1ed9d11 | grep: 0 «Seguir temas»/«En seguimiento» en src                                                                                   | labels de navegación honestos                                                     |
+| P1-10 |    6 | REVIEW | —           | 4e8037e | unit series 5/5 + dist dossier 3/3; 3 URLs en sitemap; título sin duplicar                                                       | dossiers editoriales                                                              |
 | P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                                | Related semántico                                                                 |
 | P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                                | Topic hubs                                                                        |
 | P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                                | Follow real                                                                       |
@@ -554,6 +554,92 @@ Evidencias DOM en `dist/`:
 - [x] Acceptance criteria evidenced
 - [x] No unexplained test failures (738/739; el fallo restante es el
       ambiental FU-012)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 6 — Conversion & Editorial Collections
+
+Date: 2026-09-23
+Branch: audit/wave-06-conversion-collections (base: main @ 524d911)
+Status: REVIEW
+
+### Findings
+
+- P1-06 — REVIEW — 5500742
+- P1-07 — REVIEW — 563379c
+- P1-08 — REVIEW — 1ed9d11
+- P1-10 — REVIEW — 4e8037e
+
+### Validation
+
+- unit: `npm run test:audit` → 745 de 746 PASS; único fallo
+  `contract-sync.test.ts` ambiental (FU-012). Nuevos: `series.test.ts`
+  5/5, `series-dossier.test.ts` 3/3.
+- e2e: `npx playwright test tests/playwright/newsletter.test.ts
+tests/playwright/accessibility.test.ts` → 16/16 PASS en mobile-375 y
+  desktop-1280 (estados del boletín con Buttondown mockeado + axe).
+- integration: `npm run validate:content` → exit 0 (astro check 0 errores)
+- lint: `npm run lint` → exit 0
+- build: exit 0, 232 páginas
+- visual: screenshots 375/1280 de home (CTA inline), landing y dossier
+  `/series/salud-que-importa/`; sin errores de consola nuevos
+- SEO/SSR: `npm run test:dist` → 232 ficheros PASS; sitemap con las 3
+  series; tags siguen fuera; títulos de serie ya no duplican
+  «| Noticiencias»
+- contract: sin cambios de schema (N/A)
+- other: e2e consentimiento no ejecutado (FU-001; sin cambios en esa área)
+
+Evidencias DOM en `dist/`:
+
+- Home: 2 formularios de boletín con ids únicos
+  (`newsletter-hero-email`, `newsletter-final-email`), `autocomplete`,
+  `role=status` y botón con hook; CTA temprano inline.
+- CSP (meta + `_headers` + doc): `connect-src` incluye
+  `https://buttondown.com`; `form-action` intacto.
+- /newsletter/: «Qué incluye cada edición» (4), «Historias
+  representativas» (3 posts reales) y FAQ (5) antes del pie.
+- /series/espacio/: descripción, «8 artículos · Actualizada el …»,
+  «Empieza aquí» y partes 1–8 en orden cronológico.
+- Labels: 0 ocurrencias de «Seguir temas»/«En seguimiento» en `src/`.
+
+### Regressions checked
+
+- No-JS: el formulario conserva `method=post` y `action` de Buttondown
+  (custodiado por `quick-wins-regression`).
+- JS: estados con `role=status`; fallo de red → error + botón
+  rehabilitado; éxito → botón deshabilitado (sin doble envío).
+- CSP: `tests/compliance.test.ts` mantiene las tres copias idénticas.
+- Series: posts sin serie no generan dossier; corpus vacío cae al
+  mensaje «Próximamente»; URLs `/series/[slug]/` sin cambios.
+- Se elimina `Newsletter.astro` (wrapper muerto, sin consumidores) y
+  `selectFeaturedSeries`/`FeaturedSeries` de `hub.ts` (sin duplicar
+  lógica: la usa `buildSeriesDossiers`).
+
+### Decisions added
+
+- DEC-022 (mejora progresiva del boletín + CSP connect-src)
+- DEC-023 (descripciones de serie en mapa frontend hasta el contrato)
+
+### Follow-ups
+
+- FU-001, FU-009, FU-010, FU-011, FU-012, FU-014, FU-015 vigentes.
+- FU-006 resuelto (labels honestos en toda la navegación de temas).
+- FU-013 resuelto (`autocomplete="email"` en la captura).
+- FU-016 (nuevo): llevar `series_description` (y metadatos de serie) al
+  contrato de publicación para retirar el mapa de `src/utils/series.ts`.
+- FU-017 (nuevo): el operador debe actualizar la Response Header
+  Transform Rule del edge (Cloudflare) con el `connect-src` que ahora
+  incluye `https://buttondown.com`; las tres copias del repo ya están
+  sincronizadas.
+- FU-018 (nuevo): P2-03 (Wave 8) debe añadir un evento de resultado del
+  boletín; hoy solo existe `newsletter_signup` en el submit.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (745/746; fallo ambiental FU-012)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated
