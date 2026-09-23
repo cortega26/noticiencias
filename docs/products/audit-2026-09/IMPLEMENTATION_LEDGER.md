@@ -16,17 +16,17 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                 |
-| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | --------------------------------------------------------------------- | ------------------------ |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                    |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                      | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                       |
-| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0 |
-| 4    | Article UX                   | REVIEW | audit/wave-04-article-ux     | —                                | 2/2 findings en REVIEW                                                | Ver reporte Wave 4 abajo |
-| 5    | Home, Recency & IA           |   TODO | —                            | —                                | Después de Article UX                                                 |
-| 6    | Conversion & Collections     |   TODO | —                            | —                                | Después de Home                                                       |
-| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                  |
-| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                      |
+| Wave | Nombre                       | Estado | Rama                         | Gate                             | Notas                                                                                      |
+| ---- | ---------------------------- | -----: | ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —                                | Docs-only; sin cambios de producto                                                         |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —                                | 5/5 findings en REVIEW; validación integral PASS                                           | Ver reporte Wave 1 abajo  |
+| 2    | Editorial Data Contract      |   DONE | —                            | 6a50da8 + backend feb4768 (#324) | CI verde tras merge ordenado (backend→frontend)                                            |
+| 3    | Evidence & Accountability UX |   DONE | —                            | d0d8168 + backend #325           | CI verde tras merge ordenado; Codex sin comentarios (cuota); Codacy 0                      |
+| 4    | Article UX                   |   DONE | —                            | b0be5d5                          | CI verde (incl. Codacy tras fix walkDist); PRs #199/#200/#201 cerrados en la misma ventana | Ver reporte Wave 4 arriba |
+| 5    | Home, Recency & IA           |   TODO | —                            | —                                | Después de Article UX                                                                      |
+| 6    | Conversion & Collections     |   TODO | —                            | —                                | Después de Home                                                                            |
+| 7    | Discovery & Retention        |   TODO | —                            | —                                | Depende de taxonomía                                                                       |
+| 8    | Measurement                  |   TODO | —                            | —                                | Última wave del programa inicial                                                           |
 
 ## Findings
 
