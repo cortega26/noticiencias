@@ -11,38 +11,47 @@ export interface RelatedSelection {
 // to label honestly instead of claiming a relation.
 const MIN_RELATED_SCORE = 2;
 
-function relatedScore(original: Post, candidate: Post): number {
-  let score = 0;
+function sharesCategory(original: Post, candidate: Post): boolean {
+  return Boolean(original.category?.slug && original.category.slug === candidate.category?.slug);
+}
 
-  if (original.category?.slug && original.category.slug === candidate.category?.slug) {
-    score += 4;
-  }
-  if (original.series && original.series === candidate.series) {
-    score += 3;
-  }
+function sharesSeries(original: Post, candidate: Post): boolean {
+  return Boolean(original.series && original.series === candidate.series);
+}
 
+function sharedTagCount(original: Post, candidate: Post): number {
   const originalTags = new Set((original.tags ?? []).map((tag) => tag.slug));
+  let count = 0;
   for (const tag of candidate.tags ?? []) {
-    if (originalTags.has(tag.slug)) score += 2;
+    if (originalTags.has(tag.slug)) count += 1;
   }
+  return count;
+}
 
-  if (
+function sharesEvidenceType(original: Post, candidate: Post): boolean {
+  return Boolean(
     original.evidence_subject_type &&
     original.evidence_subject_type !== 'unknown' &&
     original.evidence_subject_type === candidate.evidence_subject_type
-  ) {
-    score += 1;
-  }
+  );
+}
 
-  if (
+function sharesPublicationStatus(original: Post, candidate: Post): boolean {
+  return Boolean(
     original.publication_status &&
     original.publication_status !== 'other' &&
     original.publication_status === candidate.publication_status
-  ) {
-    score += 1;
-  }
+  );
+}
 
-  return score;
+function relatedScore(original: Post, candidate: Post): number {
+  return (
+    (sharesCategory(original, candidate) ? 4 : 0) +
+    (sharesSeries(original, candidate) ? 3 : 0) +
+    sharedTagCount(original, candidate) * 2 +
+    (sharesEvidenceType(original, candidate) ? 1 : 0) +
+    (sharesPublicationStatus(original, candidate) ? 1 : 0)
+  );
 }
 
 /** Rank related stories for an article; falls back to recent only when nothing qualifies. */
