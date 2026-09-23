@@ -77,6 +77,20 @@ function isBoundedString(value, min, max) {
   return typeof value === 'string' && value.length >= min && value.length <= max;
 }
 
+function validateSourceRoleAndDoi(slug, source, index, errors) {
+  if (typeof source !== 'object' || source === null) return;
+  if (source.role !== undefined && !SOURCE_ROLES.has(source.role)) {
+    errors.push(`${slug}: sources[${index}].role inválido (${source.role})`);
+  }
+  if (source.doi === undefined) return;
+  if (typeof source.doi !== 'string' || !DOI_PATTERN.test(source.doi)) {
+    errors.push(`${slug}: sources[${index}].doi debe tener formato 10.xxxx/...`);
+  }
+  if (source.role !== 'primary') {
+    errors.push(`${slug}: sources[${index}] con doi debe declarar role: primary`);
+  }
+}
+
 function collectEditorialDiagnostics() {
   const files = globSync('*.md', { cwd: CONTENT_DIR, absolute: true });
   const diagnostics = { errors: [], warnings: [], filesCount: files.length, v2Count: 0 };
@@ -219,24 +233,9 @@ function collectEditorialDiagnostics() {
       }
 
       // P0-01: role/doi coherence (mirrors the schema superRefine).
-      fm.sources.forEach((source, index) => {
-        if (typeof source !== 'object' || source === null) return;
-        if (source.role !== undefined && !SOURCE_ROLES.has(source.role)) {
-          diagnostics.errors.push(`${slug}: sources[${index}].role inválido (${source.role})`);
-        }
-        if (source.doi !== undefined) {
-          if (typeof source.doi !== 'string' || !DOI_PATTERN.test(source.doi)) {
-            diagnostics.errors.push(
-              `${slug}: sources[${index}].doi debe tener formato 10.xxxx/...`
-            );
-          }
-          if (source.role !== 'primary') {
-            diagnostics.errors.push(
-              `${slug}: sources[${index}] con doi debe declarar role: primary`
-            );
-          }
-        }
-      });
+      fm.sources.forEach((source, index) =>
+        validateSourceRoleAndDoi(slug, source, index, diagnostics.errors)
+      );
     }
 
     // P0-02: evidence model

@@ -26,7 +26,9 @@ async function getFirstArticleUrl(page: Page): Promise<string | null> {
 // "insufficient space" failures under load (a11y-target-size-flake).
 async function waitForStableLayout(page: Page) {
   await page.evaluate(async () => {
-    const height = () => document.body.scrollHeight;
+    function height() {
+      return document.body.scrollHeight;
+    }
     let last = height();
     for (let i = 0; i < 40; i++) {
       await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
