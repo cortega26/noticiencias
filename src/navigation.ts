@@ -1,49 +1,51 @@
 import { getPermalink, getAsset } from './utils/permalinks';
 import { configuredCategorySections } from './utils/categorySections';
+import type { CategorySection } from './utils/categorySections';
 
-const publishedCategorySections = configuredCategorySections.map(
-  ({ title, slug, description, icon, showInHeader }) => ({
+// Named function (not a const arrow) on purpose: Codacy's Biome/Qwik rule
+// false-positives on `const fn = () => ...` assignments.
+function categoryLink({ title, slug }: CategorySection) {
+  return {
     text: title,
     href: getPermalink(slug, 'category'),
-    description,
-    icon,
-    showInHeader,
-  })
+  };
+}
+
+// Primary navigation stays at six content entries. Sub-disciplines of Ciencia
+// (Física, Química, Biología) are nested under their parent instead of
+// competing with it at the same level; the rest lives under "Más" together
+// with Series. Footer still lists every section.
+const primarySections = configuredCategorySections.filter(({ navGroup }) => navGroup === 'primary');
+const scienceSections = configuredCategorySections.filter(({ navGroup }) => navGroup === 'ciencia');
+const overflowSections = configuredCategorySections.filter(({ navGroup }) => navGroup === 'mas');
+
+const primaryHeaderLinks = primarySections.map((section) =>
+  section.slug === 'ciencia' && scienceSections.length > 0
+    ? {
+        text: section.title,
+        links: [
+          { text: 'Toda la sección', href: getPermalink(section.slug, 'category') },
+          ...scienceSections.map(categoryLink),
+        ],
+      }
+    : categoryLink(section)
 );
-
-export const homeSectionItems = publishedCategorySections.map(
-  ({ text, href, description, icon }) => ({
-    title: text,
-    description,
-    icon,
-    callToAction: { text: 'Ver sección', href },
-  })
-);
-
-const primaryHeaderLinks = publishedCategorySections
-  .filter(({ showInHeader }) => showInHeader)
-  .map(({ text, href }) => ({ text, href }));
-
-const overflowHeaderLinks = publishedCategorySections
-  .filter(({ showInHeader }) => !showInHeader)
-  .map(({ text, href }) => ({ text, href }));
 
 export const headerData = {
   links: [
     ...primaryHeaderLinks,
-    ...(overflowHeaderLinks.length
+    ...(overflowSections.length
       ? [
           {
             text: 'Más',
-            ariaLabel: 'Más categorías',
-            links: overflowHeaderLinks,
+            ariaLabel: 'Más secciones',
+            links: [
+              ...overflowSections.map(categoryLink),
+              { text: 'Series', href: getPermalink('/series/') },
+            ],
           },
         ]
       : []),
-    {
-      text: 'Series',
-      href: getPermalink('/series/'),
-    },
   ],
   actions: [{ text: 'Buscar', href: '/buscar/', icon: 'tabler:search' }],
 };
@@ -52,7 +54,7 @@ export const footerData = {
   links: [
     {
       title: 'Secciones',
-      links: publishedCategorySections.map(({ text, href }) => ({ text, href })),
+      links: configuredCategorySections.map(categoryLink),
     },
     {
       title: 'Organización',
