@@ -245,3 +245,29 @@ los acceptance criteria sin duplicar la reescritura de #201.
 Revisar en #201 que su reescritura de `privacidad.md` preserve las
 divulgaciones requeridas (GA4 antes de consentir, eventos, retención
 14 meses, Cloudflare) — follow-up de revisión, no de Wave 1.
+
+## DEC-015 — Par rail/sidebar aceptado como patrón responsive
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P0-07: `PostLayout` renderiza `ArticleRail` dos veces (inline `lg:hidden`
+
+- sidebar `hidden lg:block`). El servidor no conoce el viewport; unificar
+  en un solo nodo exigiría reubicación por JS en cliente (peor: más código
+  navegador, riesgo de layout shift, contra LAW-F3).
+
+### Decision
+
+El par rail/sidebar se acepta: una sola variante es visible por viewport,
+`display:none` la excluye también del árbol de accesibilidad (un solo
+árbol semántico para AT). Lo que se elimina en P0-07 es la duplicación
+visible real: la sección `Fuentes` del rail duplicaba al TrustPanel en
+todos los viewports. `tests/article-sources-single.test.ts` lo custodia.
+
+### Consequences
+
+Futuras secciones del rail deben elegir un único dueño visible por
+viewport; si TrustPanel ya muestra un dato, el rail no lo repite.
