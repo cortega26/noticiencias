@@ -467,9 +467,9 @@ Status: REVIEW
 
 ### Findings
 
-- P1-01 — REVIEW — c144bf9
+- P1-01 — REVIEW — c144bf9 (+ fix Codacy bf8f43c)
 - P1-02 — REVIEW — c144bf9
-- P1-03 — REVIEW — 02f2e9c
+- P1-03 — REVIEW — 02f2e9c (+ fix Codacy bf8f43c)
 - P1-09 — REVIEW — ce0e8d6
 
 ### Validation
