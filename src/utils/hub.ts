@@ -12,12 +12,6 @@ export interface RecentSelection {
   posts: Post[];
 }
 
-export interface FeaturedSeries {
-  name: string;
-  count: number;
-  latestDate: Date;
-}
-
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 const byNewest = (a: Post, b: Post) => b.publishDate.valueOf() - a.publishDate.valueOf();
@@ -105,33 +99,6 @@ export function selectArchivePosts(
     .filter((post) => !excluded.has(post.id))
     .sort(byNewest)
     .slice(0, count);
-}
-
-function compareSeries(a: FeaturedSeries, b: FeaturedSeries): number {
-  if (a.count !== b.count) return b.count - a.count;
-  const dateDiff = b.latestDate.valueOf() - a.latestDate.valueOf();
-  if (dateDiff !== 0) return dateDiff;
-  return a.name.localeCompare(b.name, 'es');
-}
-
-/** Most substantial series, tie-broken by latest update and name. */
-export function selectFeaturedSeries(posts: Post[]): FeaturedSeries | null {
-  const series = new Map<string, FeaturedSeries>();
-
-  for (const post of posts) {
-    if (!post.series) continue;
-    const existing = series.get(post.series);
-    series.set(post.series, {
-      name: post.series,
-      count: (existing?.count ?? 0) + 1,
-      latestDate:
-        existing && existing.latestDate.valueOf() > post.publishDate.valueOf()
-          ? existing.latestDate
-          : post.publishDate,
-    });
-  }
-
-  return [...series.values()].sort(compareSeries)[0] ?? null;
 }
 
 export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {

@@ -7,9 +7,9 @@ import {
   getTopicFrequency,
   selectArchivePosts,
   selectFeaturedPosts,
-  selectFeaturedSeries,
   selectRecentPosts,
 } from '~/utils/hub';
+import { buildSeriesDossiers } from '~/utils/series';
 
 const allPosts = await fetchPosts();
 const editionDate = getEditionDate(allPosts);
@@ -21,7 +21,7 @@ const archivePosts = selectArchivePosts(allPosts, {
   count: 3,
   excludeIds: [...leadPostIds, ...weeklyPostIds],
 });
-const featuredSeries = selectFeaturedSeries(allPosts);
+const featuredSeries = buildSeriesDossiers(allPosts)[0] ?? null;
 const topicRadar = getTopicFrequency(allPosts.slice(0, 18));
 
 const metadata = {

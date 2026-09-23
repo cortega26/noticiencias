@@ -6,7 +6,6 @@ import {
   getTopicFrequency,
   selectArchivePosts,
   selectFeaturedPosts,
-  selectFeaturedSeries,
   selectRecentPosts,
 } from '../src/utils/hub';
 import type { Post } from '../src/types';
@@ -247,52 +246,5 @@ describe('home recency helpers', () => {
     const archive = selectArchivePosts(posts, { count: 3, excludeIds: ['hero', 'week'] });
 
     expect(archive.map((item) => item.id)).toEqual(['archive-1', 'archive-2', 'archive-3']);
-  });
-
-  it('features the series with the most posts', () => {
-    const posts = [
-      post({ id: 'a1', series: 'Espacio', publishDate: new Date('2026-01-01T00:00:00Z') }),
-      post({ id: 'a2', series: 'Espacio', publishDate: new Date('2026-08-01T00:00:00Z') }),
-      post({ id: 'a3', series: 'Espacio', publishDate: new Date('2026-06-01T00:00:00Z') }),
-      post({
-        id: 'b1',
-        series: 'Salud que importa',
-        publishDate: new Date('2026-09-01T00:00:00Z'),
-      }),
-      post({
-        id: 'b2',
-        series: 'Salud que importa',
-        publishDate: new Date('2026-09-02T00:00:00Z'),
-      }),
-    ];
-
-    expect(selectFeaturedSeries(posts)).toEqual({
-      name: 'Espacio',
-      count: 3,
-      latestDate: new Date('2026-08-01T00:00:00Z'),
-    });
-  });
-
-  it('breaks series ties by latest update', () => {
-    const posts = [
-      post({ id: 'a1', series: 'Espacio', publishDate: new Date('2026-08-01T00:00:00Z') }),
-      post({ id: 'a2', series: 'Espacio', publishDate: new Date('2026-08-02T00:00:00Z') }),
-      post({
-        id: 'b1',
-        series: 'Salud que importa',
-        publishDate: new Date('2026-09-01T00:00:00Z'),
-      }),
-      post({
-        id: 'b2',
-        series: 'Salud que importa',
-        publishDate: new Date('2026-09-02T00:00:00Z'),
-      }),
-    ];
-
-    expect(selectFeaturedSeries(posts)?.name).toBe('Salud que importa');
-  });
-
-  it('returns null when no post belongs to a series', () => {
-    expect(selectFeaturedSeries([post({ id: 'plain' })])).toBeNull();
   });
 });
