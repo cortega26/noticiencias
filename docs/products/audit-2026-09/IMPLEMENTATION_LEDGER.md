@@ -16,49 +16,49 @@ Este archivo es estado vivo. Debe actualizarse al final de cada finding y obliga
 
 ## Estado de waves
 
-| Wave | Nombre                       | Estado | Rama                         | Gate | Notas                                            |
-| ---- | ---------------------------- | -----: | ---------------------------- | ---- | ------------------------------------------------ | ------------------------ |
-| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline       | —    | Docs-only; sin cambios de producto               |
-| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes | —    | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
-| 2    | Editorial Data Contract      |   TODO | —                            | —    | Después de hotfixes                              |
-| 3    | Evidence & Accountability UX |   TODO | —                            | —    | Depende parcialmente de Wave 2                   |
-| 4    | Article UX                   |   TODO | —                            | —    | Depende de P0-01/P0-02/P0-06                     |
-| 5    | Home, Recency & IA           |   TODO | —                            | —    | Después de Article UX                            |
-| 6    | Conversion & Collections     |   TODO | —                            | —    | Después de Home                                  |
-| 7    | Discovery & Retention        |   TODO | —                            | —    | Depende de taxonomía                             |
-| 8    | Measurement                  |   TODO | —                            | —    | Última wave del programa inicial                 |
+| Wave | Nombre                       | Estado | Rama                             | Gate | Notas                                            |
+| ---- | ---------------------------- | -----: | -------------------------------- | ---- | ------------------------------------------------ | ------------------------ |
+| 0    | Baseline y guardrails        | REVIEW | audit/wave-00-baseline           | —    | Docs-only; sin cambios de producto               |
+| 1    | Correctness & Trust Hotfixes | REVIEW | audit/wave-01-trust-hotfixes     | —    | 5/5 findings en REVIEW; validación integral PASS | Ver reporte Wave 1 abajo |
+| 2    | Editorial Data Contract      | REVIEW | audit/wave-02-editorial-contract | —    | 3/3 findings en REVIEW; paridad cross-repo OK    | Ver reporte Wave 2 abajo |
+| 3    | Evidence & Accountability UX |   TODO | —                                | —    | Depende parcialmente de Wave 2                   |
+| 4    | Article UX                   |   TODO | —                                | —    | Depende de P0-01/P0-02/P0-06                     |
+| 5    | Home, Recency & IA           |   TODO | —                                | —    | Después de Article UX                            |
+| 6    | Conversion & Collections     |   TODO | —                                | —    | Después de Home                                  |
+| 7    | Discovery & Retention        |   TODO | —                                | —    | Depende de taxonomía                             |
+| 8    | Measurement                  |   TODO | —                                | —    | Última wave del programa inicial                 |
 
 ## Findings
 
-| ID    | Wave | Estado | Depends on  | Commit  | Tests/Validation                                                                                                              | Notas                                                                             |
-| ----- | ---: | ------ | ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| P0-04 |    1 | REVIEW | —           | bb3e860 | lint + validate:content PASS; fuente scitechdaily verificada (PLOS ONE DOI 10.1371/journal.pone.0353485 guardado para Wave 2) | papiro/pergamino, attenuación, eruptó; Epicuro se conserva fiel a fuente citada   |
-| P0-05 |    1 | REVIEW | —           | 2b45508 | lint + validate:content PASS; claims contra preprint bioRxiv (PDF métodos/discusión)                                          | huésped NOD SCID declarado; nota ya no pide validación animal; KC n=2 descriptivo |
-| P0-07 |    1 | REVIEW | —           | c987aa8 | lint PASS; build PASS; dist verificado (h1×1, sin h2 Fuentes, TrustPanel×1); `tests/article-sources-single.test.ts` 2/2 PASS  | rail ya no renderiza `sources`; par rail/sidebar aceptado (DEC-015)               |
-| P0-08 |    1 | REVIEW | —           | 67db3e2 | lint PASS; verificación DOM en build final de wave                                                                            | “Sigue leyendo”; RelatedPosts.astro muerto se deja (nota)                         |
-| P0-10 |    1 | REVIEW | —           | aed783b | lint pendiente verificacion final; copy contrastado con Analytics.astro/consent/CSP                                           | fix mínimo (DEC-014); #201 rebasea; su rewrite de privacidad fuera de scope       |
-| P0-01 |    2 | TODO   | —           | —       | —                                                                                                                             | Fuente primaria                                                                   |
-| P0-02 |    2 | TODO   | —           | —       | —                                                                                                                             | Tipo de evidencia                                                                 |
-| P0-06 |    2 | TODO   | —           | —       | —                                                                                                                             | Qué cambia                                                                        |
-| P0-03 |    3 | TODO   | P0-01,P0-02 | —       | —                                                                                                                             | Ficha científica                                                                  |
-| P0-09 |    3 | TODO   | —           | —       | —                                                                                                                             | Responsabilidad editorial                                                         |
-| P2-02 |    3 | TODO   | P0-06       | —       | —                                                                                                                             | Sabemos/no sabemos                                                                |
-| P2-07 |    3 | TODO   | —           | —       | —                                                                                                                             | Correcciones                                                                      |
-| P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                             | Pre-body                                                                          |
-| P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                             | Header evidencia                                                                  |
-| P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                             | Home                                                                              |
-| P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                             | Recency                                                                           |
-| P1-03 |    5 | TODO   | —           | —       | —                                                                                                                             | Taxonomía                                                                         |
-| P1-09 |    5 | TODO   | —           | —       | —                                                                                                                             | Headlines                                                                         |
-| P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                             | Newsletter inline                                                                 |
-| P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                             | Newsletter landing                                                                |
-| P1-08 |    6 | TODO   | —           | —       | —                                                                                                                             | Seguir temas                                                                      |
-| P1-10 |    6 | TODO   | —           | —       | —                                                                                                                             | Series                                                                            |
-| P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                             | Related semántico                                                                 |
-| P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                             | Topic hubs                                                                        |
-| P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                             | Follow real                                                                       |
-| P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                             | GA4 funnel                                                                        |
-| P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                             | KPIs                                                                              |
+| ID    | Wave | Estado | Depends on  | Commit  | Tests/Validation                                                                                                                 | Notas                                                                             |
+| ----- | ---: | ------ | ----------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| P0-04 |    1 | REVIEW | —           | bb3e860 | lint + validate:content PASS; fuente scitechdaily verificada (PLOS ONE DOI 10.1371/journal.pone.0353485 guardado para Wave 2)    | papiro/pergamino, attenuación, eruptó; Epicuro se conserva fiel a fuente citada   |
+| P0-05 |    1 | REVIEW | —           | 2b45508 | lint + validate:content PASS; claims contra preprint bioRxiv (PDF métodos/discusión)                                             | huésped NOD SCID declarado; nota ya no pide validación animal; KC n=2 descriptivo |
+| P0-07 |    1 | REVIEW | —           | c987aa8 | lint PASS; build PASS; dist verificado (h1×1, sin h2 Fuentes, TrustPanel×1); `tests/article-sources-single.test.ts` 2/2 PASS     | rail ya no renderiza `sources`; par rail/sidebar aceptado (DEC-015)               |
+| P0-08 |    1 | REVIEW | —           | 67db3e2 | lint PASS; verificación DOM en build final de wave                                                                               | “Sigue leyendo”; RelatedPosts.astro muerto se deja (nota)                         |
+| P0-10 |    1 | REVIEW | —           | aed783b | lint pendiente verificacion final; copy contrastado con Analytics.astro/consent/CSP                                              | fix mínimo (DEC-014); #201 rebasea; su rewrite de privacidad fuera de scope       |
+| P0-01 |    2 | REVIEW | —           | 41de936 | schema 38/38 + lint + validate + build + dist (primaria+DOI+Cobertura; legacy intacto); contract-sync PARITY OK; backend PR #324 | backfill verificado 2 artículos; sin invención                                    |
+| P0-02 |    2 | REVIEW | —           | 41de936 | schema enum 8 valores + unknown; dist (modelo+guardrail Salud; legacy sin línea); backend PR #324                                | experimental añadido (DEC-016); Salud no-humana con guardrail fuerte              |
+| P0-06 |    2 | REVIEW | —           | 7ae5133 | cardinalidades 0-3 en schema; corpus máx 3; render ya condicional                                                                | espejo max_length=3 en backend PR #324                                            |
+| P0-03 |    3 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Ficha científica                                                                  |
+| P0-09 |    3 | TODO   | —           | —       | —                                                                                                                                | Responsabilidad editorial                                                         |
+| P2-02 |    3 | TODO   | P0-06       | —       | —                                                                                                                                | Sabemos/no sabemos                                                                |
+| P2-07 |    3 | TODO   | —           | —       | —                                                                                                                                | Correcciones                                                                      |
+| P1-05 |    4 | TODO   | P0-06       | —       | —                                                                                                                                | Pre-body                                                                          |
+| P1-04 |    4 | TODO   | P0-01,P0-02 | —       | —                                                                                                                                | Header evidencia                                                                  |
+| P1-01 |    5 | TODO   | P1-04,P1-05 | —       | —                                                                                                                                | Home                                                                              |
+| P1-02 |    5 | TODO   | P1-01       | —       | —                                                                                                                                | Recency                                                                           |
+| P1-03 |    5 | TODO   | —           | —       | —                                                                                                                                | Taxonomía                                                                         |
+| P1-09 |    5 | TODO   | —           | —       | —                                                                                                                                | Headlines                                                                         |
+| P1-06 |    6 | TODO   | P1-01       | —       | —                                                                                                                                | Newsletter inline                                                                 |
+| P1-07 |    6 | TODO   | P1-06       | —       | —                                                                                                                                | Newsletter landing                                                                |
+| P1-08 |    6 | TODO   | —           | —       | —                                                                                                                                | Seguir temas                                                                      |
+| P1-10 |    6 | TODO   | —           | —       | —                                                                                                                                | Series                                                                            |
+| P2-01 |    7 | TODO   | P0-08       | —       | —                                                                                                                                | Related semántico                                                                 |
+| P2-06 |    7 | TODO   | P1-03       | —       | —                                                                                                                                | Topic hubs                                                                        |
+| P2-05 |    7 | TODO   | P1-08,P2-06 | —       | —                                                                                                                                | Follow real                                                                       |
+| P2-03 |    8 | TODO   | P1-06,P2-01 | —       | —                                                                                                                                | GA4 funnel                                                                        |
+| P2-04 |    8 | TODO   | P2-03       | —       | —                                                                                                                                | KPIs                                                                              |
 
 ## Wave report template
 
@@ -226,6 +226,89 @@ Evidencias DOM en `dist/` (post-build):
 
 - [x] Acceptance criteria evidenced (evidencias DOM + tests arriba)
 - [x] No unexplained test failures (690/690; lint/build/validate/dist PASS)
+- [x] No known new regression
+- [x] Ledger updated
+- [x] Decisions updated
+- [x] Ready for human review
+
+## Wave 2 — Editorial Data Contract
+
+Date: 2026-09-23
+Branch: audit/wave-02-editorial-contract (base: main @ 93c3bef)
+Status: REVIEW
+
+### Findings
+
+- P0-06 — REVIEW — 7ae5133
+- P0-01 — REVIEW — 41de936 (+ adversarial a6f75fc)
+- P0-02 — REVIEW — 41de936 (+ adversarial a6f75fc)
+
+P0-01 y P0-02 comparten commit por archivos entrelazados (DEC-016);
+atomicidad preservada en ledger.
+
+### Validation
+
+- unit: `npm run test:audit` → 61 ficheros / 715 tests PASS (schema 39/39:
+  cardinalidades 0–3, rol/doi, enum 8 valores, doi-exige-primario)
+- integration: `npm run validate:content` → exit 0 (corpus: máx 3
+  why_it_matters; 28 v2 OK)
+- lint: `npm run lint` → exit 0 (tras cada cambio)
+- typecheck: PASS vía `astro check`
+- build: exit 0, 232 páginas
+- visual: sin cambios de layout; DOM verificado en `dist/`
+- SEO/SSR: `test:dist` 232 PASS; sin cambios URL/títulos/metadata; RSS intacto
+- contract: `check:contract-sync --strict` PARITY OK (1 divergencia tolerada
+  preexistente); backend `make test-contracts` 164 PASS + nuevo test espejo
+- other: e2e consent no ejecutado (FU-001; wave sin cambios banner/analytics)
+
+Evidencias DOM en `dist/`:
+
+- Herculano: Fuente primaria (PLOS ONE + DOI texto) + Cobertura
+  (SciTechDaily); modelo `experimento de laboratorio`; sin guardrail Salud.
+- Biomédico: Fuente primaria (bioRxiv + enlace DOI), sin Cobertura
+  inventada; modelo `fases mixtas` + guardrail `Evidencia mixta`.
+- Legacy (tortuga): `Fuentes` plano, sin `Fuente primaria`, sin línea de modelo.
+
+### Regressions checked
+
+Adversarial ejecutado con 2 hallazgos corregidos en a6f75fc:
+
+1. DOI en secundaria quedaba invisible → schema exige `role: primary`
+   con DOI (espejo Pydantic simétrico).
+2. Guardrail `mixed` afirmaba ausencia total en humanos → texto
+   diferenciado para mixto.
+
+Resto: legacy sin `sources`/`evidence` rinde igual que antes; `hasContent`
+incluye evidencia (sin paneles vacíos); sin JS nuevo; sin cambios de
+consentimiento/analytics/URLs.
+
+### Decisions added
+
+- DEC-016 (`experimental` + lecciones del checker + commit combinado)
+
+### Follow-ups
+
+- FU-001 vigente (flaky consent).
+- Backend PR #324 (`contract/wave2-editorial-mirror`) pendiente de merge:
+  espejo + spec + tests + PIPELINE_CONTRACTS. Mergear antes o junto con
+  esta wave para no dejar paridad rota en main (si #324 tarda, el hook
+  `check:contract-sync` falla en main tras mergear frontend).
+- FU-003 resuelto (why_it_matters 0–3 implementado ambos lados).
+- FU-005 pendiente → P0-06 hecho en contrato; reescritura de items con
+  forzado regional queda a criterio editorial futuro (no inventado aquí).
+- FU-007 resuelto (DOIs verificados usados como backfill).
+- FU-008 vigente (Epicuro → Wave 2 no lo tocó; P0-01 registra la fuente
+  primaria para que Wave 3+ la use).
+- FU-009 (nuevo): `RelatedPosts.astro` muerto sigue con título viejo;
+  eliminar o alinear cuando P2-01 (Wave 7) traiga ranking real.
+- FU-010 (nuevo): `check-editorial-fields.js` no valida los campos nuevos
+  (role/doi/evidence) — el schema zod + tests cubren; considerar espejo si
+  el gate pre-publicación lo exige.
+
+### Gate
+
+- [x] Acceptance criteria evidenced
+- [x] No unexplained test failures (715/715 + paridad + 164 backend)
 - [x] No known new regression
 - [x] Ledger updated
 - [x] Decisions updated

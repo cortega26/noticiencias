@@ -54,11 +54,20 @@ why_it_matters:
   - Las técnicas de imagen no destructiva desarrolladas para estos rollos pueden aplicarse a otros documentos frágiles, beneficiando a archivos y museos latinoamericanos que preservan manuscritos indígenas y coloniales.
   - Este avance muestra cómo la colaboración entre física, inteligencia artificial y arqueología puede generar herramientas de investigación nuevas, aunque su aplicación exige equipamiento especializado que no está disponible en todos los centros.
 confidence: Moderada — basada en un estudio experimental con réplicas y técnicas de imagen, aunque aún en fase de prueba y requiere equipamiento especializado.
+evidence_subject_type: experimental
+evidence_detail: Réplicas modernas de papiro carbonizadas en laboratorio; lectura con fluorescencia y tomografía de rayos X más desenrollado virtual.
 sources:
+  - title: A model carbonized papyrus scroll opens a novel path to identifying readable scrolls of the Herculaneum Library
+    url: https://doi.org/10.1371/journal.pone.0353485
+    publisher: PLOS ONE
+    date: '2026-09-16'
+    role: primary
+    doi: 10.1371/journal.pone.0353485
   - title: Mount Vesuvius Buried These Scrolls for 2,000 Years – Now Scientists May Read Them
     url: https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/
     publisher: SciTechDaily
     date: ''
+    role: secondary
 requires_uncertainty_note: true
 uncertainty_note: Los resultados se obtuvieron con papiros modernos elaborados en laboratorio; aún no se ha probado la técnica en los auténticos rollos de Herculano.
 social:

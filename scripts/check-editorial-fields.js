@@ -5,7 +5,7 @@
  *   - summary_points (2-5 items)
  *   - glossary (≥1 item)
  *   - fact_check (≥1 item)
- *   - why_it_matters (≥1 item)
+ *   - why_it_matters (0-3 items, no minimum — P0-06 / DEC-003)
  *   - confidence (present)
  *   - sources (≥1 item)
  *
@@ -22,7 +22,7 @@ const MIN_SUMMARY_POINTS = 2;
 const MAX_SUMMARY_POINTS = 5;
 const MIN_GLOSSARY_ITEMS = 1;
 const MIN_FACT_CHECK_ITEMS = 1;
-const MIN_WHY_IT_MATTERS_ITEMS = 1;
+const MAX_WHY_IT_MATTERS_ITEMS = 3;
 const MIN_SOURCES = 1;
 
 function collectEditorialDiagnostics() {
@@ -113,14 +113,14 @@ function collectEditorialDiagnostics() {
       }
     }
 
-    // why_it_matters
+    // why_it_matters (P0-06 / DEC-003): 0-3 items, absence is valid.
     if (!fm.why_it_matters) {
-      diagnostics.errors.push(`${slug}: falta why_it_matters (requerido para schema_version >= 2)`);
+      // No minimum: omitting an implication beats fabricating one.
     } else if (!Array.isArray(fm.why_it_matters)) {
       diagnostics.errors.push(`${slug}: why_it_matters debe ser un array`);
-    } else if (fm.why_it_matters.length < MIN_WHY_IT_MATTERS_ITEMS) {
+    } else if (fm.why_it_matters.length > MAX_WHY_IT_MATTERS_ITEMS) {
       diagnostics.errors.push(
-        `${slug}: why_it_matters tiene ${fm.why_it_matters.length} ítems (mín ${MIN_WHY_IT_MATTERS_ITEMS})`
+        `${slug}: why_it_matters tiene ${fm.why_it_matters.length} ítems (máx ${MAX_WHY_IT_MATTERS_ITEMS})`
       );
     } else {
       const emptyItems = fm.why_it_matters.filter(

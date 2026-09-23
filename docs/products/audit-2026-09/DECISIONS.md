@@ -271,3 +271,29 @@ todos los viewports. `tests/article-sources-single.test.ts` lo custodia.
 
 Futuras secciones del rail deben elegir un único dueño visible por
 viewport; si TrustPanel ya muestra un dato, el rail no lo repite.
+
+## DEC-016 — `experimental` como tipo de evidencia + lecciones del checker
+
+**Date:** 2026-09-23
+**Status:** Accepted
+
+### Context
+
+P0-02 listaba valores iniciales sin `experimental`; el estudio Herculano
+(réplicas físicas + rayos X) no encaja en humans/animals/in_vitro/
+computational/observational. Además `check-contract-sync.js` no tolera
+comentarios `//` dentro del `z.object` (envenenan el campo siguiente) ni
+mapeaba `str`-Enums de Python.
+
+### Decision
+
+1. Añadir `experimental` al enum (experimento físico de laboratorio, p. ej.
+   réplicas + imagen), documentado en el espejo backend.
+2. Comentarios de schema a module scope (precedente `SOCIAL_ID_RE`).
+3. El checker mapea `class X(str, Enum)` a string.
+
+### Consequences
+
+P1-04 (Wave 4) puede usar `evidence_subject_type` para los chips
+metodológicos. P0-01 y P0-02 comparten commit (archivos entrelazados);
+la atomicidad por finding se preserva en ledger, no en hashes.
