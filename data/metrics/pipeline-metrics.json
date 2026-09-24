@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-23T11:31:20.156Z",
+  "generated_at": "2026-09-24T11:41:31.195Z",
   "content": {
-    "total_articles": 40,
-    "v2_articles": 28,
-    "total_words": 25490,
-    "avg_words": 637,
+    "total_articles": 41,
+    "v2_articles": 29,
+    "total_words": 26152,
+    "avg_words": 638,
     "categories": [
       {
         "name": "Tecnología",
         "count": 13
       },
       {
-        "name": "Salud",
-        "count": 6
+        "name": "Ciencia",
+        "count": 7
       },
       {
-        "name": "Ciencia",
+        "name": "Salud",
         "count": 6
       },
       {
@@ -44,10 +44,6 @@
       }
     ],
     "top_tags": [
-      {
-        "name": "misión",
-        "count": 2
-      },
       {
         "name": "universo",
         "count": 2
@@ -90,6 +86,10 @@
       },
       {
         "name": "especies en peligro",
+        "count": 1
+      },
+      {
+        "name": "misión",
         "count": 1
       },
       {
@@ -203,6 +203,18 @@
         "review_status": null
       },
       {
+        "slug": "2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe",
+        "title": "A 450 años luz, estrella esconde punto de luz tan joven como bebé",
+        "date": "2026-09-17",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — basado en observaciones combinadas de Keck, ALMA y VLT, pero la edad se estima mediante modelos de enfriamiento con incertidumbre inherente.",
+        "review_status": null
+      },
+      {
         "slug": "2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos",
         "title": "El eclipse solar de 2027 durará seis minutos y veintitrés segundos",
         "date": "2026-08-28",
@@ -300,7 +312,7 @@
       },
       {
         "slug": "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva",
-        "title": "Los chatbots rescataron a Elias Thorne de una conversación casual y lo convirtieron en una ficción masiva",
+        "title": "Elias Thorne: el farero ficticio que las IA repiten como si existiera",
         "date": "2026-06-12",
         "categories": [
           "Tecnología"
@@ -324,7 +336,7 @@
       },
       {
         "slug": "2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas",
-        "title": "Un asteroide de 700 metros rota cada 1,88 minutos, desafiando teorías astronómicas",
+        "title": "Un asteroide de 700 metros rota cada 1,88 minutos, más rápido de lo esperado",
         "date": "2026-05-15",
         "categories": [
           "Ciencia"
@@ -336,7 +348,7 @@
       },
       {
         "slug": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia",
-        "title": "El MIT descubre que las empresas usan la automatización con frecuencia para recortar salarios, no para maximizar la productividad",
+        "title": "El MIT vincula la automatización con el 52 % del aumento de la desigualdad desde 1980",
         "date": "2026-05-07",
         "categories": [
           "Tecnología"
@@ -348,7 +360,7 @@
       },
       {
         "slug": "2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan",
-        "title": "Sitios web ocultan órdenes secretas que manipulan a las IA sin que los usuarios lo sepan",
+        "title": "Google halla instrucciones ocultas para IA en sitios web públicos",
         "date": "2026-04-24",
         "categories": [
           "Tecnología"
@@ -372,7 +384,7 @@
       },
       {
         "slug": "2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas",
-        "title": "Comunicación Láser: Cómo Desbloqueará Datos Gigantes y Video HD para las Misiones Lunares Tripuladas",
+        "title": "Comunicación láser: más datos y video para las misiones lunares tripuladas",
         "date": "2026-04-02",
         "categories": [
           "Tecnología"
@@ -384,7 +396,7 @@
       },
       {
         "slug": "2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube",
-        "title": "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube",
+        "title": "Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas",
         "date": "2026-03-27",
         "categories": [
           "Tecnología"
@@ -420,7 +432,7 @@
       },
       {
         "slug": "2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable",
-        "title": "Un ingrediente inesperado puede hacer el pan mucho más saludable",
+        "title": "Harina de semilla de girasol: pan con más proteína y antioxidantes",
         "date": "2026-02-16",
         "categories": [
           "Salud"
@@ -432,7 +444,7 @@
       },
       {
         "slug": "2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida",
-        "title": "Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida",
+        "title": "El 38 % de los casos de cáncer de 2022 se atribuye a factores de riesgo evitables",
         "date": "2026-02-05",
         "categories": [
           "Salud"
@@ -444,7 +456,7 @@
       },
       {
         "slug": "2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos",
-        "title": "Cómo Claude Code está llevando el vibe coding a todos",
+        "title": "Qué es el vibe coding y qué aporta Claude Code",
         "date": "2026-01-31",
         "categories": [
           "Tecnología"
@@ -468,7 +480,7 @@
       },
       {
         "slug": "2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad",
-        "title": "Moltbot, asistente personal de inteligencia artificial, ofrece funcionalidades innovadoras pero también plantea desafíos de seguridad",
+        "title": "Moltbot: un asistente personal de IA que puede ejecutar comandos en tu equipo",
         "date": "2026-01-28",
         "categories": [
           "Tecnología"
@@ -528,7 +540,7 @@
       },
       {
         "slug": "2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas",
-        "title": "Nuevas plataformas estratosféricas podrían revolucionar la conectividad en áreas remotas",
+        "title": "Dirigibles y drones estratosféricos buscan llevar internet a zonas remotas",
         "date": "2026-01-27",
         "categories": [
           "Tecnología"
@@ -540,7 +552,7 @@
       },
       {
         "slug": "2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial",
-        "title": "Piezo1 identificado como 'sensor de ejercicio' interno crucial",
+        "title": "Piezo1, la proteína que detecta el ejercicio en las células madre del hueso",
         "date": "2026-01-27",
         "categories": [
           "Salud"
@@ -588,7 +600,7 @@
       },
       {
         "slug": "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas",
-        "title": "Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nuestra Perspectiva sobre la Caza de Ballenas",
+        "title": "Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado",
         "date": "2026-01-23",
         "categories": [
           "Arqueología"
@@ -600,7 +612,7 @@
       },
       {
         "slug": "2026-02-12-bienvenidos",
-        "title": "Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos",
+        "title": "Bienvenidos a Noticiencias: la ciencia al alcance de todos",
         "date": "2026-01-21",
         "categories": [
           "Editorial"
@@ -612,7 +624,7 @@
       },
       {
         "slug": "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii",
-        "title": "NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II",
+        "title": "NASA prepara Artemis II, el regreso de humanos a la órbita lunar",
         "date": "2026-01-18",
         "categories": [
           "Astronomía"
@@ -636,7 +648,7 @@
       },
       {
         "slug": "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras",
-        "title": "Cursos en línea abren puertas a nuevas carreras",
+        "title": "El curso del MIT que llevó a un ingeniero a una nueva carrera",
         "date": "2026-01-15",
         "categories": [
           "Tecnología"
@@ -659,11 +671,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-23T11:31:20.156Z"
+    "generated_at": "2026-09-24T11:41:31.195Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 40,
+    "derivatives_available": 41,
     "missing_derivatives": 0
   }
 }
