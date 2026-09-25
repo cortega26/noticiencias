@@ -248,7 +248,7 @@ function collectSchemaHealth() {
 
 function collectEditorialHealth(content) {
   const gaps = content?.editorial_gaps ?? {};
-  if (!content || !content.v2_articles) {
+  if (!content?.v2_articles) {
     return unknownHealth('Sin artículos v2 para evaluar.');
   }
   const missing = Object.entries(gaps)

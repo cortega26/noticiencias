@@ -12,7 +12,7 @@
 
 import { execFile, execFileSync } from 'child_process';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync } from 'fs';
-import { createServer } from 'http';
+import { createServer } from 'node:http';
 import { tmpdir } from 'os';
 import { join, resolve } from 'path';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
