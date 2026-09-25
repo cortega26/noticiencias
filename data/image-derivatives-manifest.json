@@ -1070,6 +1070,34 @@
       }
     ]
   },
+  "~/assets/images/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.avif": {
+    "originalWidth": 1356,
+    "originalHeight": 668,
+    "hash": "366887ca87e49c01",
+    "variants": [
+      {
+        "width": 400,
+        "height": 197,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 443,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.900.avif"
+      },
+      {
+        "width": 1356,
+        "height": 668,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.1356.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.1356.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.jpg": {
     "originalWidth": 1920,
     "originalHeight": 1080,
