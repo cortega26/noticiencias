@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-24T11:41:31.195Z",
+  "generated_at": "2026-09-25T19:38:00.387Z",
   "content": {
-    "total_articles": 41,
-    "v2_articles": 29,
-    "total_words": 26152,
-    "avg_words": 638,
+    "total_articles": 42,
+    "v2_articles": 30,
+    "total_words": 27282,
+    "avg_words": 650,
     "categories": [
       {
         "name": "Tecnología",
@@ -12,7 +12,7 @@
       },
       {
         "name": "Ciencia",
-        "count": 7
+        "count": 8
       },
       {
         "name": "Salud",
@@ -212,6 +212,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — basado en observaciones combinadas de Keck, ALMA y VLT, pero la edad se estima mediante modelos de enfriamiento con incertidumbre inherente.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama",
+        "title": "El Niño 2026 ya está ralentizando el tráfico del Canal de Panamá",
+        "date": "2026-09-10",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación basado en datos observacionales de fuentes reconocidas (Copernicus, NOAA) pero incluye inferencias y especulaciones sobre la intensidad futura y los impactos regionales específicos.",
         "review_status": null
       },
       {
@@ -671,11 +683,46 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-24T11:41:31.195Z"
+    "generated_at": "2026-09-25T19:38:00.326Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 41,
+    "derivatives_available": 42,
     "missing_derivatives": 0
+  },
+  "health": {
+    "schema": {
+      "status": "pass",
+      "detail": "Paridad con el snapshot de esquema."
+    },
+    "editorial": {
+      "status": "pass",
+      "detail": "30 artículos v2 completos."
+    },
+    "hero_images": {
+      "status": "pass",
+      "detail": "42 artículo(s) con imagen y alt.",
+      "errors": 0
+    },
+    "derivatives": {
+      "status": "pass",
+      "detail": "42 derivativos disponibles."
+    },
+    "lint": {
+      "status": "pass",
+      "detail": "ESLint + Prettier + checks OK."
+    },
+    "callbacks": {
+      "status": "unknown",
+      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+    },
+    "publication": {
+      "status": "unknown",
+      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+    },
+    "validation": {
+      "status": "unknown",
+      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+    }
   }
 }
