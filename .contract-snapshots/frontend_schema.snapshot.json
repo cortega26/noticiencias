@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-06T19:45:41.389Z",
+  "generatedAt": "2026-09-25T19:37:48.189Z",
   "backendRef": "main",
   "pythonIR": {
     "version": 1,
@@ -93,6 +93,28 @@
             "type": "string",
             "optional": true,
             "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "doi",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "pattern": "r\"^10\\.\\d{4"
+            },
             "unionTypes": null,
             "nestedModel": null,
             "itemType": null,
@@ -484,10 +506,35 @@
             "name": "why_it_matters",
             "type": "array",
             "optional": true,
-            "constraints": {},
+            "constraints": {
+              "maxLength": 3
+            },
             "unionTypes": null,
             "nestedModel": null,
             "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "evidence_subject_type",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "evidence_detail",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "minLength": 1,
+              "maxLength": 280
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
             "itemNestedModel": null
           },
           {
@@ -517,6 +564,126 @@
             "constraints": {},
             "unionTypes": null,
             "nestedModel": "SocialConfig",
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "institution",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "minLength": 1,
+              "maxLength": 160
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "publication_status",
+            "type": "string",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "reviewer_name",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "reviewer_role",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "reviewer_profile_url",
+            "type": "url",
+            "optional": true,
+            "constraints": {},
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "review_date",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "pattern": "r\"^\\d{4}-\\d{2}-\\d{2}$\""
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "known_points",
+            "type": "array",
+            "optional": true,
+            "constraints": {
+              "maxLength": 3
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "open_questions",
+            "type": "array",
+            "optional": true,
+            "constraints": {
+              "maxLength": 3
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": "string",
+            "itemNestedModel": null
+          },
+          {
+            "name": "corrected_at",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "pattern": "r\"^\\d{4}-\\d{2}-\\d{2}$\""
+            },
+            "unionTypes": null,
+            "nestedModel": null,
+            "itemType": null,
+            "itemNestedModel": null
+          },
+          {
+            "name": "correction_summary",
+            "type": "string",
+            "optional": true,
+            "constraints": {
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "unionTypes": null,
+            "nestedModel": null,
             "itemType": null,
             "itemNestedModel": null
           }

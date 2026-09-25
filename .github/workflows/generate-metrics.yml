@@ -29,7 +29,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Record lint check evidence
+        # The dashboard must show a lint failure, not swallow it: record the
+        # outcome to an artifact and keep the job running so the metrics (and
+        # the failure signal) still land.
+        continue-on-error: true
+        env:
+          CHECK_RESULTS_PATH: ${{ runner.temp }}/check-results.json
+        run: |
+          status=pass
+          npm run lint || status=fail
+          node -e "require('fs').writeFileSync(process.argv[1], JSON.stringify({lint:{status:process.argv[2]}}))" "$CHECK_RESULTS_PATH" "$status"
+
       - name: Generate metrics
+        env:
+          CHECK_RESULTS_PATH: ${{ runner.temp }}/check-results.json
+          BACKEND_ADMIN_URL: ${{ secrets.BACKEND_ADMIN_URL }}
+          BACKEND_ADMIN_TOKEN: ${{ secrets.BACKEND_ADMIN_TOKEN }}
         run: node scripts/generate-metrics.js
 
       - name: Bypass git hooks for bot commit

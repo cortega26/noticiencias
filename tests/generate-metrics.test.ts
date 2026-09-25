@@ -10,19 +10,38 @@
  * Runs the script against a temp fixture tree via the METRICS_ROOT override.
  */
 
-import { execFileSync } from 'child_process';
+import { execFile, execFileSync } from 'child_process';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, existsSync } from 'fs';
+import { createServer } from 'node:http';
 import { tmpdir } from 'os';
 import { join, resolve } from 'path';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
 const SCRIPT = resolve('scripts/generate-metrics.js');
 
-function runGenerator(root: string): string {
+function runGenerator(root: string, extraEnv: Record<string, string> = {}): string {
   return execFileSync(process.execPath, [SCRIPT], {
-    env: { ...process.env, METRICS_ROOT: root },
+    env: { ...process.env, METRICS_ROOT: root, ...extraEnv },
     encoding: 'utf-8',
     timeout: 30_000,
+  });
+}
+
+function runGeneratorAsync(root: string, extraEnv: Record<string, string> = {}): Promise<string> {
+  return new Promise((resolvePromise, rejectPromise) => {
+    execFile(
+      process.execPath,
+      [SCRIPT],
+      {
+        env: { ...process.env, METRICS_ROOT: root, ...extraEnv },
+        encoding: 'utf-8',
+        timeout: 30_000,
+      },
+      (error, stdout) => {
+        if (error) rejectPromise(error);
+        else resolvePromise(stdout);
+      }
+    );
   });
 }
 
@@ -44,6 +63,8 @@ function writePost(root: string, name: string, overrides: Record<string, unknown
     'why_it_matters: reason',
     'confidence: 0.9',
     'sources: [{ title: s, url: https://example.com }]',
+    'image: https://example.com/hero.jpg',
+    'image_alt: Descripción de prueba',
     '---',
     '',
     'Body text for the post.',
@@ -123,5 +144,179 @@ describe('generate-metrics no-churn contract', () => {
     runGenerator(root);
     expect(existsSync(metricsPath(root))).toBe(true);
     expect(readMetrics(root).content.total_articles).toBe(0);
+  });
+});
+
+interface HealthSection {
+  status: string;
+  detail?: string;
+  evidence?: string;
+  counts?: Record<string, number>;
+  errors?: number;
+  oldest_pending_age_seconds?: number;
+}
+
+function readHealth(root: string): Record<string, HealthSection> {
+  return readMetrics(root).health as Record<string, HealthSection>;
+}
+
+async function withJsonServer<T>(payload: unknown, run: (url: string) => Promise<T>): Promise<T> {
+  const server = createServer((_request, response) => {
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    response.end(JSON.stringify(payload));
+  });
+  await new Promise<void>((resolvePromise) =>
+    server.listen(0, '127.0.0.1', () => resolvePromise())
+  );
+  try {
+    const address = server.address();
+    const port = typeof address === 'object' && address ? address.port : 0;
+    return await run(`http://127.0.0.1:${port}/v1/admin/dashboard/health`);
+  } finally {
+    await new Promise<void>((resolvePromise) => server.close(() => resolvePromise()));
+  }
+}
+
+async function freePort(): Promise<number> {
+  const server = createServer();
+  await new Promise<void>((resolvePromise) =>
+    server.listen(0, '127.0.0.1', () => resolvePromise())
+  );
+  const address = server.address();
+  const port = typeof address === 'object' && address ? address.port : 0;
+  await new Promise<void>((resolvePromise) => server.close(() => resolvePromise()));
+  return port;
+}
+
+describe('generate-metrics health section (plan 060 Phase 5d)', () => {
+  let root: string;
+
+  beforeEach(() => {
+    root = mkdtempSync(join(tmpdir(), 'noticiencias-health-'));
+    mkdirSync(join(root, 'src', 'content', 'posts'), { recursive: true });
+    mkdirSync(join(root, 'data', 'metrics'), { recursive: true });
+    writePost(root, 'science-1.md');
+    writePost(root, 'tech-1.md', { title: 'Tech post', categories: '[Tecnología]' });
+  });
+
+  afterEach(() => {
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  it('marks unmeasured checks unknown and measures local records', () => {
+    runGenerator(root);
+
+    const health = readHealth(root);
+    expect(health.schema.status).toBe('unknown');
+    expect(health.lint.status).toBe('unknown');
+    expect(health.callbacks.status).toBe('unknown');
+    expect(health.publication.status).toBe('unknown');
+    expect(health.validation.status).toBe('unknown');
+    expect(health.derivatives.status).toBe('unknown');
+    expect(health.hero_images.status).toBe('pass');
+    expect(health.editorial.status).toBe('pass');
+  });
+
+  it('warns when a post has no hero image', () => {
+    writePost(root, 'no-image.md', { title: 'No image post', image: '' });
+
+    runGenerator(root);
+
+    const health = readHealth(root);
+    expect(health.hero_images.status).toBe('warning');
+    expect(health.hero_images.errors).toBe(1);
+    expect(health.hero_images.detail).toContain('missing');
+  });
+
+  it('marks hero health unknown when there are no posts', () => {
+    rmSync(join(root, 'src', 'content', 'posts', 'science-1.md'));
+    rmSync(join(root, 'src', 'content', 'posts', 'tech-1.md'));
+
+    runGenerator(root);
+
+    expect(readHealth(root).hero_images.status).toBe('unknown');
+  });
+
+  it('maps the lint artifact when provided', () => {
+    const artifact = join(root, 'check-results.json');
+    writeFileSync(artifact, JSON.stringify({ lint: { status: 'fail' } }), 'utf-8');
+
+    runGenerator(root, { CHECK_RESULTS_PATH: artifact });
+
+    expect(readHealth(root).lint.status).toBe('fail');
+  });
+
+  it('maps backend health when configured', async () => {
+    const payload = {
+      generated_at: new Date().toISOString(),
+      publication: {
+        status: 'warning',
+        evidence: 'present',
+        detail: 'stale PR_CREATED',
+        oldest_pending_age_seconds: 7200,
+        counts: { PUBLISHING: 0, PR_CREATED: 1, REJECTED: 0, COMPLETED: 4 },
+      },
+      callbacks: {
+        status: 'fail',
+        evidence: 'present',
+        detail: 'failed receipt',
+        oldest_pending_age_seconds: 60,
+        counts: { received: 0, processed: 3, failed: 1 },
+      },
+      validation: {
+        status: 'pass',
+        evidence: 'present',
+        detail: 'checks ok',
+        counts: { check_passed: 2, rejected: 0 },
+      },
+    };
+
+    await withJsonServer(payload, (url) =>
+      runGeneratorAsync(root, { BACKEND_ADMIN_URL: url, BACKEND_ADMIN_TOKEN: 'token' })
+    );
+
+    const health = readHealth(root);
+    expect(health.publication.status).toBe('warning');
+    expect(health.publication.counts).toEqual({
+      PUBLISHING: 0,
+      PR_CREATED: 1,
+      REJECTED: 0,
+      COMPLETED: 4,
+    });
+    // Ages must not be copied into the committed metrics (no-churn).
+    expect(health.publication.oldest_pending_age_seconds).toBeUndefined();
+    expect(health.callbacks.status).toBe('fail');
+    expect(health.callbacks.counts).toEqual({ received: 0, processed: 3, failed: 1 });
+    expect(health.validation.status).toBe('pass');
+  });
+
+  it('marks backend health unknown when the endpoint is unreachable', async () => {
+    const port = await freePort();
+
+    await runGeneratorAsync(root, {
+      BACKEND_ADMIN_URL: `http://127.0.0.1:${port}/v1/admin/dashboard/health`,
+      BACKEND_ADMIN_TOKEN: 'token',
+    });
+
+    const health = readHealth(root);
+    expect(health.callbacks.status).toBe('unknown');
+    expect(health.publication.status).toBe('unknown');
+    expect(health.validation.status).toBe('unknown');
+  });
+
+  it('maps backend evidence "none" to unknown even with a pass status', async () => {
+    await withJsonServer(
+      {
+        publication: { status: 'pass', evidence: 'none', counts: {} },
+        callbacks: { status: 'pass', evidence: 'none', counts: {} },
+        validation: { status: 'pass', evidence: 'none', counts: {} },
+      },
+      (url) => runGeneratorAsync(root, { BACKEND_ADMIN_URL: url, BACKEND_ADMIN_TOKEN: 't' })
+    );
+
+    const health = readHealth(root);
+    expect(health.publication.status).toBe('unknown');
+    expect(health.callbacks.status).toBe('unknown');
+    expect(health.validation.status).toBe('unknown');
   });
 });

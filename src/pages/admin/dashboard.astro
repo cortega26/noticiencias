@@ -81,42 +81,67 @@ const overviewMetrics = [
   },
 ];
 
+// Every health check reads a real record from `metrics.health` (plan 060
+// Phase 5d). A missing record is `unknown` — never inferred from another
+// metric. Backend sections come from `GET /v1/admin/dashboard/health`.
+type HealthStatus = 'pass' | 'fail' | 'warning' | 'unknown';
+interface HealthSection {
+  status?: string;
+  detail?: string;
+  evidence?: string;
+}
+const health = (metrics?.health ?? {}) as Record<string, HealthSection>;
+const resolveHealth = (key: string, fallback: string): { status: HealthStatus; detail: string } => {
+  const section = health[key];
+  const status = section?.status;
+  return {
+    status: (status === 'pass' || status === 'fail' || status === 'warning' || status === 'unknown'
+      ? status
+      : 'unknown') as HealthStatus,
+    detail: section?.detail || fallback,
+  };
+};
+
 const healthChecks = [
   {
     name: 'Schema Contract',
     description: 'Paridad de esquema entre backend (Python) y frontend (TypeScript)',
-    status: (metrics ? 'pass' : 'unknown') as 'pass' | 'unknown',
-    detail: metrics ? 'Snapshot actualizado' : 'Métricas no generadas',
+    ...resolveHealth('schema', 'Sin snapshot de contrato.'),
   },
   {
     name: 'Campos editoriales v2',
     description: 'summary_points, glossary, fact_check, why_it_matters, confidence, sources',
-    status: (gapEntries.length > 0 ? (allEditorialComplete ? 'pass' : 'warning') : 'unknown') as
-      | 'pass'
-      | 'warning'
-      | 'unknown',
-    detail:
-      gapEntries.length > 0
-        ? `${content?.v2_articles ?? 0} artículos v2. Faltantes: ${missingGapNames || 'ninguno'}`
-        : undefined,
+    ...resolveHealth('editorial', 'Sin métricas editoriales.'),
   },
   {
     name: 'Imágenes hero',
     description: 'Imágenes de portada presentes y con alt text',
-    status: 'unknown' as const,
-    detail: 'Sin métrica medida — verificar manualmente en CI',
+    ...resolveHealth('hero_images', 'Sin métricas de imágenes.'),
   },
   {
     name: 'Derivativos de imagen',
     description: 'Variantes AVIF generadas para CDN',
-    status: ((images?.derivatives_available ?? 0) > 0 ? 'pass' : 'warning') as 'pass' | 'warning',
-    detail: images ? `${images.derivatives_available} derivativos disponibles` : undefined,
+    ...resolveHealth('derivatives', 'Sin manifiesto de derivados.'),
   },
   {
     name: 'Linting',
     description: 'ESLint + Prettier + check:tags + check:doc-drift',
-    status: 'unknown' as const,
-    detail: 'Sin métrica medida — verificar manualmente en CI',
+    ...resolveHealth('lint', 'Sin resultado de lint registrado.'),
+  },
+  {
+    name: 'Callbacks al backend',
+    description: 'Entregas del webhook: procesadas, pendientes y fallidas',
+    ...resolveHealth('callbacks', 'Backend sin configurar.'),
+  },
+  {
+    name: 'Publicación',
+    description: 'Intentos de publicación: atascados o sin callback',
+    ...resolveHealth('publication', 'Backend sin configurar.'),
+  },
+  {
+    name: 'Validación (Content Guard)',
+    description: 'Verificaciones superadas y rechazos del guard de contenido',
+    ...resolveHealth('validation', 'Backend sin configurar.'),
   },
 ];
 
