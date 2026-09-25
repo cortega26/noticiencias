@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T19:38:00.387Z",
+  "generated_at": "2026-09-25T20:40:37.403Z",
   "content": {
     "total_articles": 42,
     "v2_articles": 30,
@@ -683,7 +683,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-25T19:38:00.326Z"
+    "generated_at": "2026-09-25T20:40:36.722Z"
   },
   "images": {
     "delivery_mode": "github",
@@ -714,15 +714,33 @@
     },
     "callbacks": {
       "status": "unknown",
-      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+      "evidence": "none",
+      "detail": "Sin entregas de webhook registradas.",
+      "counts": {
+        "received": 0,
+        "processed": 0,
+        "failed": 0
+      }
     },
     "publication": {
       "status": "unknown",
-      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+      "evidence": "none",
+      "detail": "Sin intentos de publicación registrados.",
+      "counts": {
+        "PUBLISHING": 0,
+        "PR_CREATED": 0,
+        "REJECTED": 0,
+        "COMPLETED": 0
+      }
     },
     "validation": {
       "status": "unknown",
-      "detail": "Backend sin configurar (BACKEND_ADMIN_URL/BACKEND_ADMIN_TOKEN)."
+      "evidence": "none",
+      "detail": "Sin resultados de Content Guard registrados.",
+      "counts": {
+        "check_passed": 0,
+        "rejected": 0
+      }
     }
   }
 }
