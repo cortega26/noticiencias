@@ -106,11 +106,11 @@ function isRetryableStatus(status) {
   return status === 429 || status >= 500;
 }
 
-function buildFailureRecord({ payload, attempts, status, error }) {
+function buildFailureRecord({ payload = {}, attempts, status, error }) {
   const record = {
-    event: payload?.event ?? null,
-    delivery_id: payload?.delivery_id ?? null,
-    run_url: payload?.run_url ?? null,
+    event: payload.event || null,
+    delivery_id: payload.delivery_id || null,
+    run_url: payload.run_url || null,
     attempts,
     generated_at: new Date().toISOString(),
   };
