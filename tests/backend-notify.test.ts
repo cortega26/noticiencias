@@ -116,15 +116,20 @@ describe('buildEnvelope delivery_id', () => {
   });
 
   it('is stable across repeated builds of the same run and event', () => {
-    const build = () =>
-      buildEnvelope({
-        event: 'publish_complete',
-        status: 'success',
-        diagnostics: { check: 'deploy', status: 'pass' },
-        githubEnv,
-      });
+    const first = buildEnvelope({
+      event: 'publish_complete',
+      status: 'success',
+      diagnostics: { check: 'deploy', status: 'pass' },
+      githubEnv,
+    });
+    const second = buildEnvelope({
+      event: 'publish_complete',
+      status: 'success',
+      diagnostics: { check: 'deploy', status: 'pass' },
+      githubEnv,
+    });
 
-    expect(build().delivery_id).toBe(build().delivery_id);
+    expect(first.delivery_id).toBe(second.delivery_id);
   });
 
   it('differs per event within the same run', () => {

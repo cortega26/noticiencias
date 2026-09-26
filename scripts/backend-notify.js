@@ -106,19 +106,23 @@ function isRetryableStatus(status) {
   return status === 429 || status >= 500;
 }
 
-function writeFailureArtifact(artifactPath, { payload, attempts, status, error }) {
+function buildFailureRecord({ payload, attempts, status, error }) {
+  const record = {
+    event: payload?.event ?? null,
+    delivery_id: payload?.delivery_id ?? null,
+    run_url: payload?.run_url ?? null,
+    attempts,
+    generated_at: new Date().toISOString(),
+  };
+  if (status !== undefined) record.status = status;
+  if (error) record.error = error;
+  return record;
+}
+
+function writeFailureArtifact(artifactPath, failure) {
   if (!artifactPath) return;
   try {
-    const record = {
-      event: payload?.event ?? null,
-      delivery_id: payload?.delivery_id ?? null,
-      run_url: payload?.run_url ?? null,
-      attempts,
-      ...(status !== undefined ? { status } : {}),
-      ...(error ? { error } : {}),
-      generated_at: new Date().toISOString(),
-    };
-    writeFileSync(artifactPath, JSON.stringify(record, null, 2));
+    writeFileSync(artifactPath, JSON.stringify(buildFailureRecord(failure), null, 2));
     console.error(`[backend-notify] Wrote failure artifact to ${artifactPath}`);
   } catch (err) {
     console.error(`[backend-notify] Could not write failure artifact: ${err.message}`);
