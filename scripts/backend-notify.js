@@ -87,7 +87,8 @@ export function buildEnvelope({ event, status, diagnostics, publicationIds = [],
   const branch = env.GITHUB_REF_NAME || 'unknown';
   const runId = env.GITHUB_RUN_ID || 'unknown';
 
-  const envelope = {
+  const deliveryId = deliveryIdFor({ event, runId });
+  return {
     event,
     commit_sha: sha,
     branch,
@@ -97,12 +98,8 @@ export function buildEnvelope({ event, status, diagnostics, publicationIds = [],
     run_url: `https://github.com/${repo}/actions/runs/${runId}`,
     timestamp: new Date().toISOString(),
     publication_ids: publicationIds || [],
+    ...(deliveryId ? { delivery_id: deliveryId } : {}),
   };
-  const deliveryId = deliveryIdFor({ event, runId });
-  if (deliveryId) {
-    envelope.delivery_id = deliveryId;
-  }
-  return envelope;
 }
 
 function isRetryableStatus(status) {
