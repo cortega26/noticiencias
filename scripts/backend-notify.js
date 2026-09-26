@@ -28,8 +28,15 @@
  *     ],
  *     frontend_ref: "<sha>",
  *     run_url: "https://github.com/<owner>/<repo>/actions/runs/<run_id>",
- *     publication_ids: ["<refinery_id>", ...]
+ *     publication_ids: ["<refinery_id>", ...],
+ *     delivery_id: "v1:<run_id>:<event>"   // present in CI; backend dedupes
  *   }
+ *
+ * Sending is bounded-retry best-effort: transient failures (network, 429,
+ * 5xx) are retried with exponential backoff; other 4xx are not. After the
+ * final failed attempt a JSON diagnostic artifact is written to the path in
+ * `BACKEND_NOTIFY_ARTIFACT_PATH` (defaults to the runner temp directory)
+ * for CI to upload. The process still exits 0 — deploy never blocks.
  *
  * This module owns envelope construction — CLI callers pass raw diagnostic
  * record(s) via --payload-file (a single object or an array of them),
@@ -38,8 +45,28 @@
  * using buildEnvelope() instead of hand-assembling a payload.
  */
 
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+
+const DELIVERY_ID_VERSION = 'v1';
+const DEFAULT_MAX_ATTEMPTS = 3;
+const DEFAULT_RETRY_BASE_MS = 1000;
+
+function sleep(ms) {
+  return new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
+}
+
+/**
+ * Versioned delivery/idempotency id for one logical callback.
+ *
+ * Stable across retries of the same workflow run + event, distinct across
+ * runs. Returns null when there is no real run id (local invocation), so the
+ * backend derives its own stable key instead of us fabricating a shared id.
+ */
+function deliveryIdFor({ event, runId }) {
+  if (!runId || runId === 'unknown') return null;
+  return `${DELIVERY_ID_VERSION}:${runId}:${event}`;
+}
 
 /**
  * Build the webhook envelope. `diagnostics` may be a single diagnostic
@@ -60,7 +87,7 @@ export function buildEnvelope({ event, status, diagnostics, publicationIds = [],
   const branch = env.GITHUB_REF_NAME || 'unknown';
   const runId = env.GITHUB_RUN_ID || 'unknown';
 
-  return {
+  const envelope = {
     event,
     commit_sha: sha,
     branch,
@@ -71,24 +98,65 @@ export function buildEnvelope({ event, status, diagnostics, publicationIds = [],
     timestamp: new Date().toISOString(),
     publication_ids: publicationIds || [],
   };
+  const deliveryId = deliveryIdFor({ event, runId });
+  if (deliveryId) {
+    envelope.delivery_id = deliveryId;
+  }
+  return envelope;
+}
+
+function isRetryableStatus(status) {
+  return status === 429 || status >= 500;
+}
+
+function writeFailureArtifact(artifactPath, { payload, attempts, status, error }) {
+  if (!artifactPath) return;
+  try {
+    const record = {
+      event: payload?.event ?? null,
+      delivery_id: payload?.delivery_id ?? null,
+      run_url: payload?.run_url ?? null,
+      attempts,
+      ...(status !== undefined ? { status } : {}),
+      ...(error ? { error } : {}),
+      generated_at: new Date().toISOString(),
+    };
+    writeFileSync(artifactPath, JSON.stringify(record, null, 2));
+    console.error(`[backend-notify] Wrote failure artifact to ${artifactPath}`);
+  } catch (err) {
+    console.error(`[backend-notify] Could not write failure artifact: ${err.message}`);
+  }
 }
 
 /**
- * POST an already-built envelope to the backend webhook. Best-effort:
- * never throws — logs and returns a result object instead, so CI never
- * blocks on backend notification. Never logs `webhookToken`.
+ * POST an already-built envelope to the backend webhook with bounded
+ * retries and exponential backoff. Best-effort: never throws — logs and
+ * returns a result object instead, so CI never blocks on backend
+ * notification. Never logs `webhookToken`.
+ *
+ * Retries only transient failures (network errors, 429, 5xx); a 4xx is
+ * deterministic and is reported immediately. On final failure an optional
+ * JSON diagnostic artifact is written for CI to upload.
  *
  * @param {object} opts
  * @param {string} opts.webhookUrl
  * @param {string} [opts.webhookToken]
  * @param {unknown} opts.payload
  * @param {typeof fetch} [opts.fetchImpl]
+ * @param {number} [opts.maxAttempts]
+ * @param {number} [opts.baseDelayMs]
+ * @param {(ms: number) => Promise<void>} [opts.sleepImpl]
+ * @param {string | null} [opts.failureArtifactPath]
  */
 export async function sendWebhookNotification({
   webhookUrl,
   webhookToken,
   payload,
   fetchImpl = fetch,
+  maxAttempts = Number(process.env.BACKEND_WEBHOOK_MAX_ATTEMPTS) || DEFAULT_MAX_ATTEMPTS,
+  baseDelayMs = Number(process.env.BACKEND_WEBHOOK_RETRY_BASE_MS) || DEFAULT_RETRY_BASE_MS,
+  sleepImpl = sleep,
+  failureArtifactPath = null,
 }) {
   if (!webhookUrl) {
     console.error('[backend-notify] BACKEND_WEBHOOK_URL not set. Skipping notification.');
@@ -103,26 +171,57 @@ export async function sendWebhookNotification({
     headers.Authorization = `Bearer ${webhookToken}`;
   }
 
-  try {
-    const response = await fetchImpl(webhookUrl, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload),
-    });
+  const attempts = Math.max(1, maxAttempts);
+  let lastStatus;
+  let lastError;
 
-    if (response.ok) {
-      console.log(`[backend-notify] Notification sent (${response.status})`);
-    } else {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetchImpl(webhookUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log(
+          `[backend-notify] Notification sent (${response.status}) after ${attempt} attempt(s)`
+        );
+        return { ok: true, status: response.status, attempts: attempt };
+      }
+
       const body = await response.text().catch(() => '');
+      lastStatus = response.status;
       console.error(
-        `[backend-notify] Backend responded with ${response.status}: ${body.slice(0, 200)}`
+        `[backend-notify] Backend responded with ${response.status} (attempt ${attempt}/${attempts}): ${body.slice(0, 200)}`
       );
+      if (!isRetryableStatus(response.status)) {
+        return { ok: false, status: response.status, attempts: attempt };
+      }
+    } catch (err) {
+      lastError = err.message;
+      lastStatus = undefined;
+      console.error(`[backend-notify] Attempt ${attempt}/${attempts} failed: ${err.message}`);
     }
-    return { ok: response.ok, status: response.status };
-  } catch (err) {
-    console.error(`[backend-notify] Failed to send notification: ${err.message}`);
-    return { error: err.message };
+
+    if (attempt < attempts) {
+      const delay = baseDelayMs * 2 ** (attempt - 1);
+      console.warn(
+        `[backend-notify] Retrying in ${delay}ms (attempt ${attempt + 1}/${attempts})...`
+      );
+      await sleepImpl(delay);
+    }
   }
+
+  const failure = lastStatus !== undefined ? { status: lastStatus } : { error: lastError };
+  console.error(`[backend-notify] Giving up after ${attempts} attempt(s).`);
+  writeFailureArtifact(failureArtifactPath, {
+    payload,
+    attempts,
+    status: lastStatus,
+    error: lastStatus === undefined ? lastError : undefined,
+  });
+  return { ok: false, attempts, ...failure };
 }
 
 // ---------------------------------------------------------------------------
@@ -209,10 +308,15 @@ Environment:
     githubEnv: process.env,
   });
 
+  const failureArtifactPath =
+    process.env.BACKEND_NOTIFY_ARTIFACT_PATH ||
+    join(process.env.RUNNER_TEMP || process.cwd(), 'backend-notify-failure.json');
+
   await sendWebhookNotification({
     webhookUrl,
     webhookToken: process.env.BACKEND_WEBHOOK_TOKEN,
     payload,
+    failureArtifactPath,
   });
 }
 

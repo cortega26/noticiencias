@@ -147,3 +147,11 @@ jobs:
           DEPLOY_URL: ${{ steps.deployment.outputs.page_url }}
           GITHUB_BASE_SHA: ${{ github.event.before }}
         run: node scripts/post-publish-callback.js ${{ steps.deployment.outputs.page_url }}
+
+      - name: Upload backend notification diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: backend-notify-failure
+          path: ${{ runner.temp }}/backend-notify-failure.json
+          if-no-files-found: ignore

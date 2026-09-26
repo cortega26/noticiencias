@@ -24,7 +24,7 @@
  */
 
 import { readdirSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEnvelope, sendWebhookNotification } from './backend-notify.js';
 import { getChangedPostRefineryIds } from './utils/publication-ids.js';
@@ -34,6 +34,11 @@ const REPO_ROOT = resolve(__dirname, '..');
 
 const deployUrl = process.argv[2] || process.env.DEPLOY_URL || '';
 const webhookUrl = process.env.BACKEND_WEBHOOK_URL;
+// CI uploads this artifact when a delivery is lost after the bounded
+// retries; the path lives in RUNNER_TEMP so it never dirties the checkout.
+const failureArtifactPath =
+  process.env.BACKEND_NOTIFY_ARTIFACT_PATH ||
+  join(process.env.RUNNER_TEMP || __dirname, 'backend-notify-failure.json');
 
 function countArticles() {
   const postsDir = resolve(REPO_ROOT, 'src', 'content', 'posts');
@@ -95,11 +100,13 @@ async function main() {
     webhookUrl,
     webhookToken: process.env.BACKEND_WEBHOOK_TOKEN,
     payload,
+    failureArtifactPath,
   });
 
   if (!result.ok) {
     console.warn(
-      '[post-publish-callback] Backend notification had issues but deploy was successful.'
+      `[post-publish-callback] Backend notification failed after ${result.attempts ?? 1} ` +
+        `attempt(s) but the deploy was successful. Diagnostic artifact: ${failureArtifactPath}`
     );
   }
 }
