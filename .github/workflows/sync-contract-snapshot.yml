@@ -57,6 +57,14 @@ jobs:
           EOF
           node scripts/backend-notify.js --status=fail --event=bot_landing_failed --payload-file=/tmp/bot-landing-failure.json || true
 
+      - name: Upload backend notification diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: backend-notify-failure
+          path: ${{ runner.temp }}/backend-notify-failure.json
+          if-no-files-found: ignore
+
       - name: Warn when bot PAT is not configured
         env:
           GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || '' }}

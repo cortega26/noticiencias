@@ -52,6 +52,16 @@ jobs:
           fi
           echo "All bot workflows fresh."
 
+      - name: Check backend readiness
+        run: |
+          set -euo pipefail
+          status="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 https://api.noticiencias.com/readyz || true)"
+          echo "api.noticiencias.com/readyz → $status"
+          if [ "$status" != "200" ]; then
+            echo "::error::Backend readiness check failed (HTTP $status)."
+            exit 1
+          fi
+
       - name: Notify on watchdog failure
         if: failure()
         env:
@@ -59,6 +69,14 @@ jobs:
           BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
         run: |
           cat > /tmp/bot-health-failure.json <<'EOF'
-          {"check": "bot-health-watchdog", "status": "fail", "errors": [{"message": "A scheduled bot workflow is stale or missing. The workflow may be disabled (e.g. secrets in a step if: condition) or failing repeatedly."}]}
+          {"check": "bot-health-watchdog", "status": "fail", "errors": [{"message": "Bot health check failed: a scheduled bot workflow is stale/missing or the backend readiness probe (api.noticiencias.com/readyz) is not 200. This scheduled workflow's failure email is the alert channel."}]}
           EOF
           node scripts/backend-notify.js --status=fail --event=bot_health_failed --payload-file=/tmp/bot-health-failure.json || true
+
+      - name: Upload backend notification diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: backend-notify-failure
+          path: ${{ runner.temp }}/backend-notify-failure.json
+          if-no-files-found: ignore
