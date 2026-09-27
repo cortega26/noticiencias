@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T20:40:37.403Z",
+  "generated_at": "2026-09-27T11:59:37.883Z",
   "content": {
     "total_articles": 42,
     "v2_articles": 30,
@@ -683,7 +683,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-25T20:40:36.722Z"
+    "generated_at": "2026-09-27T11:59:37.223Z"
   },
   "images": {
     "delivery_mode": "github",
@@ -713,12 +713,12 @@
       "detail": "ESLint + Prettier + checks OK."
     },
     "callbacks": {
-      "status": "unknown",
-      "evidence": "none",
-      "detail": "Sin entregas de webhook registradas.",
+      "status": "pass",
+      "evidence": "present",
+      "detail": "1 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 0,
+        "processed": 1,
         "failed": 0
       }
     },
