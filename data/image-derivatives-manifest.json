@@ -1217,6 +1217,27 @@
       }
     ]
   },
+  "~/assets/images/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.webp": {
+    "originalWidth": 529,
+    "originalHeight": 292,
+    "hash": "f8dc583f28f7c789",
+    "variants": [
+      {
+        "width": 400,
+        "height": 221,
+        "format": "avif",
+        "objectKey": "posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.400.avif"
+      },
+      {
+        "width": 529,
+        "height": 292,
+        "format": "avif",
+        "objectKey": "posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.529.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.529.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
