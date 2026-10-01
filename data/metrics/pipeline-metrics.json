@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-30T12:31:10.515Z",
+  "generated_at": "2026-10-01T13:08:36.950Z",
   "content": {
-    "total_articles": 42,
-    "v2_articles": 30,
-    "total_words": 27282,
-    "avg_words": 650,
+    "total_articles": 43,
+    "v2_articles": 31,
+    "total_words": 28462,
+    "avg_words": 662,
     "categories": [
       {
         "name": "Tecnología",
@@ -12,7 +12,7 @@
       },
       {
         "name": "Ciencia",
-        "count": 8
+        "count": 9
       },
       {
         "name": "Salud",
@@ -166,6 +166,18 @@
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo",
+        "title": "Si la gravedad actúa como proyector, el universo podría ser holograma",
+        "date": "2026-09-25",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — La idea holográfica es un pilar teórico consolidado en contextos específicos (AdS/CFT), pero su extensión a nuestro universo y las predicciones observables aún no están verificadas experimentalmente, manteniéndose en el ámbito de cálculos y suposiciones.",
+        "review_status": null
+      },
       {
         "slug": "2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos",
         "title": "¿El plomo en la tinta lee los rollos del Vesubio sin abrirlos?",
@@ -683,11 +695,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-09-30T12:31:09.766Z"
+    "generated_at": "2026-10-01T13:08:36.202Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 42,
+    "derivatives_available": 43,
     "missing_derivatives": 0
   },
   "health": {
@@ -697,16 +709,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "30 artículos v2 completos."
+      "detail": "31 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "42 artículo(s) con imagen y alt.",
+      "detail": "43 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "42 derivativos disponibles."
+      "detail": "43 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -715,10 +727,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "4 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "6 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 4,
+        "processed": 6,
         "failed": 0
       }
     },
