@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T13:16:15.308Z",
+  "generated_at": "2026-10-07T13:18:25.359Z",
   "content": {
     "total_articles": 43,
     "v2_articles": 31,
@@ -695,7 +695,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-06T13:16:14.684Z"
+    "generated_at": "2026-10-07T13:18:24.704Z"
   },
   "images": {
     "delivery_mode": "github",
@@ -727,10 +727,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "11 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "12 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 11,
+        "processed": 12,
         "failed": 0
       }
     },
