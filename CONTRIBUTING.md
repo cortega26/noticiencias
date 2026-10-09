@@ -35,15 +35,21 @@ npm run test:dist         # dist sanity checks (run after build)
    ```
    This approximates the CI PR checks in one local command (lint, content
    validation, build, dist sanity, unit tests, search budget, browser tests,
-   contract sync). CI additionally runs a dependency-graph check,
-   a Worker test suite, and uses coverage-threshold unit tests and
-   explicit-viewport Playwright projects not reproduced here — see
+   contract sync). CI additionally runs a default-depth dependency-graph
+   sanity check (`npm ls --omit=dev`, not a full recursive peer audit), a Worker
+   test suite, and coverage-threshold unit tests and explicit-viewport
+   Playwright projects not reproduced here — see
    `.github/workflows/content-guard.yml` for the authoritative CI step list.
-3. The aggregate command already includes build, dist and unit tests; do not
+3. For dependency changes, inspect `npm ls --omit=dev --all` separately
+   and triage nested peer errors before deciding whether a fix is needed.
+   Where registry access exists, run `npm audit --omit=dev` and assess actual
+   exposure. If the registry or a clean install is unavailable, mark that
+   check as unverified rather than passed.
+4. The aggregate command already includes build, dist and unit tests; do not
    repeat them unless a change or failure warrants another run.
-4. For visual or interaction changes, verify at 375 px and 1280 px — no console errors, no broken images, no broken
+5. For visual or interaction changes, verify at 375 px and 1280 px — no console errors, no broken images, no broken
    canonical metadata.
-5. No "we'll fix it later" workarounds. If the change needs a follow-up to be safe,
+6. No "we'll fix it later" workarounds. If the change needs a follow-up to be safe,
    the task is not complete.
 
 ## Fork and Dependabot behavior
