@@ -56,7 +56,7 @@ Nos guían los siguientes compromisos, cada uno verificable:
 - **Trazabilidad**: las fichas enlazan las fuentes registradas; la información sobre evidencia y sus límites depende de los datos disponibles para cada artículo. Ver [cómo trabajamos](/metodologia/).
 - **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
 - **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
-- **Calidad auditada**: una muestra de artículos se evalúa automáticamente con un modelo de lenguaje; los promedios agregados son públicos en [transparencia](/transparencia/).
+- **Evaluación automatizada**: una muestra de artículos se evalúa con un modelo de lenguaje; la página de [transparencia](/transparencia/) describe su alcance y sus límites.
 - **Privacidad**: nuestra [política de privacidad](/privacidad/) describe las herramientas de medición, los datos que registran y las opciones disponibles para los usuarios.
 
 ## Contacto

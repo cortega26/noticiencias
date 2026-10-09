@@ -33,13 +33,13 @@ La analítica está activa; la [Política de Privacidad](/privacidad/) describe 
 Una muestra de artículos recibe una evaluación automatizada y no bloqueante
 con un modelo de lenguaje sobre rigor epistémico, claridad, control de la
 especulación y engagement (cada criterio de 0 a 10). No es una revisión humana
-independiente ni demuestra que cada pieza haya sido verificada. Publicamos
-solo promedios agregados, nunca puntajes por artículo.
+independiente ni demuestra que cada pieza haya sido verificada. El sitio no
+muestra puntajes por artículo.
 
 El auditor se activa por categorías y términos definidos o por una tasa de
 muestreo configurada. El backend conserva promedios acumulados, no una ventana
-móvil de las últimas cinco auditorías. No mostramos una cifra mientras no haya
-un corte publicado que permita reproducir su cohorte y cálculo. Metodología y
+móvil de las últimas cinco auditorías. No publicamos actualmente una cifra:
+falta un corte que permita reproducir su cohorte y cálculo. Metodología y
 umbrales editoriales viven en el repositorio abierto.
 
 ## Contacto
