@@ -63,6 +63,8 @@ Para quien utiliza IA para escribir, la lección práctica no es que deba evitar
 
 La pregunta científica permanece abierta: **¿qué partes del entrenamiento y del diseño de estos modelos explican que un conjunto relativamente pequeño de elementos narrativos aparezca tan a menudo?** Sabemos que el patrón existe en la muestra estudiada; todavía no sabemos por qué aparece con tanta fuerza.
 
+**Nota de corrección (9 de octubre de 2026).** La versión anterior afirmaba que más del 88 % de los relatos compartía las mismas once palabras; el estudio solo midió la presencia de *al menos una* de ellas. También presentaba como comprobadas varias hipótesis sobre entrenamiento, alineamiento y propagación entre modelos. Esas afirmaciones se corrigieron y se añadió como referencia principal el estudio original.
+
 **Fuentes:** [Hamilton y Mimno, *Elias in the Lighthouse, Again? Diagnosing Low Diversity in LLM Stories*, arXiv (2026)](https://arxiv.org/abs/2605.26492). El fenómeno también fue [investigado periodísticamente por 404 Media](https://www.404media.co/elias-thorne-chatbots-llms-chatgpt-lighthouse-keeper-story/).
 
 <!-- source_identity: source_id=media_404; source_name=404 Media -->
