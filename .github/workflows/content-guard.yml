@@ -42,9 +42,9 @@ jobs:
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
-      - name: 📦 Dependency Graph (peer validity)
-        # Plan 032: fail the build if any production dependency declares an
-        # invalid peer range. `npm ls --omit=dev` exits non-zero on invalid peers.
+      - name: 📦 Dependency Graph (default-depth sanity)
+        # Default npm ls depth is 0; this is not an exhaustive recursive
+        # peer-dependency audit. Investigate separately with --omit=dev --all.
         run: npm ls --omit=dev
 
       - name: 🔍 Frontmatter & Type Validation
