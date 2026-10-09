@@ -109,7 +109,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
 
   const draft = false; // Schema does not have draft
   const rawCategory = undefined; // Schema does not have category
-  const rawUpdateDate = undefined; // Schema does not have updateDate
+  const rawUpdateDate = corrected_at; // The schema's explicit revision date is corrected_at
 
   // FAIL-CLOSED: Critical Data Integrity Check
   if (!title) {

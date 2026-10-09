@@ -22,16 +22,16 @@ Nuestro propósito es cerrar la brecha entre los hallazgos científicos y tecnol
 
 ## Cómo trabajamos
 
-Cada pieza incluye fuentes enlazadas, método de traducción y nivel de confianza. Consulta nuestra [metodología editorial](/metodologia/) para detalles operativos completos.
+Cada pieza enlaza la fuente registrada. Según la información disponible para ese artículo, su ficha también puede incluir el método de traducción, el estado de la evidencia, verificaciones y límites. Consulta nuestra [metodología editorial](/metodologia/) para conocer el proceso.
 
-Nuestro proceso combina **selección automatizada** —a partir de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints— con **revisión humana** antes de publicar. Rastreamos cada nota hasta el estudio original para enlazarlo y declarar sus límites. Así mantenemos ritmo y profundidad sin sacrificar precisión.
+Nuestro proceso combina **selección automatizada** —a partir de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints— con una decisión humana de publicación. Para las propuestas editoriales de artículos, una persona decide si integrarlas al sitio; el historial registra esas integraciones y sus cambios. Rastreamos los hallazgos hasta las fuentes disponibles y explicamos sus límites cuando la información lo permite.
 
-Cada artículo muestra:
+Las fichas pueden incluir:
 
-- **Nivel de confianza**: una valoración del estado de la evidencia, en lenguaje llano, de sólida a en debate.
+- **Estado de la evidencia**: una valoración en lenguaje llano, cuando está disponible para esa pieza.
 - **Verificaciones**: qué afirmaciones han sido contrastadas y con qué resultado.
-- **Notas de incertidumbre**: cuando la evidencia es preliminar o contradictoria, lo decimos.
-- **Método de traducción**: si el contenido se tradujo, cómo se hizo y con qué herramientas.
+- **Notas de incertidumbre**: pueden señalar límites de la evidencia cuando esa información está disponible para la pieza.
+- **Método de traducción**: cómo se preparó el texto, cuando ese dato está disponible.
 
 ## Independencia editorial
 
@@ -41,23 +41,23 @@ Si alguna vez establecemos acuerdos de financiación, los haremos públicos en n
 
 ## Equipo
 
-Noticiencias es un medio unipersonal con automatización propia, dirigido y revisado por [Carlos Ortega](https://tooltician.com) ([código y proceso abiertos en GitHub](https://github.com/cortega26/noticiencias)). El modelo de trabajo es híbrido:
+Noticiencias es un medio unipersonal con automatización propia, dirigido por [Carlos Ortega](https://tooltician.com) ([código y proceso abiertos en GitHub](https://github.com/cortega26/noticiencias)). El modelo de trabajo es híbrido:
 
 - **Automatización editorial**: sistemas propios monitorizan fuentes científicas y técnicas, extraen hallazgos relevantes y generan borradores estructurados con referencias rastreables.
-- **Supervisión humana firmada**: cada borrador pasa por revisión editorial de Carlos Ortega antes de publicarse. Se verifican fuentes, se ajusta el tono, se añade contexto y se calibra el nivel de confianza. Nada se publica sin ese visto bueno.
+- **Decisión humana de publicación**: los sistemas preparan borradores y propuestas editoriales; una persona decide cuáles integrar a la rama principal. El historial registra esas integraciones y sus cambios.
 - **Dirección editorial**: Carlos Ortega es responsable de la línea temática, los estándares de calidad y la mejora continua del proceso. Puedes revisar el [marco de gobernanza editorial](https://github.com/cortega26/noticiencias) en GitHub.
 
-Este modelo permite cubrir más ciencia relevante sin los sesgos y limitaciones de tiempo de las redacciones tradicionales, manteniendo la trazabilidad y la responsabilidad editorial — con una persona concreta respondiendo por cada decisión.
+Este modelo permite cubrir más ciencia relevante sin los sesgos y limitaciones de tiempo de las redacciones tradicionales, manteniendo la trazabilidad y la responsabilidad editorial — con una persona concreta respondiendo por cada decisión editorial.
 
 ## Credenciales y estándares
 
 Nos guían los siguientes compromisos, cada uno verificable:
 
-- **Trazabilidad total**: cada dato importante está enlazado a su fuente original. Ver [cómo trabajamos](/metodologia/).
+- **Trazabilidad**: las fichas enlazan las fuentes registradas; la información sobre evidencia y sus límites depende de los datos disponibles para cada artículo. Ver [cómo trabajamos](/metodologia/).
 - **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
 - **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
-- **Calidad auditada**: una muestra de artículos pasa por un auditor editorial independiente; los promedios son públicos en [transparencia](/transparencia/).
-- **Privacidad real**: nuestra [política de privacidad](/privacidad/) es concreta, no un laberinto legal. Medimos lectura de forma agregada, sin rastreo publicitario, sin venta de datos y sin cookies de terceros.
+- **Calidad auditada**: una muestra de artículos se evalúa automáticamente con un modelo de lenguaje; los promedios agregados son públicos en [transparencia](/transparencia/).
+- **Privacidad**: nuestra [política de privacidad](/privacidad/) describe las herramientas de medición, los datos que registran y las opciones disponibles para los usuarios.
 
 ## Contacto
 

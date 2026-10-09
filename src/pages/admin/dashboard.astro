@@ -152,7 +152,6 @@ const recentArticles: Array<{
   date: string;
   categories: string[];
   schema_version: number;
-  editorial_score: number | null;
 }> = content?.articles_by_date?.slice(0, 10) ?? [];
 
 // Pass metadata the way BaseLayout expects it
@@ -234,9 +233,6 @@ const metadata = {
                       <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
                         v{article.schema_version}
                       </span>
-                    )}
-                    {article.editorial_score != null && (
-                      <span class="text-xs text-text-muted">Score: {article.editorial_score}</span>
                     )}
                   </div>
                 </li>

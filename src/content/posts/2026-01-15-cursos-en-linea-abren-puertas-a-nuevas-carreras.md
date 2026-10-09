@@ -1,7 +1,7 @@
 ---
-title: 'El curso del MIT que llevó a un ingeniero a una nueva carrera'
+title: 'Del MicroMasters del MIT a una maestría: el recorrido de Kevin Power'
 schema_version: 1
-excerpt: 'Un curso MicroMasters del MIT impulsó la transformación profesional de un ingeniero hacia la gestión de cadenas de suministro.'
+excerpt: 'Kevin Power completó el MicroMasters de cinco cursos en cadenas de suministro y después cursó un programa combinado del MIT; el perfil cuenta un caso individual, no resultados generales.'
 author: Noticiencias
 date: 2026-01-15
 categories:
@@ -17,22 +17,28 @@ image_alt: 'Cursos en línea abren puertas a nuevas carreras'
 source_url: 'https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115'
 refinery_id: '135'
 headlines_variants:
-  question: '¿Cómo un curso en línea puede cambiar tu vida?'
-  benefit: 'Transformación profesional a través de la experiencia práctica adquirida'
+  question: '¿Qué estudió Kevin Power antes de entrar al programa combinado del MIT?'
+  benefit: 'El recorrido de un ingeniero desde un MicroMasters hasta una maestría'
 investigation: false
 featured: false
+sources:
+  - title: 'How an online MIT course in supply chain management sparked a new career'
+    url: 'https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115'
+    publisher: 'MIT News'
+    date: '2026-01-15'
+    role: primary
+corrected_at: '2026-10-09'
+correction_summary: 'Se precisó la secuencia entre el MicroMasters y el programa combinado, y se añadió el dato de empleo de la cohorte presencial 2025 de SCM, sin atribuirlo al curso en línea ni generalizarlo a otros estudiantes.'
 ---
 
-## Cómo un curso en línea de la MIT sobre gestión de cadenas de suministro dio origen a una nueva carrera
+## De Supply Chain Analytics a un programa combinado
 
-El aprendizaje de los cursos MicroMasters de la Massachusetts Institute of Technology (MIT) llevó a Kevin Power, ingeniero, a tomar el paso definitivo hacia la universidad, y allí encontró un programa que cambiaría su vida. El módulo sobre gestión de cadenas de suministro del programa se convirtió en la base para una transformación profesional.
+Kevin Power se graduó en ingeniería de fabricación mientras trabajaba a tiempo completo en una refinería de petróleo. Después de graduarse, buscó formación adicional y comenzó Supply Chain Analytics (SC0x), un curso en línea del MicroMasters en gestión de cadenas de suministro de MITx.
 
-La experiencia de Kevin Power comenzó con los cursos MicroMasters de la MIT. Su deseo de mejorar sus habilidades en gestión de cadenas de suministro lo llevó a tomar estos cursos, diseñados por expertos de renombre mundial. A medida que avanzaba en su aprendizaje, se dio cuenta de que necesitaba una experiencia más profunda y práctica para aplicar los conocimientos adquiridos.
+El perfil de MIT News cuenta que Power encontró útiles los contenidos para su trabajo y decidió completar la ruta completa: cinco cursos y la credencial MicroMasters. Luego ingresó al MIT SCM Blended Master’s Program, que combina esa credencial en línea con un semestre presencial y conduce al grado de Master of Applied Science en gestión de cadenas de suministro.
 
-Después de completar el módulo MicroMasters sobre gestión de cadenas de suministro, Kevin decidió tomar el paso y asistir a la universidad. Fue aceptado en el programa de gestión de cadenas de suministro de la MIT, donde podría aplicar los conocimientos teóricos aprendidos anteriormente.
+La secuencia importa: la historia no describe un solo módulo que otorgue una maestría. El curso inicial fue el punto de entrada a una credencial de cinco cursos; el grado llegó tras el programa combinado y su semestre en el campus.
 
-Durante su tiempo en la universidad, Kevin participó activamente en proyectos de investigación práctica y trabajó estrechamente con expertos en la materia. La experiencia práctica adquirida en el programa se unió a sus conocimientos teóricos, creando una sólida base para una carrera exitosa.
+MIT News presenta el recorrido de una persona y publica el perfil desde el centro universitario que ofrece el programa. También informa que todos los estudiantes de la cohorte 2025 del programa residencial SCM consiguieron empleo dentro de los seis meses posteriores a graduarse. Ese dato corresponde a esa cohorte: no mide por separado el efecto del curso en línea o del MicroMasters ni permite generalizar el resultado a otros estudiantes.
 
-Hoy en día, Kevin cursa una maestría en el programa de Tecnología y Políticas Públicas (Technology and Policy Program) del MIT. Su experiencia inicial con los cursos MicroMasters se convirtió en la puerta giratoria hacia esta nueva etapa de su formación. El módulo sobre gestión de cadenas de suministro fue el catalizador que inició su transformación profesional, y ahora es un ejemplo inspirador para aquellos que buscan cambiar sus carreras.
-
-La historia de Kevin Power ilustra cómo los cursos en línea pueden ser la puerta de entrada a nuevas oportunidades. Aunque inicialmente parecía una oportunidad secundaria, el módulo MicroMasters sobre gestión de cadenas de suministro se convirtió en un paso decisivo hacia su transformación profesional.
+El perfil también señala que Power es actualmente estudiante de maestría en el programa de Tecnología y Políticas Públicas del MIT. Esa etapa posterior pertenece a su trayectoria individual y no es una consecuencia automática del curso inicial.
