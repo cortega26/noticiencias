@@ -34,8 +34,6 @@ const FUNNEL_EVENTS = [
   'newsletter_impression',
   'newsletter_start',
   'newsletter_submit',
-  'newsletter_success',
-  'newsletter_error',
   'series_click',
   'topic_click',
   'topic_follow_click',

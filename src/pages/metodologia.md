@@ -48,6 +48,6 @@ La ciencia avanza corrigiéndose a sí misma, y nuestro periodismo también.
 
 ### Ciencia sin hype
 
-No vivimos de clics ni de anuncios molestos: Noticiencias se sostiene con el interés y el apoyo de su comunidad. Si te sirve lo que hacemos, suscríbete al boletín semanal.
+No vivimos de clics ni de anuncios molestos: Noticiencias se sostiene con el interés y el apoyo de su comunidad. Si te sirve lo que hacemos, suscríbete al boletín.
 
 [Suscribirse al boletín](/newsletter)

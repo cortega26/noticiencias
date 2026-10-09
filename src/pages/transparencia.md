@@ -22,7 +22,7 @@ Declaramos cualquier conflicto de interés relevante en la fuente original o en 
 
 No almacenamos datos personales de visitantes en prompts. Para medir el uso del sitio usamos Google Analytics 4, con cookies de medición solo si las aceptas, y Cloudflare Web Analytics, sin cookies. Detalle, eventos que registramos y cómo cambiar tu elección en la [Política de Privacidad](/privacidad/).
 
-El boletín es la excepción declarada: almacena tu correo electrónico solo para enviarte la edición semanal; no usamos píxeles de apertura ni seguimiento de clics. Ver [Política de Privacidad](/privacidad/) para el detalle del proveedor y tus derechos sobre esos datos.
+El formulario del boletín envía tu correo a Buttondown para gestionar la suscripción y la confirmación. Buttondown puede tratar datos de uso del correo según su política y la configuración de la cuenta; no afirmamos que el seguimiento de aperturas o clics esté desactivado porque esa configuración no está verificada. Consulta la [Política de Privacidad de Noticiencias](/privacidad/) y la [Política de Privacidad de Buttondown](https://www.buttondown.com/legal/privacy).
 
 ## Métricas y financiamiento
 

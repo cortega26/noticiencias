@@ -24,7 +24,8 @@
   //   [data-aw-social-share]          <button>-> share_click
   //   [data-newsletter-form]          <form>  -> newsletter_impression/start
   //   [data-analytics-newsletter]     <form>  -> newsletter_submit
-  //   (newsletter_success/error come from the capture script, which owns the request)
+  //   `newsletter_submit` is intent only; Buttondown owns confirmation and
+  //   this site cannot observe provider acceptance or the double opt-in click.
   // The `search` event is sent by SearchInterface, which owns the query.
 
   const articlePath = () => window.location.pathname;
