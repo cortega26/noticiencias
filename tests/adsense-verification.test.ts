@@ -11,9 +11,8 @@ const adsTxt = readFileSync(fileURLToPath(new URL('../public/ads.txt', import.me
 describe('AdSense site ownership and seller authorization', () => {
   it('renders exactly one ownership meta tag in the shared document head', () => {
     expect(meta.match(/name="google-adsense-account"/g)).toHaveLength(1);
-    expect(meta).toContain(
-      '<meta name="google-adsense-account" content="ca-pub-2907085573636183" />'
-    );
+    const publisherId = adsTxt.split(', ')[1];
+    expect(meta).toContain(`<meta name="google-adsense-account" content="ca-${publisherId}" />`);
   });
 
   it('publishes the exact AdSense seller record at the site root', () => {
