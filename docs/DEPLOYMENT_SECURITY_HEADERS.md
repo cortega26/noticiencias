@@ -22,7 +22,7 @@ source of truth and fails if this document or `public/_headers` drifts from it,
 so edit the component first and mirror the change here.
 
 ```text
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://cloudflareinsights.com https://buttondown.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.cdn.noticiencias.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://buttondown.com;
 X-Frame-Options: SAMEORIGIN
 X-Content-Type-Options: nosniff
 Referrer-Policy: strict-origin-when-cross-origin
@@ -38,6 +38,10 @@ If Cloudflare is the active edge for `noticiencias.com`, add a Response Header T
 2. Set each header above as a response header override.
 3. Remove the legacy `interest-cohort=()` directive if Cloudflare rejects it.
 4. Keep the Astro `<meta http-equiv="Content-Security-Policy">` temporarily until the response header is confirmed live, then decide whether to retain it as defense in depth.
+
+## Current verification — 2026-10-09
+
+`https://noticiencias.com/newsletter/` returned HTTP 200 with a response-header CSP that matches the policy above, including `form-action 'self' https://buttondown.com` and no Buttondown origin in `connect-src`. `https://www.noticiencias.com/newsletter/` returned HTTP 301 to the canonical apex host. This verifies the effective browser policy; it does not verify Buttondown account acceptance or double-opt-in delivery.
 
 ## Verification
 

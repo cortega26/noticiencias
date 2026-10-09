@@ -8,9 +8,9 @@ const posts = await fetchPosts();
 const representativePosts = posts.slice(0, 3);
 
 const metadata = {
-  title: 'Boletín Semanal de Ciencia y Tecnología',
+  title: 'Boletín de Ciencia y Tecnología',
   description:
-    'El boletín semanal de Noticiencias: cada viernes, una selección de historias con hallazgos, límites, fuentes y temas para volver. Doble confirmación y baja en un clic.',
+    'Una selección de historias con hallazgos, límites, fuentes y temas para volver. La suscripción requiere confirmar el correo y no tiene una frecuencia garantizada.',
 };
 
 const includes = [
@@ -39,19 +39,15 @@ const faqs = [
   },
   {
     q: '¿Cada cuánto llega?',
-    a: 'Una edición por semana. No hay alertas ni envíos extra.',
-  },
-  {
-    q: '¿Cuándo?',
-    a: 'Los viernes.',
+    a: 'No hay un calendario de envío garantizado. Publicaremos una edición cuando la selección editorial esté lista; no enviamos alertas automáticas.',
   },
   {
     q: '¿En qué se diferencia del sitio?',
-    a: 'Reúne la semana en un solo correo para leer sin abrir el sitio; el archivo completo sigue disponible aquí.',
+    a: 'Reúne una selección editorial en un solo correo para leer sin abrir el sitio; el archivo completo sigue disponible aquí.',
   },
   {
     q: '¿Qué pasa con mis datos?',
-    a: 'Solo usamos tu correo para enviarte la edición. Sin píxeles de apertura ni seguimiento de clics; la baja toma un clic desde cada correo.',
+    a: 'El formulario envía tu correo a Buttondown, que gestiona la suscripción y su confirmación. El sitio no recibe la confirmación. Consulta las políticas de privacidad de Noticiencias y Buttondown para conocer cómo se tratan estos datos.',
   },
 ];
 ---
@@ -63,8 +59,9 @@ const faqs = [
         Boletín
       </h1>
       <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
-        Cada viernes, una edición con lo que valió la pena leer dos veces: hallazgos, límites,
-        fuentes y temas abiertos. Llega por correo y reúne la semana en un solo lugar.
+        Una selección de hallazgos, límites, fuentes y temas abiertos para leer con calma. Recibirás
+        un correo de confirmación de Buttondown; enviaremos una edición cuando esté lista, sin
+        frecuencia garantizada.
       </p>
     </header>
 
