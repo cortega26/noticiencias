@@ -33,8 +33,6 @@ corrected_at: '2026-10-09'
 correction_summary: 'Se precisó que Artemis II realizó un sobrevuelo, no una órbita lunar; se corrigió la nota sobre la cita de Isaacman y se añadió una actualización fechada. El relato principal conserva el contexto del 18 de enero de 2026.'
 ---
 
-**NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años**
-
 ## Actualización — 9 de octubre de 2026
 
 Artemis II despegó el 1 de abril de 2026 y amerizó el 10 de abril, tras volar alrededor de la Luna. La noticia que sigue se publicó el 18 de enero de 2026 y conserva la información disponible entonces. [NASA registra los hitos de la misión](https://www.nasa.gov/mission/artemis-ii/).
