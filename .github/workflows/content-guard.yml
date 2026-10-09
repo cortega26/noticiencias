@@ -39,6 +39,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: TEMP editorial Prettier diagnostic - print diff and restore
+        if: github.event_name == 'pull_request'
+        run: |
+          npx prettier --write src/content/posts/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md
+          git diff -- src/content/posts/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md
+          git restore -- src/content/posts/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md
+
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
