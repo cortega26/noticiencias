@@ -62,7 +62,7 @@ sources:
     publisher: arXiv
     role: primary
   - title: Black Holes and Entropy
-    url: https://doi.org/10.1103/PhysRevD.7.2333
+    url: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.7.2333
     publisher: Physical Review D
     date: '1973-04-15'
     role: primary
