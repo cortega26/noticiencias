@@ -1,5 +1,5 @@
 ---
-title: 'Elias Thorne: el farero ficticio que las IA repiten como si existiera'
+title: 'Elias y los faros: por qué cuatro modelos de IA repiten historias parecidas'
 schema_version: 1
 date: 2026-06-12
 author: Noticiencias AI
@@ -11,44 +11,60 @@ tags:
   - gpt 35
   - generación de ficción
   - modelos de lenguaje
-excerpt: Elias Thorne no existía hasta que los modelos de IA lo repitieron miles de veces a partir de 166 menciones casuales en datos de entrenamiento. Ahora es un arquetipo ficticio global.
+excerpt: 'Un estudio de 20.000 relatos encontró que el 88,3 % incluía al menos uno de once términos recurrentes. Los investigadores no demostraron qué causa esa repetición.'
 image: ~/assets/images/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.jpg
 image_alt: Un hombre de espaldas observa el mar, con bañistas y pequeñas embarcaciones al fondo
-source_url: https://404media.co/elias-thorne-chatbots-llms-chatgpt-lighthouse-keeper-story/
+source_url: https://arxiv.org/abs/2605.26492
 series: 'IA en la práctica'
 refinery_id: Chatbots Keep Telling Stories About Lighthouse Keeper 'Elias Thorne'. We Might Know Why
 headlines_variants:
-  question: ¿Cómo un nombre casual en una chat de 2022 se convirtió en el personaje más repetido de la ficción generada por IA?
-  benefit: Lo que la aparición de Elias Thorne revela sobre cómo tus pedidos a la IA generan ficciones compartidas sin quererlo
-requires_uncertainty_note: false
+  question: ¿Por qué cuatro modelos de IA vuelven una y otra vez a los mismos nombres y escenarios cuando escriben cuentos?
+  benefit: Lo que revelan 20.000 relatos sobre la falta de diversidad narrativa de los modelos de lenguaje
+requires_uncertainty_note: true
+uncertainty_note: 'El estudio documenta la repetición de ciertos términos, pero no establece una causa definitiva: la influencia de los datos de entrenamiento posterior y de las técnicas de alineamiento sigue siendo una hipótesis.'
 ---
 
-Los chatbots no inventaron a Elias Thorne. Lo rescataron.
+Un farero, un relojero, un personaje llamado Elias. Si se pide a algunos modelos de inteligencia artificial que escriban un cuento sin más instrucciones, esos nombres y escenarios aparecen con una frecuencia sorprendente. El fenómeno existe, pero no significa que todos los modelos cuenten exactamente la misma historia ni que se haya demostrado de dónde procede la repetición.
 
-Pregúntale a cualquier modelo de lenguaje grande —ChatGPT, Gemini, Claude— que te cuente una historia. Probablemente, sin que lo hayas pedido, aparecerá un farero llamado Elias Thorne. No es un error. No es una coincidencia. Es un eco que se ha multiplicado hasta convertirse en una epidemia de ficción.
+En mayo de 2026, Sil Hamilton y David Mimno, de la Universidad de Cornell, publicaron un [estudio sobre diversidad narrativa en modelos de lenguaje](https://arxiv.org/abs/2605.26492). Su pregunta fue concreta: ¿hasta qué punto se parecen las historias que producen distintos sistemas cuando reciben consignas sencillas?
 
-A principios de 2026, el ingeniero Daniel May notó algo extraño: en Google Trends, la búsqueda de “Elias Thorne” pasó de cero a picos inesperados. Al mismo tiempo, subían las consultas por “farero”. No era una moda pasajera. Era una invasión silenciosa. Elias aparecía en libros de Amazon, en videos de YouTube, en sitios de noticias falsas, como si hubiera sido una figura histórica real. Pero no lo era. Al menos, no hasta que los modelos lo hicieron real.
+## Qué midieron los investigadores
 
-Los investigadores Sil Hamilton y David Mimno, de la Universidad de Cornell, analizaron 20.000 historias generadas por cuatro modelos populares. Lo que encontraron fue inquietante: más del 88 % de las historias compartían exactamente las mismas 11 palabras clave. Nombres como Elias, Mara y Elara. Ocupaciones: farero, relojero, bibliotecario. No había variación. No importaba si pedías una historia de amor, de misterio o de ciencia ficción. El resultado era siempre el mismo: Elias, en un faro, con un reloj antiguo, rodeado de silencio y soledad.
+El equipo generó **20.000 relatos** con cuatro modelos de diferentes proveedores. Utilizó cinco variantes, en inglés, de una petición tan abierta como «cuéntame una historia». Cada modelo recibió 1.000 solicitudes por variante.
 
-¿Por qué?
+Después examinó los nombres, profesiones y lugares que aparecían en las respuestas. Encontró un grupo de **once términos recurrentes**, entre ellos «Elias», «Mara», «Elara», «faro», «relojero» y «bibliotecario».
 
-La respuesta no está en el contenido, sino en el proceso. Los modelos de inteligencia artificial no aprenden directamente del mundo. Aprenden de otros modelos. Y muchos de ellos, directa o indirectamente, se entrenaron con un conjunto de datos llamado _WildChat_, que contiene un millón de conversaciones reales con el primer ChatGPT, GPT-3.5. Dentro de esas conversaciones, había 166 historias que mencionaban a Elias —no como personaje de ficción, sino como nombre que alguien había usado en una charla casual. Y en esas historias, Elias era siempre un farero. O un relojero. Siempre trágico. Siempre solitario.
+El dato central requiere precisión: **el 88,3 % de las historias contenía al menos uno de esos once términos**. No quiere decir que ese porcentaje incluyera las once palabras a la vez, ni que todos los relatos tuvieran la misma trama.
 
-Los desarrolladores, al alinear los modelos para que fueran “seguros”, eliminaron historias violentas, sexuales o polémicas. Pero dejaron intactas las que eran suaves, melancólicas, sin consecuencias. Las historias de Elias eran perfectas: no ofendían. No desafiaban. No eran peligrosas. Así que se convirtieron en el refugio de los modelos: el lugar donde la IA se sentía segura para contar algo.
+Algunas coincidencias resultaron especialmente visibles. La palabra inglesa _lighthouse_ («faro») apareció en el 51,2 % de los textos, y «Elias» en el 26,5 %. Los investigadores también hallaron diferencias entre modelos y combinaciones de personajes, profesiones y ambientes.
 
-Y como esos modelos se usaron para crear más modelos, y esos modelos para crear más conjuntos de datos, la historia de Elias se replicó, como un virus de ficción. Nadie lo diseñó. Nadie lo planeó. Simplemente, se volvió el camino más fácil.
+## ¿Por qué vuelven los modelos al faro?
 
-Hoy, Elias Thorne no vive solo en los chats. Está en Amazon, como autor de libros sobre medicina alternativa para el cáncer, sobre algoritmos de YouTube, sobre mitología griega. En cada uno, su foto de autor es generada por IA. Su biografía, también. Su voz, también. Ningún humano lo escribió. Pero todos los libros parecen reales. Porque la IA ha aprendido a fingir la autenticidad mejor que cualquier escritor.
+Una explicación posible es que los sistemas hayan aprendido patrones narrativos similares durante el entrenamiento, especialmente en las etapas posteriores de ajuste y alineamiento. Sin embargo, **el trabajo no demuestra que esa sea la causa**.
 
-Y no es solo en libros. En YouTube, un canal llamado _Moments That Moved the World_ muestra a “Sargento Mayor Elias Thorne, de 83 años”, llorando frente a un faro abandonado. En otro sitio, “Elias Thorne, el hombre más rico de Ohio”, muere con doce dólares en el bolsillo. En todos, es una figura derrotada. Un hombre viejo, olvidado, injustamente tratado. No es un personaje. Es un arquetipo vacío que la IA llenó con lo que creía seguro.
+Para investigarla, los autores analizaron conjuntos de datos públicos relacionados con OLMo 3. Encontraron que, de **78.958 historias** presentes en sus datos de entrenamiento posterior, solo unas **3.053 (el 3,8 %)** contenían uno o más de esos términos. Es decir, la recurrencia de esos elementos en los relatos generados era mucho mayor que su presencia en los ejemplos de entrenamiento que pudieron estudiar.
 
-Pero aquí está lo más curioso: Elias Thorne no es completamente ficticio. En el siglo XVI, hubo un relojero londinense llamado Elias Allen. Y en los años 80, una colección de cartas de _Dinosaurs Attack!_ incluía a un científico loco llamado Elias Thorne. La IA no lo inventó. Lo encontró. Lo recogió. Lo repitió. Y lo amplificó hasta que ya no se sabe qué era original.
+También examinaron datos derivados de _WildChat_, un conjunto de conversaciones con asistentes, pero eso **no permite afirmar que ChatGPT, Claude o Gemini hayan adquirido el patrón a partir de ese mismo corpus**. Los registros completos de entrenamiento de esos modelos no formaban parte de la comparación pública.
 
-La pregunta que queda no es quién es Elias Thorne.  
-La pregunta es: ¿cuántas otras ficciones, tan tranquilas, tan inocentes, tan seguras, están surgiendo ahora mismo, en silencio, en los rincones de los modelos que creemos que solo responden preguntas?
+Los autores plantean otra posibilidad: los ajustes que buscan evitar contenido problemático o referencias a personajes protegidos por derechos de autor podrían favorecer relatos considerados más seguros y convencionales. La presentan como **una hipótesis para futuras investigaciones**, no como un mecanismo confirmado.
 
-Porque lo que la IA no dice, pero lo que todas las historias de Elias revelan, es esto:  
-**No necesitas mentir para engañar. A veces, basta con contar una historia que nadie cuestiona.**
+## Qué demuestra y qué no
+
+El estudio aporta evidencia de una **diversidad limitada en las historias creadas a partir de instrucciones muy abiertas**. Esa uniformidad importa: si varias herramientas sugieren una y otra vez los mismos personajes, escenarios y giros, el usuario podría recibir menos variedad de la que aparenta ofrecer la generación automática.
+
+Pero hay límites claros:
+
+- Las cinco instrucciones del experimento estaban en **inglés**. Los resultados no se pueden extrapolar sin más a solicitudes en español.
+- Se estudiaron **cuatro modelos** en un momento determinado, no todos los sistemas de IA ni todas sus versiones.
+- El diseño permite medir frecuencia y comparar distribuciones, **no reconstruir con certeza las decisiones de entrenamiento** de los modelos comerciales.
+- No significa que esos relatos sean falsos, plagiados o inútiles. El problema observado es su semejanza estadística.
+
+Para quien utiliza IA para escribir, la lección práctica no es que deba evitar un faro o el nombre Elias. Es más útil preguntarse si una consigna demasiado genérica está llevando al sistema hacia soluciones previsibles. Dar contexto, personajes y restricciones propias puede ser una estrategia creativa razonable, aunque este estudio no evaluó directamente si esas técnicas resuelven el fenómeno.
+
+La pregunta científica permanece abierta: **¿qué partes del entrenamiento y del diseño de estos modelos explican que un conjunto relativamente pequeño de elementos narrativos aparezca tan a menudo?** Sabemos que el patrón existe en la muestra estudiada; todavía no sabemos por qué aparece con tanta fuerza.
+
+**Nota de corrección (9 de octubre de 2026).** La versión anterior afirmaba que más del 88 % de los relatos compartía las mismas once palabras; el estudio solo midió la presencia de _al menos una_ de ellas. También presentaba como comprobadas varias hipótesis sobre entrenamiento, alineamiento y propagación entre modelos. Esas afirmaciones se corrigieron y se añadió como referencia principal el estudio original.
+
+**Fuentes:** [Hamilton y Mimno, _Elias in the Lighthouse, Again? Diagnosing Low Diversity in LLM Stories_, arXiv (2026)](https://arxiv.org/abs/2605.26492). El fenómeno también fue [investigado periodísticamente por 404 Media](https://www.404media.co/elias-thorne-chatbots-llms-chatgpt-lighthouse-keeper-story/).
 
 <!-- source_identity: source_id=media_404; source_name=404 Media -->
