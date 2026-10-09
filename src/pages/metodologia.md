@@ -25,15 +25,15 @@ Tres ideas guían todo lo que hacemos.
 
 ## Cómo llega un artículo hasta aquí
 
-1. **Selección.** Un sistema propio revisa de forma continua alrededor de sesenta fuentes: revistas y medios de divulgación con buena reputación, salas de prensa universitarias, blogs de laboratorios de investigación y servidores de preprints como arXiv y bioRxiv. Ordena los hallazgos por relevancia y descarta el ruido y las publicaciones dudosas.
+1. **Selección.** Un sistema propio recopila fuentes en ejecuciones programadas los lunes, miércoles y viernes a las 06:00 UTC, además de permitir ejecuciones manuales. Revisa alrededor de sesenta fuentes: revistas y medios de divulgación con buena reputación, salas de prensa universitarias, blogs de laboratorios de investigación y servidores de preprints como arXiv y bioRxiv. Ordena los hallazgos por relevancia y descarta el ruido y las publicaciones dudosas.
 
 2. **Lectura y traducción.** Recogemos el contenido a través de los canales RSS oficiales y respetando las condiciones de cada sitio. Guardamos los datos del estudio —autores, institución, DOI— y unos modelos de lenguaje preparan una primera versión en español, con sus apartados: «Lo esencial», «Qué cambia» y un glosario de términos difíciles.
 
-3. **Controles automáticos.** Cada borrador pasa por comprobaciones con un listón fijo: un crítico editorial que lo puntúa y lo rechaza si no llega al umbral, una medida de legibilidad que detecta los textos demasiado densos y un control de políticas de contenido que frena las promesas sin respaldo y los adjetivos sensacionalistas.
+3. **Controles automáticos.** Cada borrador pasa por comprobaciones con criterios definidos. El crítico editorial puntúa y puede enviar problemas recuperables a reparación; si falla técnicamente o no resuelve una observación, esa etapa no bloquea por sí sola la publicación. El verificador compara afirmaciones con la fuente y puede detener una publicación si las marca como discutidas; si no logra verificarlas, las deja como inciertas. Los controles de titulares pueden pedir cambios y la medida de legibilidad registra una señal para el equipo editorial.
 
-4. **Revisión y publicación.** Una persona decide qué historia entra, revisa el resultado y sus fuentes, y aprueba el cambio. Nada se publica sin ese visto bueno; lo que no convence se corrige o se deja fuera. Al aprobarse, todavía corren comprobaciones de la propia web antes de que el artículo quede en línea.
+4. **Revisión y publicación.** Las propuestas editoriales del recolector llegan como cambios al repositorio web. Una persona decide si se integran a la rama principal; luego el sitio ejecuta sus comprobaciones y publica el cambio. El historial registra la integración y qué cambió.
 
-5. **La ficha de fuentes.** Cada artículo se publica con su recuadro **«Fuentes y verificación»**: el estado de la evidencia, lo que falta por saber, el método de traducción y los enlaces a las fuentes originales.
+5. **La ficha de fuentes.** Cada artículo se publica con su recuadro **«Fuentes y verificación»**, que enlaza la fuente registrada. Según la información disponible, también muestra el estado de la evidencia, sus límites, el método de traducción y enlaces a fuentes primarias.
 
 ---
 

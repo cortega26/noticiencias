@@ -1,7 +1,7 @@
 ---
-title: 'Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado'
+title: 'Arpones de hueso en Brasil apuntan a la caza de ballenas hace casi 5.000 años'
 schema_version: 1
-excerpt: 'Descubren arpones de 5.000 años en Brasil, revelando que indígenas locales cazaban ballenas mucho antes de lo pensado.'
+excerpt: 'Un estudio identificó 15 piezas de arpones de hueso; dos astiles de ballena franca austral recibieron dataciones calibradas distintas, de 4.900–4.710 y 4.970–4.780 años antes del presente.'
 author: Noticiencias
 date: 2026-01-23
 categories:
@@ -16,22 +16,34 @@ image_alt: 'Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nues
 source_url: 'https://livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago'
 refinery_id: '107'
 headlines_variants:
-  question: '¿Cuánto sabíamos sobre la caza de ballenas en Brasil?'
-  benefit: 'La importancia de conocer la caza de ballenas en Brasil para comprender nuestra historia'
+  question: '¿Qué evidencia aporta el hallazgo de arpones de hueso en Brasil?'
+  benefit: 'Lo que los fragmentos fechados revelan sobre la caza prehistórica de ballenas'
 investigation: false
 featured: false
+sources:
+  - title: 'Molecular and zooarchaeological identification of 5000 year old whale-bone harpoons in coastal Brazil'
+    url: 'https://www.nature.com/articles/s41467-025-67530-w'
+    publisher: 'Nature Communications'
+    date: '2026-01-09'
+    role: primary
+    doi: '10.1038/s41467-025-67530-w'
+  - title: 'Some of the oldest harpoons ever found reveal Indigenous people in Brazil were hunting whales 5,000 years ago'
+    url: 'https://www.livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago'
+    publisher: 'Live Science'
+    date: '2026-01-23'
+    role: secondary
+corrected_at: '2026-10-09'
+correction_summary: 'Se corrigieron errores de traducción, se precisó que 118 muestras correspondían a cetáceos sin identificar todas a nivel de especie y se separaron las dos dataciones calibradas de astiles.'
 ---
 
-**Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado**
+## Qué encontraron en la colección arqueológica
 
-En un hallazgo arqueológico que está revolucionando nuestra comprensión de la caza de ballenas en el mundo, un equipo de investigadores ha descubierto arpones de huesos de ballena hechos a partir de las costillas de ballenas jorobadas y ballenas francas australes con 5.000 años de antigüedad. Esta descubierta no solo desafía la idea de que la caza de ballenas era una práctica exclusiva del Hemisferio Norte, sino que también ofrece una ventana única a las tradiciones culturales y económicas de las comunidades indígenas en Brasil.
+Al analizar colecciones del Museo Arqueológico de Sambaquis de Joinville, el equipo obtuvo identificación taxonómica para 122 muestras; 118 correspondían a cetáceos. No todas pudieron identificarse a nivel de especie. El estudio también describe 15 elementos de arpones —cabezas y componentes del astil— hechos con costillas de ballena franca austral o jorobada.
 
-El estudio, dirigido por André Carlo Colonese, investigador en la Universidad Autónoma de Barcelona, concluye que este hallazgo es significativo porque los objetos tallados representan algunas de las pruebas más antiguas de caza activa de ballenas del mundo. Los arpones, que incluyen huesos de ballena y objetos tallados, fueron encontrados en el Museo Arqueológico Sambaquis de Joinville en Brasil, donde se analizaron los signos moleculares de huesos de cetáceos precoloniales.
+La fecha no corresponde a las 15 piezas por igual. Dos astiles de ballena franca austral recibieron dataciones radiocarbónicas calibradas distintas: 4.900–4.710 y 4.970–4.780 años antes del presente. El hallazgo aporta evidencia temprana de tecnología para cazar grandes ballenas, aunque un arqueólogo consultado por Live Science advirtió que no se sabe si cada pieza se usó contra ballenas u otros animales marinos.
 
-La caza de ballenas ha sido siempre un tema fascinante y enigmático, pero este hallazgo sugiere que las personas indígenas en Brasil no solo se reunió a recoger moluscos y capturar pescado. "Esta es diciendo que estaban realmente cazando", dice Colonese. La evidencia de caza activa de ballenas es mucho más joven que la supuesta evidencia de caza de ballenas, lo que desafía la idea convencional de que las comunidades costeras se limitaron a extraer recursos de ballenas adormecidas durante al menos 20.000 años. Cabe aclarar que no está claro que cada arpón se haya usado específicamente contra ballenas y no contra otros animales marinos.
+## Qué permite concluir la evidencia
 
-La descubierta también ofrece una perspectiva única sobre las tradiciones culturales y económicas de las comunidades indígenas en Brasil. "Tener a estas personas viviendo en Brasil tropical y también haciendo caza de ballenas es otra manera de cambiar nuestra perspectiva sobre estos sistemas de explotación marítima", afirma Jean-Marc Pétillon, un arqueólogo de la Universidad de Toulouse en Francia.
+Los autores presentan los arpones de hueso de ballena como evidencia de que grupos Sambaqui de la bahía de Babitonga probablemente cazaban grandes ballenas hace unos 5.000 años. El conjunto también contiene restos de delfines; los autores plantean que pudieron cazarse con arpones o redes, pero no vinculan cada pieza con una especie concreta. Los grandes astiles se han documentado en solo tres sitios —Morro do Ouro, Conquista y Cubatãozinho—, cuyos rasgos no representan a todas las poblaciones Sambaqui. El arqueólogo Jean-Marc Pétillon, que no participó en el estudio, señaló a Live Science que tampoco se conoce el uso de cada pieza concreta.
 
-La importancia de esta descubierta se refleja en el hecho de que los harapos más antiguos se encuentran con 1.000 años más de antigüedad que las pruebas arqueológicas arcticas y sub-árticas. La caza de ballenas ha sido siempre una práctica compleja y multifacética, y este hallazgo nos recuerda que hay mucho por descubrir sobre el pasado humano.
-
-En última instancia, esta descubierta nos invita a reevaluar nuestra comprensión del mundo prehistórico y de las comunidades indígenas que lo habitaban. Los harapos más antiguos no solo ofrecen una ventana a la historia de la caza de ballenas, sino que también nos recuerdan la riqueza cultural y económica de los sistemas marítimos tradicionales.
+Por eso, el resultado más sólido es la presencia de tecnología de caza especializada hecha con huesos de ballena, junto con restos que el equipo estudió en los mismos contextos arqueológicos. Las dataciones de dos astiles no fechan automáticamente las otras piezas ni demuestran cómo se usó cada una.
