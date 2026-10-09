@@ -52,7 +52,7 @@ confidence: Moderada — es un estudio académico revisado por pares con estimac
 publication_status: peer_reviewed
 sources:
   - title: 'Automation and Rent Dissipation: Implications for Wages, Inequality, and Productivity'
-    url: https://academic.oup.com/qje/article-abstract/141/2/1521/8445541?login=false
+    url: https://economics.yale.edu/research/automation-and-rent-dissipation-implications-wages-inequality-and-productivity
     publisher: The Quarterly Journal of Economics / Oxford Academic
     date: '2026-01-30'
     role: primary
