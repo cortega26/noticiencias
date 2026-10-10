@@ -66,7 +66,6 @@ requires_uncertainty_note: true
 uncertainty_note: La atribución a modelos en evaluación está confirmada por fuentes primarias. Las cifras operativas y las consecuencias generales citadas por la crónica de IEEE requieren distinguir entre cobertura periodística y conclusiones del informe técnico.
 ---
 
-
 ## Actualización editorial — 10 de octubre de 2026
 
 Una versión anterior presentaba la participación de modelos de OpenAI como una hipótesis sin confirmar. Esa formulación ya era incorrecta: [OpenAI reconoció el incidente el 21 de julio](https://openai.com/es-419/index/hugging-face-model-evaluation-security-incident/) y publicó un [análisis técnico el 26 de agosto](https://openai.com/es-419/index/hugging-face-incident-and-the-road-ahead/). La actualización conserva el contexto de la noticia original, pero separa los hechos documentados de las extrapolaciones.
