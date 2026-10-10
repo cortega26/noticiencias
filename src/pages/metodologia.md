@@ -7,7 +7,7 @@ excerpt: 'Cómo elegimos, traducimos y revisamos cada artículo: automatización
 
 Internet está lleno de titulares de ciencia exagerados. **Noticiencias** nació para lo contrario: contar qué se ha descubierto de verdad, con qué respaldo y con qué límites, en un español claro y con las fuentes a la vista.
 
-No somos un agregador que copia titulares ni un blog de opinión. Combinamos herramientas automáticas —que vigilan muchas fuentes y preparan borradores— con la revisión de una persona antes de publicar. Así es como trabajamos.
+No somos un agregador que copia titulares ni un blog de opinión. Combinamos herramientas automáticas —que vigilan muchas fuentes y preparan borradores— con una decisión humana de integración antes de publicar. Esa decisión no implica necesariamente una revisión humana independiente de cada afirmación: identificamos a un revisor de contenidos solo cuando existe constancia de esa revisión. Así es como trabajamos.
 
 ---
 
@@ -19,7 +19,7 @@ Tres ideas guían todo lo que hacemos.
 
 **Contar los matices.** Un hallazgo sin contexto engaña. Decimos en qué se basa —cuánta gente participó, si se probó en personas, animales o simulaciones— y qué dudas plantea la propia comunidad científica.
 
-**Dejar el rastro.** No te pedimos que confíes a ciegas. Enlazamos las fuentes que usamos, añadimos el DOI del estudio cuando existe y publicamos una valoración del estado de la evidencia, para que puedas comprobar el trabajo por tu cuenta.
+**Dejar el rastro.** No te pedimos que confíes a ciegas. Enlazamos las fuentes que usamos, añadimos el DOI del estudio cuando existe y mostramos el estado de la evidencia cuando está documentado, para que puedas comprobar el trabajo por tu cuenta.
 
 ---
 
@@ -48,6 +48,6 @@ La ciencia avanza corrigiéndose a sí misma, y nuestro periodismo también.
 
 ### Ciencia sin hype
 
-No vivimos de clics ni de anuncios molestos: Noticiencias se sostiene con el interés y el apoyo de su comunidad. Si te sirve lo que hacemos, suscríbete al boletín.
+Las decisiones editoriales no se subordinan a la publicidad. Actualmente no mostramos anuncios programáticos y estamos [evaluando vías de financiación](/patrocinios/) sin comprometer nuestra independencia. Si te sirve lo que hacemos, suscríbete al boletín.
 
 [Suscribirse al boletín](/newsletter)
