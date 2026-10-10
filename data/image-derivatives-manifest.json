@@ -1259,6 +1259,34 @@
       }
     ]
   },
+  "~/assets/images/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.jpg": {
+    "originalWidth": 1152,
+    "originalHeight": 648,
+    "hash": "9f20d01fd6341e4f",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.900.avif"
+      },
+      {
+        "width": 1152,
+        "height": 648,
+        "format": "avif",
+        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.1152.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.1152.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
