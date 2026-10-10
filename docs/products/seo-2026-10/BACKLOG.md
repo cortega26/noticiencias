@@ -213,7 +213,7 @@ This backlog is a **prioritized queue, not an instruction to implement everythin
 
 **Estimate:** 2–3 hours per checkpoint. **Risk:** Low. **Depends on:** SEO-01 and completed pilots.
 
-**Steps:** Refresh Search windows and stable URL cohorts; compare old/new article performance, non-brand topics, index coverage samples, editorial correction count, engagement where measured, resource cost and possible timing confounders. Re-check the August 2026 traffic spike separately. Make one of CONTINUE / ADJUST / STOP / INS UFFICIENT DATA decisions per active initiative; record why and the next smallest measurable action. Do not declare success from a single query snapshot or an unverified third-party “SEO authority” score.
+**Steps:** Refresh Search windows and stable URL cohorts; compare old/new article performance, non-brand topics, index coverage samples, editorial correction count, engagement where measured, resource cost and possible timing confounders. Re-check the August 2026 traffic spike separately. Make one of CONTINUE / ADJUST / STOP / INSUFFICIENT DATA decisions per active initiative; record why and the next smallest measurable action. Do not declare success from a single query snapshot or an unverified third-party “SEO authority” score.
 
 **Acceptance:** Every recommendation is supported by dates, observations and limitations. State insignificant/no-data results plainly. If the site is too small to attribute effects, prefer longer observation to forced statistical conclusions.
 
