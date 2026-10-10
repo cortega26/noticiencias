@@ -21,7 +21,11 @@ headlines_variants:
   benefit: 'Combate la desinformación para prevenir enfermedades infecciosas'
 investigation: false
 featured: false
+corrected_at: '2026-10-09'
+correction_summary: 'Se precisó que la meta de 95% se refiere a cobertura sostenida de dos dosis y a prevención/eliminación poblacional; no garantiza la ausencia de transmisión.'
 ---
+
+**Nota de corrección (9 de octubre de 2026).** Una versión anterior decía que vacunar al 95% de los niños garantizaba que el virus no se propagara. La recomendación de la OMS se refiere a una cobertura sostenida con dos dosis en cada comunidad, como objetivo para prevenir brotes y sostener la eliminación; no es una garantía absoluta. [Fuente: OMS y CDC](https://www.who.int/news/item/23-11-2022-nearly-40-million-children-are-dangerously-susceptible-to-growing-measles-threat).
 
 **La lucha contra el sarampión: un desafío que requiere combinar esfuerzos para contrarrestar la desinformación**
 
@@ -31,7 +35,7 @@ Un estudio fraudulento publicado en 1998 que sugería una relación entre la vac
 
 La Organización Mundial de la Salud (OMS) informa que seis países han perdido su estatus de país libre de sarampión, incluyendo el Reino Unido, España y Austria. En Estados Unidos, se está luchando contra un brote importante de sarampión. La enfermedad es altamente contagiosa y puede causar complicaciones graves, como dificultades respiratorias, sordera, ceguera y daños cerebrales permanentes.
 
-La buena noticia es que la vacuna MMR es efectiva para prevenir el sarampión. Sin embargo, se requiere que al menos el 95% de los niños sean vacunados para garantizar que el virus no se propague. La situación en América Latina y en todo el mundo no es tan mala, pero podría ser mejor. La proporción de niños que reciben una primera dosis de la vacuna contra el sarampión ha aumentado en las últimas décadas, pero aún hay trabajo por hacer.
+La buena noticia es que la vacuna MMR es efectiva para prevenir el sarampión. Sin embargo, la OMS recomienda mantener una cobertura sostenida y homogénea de al menos el 95% con ambas dosis en cada comunidad para prevenir brotes y sostener la eliminación del sarampión. Es una meta poblacional, no una garantía de que no habrá transmisión: el riesgo persiste donde hay grupos con baja cobertura. La situación en América Latina y en todo el mundo no es tan mala, pero podría ser mejor. La proporción de niños que reciben una primera dosis de la vacuna contra el sarampión ha aumentado en las últimas décadas, pero aún hay trabajo por hacer.
 
 Es importante abordar la desinformación y promover la ciencia sólida para contrarrestar los esfuerzos de los grupos antivacunas. Los gobiernos y las plataformas de redes sociales deben tomar medidas para controlar la desinformación y promover la información precisa sobre las vacunas. La lucha contra el sarampión requiere un esfuerzo conjunto para proteger la salud pública y prevenir la propagación de esta enfermedad.
 
