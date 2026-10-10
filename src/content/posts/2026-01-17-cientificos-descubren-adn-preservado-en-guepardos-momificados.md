@@ -53,13 +53,13 @@ correction_summary: 'Se contrastó la nota con el estudio primario: se precisaro
 
 ## Qué encontraron
 
-Un equipo dirigido por investigadores del Centro Nacional de Vida Silvestre de Arabia Saudita inspeccionó cuevas cerca de Arar, en el norte del país. En cinco de ellas identificó **siete guepardos momificados de forma natural y restos esqueléticos de otros 54**. El trabajo se publicó el 15 de enero de 2026 en *Communications Earth & Environment*.
+Un equipo dirigido por investigadores del Centro Nacional de Vida Silvestre de Arabia Saudita inspeccionó cuevas cerca de Arar, en el norte del país. En cinco de ellas identificó **siete guepardos momificados de forma natural y restos esqueléticos de otros 54**. El trabajo se publicó el 15 de enero de 2026 en _Communications Earth & Environment_.
 
 Las cuevas permitieron preservar información que normalmente se pierde cuando una población desaparece. Los autores combinaron datación por radiocarbono, estudio de huesos y cráneos, y análisis genómicos. Aunque encontraron numerosos restos, el resultado genético principal procede de **tres genomas completos**, no de los 61 restos.
 
 ## Por qué importan las diferencias entre linajes
 
-Los investigadores compararon esas secuencias con poblaciones de guepardos actuales. El ejemplar más reciente se agrupó con el linaje asiático (*Acinonyx jubatus venaticus*), mientras que los más antiguos se acercaron al linaje del noroeste de África (*A. j. hecki*).
+Los investigadores compararon esas secuencias con poblaciones de guepardos actuales. El ejemplar más reciente se agrupó con el linaje asiático (_Acinonyx jubatus venaticus_), mientras que los más antiguos se acercaron al linaje del noroeste de África (_A. j. hecki_).
 
 Esto matiza la idea de que los guepardos históricos de la península arábiga pertenecían exclusivamente al linaje asiático. También muestra por qué no basta con encontrar restos antiguos y atribuirlos a una única población: **la composición genética pudo cambiar a lo largo del tiempo**.
 
@@ -79,4 +79,4 @@ Esta distinción cambia la lectura del titular: la investigación ayuda a formul
 
 El artículo científico tiene, además, una **corrección editorial publicada el 23 de febrero de 2026**: se intercambiaron las descripciones de dos paneles de una figura. Según el aviso de la revista, esa rectificación afecta a la leyenda de la figura, no a las conclusiones genómicas descritas en el resumen.
 
-**Fuentes:** estudio primario de Al Boug y colaboradores, *Communications Earth & Environment* (DOI: [10.1038/s43247-025-03021-6](https://doi.org/10.1038/s43247-025-03021-6)); [corrección de autores](https://doi.org/10.1038/s43247-026-03258-9) publicada por la misma revista. La cobertura de Live Science se conserva como fuente secundaria para trazabilidad.
+**Fuentes:** estudio primario de Al Boug y colaboradores, _Communications Earth & Environment_ (DOI: [10.1038/s43247-025-03021-6](https://doi.org/10.1038/s43247-025-03021-6)); [corrección de autores](https://doi.org/10.1038/s43247-026-03258-9) publicada por la misma revista. La cobertura de Live Science se conserva como fuente secundaria para trazabilidad.
