@@ -1,0 +1,179 @@
+name: One-time MIT January R2 derivative cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-time-mit-jan-r2-cleanup.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: one-time-mit-jan-r2-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    if: github.repository == 'cortega26/noticiencias' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Delete only four retired R2 objects, purge exact URLs, verify 404
+        run: |
+          node --input-type=module <<'ONE_TIME_CLEANUP'
+          import fs from 'node:fs';
+
+          // Four exact user-authorized objects only; no bucket listing, prefixes, or broad purges.
+          const PREFIX = 'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.';
+          const WIDTHS = [400, 900, 1400, 1500];
+          const KEYS = WIDTHS.map((width) => PREFIX + width + '.avif');
+          const URLS = KEYS.map((key) => 'https://www.cdn.noticiencias.com/' + key);
+
+          function checkScope() {
+            const exact = new Set([
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.400.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.900.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1400.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1500.avif',
+            ]);
+            if (KEYS.length !== 4 || new Set(KEYS).size !== 4 || KEYS.some((key) => !exact.has(key))) {
+              throw new Error('Object keys differ from four user-authorized objects');
+            }
+            if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main') {
+              throw new Error('Run only on push to main');
+            }
+            if (
+              fs.readFileSync('data/image-derivatives-manifest.json', 'utf8').includes('5121406c65027caa')
+            ) {
+              throw new Error('Retired image still referenced in active manifest');
+            }
+            for (const path of [
+              'src/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg',
+              'src/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg',
+            ]) {
+              if (fs.existsSync(path)) throw new Error('Old image still present: ' + path);
+            }
+          }
+
+          function required(name) {
+            const value = process.env[name];
+            if (!value) throw new Error('Missing configuration: ' + name);
+            return value;
+          }
+
+          async function lookupZone(token) {
+            if (process.env.CLOUDFLARE_ZONE_ID) return process.env.CLOUDFLARE_ZONE_ID;
+            const response = await fetch('https://api.cloudflare.com/client/v4/zones?name=noticiencias.com', {
+              headers: { Authorization: 'Bearer ' + token },
+            });
+            const result = await response.json();
+            if (!response.ok || result.success !== true || !Array.isArray(result.result)) {
+              throw new Error('Cloudflare zone lookup denied');
+            }
+            const zones = result.result.filter((zone) => zone.name === 'noticiencias.com');
+            if (zones.length !== 1 || !zones[0].id) throw new Error('Zone lookup not unambiguous');
+            return zones[0].id;
+          }
+
+          function objectUrl(account, bucket, key) {
+            return (
+              'https://api.cloudflare.com/client/v4/accounts/' +
+              account +
+              '/r2/buckets/' +
+              encodeURIComponent(bucket) +
+              '/objects/' +
+              key
+            );
+          }
+
+          async function cdnStatus(url) {
+            const response = await fetch(url, { redirect: 'manual' });
+            await response.body?.cancel();
+            return response.status;
+          }
+
+          async function main() {
+            checkScope();
+            const token = required('CLOUDFLARE_API_TOKEN');
+            const account = required('CLOUDFLARE_ACCOUNT_ID');
+            const bucket = required('R2_BUCKET_NAME');
+            if (!/^[0-9a-f]{32}$/i.test(account) || !/^[a-zA-Z0-9_.-]{3,64}$/.test(bucket)) {
+              throw new Error('Cloudflare account or R2 bucket configuration invalid');
+            }
+
+            // Validate exact scope and zone before authorized write-only deletes.
+            // The configured token lacks R2 Read (HTTP 403); DELETE may have separate permission.
+            const zoneId = await lookupZone(token);
+
+            for (const key of KEYS) {
+              const url = objectUrl(account, bucket, key);
+              const response = await fetch(url, {
+                method: 'DELETE',
+                headers: { Authorization: 'Bearer ' + token },
+              });
+              const raw = await response.text();
+              const result = raw ? JSON.parse(raw) : null;
+              if (!response.ok || (response.status !== 204 && result?.success !== true)) {
+                throw new Error('Cloudflare R2 DELETE rejected HTTP ' + response.status + ': ' + key);
+              }
+              console.log('R2 DELETE accepted for exact key:', key);
+            }
+
+            const purge = await fetch('https://api.cloudflare.com/client/v4/zones/' + zoneId + '/purge_cache', {
+              method: 'POST',
+              headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ files: URLS }),
+            });
+            const purgeResult = await purge.json();
+            if (!purge.ok || purgeResult.success !== true) {
+              throw new Error('Cloudflare did not accept exact four-URL purge');
+            }
+            console.log('Cloudflare accepted exact four-URL purge');
+
+            let statuses = [];
+            for (let attempt = 0; attempt < 7; attempt++) {
+              statuses = await Promise.all(URLS.map((url) => cdnStatus(url)));
+              console.log('Exact CDN URL GET statuses:', statuses);
+              if (statuses.every((status) => status === 404 || status === 410)) break;
+              await new Promise((resolve) => setTimeout(resolve, 3000));
+            }
+            if (!statuses.every((status) => status === 404 || status === 410)) {
+              throw new Error('At least one old CDN URL did not return 404/410');
+            }
+
+            const summary = [
+              '### Authorized four-object MIT image cleanup',
+              '',
+              '- R2: four exact-key DELETE requests accepted; direct R2 read verification unavailable (HTTP 403).',
+              '- CDN: exact four-URL purge accepted, all four GET checks returned 404/410.',
+              '- No bucket-wide deletion or purge requested.',
+              '',
+              ...KEYS.map((key, i) => '- ' + key + ': ' + statuses[i]),
+            ].join('\n');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary + '\n');
+          }
+
+          main().catch((error) => {
+            console.error('Authorized cleanup incomplete:', error.message);
+            process.exitCode = 1;
+          });
+          ONE_TIME_CLEANUP

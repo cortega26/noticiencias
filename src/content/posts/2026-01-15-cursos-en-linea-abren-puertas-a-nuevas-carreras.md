@@ -12,8 +12,8 @@ tags:
   - 'gestión empresarial'
   - 'cursos en línea'
   - 'transformación profesional'
-image: '~/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg'
-image_alt: 'Cursos en línea abren puertas a nuevas carreras'
+image: '~/assets/images/2026-01-15-micromasters-learning-original.webp'
+image_alt: 'Ilustración original de una persona que estudia gestión de cadenas de suministro frente a una computadora con una ruta de nodos logísticos.'
 source_url: 'https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115'
 refinery_id: '135'
 headlines_variants:
