@@ -4,8 +4,8 @@ Fecha: 2026-10-09. Este registro cubre los dos activos MIT sustituidos y consign
 
 ## Activos retirados
 
-- **Artículo del 15-01-2026 sobre el MicroMasters.** MIT News identifica la fotografía con el crédito «Photo: Emma Perakis». Sus [términos de uso](https://news.mit.edu/terms-of-use) ofrecen las imágenes descargables bajo CC BY-NC-ND para uso no comercial. No había autorización comercial separada documentada en este repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
-- **Artículo del 07-05-2026 sobre automatización.** La página de MIT News acredita la imagen «MIT News; iStock». Esa atribución no acredita una licencia comercial de iStock y no se encontró una autorización separada en el repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
+- **Artículo del 15-01-2026 sobre el MicroMasters.** El [perfil de MIT News](https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115) identifica la fotografía con el crédito «Photo: Emma Perakis». Sus [términos de uso](https://news.mit.edu/terms-of-use) ofrecen las imágenes descargables bajo CC BY-NC-ND para uso no comercial. No había autorización comercial separada documentada en este repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
+- **Artículo del 07-05-2026 sobre automatización.** El [artículo de MIT News](https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507) acredita la imagen «MIT News; iStock». Esa atribución no acredita una licencia comercial de iStock y no se encontró una autorización separada en el repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
 
 ## Activos nuevos
 
@@ -27,11 +27,11 @@ Fecha: 2026-10-09. Este registro cubre los dos activos MIT sustituidos y consign
 
 Estos datos describen procedencia y permisos no verificados; no son una conclusión de infracción. La lista exacta de los 18 artículos no está registrada en los PR ni en los documentos activos, así que esta comprobación se limita a los artículos identificables en los PR editoriales #246, #247, #252, #253 y #254.
 
-- **Guardería/microbioma (25-01-2026):** Scientific American acredita la fotografía como StockPlanets/Getty Images. No hay licencia independiente de Noticiencias registrada aquí: `UNVERIFIED`.
-- **Cilios de coral (20-09-2026):** WIRED identifica la imagen como cortesía de Quanta; Quanta atribuye su versión a Cesar Pacharres, coloreada por Quanta. El artículo científico relacionado indica CC BY-NC, pero no se documentó una licencia comercial para la imagen publicada por Quanta: `UNVERIFIED`.
-- **Holografía (25-09-2026):** Quanta acredita la ilustración a Ada Zejun Shen para Quanta Magazine; no hay permiso separado de reutilización en el repositorio: `UNVERIFIED`.
-- **Piezo1 (27-01-2026):** ScienceDaily acredita la imagen como Shutterstock; no hay licencia independiente de Noticiencias registrada aquí: `UNVERIFIED`.
-- **Arpones (23-01-2026):** Live Science acredita la fotografía principal al Museu Arqueológico de Sambaquis de Joinville. Esa línea no expresa una licencia para Noticiencias: `UNVERIFIED`. La licencia CC BY-NC-ND del artículo científico se refiere a sus imágenes incluidas allí; no se atribuye automáticamente a esta fotografía del museo.
+- **Guardería/microbioma (25-01-2026):** [Scientific American](https://www.scientificamerican.com/article/babies-who-attend-daycare-share-good-germs-too/) acredita la fotografía como StockPlanets/Getty Images. No hay licencia independiente de Noticiencias registrada aquí: `UNVERIFIED`.
+- **Cilios de coral (20-09-2026):** [WIRED](https://www.wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/) identifica la imagen como cortesía de Quanta; la [versión de Quanta](https://www.quantamagazine.org/corals-spin-tiny-vortices-to-get-oxygen-but-not-if-its-too-hot-20260805/) acredita la imagen a Cesar Pacharres, coloreada por Quanta. El artículo científico relacionado indica CC BY-NC, pero no se documentó una licencia comercial para la imagen publicada por Quanta: `UNVERIFIED`.
+- **Holografía (25-09-2026):** [Quanta Magazine](https://www.quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/) acredita la ilustración a Ada Zejun Shen; no hay permiso separado de reutilización en el repositorio: `UNVERIFIED`.
+- **Piezo1 (27-01-2026):** [ScienceDaily](https://www.sciencedaily.com/releases/2026/01/260127010149.htm) acredita la imagen como Shutterstock; no hay licencia independiente de Noticiencias registrada aquí: `UNVERIFIED`.
+- **Arpones (23-01-2026):** [Live Science](https://www.livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago) acredita la fotografía principal al Museu Arqueológico de Sambaquis de Joinville. Esa línea no expresa una licencia para Noticiencias: `UNVERIFIED`. La licencia CC BY-NC-ND de [Nature Communications](https://www.nature.com/articles/s41467-025-67530-w) se refiere a sus imágenes incluidas allí; no se atribuye automáticamente a esta fotografía del museo.
 
 Antes de monetizar cualquiera de esos activos, localizar la licencia comercial aplicable o reemplazar la imagen. La atribución por sí sola no resuelve esos permisos.
 
