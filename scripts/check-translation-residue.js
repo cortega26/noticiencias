@@ -93,7 +93,6 @@ const PT_WORDS = new Set(
     'tudo',
     'coisa',
     'coisas',
-    'gente',
     'fazer',
     'dizer',
     'ainda',
@@ -110,6 +109,11 @@ const PT_WORDS = new Set(
     'quando',
   ].map((w) => w.toLowerCase())
 );
+
+// Portuguese expressions that are not exclusive at the individual-token
+// level. Keep them contextual so common Spanish words such as `gente` remain
+// valid while the Portuguese subject phrase `a gente` is still caught.
+const PT_PHRASES = [{ pattern: /\ba\s+gente\b/iu, label: 'a gente' }];
 
 // Conservative English suspects — warning tier only, since quoted paper
 // titles and proper names legitimately contain English.
@@ -171,6 +175,9 @@ function tokenize(text) {
 
 function checkText(text, errors, warnings) {
   const prose = stripNonProse(text);
+  for (const { pattern, label } of PT_PHRASES) {
+    if (pattern.test(prose)) errors.push(`Portuguese residue phrase "${label}"`);
+  }
   for (const raw of tokenize(prose)) {
     const token = raw.toLowerCase();
     if (!isProperName(raw) && FOREIGN_DIACRITIC.test(token)) {
