@@ -6,8 +6,8 @@
  * the Measurement ID null these calls are silent no-ops. Under advanced Consent
  * Mode, gtag itself decides what leaves the browser; events are not re-gated here.
  *
- * No PII: params are paths, slugs, domains and form ids only. The search event
- * carries the query text and is disclosed as such in `privacidad.md`.
+ * No free-form search terms: search events contain aggregate counts and safe paths only.
+ * Incoming search URLs are scrubbed before analytics bootstrap.
  */
 
 type Gtag = (command: 'event', name: string, params: Record<string, unknown>) => void;
