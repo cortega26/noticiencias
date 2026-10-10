@@ -24,7 +24,7 @@
     "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
     "format": "prettier --write .",
-    "format:check": "prettier --write src/layouts/PostLayout.astro && git diff -- src/layouts/PostLayout.astro && exit 1",
+    "format:check": "prettier --check .",
     "check:image-alt": "node scripts/check-image-alt.js",
     "check:doc-drift": "node scripts/check-doc-drift.js",
     "check:editorial-fields": "node scripts/check-editorial-fields.js",
