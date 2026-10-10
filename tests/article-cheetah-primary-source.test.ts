@@ -11,7 +11,11 @@ describe('cheetah article primary-source upgrade', () => {
       .get();
     expect(primary).toContain('https://www.nature.com/articles/s43247-025-03021-6');
     expect(primary).toContain('https://www.nature.com/articles/s43247-026-03258-9');
-    expect($('a[data-analytics-source]').map((_, a) => $(a).attr('href')).get()).toContain(
+    expect(
+      $('a[data-analytics-source]')
+        .map((_, a) => $(a).attr('href'))
+        .get()
+    ).toContain(
       'https://livescience.com/animals/cats/ancient-mummified-cheetahs-discovered-in-saudi-arabia-contain-preserved-dna-from-the-long-lost-population'
     );
   });
