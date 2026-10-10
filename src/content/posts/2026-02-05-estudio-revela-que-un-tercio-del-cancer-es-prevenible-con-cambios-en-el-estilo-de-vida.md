@@ -23,7 +23,7 @@ investigation: false
 featured: false
 summary_points:
   - El estudio estima que alrededor del 38% de los nuevos casos de cáncer en 2022 (≈7,1 millones) se deben a factores de riesgo evitables.
-  - El tabaquismo representa aproximadamente el 15% de esos casos prevenibles, seguido por infecciones (10%) y consumo de alcohol (3%).
+  - Del total de casos nuevos estimados para 2022, el 15,1 % se atribuyó al tabaquismo, el 10,2 % a infecciones y el 3,2 % al consumo de alcohol.
   - El análisis incluyó 36 tipos de cáncer en 185 países y reconoció limitaciones como la variabilidad en la calidad de los datos.
 glossary:
   - term: cáncer prevenible
@@ -37,15 +37,15 @@ glossary:
 fact_check:
   - label: El estudio publicado en Nature Medicine encontró que el 38% de los nuevos casos de cáncer en 2022 se atribuyen a causas evitables.
     status: confirmed
-  - label: El tabaquismo fue responsable de alrededor del 15% de los casos prevenibles de cáncer.
+  - label: El tabaquismo se vinculó con el 15,1 % del total de casos nuevos de cáncer estimados para 2022.
     status: confirmed
-  - label: Las infecciones contribuyeron al 10% y el consumo de alcohol al 3% de los casos prevenibles.
+  - label: Las infecciones contribuyeron al 10,2 % y el alcohol al 3,2 % del total de casos nuevos estimados, respectivamente.
     status: confirmed
   - label: El análisis incluyó datos de 36 tipos de cáncer en 185 países.
     status: confirmed
 why_it_matters:
-  - En América Latina, donde el acceso a tratamientos oncológicos es limitado, prevenir hasta un tercio de los casos de cáncer podría salvar miles de vidas y reducir la carga económica en los sistemas de salud.
-  - Enfocar políticas de salud en reducir el tabaquismo, promover la vacunación contra infecciones oncogénicas y moderar el consumo de alcohol podría tener un impacto directo en la disminución del cáncer en la región.
+  - 'La fracción atribuible global no se debe extrapolar directamente a América Latina: el estudio registra diferencias entre regiones, tipos de cáncer y sexos.'
+  - Reducir la exposición al tabaco, reforzar la prevención de infecciones oncogénicas y disminuir el consumo nocivo de alcohol son prioridades de prevención respaldadas por el análisis.
   - Abordar las desigualdades en la prevención podría permitir que los países de bajos y medianos ingresos se beneficien de estrategias de bajo costo y alto rendimiento.
 confidence: Alta — estudio revisado por pares en Nature Medicine con datos globales de 2022, aunque menciona limitaciones en la calidad de los datos y posibles factores no considerados.
 sources:
@@ -53,22 +53,24 @@ sources:
     url: https://scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/
     publisher: Scientific American
     date: '2026-02-05'
+  - title: Global and regional cancer burden attributable to modifiable risk factors to inform prevention
+    url: https://doi.org/10.1038/s41591-026-04219-7
+    publisher: Nature Medicine
+    date: '2026-02-03'
 ---
-
-**Apertura**
 
 El cáncer es una de las principales causas de enfermedad y muerte en todo el mundo. Aunque existen muchos factores que contribuyen a su desarrollo, una pregunta clave es: ¿cuántos casos de cáncer podrían prevenirse si se evitan ciertos hábitos y factores de riesgo? Un estudio reciente publicado en _Nature Medicine_ ha abordado esta cuestión y sus hallazgos son reveladores.
 
-**Desarrollo**
+## Cómo se estimó la proporción atribuible
 
 Un estudio en el que figura como coautora Hanna Fink, epidemióloga del cáncer en la Agencia Internacional para la Investigación del Cáncer de la Organización Mundial de la Salud, analiza los datos globales de casos de 2022 para 36 diferentes tipos de cáncer en 185 países. Los investigadores examinaron 30 factores de riesgo modificables que son causas bien establecidas del cáncer, como el tabaquismo, el consumo de alcohol y las infecciones. Luego, estimaron la proporción de casos que estuvieron directamente vinculados a cada factor de riesgo.
 
-**Evidencia y límites**
+## Resultados y límites
 
-Los resultados del estudio muestran que aproximadamente el 38% de los nuevos casos de cáncer en todo el mundo (alrededor de 7,1 millones) pueden atribuirse a causas evitables. El tabaquismo fue el principal contribuyente, responsable de alrededor del 15% de los casos prevenibles, seguido de las infecciones (10%) y el consumo de alcohol (3%). Es importante destacar que estos hallazgos se basan en un análisis exhaustivo de datos globales y tienen en cuenta various factores de riesgo. Sin embargo, también es crucial reconocer los límites del estudio, como la variabilidad en la calidad de los datos y la posibilidad de que algunos factores de riesgo no hayan sido considerados.
+Los resultados del estudio muestran que aproximadamente el 38% de los nuevos casos de cáncer en todo el mundo (alrededor de 7,1 millones) pueden atribuirse a causas evitables. Del total de nuevos diagnósticos estimados, un 15,1 % se atribuyó al tabaquismo, un 10,2 % a infecciones y un 3,2 % al consumo de alcohol. Esos porcentajes usan como denominador todos los casos nuevos, no solo el subconjunto atribuible a factores modificables. Es importante destacar que estos hallazgos se basan en un análisis exhaustivo de datos globales y evalúan 30 factores de riesgo modificables. Sin embargo, también es crucial reconocer los límites del estudio, como la variabilidad en la calidad de los datos y la posibilidad de que algunos factores de riesgo no hayan sido considerados.
 
-**Contexto**
+## Qué implica para la prevención
 
 Estos hallazgos refuerzan la idea de que la prevención es una herramienta poderosa en la lucha contra el cáncer. Al entender mejor los factores de riesgo modificables que contribuyen a la enfermedad, podemos desarrollar estrategias efectivas para reducir su incidencia. El estudio también subraya la importancia de abordar las desigualdades en la salud global, ya que muchos casos prevenibles de cáncer ocurren en regiones de bajos y medianos ingresos.
 
-En resumen, este estudio ofrece una visión clara de la relación entre ciertos hábitos y factores de riesgo y el desarrollo del cáncer. Aunque no todos los casos de cáncer pueden prevenirse, es evidente que adoptar un enfoque proactivo para reducir los factores de riesgo modificables puede tener un impacto significativo en la salud global. Sin embargo, también es fundamental reconocer los desafíos y limitaciones que aún persisten en la lucha contra el cáncer, y seguir investigando y trabajando hacia soluciones efectivas y sostenibles.
+El 37,8 % es una estimación poblacional de atribución, no una predicción de cuántos diagnósticos desaparecerían inmediatamente con cambios de conducta individuales. Las estrategias dependen del riesgo dominante en cada población y de la capacidad de sostener medidas preventivas a lo largo del tiempo.
