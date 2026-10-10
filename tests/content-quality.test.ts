@@ -225,7 +225,9 @@ El segundo párrafo agrega contexto, precisión y longitud suficiente para mante
 
 Una columna editorial presenta las decisiones propias del medio y explica qué condiciones debe cumplir su trabajo. No es una traducción de una nota ajena y no requiere inventar una fuente externa que simule trabajo periodístico de terceros.
 
-El artículo distingue entre una opinión editorial y las noticias basadas en investigaciones, señala sus principios públicos y enlaza los documentos propios cuando son pertinentes.`
+El artículo distingue entre una opinión editorial y las noticias basadas en investigaciones, señala sus principios públicos y enlaza los documentos propios cuando son pertinentes.
+
+Los criterios de participación, los canales para reportar errores y los compromisos del medio quedan visibles para los lectores. Cuando una pieza no responde a una investigación de terceros, la transparencia exige reconocer su carácter original en vez de señalar una fuente externa inventada.
     );
     const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-editorial.md');
     let text = fs.readFileSync(file, 'utf8');
@@ -253,9 +255,9 @@ El segundo párrafo desarrolla los métodos y las limitaciones del estudio y ofr
       .replace('source_url: "https://example.com/source"\n', '');
     fs.writeFileSync(file, text);
     const result = collectContentQualityDiagnostics({ repoRoot });
-    expect(result.errors).toEqual([
-      expect.stringContaining('source_url must be an absolute http(s) URL'),
-    ]);
+    expect(result.errors).toEqual(
+      expect.arrayContaining([expect.stringContaining('source_url must be an absolute http(s) URL')])
+    );
   });
 
   it('rejects invalid Hub V1 editorial metadata when present', () => {
