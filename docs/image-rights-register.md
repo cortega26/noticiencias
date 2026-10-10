@@ -4,7 +4,7 @@ Fecha: 2026-10-09. Este registro cubre los dos activos MIT sustituidos y consign
 
 ## Activos retirados
 
-- **Artículo del 15-01-2026 sobre el MicroMasters.** El [perfil de MIT News](https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115) identifica la fotografía con el crédito «Photo: Emma Perakis». Sus [términos de uso](https://news.mit.edu/terms-of-use) ofrecen las imágenes descargables bajo CC BY-NC-ND para uso no comercial. No había autorización comercial separada documentada en este repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
+- **Artículo del 15-01-2026 sobre el MicroMasters.** El [perfil de MIT News](https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115) identifica la fotografía con el crédito «Photo: Emma Perakis». Sus [términos de uso](https://news.mit.edu/terms-of-use) ofrecen las imágenes descargables bajo CC BY-NC-ND para uso no comercial. No había autorización comercial separada documentada en este repositorio. Se retiraron el JPEG local y su entrada del manifiesto; ya no quedan derivados de esta fotografía en el repositorio ni en el manifiesto activo. Su eliminación del almacenamiento R2 y del CDN sigue bloqueada por permisos (ver sección de limpieza).
 - **Artículo del 07-05-2026 sobre automatización.** El [artículo de MIT News](https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507) acredita la imagen «MIT News; iStock». Esa atribución no acredita una licencia comercial de iStock y no se encontró una autorización separada en el repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
 
 ## Activos nuevos
@@ -35,12 +35,25 @@ Estos datos describen procedencia y permisos no verificados; no son una conclusi
 
 Antes de monetizar cualquiera de esos activos, localizar la licencia comercial aplicable o reemplazar la imagen. La atribución por sí sola no resuelve esos permisos.
 
-Las declaraciones públicas de financiación no se modifican en este cambio. Actualizarlas antes de activar anuncios sigue pendiente.
+Las declaraciones públicas de financiación se actualizaron posteriormente en el PR #256. La activación futura de anuncios debe mantener alineados consentimiento, privacidad y política editorial.
 
-## Limpieza de cuatro derivados CDN autorizada (pendiente de ejecución)
+## Limpieza de cuatro derivados CDN: bloqueada por permisos
 
-El 9 de octubre de 2026 el usuario autorizó expresamente eliminar **solo** cuatro objetos R2 de la fotografía MIT del 15 de enero, con hash original `5121406c65027caa` y anchuras de 400, 900, 1400 y 1500 px, además de purgar las cuatro URL exactas del CDN. No existe autorización para otros objetos o URLs.
+El usuario autorizó expresamente el 9 de octubre de 2026 eliminar **solo** cuatro objetos R2 de la fotografía MIT del 15 de enero, hash histórico `5121406c65027caa`, anchos 400, 900, 1400 y 1500 px, además de purgar sus cuatro URL exactas. No autorizó borrar otros objetos ni ejecutar purgas amplias.
 
-El procedimiento de un solo uso está delimitado dentro de `.github/workflows/one-time-mit-jan-r2-cleanup.yml` (sin script auxiliar permanente). Tras el primer intento, el registro de CI confirmó ausencia de credenciales S3 para R2 y **cero eliminaciones**. El siguiente intento utiliza la API REST oficial de Cloudflare con el token principal ya existente; sigue condicionado a sus permisos de R2 y purga. Tras integrarlo deberá comprobarse el resultado real en R2 y CDN, registrar la evidencia de GitHub Actions y eliminar el código temporal. **Aún no se afirma que el borrado ni la purga hayan tenido éxito.**
+**Tres ejecuciones verificadas, cero objetos eliminados y ninguna purga realizada:**
 
-**Segundo intento (GitHub Actions #38018951545):** el token principal de Cloudflare pudo obtener la zona, pero la API de R2 respondió HTTP 403 a la lectura previa (`GET`). El procedimiento se detuvo **antes de efectuar cualquier eliminación**; el registro permanece abierto. Una última prueba de `DELETE` en las cuatro claves exactas permitirá comprobar si el token posee permiso de escritura independiente del de lectura. El resultado debe constar en GitHub Actions antes de declarar el cierre.
+- [Run #38018565846](https://github.com/cortega26/noticiencias/actions/runs/38018565846): faltan `CLOUDFLARE_R2_ACCESS_KEY_ID`, `CLOUDFLARE_R2_SECRET_ACCESS_KEY` y `CLOUDFLARE_R2_ENDPOINT` en GitHub Actions. El proceso se detuvo antes de contactar con R2.
+- [Run #38018951545](https://github.com/cortega26/noticiencias/actions/runs/38018951545): el token principal de Cloudflare reconoció la zona, pero devolvió **HTTP 403** al consultar el primer objeto R2 mediante `GET`. No se efectuó ningún `DELETE`.
+- [Run #38019369852](https://github.com/cortega26/noticiencias/actions/runs/38019369852): se probó de forma acotada `DELETE` sobre el primero de los cuatro objetos, sin lectura previa. La API respondió **HTTP 403**, por lo que no se intentaron los otros tres ni la purga.
+
+La causa comprobada es **falta de permisos de lectura y escritura R2 en el token disponible**, además de ausencia de credenciales S3. Para ejecutar esta operación se necesita autorización de R2 limitada al bucket correspondiente, mediante credenciales S3 de R2 o un token de Cloudflare con `Workers R2 Storage Read` y `Workers R2 Storage Write`. La purga requiere además `Cache Purge` para la zona. No se deben ampliar privilegios de forma automática.
+
+Claves exactas que siguen pendientes de eliminación:
+
+- `posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.400.avif`
+- `posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.900.avif`
+- `posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1400.avif`
+- `posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1500.avif`
+
+Las URL del CDN corresponden exactamente a esas claves bajo `https://www.cdn.noticiencias.com/`. Ya no están referenciadas desde los artículos ni desde el manifiesto activo, pero **no se verificó su retirada del bucket ni su inaccesibilidad pública**. El estado permanece `PARTIAL / BLOCKED_BY_CLOUDFLARE_ACCESS`; no declarar `EDITORIAL PREFLIGHT COMPLETE` por este criterio. El procedimiento temporal se retira del repositorio después de los intentos infructuosos.
