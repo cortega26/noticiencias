@@ -11,7 +11,7 @@ describe('trackEvent', () => {
 
   it('is a silent no-op while GA is off (no window.gtag)', () => {
     vi.stubGlobal('window', {});
-    expect(() => trackEvent('search', { search_term: 'x' })).not.toThrow();
+    expect(() => trackEvent('search', { results_count: 0 })).not.toThrow();
   });
 
   it('sends a beacon-transport event through gtag with the given params', () => {

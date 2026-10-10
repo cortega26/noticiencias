@@ -30,8 +30,8 @@ same change.
 | `topic_follow_click`    | click on a topic RSS follow link                           | `topic_slug`                                  |
 | `category_click`        | click on a category link (card, hub area, home sections)   | `category_slug`                               |
 | `share_click`           | click on a share/copy control                              | `network`, `article_path`                     |
-| `search`                | a search is executed                                       | `search_term`, `results_count`                |
-| `search_result_click`   | a search result is opened                                  | `search_term`, `target_path`, `position`      |
+| `search`                | a search is executed                                       | `results_count`                               |
+| `search_result_click`   | a search result is opened                                  | `target_path`, `position`                     |
 
 Reconstruction order (funnel exploration): `article_view` → `article_50` →
 `article_90` → `primary_source_click` / `related_impression` →

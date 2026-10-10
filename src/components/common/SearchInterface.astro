@@ -65,7 +65,7 @@ import Button from '~/components/ds/atoms/Button.astro';
 <script>
   import { loadIndex, search } from '~/utils/browser/search-index';
   import { normalizeQuery } from '~/utils/search';
-  import { getQueryFromUrl, updateUrlWithQuery } from '~/utils/browser/search-url';
+  import { clearSearchQueryFromUrl, getQueryFromUrl } from '~/utils/browser/search-url';
   import { trackEvent } from '~/utils/browser/analytics-events';
 
   let activeInitPath = '';
@@ -142,21 +142,19 @@ import Button from '~/components/ds/atoms/Button.astro';
     const { results: resultsDiv, status } = refs;
 
     resultsDiv.innerHTML = '';
+    clearSearchQueryFromUrl();
 
     if (!query || !query.trim()) {
-      updateUrlWithQuery('');
       status.textContent = '';
       return;
     }
-
-    updateUrlWithQuery(query);
 
     const normalizedQuery = normalizeQuery(query);
 
     try {
       const results = search(`${normalizedQuery}*`);
       // GA4 recommended `search` event; a silent no-op while GA is off.
-      trackEvent('search', { search_term: query.trim(), results_count: results.length });
+      trackEvent('search', { results_count: results.length });
 
       if (results.length === 0) {
         status.textContent = '';
