@@ -1,7 +1,7 @@
 ---
 title: 'El 38 % de los casos de cáncer de 2022 se atribuye a factores de riesgo evitables'
 schema_version: 2
-excerpt: 'Un estudio sugiere que alrededor del 38% de nuevos casos de cáncer son prevenibles mediante cambios en hábitos.'
+excerpt: 'Un estudio publicado en Nature Medicine atribuye el 37,8 % de los casos nuevos de cáncer en 2022 a 30 riesgos modificables, entre ellos tabaco, infecciones y alcohol.'
 author: Noticiencias
 date: 2026-02-05
 categories:
@@ -12,7 +12,7 @@ tags:
   - 'estilo de vida'
   - 'salud pública'
 image: '~/assets/images/2026-02-05-article-657.jpg'
-image_alt: 'Estudio revela que un tercio del cáncer es prevenible con cambios en el estilo de vida'
+image_alt: 'Imagen ilustrativa de prevención del cáncer, vinculada a un análisis mundial de factores de riesgo modificables.'
 source_url: 'https://scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/'
 series: 'Salud que importa'
 refinery_id: '657'
@@ -57,6 +57,11 @@ sources:
     url: https://doi.org/10.1038/s41591-026-04219-7
     publisher: Nature Medicine
     date: '2026-02-03'
+    role: primary
+    doi: 10.1038/s41591-026-04219-7
+publication_status: peer_reviewed
+evidence_subject_type: humans
+evidence_detail: 'Análisis estadístico de casos en poblaciones humanas, 36 tipos de cáncer, 185 países, estimaciones de 2022; no es un ensayo clínico.'
 ---
 
 El cáncer es una de las principales causas de enfermedad y muerte en todo el mundo. Aunque existen muchos factores que contribuyen a su desarrollo, una pregunta clave es: ¿cuántos casos de cáncer podrían prevenirse si se evitan ciertos hábitos y factores de riesgo? Un estudio reciente publicado en _Nature Medicine_ ha abordado esta cuestión y sus hallazgos son reveladores.
