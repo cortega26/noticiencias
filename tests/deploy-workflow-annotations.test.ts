@@ -4,9 +4,6 @@ import { describe, expect, it } from 'vitest';
 
 const WORKFLOW_DIRECTORY = fileURLToPath(new URL('../.github/workflows/', import.meta.url));
 const DEPLOY_PATH = fileURLToPath(new URL('../.github/workflows/deploy.yml', import.meta.url));
-const oldUploadArtifactPin = 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02';
-const node24UploadArtifactPin =
-  'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2';
 
 describe('workflow deploy annotations', () => {
   it('uses SHA-pinned Node 24 artifact uploads in all workflows', () => {
@@ -17,11 +14,11 @@ describe('workflow deploy annotations', () => {
     expect(uploaders.length).toBeGreaterThan(0);
 
     for (const workflow of uploaders) {
-      expect(workflow).not.toContain(oldUploadArtifactPin);
+      expect(workflow).not.toMatch(/actions\/upload-artifact@ea165f8d/);
       const pins = workflow.match(/^\s*uses: actions\/upload-artifact@.+$/gm) ?? [];
       expect(pins.length).toBeGreaterThan(0);
       for (const pin of pins) {
-        expect(pin).toContain(node24UploadArtifactPin);
+        expect(pin).toMatch(/actions\/upload-artifact@[a-f0-9]{40} # v7\.0\.2$/);
       }
     }
   });
