@@ -1238,6 +1238,41 @@
       }
     ]
   },
+  "~/assets/images/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.jpg": {
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "hash": "1a9ee7da2b77f9e9",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1400.avif"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "format": "avif",
+        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1920.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1920.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.webp": {
     "originalWidth": 529,
     "originalHeight": 292,
