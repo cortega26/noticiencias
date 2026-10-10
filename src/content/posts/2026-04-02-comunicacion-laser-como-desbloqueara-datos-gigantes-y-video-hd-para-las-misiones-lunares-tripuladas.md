@@ -19,7 +19,7 @@ series: 'Espacio'
 refinery_id: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
 headlines_variants:
   question: ¿Qué demostró la comunicación láser durante Artemis II?
-  benefit: Artemis II probó comunicaciones láser a distancia lunar: esto es lo que transmitió
+  benefit: 'Artemis II probó comunicaciones láser a distancia lunar: esto es lo que transmitió'
 investigation: false
 featured: false
 corrected_at: '2026-10-09'
