@@ -62,6 +62,7 @@ Nos guían los siguientes compromisos, cada uno verificable:
 ## Contacto
 
 - **Errores editoriales o técnicos verificables**: [formulario para reportar problemas](/reportar-problema/).
+- **Consultas generales y colaboraciones**: [carlos@tooltician.com](mailto:carlos@tooltician.com), correo público del operador del proyecto.
 - **Privacidad y datos personales**: privacidad@noticiencias.com.
 - **Asuntos legales**: legal@noticiencias.com.
 - **Propuestas técnicas**: abre un issue en [GitHub](https://github.com/cortega26/noticiencias) con la etiqueta `agents:proposal`.
