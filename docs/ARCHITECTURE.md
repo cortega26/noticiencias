@@ -44,7 +44,6 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 6. Astro emits static output into `dist/`.
 7. GitHub Actions deploys `dist/` to GitHub Pages.
 
-
 ### GitHub Pages deployment and workflow annotations
 
 `.github/workflows/deploy.yml` owns the pre-publication gate, Astro build,
