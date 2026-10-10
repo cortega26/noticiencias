@@ -36,7 +36,7 @@ This backlog is a **prioritized queue, not an instruction to implement everythin
 
 **Estimate:** 15–45 minutes. **Risk:** Low. **Depends on:** SEO-01.
 
-**Steps:** Re-query submitted sitemaps; verify https://noticiencias.com/sitemap-index.xml and https://noticiencias.com/sitemap-0.xml return correct URLs and are referenced by robots.txt. If the property still lists no submitted sitemap **and authenticated submission is available**, submit the existing index once. If it is already present, skip. Read status/warnings after Google processes it; processing can be asynchronous.
+**Steps:** Re-query submitted sitemaps; verify <https://noticiencias.com/sitemap-index.xml> and <https://noticiencias.com/sitemap-0.xml> return correct URLs and are referenced by robots.txt. If the property still lists no submitted sitemap **and authenticated submission is available**, submit the existing index once. If it is already present, skip. Read status/warnings after Google processes it; processing can be asynchronous.
 
 **Acceptance:** Submission receipt or existing submission recorded with property, URL, timestamp, and state. No code change, fabricated “indexing boost”, URL resubmission spam, or modification to robots.txt without a demonstrated defect. Record access limitations as BLOCKED if account access is unavailable.
 
