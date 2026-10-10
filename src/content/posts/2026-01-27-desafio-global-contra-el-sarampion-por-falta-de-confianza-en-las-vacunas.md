@@ -1,7 +1,8 @@
 ---
-title: 'Desafío global contra el sarampión por falta de confianza en las vacunas'
+---
+title: 'Sarampión: por qué las brechas de vacunación favorecen nuevos brotes'
 schema_version: 1
-excerpt: 'La lucha contra el sarampión en América Latina y el mundo enfrenta obstáculos por falta de confianza en las vacunas debido a la desinformación.'
+excerpt: 'La vacunación desigual, las barreras de acceso y la desinformación dejan comunidades expuestas al sarampión. La OMS explica por qué importan dos dosis y una cobertura sostenida.'
 author: Noticiencias
 date: 2026-01-27
 categories:
@@ -12,7 +13,7 @@ tags:
   - 'desinformación'
   - 'ciencia sólida'
 image: '~/assets/images/2026-01-27-article-349.jpg'
-image_alt: 'Desafío global contra el sarampión por falta de confianza en las vacunas'
+image_alt: 'Ilustración de una noticia sobre el sarampión y la importancia de mantener una cobertura de vacunación alta.'
 source_url: 'https://newscientist.com/article/2513398-to-halt-measles-resurgence-we-must-fight-the-plague-of-misinformation/'
 series: 'Salud que importa'
 refinery_id: '349'
@@ -21,29 +22,58 @@ headlines_variants:
   benefit: 'Combate la desinformación para prevenir enfermedades infecciosas'
 investigation: false
 featured: false
-corrected_at: '2026-10-09'
-correction_summary: 'Se precisó que la meta de 95% se refiere a cobertura sostenida de dos dosis y a prevención/eliminación poblacional; no garantiza la ausencia de transmisión.'
+corrected_at: '2026-10-10'
+correction_summary: 'Se mantiene la precisión realizada el 9 de octubre sobre el objetivo poblacional del 95 % con dos dosis; se añadieron fuentes OMS y OPS actualizadas, se distinguieron problemas de acceso y desinformación y se fecharon los datos de eliminación.'
+sources:
+  - title: 'Measles cases dropped in Europe and Central Asia in 2025 compared to the previous year, but the risk of outbreaks remains'
+    url: 'https://www.who.int/europe/news/item/11-02-2026-measles-cases-dropped-in-europe-and-central-asia-in-2025-compared-to-the-previous-year--but-the-risk-of-outbreaks-remains---unicef-and-who%E2%81%A0'
+    publisher: 'OMS Europa y UNICEF'
+    date: '2026-02-11'
+    role: primary
+  - title: 'Measles Multi-Country Outbreak 2026'
+    url: 'https://www.paho.org/en/measles-multi-country-outbreak-2026'
+    publisher: 'OPS/OMS'
+    date: '2026-10-10'
+    role: primary
+  - title: 'UK measles and rubella elimination indicators and status'
+    url: 'https://www.gov.uk/government/publications/measles-and-rubella-elimination-uk/uk-measles-and-rubella-elimination'
+    publisher: 'UK Health Security Agency'
+    date: '2026-01-26'
+    role: primary
+  - title: 'To halt measles resurgence we must fight the plague of misinformation'
+    url: 'https://newscientist.com/article/2513398-to-halt-measles-resurgence-we-must-fight-the-plague-of-misinformation/'
+    publisher: 'New Scientist'
+    role: secondary
 ---
 
-**Nota de corrección (9 de octubre de 2026).** Una versión anterior decía que vacunar al 95% de los niños garantizaba que el virus no se propagara. La recomendación de la OMS se refiere a una cobertura sostenida con dos dosis en cada comunidad, como objetivo para prevenir brotes y sostener la eliminación; no es una garantía absoluta. [Fuente: OMS y CDC](https://www.who.int/news/item/23-11-2022-nearly-40-million-children-are-dangerously-susceptible-to-growing-measles-threat).
+**Actualización, 10 de octubre de 2026.** Este artículo incorpora información de la OMS y la OPS posterior a su publicación original del 27 de enero. El objetivo de vacunación del 95 % con dos dosis es una medida de protección de las comunidades, no una garantía absoluta de que no aparezcan casos. La rectificación inicial de este punto se realizó el 9 de octubre.
 
-**La lucha contra el sarampión: un desafío que requiere combinar esfuerzos para contrarrestar la desinformación**
+## Por qué puede regresar el sarampión
 
-La salud pública en América Latina y en todo el mundo enfrenta un desafío significativo con el resurgimiento del sarampión, una enfermedad altamente contagiosa que puede tener consecuencias graves. Aunque la vacunación es fundamental para prevenir esta enfermedad, las tasas de vacunación han disminuido en algunos países debido a la desinformación y la falta de confianza en las vacunas.
+El sarampión es una enfermedad vírica muy contagiosa. Incluso cuando un país interrumpe la transmisión endémica, los casos importados pueden originar brotes si encuentran comunidades con suficientes personas susceptibles. Por eso, las autoridades sanitarias evalúan **la cobertura de vacunación y la vigilancia epidemiológica**, además del número de casos.
 
-Un estudio fraudulento publicado en 1998 que sugería una relación entre la vacuna contra el sarampión, las paperas y la rubeola (MMR) y el autismo ha tenido consecuencias duraderas. A pesar de que numerosos estudios han demostrado que no hay relación entre la vacuna MMR y el autismo, la desinformación sigue siendo un obstáculo para lograr tasas de vacunación adecuadas.
+La disminución de la vacunación puede responder a causas diferentes: dificultades de acceso a servicios sanitarios, interrupciones de campañas, desigualdades territoriales o rechazo a las vacunas alimentado por la desinformación. No sería correcto atribuir todos los brotes a una sola causa.
 
-La Organización Mundial de la Salud (OMS) informa que seis países han perdido su estatus de país libre de sarampión, incluyendo el Reino Unido, España y Austria. En Estados Unidos, se está luchando contra un brote importante de sarampión. La enfermedad es altamente contagiosa y puede causar complicaciones graves, como dificultades respiratorias, sordera, ceguera y daños cerebrales permanentes.
+## Qué significa la meta de dos dosis y 95 %
 
-La buena noticia es que la vacuna MMR es efectiva para prevenir el sarampión. Sin embargo, la OMS recomienda mantener una cobertura sostenida y homogénea de al menos el 95% con ambas dosis en cada comunidad para prevenir brotes y sostener la eliminación del sarampión. Es una meta poblacional, no una garantía de que no habrá transmisión: el riesgo persiste donde hay grupos con baja cobertura. La situación en América Latina y en todo el mundo no es tan mala, pero podría ser mejor. La proporción de niños que reciben una primera dosis de la vacuna contra el sarampión ha aumentado en las últimas décadas, pero aún hay trabajo por hacer.
+La OMS señala que **dos dosis de una vacuna contra el sarampión ofrecen hasta un 97 % de protección**. Mantener una cobertura de al menos el 95 % con dos dosis en cada comunidad ayuda a prevenir brotes y proteger también a personas que no pueden vacunarse, como determinados pacientes inmunodeprimidos.
 
-Es importante abordar la desinformación y promover la ciencia sólida para contrarrestar los esfuerzos de los grupos antivacunas. Los gobiernos y las plataformas de redes sociales deben tomar medidas para controlar la desinformación y promover la información precisa sobre las vacunas. La lucha contra el sarampión requiere un esfuerzo conjunto para proteger la salud pública y prevenir la propagación de esta enfermedad.
+Es una meta de salud pública, no la promesa de que cada persona vacunada está protegida al cien por cien ni de que el virus nunca circulará. La cobertura nacional también puede ocultar barrios o grupos con tasas mucho menores.
 
-**¿Qué se puede hacer?**
+La supuesta relación entre la vacuna triple vírica y el autismo procede de una afirmación desacreditada; no representa el consenso científico. Promover información sanitaria comprobable es importante, pero debe acompañarse de medidas para facilitar el acceso real a las dosis recomendadas.
 
-- Los gobiernos deben implementar políticas efectivas para promover la vacunación y abordar la desinformación.
-- Las plataformas de redes sociales deben tomar medidas para controlar la desinformación y promover la información precisa sobre las vacunas.
-- Los profesionales de la salud deben educar a los pacientes y a la comunidad sobre los beneficios de la vacunación y la importancia de la prevención del sarampión.
-- La sociedad en general debe ser consciente de la importancia de la vacunación y apoyar esfuerzos para promover la ciencia sólida y contrarrestar la desinformación.
+## Qué ocurrió en Europa y qué se sabe en 2026
 
-La lucha contra el sarampión es un desafío que requiere la colaboración de todos. Al trabajar juntos, podemos proteger la salud pública y prevenir la propagación de esta enfermedad.
+En **enero de 2026**, las autoridades europeas comunicaron la pérdida o el restablecimiento de transmisión endémica en diversos países, incluidos Reino Unido y España, a partir de datos anteriores. No se trata de una condición permanente o equivalente para todos los países: la clasificación se revisa según transmisión local, vigilancia y nuevas evidencias.
+
+En **febrero de 2026**, la OMS y UNICEF informaron que Europa y Asia Central habían registrado unos **33.998 casos en 2025**, casi un 75 % menos que los 127.412 de 2024. La caída no elimina el riesgo: seguían existiendo brechas inmunitarias y brotes. Las cifras corresponden a esos años y esa región; no describen automáticamente la situación de Chile.
+
+Para las Américas, la [OPS mantiene un seguimiento específico de brotes](https://www.paho.org/en/measles-multi-country-outbreak-2026), útil para consultar la evolución regional sin convertir una instantánea antigua en un recuento actual.
+
+## Qué puede hacer una comunidad
+
+La prevención exige combinar calendarios de vacunación completos, recuperación de dosis pendientes y vigilancia de casos sospechosos. Las autoridades sanitarias locales pueden orientar sobre las dosis indicadas según edad, antecedentes y situación particular.
+
+La lección no es que una campaña informativa por sí sola vaya a detener el sarampión. Es que **la protección depende de mantener altas coberturas de vacunación donde viven las personas**, llegar a grupos insuficientemente atendidos y responder a tiempo a nuevos casos.
+
+El texto tiene fines divulgativos y no sustituye las indicaciones de un profesional sanitario ni del programa nacional de inmunizaciones correspondiente.
