@@ -23,6 +23,40 @@ const isCfEnabled = cfToken && cfToken !== 'null' && String(cfToken).length > 0;
 const cfBeacon = JSON.stringify({ token: String(cfToken) });
 ---
 
+<script is:inline>
+  // Remove free-form search text before either analytics vendor initializes.
+  // Keep inbound ?q= links functional without retaining their query in page URLs.
+  (() => {
+    if (window.__ncSearchPrivacyGuardInstalled) return;
+    window.__ncSearchPrivacyGuardInstalled = true;
+
+    const stripQuery = (url) => {
+      if (url.pathname !== '/buscar/' && url.pathname !== '/buscar') return false;
+      const query = url.searchParams.get('q');
+      if (query === null) return false;
+      window.__ncIncomingSearchTerm = query;
+      url.searchParams.delete('q');
+      return true;
+    };
+
+    const current = new URL(window.location.href);
+    if (stripQuery(current)) {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        current.pathname + current.search + current.hash
+      );
+    }
+
+    // ClientRouter can navigate to an old, shareable ?q= link without reloading.
+    // Rewrite the destination before Astro changes history or GA sees page_location.
+    document.addEventListener('astro:before-preparation', (event) => {
+      const destination = new URL(event.to.href);
+      if (stripQuery(destination)) event.to = destination;
+    });
+  })();
+</script>
+
 {
   isEnabled ? (
     <>

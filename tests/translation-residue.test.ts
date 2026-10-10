@@ -14,6 +14,8 @@ import { describe, expect, it } from 'vitest';
 const SCRIPT = resolve('scripts/check-translation-residue.js');
 const MIXED = resolve('tests/fixtures/translation-residue/mixed');
 const CLEAN = resolve('tests/fixtures/translation-residue/clean');
+const SPANISH_GENTE = resolve('tests/fixtures/translation-residue/spanish-gente');
+const PORTUGUESE_A_GENTE = resolve('tests/fixtures/translation-residue/portuguese-a-gente');
 
 function runCheck(dir: string): { combined: string; exitCode: number } {
   // execFileSync (no shell) instead of execSync with interpolation: removes
@@ -52,5 +54,17 @@ describe('check-translation-residue', () => {
     const result = runCheck(CLEAN);
     expect(result.exitCode).toBe(0);
     expect(result.combined).toContain('no residue');
+  });
+
+  it('accepts gente in ordinary Spanish prose', () => {
+    const result = runCheck(SPANISH_GENTE);
+    expect(result.exitCode).toBe(0);
+    expect(result.combined).toContain('no residue');
+  });
+
+  it('still catches the Portuguese phrase a gente', () => {
+    const result = runCheck(PORTUGUESE_A_GENTE);
+    expect(result.exitCode).toBe(1);
+    expect(result.combined).toContain('Portuguese residue phrase "a gente"');
   });
 });

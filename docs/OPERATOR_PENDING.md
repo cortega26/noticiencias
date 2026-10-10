@@ -18,8 +18,8 @@ está activa pero no produce decisiones: no hay dimensiones que leer.
 ### 1.1 GA4: dimensiones personalizadas + evento clave (FU-022)
 
 - [ ] Administrar → Definiciones personalizadas → **Dimensiones
-      personalizadas** (ámbito _Evento_), crear las 13:
-      `link_domain`, `search_term`, `results_count`, `form_id`,
+      personalizadas** (ámbito _Evento_), crear las 12:
+      `link_domain`, `results_count`, `form_id`,
       `article_path`, `target_path`, `related_kind`, `series_slug`,
       `topic_slug`, `category_slug`, `network`, `position`, `error_type`.
 - [ ] Administrar → Eventos → marcar **`newsletter_submit`** como evento
