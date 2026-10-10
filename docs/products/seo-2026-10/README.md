@@ -94,7 +94,7 @@ This is a sequential plan, not permission to open 15 simultaneous PRs.
 - **Weeks 6–9 | Extend only what works:** second hub, up to two more original pieces, prioritized legacy revisions, limited headline/image fixes and distribution outreach. Approx. 10–18 engineering hours plus 12–24 editorial hours.
 - **Weeks 10–12 | Evaluate:** performance validation, spot index checks, topic/cohort and editorial-cost comparison; decide keep/stop/next pilot. Approx. 4–8 analysis hours.
 
-This is a planning budget (roughly 28–50 technical/analysis hours and 20–40 editorial hours over 12 weeks), not a deadline commitment. Prefer smaller output if source validation, editorial judgment, or machine access becomes the bottleneck. No filler content to meet volume targets.
+This is a planning budget (roughly 28–50 technical/analysis hours and 40–90 core editorial hours over 12 weeks (plus optional distribution outreach)), not a deadline commitment. Prefer smaller output if source validation, editorial judgment, or machine access becomes the bottleneck. No filler content to meet volume targets.
 
 Dependencies: current published-content contract, stable editorial decision process, connected GSC permissions, accessible production pages. Backend publication cadence/queue work must occur under the backend's own governance; do not infer queue state from a separate hosted SQLite database.
 
