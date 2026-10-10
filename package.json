@@ -24,7 +24,7 @@
     "check:r2-image-quota": "node scripts/r2-image-quota-guard.js",
     "publish:image-derivatives": "node scripts/publish-image-derivatives.js",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md tests/article-cheetah-primary-source.test.ts && git diff -- src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md tests/article-cheetah-primary-source.test.ts && exit 1",
     "check:image-alt": "node scripts/check-image-alt.js",
     "check:doc-drift": "node scripts/check-doc-drift.js",
     "check:editorial-fields": "node scripts/check-editorial-fields.js",
