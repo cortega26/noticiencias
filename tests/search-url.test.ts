@@ -38,7 +38,8 @@ describe('Search URL Utils', () => {
   });
 
   it('strips legacy q but preserves unrelated URL parameters and hash', () => {
-    window.location.href = 'https://noticiencias.com/buscar/?utm_source=social&q=secret%40example.com#main';
+    window.location.href =
+      'https://noticiencias.com/buscar/?utm_source=social&q=secret%40example.com#main';
     clearSearchQueryFromUrl();
     expect(window.history.replaceState).toHaveBeenCalledWith(
       null,
