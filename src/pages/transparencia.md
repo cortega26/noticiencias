@@ -2,7 +2,7 @@
 title: 'Transparencia'
 permalink: /transparencia/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Cómo atribuímos fuentes, distinguimos la asistencia de IA y gestionamos correcciones, anuncios y conflictos de interés.'
+excerpt: 'Cómo atribuimos fuentes, distinguimos la asistencia de IA y gestionamos correcciones, anuncios y conflictos de interés.'
 ---
 
 ## Fuentes y autoría
