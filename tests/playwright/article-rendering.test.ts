@@ -21,7 +21,7 @@ async function getFirstArticleUrl(page: Page): Promise<string> {
     store?: Record<string, { url?: string }>;
   };
   expect(artifact, 'search artifact must be an object').toBeTruthy();
-  expect(artifact.version, 'search artifact must have a version').toBe(1);
+  expect(artifact.version, 'search artifact must have a version').toBe(2);
   const store = artifact.store ?? {};
   const urls = Object.values(store)
     .map((e) => e.url)

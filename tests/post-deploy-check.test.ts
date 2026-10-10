@@ -203,9 +203,9 @@ describe('Post-deploy deploy checker', () => {
         </html>
       `),
       jsonResponse({
-        version: 1,
+        version: 2,
         index: {},
-        store: { '/ciencia/uno/': { title: 'Uno', url: '/ciencia/uno/' } },
+        store: { '0': { title: 'Uno', url: '/ciencia/uno/' } },
       }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
@@ -417,7 +417,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse({ version: 1, index: {}, store: {} }),
+      jsonResponse({ version: 2, index: {}, store: {} }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -552,9 +552,9 @@ describe('Post-deploy deploy checker', () => {
         </html>
       `),
       jsonResponse({
-        version: 1,
+        version: 2,
         index: {},
-        store: { '/ciencia/uno/': { title: 'Uno', url: '/ciencia/uno/' } },
+        store: { '0': { title: 'Uno', url: '/ciencia/uno/' } },
       }),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
