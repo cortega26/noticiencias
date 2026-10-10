@@ -103,15 +103,16 @@ responsible for updating the active docs that repeat it — and the doc-drift
 gates (`npm run check:doc-drift`, backend `make docs-check`) check selected
 references and invariants. They are not a semantic audit of every document.
 
-| Fact                        | Owning file(s)                                                                                           | Repeaters to keep in sync                                                 |
-| --------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Post frontmatter schema     | `src/content.config.ts` (render authority); backend mirror `news_collector/contracts/frontend_schema.py` | `README.md`, `CONTRIBUTING.md`, `docs/ARCHITECTURE.md`, `docs/tagging.md` |
-| Site metadata and pathnames | `src/config.yaml`                                                                                        | `README.md`, `docs/ARCHITECTURE.md`, `docs/tagging.md`                    |
-| Framework/runtime versions  | `package.json` (dependencies, engines)                                                                   | `README.md`, `docs/supported-dependency-matrix.md`                        |
-| CI and validation commands  | `.github/workflows/*.yml` + `package.json` scripts                                                       | `README.md`, `docs/supported-dependency-matrix.md`                        |
-| Search implementation       | `src/pages/search.json.js` + `src/utils/build-search-index.ts`                                           | `docs/ARCHITECTURE.md`, `docs/SOURCE_OF_TRUTH.md`                         |
-| Deployment host/URLs        | `astro.config.mjs` / `src/config.yaml`                                                                   | `README.md`, backend `docs/PRODUCT_FLOW.md`                               |
-| Report-pipeline contract    | `workers/src/handlers/report.ts` + `workers/src/utils/validate.ts`                                       | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
+| Fact                          | Owning file(s)                                                                                           | Repeaters to keep in sync                                                 |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Post frontmatter schema       | `src/content.config.ts` (render authority); backend mirror `news_collector/contracts/frontend_schema.py` | `README.md`, `CONTRIBUTING.md`, `docs/ARCHITECTURE.md`, `docs/tagging.md` |
+| Site metadata and pathnames   | `src/config.yaml`                                                                                        | `README.md`, `docs/ARCHITECTURE.md`, `docs/tagging.md`                    |
+| Framework/runtime versions    | `package.json` (dependencies, engines)                                                                   | `README.md`, `docs/supported-dependency-matrix.md`                        |
+| CI and validation commands    | `.github/workflows/*.yml` + `package.json` scripts                                                       | `README.md`, `docs/supported-dependency-matrix.md`                        |
+| Search implementation         | `src/pages/search.json.js` + `src/utils/build-search-index.ts`                                           | `docs/ARCHITECTURE.md`, `docs/SOURCE_OF_TRUTH.md`                         |
+| Deployment host/URLs          | `astro.config.mjs` / `src/config.yaml`                                                                   | `README.md`, backend `docs/PRODUCT_FLOW.md`                               |
+| Publication callback identity | `scripts/utils/publication-ids.js` + `scripts/backend-notify.js` + backend webhook contract              | `docs/webhook-integration.md`, backend `docs/PIPELINE_CONTRACTS.md`       |
+| Report-pipeline contract      | `workers/src/handlers/report.ts` + `workers/src/utils/validate.ts`                                       | `docs/report-pipeline-setup.md`, `docs/webhook-integration.md`            |
 
 ## Non-Authoritative Material
 

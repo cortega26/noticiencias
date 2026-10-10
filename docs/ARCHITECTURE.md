@@ -42,7 +42,7 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 4. `src/pages/` routes use those normalized posts to build list, taxonomy, series, RSS, and article pages.
 5. Layouts pass page metadata into `src/components/template/common/Metadata.astro`.
 6. Astro emits static output into `dist/`.
-7. GitHub Actions deploys `dist/` to GitHub Pages.
+7. GitHub Actions deploys `dist/` to GitHub Pages and sends a backend callback containing the changed `refinery_id`, originating PR number, and exact post-content hash; the backend uses that evidence to apply the callback to one publication attempt only.
 
 ### Search Flow
 

@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  pull-requests: read
 
 env:
   R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
@@ -113,8 +114,8 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           # Full history: post-publish-callback.js diffs against
-          # github.event.before to derive publication_ids, which a shallow
-          # (default depth-1) checkout wouldn't have available.
+          # github.event.before to derive publication_ids and resolve the
+          # merged PR associated with each changed post's last commit.
           fetch-depth: 0
 
       - name: Setup Node
@@ -144,6 +145,10 @@ jobs:
         env:
           BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
           BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
           DEPLOY_URL: ${{ steps.deployment.outputs.page_url }}
           GITHUB_BASE_SHA: ${{ github.event.before }}
         run: node scripts/post-publish-callback.js ${{ steps.deployment.outputs.page_url }}

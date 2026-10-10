@@ -27,7 +27,7 @@ import { readdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildEnvelope, sendWebhookNotification } from './backend-notify.js';
-import { getChangedPostRefineryIds } from './utils/publication-ids.js';
+import { getChangedPostAttemptRefs, getChangedPostRefineryIds } from './utils/publication-ids.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, '..');
@@ -58,6 +58,18 @@ async function main() {
     baseSha && sha !== 'unknown'
       ? getChangedPostRefineryIds({ baseSha, headSha: sha, repoRoot: REPO_ROOT })
       : [];
+  const publicationAttemptRefs =
+    baseSha && sha !== 'unknown'
+      ? await getChangedPostAttemptRefs({
+          baseSha,
+          headSha: sha,
+          repoRoot: REPO_ROOT,
+          repository: process.env.GITHUB_REPOSITORY,
+          branch: process.env.GITHUB_REF_NAME,
+          token: process.env.GITHUB_TOKEN,
+          apiUrl: process.env.GITHUB_API_URL,
+        })
+      : [];
 
   if (!baseSha) {
     console.warn(
@@ -73,6 +85,9 @@ async function main() {
   }
   console.log(
     `[post-publish-callback] ${publicationIds.length} publication_ids derived from this deploy's changed posts.`
+  );
+  console.log(
+    `[post-publish-callback] ${publicationAttemptRefs.length} exact publication attempt reference(s) resolved.`
   );
 
   if (!webhookUrl) {
@@ -92,6 +107,7 @@ async function main() {
     status: 'success',
     diagnostics: diagnostic,
     publicationIds,
+    publicationAttemptRefs,
     githubEnv: process.env,
   });
 

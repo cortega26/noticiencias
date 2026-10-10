@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 concurrency:
   group: content-guard-${{ github.ref }}
@@ -95,20 +96,33 @@ jobs:
         env:
           BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
           BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number || '' }}
           GITHUB_BASE_SHA: >-
             ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
           echo '{"check":"content-guard","status":"fail","message":"One or more validation steps failed. See run for details."}' > /tmp/guard-failure.json
-          node --input-type=module <<'EOF' > /tmp/guard-failure-ids.json
-          import { getChangedPostRefineryIds } from './scripts/utils/publication-ids.js';
-          const ids = getChangedPostRefineryIds({
+          node --input-type=module <<'EOF'
+          import { writeFileSync } from 'node:fs';
+          import { getChangedPostAttemptRefs, getChangedPostRefineryIds } from './scripts/utils/publication-ids.js';
+          const opts = {
             baseSha: process.env.GITHUB_BASE_SHA,
             headSha: process.env.GITHUB_SHA,
             repoRoot: process.cwd(),
+          };
+          const publicationIds = getChangedPostRefineryIds(opts);
+          const publicationAttemptRefs = await getChangedPostAttemptRefs({
+            ...opts,
+            pullRequestNumber: process.env.GITHUB_PR_NUMBER,
+            repository: process.env.GITHUB_REPOSITORY,
+            branch: process.env.GITHUB_REF_NAME,
+            token: process.env.GITHUB_TOKEN,
+            apiUrl: process.env.GITHUB_API_URL,
           });
-          console.log(JSON.stringify(ids));
+          writeFileSync('/tmp/guard-failure-ids.json', JSON.stringify(publicationIds));
+          writeFileSync('/tmp/guard-failure-attempt-refs.json', JSON.stringify(publicationAttemptRefs));
           EOF
-          node scripts/backend-notify.js --status=fail --payload-file=/tmp/guard-failure.json --publication-ids-file=/tmp/guard-failure-ids.json || true
+          node scripts/backend-notify.js --status=fail --payload-file=/tmp/guard-failure.json --publication-ids-file=/tmp/guard-failure-ids.json --publication-attempt-refs-file=/tmp/guard-failure-attempt-refs.json || true
 
       - name: Upload backend notification diagnostics
         if: always()
