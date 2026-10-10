@@ -162,7 +162,9 @@ test('search result clicks contain only safe path and position', async ({ page }
   expect(await page.evaluate(() => window.location.search)).toBe('');
 });
 
-test('inbound search query is usable but absent from GA payloads and browser URL', async ({ page }) => {
+test('inbound search query is usable but absent from GA payloads and browser URL', async ({
+  page,
+}) => {
   await page.addInitScript(captureDataLayer);
   const privateTerm = 'lector.privado@example.com';
   await page.goto('/buscar/?q=' + encodeURIComponent(privateTerm));
