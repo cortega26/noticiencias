@@ -39,6 +39,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: TEMP exact YAML Prettier diff for PR 259
+        if: github.event_name == 'pull_request' && github.event.pull_request.number == 259
+        run: |
+          npx prettier --write .github/workflows/one-time-mit-jan-r2-cleanup.yml
+          git diff -- .github/workflows/one-time-mit-jan-r2-cleanup.yml
+          git restore -- .github/workflows/one-time-mit-jan-r2-cleanup.yml
+
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
