@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-09T13:12:56.926Z",
+  "generated_at": "2026-10-10T12:28:02.691Z",
   "content": {
     "total_articles": 43,
     "v2_articles": 31,
-    "total_words": 28462,
-    "avg_words": 662,
+    "total_words": 27103,
+    "avg_words": 630,
     "categories": [
       {
         "name": "Tecnología",
@@ -168,14 +168,14 @@
     "articles_by_date": [
       {
         "slug": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo",
-        "title": "Si la gravedad actúa como proyector, el universo podría ser holograma",
+        "title": "AdS/CFT: qué demuestra la holografía y qué sigue abierto",
         "date": "2026-09-25",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — La idea holográfica es un pilar teórico consolidado en contextos específicos (AdS/CFT), pero su extensión a nuestro universo y las predicciones observables aún no están verificadas experimentalmente, manteniéndose en el ámbito de cálculos y suposiciones.",
+        "confidence": "Moderada — la dualidad AdS/CFT está formulada para modelos anti-de Sitter; su extensión al cosmos observado no cuenta aquí con una prueba observacional directa.",
         "review_status": null
       },
       {
@@ -192,14 +192,14 @@
       },
       {
         "slug": "2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral",
-        "title": "Los cilios del coral crean remolinos de oxígeno nocturnos y fallan cerca de 37 °C",
+        "title": "El calor agudo alteró la coordinación ciliar de un coral en laboratorio",
         "date": "2026-09-20",
         "categories": [
           "Biología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada a alta — estudio revisado por pares publicado en Science con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.",
+        "confidence": "Moderada — estudio revisado por pares con mediciones controladas y tres réplicas biológicas; los resultados corresponden a una especie y el mecanismo incluye un modelo, sin validación de campo.",
         "review_status": null
       },
       {
@@ -336,7 +336,7 @@
       },
       {
         "slug": "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva",
-        "title": "Elias Thorne: el farero ficticio que las IA repiten como si existiera",
+        "title": "Elias y los faros: por qué cuatro modelos de IA repiten historias parecidas",
         "date": "2026-06-12",
         "categories": [
           "Tecnología"
@@ -372,14 +372,14 @@
       },
       {
         "slug": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia",
-        "title": "El MIT vincula la automatización con el 52 % del aumento de la desigualdad desde 1980",
+        "title": "Estudio: la automatización explica 52 % del aumento de desigualdad entre grupos en EE. UU. (1980–2016)",
         "date": "2026-05-07",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — el estudio de MIT utiliza un amplio conjunto de datos (500 grupos demográficos, 49 industrias) pero la información proviene de un comunicado de prensa y no se presentan detalles metodológicos completos ni limitaciones explícitas.",
+        "confidence": "Moderada — es un estudio académico revisado por pares con estimaciones basadas en datos históricos de EE. UU.; sus resultados no se generalizan automáticamente fuera del país y periodo analizados.",
         "review_status": null
       },
       {
@@ -583,7 +583,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada-alta — estudio publicado con revisión por pares en Signal Transduction and Targeted Therapy (con DOI), reportado por ScienceDaily; no se detalla el tamaño de muestra en la nota de divulgación.",
+        "confidence": "Evidencia preclínica — el estudio usó modelos de ratón y células madre mesenquimales humanas in vitro; no probó eficacia ni seguridad de un tratamiento en pacientes.",
         "review_status": null
       },
       {
@@ -600,14 +600,14 @@
       },
       {
         "slug": "2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma",
-        "title": "La guardería: un lugar donde los bebés intercambian microorganismos y desarrollan su microbioma",
+        "title": "Cómo compartían cepas bacterianas los bebés de tres guarderías",
         "date": "2026-01-25",
         "categories": [
           "Salud"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio revisado por pares publicado en Nature con muestra de 43 bebés y análisis detallado de transmisión microbiana.",
+        "confidence": "Moderada — estudio longitudinal revisado por pares en tres centros, con modelado metagenómico; las estimaciones de origen no prueban cada transmisión y no evalúan resultados clínicos.",
         "review_status": null
       },
       {
@@ -624,7 +624,7 @@
       },
       {
         "slug": "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas",
-        "title": "Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado",
+        "title": "Arpones de hueso en Brasil apuntan a la caza de ballenas hace casi 5.000 años",
         "date": "2026-01-23",
         "categories": [
           "Arqueología"
@@ -648,7 +648,7 @@
       },
       {
         "slug": "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii",
-        "title": "NASA prepara Artemis II, el regreso de humanos a la órbita lunar",
+        "title": "NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años",
         "date": "2026-01-18",
         "categories": [
           "Astronomía"
@@ -672,7 +672,7 @@
       },
       {
         "slug": "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras",
-        "title": "El curso del MIT que llevó a un ingeniero a una nueva carrera",
+        "title": "Del MicroMasters del MIT a una maestría: el recorrido de Kevin Power",
         "date": "2026-01-15",
         "categories": [
           "Tecnología"
@@ -695,7 +695,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-09T13:12:56.155Z"
+    "generated_at": "2026-10-10T12:28:01.885Z"
   },
   "images": {
     "delivery_mode": "github",
@@ -727,10 +727,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "14 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "52 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 14,
+        "processed": 52,
         "failed": 0
       }
     },
