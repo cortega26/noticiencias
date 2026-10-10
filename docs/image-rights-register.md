@@ -36,3 +36,9 @@ Estos datos describen procedencia y permisos no verificados; no son una conclusi
 Antes de monetizar cualquiera de esos activos, localizar la licencia comercial aplicable o reemplazar la imagen. La atribución por sí sola no resuelve esos permisos.
 
 Las declaraciones públicas de financiación no se modifican en este cambio. Actualizarlas antes de activar anuncios sigue pendiente.
+
+## Limpieza de cuatro derivados CDN autorizada (pendiente de ejecución)
+
+El 9 de octubre de 2026 el usuario autorizó expresamente eliminar **solo** cuatro objetos R2 de la fotografía MIT del 15 de enero, con hash original `5121406c65027caa` y anchuras de 400, 900, 1400 y 1500 px, además de purgar las cuatro URL exactas del CDN. No existe autorización para otros objetos o URLs.
+
+El procedimiento de un solo uso está delimitado en `.github/workflows/one-time-mit-jan-r2-cleanup.yml` y `scripts/one-time-mit-jan-r2-cleanup.js`. Tras integrarlo deberá comprobarse el resultado real en R2 y CDN, registrar la evidencia de GitHub Actions y eliminar el código temporal. **Aún no se afirma que el borrado ni la purga hayan tenido éxito.**
