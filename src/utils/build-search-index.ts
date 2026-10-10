@@ -1,6 +1,10 @@
 /**
  * Build-time Lunr search index generator (server-only).
  *
+ * Uses short, deterministic numeric document references instead of long URL
+ * references inside Lunr's repeated postings. The display store retains
+ * each canonical URL, so search scope and result navigation are unchanged.
+ *
  * Replaces the browser-side index construction that previously downloaded
  * every post's full `body` and built Lunr in the main thread. Now the
  * serialized index + compact result store are emitted at build time, and
@@ -16,7 +20,7 @@ import lunr from 'lunr';
 import type { SearchDocument } from './search';
 import { normalizeSearchDocument } from './search';
 
-export const SEARCH_ARTIFACT_VERSION = 1;
+export const SEARCH_ARTIFACT_VERSION = 2;
 
 /**
  * Maximum description length kept in the result store (Stream C slim).
@@ -93,16 +97,17 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
   // Sort by URL for deterministic output across builds.
   const sorted = [...documents].sort((a, b) => a.url.localeCompare(b.url));
 
-  // Build the compact store (display fields only — no raw content/body,
-  // no image URLs). Descriptions truncated to the snippet ceiling.
+  // Compact store keyed by deterministic short Lunr refs, not full URLs.
+  // Every entry retains its canonical URL for navigation. No raw content,
+  // no image URLs. Descriptions truncated to the snippet ceiling.
   const store: Record<string, SearchStoreEntry> = {};
-  for (const doc of sorted) {
+  for (const [id, doc] of sorted.entries()) {
     const rawDescription = typeof doc.description === 'string' ? doc.description : '';
     const description =
       rawDescription.length > SEARCH_STORE_DESCRIPTION_MAX_LENGTH
         ? `${rawDescription.slice(0, SEARCH_STORE_DESCRIPTION_MAX_LENGTH - 1).trimEnd()}…`
         : rawDescription;
-    store[doc.url] = {
+    store[String(id)] = {
       title: doc.title,
       url: doc.url,
       description,
@@ -112,16 +117,17 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
     };
   }
 
-  // Build the Lunr index with the same fields/boosts as the original.
+  // Preserve the same fields, full body and boosts; only the internal ref
+  // changes. Numeric refs replace long canonical URLs in posting lists.
   const index = lunr(function (this: lunr.Builder) {
-    this.ref('url');
+    this.ref('id');
     this.field('title', { boost: 10 });
     this.field('description', { boost: 5 });
     this.field('content');
     this.field('tags');
 
-    sorted.forEach((doc) => {
-      this.add(normalizeSearchDocument(doc));
+    sorted.forEach((doc, id) => {
+      this.add({ ...normalizeSearchDocument(doc), id: String(id) });
     });
   });
 
