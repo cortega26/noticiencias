@@ -256,7 +256,9 @@ El segundo párrafo desarrolla los métodos y las limitaciones del estudio y ofr
     fs.writeFileSync(file, text);
     const result = collectContentQualityDiagnostics({ repoRoot });
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining('source_url must be an absolute http(s) URL')])
+      expect.arrayContaining([
+        expect.stringContaining('source_url must be an absolute http(s) URL'),
+      ])
     );
   });
 
