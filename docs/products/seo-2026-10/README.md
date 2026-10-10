@@ -82,7 +82,7 @@ Track these each week, on identical settled windows:
 
 - By day 90, aim for repeatable non-branded impressions and clicks in more than one scientific topic, rather than a single two-day spike.
 - Target an improvement in the rolling 28-day non-branded impression baseline and a growing number of distinct article URLs earning relevant non-branded impressions. Because volume is tiny, use **directional two-window confirmation** rather than claiming success from one extra click.
-- If meaningful data accrues, a reasonable *stretch hypothesis* is doubling the October non-branded impression baseline within 90 days; explicitly report failure if not achieved. Do not represent it as a forecast or a condition to publish lower-quality articles.
+- If meaningful data accrues, a reasonable _stretch hypothesis_ is doubling the October non-branded impression baseline within 90 days; explicitly report failure if not achieved. Do not represent it as a forecast or a condition to publish lower-quality articles.
 - A 30-day ranking or revenue promise is **not** an acceptable program success metric. SEO outcomes can require several crawl, indexing and traffic cycles.
 
 ## 4. Proposed schedule, dependencies and effort budget
