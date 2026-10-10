@@ -31,7 +31,8 @@ describe('published trust and AdSense disclosures', () => {
       const document = page(name);
       expect(document).toContain('Carlos Ortega');
       expect(document).toContain('/contacto/');
-      expect(document).not.toMatch(/\\[País de Operación|\\[Nombre de la Empresa/i);
+      expect(document).not.toContain('[País de Operación');
+      expect(document).not.toContain('[Nombre de la Empresa');
     }
     expect(page('nosotros')).toContain('no es una validación científica independiente');
     expect(page('transparencia')).toContain('comprobación humana individual');
