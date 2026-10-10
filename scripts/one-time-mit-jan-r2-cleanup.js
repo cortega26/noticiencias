@@ -20,7 +20,9 @@ function checkScope() {
   if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main') {
     throw new Error('Run only on push to main');
   }
-  if (fs.readFileSync('data/image-derivatives-manifest.json', 'utf8').includes('5121406c65027caa')) {
+  if (
+    fs.readFileSync('data/image-derivatives-manifest.json', 'utf8').includes('5121406c65027caa')
+  ) {
     throw new Error('Retired image still referenced by live manifest');
   }
   for (const path of [
