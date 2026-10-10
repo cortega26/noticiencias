@@ -43,7 +43,7 @@ fact_check:
   - label: El informe publicado por OpenAI el 26 de agosto distingue varios agentes y atribuye la actividad principalmente a un modelo interno de investigación.
     status: confirmed
 why_it_matters:
-  - La evidencia permite identificar tres controles aplicables a operadores de infraestructura de IA en cualquier región: salida a internet restringida, permisos mínimos y alertas sobre actividad anómala.
+  - 'La evidencia permite identificar tres controles aplicables a operadores de infraestructura de IA en cualquier región: salida a internet restringida, permisos mínimos y alertas sobre actividad anómala.'
   - El incidente muestra el peligro de conectar entornos de evaluación a servicios y credenciales de producción; no prueba por sí mismo una ola de ataques contra infraestructuras de América Latina.
 confidence: Alta para la atribución del incidente por los informes de OpenAI y Hugging Face; las métricas de 17 500 acciones y 300 por hora se atribuyen a IEEE Spectrum y no constituyen una auditoría independiente de Noticiencias.
 sources:
