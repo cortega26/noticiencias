@@ -216,6 +216,52 @@ El segundo párrafo agrega contexto, precisión y longitud suficiente para mante
     );
   });
 
+  it('accepts original editorial without external source_url', () => {
+    const repoRoot = makeRepo();
+    writePost(
+      repoRoot,
+      '2026-04-02-editorial.md',
+      `## Opinión y principios
+
+Una columna editorial presenta las decisiones propias del medio y explica qué condiciones debe cumplir su trabajo. No es una traducción de una nota ajena y no requiere inventar una fuente externa que simule trabajo periodístico de terceros.
+
+El artículo distingue entre una opinión editorial y las noticias basadas en investigaciones, señala sus principios públicos y enlaza los documentos propios cuando son pertinentes.
+
+Los criterios de participación, los canales para reportar errores y los compromisos del medio quedan visibles para los lectores. Cuando una pieza no responde a una investigación de terceros, la transparencia exige reconocer su carácter original en vez de señalar una fuente externa inventada.`
+    );
+    const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-editorial.md');
+    let text = fs.readFileSync(file, 'utf8');
+    text = text.replace('  - Ciencia', '  - Editorial');
+    text = text.replace('source_url: "https://example.com/source"\n', '');
+    fs.writeFileSync(file, text);
+    const result = collectContentQualityDiagnostics({ repoRoot });
+    expect(result.errors).toEqual([]);
+  });
+
+  it('still rejects missing source_url for a reported science article', () => {
+    const repoRoot = makeRepo();
+    writePost(
+      repoRoot,
+      '2026-04-02-source-required.md',
+      `## Una prueba con fuentes
+
+La publicación de ciencia cita una investigación de terceros y debe proporcionar un enlace externo válido para que cualquiera compruebe el contexto y sus resultados sin depender solamente de un resumen de la noticia.
+
+El segundo párrafo desarrolla los métodos y las limitaciones del estudio y ofrece información suficiente para que los controles restantes no distraigan del requisito de atribución a la fuente externa.`
+    );
+    const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-source-required.md');
+    const text = fs
+      .readFileSync(file, 'utf8')
+      .replace('source_url: "https://example.com/source"\n', '');
+    fs.writeFileSync(file, text);
+    const result = collectContentQualityDiagnostics({ repoRoot });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('source_url must be an absolute http(s) URL'),
+      ])
+    );
+  });
+
   it('rejects invalid Hub V1 editorial metadata when present', () => {
     const repoRoot = makeRepo();
     fs.writeFileSync(

@@ -14,7 +14,7 @@ import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
-import { resolveSourcePublisher, resolveSourceTitle } from '~/utils/source-publisher';
+import { resolveSourceTitle } from '~/utils/source-publisher';
 import { evidenceLabels, publicationChipLabels } from '~/utils/evidence-labels';
 import type { RelatedSelection } from '~/utils/related';
 import type { MetaData, Post } from '~/types';
@@ -33,7 +33,9 @@ const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
   ? 'Equipo Noticiencias'
   : post.author || 'Noticiencias';
 const isNoticienciasAi = /noticiencias\s+ai/i.test(post.author ?? '');
-const sourcePublisher = resolveSourcePublisher(post);
+const institutionalAuthor = ['Equipo Noticiencias', 'Noticiencias', 'Equipo Editorial'].includes(
+  displayAuthor
+);
 const articleTopics = (post.tags ?? []).map((tag) => ({
   slug: tag.slug,
   title: tag.title,
@@ -100,11 +102,19 @@ const schema = serializeJsonLd({
   articleSection: post.category?.title,
   author: [
     {
-      '@type': 'Organization',
+      '@type': institutionalAuthor ? 'Organization' : 'Person',
       name: displayAuthor,
-      url: 'https://noticiencias.com/nosotros/',
+      ...(institutionalAuthor || displayAuthor === 'Carlos Ortega'
+        ? { url: 'https://noticiencias.com/nosotros/' }
+        : {}),
     },
   ],
+  // Editorial accountability is not evidence of an individual fact-check review.
+  editor: {
+    '@type': 'Person',
+    name: 'Carlos Ortega',
+    url: 'https://noticiencias.com/nosotros/',
+  },
   publisher: publisherOrg,
   mainEntityOfPage: {
     '@type': 'WebPage',
@@ -176,16 +186,38 @@ const breadcrumbItems = [
         )
       }
 
-      {
-        (!sourcePublisher || !isNoticienciasAi) && (
-          <p class="mt-6 text-sm font-medium text-text-muted">
-            Por{' '}
-            <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline">
-              {displayAuthor}
-            </a>
-          </p>
-        )
-      }
+      <div data-editorial-accountability class="mt-6 space-y-1 text-sm text-text-muted">
+        <p>
+          <span class="font-medium text-text-body">
+            {isNoticienciasAi ? 'Elaboración: síntesis asistida por IA' : 'Autoría'}
+          </span>
+          {isNoticienciasAi ? ' · ' : ': '}
+          <a
+            href="/nosotros/"
+            class="text-text-body underline underline-offset-4 hover:no-underline"
+          >
+            {displayAuthor}
+          </a>
+          {' · '}
+          <span class="font-medium text-text-body">Responsable editorial:</span>{' '}
+          <a
+            href="/nosotros/"
+            class="text-text-body underline underline-offset-4 hover:no-underline"
+          >
+            Carlos Ortega
+          </a>
+        </p>
+        {
+          post.updateDate && post.updateDate.getTime() !== post.publishDate.getTime() && (
+            <p>
+              Actualizado:{' '}
+              <time datetime={post.updateDate.toISOString()}>
+                {getFormattedDate(post.updateDate)}
+              </time>
+            </p>
+          )
+        }
+      </div>
 
       {
         image && (
