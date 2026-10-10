@@ -1,5 +1,4 @@
 ---
----
 title: 'Sarampión: por qué las brechas de vacunación favorecen nuevos brotes'
 schema_version: 1
 excerpt: 'La vacunación desigual, las barreras de acceso y la desinformación dejan comunidades expuestas al sarampión. La OMS explica por qué importan dos dosis y una cobertura sostenida.'
