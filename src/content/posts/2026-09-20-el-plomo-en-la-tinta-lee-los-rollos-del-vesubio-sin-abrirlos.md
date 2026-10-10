@@ -78,6 +78,8 @@ sources:
     role: secondary
 requires_uncertainty_note: true
 uncertainty_note: Los resultados se obtuvieron con papiros modernos elaborados en laboratorio; aún no se ha probado la técnica en los auténticos rollos de Herculano.
+corrected_at: '2026-10-09'
+correction_summary: 'Se retiraron extrapolaciones sin respaldo a archivos latinoamericanos y se compararon las concentraciones de plomo documentadas en fragmentos antiguos con el mínimo ensayado en las pruebas de imagen.'
 social:
   publish: true
   id: 9d1e11ab861b72335a5967ea5355a53c83c2d9dd40b2824fc25458b8e2544dda
