@@ -5,7 +5,7 @@ layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 
-_Última actualización_: 18 de Septiembre de 2026
+_Última actualización_: 9 de octubre de 2026
 
 Esta Política de Privacidad explica qué datos recogemos cuando usas Noticiencias, para qué los usamos y qué derechos tienes sobre ellos. En resumen: nos escribes tu correo solo si te suscribes al boletín, medimos lectura con herramientas de analítica agregada y no vendemos tus datos personales. El estado y las condiciones de cualquier publicidad se explican más abajo.
 
