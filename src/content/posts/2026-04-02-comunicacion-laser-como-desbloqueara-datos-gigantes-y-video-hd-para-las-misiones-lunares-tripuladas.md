@@ -66,7 +66,7 @@ En Artemis II, O2O fue una demostración tecnológica que acompañó a los siste
 
 El desarrollo de lasercom no es un esfuerzo reciente ni aislado. El Laboratorio Lincoln y la NASA llevan más de dos décadas en este campo, con una trayectoria que incluye misiones como la Lunar Laser Communication Demonstration (LLCD) de 2013, la LCRD de 2021 y la TeraByte Infrared Delivery (TBIRD) de 2022. Artemis II representa el siguiente hito lógico en esta progresión, llevando la tecnología a un entorno de exploración humana de profunda relevancia.
 
- Antes del vuelo, investigadores del MIT plantearon como posibles usos la videoconferencia con médicos, la coordinación de la misión y la transmisión pública de imágenes. Artemis II no demostró una prestación de telemedicina: su resultado informado fue el intercambio de datos de la misión. Las pruebas sí aportan información para diseñar comunicaciones futuras en la Luna y, con más desafíos técnicos, en misiones a Marte.
+Antes del vuelo, investigadores del MIT plantearon como posibles usos la videoconferencia con médicos, la coordinación de la misión y la transmisión pública de imágenes. Artemis II no demostró una prestación de telemedicina: su resultado informado fue el intercambio de datos de la misión. Las pruebas sí aportan información para diseñar comunicaciones futuras en la Luna y, con más desafíos técnicos, en misiones a Marte.
 
 La fotografía de lanzamiento que acompaña este artículo fue tomada por Joel Kowsky/NASA, según el crédito publicado por MIT News. NASA permite el uso editorial factual de su material sujeto a sus pautas de atribución y no respaldo.
 
