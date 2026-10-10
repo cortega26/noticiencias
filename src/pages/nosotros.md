@@ -55,12 +55,14 @@ Nos guían los siguientes compromisos, cada uno verificable:
 
 - **Trazabilidad**: las fichas enlazan las fuentes registradas; la información sobre evidencia y sus límites depende de los datos disponibles para cada artículo. Ver [cómo trabajamos](/metodologia/).
 - **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
-- **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
+- **Correcciones y actualizaciones**: rectificamos errores y actualizamos artículos cuando se verifica nueva evidencia relevante; una fecha de revisión individual solo se muestra cuando está documentada.
 - **Evaluación automatizada**: una muestra de artículos se evalúa con un modelo de lenguaje; la página de [transparencia](/transparencia/) describe su alcance y sus límites.
 - **Privacidad**: nuestra [política de privacidad](/privacidad/) describe las herramientas de medición, los datos que registran y las opciones disponibles para los usuarios.
 
 ## Contacto
 
-- **Consultas editoriales o correcciones**: [formulario de contacto](/reportar-problema/).
+- **Errores editoriales o técnicos verificables**: [formulario para reportar problemas](/reportar-problema/).
+- **Privacidad y datos personales**: privacidad@noticiencias.com.
+- **Asuntos legales**: legal@noticiencias.com.
 - **Propuestas técnicas**: abre un issue en [GitHub](https://github.com/cortega26/noticiencias) con la etiqueta `agents:proposal`.
 - **Redes sociales**: síguenos en [X/Twitter](https://twitter.com/noti_ciencias) y [LinkedIn](https://www.linkedin.com/company/111101311/).
