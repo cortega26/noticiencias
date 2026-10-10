@@ -43,17 +43,25 @@ fact_check:
     status: uncertain
   - label: El récord anterior de planeta más joven pertenecía a los planetas alrededor de la estrella PDS 70, con alrededor de cinco millones de años.
     status: confirmed
-  - label: El coronógrafo del telescopio espacial Nancy Grace Roman está diseñado para revelar discos y planetas jóvenes con menos sesgo observacional.
-    status: uncertain
+  - label: NASA lanzó el telescopio Nancy Grace Roman el 30 de agosto de 2026; incluye un coronógrafo para estudiar planetas cerca de sus estrellas.
+    status: confirmed
 why_it_matters:
   - El hallazgo fue liderado por Andrea Bernardi, estudiante de doctorado de la Universidad Diego Portales en Chile, destacando la contribución de investigadores latinoamericanos a la frontera de la astronomía de exoplanetas.
   - Comprender cómo se forman planetas tan jóvenes ayuda a explicar los primeros pasos que dieron origen a nuestro propio Sistema Solar y a mejorar los modelos de formación planetaria.
-  - La detección de mundos como Elias 2-24 b motiva el uso de futuros instrumentos como el coronógrafo del telescopio Nancy Grace Roman, que podría revelar una población más representativa de planetas en etapas tempranas.
+  - El telescopio espacial Nancy Grace Roman, lanzado el 30 de agosto de 2026, incluye un coronógrafo que podría permitir estudiar planetas difíciles de distinguir junto a sus estrellas cuando comiencen sus observaciones.
 confidence: Moderada — basado en observaciones combinadas de Keck, ALMA y VLT, pero la edad se estima mediante modelos de enfriamiento con incertidumbre inherente.
 sources:
   - title: Newly confirmed 'baby planet' is the youngest alien world scientists have ever discovered
     url: https://livescience.com/space/exoplanets/this-million-year-old-baby-planet-is-the-youngest-world-scientists-have-ever-discovered
     publisher: Live Science
+  - title: Newly confirmed baby planet smashes record for youngest known world
+    url: https://science.nasa.gov/universe/newfound-baby-planet-smashes-record-for-youngest-known-world/
+    publisher: NASA
+    date: '2026-09-16'
+  - title: NASA Roman Space Telescope Launches
+    url: https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/
+    publisher: NASA
+    date: '2026-08-30'
 requires_uncertainty_note: true
 uncertainty_note: La edad estimada de menos de un millón de años depende de modelos de enfriamiento planetario y aún tiene un margen de error significativo.
 social:
@@ -78,6 +86,10 @@ La edad estimada lleva una incertidumbre inherente: se basa en modelos que asume
 **Cómo encaja en el conocimiento existente**  
 El récord anterior pertenecía a los planetas que orbitan la estrella PDS 70, con alrededor de cinco millones de años. Elias 2-24 b al menos duplica esa ventaja, empujando el límite observable hacia etapas mucho más tempranas de la acreción. Esto expone una discrepancia entre los modelos teóricos de formación planetaria — que ya tenían dificultades para reproducir los planetas de pocos millones de años — y la realidad observada, indicando que faltan procesos físicos aún no incluidos en esas simulaciones, como la interacción temprana entre el disco y el núcleo planetario o la eficiencia de la captura de polvo en los primeros cien mil años.
 
-El próximo gran paso vendrá del telescopio espacial Nancy Grace Roman, cuyo coronógrafo avanzado está diseñado precisamente para bloquear la luz estelar y revelar discos protoplanetarios de ángulo inclinado. Si Roman cumple su promesa de detectar exoplanetas con menos sesgo hacia los de mayor edad, podríamos pronto ver si Elias 2-24 b es realmente un caso aislado o el primero de una población de planetas bebé que esperan ser descubiertos. La verdadera pregunta que queda es: ¿qué tan comunes son esos mundos en sus primeros días de vida, y qué nos dirán sobre el origen de nuestro propio Sistema Solar?
+El telescopio espacial Nancy Grace Roman [fue lanzado por NASA el 30 de agosto de 2026](https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/). Su coronógrafo está diseñado para reducir el brillo de estrellas anfitrionas y facilitar la observación de ciertos exoplanetas; el lanzamiento no equivale a haber obtenido ya observaciones científicas de Elias 2-24 b. La posibilidad de detectar más mundos jóvenes dependerá de las capacidades demostradas del instrumento y de cómo se seleccionen los objetivos. La pregunta que permanece abierta es cuán comunes son estos planetas en los primeros momentos de su formación.
+
+## Corrección — 10 de octubre de 2026
+
+Una versión anterior se refería al telescopio Nancy Grace Roman como un instrumento futuro, pese a que [NASA confirmó su lanzamiento el 30 de agosto](https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/). Se corrigió la cronología y se distinguió el lanzamiento del comienzo de observaciones científicas. El hallazgo principal sobre Elias 2-24 b no cambia.
 
 <!-- source_identity: source_id=livescience; source_name=Live Science -->
