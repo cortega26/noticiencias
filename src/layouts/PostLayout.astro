@@ -205,7 +205,9 @@ const breadcrumbItems = [
           post.updateDate && post.updateDate.getTime() !== post.publishDate.getTime() && (
             <p>
               Actualizado:{' '}
-              <time datetime={post.updateDate.toISOString()}>{getFormattedDate(post.updateDate)}</time>
+              <time datetime={post.updateDate.toISOString()}>
+                {getFormattedDate(post.updateDate)}
+              </time>
             </p>
           )
         }
