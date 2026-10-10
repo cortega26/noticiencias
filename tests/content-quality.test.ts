@@ -248,10 +248,9 @@ La publicación de ciencia cita una investigación de terceros y debe proporcion
 El segundo párrafo desarrolla los métodos y las limitaciones del estudio y ofrece información suficiente para que los controles restantes no distraigan del requisito de atribución a la fuente externa.`
     );
     const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-source-required.md');
-    const text = fs.readFileSync(file, 'utf8').replace(
-      'source_url: "https://example.com/source"\n',
-      ''
-    );
+    const text = fs
+      .readFileSync(file, 'utf8')
+      .replace('source_url: "https://example.com/source"\n', '');
     fs.writeFileSync(file, text);
     const result = collectContentQualityDiagnostics({ repoRoot });
     expect(result.errors).toEqual([
