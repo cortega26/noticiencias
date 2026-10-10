@@ -33,7 +33,9 @@ const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
   ? 'Equipo Noticiencias'
   : post.author || 'Noticiencias';
 const isNoticienciasAi = /noticiencias\s+ai/i.test(post.author ?? '');
-const institutionalAuthor = ['Equipo Noticiencias', 'Noticiencias', 'Equipo Editorial'].includes(displayAuthor);
+const institutionalAuthor = ['Equipo Noticiencias', 'Noticiencias', 'Equipo Editorial'].includes(
+  displayAuthor
+);
 const articleTopics = (post.tags ?? []).map((tag) => ({
   slug: tag.slug,
   title: tag.title,
@@ -203,9 +205,7 @@ const breadcrumbItems = [
           post.updateDate && post.updateDate.getTime() !== post.publishDate.getTime() && (
             <p>
               Actualizado:{' '}
-              <time datetime={post.updateDate.toISOString()}>
-                {getFormattedDate(post.updateDate)}
-              </time>
+              <time datetime={post.updateDate.toISOString()}>{getFormattedDate(post.updateDate)}</time>
             </p>
           )
         }
