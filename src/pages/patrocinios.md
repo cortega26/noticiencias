@@ -33,6 +33,11 @@ no de volúmenes.
 
 ## Contacto
 
-Escríbenos por el [formulario de contacto](/reportar-problema/) con el
-asunto "Patrocinio": contanos qué querés patrocinar y por qué encaja con
-ciencia en español claro. Respondemos propuestas concretas, no pauta masiva.
+Para propuestas de patrocinio o colaboración editorial, escribe a
+[carlos@tooltician.com](mailto:carlos@tooltician.com) indicando
+**Noticiencias — Patrocinio** en el asunto. Es el correo público de
+[Tooltician](https://tooltician.com/es/), operador del proyecto. Describe
+la propuesta y por qué encaja con divulgación científica rigurosa.
+
+El [formulario de reportes](/reportar-problema/) se reserva a errores
+verificables y problemas técnicos; no recibe solicitudes comerciales.
