@@ -102,14 +102,6 @@ jobs:
             );
           }
 
-          async function absent(url, token) {
-            const response = await fetch(url, { headers: { Authorization: 'Bearer ' + token } });
-            await response.body?.cancel();
-            if (response.status === 404) return true;
-            if (response.ok) return false;
-            throw new Error('Cloudflare R2 GET denied: HTTP ' + response.status);
-          }
-
           async function cdnStatus(url) {
             const response = await fetch(url, { redirect: 'manual' });
             await response.body?.cancel();
@@ -125,12 +117,9 @@ jobs:
               throw new Error('Cloudflare account or R2 bucket configuration invalid');
             }
 
-            // All permission and scope checks precede any irreversible deletion.
+            // Validate exact scope and zone before authorized write-only deletes.
+            // The configured token lacks R2 Read (HTTP 403); DELETE may have separate permission.
             const zoneId = await lookupZone(token);
-            for (const key of KEYS) {
-              const url = objectUrl(account, bucket, key);
-              console.log('R2 before:', key, (await absent(url, token)) ? 'absent' : 'present');
-            }
 
             for (const key of KEYS) {
               const url = objectUrl(account, bucket, key);
@@ -141,10 +130,9 @@ jobs:
               const raw = await response.text();
               const result = raw ? JSON.parse(raw) : null;
               if (!response.ok || (response.status !== 204 && result?.success !== true)) {
-                throw new Error('Cloudflare R2 deletion rejected for: ' + key);
+                throw new Error('Cloudflare R2 DELETE rejected HTTP ' + response.status + ': ' + key);
               }
-              if (!(await absent(url, token))) throw new Error('R2 deletion not verified: ' + key);
-              console.log('R2 verified absent:', key);
+              console.log('R2 DELETE accepted for exact key:', key);
             }
 
             const purge = await fetch('https://api.cloudflare.com/client/v4/zones/' + zoneId + '/purge_cache', {
@@ -175,7 +163,7 @@ jobs:
             const summary = [
               '### Authorized four-object MIT image cleanup',
               '',
-              '- R2: all four old objects verified absent.',
+              '- R2: four exact-key DELETE requests accepted; direct R2 read verification unavailable (HTTP 403).',
               '- CDN: exact four-URL purge accepted, all four GET checks returned 404/410.',
               '- No bucket-wide deletion or purge requested.',
               '',
