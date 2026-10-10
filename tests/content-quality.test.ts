@@ -227,7 +227,7 @@ Una columna editorial presenta las decisiones propias del medio y explica qué c
 
 El artículo distingue entre una opinión editorial y las noticias basadas en investigaciones, señala sus principios públicos y enlaza los documentos propios cuando son pertinentes.
 
-Los criterios de participación, los canales para reportar errores y los compromisos del medio quedan visibles para los lectores. Cuando una pieza no responde a una investigación de terceros, la transparencia exige reconocer su carácter original en vez de señalar una fuente externa inventada.
+Los criterios de participación, los canales para reportar errores y los compromisos del medio quedan visibles para los lectores. Cuando una pieza no responde a una investigación de terceros, la transparencia exige reconocer su carácter original en vez de señalar una fuente externa inventada.`
     );
     const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-editorial.md');
     let text = fs.readFileSync(file, 'utf8');
