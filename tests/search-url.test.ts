@@ -1,99 +1,59 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { getQueryFromUrl, updateUrlWithQuery } from '../src/utils/browser/search-url.ts';
+import { clearSearchQueryFromUrl, getQueryFromUrl } from '../src/utils/browser/search-url.ts';
 import { normalizeQuery } from '../src/utils/search.ts';
 
 describe('Search URL Utils', () => {
   beforeEach(() => {
-    // Mock global window and history
-    // const url = new URL('http://localhost/buscar'); // Removed unused var
-
     vi.stubGlobal('window', {
       location: {
         search: '',
-        href: 'http://localhost/buscar',
-        toString: () => 'http://localhost/buscar',
+        href: 'https://noticiencias.com/buscar/',
       },
       history: {
-        pushState: vi.fn(),
+        state: null,
+        replaceState: vi.fn(),
       },
     });
-
-    vi.stubGlobal('location', window.location);
-    vi.stubGlobal('history', window.history);
   });
 
-  afterEach(() => {
-    vi.unstubAllGlobals();
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('consumes an incoming legacy query once, without persisting it in the URL', () => {
+    const browser = window as Window & { __ncIncomingSearchTerm?: string };
+    browser.__ncIncomingSearchTerm = '  astrofísica  ';
+    expect(getQueryFromUrl()).toBe('astrofísica');
+    expect(browser.__ncIncomingSearchTerm).toBeUndefined();
+    expect(getQueryFromUrl()).toBe('');
   });
 
-  describe('getQueryFromUrl', () => {
-    it('should return empty string if no query param', () => {
-      window.location.search = '';
-      expect(getQueryFromUrl()).toBe('');
-    });
-
-    it('should return correct query value', () => {
-      window.location.search = '?q=astro';
-      expect(getQueryFromUrl()).toBe('astro');
-    });
-
-    it('should trim whitespace', () => {
-      window.location.search = '?q=  star  ';
-      expect(getQueryFromUrl()).toBe('star');
-    });
-
-    it('should handle manual input string', () => {
-      expect(getQueryFromUrl('?q=manual')).toBe('manual');
-    });
+  it('supports parsing an explicitly supplied legacy URL query', () => {
+    expect(getQueryFromUrl('?q=  star  ')).toBe('star');
+    expect(getQueryFromUrl('?q=manual')).toBe('manual');
+    expect(getQueryFromUrl('')).toBe('');
   });
 
-  describe('updateUrlWithQuery', () => {
-    it('should update URL with query param', () => {
-      updateUrlWithQuery('nebula');
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const calls = (window.history.pushState as any).mock.calls;
-      const newUrl = calls[0][2];
-      expect(newUrl).toMatch(/q=nebula/);
-    });
-
-    it('should remove query param if empty', () => {
-      // Setup initial state
-      window.location.href = 'http://localhost/buscar?q=old';
-
-      updateUrlWithQuery('');
-
-      // Check that 'q' is gone
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const calls = (window.history.pushState as any).mock.calls;
-      const newUrl = calls[0][2];
-      expect(newUrl).not.toContain('?q=');
-      expect(newUrl).toBe('http://localhost/buscar');
-    });
-
-    it('should replace spaces with + or %20 (URL encoding)', () => {
-      updateUrlWithQuery('black hole');
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const calls = (window.history.pushState as any).mock.calls;
-      const newUrl = calls[0][2];
-      expect(newUrl).toMatch(/q=black(\+|%20)hole/);
-    });
+  it('does not put a new free-form search into browser history', () => {
+    clearSearchQueryFromUrl();
+    expect(window.history.replaceState).not.toHaveBeenCalled();
   });
 
-  describe('normalizeQuery', () => {
-    it('should lowercase and trim', () => {
-      expect(normalizeQuery('  HELLO  ')).toBe('hello');
-    });
+  it('strips legacy q but preserves unrelated URL parameters and hash', () => {
+    window.location.href = 'https://noticiencias.com/buscar/?utm_source=social&q=secret%40example.com#main';
+    clearSearchQueryFromUrl();
+    expect(window.history.replaceState).toHaveBeenCalledWith(
+      null,
+      '',
+      '/buscar/?utm_source=social#main'
+    );
+  });
 
-    it('should remove accents/diacritics', () => {
-      expect(normalizeQuery('Energía Oscura')).toBe('energia oscura');
-      expect(normalizeQuery('Canción')).toBe('cancion');
-      expect(normalizeQuery('Über')).toBe('uber');
-    });
-
-    it('should handle empty strings', () => {
-      expect(normalizeQuery('')).toBe('');
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      expect(normalizeQuery(null as any)).toBe('');
-    });
+  it('normalizes case and diacritics', () => {
+    expect(normalizeQuery('  HELLO  ')).toBe('hello');
+    expect(normalizeQuery('Energía Oscura')).toBe('energia oscura');
+    expect(normalizeQuery('Canción')).toBe('cancion');
+    expect(normalizeQuery('Über')).toBe('uber');
+    expect(normalizeQuery('')).toBe('');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(normalizeQuery(null as any)).toBe('');
   });
 });
