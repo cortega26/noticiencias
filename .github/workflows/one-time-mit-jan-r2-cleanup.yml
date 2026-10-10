@@ -1,0 +1,191 @@
+name: One-time MIT January R2 derivative cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-time-mit-jan-r2-cleanup.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: one-time-mit-jan-r2-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    if: github.repository == 'cortega26/noticiencias' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET_NAME: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
+      R2_ENDPOINT: ${{ secrets.CLOUDFLARE_R2_ENDPOINT }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Delete only four retired R2 objects, purge exact URLs, verify 404
+        run: |
+          node --input-type=module <<'ONE_TIME_CLEANUP'
+          import fs from 'node:fs';
+          import { DeleteObjectCommand, HeadObjectCommand, S3Client } from '@aws-sdk/client-s3';
+
+          // Single-use procedure. No regex deletion or prefix listing is permitted.
+          const PREFIX = 'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.';
+          const WIDTHS = [400, 900, 1400, 1500];
+          const KEYS = WIDTHS.map((width) => PREFIX + width + '.avif');
+          const URLS = KEYS.map((key) => 'https://www.cdn.noticiencias.com/' + key);
+
+          function checkScope() {
+            const exact = new Set([
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.400.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.900.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1400.avif',
+              'posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.5121406c65027caa.1500.avif',
+            ]);
+            if (KEYS.length !== 4 || new Set(KEYS).size !== 4 || KEYS.some((key) => !exact.has(key))) {
+              throw new Error('Deletion scope differs from the four authorized keys');
+            }
+            if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main') {
+              throw new Error('Run only on push to main');
+            }
+            if (
+              fs.readFileSync('data/image-derivatives-manifest.json', 'utf8').includes('5121406c65027caa')
+            ) {
+              throw new Error('Retired image still referenced by live manifest');
+            }
+            for (const path of [
+              'src/assets/images/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.jpg',
+              'src/assets/images/2026-05-07-study-firms-often-use-automation-to-control-certain-workers-wages.jpg',
+            ]) {
+              if (fs.existsSync(path)) throw new Error('Retired source still in repository: ' + path);
+            }
+          }
+
+          function required(name) {
+            const value = process.env[name];
+            if (!value) throw new Error('Missing secret/configuration: ' + name);
+            return value;
+          }
+
+          async function lookupZone(token) {
+            if (process.env.CLOUDFLARE_ZONE_ID) return process.env.CLOUDFLARE_ZONE_ID;
+            const response = await fetch('https://api.cloudflare.com/client/v4/zones?name=noticiencias.com', {
+              headers: { Authorization: 'Bearer ' + token },
+            });
+            const result = await response.json();
+            if (!response.ok || result.success !== true || !Array.isArray(result.result)) {
+              throw new Error('Cloudflare zone lookup denied; zone read scope may be missing');
+            }
+            const zones = result.result.filter((zone) => zone.name === 'noticiencias.com');
+            if (zones.length !== 1 || !zones[0].id) throw new Error('Zone lookup not unambiguous');
+            return zones[0].id;
+          }
+
+          async function absent(client, bucket, key) {
+            try {
+              await client.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
+              return false;
+            } catch (error) {
+              if (error?.$metadata?.httpStatusCode === 404 || error?.name === 'NotFound') return true;
+              throw error;
+            }
+          }
+
+          async function cdnStatus(url) {
+            const response = await fetch(url, { redirect: 'manual' });
+            await response.body?.cancel();
+            return response.status;
+          }
+
+          async function main() {
+            checkScope();
+            const accessKeyId = required('R2_ACCESS_KEY_ID');
+            const secretAccessKey = required('R2_SECRET_ACCESS_KEY');
+            const bucket = required('R2_BUCKET_NAME');
+            const endpoint = required('R2_ENDPOINT');
+            const token = required('CLOUDFLARE_API_TOKEN');
+            const endpointUrl = new URL(endpoint);
+            if (
+              endpointUrl.protocol !== 'https:' ||
+              !endpointUrl.hostname.endsWith('.r2.cloudflarestorage.com')
+            ) {
+              throw new Error('Configured R2 endpoint is not Cloudflare R2');
+            }
+
+            // Fail before deletion if either account cannot be queried.
+            const zoneId = await lookupZone(token);
+            const client = new S3Client({
+              region: 'auto',
+              endpoint,
+              credentials: { accessKeyId, secretAccessKey },
+              maxAttempts: 2,
+            });
+            for (const key of KEYS) {
+              console.log('R2 before', key, (await absent(client, bucket, key)) ? 'absent' : 'present');
+            }
+
+            for (const key of KEYS) {
+              await client.send(new DeleteObjectCommand({ Bucket: bucket, Key: key }));
+              if (!(await absent(client, bucket, key))) throw new Error('R2 deletion not verified: ' + key);
+              console.log('R2 verified absent:', key);
+            }
+
+            const response = await fetch(
+              'https://api.cloudflare.com/client/v4/zones/' + zoneId + '/purge_cache',
+              {
+                method: 'POST',
+                headers: {
+                  Authorization: 'Bearer ' + token,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ files: URLS }),
+              }
+            );
+            const result = await response.json();
+            if (!response.ok || result.success !== true) {
+              throw new Error('Cloudflare did not accept exact four-URL purge (Cache Purge permission?)');
+            }
+            console.log('Cloudflare accepted purge of four exact URLs');
+
+            let statuses = [];
+            for (let attempt = 0; attempt < 7; attempt++) {
+              statuses = await Promise.all(URLS.map((url) => cdnStatus(url)));
+              console.log('CDN GET statuses:', statuses);
+              if (statuses.every((status) => status === 404 || status === 410)) break;
+              await new Promise((resolve) => setTimeout(resolve, 3000));
+            }
+            if (!statuses.every((status) => status === 404 || status === 410)) {
+              throw new Error('CDN still returns non-404 for at least one of four old URLs');
+            }
+
+            const summary = [
+              '### Authorized one-time MIT image cleanup',
+              '',
+              '- Four of four exact R2 objects verified absent.',
+              '- Cloudflare accepted purge of the four exact URLs.',
+              '- Four of four exact CDN URLs returned HTTP 404 or 410.',
+              '- No other R2 keys or CDN URLs were targeted.',
+              '',
+              ...KEYS.map((key, i) => '- ' + key + ': HTTP ' + statuses[i]),
+            ].join('\n');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary + '\n');
+          }
+
+          main().catch((error) => {
+            console.error('Authorized cleanup incomplete:', error.message);
+            process.exitCode = 1;
+          });
+          ONE_TIME_CLEANUP
