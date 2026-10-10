@@ -39,11 +39,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Temporary README Prettier diff (remove before merge)
-        run: |
-          ./node_modules/.bin/prettier docs/products/seo-2026-10/README.md > /tmp/seo-readme-formatted.md
-          diff -u docs/products/seo-2026-10/README.md /tmp/seo-readme-formatted.md || true
-
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
