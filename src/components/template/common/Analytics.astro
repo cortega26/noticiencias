@@ -31,7 +31,7 @@ const cfBeacon = JSON.stringify({ token: String(cfToken) });
     window.__ncSearchPrivacyGuardInstalled = true;
 
     const stripQuery = (url) => {
-      if (!/^\\/buscar\\/?$/.test(url.pathname)) return false;
+      if (url.pathname !== '/buscar/' && url.pathname !== '/buscar') return false;
       const query = url.searchParams.get('q');
       if (query === null) return false;
       window.__ncIncomingSearchTerm = query;
@@ -41,7 +41,11 @@ const cfBeacon = JSON.stringify({ token: String(cfToken) });
 
     const current = new URL(window.location.href);
     if (stripQuery(current)) {
-      window.history.replaceState(window.history.state, '', current.pathname + current.search + current.hash);
+      window.history.replaceState(
+        window.history.state,
+        '',
+        current.pathname + current.search + current.hash
+      );
     }
 
     // ClientRouter can navigate to an old, shareable ?q= link without reloading.
