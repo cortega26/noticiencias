@@ -128,10 +128,12 @@ describe('Build-time search artifact (plan 039)', () => {
 
   it('should produce a versioned artifact with serialized index and store', () => {
     const artifact = buildSearchArtifact(mockDocuments);
-    expect(artifact.version).toBe(1);
+    expect(artifact.version).toBe(2);
     expect(artifact.index).toBeTruthy();
     expect(artifact.store).toBeTruthy();
     expect(Object.keys(artifact.store)).toHaveLength(2);
+    expect(artifact.store['0'].url).toBe('/posts/ai-advances');
+    expect(artifact.store['1'].url).toBe('/posts/energia-oscura');
   });
 
   it('should load the serialized index and reproduce result order', () => {
@@ -141,17 +143,17 @@ describe('Build-time search artifact (plan 039)', () => {
     // Accent search
     const accentResults = loadedIndex.search(`${normalizeQuery('energía')}*`);
     expect(accentResults.length).toBeGreaterThan(0);
-    expect(accentResults[0].ref).toBe('/posts/energia-oscura');
+    expect(artifact.store[accentResults[0].ref].url).toBe('/posts/energia-oscura');
 
     // Case-insensitive search
     const caseResults = loadedIndex.search(`${normalizeQuery('OSCURA')}*`);
     expect(caseResults.length).toBeGreaterThan(0);
-    expect(caseResults[0].ref).toBe('/posts/energia-oscura');
+    expect(artifact.store[caseResults[0].ref].url).toBe('/posts/energia-oscura');
 
     // Tag search
     const tagResults = loadedIndex.search(`${normalizeQuery('Tecnología')}*`);
     expect(tagResults.length).toBeGreaterThan(0);
-    expect(tagResults[0].ref).toBe('/posts/ai-advances');
+    expect(artifact.store[tagResults[0].ref].url).toBe('/posts/ai-advances');
 
     // No match
     const noResults = loadedIndex.search(`${normalizeQuery('Gastronomía')}*`);
@@ -235,7 +237,7 @@ describe('buildSearchArtifact edge cases (plan 039)', () => {
       content: '',
     };
     const artifact = buildSearchArtifact([doc]);
-    expect(artifact.version).toBe(1);
+    expect(artifact.version).toBe(2);
     expect(Object.keys(artifact.store)).toHaveLength(1);
   });
 
@@ -246,7 +248,8 @@ describe('buildSearchArtifact edge cases (plan 039)', () => {
       { title: 'M', url: '/m', description: '', content: 'm' },
     ];
     const artifact = buildSearchArtifact(docs);
-    const urls = Object.keys(artifact.store);
+    expect(Object.keys(artifact.store)).toEqual(['0', '1', '2']);
+    const urls = Object.values(artifact.store).map((entry) => entry.url);
     expect(urls).toEqual(['/a', '/m', '/z']);
   });
 });

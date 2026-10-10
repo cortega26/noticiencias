@@ -28,7 +28,7 @@ describe('search store slim (Stream C)', () => {
       },
     ]);
 
-    const entry = artifact.store['/a'];
+    const entry = artifact.store['0'];
     expect(entry).toBeTruthy();
     expect(entry).not.toHaveProperty('image');
     expect(entry).not.toHaveProperty('content');
@@ -40,13 +40,13 @@ describe('search store slim (Stream C)', () => {
       { title: 'Larga', url: '/b', description: long, content: 'cuerpo' },
     ]);
 
-    const entry = artifact.store['/b'];
+    const entry = artifact.store['0'];
     expect(entry.description.length).toBeLessThanOrEqual(SEARCH_STORE_DESCRIPTION_MAX_LENGTH);
     // Short descriptions pass through untouched.
     const shortArtifact = buildSearchArtifact([
       { title: 'Corta', url: '/c', description: 'breve', content: 'cuerpo' },
     ]);
-    expect(shortArtifact.store['/c'].description).toBe('breve');
+    expect(shortArtifact.store['0'].description).toBe('breve');
   });
 
   it('slimmed artifact still loads in Lunr and finds accent-insensitive queries', () => {
@@ -70,6 +70,6 @@ describe('search store slim (Stream C)', () => {
     const loaded = lunr.Index.load(artifact.index as object);
     const results = loaded.search(`${normalizeQuery('energía')}*`);
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0].ref).toBe('/energia');
+    expect(artifact.store[results[0].ref].url).toBe('/energia');
   });
 });

@@ -34,13 +34,15 @@ async function fetchIndex(): Promise<LunrIndex> {
   if (!artifact || typeof artifact !== 'object') {
     throw new Error('El índice de búsqueda tiene un formato inválido.');
   }
-  if (artifact.version !== 1) {
+  if (artifact.version !== 2) {
     throw new Error('La versión del índice de búsqueda no es compatible.');
   }
   if (!artifact.index || !artifact.store) {
     throw new Error('El índice de búsqueda está incompleto.');
   }
 
+  // v2 stores numeric Lunr refs; each document still carries the canonical
+  // URL needed by results, recent-post links and analytics.
   store = artifact.store as Record<string, SearchDocument>;
 
   const lunrModule = await import('lunr');

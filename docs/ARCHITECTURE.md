@@ -44,10 +44,27 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 6. Astro emits static output into `dist/`.
 7. GitHub Actions deploys `dist/` to GitHub Pages.
 
+### GitHub Pages deployment and workflow annotations
+
+`.github/workflows/deploy.yml` owns the pre-publication gate, Astro build,
+artifact upload, Pages deployment, and post-deployment checks. The deployment
+retains the `github-pages` environment for its protection rules without setting
+`environment.url`: the GitHub Actions secret-masking heuristic previously
+suppressed even the public canonical URL with a "may contain secret" warning.
+After verification, the job summary links to `https://noticiencias.com`.
+This presentation choice does not change the deployed host or the Pages output
+used by the verification and post-publish callback.
+
+Workflows that upload diagnostic artifacts use a commit-SHA-pinned
+`actions/upload-artifact@v7.0.2` (Node.js 24). The build reports its active
+image-delivery mode as an ordinary log line, not an Actions annotation; the
+`github` or `r2` selection is still owned by the existing image delivery
+configuration and is not changed here.
+
 ### Search Flow
 
 1. `src/pages/search.json.js` reads `getCollection('posts')` during build.
-2. It uses `src/utils/build-search-index.ts` to strip Markdown, normalize, build a serialized Lunr index, and emit a versioned artifact `{ version, index, store }` to `/search.json`.
+2. It uses `src/utils/build-search-index.ts` to strip Markdown, normalize, build a serialized Lunr index, and emit a versioned artifact `{ version, index, store }` to `/search.json`. Version 2 maps short numeric Lunr references to compact store entries containing canonical URLs; this avoids repeating long URLs in posting lists while preserving full-body search and result links. The compressed 150 KiB guard remains enforced by `scripts/check-search-budget.js`.
 3. `src/pages/buscar.astro` composes `src/components/common/SearchInterface.astro`.
 4. `SearchInterface.astro` owns the browser script that fetches the prebuilt serialized Lunr index (plan 039) and deserializes it via `lunr.Index.load()`.
 5. `src/utils/search.ts` owns pure search normalization.

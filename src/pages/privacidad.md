@@ -1,133 +1,63 @@
 ---
 title: 'Política de Privacidad'
-description: 'Cómo Noticiencias trata datos personales, cookies y comunicaciones de sus usuarios.'
+description: 'Qué datos trata Noticiencias, con qué proveedores, cómo funciona el consentimiento y cómo ejercer tus derechos.'
 layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 
-_Última actualización_: 10 de octubre de 2026
+_Última actualización: 10 de octubre de 2026._
 
-Esta Política de Privacidad explica qué datos recogemos cuando usas Noticiencias, para qué los usamos y qué derechos tienes sobre ellos. En resumen: nos escribes tu correo solo si te suscribes al boletín, medimos lectura con herramientas de analítica agregada y no vendemos tus datos personales. El estado y las condiciones de cualquier publicidad se explican más abajo.
+En Noticiencias explicamos qué información se trata al navegar, consultar artículos, enviar un reporte o suscribirse al boletín. **No vendemos listas de suscriptores ni datos personales de quienes nos contactan.** Esto no significa que la navegación sea anónima: intervienen proveedores técnicos y herramientas de medición, descritos a continuación.
 
-## Interpretación y Definiciones
+## Responsable y contacto
 
-### Interpretación
+Noticiencias es un proyecto editorial independiente dirigido por **Carlos Ortega**, con operación en Chile, vinculado a [Tooltician](https://tooltician.com/). Para consultas sobre privacidad, acceso, rectificación o eliminación de datos, escribe a [carlos@tooltician.com](mailto:carlos@tooltician.com?subject=Noticiencias%20-%20Privacidad). También puedes consultar nuestra [página de contacto](/contacto/). No necesitas abrir un repositorio público ni publicar información personal para ejercer estos derechos.
 
-Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.
+## Qué información tratamos y para qué
 
-### Definiciones
+- **Navegación y seguridad:** los proveedores de infraestructura pueden recibir datos técnicos de una solicitud (como dirección IP, agente de usuario, fecha y URL) para entregar el sitio, mantener su seguridad y prevenir abusos. Sus registros y plazos dependen de sus servicios.
+- **Medición editorial:** Google Analytics 4 y Cloudflare Web Analytics permiten entender qué contenido se consulta, cómo se llega al sitio y cómo se utiliza. Consulta las diferencias y tus opciones más abajo.
+- **Reportes de errores:** el [formulario de reportes](/reportar-problema/) solicita el tipo de problema, la URL, una descripción y, según el caso, un fragmento y una fuente de evidencia o detalles técnicos. El servicio puede almacenar el reporte en Cloudflare R2 y utiliza la IP para limitar abusos mediante Cloudflare KV. **No incluyas datos sensibles ni información personal de terceros** en el texto libre. El formulario actual no solicita un correo de respuesta.
+- **Boletín:** si te suscribes, la dirección de correo se envía a Buttondown, que administra la confirmación y los envíos. Puedes cancelar tu suscripción desde el enlace incluido en los mensajes.
 
-A los efectos de esta Política de Privacidad:
+No necesitamos una cuenta de usuario para leer los artículos. Usamos los datos para los fines indicados, no para crear un perfil editorial individual de nuestros lectores.
 
-- **Compañía** (referida como "la Compañía", "Nosotros", "Nos" o "Nuestro" en este Acuerdo) se refiere a Noticiencias.
-- **Cookies** son pequeños archivos que se colocan en tu computadora, dispositivo móvil o cualquier otro dispositivo por un sitio web, que contienen los detalles de tu historial de navegación en ese sitio web entre sus muchos usos.
-- **País** se refiere a: Chile.
-- **Dispositivo** significa cualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono celular o una tableta digital.
-- **Datos Personales** es cualquier información que se relacione con un individuo identificado o identificable.
-- **Servicio** se refiere al Sitio Web.
-- **Proveedor de Servicios** significa cualquier persona física o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionar el Servicio en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.
-- **Datos de Uso** se refiere a los datos recopilados automáticamente, ya sea generados por el uso del Servicio o por la propia infraestructura del Servicio (por ejemplo, la duración de una visita a una página).
-- **Sitio Web** se refiere a Noticiencias, accesible desde [https://noticiencias.com](https://noticiencias.com)
-- **Tú** significa la persona que accede o utiliza el Servicio.
+## Analítica, cookies y consentimiento
 
-## Recopilación y Uso de tus Datos Personales
+**Google Analytics 4 (Google LLC).** Usamos _Consent Mode v2_ en modalidad avanzada. El script de Google se carga al entrar al sitio, **incluso antes de aceptar o rechazar**. Por defecto, el almacenamiento de analítica, el almacenamiento publicitario, los datos de usuario para publicidad y la personalización publicitaria están denegados. Mientras no aceptes, Google puede recibir señales de medición sin cookies, como la URL de la página y datos técnicos de la solicitud. «Sin cookies» no equivale a «sin transmisión de datos».
 
-### Tipos de Datos Recopilados
+Si pulsas **Aceptar**, se habilita únicamente el almacenamiento de analítica y Google Analytics puede usar cookies como `_ga` y `_ga_<ID>` para medir visitas y sesiones. Rechazar mantiene denegado ese almacenamiento. En la configuración del sitio, el almacenamiento y la personalización **publicitarios permanecen denegados**, aun cuando aceptas la analítica; Google Signals está desactivado. Según Google, GA4 no registra ni almacena direcciones IP individuales.
 
-#### Datos Personales
+**Cloudflare Web Analytics (Cloudflare, Inc.).** Se carga independientemente de la decisión sobre Google Analytics. Es una herramienta de estadísticas de audiencia y rendimiento sin cookies ni identificación persistente de visitantes entre sesiones, según su funcionamiento declarado.
 
-Mientras utilizas Nuestro Servicio, es posible que te pidamos cierta información de identificación personal que se puede utilizar para contactarte o identificarte. La información de identificación personal puede incluir, pero no se limita a:
+**Eventos editoriales.** Medimos visitas a artículos, profundidad de lectura, interacción con fuentes y contenidos relacionados, búsquedas y uso de los formularios. Los eventos del boletín describen la interacción con el formulario, **no** la confirmación de una suscripción. No enviamos a Google Analytics el texto libre que escribes en el buscador: se registran métricas como número de resultados, ruta y posición de un resultado abierto. Los enlaces antiguos de búsqueda con `?q=` eliminan ese parámetro de la URL antes de inicializar la medición. Te recomendamos no introducir datos personales en la búsqueda.
 
-- Dirección de correo electrónico (para el boletín)
-- Datos de Uso
+**Preferencias.** Usa **«Preferencias de privacidad»** en el pie de página para aceptar o rechazar Google Analytics en cualquier momento. Guardamos la elección en el almacenamiento local de tu navegador, no en una cuenta del sitio. También puedes eliminar cookies desde la configuración del navegador. Bloquear cookies no impide necesariamente las señales de medición sin cookies o las solicitudes de infraestructura.
 
-#### Datos de Uso
+## Publicidad y Google AdSense
 
-Los Datos de Uso se recopilan automáticamente cuando se utiliza el Servicio.
+**Situación a la fecha de actualización:** estamos evaluando incorporar Google AdSense, pero **no hemos habilitado anuncios programáticos**. El archivo `ads.txt` y las etiquetas de verificación no son prueba de que se estén sirviendo anuncios.
 
-Los Datos de Uso pueden incluir información como la dirección de Protocolo de Internet de tu Dispositivo (por ejemplo, dirección IP), tipo de navegador, versión del navegador, las páginas de nuestro Servicio que visitas, la hora y fecha de tu visita, el tiempo dedicado a esas páginas, identificadores únicos de dispositivos y otros datos de diagnóstico.
+**Si se habilita publicidad**, Google y otros proveedores publicitarios podrán usar cookies propias o de terceros, balizas web, direcciones IP y otros identificadores para publicar anuncios, medirlos y, cuando proceda, personalizarlos según visitas anteriores. Antes de activar las etiquetas publicitarias revisaremos la política y las opciones de consentimiento según la configuración real. En las jurisdicciones donde Google exige una plataforma de gestión del consentimiento certificada, deberá utilizarse antes de mostrar anuncios allí. No se debe interpretar el aviso actual de analítica como consentimiento para publicidad personalizada.
 
-#### Tecnologías de Rastreo y Cookies
+Información adicional: [cómo usa Google los datos en sitios de sus socios](https://policies.google.com/technologies/partner-sites), [cookies de AdSense](https://support.google.com/adsense/answer/7549925?hl=es) y [Mi centro de anuncios](https://myadcenter.google.com/).
 
-Utilizamos Cookies y tecnologías de seguimiento similares para rastrear la actividad en Nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento utilizadas son balizas, etiquetas y scripts para recopilar y rastrear información y para mejorar y analizar Nuestro Servicio.
+## Proveedores y transferencias
 
-##### Medición de audiencia
+Nuestros servicios pueden implicar tratamiento de datos fuera de Chile, especialmente en Estados Unidos:
 
-Medimos cómo se usa el sitio con dos herramientas, con fines estadísticos y editoriales (saber qué se lee, de dónde llega la gente y qué temas interesan):
+- **Google LLC:** analítica web. [Política de privacidad](https://policies.google.com/privacy).
+- **Cloudflare, Inc.:** entrega, seguridad, analítica y almacenamiento de reportes. [Política de privacidad](https://www.cloudflare.com/privacypolicy/).
+- **Buttondown:** suscripciones y distribución del boletín. Su configuración de seguimiento de aperturas y clics en nuestra cuenta **no está verificada**; no afirmamos que ese seguimiento esté desactivado. [Política de privacidad](https://www.buttondown.com/legal/privacy).
 
-- **Google Analytics 4 (Google LLC).** Funciona con _Consent Mode_ de Google en modo avanzado. Al entrar por primera vez te mostramos un aviso con los botones "Aceptar" y "Rechazar", con el mismo peso visual. Debes saber que **el código de Google Analytics se carga en todas las visitas, incluso antes de que elijas**: hasta que aceptes, lo hace con el almacenamiento de cookies denegado y solo envía señales sin cookies (la dirección de la página, la hora y datos técnicos del navegador), que Google usa para estimaciones estadísticas. Si aceptas, Google Analytics guarda las cookies `_ga` y `_ga_<ID>` (con una duración de hasta dos años) para reconocer visitas repetidas y medir sesiones. En la configuración actual no concedemos almacenamiento publicitario ni personalización de anuncios: esas señales permanecen denegadas y Google Signals está desactivado. Según la documentación de Google, Google Analytics 4 no registra ni almacena direcciones IP individuales.
-- **Cloudflare Web Analytics.** Baliza sin cookies que entrega métricas agregadas de tráfico y rendimiento, sin identificadores que sigan a una persona entre visitas. Por no usar cookies ni almacenamiento del navegador, no depende de tu elección en el aviso.
+Los sitios de terceros enlazados en los artículos tienen sus propias políticas y prácticas de recopilación.
 
-Los eventos que registramos, además de las visitas a páginas, son: la visita a un artículo, el avance de lectura (50 % y 90 % del texto), el intento de envío del formulario del boletín, la aparición del formulario en pantalla y el inicio de escritura en él, los clics en enlaces a las fuentes originales, en historias relacionadas, en series, en temas y en categorías, los clics en botones para compartir, la apertura de un resultado de búsqueda, el uso del feed RSS de un tema, y las búsquedas que haces en el sitio. El evento del formulario indica intención de envío, no aceptación del proveedor ni confirmación de la suscripción; el sitio no recibe esa confirmación. **No enviamos a Google Analytics el texto libre que escribes en el buscador.** Solo registramos la cantidad de resultados de la búsqueda y, si abres un resultado, su ruta y posición. Los enlaces antiguos de búsqueda con `?q=` se pueden abrir, pero el parámetro se retira de la URL del navegador antes de inicializar las herramientas de medición. Por prudencia, te recomendamos no escribir datos personales en el buscador.
+## Conservación y derechos
 
-Conservamos los datos de eventos en Google Analytics durante 14 meses, el máximo que permite la herramienta.
+Conservamos la información conforme a su finalidad, los controles disponibles en cada proveedor y los requisitos aplicables. La configuración declarada para la retención de eventos en Google Analytics es de **14 meses**, pero el valor efectivo de la propiedad debe corroborarse en la consola del servicio. Los reportes se mantienen según las necesidades de revisión y operación; no anunciamos un plazo fijo de borrado que no esté implementado y verificado.
 
-**Cómo cambiar o retirar tu elección.** Puedes hacerlo en cualquier momento desde el enlace "Preferencias de privacidad" del pie de página. Tu elección se guarda únicamente en el almacenamiento local de tu navegador (no en nuestros servidores) y podemos volver a preguntarte si cambian los fines descritos aquí. También puedes borrar las cookies `_ga` desde la configuración de tu navegador.
+Puedes solicitar información sobre los datos tratados, su corrección o eliminación cuando corresponda mediante [carlos@tooltician.com](mailto:carlos@tooltician.com?subject=Noticiencias%20-%20Datos%20personales). Para darte de baja del boletín, utiliza el enlace incluido en cada envío. Para cambiar la medición opcional, usa las preferencias del pie de página.
 
-Puedes indicar a tu navegador que rechace todas las Cookies o que indique cuándo se envía una Cookie. Sin embargo, si no aceptas las Cookies, es posible que no puedas utilizar algunas partes de nuestro Servicio.
+Aplicamos medidas técnicas y organizativas proporcionales, pero ningún sistema conectado a Internet puede garantizar seguridad absoluta. Si modificamos de forma material los fines o proveedores, actualizaremos esta página e indicaremos la nueva fecha.
 
-## Publicidad programática y Google AdSense
-
-**Estado actual.** Noticiencias está preparando la posible incorporación de Google
-AdSense. La presencia de metadatos de verificación del editor y de un archivo
-`ads.txt` no significa que estemos mostrando anuncios. Actualmente no hemos
-habilitado anuncios programáticos en el sitio.
-
-**Si activamos anuncios.** Proveedores externos, incluido Google, podrán colocar
-y leer cookies o utilizar balizas web, direcciones IP y otros identificadores
-para publicar y medir publicidad. Las cookies publicitarias de Google permiten
-a Google y sus socios mostrar anuncios teniendo en cuenta visitas anteriores
-a Noticiencias o a otros sitios de Internet. La publicidad podrá ser
-personalizada o no personalizada según la configuración y el consentimiento
-aplicables. Consulta [cómo usa Google los datos en sitios de sus socios](https://policies.google.com/technologies/partner-sites)
-y [cómo gestionar los anuncios personalizados de Google](https://myadcenter.google.com/).
-
-Antes de incorporar etiquetas de anuncios, actualizaremos esta política para
-reflejar la configuración efectivamente utilizada y habilitaremos las opciones
-de consentimiento que correspondan. Para servir anuncios donde Google exige una
-plataforma de gestión del consentimiento certificada e integrada con IAB TCF
-(como el Espacio Económico Europeo, Reino Unido y Suiza), se deberá cumplir
-ese requisito antes de mostrar publicidad allí.
-
-## Uso de tus Datos Personales
-
-La Compañía puede utilizar los Datos Personales para los siguientes propósitos:
-
-- **Para proporcionarte y mantener nuestro Servicio**, incluido el control del uso de nuestro Servicio.
-- **Para gestionar tu suscripción al boletín** y enviarte las ediciones que publiquemos después de que confirmes tu correo.
-
-## Retención de tus Datos Personales
-
-La Compañía retendrá tus Datos Personales solo durante el tiempo que sea necesario para los fines establecidos en esta Política de Privacidad. Los datos de medición en Google Analytics se conservan 14 meses.
-
-## Transferencia de tus Datos Personales
-
-Tu información, incluidos los Datos Personales, se procesa en las oficinas operativas de la Compañía y en cualquier otro lugar donde se encuentren las partes involucradas en el procesamiento.
-
-Para la medición de audiencia utilizamos **Google LLC** (Estados Unidos, Google Analytics 4) y **Cloudflare, Inc.** (Estados Unidos, Cloudflare Web Analytics), que tratan los datos descritos en la sección "Medición de audiencia" conforme a sus propios términos de tratamiento de datos.
-
-Para gestionar las suscripciones utilizamos **Buttondown LLC** (Estados Unidos). El formulario envía al proveedor la dirección de correo y el campo técnico `embed=1`; Buttondown gestiona el registro, la confirmación y los envíos. Su política describe los datos que puede tratar y las opciones de seguimiento disponibles. No hemos verificado si el seguimiento de aperturas o clics está desactivado en la cuenta de Noticiencias, así que no afirmamos que lo esté. Consulta la [Política de Privacidad de Buttondown](https://www.buttondown.com/legal/privacy). Puedes detener futuros envíos desde el enlace de baja incluido en cada correo o escribir a `privacidad@noticiencias.com` para solicitar ayuda con tus datos.
-
-## Eliminación de tus Datos Personales
-
-Tienes derecho a solicitar acceso o eliminación de los Datos Personales que hemos recopilado sobre ti. El enlace de baja detiene futuros envíos; para solicitar acceso o eliminación, escribe a `privacidad@noticiencias.com` o consulta las opciones disponibles en Buttondown.
-
-## Seguridad de tus Datos Personales
-
-La seguridad de tus Datos Personales es importante para nosotros, pero recuerda que ningún método de transmisión a través de Internet o método de almacenamiento electrónico es 100% seguro. Si bien nos esforzamos por utilizar medios comercialmente aceptables para proteger tus Datos Personales, no podemos garantizar su seguridad absoluta.
-
-## Enlaces a Otros Sitios Web
-
-Nuestro Servicio puede contener enlaces a otros sitios web que no son operados por nosotros. Si haces clic en un enlace de un tercero, serás dirigido al sitio de ese tercero. Te recomendamos encarecidamente que revises la Política de Privacidad de cada sitio que visites.
-
-No tenemos control ni asumimos ninguna responsabilidad por el contenido, las políticas de privacidad o las prácticas de sitios o servicios de terceros.
-
-## Cambios a esta Política de Privacidad
-
-Es posible que actualicemos nuestra Política de Privacidad de vez en cuando. Te notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página.
-
-## Contáctanos
-
-Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos:
-
-- Por correo electrónico: privacidad@noticiencias.com
+Consulta también [Contacto](/contacto/), [Acerca de](/nosotros/) y [Transparencia editorial](/transparencia/).
