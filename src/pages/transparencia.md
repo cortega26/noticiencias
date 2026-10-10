@@ -2,46 +2,39 @@
 title: 'Transparencia'
 permalink: /transparencia/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Compromisos de transparencia, correcciones y conflicto de interés.'
+excerpt: 'Cómo atribuímos fuentes, distinguimos la asistencia de IA y gestionamos correcciones, anuncios y conflictos de interés.'
 ---
 
-## Qué publicamos
+## Fuentes y autoría
 
-Cada pieza enlaza la fuente registrada. La fecha de verificación, el método de traducción y otros datos editoriales aparecen cuando están disponibles para esa pieza. No publicamos automáticamente.
+Noticiencias publica síntesis y adaptaciones de hallazgos científicos y tecnológicos. Los artículos enlazan las fuentes disponibles; sus fichas pueden incluir estado de la evidencia, método de traducción, notas de incertidumbre y fechas de modificación documentadas. **No todas las piezas contienen el mismo grado de detalle ni la misma verificación.**
 
-## Correcciones
+Una fuente externa no debe confundirse con el responsable editorial del sitio. La dirección editorial recae en **Carlos Ortega**, como se explica en [Acerca de](/nosotros/).
 
-Si detectas un error, abre un issue con la etiqueta `agents:proposal` o usa el formulario de contacto.
-Documentamos cambios relevantes y actualizamos la fecha de modificación cuando corresponde.
+## Asistencia automatizada y controles
 
-## Conflictos de interés
+Herramientas de IA pueden intervenir en la detección de historias, la traducción, la síntesis o la revisión de borradores. La publicación requiere una decisión humana de integración, pero **no implica que cada afirmación haya recibido una comprobación humana individual**.
 
-Declaramos cualquier conflicto de interés relevante en la fuente original o en el proceso de selección.
+Una muestra de artículos puede recibir una evaluación automatizada no bloqueante sobre rigor, claridad, especulación y capacidad de explicar el tema. Es una señal interna con limitaciones, no una auditoría independiente. No publicamos una puntuación general de calidad ni atribuimos una «revisión humana» que no conste para la pieza.
 
-## Privacidad
+## Correcciones y actualizaciones
 
-No almacenamos datos personales de visitantes en prompts. Para medir el uso del sitio usamos Google Analytics 4, con cookies de medición solo si las aceptas, y Cloudflare Web Analytics, sin cookies. Detalle, eventos que registramos y cómo cambiar tu elección en la [Política de Privacidad](/privacidad/).
+Si encuentras un error factual, de traducción, de atribución o un enlace roto, envía un [reporte con la URL y la evidencia](/reportar-problema/). Valoramos la evidencia y, cuando corresponde, actualizamos el artículo. Los cambios relevantes deben quedar identificados en la pieza o en su información editorial; no asignamos fechas de revisión inexistentes.
 
-El formulario del boletín envía tu correo a Buttondown para gestionar la suscripción y la confirmación. Buttondown puede tratar datos de uso del correo según su política y la configuración de la cuenta; no afirmamos que el seguimiento de aperturas o clics esté desactivado porque esa configuración no está verificada. Consulta la [Política de Privacidad de Noticiencias](/privacidad/) y la [Política de Privacidad de Buttondown](https://www.buttondown.com/legal/privacy).
+Para consultas generales, rectificaciones o asuntos legales fuera del formulario, utiliza [Contacto](/contacto/).
 
-## Métricas y financiamiento
+## Publicidad, patrocinio y conflictos de interés
 
-La analítica está activa; la [Política de Privacidad](/privacidad/) describe las herramientas, los eventos registrados y su retención. La fecha de un próximo informe público sobre crecimiento y sostenibilidad no está anunciada.
+Las decisiones editoriales no se condicionan a la contratación de anuncios. Noticiencias **todavía no muestra anuncios programáticos**; si incorpora Google AdSense, la publicidad deberá ser reconocible como tal y respetar las políticas y las condiciones de consentimiento que apliquen. Los patrocinios deberán estar identificados. Consulta [Patrocinios](/patrocinios/) y [Privacidad](/privacidad/).
 
-## Calidad editorial agregada
+Buscamos identificar conflictos de interés relevantes que afecten la interpretación de una noticia, incluidos los comunicados por las fuentes. No afirmamos que una declaración externa garantice ausencia de sesgos.
 
-Una muestra de artículos recibe una evaluación automatizada y no bloqueante
-con un modelo de lenguaje sobre rigor epistémico, claridad, control de la
-especulación y engagement (cada criterio de 0 a 10). No es una revisión humana
-independiente ni demuestra que cada pieza haya sido verificada. El sitio no
-muestra puntajes por artículo.
+## Datos de audiencia y tratamiento de información
 
-El auditor se activa por categorías y términos definidos o por una tasa de
-muestreo configurada. El backend conserva promedios acumulados, no una ventana
-móvil de las últimas cinco auditorías. No publicamos actualmente una cifra:
-falta un corte que permita reproducir su cohorte y cálculo. Metodología y
-umbrales editoriales viven en el repositorio abierto.
+Google Analytics 4 utiliza Consent Mode avanzado: el código carga antes de la elección y puede enviar señales sin cookies; las cookies de analítica se activan solo con aceptación. Cloudflare Web Analytics aporta medición sin cookies. El boletín se gestiona mediante Buttondown. Explicamos los datos, proveedores, retención declarada y mecanismos de rechazo en nuestra [Política de Privacidad](/privacidad/).
 
-## Contacto
+No enviamos deliberadamente los textos de los reportes de lectores a prompts públicos de IA. Los reportes pueden almacenarse mediante la infraestructura técnica del sitio. No publicamos aquí cifras de audiencia o de calidad que aún no podamos respaldar con una medición reproducible.
 
-Para preguntas editoriales, escribe a nuestro correo o canal público de soporte.
+## Responsable y canales
+
+El proyecto es dirigido por **Carlos Ortega**. Las vías públicas para reportes editoriales, consultas y cuestiones de privacidad están disponibles en [Contacto](/contacto/).
