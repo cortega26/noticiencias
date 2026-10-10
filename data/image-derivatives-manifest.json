@@ -1217,6 +1217,27 @@
       }
     ]
   },
+  "~/assets/images/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.webp": {
+    "originalWidth": 800,
+    "originalHeight": 450,
+    "hash": "fd91e02705861a4d",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.400.avif"
+      },
+      {
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "objectKey": "posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.800.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.800.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.webp": {
     "originalWidth": 529,
     "originalHeight": 292,
