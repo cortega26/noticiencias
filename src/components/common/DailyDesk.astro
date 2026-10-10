@@ -22,9 +22,9 @@ interface Props {
 const { editionDate, leadPosts, weekly, archivePosts, featuredSeries, topicRadar } = Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
 const editionLabel = getFormattedDate(editionDate, 'long');
-const weeklyTitle = weekly.inWindow ? 'Esta semana' : 'Lo más reciente';
+const weeklyTitle = weekly.inWindow ? 'De esta edición' : 'Lo más reciente';
 const weeklyDescription = weekly.inWindow
-  ? 'Lo publicado en los últimos siete días, con la fuente a un clic.'
+  ? 'Historias publicadas durante los siete días anteriores a la fecha de esta edición, con la fuente a un clic.'
   : 'Las historias más recientes del archivo, con la fuente a un clic.';
 ---
 
@@ -34,7 +34,7 @@ const weeklyDescription = weekly.inWindow
       Portada · {editionLabel}
     </p>
     <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
-      La ciencia que conviene seguir esta semana.
+      Ciencia y tecnología para leer con criterio.
     </h1>
     <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
       Una edición en español para entrar rápido en los hallazgos, las dudas y las consecuencias de
