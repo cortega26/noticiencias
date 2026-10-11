@@ -4,7 +4,8 @@
  *
  * Validates that the backend AstroPost Pydantic model matches the frontend
  * Zod schema (src/content.config.ts). Compares field names, types, constraints,
- * optionality, defaults, and nested model structures.
+ * optionality, defaults, and nested model structures, plus cross-field rule
+ * mirrors (superRefine/model_validator presence per CROSS_FIELD_INVARIANTS).
  *
  * Usage:
  *   node scripts/check-contract-sync.js <path-to-frontend_schema.py> <path-to-config.ts>
@@ -125,19 +126,6 @@ const ALLOWED_DIVERGENCES = [
     typescript: 'number',
     reason: 'Python float and Zod z.number() are runtime-equivalent',
   },
-  {
-    path: 'AstroPost.summary_points',
-    python: 'array (no min/max)',
-    typescript: 'array (min 2, max 5)',
-    reason:
-      'Zod adds array-level .min(2).max(5) constraint; Python relies on downstream validation',
-  },
-  {
-    path: 'AstroPost.featured_rank',
-    python: 'number (no constraints)',
-    typescript: 'number (positive)',
-    reason: 'Zod adds .positive() constraint; Python relies on superRefine validator',
-  },
 ];
 
 function isAllowedDivergence(path, category) {
@@ -145,6 +133,112 @@ function isAllowedDivergence(path, category) {
     (d) => d.path === path && (category === 'type_mismatch' || category === 'constraint_mismatch')
   );
 }
+
+// ---------------------------------------------------------------------------
+// Cross-field rule invariants (plan 119)
+//
+// compareFields above sees only type/optionality/default/min/max — it can
+// never observe superRefine (Zod) / model_validator (Pydantic) rules, so CI
+// stayed green while the schemas diverged in exactly the build-breaking
+// dimension. This table enumerates one invariant per cross-field rule. The
+// gate asserts file-level evidence (literal marker strings present in BOTH
+// sources) rather than re-implementing Pydantic/Zod semantics in the gate.
+//
+// Coupling (brittle but explicit): each entry names the rejecting test cases
+// on both sides. Backend cases live in
+// tests/unit/contracts/test_frontend_schema.py in the backend repo;
+// frontend cases live in tests/content-config-schema.test.ts, and the
+// both-sides assertions live in tests/contract-sync.test.ts
+// ("cross-field invariants"). If a case is renamed, update this table and
+// the contract-sync test together.
+//
+// Marker hygiene: pythonMarkers use `def <name>(` (not the bare function
+// name) and full message strings so that a rename/extension of the validator
+// cannot hide behind a substring match.
+// ---------------------------------------------------------------------------
+
+const CROSS_FIELD_INVARIANTS = [
+  {
+    id: 'v2-editorial-block',
+    title: 'schema_version >= 2 requires summary_points/glossary/fact_check/confidence/sources',
+    pythonMarkers: [
+      'def _v2_editorial_fields_required(',
+      'summary_points is required for schema_version >= 2',
+    ],
+    tsMarkers: ['schema_version >= 2', 'summary_points is required for schema_version >= 2'],
+    backendCases: ['test_v2_missing_summary_points_raises'],
+    frontendCases: ['rejects a v2 post missing every editorial field'],
+  },
+  {
+    id: 'featured-rank',
+    title: 'featured === true requires featured_rank',
+    pythonMarkers: [
+      'def _featured_rank_required_when_featured(',
+      'featured_rank is required when featured is true',
+    ],
+    tsMarkers: ['data.featured === true', 'featured_rank is required when featured is true'],
+    backendCases: ['test_featured_true_without_rank_raises'],
+    frontendCases: ['requires featured_rank when featured is true'],
+  },
+  {
+    id: 'correction-pair',
+    title: 'corrected_at and correction_summary travel together',
+    pythonMarkers: [
+      'def _correction_travels_together(',
+      'corrected_at and correction_summary must be set together',
+    ],
+    tsMarkers: ['corrected_at and correction_summary must be set together'],
+    backendCases: ['test_correction_half_pair_raises'],
+    frontendCases: ['accepts a complete correction and rejects half-corrections'],
+  },
+  {
+    id: 'social-id',
+    title: 'social.publish === true requires non-empty id; publish is strict bool; null rejected',
+    pythonMarkers: [
+      'def _id_required_when_publishing(',
+      'social.id is required and non-empty when social.publish is true',
+      'def _publish_must_be_bool(',
+      'def _social_not_null(',
+    ],
+    tsMarkers: [
+      'social.id is required and non-empty when social.publish is true',
+      'publish: z.boolean()',
+    ],
+    backendCases: [
+      // eslint-disable-next-line no-secrets/no-secrets -- backend test-case name, not a secret
+      'test_social_id_required_when_publishing',
+      'test_social_publish_rejects_non_bool',
+      'test_social_explicit_null_rejected',
+    ],
+    frontendCases: [
+      'requires a non-empty social.id when social.publish is true',
+      'rejects a non-boolean social.publish (no "true" / 1 / 0 coercion)',
+      'rejects an explicit social: null',
+    ],
+  },
+  {
+    id: 'doi-primary',
+    title: 'sources with doi must declare role: primary',
+    pythonMarkers: [
+      'def _doi_requires_primary_role(',
+      'sources with doi must declare role: primary',
+    ],
+    tsMarkers: ["source.role !== 'primary'", 'sources with doi must declare role: primary'],
+    backendCases: ['test_doi_without_primary_role_raises'],
+    frontendCases: ['rejects a DOI without primary role'],
+  },
+  {
+    id: 'image-alt',
+    title: 'image_alt required when image carries no inline alt text',
+    pythonMarkers: [
+      'def ensure_alt_text_contract(',
+      'image_alt is required when image does not provide inline alt text',
+    ],
+    tsMarkers: ['image_alt is required when image does not include inline alt text'],
+    backendCases: ['test_missing_image_alt_without_inline_alt_raises'],
+    frontendCases: ['rejects a post whose image has no alt text anywhere'],
+  },
+];
 
 // ---------------------------------------------------------------------------
 // Python schema parser
@@ -1139,6 +1233,70 @@ function compareFieldSets(pyFields, tsFields, modelPath, nestedPy, nestedTs, sev
 }
 
 /**
+ * Check cross-field rule invariants against the raw sources.
+ * Returns an array of diffs (category 'cross_field_invariant', always error —
+ * never allowlisted). pySource may be null when running on a snapshot
+ * fallback; then only the TypeScript side is checked.
+ *
+ * The check is scoped to the AstroPost content contract: fixture schemas
+ * used by the gate's own tests carry no superRefine/model_validator rules,
+ * so when neither source shows one the check is skipped (with an info line)
+ * instead of failing every fixture comparison.
+ */
+function checkCrossFieldInvariants(pySourceOrNull, tsSource) {
+  const diffs = [];
+  const looksLikeContentContract =
+    tsSource.includes('.superRefine(') ||
+    (pySourceOrNull !== null &&
+      pySourceOrNull !== undefined &&
+      pySourceOrNull.includes('model_validator'));
+  if (!looksLikeContentContract) {
+    console.log(
+      '[contract-sync] Skipping cross-field invariant checks (not the AstroPost content contract).'
+    );
+    return diffs;
+  }
+
+  if (pySourceOrNull === null || pySourceOrNull === undefined) {
+    console.log(
+      '[contract-sync] Backend source unavailable (snapshot fallback) — backend-side rule mirrors unverifiable; checking TypeScript side only.'
+    );
+  }
+
+  for (const inv of CROSS_FIELD_INVARIANTS) {
+    if (pySourceOrNull !== null && pySourceOrNull !== undefined) {
+      for (const marker of inv.pythonMarkers) {
+        if (!pySourceOrNull.includes(marker)) {
+          diffs.push({
+            severity: 'error',
+            category: 'cross_field_invariant',
+            path: `cross-field.${inv.id}`,
+            message: `[cross-field invariant ${inv.id}] ${inv.title} — backend mirror missing: frontend_schema.py does not contain "${marker}"`,
+          });
+        }
+      }
+    }
+    for (const marker of inv.tsMarkers) {
+      if (!tsSource.includes(marker)) {
+        diffs.push({
+          severity: 'error',
+          category: 'cross_field_invariant',
+          path: `cross-field.${inv.id}`,
+          message: `[cross-field invariant ${inv.id}] ${inv.title} — frontend mirror missing: content.config.ts does not contain "${marker}"`,
+        });
+      }
+    }
+  }
+
+  if (diffs.length === 0) {
+    console.log(
+      `[contract-sync] cross-field invariants verified (${CROSS_FIELD_INVARIANTS.length}/${CROSS_FIELD_INVARIANTS.length}): ${CROSS_FIELD_INVARIANTS.map((i) => i.id).join(', ')}.`
+    );
+  }
+  return diffs;
+}
+
+/**
  * Main comparison function.
  */
 function compareSchemas(pyIr, tsIr, strictMode = false) {
@@ -1280,6 +1438,7 @@ function printReport(diffs, strictMode = false) {
 
 async function main() {
   let pyIr, tsIr;
+  let pySourceForInvariants = null;
 
   if (mode === 'generate-snapshot') {
     // Generate snapshot from Python schema
@@ -1357,12 +1516,16 @@ async function main() {
 
     // Also run comparison to validate the snapshot
     const diffs = compareSchemas(pyIr, tsIr, strictMode);
+    diffs.push(...checkCrossFieldInvariants(pySource, tsSource));
     const exitCode = printReport(diffs, strictMode);
     process.exit(exitCode);
   }
 
   // Load Python IR (from live file or snapshot)
   if (mode === 'snapshot') {
+    console.log(
+      '[contract-sync] Snapshot mode: cross-field invariant checks require live sources — run compare mode for rule assertions.'
+    );
     try {
       const snapshotData = JSON.parse(readFileSync(resolve(snapshotPath), 'utf-8'));
       pyIr = snapshotData.pythonIR;
@@ -1409,6 +1572,7 @@ async function main() {
     if (!pyIr) {
       try {
         pyIr = parsePythonSchema(pySource);
+        pySourceForInvariants = pySource;
       } catch (e) {
         console.error(`Failed to parse Python schema: ${e.message}`);
         process.exit(2);
@@ -1444,6 +1608,9 @@ async function main() {
 
   // Compare
   const diffs = compareSchemas(pyIr, tsIr, strictMode);
+  if (mode !== 'snapshot') {
+    diffs.push(...checkCrossFieldInvariants(pySourceForInvariants, tsSource));
+  }
   const exitCode = printReport(diffs, strictMode);
   process.exit(exitCode);
 }
