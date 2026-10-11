@@ -61,8 +61,7 @@
     "@iconify-json/tabler": "^1.2.26",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "~7.2.8",
-    "astro-embed": "^0.13.0",
+    "astro": "^7.2.8",
     "astro-icon": "^1.2.0",
     "csv-parse": "^7.0.2",
     "js-yaml": "^4.3.2",
@@ -70,7 +69,7 @@
     "lodash.merge": "^4.6.2",
     "lunr": "^2.3.9",
     "reading-time": "^1.5.0",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.3.3",
     "unpic": "^4.2.2"
