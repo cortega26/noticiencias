@@ -25,6 +25,7 @@ npm run build        # Full build (image derivatives + astro build)
 npm run preview      # Preview production build
 npm run lint         # All checks (frontmatter, images, tags, doc drift, prettier, eslint)
 npm run lint-fix     # Prettier write + eslint --fix
+npm run typecheck    # Astro type check (fast, no build)
 npm run validate:content  # Full content validation (dates, images, sidecars, tags, astro check, freeze)
 npm run test:audit   # Run all Vitest tests (tests/**/*.test.ts)
 npm run test:coverage # Vitest with coverage
@@ -257,6 +258,7 @@ Required baseline commands:
 
 ```bash
 npm run lint
+npm run typecheck
 npm run validate:content
 ```
 
