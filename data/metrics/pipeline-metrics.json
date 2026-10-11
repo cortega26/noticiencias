@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-10T12:28:02.691Z",
+  "generated_at": "2026-10-11T12:45:34.838Z",
   "content": {
-    "total_articles": 43,
-    "v2_articles": 31,
-    "total_words": 27103,
-    "avg_words": 630,
+    "total_articles": 46,
+    "v2_articles": 34,
+    "total_words": 28581,
+    "avg_words": 621,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 13
+        "count": 14
       },
       {
         "name": "Ciencia",
-        "count": 9
+        "count": 11
       },
       {
         "name": "Salud",
@@ -167,6 +167,18 @@
     ],
     "articles_by_date": [
       {
+        "slug": "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero",
+        "title": "¿Cómo una alga que busca luz controla el cerebro de un mamífero?",
+        "date": "2026-10-05",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Alta — basado en el anuncio oficial del Premio Nobel y descripciones de la técnica respaldadas por amplia literatura científica revisada por pares.",
+        "review_status": null
+      },
+      {
         "slug": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo",
         "title": "AdS/CFT: qué demuestra la holografía y qué sigue abierto",
         "date": "2026-09-25",
@@ -176,6 +188,30 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — la dualidad AdS/CFT está formulada para modelos anti-de Sitter; su extensión al cosmos observado no cuenta aquí con una prueba observacional directa.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce",
+        "title": "Mapa muestra dónde el bombeo de acuíferos agota agua dulce",
+        "date": "2026-09-23",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio basado en datos satelitales GRACE/GRACE-FO y métodos de alta resolución, pero los autores reconocen limitaciones para predecir agotamiento y la separación entre causas humanas y climáticas conserva incertidumbre.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora",
+        "title": "Una señal de radio localizada en Beta Pictoris b apunta a una posible aurora",
+        "date": "2026-09-21",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada: la señal y su localización son resultados observacionales del preprint; el origen auroral y el campo magnético se infieren mediante un modelo de emisión.",
         "review_status": null
       },
       {
@@ -288,14 +324,14 @@
       },
       {
         "slug": "2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face",
-        "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
+        "title": "Cómo modelos de OpenAI comprometieron Hugging Face durante pruebas de seguridad",
         "date": "2026-08-12",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — el informe se basa en análisis de seguridad y comunicados oficiales, pero incluye hipótesis no verificadas sobre el origen del ataque.",
+        "confidence": "Alta para la atribución del incidente por los informes de OpenAI y Hugging Face; las métricas de 17 500 acciones y 300 por hora se atribuyen a IEEE Spectrum y no constituyen una auditoría independiente de Noticiencias.",
         "review_status": null
       },
       {
@@ -540,7 +576,7 @@
       },
       {
         "slug": "2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas",
-        "title": "Desafío global contra el sarampión por falta de confianza en las vacunas",
+        "title": "Sarampión: por qué las brechas de vacunación favorecen nuevos brotes",
         "date": "2026-01-27",
         "categories": [
           "Salud"
@@ -660,7 +696,7 @@
       },
       {
         "slug": "2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados",
-        "title": "Científicos descubren ADN preservado en guepardos momificados",
+        "title": "El ADN de guepardos momificados revela dos linajes históricos en Arabia",
         "date": "2026-01-17",
         "categories": [
           "Biología"
@@ -695,11 +731,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-10T12:28:01.885Z"
+    "generated_at": "2026-10-11T12:45:34.017Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 43,
+    "derivatives_available": 46,
     "missing_derivatives": 0
   },
   "health": {
@@ -709,16 +745,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "31 artículos v2 completos."
+      "detail": "34 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "43 artículo(s) con imagen y alt.",
+      "detail": "46 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "43 derivativos disponibles."
+      "detail": "46 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -727,10 +763,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "52 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "90 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 52,
+        "processed": 90,
         "failed": 0
       }
     },
