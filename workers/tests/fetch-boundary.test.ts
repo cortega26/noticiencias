@@ -29,7 +29,9 @@ function post(path: string, body: unknown, headers: Record<string, string> = {})
     // Simulate CDN arrival (plan 019): resolveClientIp() only trusts
     // CF-Connecting-IP when request.cf is present. Without this, boundary
     // POSTs would share the stricter 'unknown' bucket across tests.
-    cf: { country: 'CL' },
+    // (Minimal stub: only presence is read. Full IncomingRequestCfProperties
+    // needs enterprise bot-management fields nothing here consumes.)
+    cf: { country: 'CL' } as unknown as IncomingRequestCfProperties,
   });
 }
 
