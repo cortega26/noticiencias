@@ -59,4 +59,17 @@ describe('normalizeImage', () => {
     const result = normalizeImage({ src: '/a.jpg', height: 200 });
     expect(result).toEqual({ src: '/a.jpg', alt: '', height: 200, kind: 'local' });
   });
+
+  it('classifies a full backend wrapper with dimensions as local (Image direct-use path)', () => {
+    const result = normalizeImage({ src: '/a.jpg', alt: 'Desc', width: 100, height: 200 });
+    expect(result).toMatchObject({ kind: 'local', width: 100, height: 200 });
+  });
+
+  it('classifies a remote backend wrapper without dimensions as remote (Image findImage path)', () => {
+    const result = normalizeImage({
+      src: 'https://example.com/a.jpg',
+      alt: 'Desc',
+    });
+    expect(result).toMatchObject({ kind: 'remote' });
+  });
 });

@@ -83,6 +83,22 @@ export interface Post {
   source_url?: string;
   refinery_id?: string;
   confidence?: string;
+  /** Resolved view-model fields (plan 017): computed once in
+   *  `getNormalizedPost`, read by layouts — never re-derived per render. */
+  displayAuthor: string;
+  isNoticienciasAi: boolean;
+  sourcePublisher: string | null;
+  sourceFallback:
+    | {
+        title: string;
+        url: string;
+        publisher?: string;
+        date?: string;
+        role?: 'primary' | 'secondary';
+        doi?: string;
+      }[]
+    | undefined;
+  evidenceChips: string[];
   featured?: boolean;
   featured_rank?: number;
   investigation?: boolean;

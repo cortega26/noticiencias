@@ -1,5 +1,4 @@
 ---
-import { getPermalink } from '~/utils/permalinks';
 import { fetchPosts } from '~/utils/blog';
 import { rankAllRelatedPosts, type RelatedSelection } from '~/utils/related';
 import PostLayout from '~/layouts/PostLayout.astro';
@@ -20,7 +19,9 @@ interface Props {
 }
 
 const { post, related } = Astro.props;
-const url = post.permalink || getPermalink(post.slug, 'post');
+// Plan 017 step 3: permalink is always resolved in getNormalizedPost and
+// duplicates abort the build fail-closed in fetchPosts — no route fallback.
+const url = post.permalink;
 ---
 
 <PostLayout post={post} url={url} related={related}>

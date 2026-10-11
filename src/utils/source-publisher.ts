@@ -40,6 +40,8 @@ export function resolveSourcePublisher(post: Pick<Post, 'source_url'>): string |
   try {
     hostname = new URL(post.source_url).hostname.replace(/^www\./, '');
   } catch {
+    // Null contract: a malformed URL means "no resolvable publisher" —
+    // silence by design (callers fall back to the bare hostname/generic).
     return null;
   }
 

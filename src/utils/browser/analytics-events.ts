@@ -51,8 +51,9 @@ export function trackEvent(name: AnalyticsEventName, params: Record<string, unkn
       transport_type: 'beacon',
       ...params,
     });
-  } catch {
-    // Analytics must never break the page.
+  } catch (error) {
+    // Analytics must never break the page: warn with event context, no rethrow.
+    console.warn('[analytics] trackEvent failed for', name, error);
   }
 }
 
@@ -62,6 +63,8 @@ export function externalHost(href: string, currentOrigin: string): string | null
     const url = new URL(href, currentOrigin);
     return url.origin === currentOrigin ? null : url.hostname;
   } catch {
+    // Null contract: same-site, relative or malformed hrefs are not
+    // external — silence by design (no log; hot path per link).
     return null;
   }
 }
