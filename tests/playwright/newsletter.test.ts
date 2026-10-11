@@ -13,8 +13,14 @@ const STATUS = '[data-newsletter-status]';
 const SUBMIT = 'button[type="submit"]';
 
 test('shows accessible loading and success states for the early capture', async ({ page }) => {
+  // Hold the mocked provider response until the loading state is observed,
+  // so the test waits on the UI event instead of a fixed delay.
+  let releaseProvider!: () => void;
+  const providerGate = new Promise<void>((resolve) => {
+    releaseProvider = resolve;
+  });
   await page.route(BUTTONDOWN, async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await providerGate;
     await route.fulfill({
       status: 302,
       headers: { location: 'https://buttondown.com/subscribe/confirm' },
@@ -28,6 +34,7 @@ test('shows accessible loading and success states for the early capture', async 
 
   await expect(form).toHaveAttribute('aria-busy', 'true');
   await expect(form.locator(STATUS)).toHaveText('Enviando…');
+  releaseProvider();
   await expect(form.locator(STATUS)).toHaveText('Revisa tu correo para confirmar tu suscripción.');
   await expect(form.locator(SUBMIT)).toBeDisabled();
 });

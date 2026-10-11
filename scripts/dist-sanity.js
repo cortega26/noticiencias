@@ -3,6 +3,14 @@ import path from 'path';
 import { load } from 'cheerio';
 import matter from './utils/frontmatter-parser.js';
 import { fileURLToPath } from 'url';
+import {
+  getFrontmatterImageSource,
+  isAvifUrl,
+  isDefaultRenderedImageUrl,
+  isResolvableImageSrc,
+  readMeta,
+  resolvePostRoute,
+} from './dist-sanity-lib.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,68 +29,6 @@ const RESET = '\x1b[0m';
 
 let errorCount = 0;
 let fileCount = 0;
-
-function slugifySegment(value) {
-  return String(value)
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function resolvePostRoute(fileName, data) {
-  const permalink = typeof data.permalink === 'string' ? data.permalink.trim() : '';
-  if (permalink) {
-    return `/${permalink.replace(/^\/+|\/+$/g, '')}/`;
-  }
-
-  const categories = Array.isArray(data.categories) ? data.categories : [];
-  const firstCategory = typeof categories[0] === 'string' ? categories[0].trim() : '';
-  if (!firstCategory) {
-    return null;
-  }
-
-  return `/${slugifySegment(firstCategory)}/${path.basename(fileName, path.extname(fileName))}/`;
-}
-
-function getFrontmatterImageSource(data) {
-  if (typeof data.image === 'string') {
-    return data.image.trim();
-  }
-  if (data.image && typeof data.image === 'object' && typeof data.image.src === 'string') {
-    return data.image.src.trim();
-  }
-  return '';
-}
-
-function isAliasPath(src = '') {
-  return src.startsWith('~/') || src.startsWith('@/');
-}
-
-function isResolvableImageSrc(src = '') {
-  return (
-    Boolean(src) &&
-    !isAliasPath(src) &&
-    (src.startsWith('/') ||
-      src.startsWith('http://') ||
-      src.startsWith('https://') ||
-      src.startsWith('data:'))
-  );
-}
-
-function isAvifUrl(src = '') {
-  return /\.avif(?:[?#].*)?$/i.test(src);
-}
-
-function isDefaultRenderedImageUrl(src = '') {
-  const value = String(src).toLowerCase();
-  return (
-    value.includes('/default.') ||
-    value.endsWith('/default.png') ||
-    value.includes('posts/default.')
-  );
-}
 
 function scanDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -374,10 +320,6 @@ function auditBuiltArticleHeroes() {
 }
 
 const SOCIAL_MANIFEST_PATH = path.join(DIST_DIR, 'social-manifest.json');
-
-function readMeta($, selector) {
-  return ($(selector).attr('content') || '').trim();
-}
 
 /**
  * Social distribution contract (plan §7/§8/§11): the public manifest must
