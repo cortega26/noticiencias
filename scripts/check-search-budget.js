@@ -24,6 +24,12 @@
  * and truncates descriptions to 160 chars at build time
  * (`SEARCH_STORE_DESCRIPTION_MAX_LENGTH`). Re-measure after slim; if gzip
  * still crosses WARN_BYTES (135KB), schedule the Pagefind migration next.
+ *
+ * Re-measured 2026-10-11 (plan 014 spike, post-slim): 147274 bytes gzip at
+ * 43 posts (~3.4 KB/post avg; ~3.6 KB/post marginal over the 7 posts since
+ * 2026-09-16 — the slim did not move the slope). Headroom ~6.3KB ~= 2 posts
+ * (<1 week at 3 posts/week); WARN threshold (135KB) already crossed.
+ * Verdict: trigger near — see docs/search-budget-verdict.md.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
