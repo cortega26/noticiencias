@@ -12,6 +12,7 @@ import {
   TAG_BASE,
 } from './permalinks';
 import { getConfiguredCategoryTaxonomies } from './categorySections';
+import { getRelatedTopics } from './hub';
 
 const generatePermalink = async ({
   id,
@@ -381,16 +382,17 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     }
   });
 
-  return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
-    paginate(
-      posts.filter(
-        (post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)
-      ),
-      {
-        params: { tag: tagSlug, blog: TAG_BASE || undefined },
-        pageSize: blogPostsPerPage,
-        props: { tag: tags[tagSlug] },
-      }
-    )
-  );
+  return Array.from(Object.keys(tags)).flatMap((tagSlug) => {
+    const tagPosts = posts.filter(
+      (post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)
+    );
+    // Computed once per tag here so tag pages derive from props instead of
+    // re-fetching the collection and re-scanning it per page (plan 013).
+    const relatedTopics = getRelatedTopics(posts, tagSlug, 8);
+    return paginate(tagPosts, {
+      params: { tag: tagSlug, blog: TAG_BASE || undefined },
+      pageSize: blogPostsPerPage,
+      props: { tag: tags[tagSlug], tagPosts, relatedTopics },
+    });
+  });
 };
