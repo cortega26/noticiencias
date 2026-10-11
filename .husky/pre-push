@@ -1,1 +1,1 @@
-npm run validate:content
+npm run lint
