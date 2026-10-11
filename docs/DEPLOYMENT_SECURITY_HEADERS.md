@@ -30,6 +30,21 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), accelerometer=(), gyroscope=(), magnetometer=(), usb=()
 ```
 
+## Framing control split (plan 019)
+
+`frame-ancestors` in a `<meta>` CSP tag is ignored by browsers and
+`X-Frame-Options` cannot be delivered via `<meta>`, so the meta tag is only
+a fallback for the directives it can carry. Enforceable framing control
+lives at the edge:
+
+- The report-pipeline Worker (`workers/src/index.ts`) sets
+  `X-Frame-Options: SAMEORIGIN` on every HTML passthrough response
+  (non-HTML assets untouched). No site page is embedded cross-origin
+  (no `<iframe>` usages in `src/`), so same-origin framing stays intact.
+- `public/_headers` remains documentation only on Pages.
+- The `<meta http-equiv="Content-Security-Policy">` in `CommonMeta.astro`
+  stays as fallback until a response-header CSP is confirmed live.
+
 ## Cloudflare implementation
 
 If Cloudflare is the active edge for `noticiencias.com`, add a Response Header Transform Rule or equivalent managed header policy:
