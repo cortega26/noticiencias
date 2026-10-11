@@ -24,12 +24,12 @@ const generatePermalink = async ({
   publishDate: Date;
   category: string | undefined;
 }) => {
-  const year = String(publishDate.getFullYear()).padStart(4, '0');
-  const month = String(publishDate.getMonth() + 1).padStart(2, '0');
-  const day = String(publishDate.getDate()).padStart(2, '0');
-  const hour = String(publishDate.getHours()).padStart(2, '0');
-  const minute = String(publishDate.getMinutes()).padStart(2, '0');
-  const second = String(publishDate.getSeconds()).padStart(2, '0');
+  const year = String(publishDate.getUTCFullYear()).padStart(4, '0');
+  const month = String(publishDate.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(publishDate.getUTCDate()).padStart(2, '0');
+  const hour = String(publishDate.getUTCHours()).padStart(2, '0');
+  const minute = String(publishDate.getUTCMinutes()).padStart(2, '0');
+  const second = String(publishDate.getUTCSeconds()).padStart(2, '0');
 
   const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
     .replace('%id%', id)
