@@ -44,7 +44,7 @@ normalization; consumed by every route via `fetchPosts()`).
 
 Excerpts as they exist today (verified 2026-10-11):
 
-```ts
+```text
 // src/utils/blog.ts:27-34 — generatePermalink uses LOCAL time getters
 const year = String(publishDate.getFullYear()).padStart(4, '0');
 const month = String(publishDate.getMonth() + 1).padStart(2, '0');
@@ -54,7 +54,7 @@ const minute = String(publishDate.getMinutes()).padStart(2, '0');
 const second = String(publishDate.getSeconds()).padStart(2, '0');
 ```
 
-```ts
+```text
 // src/utils/blog.ts:51-62 — resolvePostPermalink returns explicit permalinks verbatim
 const slug = cleanSlug(effectiveSlug);
 const publishDate = new Date(data.date ?? new Date());
@@ -62,7 +62,7 @@ const publishDate = new Date(data.date ?? new Date());
 return data.permalink || (await generatePermalink({ id, slug, publishDate, category }));
 ```
 
-```ts
+```text
 // src/utils/blog.ts:237-248 — duplicate guard keys on the raw permalink string
 const seen = new Map<string, string>();
 for (const post of _posts) {
@@ -91,13 +91,13 @@ covers `getCanonical` (model new tests on its fixture style).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
-| Build     | `npm run build`          | declared   | exit 0              |
-| Dist      | `npm run test:dist`      | declared   | exit 0              |
+| Purpose | Command              | Provenance | Expected on success |
+| ------- | -------------------- | ---------- | ------------------- |
+| Install | `npm ci`             | declared   | exit 0              |
+| Lint    | `npm run lint`       | declared   | exit 0              |
+| Unit    | `npm run test:audit` | declared   | all pass            |
+| Build   | `npm run build`      | declared   | exit 0              |
+| Dist    | `npm run test:dist`  | declared   | exit 0              |
 
 ## Scope
 

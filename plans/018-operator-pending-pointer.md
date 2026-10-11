@@ -36,7 +36,7 @@ so the error persists silently (and the `*` glob makes it unscannable).
 ## Current state
 
 - `docs/OPERATOR_PENDING.md:71-78` (verified 2026-10-11):
-  ```md
+  ```text
   ### 3.2 Plan 048: decisión del registry de enriquecimiento (≥200 registros)
   ...
   - Verificación: decisión registrada en `docs/adr/0004-*` y baseline
@@ -52,10 +52,10 @@ so the error persists silently (and the `*` glob makes it unscannable).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Drift     | `npm run check:doc-drift` | declared  | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
+| Purpose | Command                   | Provenance | Expected on success |
+| ------- | ------------------------- | ---------- | ------------------- |
+| Drift   | `npm run check:doc-drift` | declared   | exit 0              |
+| Lint    | `npm run lint`            | declared   | exit 0              |
 
 ## Scope
 

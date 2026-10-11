@@ -42,7 +42,7 @@ Facts (all verified 2026-10-11):
 - `public/_headers:1-3` states headers are not applied on GitHub Pages;
   `CommonMeta.astro:18-21` carries the CSP as a `<meta>` tag (full content
   verified — includes `script-src 'self' 'unsafe-inline' ...`, `form-action
-  'self' https://buttondown.com`). `frame-ancestors` in meta CSP is ignored
+'self' https://buttondown.com`). `frame-ancestors` in meta CSP is ignored
   by browsers; `X-Frame-Options` via meta is unsupported → no clickjacking
   control is enforced (notably over `src/pages/reportar-problema.astro`).
   The Worker (`workers/src/index.ts`) already rewrites responses
@@ -67,13 +67,13 @@ in code (report R2/email paths already audited clean).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci` (root)          | declared   | exit 0              |
-| Worker type | `npm --prefix workers run typecheck` | declared | exit 0        |
-| Worker tests | `npm --prefix workers run test:coverage` | declared | pass         |
-| Compliance | `npx vitest run tests/compliance.test.ts` | declared | pass         |
-| Lint      | `npm run lint`           | declared   | exit 0              |
+| Purpose      | Command                                   | Provenance | Expected on success |
+| ------------ | ----------------------------------------- | ---------- | ------------------- |
+| Install      | `npm ci` (root)                           | declared   | exit 0              |
+| Worker type  | `npm --prefix workers run typecheck`      | declared   | exit 0              |
+| Worker tests | `npm --prefix workers run test:coverage`  | declared   | pass                |
+| Compliance   | `npx vitest run tests/compliance.test.ts` | declared   | pass                |
+| Lint         | `npm run lint`                            | declared   | exit 0              |
 
 ## Scope
 

@@ -45,7 +45,7 @@ Files and roles:
   - line 152: `reviewer_profile_url: z.url().optional()` (same)
 - `src/components/common/TrustPanel.astro` — renders those fields as
   anchors (verified 2026-10-11):
-  ```astro
+  ```text
   <!-- TrustPanel.astro:226-231, 271-280, 321-328 pattern -->
   <a
     href={reviewerProfileUrl}
@@ -64,7 +64,7 @@ Files and roles:
   `webSiteSchema` with raw `JSON.stringify` (lines 35–64) from
   config-controlled strings (`SITE.name`, `METADATA.description`, footer
   social URLs) and emits them via `set:html` (lines 75–76):
-  ```astro
+  ```text
   <script is:inline type="application/ld+json" set:html={organizationSchema} />
   <script is:inline type="application/ld+json" set:html={webSiteSchema} />
   ```
@@ -72,7 +72,7 @@ Files and roles:
   helper (`PostLayout.astro:92`, `Breadcrumbs.astro`). The inconsistency is
   the finding; exploitability today needs operator-controlled config input.
 - `src/components/ds/organisms/ConsentBannerScript.astro:21`:
-  ```ts
+  ```text
   const decision = choice.dataset.consentChoice as ConsentDecision;
   writeConsent(decision);
   ```
@@ -92,12 +92,12 @@ implication).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Content   | `npm run validate:content` | declared | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
+| Purpose | Command                    | Provenance | Expected on success |
+| ------- | -------------------------- | ---------- | ------------------- |
+| Install | `npm ci`                   | declared   | exit 0              |
+| Lint    | `npm run lint`             | declared   | exit 0              |
+| Content | `npm run validate:content` | declared   | exit 0              |
+| Unit    | `npm run test:audit`       | declared   | all pass            |
 
 ## Scope
 

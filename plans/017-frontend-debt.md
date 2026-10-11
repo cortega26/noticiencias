@@ -71,14 +71,14 @@ Facts (all verified 2026-10-11):
    throw fail-closed; browser paths set user-visible status AND
    `console.error`. Deviations: `admin/dashboard.astro:17-19`
    (`catch {}` around metrics read — verified: `} catch { // Metrics not
-   yet generated }`), `analytics-events.ts:54,64` (`catch {}`),
+yet generated }`), `analytics-events.ts:54,64` (`catch {}`),
    `source-publisher.ts:42` (`catch` → null without log),
    `images.ts:18` (unused error var, comment-only). Keep
    `consent.ts:46,63` silent-null (privacy-blocked storage is an expected,
    documented path).
 
 Repo conventions: prefer a little duplication over premature abstraction
-(§6) — but these are all *triplicated* decisions, past the refactor
+(§6) — but these are all _triplicated_ decisions, past the refactor
 trigger ("same transform in two files", §5). New shared code must be
 feature-owned (search-owned module, taxonomy-owned module), never generic
 `utils/` catch-alls (LAW-F5). `ds` must not import `template` (LAW-F2 —
@@ -86,13 +86,13 @@ verify none of these moves creates such an import).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
-| Build     | `npm run build`          | declared   | exit 0              |
-| Dist      | `npm run test:dist`      | declared   | exit 0              |
+| Purpose | Command              | Provenance | Expected on success |
+| ------- | -------------------- | ---------- | ------------------- |
+| Install | `npm ci`             | declared   | exit 0              |
+| Lint    | `npm run lint`       | declared   | exit 0              |
+| Unit    | `npm run test:audit` | declared   | all pass            |
+| Build   | `npm run build`      | declared   | exit 0              |
+| Dist    | `npm run test:dist`  | declared   | exit 0              |
 
 ## Scope
 

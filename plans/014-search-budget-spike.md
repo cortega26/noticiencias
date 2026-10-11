@@ -30,7 +30,7 @@ own budget gate (`check-search-budget.js`) records ~3.4 KB gzip per post
 against a 150 KB ceiling, with an explicit trigger: when the gate fails,
 migrate to Pagefind (or slim the store) — never silently raise the ceiling.
 A prior ledger decision ("Migrate off Lunr: not worth doing now",
-`plans/README.md` rejected list) closed an *ungrounded* migration; this
+`plans/README.md` rejected list) closed an _ungrounded_ migration; this
 spike does not relitigate it. It re-measures, quantifies runway, and
 produces the evidence the trigger clause asks for, so the maintainer's next
 decision is data, not pressure. No migration ships in this plan.
@@ -41,7 +41,7 @@ Facts (verified 2026-10-11):
 
 - `src/utils/build-search-index.ts:116-126` indexes full stripped `content`
   per doc into the serialized Lunr index:
-  ```ts
+  ```text
   const index = lunr(function (this: lunr.Builder) {
     this.ref('url');
     this.field('title', { boost: 10 });
@@ -63,17 +63,17 @@ Facts (verified 2026-10-11):
   leverage point.
 - Standing decisions this spike must honor: frontend `plans/README.md`
   rejected "migrate off Lunr" as ungrounded (revisit on evidence — this
-  spike *is* the evidence pass); backend plan 080 defers Pagefind; plan 114
+  spike _is_ the evidence pass); backend plan 080 defers Pagefind; plan 114
   records the trigger without migrating.
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Budget    | `npm run check:search-budget` | declared | exit 0 (or the measured failure — see Step 1) |
-| Build     | `npm run build`          | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
+| Purpose | Command                       | Provenance | Expected on success                           |
+| ------- | ----------------------------- | ---------- | --------------------------------------------- |
+| Install | `npm ci`                      | declared   | exit 0                                        |
+| Budget  | `npm run check:search-budget` | declared   | exit 0 (or the measured failure — see Step 1) |
+| Build   | `npm run build`               | declared   | exit 0                                        |
+| Unit    | `npm run test:audit`          | declared   | all pass                                      |
 
 ## Scope
 
@@ -92,7 +92,7 @@ Facts (verified 2026-10-11):
 
 - Migrating to Pagefind/Orama — explicitly out; that is a future dedicated plan.
 - Raising `GZIP_CEILING` — forbidden by the gate's own charter.
-- Slimming the indexed `content` field — that is a *recommendation* this
+- Slimming the indexed `content` field — that is a _recommendation_ this
   spike may produce, not work it performs (it changes ranking behavior and
   needs relevance checks).
 - `lunr` version changes (kept deliberately; see plan 010 maintenance notes).

@@ -63,15 +63,15 @@ style follows the log, e.g. `chore: update pipeline metrics`,
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Audit     | `npm audit --omit=dev --audit-level=high` | declared | exit 0, zero HIGH (after fix) |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Content   | `npm run validate:content` | declared | exit 0              |
-| Build     | `npm run build`          | declared   | exit 0              |
-| Dist      | `npm run test:dist`      | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
+| Purpose | Command                                   | Provenance | Expected on success           |
+| ------- | ----------------------------------------- | ---------- | ----------------------------- |
+| Install | `npm ci`                                  | declared   | exit 0                        |
+| Audit   | `npm audit --omit=dev --audit-level=high` | declared   | exit 0, zero HIGH (after fix) |
+| Lint    | `npm run lint`                            | declared   | exit 0                        |
+| Content | `npm run validate:content`                | declared   | exit 0                        |
+| Build   | `npm run build`                           | declared   | exit 0                        |
+| Dist    | `npm run test:dist`                       | declared   | exit 0                        |
+| Unit    | `npm run test:audit`                      | declared   | all pass                      |
 
 ## Scope
 

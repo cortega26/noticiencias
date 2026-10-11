@@ -44,7 +44,7 @@ Facts (all verified 2026-10-11):
    `Set` per candidate (the `sharedTagCount` path). Build-wide cost ≈
    N²·T set constructions + scoring.
 2. `src/pages/temas/[tag]/[...page].astro:15-20`:
-   ```astro
+   ```text
    const allPosts = await fetchPosts();
    const relatedTopics = getRelatedTopics(allPosts, tag?.slug || '', 8);
    const tagPosts = tag
@@ -66,7 +66,7 @@ Facts (all verified 2026-10-11):
    `getNormalizedPost` (each awaiting MDX `render()`) inside one unbounded
    `Promise.all`; `findPostsBySlugs`/`findPostsByIds` (`blog.ts:255-282`)
    do `posts.find` per id (O(M·N)):
-   ```ts
+   ```text
    const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
    const results = (await Promise.all(normalizedPosts)) ...
    return slugs.reduce((r, slug) => {
@@ -81,13 +81,13 @@ more capable than the local `stripFrontmatter`).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
-| Build     | `npm run build`          | declared   | exit 0              |
-| Dist      | `npm run test:dist`      | declared   | exit 0              |
+| Purpose | Command              | Provenance | Expected on success |
+| ------- | -------------------- | ---------- | ------------------- |
+| Install | `npm ci`             | declared   | exit 0              |
+| Lint    | `npm run lint`       | declared   | exit 0              |
+| Unit    | `npm run test:audit` | declared   | all pass            |
+| Build   | `npm run build`      | declared   | exit 0              |
+| Dist    | `npm run test:dist`  | declared   | exit 0              |
 
 ## Scope
 

@@ -57,7 +57,7 @@ Facts (verified 2026-10-11):
   `tests/json-ld.test.ts` serializer only).
 - `scripts/dist-sanity.js` (681 lines: route resolution, image-src
   resolvability, AVIF/default-image guards) runs only via `npm run
-  test:dist` after a real build; its sibling
+test:dist` after a real build; its sibling
   `scripts/post-deploy-check-lib.js` has `tests/post-deploy-check.test.ts`
   (the pattern to copy: export pure classifiers, unit-test with fixtures).
 - Image area: only `tests/image-delivery-mode.test.ts:47` (mode flag) plus
@@ -75,12 +75,12 @@ here is `npm run test:audit` (`vitest run`).
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Unit      | `npm run test:audit`     | declared   | all pass            |
-| Focused   | `npx vitest run tests/<file>` | declared | pass           |
-| Coverage  | `npm run test:coverage`  | declared   | report; floors hold |
+| Purpose  | Command                       | Provenance | Expected on success |
+| -------- | ----------------------------- | ---------- | ------------------- |
+| Install  | `npm ci`                      | declared   | exit 0              |
+| Unit     | `npm run test:audit`          | declared   | all pass            |
+| Focused  | `npx vitest run tests/<file>` | declared   | pass                |
+| Coverage | `npm run test:coverage`       | declared   | report; floors hold |
 
 ## Scope
 

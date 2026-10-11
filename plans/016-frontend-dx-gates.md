@@ -47,9 +47,9 @@ Facts (all verified 2026-10-11):
   `"typecheck": "tsc --noEmit"`.
 - `package.json:34` (`lint`) and `:49` (`validate:content`) both run the
   same 13 node check scripts; `:50` chains `lint && validate:content &&
-  build …` → every check executes twice per `verify:ci`.
+build …` → every check executes twice per `verify:ci`.
 - `.husky/pre-push` runs `npm run validate:content` (13 checks + `astro
-  sync` + `astro check` + freeze) on every push.
+sync` + `astro check` + freeze) on every push.
 - `deploy.yml:35,57,127` — `gate`, `package`, `deploy` jobs each run fresh
   `npm ci`. `content-guard.yml:40,136,166` — three `npm ci` runs
   (`validate`, `build`, + one more at :166).
@@ -66,12 +66,12 @@ Facts (all verified 2026-10-11):
 
 ## Commands you will need
 
-| Purpose   | Command                  | Provenance | Expected on success |
-|-----------|--------------------------|------------|---------------------|
-| Install   | `npm ci`                 | declared   | exit 0              |
-| Lint      | `npm run lint`           | declared   | exit 0              |
-| Content   | `npm run validate:content` | declared | exit 0              |
-| Hooks     | `npx lint-staged` (on fixtures) | declared | exit 0        |
+| Purpose | Command                         | Provenance | Expected on success |
+| ------- | ------------------------------- | ---------- | ------------------- |
+| Install | `npm ci`                        | declared   | exit 0              |
+| Lint    | `npm run lint`                  | declared   | exit 0              |
+| Content | `npm run validate:content`      | declared   | exit 0              |
+| Hooks   | `npx lint-staged` (on fixtures) | declared   | exit 0              |
 
 ## Scope
 
@@ -90,7 +90,7 @@ Facts (all verified 2026-10-11):
 - Check script logic — recomposition only; output must stay identical.
 - `workers/` lint config — document the exclusion, don't rewire it
   (a root passthrough script is allowed: `"lint:workers": "npm --prefix
-  workers run typecheck"` — additive only).
+workers run typecheck"` — additive only).
 - Backend `Makefile`/workflows — different repo (backend plan 129).
 
 ## Git workflow
