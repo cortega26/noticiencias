@@ -58,7 +58,10 @@ export const resolvePostPermalink = async (post: CollectionEntry<'posts'>): Prom
   const publishDate = new Date(data.date ?? new Date());
   const category = rawCategory ? cleanSlug(rawCategory) : undefined;
 
-  return data.permalink || (await generatePermalink({ id, slug, publishDate, category }));
+  if (data.permalink) {
+    return trimSlash(data.permalink);
+  }
+  return await generatePermalink({ id, slug, publishDate, category });
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
