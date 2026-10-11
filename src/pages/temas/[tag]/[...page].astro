@@ -1,23 +1,34 @@
 ---
-import { fetchPosts, getStaticPathsBlogTag } from '~/utils/blog';
+import type { Page } from 'astro';
+import { getStaticPathsBlogTag } from '~/utils/blog';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import Pagination from '~/components/common/Pagination.astro';
 import TopicHubHeader from '~/components/common/TopicHubHeader.astro';
-import { getRelatedTopics } from '~/utils/hub';
 import { getTopicHub, MIN_TOPIC_HUB_POSTS } from '~/utils/topics';
 import { cleanSlug, getAsset } from '~/utils/permalinks';
-import type { Taxonomy } from '~/types';
+import type { Post, Taxonomy } from '~/types';
+import type { TopicFrequency } from '~/utils/hub';
 
 export const getStaticPaths = getStaticPathsBlogTag;
 
-const { page, tag } = Astro.props;
-const allPosts = await fetchPosts();
-const relatedTopics = getRelatedTopics(allPosts, tag?.slug || '', 8);
+interface Props {
+  page: Page<Post>;
+  tag?: Taxonomy;
+  tagPosts?: Post[];
+  relatedTopics?: TopicFrequency[];
+}
 
-const tagPosts = tag
-  ? allPosts.filter((post) => post.tags?.some((item) => item.slug === tag.slug))
-  : [];
+const {
+  page,
+  tag,
+  tagPosts: tagPostsProp,
+  relatedTopics: relatedTopicsProp,
+} = Astro.props as Props;
+// Full tag post list + related topics arrive as props from
+// getStaticPathsBlogTag (single collection pass).
+const relatedTopics = relatedTopicsProp ?? [];
+const tagPosts = tagPostsProp ?? [];
 const hub = tag ? getTopicHub(tag.slug) : undefined;
 const isHub = Boolean(hub) && tagPosts.length >= MIN_TOPIC_HUB_POSTS;
 

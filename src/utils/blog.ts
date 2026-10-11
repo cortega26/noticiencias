@@ -12,6 +12,7 @@ import {
   TAG_BASE,
 } from './permalinks';
 import { getConfiguredCategoryTaxonomies } from './categorySections';
+import { getRelatedTopics } from './hub';
 
 const generatePermalink = async ({
   id,
@@ -204,11 +205,21 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   };
 };
 
+/** Bound the MDX render fan-out (plan 013): sequential chunks keep memory
+ *  flat while preserving input order exactly (concat order == map order). */
+const NORMALIZE_CHUNK_SIZE = 16;
+
 const load = async function (): Promise<Post[]> {
   const posts = await getCollection('posts');
-  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+  const normalizedPosts: Post[] = [];
+  for (let i = 0; i < posts.length; i += NORMALIZE_CHUNK_SIZE) {
+    const chunk = await Promise.all(
+      posts.slice(i, i + NORMALIZE_CHUNK_SIZE).map((post) => getNormalizedPost(post))
+    );
+    normalizedPosts.push(...chunk);
+  }
 
-  const results = (await Promise.all(normalizedPosts))
+  const results = normalizedPosts
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
     .filter((post) => !post.draft);
 
@@ -216,6 +227,8 @@ const load = async function (): Promise<Post[]> {
 };
 
 let _posts: Array<Post>;
+let _postsBySlug: Map<string, Post>;
+let _postsById: Map<string, Post>;
 
 /** */
 export const isBlogEnabled = APP_BLOG.isEnabled;
@@ -249,6 +262,19 @@ export const fetchPosts = async (): Promise<Array<Post>> => {
       }
       seen.set(post.permalink, post.id);
     }
+
+    // Plan 013: index lookups once so findPostsBySlugs/Ids are O(1) per
+    // key instead of a per-key linear scan. First wins, matching find.
+    _postsBySlug = new Map<string, Post>();
+    _postsById = new Map<string, Post>();
+    for (const post of _posts) {
+      if (!_postsBySlug.has(post.slug)) {
+        _postsBySlug.set(post.slug, post);
+      }
+      if (!_postsById.has(post.id)) {
+        _postsById.set(post.id, post);
+      }
+    }
   }
 
   return _posts;
@@ -258,10 +284,10 @@ export const fetchPosts = async (): Promise<Array<Post>> => {
 export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post>> => {
   if (!Array.isArray(slugs)) return [];
 
-  const posts = await fetchPosts();
+  await fetchPosts();
 
   return slugs.reduce((r: Array<Post>, slug: string) => {
-    const post = posts.find((p: Post) => p.slug === slug);
+    const post = _postsBySlug.get(slug);
     if (post) {
       r.push(post);
     }
@@ -273,10 +299,10 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> => {
   if (!Array.isArray(ids)) return [];
 
-  const posts = await fetchPosts();
+  await fetchPosts();
 
   return ids.reduce((r: Array<Post>, id: string) => {
-    const post = posts.find((p: Post) => p.id === id);
+    const post = _postsById.get(id);
     if (post) {
       r.push(post);
     }
@@ -381,16 +407,17 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     }
   });
 
-  return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
-    paginate(
-      posts.filter(
-        (post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)
-      ),
-      {
-        params: { tag: tagSlug, blog: TAG_BASE || undefined },
-        pageSize: blogPostsPerPage,
-        props: { tag: tags[tagSlug] },
-      }
-    )
-  );
+  return Array.from(Object.keys(tags)).flatMap((tagSlug) => {
+    const tagPosts = posts.filter(
+      (post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)
+    );
+    // Computed once per tag here so tag pages derive from props instead of
+    // re-fetching the collection and re-scanning it per page (plan 013).
+    const relatedTopics = getRelatedTopics(posts, tagSlug, 8);
+    return paginate(tagPosts, {
+      params: { tag: tagSlug, blog: TAG_BASE || undefined },
+      pageSize: blogPostsPerPage,
+      props: { tag: tags[tagSlug], tagPosts, relatedTopics },
+    });
+  });
 };
