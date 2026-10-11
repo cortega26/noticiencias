@@ -7,10 +7,27 @@
 
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync, unlinkSync, existsSync } from 'fs';
-import { join, resolve } from 'path';
+import { dirname, join, resolve } from 'path';
 import { tmpdir } from 'os';
 import { format } from 'prettier';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
+import type { z } from 'astro/zod';
+
+vi.mock('astro:content', () => ({
+  defineCollection: (config: unknown) => config,
+}));
+
+import { collections } from '../src/content.config';
+
+const postsSchema = (collections.posts as unknown as { schema: z.ZodTypeAny }).schema;
+
+const invariantBasePost = {
+  title: 'A valid post title',
+  excerpt: 'A sufficiently long excerpt',
+  date: new Date('2026-01-01'),
+  image: '/images/hero.jpg',
+  image_alt: 'A description of the hero image',
+};
 
 const SCRIPT = resolve('scripts/check-contract-sync.js');
 const FIXTURES = resolve('tests/fixtures/contract-sync');
@@ -122,6 +139,124 @@ describe('check-contract-sync', () => {
     it('rejects invalid snapshot path with exit 2', () => {
       const result = runSync('--snapshot /nonexistent/path.json src/content.config.ts');
       expect(result.exitCode).toBe(2);
+    });
+  });
+
+  // ── Cross-field invariants (plan 119) ───────────────────────────
+  // One test per superRefine/model_validator rule. Each asserts BOTH sides
+  // reject the violating payload:
+  //   (a) frontend: the live Zod schema refuses the payload (behavioral);
+  //   (b) backend: the backend suite contains the rejecting case by name
+  //       (file-level evidence — the gate cannot execute Pydantic
+  //       hermetically, so it greps; see CROSS_FIELD_INVARIANTS coupling
+  //       note in scripts/check-contract-sync.js);
+  //   (c) gate: the live gate run verifies the invariant mirror pair.
+  // Backend-dependent parts skip (warn-only) when the backend checkout is
+  // absent, mirroring the 'real schemas' test above.
+  describe('cross-field invariants', () => {
+    const BACKEND_SCHEMA = resolve(
+      process.env.BACKEND_SCHEMA_PATH ||
+        '../noticiencias_news_collector/news_collector/contracts/frontend_schema.py'
+    );
+    const BACKEND_UNIT_TEST = join(
+      dirname(BACKEND_SCHEMA),
+      '../../tests/unit/contracts/test_frontend_schema.py'
+    );
+    const TS_PATH = resolve('src/content.config.ts');
+
+    let gateResult: { combined: string; exitCode: number } | null = null;
+
+    beforeAll(() => {
+      if (!existsSync(BACKEND_SCHEMA)) {
+        console.warn('Backend schema not found — skipping live-gate invariant assertions');
+        return;
+      }
+      gateResult = runSync(`${BACKEND_SCHEMA} ${TS_PATH}`);
+    });
+
+    function expectBackendCases(cases: string[]): void {
+      if (!existsSync(BACKEND_UNIT_TEST)) {
+        console.warn('Backend contract tests not found — skipping backend-case assertions');
+        return;
+      }
+      const content = readFileSync(BACKEND_UNIT_TEST, 'utf-8');
+      for (const name of cases) {
+        expect(content).toContain(name);
+      }
+    }
+
+    function expectGateVerifies(id: string): void {
+      if (gateResult === null) {
+        console.warn('No live gate run — skipping gate invariant assertion');
+        return;
+      }
+      expect(gateResult.exitCode).toBe(0);
+      expect(gateResult.combined).toContain(id);
+    }
+
+    it('v2-editorial-block: both sides reject a v2 post without editorial fields', () => {
+      expect(postsSchema.safeParse({ ...invariantBasePost, schema_version: 2 }).success).toBe(
+        false
+      );
+      expectBackendCases(['test_v2_missing_summary_points_raises']);
+      expectGateVerifies('v2-editorial-block');
+    });
+
+    it('featured-rank: both sides reject featured=true without a rank', () => {
+      expect(postsSchema.safeParse({ ...invariantBasePost, featured: true }).success).toBe(false);
+      expectBackendCases(['test_featured_true_without_rank_raises']);
+      expectGateVerifies('featured-rank');
+    });
+
+    it('correction-pair: both sides reject a half-correction', () => {
+      expect(
+        postsSchema.safeParse({ ...invariantBasePost, corrected_at: '2026-09-02' }).success
+      ).toBe(false);
+      expect(
+        postsSchema.safeParse({ ...invariantBasePost, correction_summary: 'Una cifra.' }).success
+      ).toBe(false);
+      expectBackendCases(['test_correction_half_pair_raises']);
+      expectGateVerifies('correction-pair');
+    });
+
+    it('social-id: both sides reject publish=true without id, non-bool publish, and null', () => {
+      expect(
+        postsSchema.safeParse({ ...invariantBasePost, social: { publish: true } }).success
+      ).toBe(false);
+      for (const publish of ['true', 1, 0]) {
+        expect(postsSchema.safeParse({ ...invariantBasePost, social: { publish } }).success).toBe(
+          false
+        );
+      }
+      expect(postsSchema.safeParse({ ...invariantBasePost, social: null }).success).toBe(false);
+      expectBackendCases([
+        // eslint-disable-next-line no-secrets/no-secrets -- backend test-case name, not a secret
+        'test_social_id_required_when_publishing',
+        'test_social_publish_rejects_non_bool',
+        'test_social_explicit_null_rejected',
+      ]);
+      expectGateVerifies('social-id');
+    });
+
+    it('doi-primary: both sides reject a doi without primary role', () => {
+      expect(
+        postsSchema.safeParse({
+          ...invariantBasePost,
+          sources: [
+            { title: 'Source', url: 'https://example.com', doi: '10.1371/journal.pone.0353485' },
+          ],
+        }).success
+      ).toBe(false);
+      expectBackendCases(['test_doi_without_primary_role_raises']);
+      expectGateVerifies('doi-primary');
+    });
+
+    it('image-alt: both sides reject a post with no alt text anywhere', () => {
+      expect(postsSchema.safeParse({ ...invariantBasePost, image_alt: undefined }).success).toBe(
+        false
+      );
+      expectBackendCases(['test_missing_image_alt_without_inline_alt_raises']);
+      expectGateVerifies('image-alt');
     });
   });
 
