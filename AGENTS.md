@@ -25,6 +25,7 @@ npm run build        # Full build (image derivatives + astro build)
 npm run preview      # Preview production build
 npm run lint         # All checks (frontmatter, images, tags, doc drift, prettier, eslint)
 npm run lint-fix     # Prettier write + eslint --fix
+npm run typecheck    # Astro type check (fast, no build)
 npm run validate:content  # Full content validation (dates, images, sidecars, tags, astro check, freeze)
 npm run test:audit   # Run all Vitest tests (tests/**/*.test.ts)
 npm run test:coverage # Vitest with coverage
@@ -33,6 +34,11 @@ npm run test:deploy -- <url>  # Post-deployment smoke tests
 npm run publish:image-derivatives  # Scan images, update manifest, upload AVIF to R2
 npm run format       # Prettier write
 npm run check:contract-sync  # Validate content schema matches backend contract
+npm run verify:ci    # Full CI gate (lint + validate + build + tests)
+npm run test:e2e     # Playwright E2E suite
+npm run test:e2e:consent  # Consent-flow E2E suite (GA4 fixture build)
+npm run test:visual  # Visual smoke checks
+npm run check:search-budget  # Search index budget check
 ```
 
 ## 1) Repo Reality
@@ -257,6 +263,7 @@ Required baseline commands:
 
 ```bash
 npm run lint
+npm run typecheck
 npm run validate:content
 ```
 
@@ -288,6 +295,8 @@ Manual verification required for visual or interaction changes:
 - No console errors
 - No broken images
 - No broken canonical metadata
+
+Note: root lint/typecheck exclude `workers/` (see `eslint.config.mjs`); from `workers/`, run `npm run typecheck` and `npm run test:coverage` for worker checks.
 
 ## 8) Review Checklist
 
