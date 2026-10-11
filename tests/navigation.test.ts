@@ -67,6 +67,24 @@ describe('navigation data', () => {
     expect(sectionsGroup?.links).toHaveLength(configuredCategorySections.length);
   });
 
+  it('links all public trust pages from the footer', () => {
+    const org = footerData.links.find((group) => group.title === 'Organización');
+    expect(org?.links).toEqual(
+      expect.arrayContaining([
+        { text: 'Acerca de', href: '/nosotros/' },
+        { text: 'Contacto', href: '/contacto/' },
+        { text: 'Transparencia', href: '/transparencia/' },
+      ])
+    );
+
+    expect(footerData.secondaryLinks).toEqual(
+      expect.arrayContaining([
+        { text: 'Privacidad', href: '/privacidad/' },
+        { text: 'Términos', href: '/terminos/' },
+      ])
+    );
+  });
+
   it('includes a report-a-problem secondary link', () => {
     const found = footerData.secondaryLinks.some((link) => link.text === 'Reportar un problema');
     expect(found).toBe(true);

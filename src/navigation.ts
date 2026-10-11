@@ -60,6 +60,7 @@ export const footerData = {
       title: 'Organización',
       links: [
         { text: 'Acerca de', href: getPermalink('/nosotros/') },
+        { text: 'Contacto', href: getPermalink('/contacto/') },
         { text: 'Metodología', href: getPermalink('/metodologia/') },
         { text: 'Transparencia', href: getPermalink('/transparencia/') },
       ],
@@ -67,6 +68,7 @@ export const footerData = {
   ],
   secondaryLinks: [
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
+    { text: 'Términos', href: getPermalink('/terminos/') },
     { text: 'Boletín', href: getPermalink('/newsletter/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
     { text: 'Reportar un problema', href: getPermalink('/reportar-problema/') },

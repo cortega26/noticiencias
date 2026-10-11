@@ -58,21 +58,12 @@ describe('check-search-budget', () => {
     tempDirs.push(distDir);
 
     const artifact = {
-      version: 1,
+      version: 2,
       index: { fields: ['title', 'excerpt'] },
       store: {
-        'https://noticiencias.example/posts/post-1': {
-          title: 'Post 1',
-          excerpt: 'A short excerpt for the first post.',
-        },
-        'https://noticiencias.example/posts/post-2': {
-          title: 'Post 2',
-          excerpt: 'A short excerpt for the second post.',
-        },
-        'https://noticiencias.example/posts/post-3': {
-          title: 'Post 3',
-          excerpt: 'A short excerpt for the third post.',
-        },
+        '0': { url: '/posts/post-1', title: 'Post 1', excerpt: 'First post.' },
+        '1': { url: '/posts/post-2', title: 'Post 2', excerpt: 'Second post.' },
+        '2': { url: '/posts/post-3', title: 'Post 3', excerpt: 'Third post.' },
       },
     };
     writeFileSync(join(distDir, 'search.json'), JSON.stringify(artifact), 'utf-8');
@@ -92,9 +83,10 @@ describe('check-search-budget', () => {
     // ceiling on its own merits without ever tripping the "suspiciously few
     // entries for this much raw size" bloat guard.
     const ENTRY_COUNT = 20;
-    const store: Record<string, { title: string; excerpt: string }> = {};
+    const store: Record<string, { url: string; title: string; excerpt: string }> = {};
     for (let i = 0; i < ENTRY_COUNT; i++) {
-      store[`https://noticiencias.example/posts/post-${i}`] = {
+      store[String(i)] = {
+        url: `/posts/post-${i.toString().padStart(3, '0')}`,
         title: `Post ${i}`,
         // Random base64 text compresses poorly compared to natural-language
         // or repetitive text — ~14.7KB of high-entropy text per entry.
@@ -102,7 +94,7 @@ describe('check-search-budget', () => {
       };
     }
     const artifact = {
-      version: 1,
+      version: 2,
       index: { fields: ['title', 'excerpt'] },
       store,
     };

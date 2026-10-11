@@ -620,7 +620,7 @@ export function verifyRouteHtml(html) {
 
 /**
  * Verifies the build-time Lunr search artifact (plan 039):
- * `{ version: 1, index: <serialized lunr index>, store: { url: entry } }`.
+ * `{ version: 2, index: <serialized lunr index>, store: { numericRef: entry } }`.
  * @param {unknown} json
  */
 export function verifySearchJson(json) {
@@ -628,7 +628,7 @@ export function verifySearchJson(json) {
     throw new Error('Search index is not a valid artifact object.');
   }
 
-  if (json.version !== 1) {
+  if (json.version !== 2) {
     throw new Error(`Search index artifact version unsupported: ${json.version}.`);
   }
 
