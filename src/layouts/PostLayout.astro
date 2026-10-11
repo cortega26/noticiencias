@@ -14,8 +14,6 @@ import { findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
-import { resolveSourcePublisher, resolveSourceTitle } from '~/utils/source-publisher';
-import { evidenceLabels, publicationChipLabels } from '~/utils/evidence-labels';
 import type { RelatedSelection } from '~/utils/related';
 import type { MetaData, Post } from '~/types';
 
@@ -29,37 +27,17 @@ const { post, related, url } = Astro.props;
 const image = (await findImage(post.image)) ?? post.image;
 const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
 const imageAlt = post.image_alt ?? '';
-const displayAuthor = /noticiencias\s+ai/i.test(post.author ?? '')
-  ? 'Equipo Noticiencias'
-  : post.author || 'Noticiencias';
-const isNoticienciasAi = /noticiencias\s+ai/i.test(post.author ?? '');
-const sourcePublisher = resolveSourcePublisher(post);
+// Plan 017 step 3: resolved once in getNormalizedPost — reads, not derivations.
+const displayAuthor = post.displayAuthor;
+const isNoticienciasAi = post.isNoticienciasAi;
+const sourcePublisher = post.sourcePublisher;
+const sourceFallback = post.sourceFallback;
+const evidenceChips = post.evidenceChips;
 const articleTopics = (post.tags ?? []).map((tag) => ({
   slug: tag.slug,
   title: tag.title,
   count: 1,
 }));
-const sourceFallback =
-  post.sources?.length || !post.source_url
-    ? post.sources
-    : [
-        {
-          title: resolveSourceTitle(post),
-          url: post.source_url,
-        },
-      ];
-
-// P1-04: methodology chips (max 3). Unknown/other carry no information and
-// are omitted; legacy posts without evidence data render no chips.
-const evidenceChips: string[] = [
-  ...(post.evidence_subject_type && post.evidence_subject_type !== 'unknown'
-    ? [`Modelo: ${evidenceLabels[post.evidence_subject_type]}`]
-    : []),
-  ...(post.publication_status && post.publication_status !== 'other'
-    ? [publicationChipLabels[post.publication_status]]
-    : []),
-  ...(sourceFallback?.some((source) => source.role === 'primary') ? ['Fuente primaria'] : []),
-].slice(0, 3);
 
 const canonical = String(getCanonical(typeof url === 'string' ? url : url.pathname));
 

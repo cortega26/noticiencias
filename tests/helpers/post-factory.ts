@@ -10,6 +10,11 @@ const base: Post = {
   tags: [],
   metadata: {},
   draft: false,
+  displayAuthor: 'Noticiencias',
+  isNoticienciasAi: false,
+  sourcePublisher: null,
+  sourceFallback: undefined,
+  evidenceChips: [],
 };
 
 /** Minimal Post fixture: defaults + explicit overrides. */

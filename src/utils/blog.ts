@@ -13,6 +13,8 @@ import {
 } from './permalinks';
 import { getConfiguredCategoryTaxonomies } from './categorySections';
 import { getRelatedTopics } from './hub';
+import { resolveSourcePublisher, resolveSourceTitle } from './source-publisher';
+import { evidenceLabels, publicationChipLabels } from './evidence-labels';
 
 const generatePermalink = async ({
   id,
@@ -148,6 +150,37 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
       }))
     : [];
 
+  // Plan 017 step 3: resolve layout-owned fallbacks once at normalization so
+  // PostLayout reads fields instead of re-deriving them per render. Logic is
+  // copied verbatim from PostLayout (displayAuthor regex, sourceFallback,
+  // evidenceChips unknown/other suppression).
+  const displayAuthor = /noticiencias\s+ai/i.test(author ?? '')
+    ? 'Equipo Noticiencias'
+    : author || 'Noticiencias';
+  const isNoticienciasAi = /noticiencias\s+ai/i.test(author ?? '');
+  const sourcePublisher = resolveSourcePublisher({ source_url });
+  const sourceFallback =
+    sources?.length || !source_url
+      ? sources
+      : [
+          {
+            title: resolveSourceTitle({ source_url }),
+            url: source_url,
+          },
+        ];
+
+  // P1-04: methodology chips (max 3). Unknown/other carry no information and
+  // are omitted; legacy posts without evidence data render no chips.
+  const evidenceChips: string[] = [
+    ...(evidence_subject_type && evidence_subject_type !== 'unknown'
+      ? [`Modelo: ${evidenceLabels[evidence_subject_type]}`]
+      : []),
+    ...(publication_status && publication_status !== 'other'
+      ? [publicationChipLabels[publication_status]]
+      : []),
+    ...(sourceFallback?.some((source) => source.role === 'primary') ? ['Fuente primaria'] : []),
+  ].slice(0, 3);
+
   return {
     id: id,
     slug: slug,
@@ -197,6 +230,12 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     draft: draft,
 
     metadata,
+
+    displayAuthor,
+    isNoticienciasAi,
+    sourcePublisher,
+    sourceFallback,
+    evidenceChips,
 
     Content: Content,
     // or 'content' in case you consume from API
