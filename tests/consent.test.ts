@@ -5,6 +5,7 @@ import {
   buildConsentBootstrap,
   consentUpdateFor,
   isAnalyticsEnabled,
+  isDecision,
   readConsent,
   writeConsent,
 } from '../src/utils/browser/consent';
@@ -105,6 +106,30 @@ describe('consentUpdateFor', () => {
   it('only ever touches analytics_storage', () => {
     expect(consentUpdateFor('granted')).toEqual({ analytics_storage: 'granted' });
     expect(consentUpdateFor('denied')).toEqual({ analytics_storage: 'denied' });
+  });
+});
+
+describe('consent choice guard (plan 012)', () => {
+  it('accepts granted/denied and rejects anything else', () => {
+    expect(isDecision('granted')).toBe(true);
+    expect(isDecision('denied')).toBe(true);
+    expect(isDecision('maybe')).toBe(false);
+    expect(isDecision('')).toBe(false);
+    expect(isDecision(undefined)).toBe(false);
+    expect(isDecision(null)).toBe(false);
+  });
+
+  it('a bogus dataset value is rejected and never persisted', () => {
+    // Mirrors the ConsentBannerScript click handler: validate with isDecision
+    // before writeConsent, so a tampered data-consent-choice never reaches storage.
+    const storage = fakeStorage();
+    const raw: unknown = 'maybe';
+    if (isDecision(raw)) {
+      writeConsent(raw, storage);
+    }
+    expect(isDecision(raw)).toBe(false);
+    expect(storage.data[CONSENT_STORAGE_KEY]).toBeUndefined();
+    expect(readConsent(storage)).toBeNull();
   });
 });
 
