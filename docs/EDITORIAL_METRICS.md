@@ -30,8 +30,8 @@ same change.
 | `topic_follow_click`    | click on a topic RSS follow link                           | `topic_slug`                                  |
 | `category_click`        | click on a category link (card, hub area, home sections)   | `category_slug`                               |
 | `share_click`           | click on a share/copy control                              | `network`, `article_path`                     |
-| `search`                | a search is executed                                       | `search_term`, `results_count`                |
-| `search_result_click`   | a search result is opened                                  | `search_term`, `target_path`, `position`      |
+| `search`                | a search is executed                                       | `search_length`, `results_count`              |
+| `search_result_click`   | a search result is opened                                  | `search_length`, `target_path`, `position`    |
 
 Reconstruction order (funnel exploration): `article_view` → `article_50` →
 `article_90` → `primary_source_click` / `related_impression` →
@@ -41,6 +41,14 @@ Reconstruction order (funnel exploration): `article_view` → `article_50` →
 
 Discovery funnel: `search` → `search_result_click` → `article_view`;
 amplification: `share_click`; topic retention: `topic_follow_click`.
+
+### Search minimization (2026-10-11)
+
+The `search` and `search_result_click` events carry `search_length` instead
+of the raw query text: `short` (trimmed query ≤ 10 chars), `medium` (11–40),
+`long` (> 40). The bucket preserves the shape of demand (e.g. failed long
+queries via `results_count = 0`) without shipping user PII to GA4. Helper:
+`searchLengthBucket` in `src/utils/browser/analytics-events.ts`.
 
 ## KPIs
 
@@ -145,8 +153,9 @@ amplification: `share_click`; topic retention: `topic_follow_click`.
   floor, not a census.
 - **Retention**: 14 months (operator checklist). Comparisons older than that
   are impossible in-product.
-- **No PII**: events carry paths, slugs, domains and form ids. The only
-  free-text param is the search term, disclosed in `privacidad.md`.
+- **No PII**: events carry paths, slugs, domains, form ids and the search
+  length bucket. No event carries free-text user input — the raw search query
+  is never sent to GA4 (disclosed in `privacidad.md`).
 - **Thresholds and sampling**: GA4 hides low-volume segments; use Explorations
   with enough date range before drawing conclusions from small numbers.
 - **Provider authority**: Buttondown is the authority for confirmed
