@@ -4,16 +4,16 @@ Measurement-only spike. No migration, no ceiling change, no production-code chan
 
 ## Numbers (measured `npm run build` + `npm run check:search-budget`, exit 0)
 
-|                | 2026-09-16 baseline | 2026-10-11 (post Stream-C slim) |
-|----------------|---------------------|---------------------------------|
-| gzip bytes     | 122,047             | 147,274                         |
-| posts (entries)| 36                  | 43                              |
-| avg bytes/post | ~3,390              | ~3,425                          |
-| marginal slope (7 new posts) | —       | ~3,604/post                     |
-| raw bytes      | —                   | 1,956,530                       |
-| ceiling (150 KB) | 153,600           | 153,600 (untouched)             |
-| headroom       | ~28.5 KB (~10 posts) | 6,326 bytes (~1.8 posts)       |
-| WARN (135 KB = 138,240) | below        | crossed by 9,034 bytes (warning prints, gate still passes) |
+|                              | 2026-09-16 baseline  | 2026-10-11 (post Stream-C slim)                            |
+| ---------------------------- | -------------------- | ---------------------------------------------------------- |
+| gzip bytes                   | 122,047              | 147,274                                                    |
+| posts (entries)              | 36                   | 43                                                         |
+| avg bytes/post               | ~3,390               | ~3,425                                                     |
+| marginal slope (7 new posts) | —                    | ~3,604/post                                                |
+| raw bytes                    | —                    | 1,956,530                                                  |
+| ceiling (150 KB)             | 153,600              | 153,600 (untouched)                                        |
+| headroom                     | ~28.5 KB (~10 posts) | 6,326 bytes (~1.8 posts)                                   |
+| WARN (135 KB = 138,240)      | below                | crossed by 9,034 bytes (warning prints, gate still passes) |
 
 ## Findings
 
