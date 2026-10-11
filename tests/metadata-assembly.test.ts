@@ -42,7 +42,10 @@ import { getCanonical } from '../src/utils/permalinks';
 import { buildHead } from '../src/components/template/common/buildHead';
 
 function findMeta(tags: ReturnType<typeof buildHead>, key: string, value: string) {
-  return tags.filter((t) => t.tag === 'meta' && (t as never as { attrs: Record<string, string> }).attrs[key] === value);
+  return tags.filter(
+    (t) =>
+      t.tag === 'meta' && (t as never as { attrs: Record<string, string> }).attrs[key] === value
+  );
 }
 
 describe('canonical assembly (Metadata.astro default)', () => {
@@ -67,7 +70,11 @@ describe('buildHead title and robots', () => {
   });
 
   it('emits robots noindex/nofollow with max-image-preview', () => {
-    const tags = buildHead({ noindex: true, nofollow: true, robotsProps: { maxImagePreview: 'large' } });
+    const tags = buildHead({
+      noindex: true,
+      nofollow: true,
+      robotsProps: { maxImagePreview: 'large' },
+    });
     const robots = findMeta(tags, 'name', 'robots');
     expect(robots).toHaveLength(1);
     expect((robots[0] as never as { attrs: Record<string, string> }).attrs.content).toBe(
