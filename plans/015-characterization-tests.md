@@ -90,17 +90,23 @@ here is `npm run test:audit` (`vitest run`).
   `tests/blog-permalink.test.ts`, put permalink edge cases there and keep
   normalization cases here — do not create two files testing the same function)
 - `tests/metadata-assembly.test.ts` (create — canonical/OG assembly feeding Metadata.astro)
-- `tests/dist-sanity.test.ts` (create — may require small pure-function
-  exports from `scripts/dist-sanity.js`; that edit is in scope)
-- `tests/image-derivatives.test.ts` (create — manifest load/miss, variant
-  resolution, strict-mode branches)
+- `tests/dist-sanity.test.ts` (create — classifiers live in the new
+  `scripts/dist-sanity-lib.js` per amended Step 3)
+- `scripts/dist-sanity-lib.js` (create — verbatim-extracted pure
+  classifiers, imports nothing that executes on load)
+- `scripts/dist-sanity.js` (thin-runner rewrite importing the lib — no
+  logic change; byte-identical `test:dist` output required)
+- `tests/image-derivatives.test.ts` (EXTEND if present — a 74-line helper
+  test file predates this plan; add manifest load/miss, variant
+  resolution, strict-mode branches — do not create a competing file)
 - `vitest.config.ts` (raise `blog.ts` + `image-derivatives.ts` floors ONLY
   to the levels the new tests actually achieve — measure, don't guess)
 - The three Playwright fixed waits (replace with event/load-state waits)
 
 **Out of scope** (do NOT touch, even though they look related):
 
-- Production code beyond the minimal `dist-sanity.js` exports.
+- Production code beyond the `dist-sanity` lib extraction + thin runner
+  (both verified behavior-neutral by byte-identical gate output).
 - The `0`-floor accepted-gap files (`images-optimization.ts`, `images.ts`,
   `llms*.ts`, `integration/index.ts`) — raising those is a separate
   decision (the ledger cites `plans/031/spec.md`); do not chase them here.
@@ -142,17 +148,24 @@ renderer (keep it fast and non-flaky).
 
 **Verify**: new test file passes; `test:audit` passes.
 
-### Step 3: dist-sanity classifier tests
+### Step 3: dist-sanity classifier tests (amended 2026-10-11 — export-only unworkable)
 
-Export the pure classifiers from `scripts/dist-sanity.js`
-(`resolvePostRoute`/image-classification helpers — minimal export-only
-edit, no logic change) and unit-test them with fixture frontmatter/HTML
-in `tests/dist-sanity.test.ts`, modeled on
-`tests/post-deploy-check.test.ts`.
+Finding: `scripts/dist-sanity.js` executes its five audit functions plus
+`process.exit()` unconditionally at module top level, so no export-only
+edit can make it importable (verified by executor import experiment).
+Instead, mirror the repo's own `scripts/post-deploy-check-lib.js` pattern:
 
-**Verify**: `npm run test:dist` still passes unmodified in behavior (the
-export edit must not change gate output — run it before/after on the same
-build); new tests pass.
+1. Extract the pure classifiers (`resolvePostRoute`/image-classification
+   helpers — move verbatim, no logic change) into a new
+   `scripts/dist-sanity-lib.js` that exports them and executes nothing on import.
+2. Rewrite `scripts/dist-sanity.js` to import from the lib (thin runner —
+   behavior must be identical).
+3. Unit-test the lib in `tests/dist-sanity.test.ts` with fixture
+   frontmatter/HTML, modeled on `tests/post-deploy-check.test.ts`.
+
+**Verify**: `npm run test:dist` output byte-identical before/after the
+extraction (run it before and after on the same build — diff the full
+stdout); new tests pass.
 
 ### Step 4: Image-derivative unit tests
 
@@ -187,7 +200,9 @@ do not claim an unverified pass).
 
 Machine-checkable. ALL must hold:
 
-- [ ] The four new test files exist and pass under `npx vitest run tests/`
+- [ ] New `tests/blog.test.ts`, `tests/metadata-assembly.test.ts`,
+      `tests/dist-sanity.test.ts` exist and pass; `tests/image-derivatives.test.ts`
+      extended (or created if absent) and passes
 - [ ] `npm run test:audit` exits 0
 - [ ] `npm run test:coverage` exits 0 with raised `blog.ts` floors holding
 - [ ] `npm run test:dist` exits 0 (export edit behavior-neutral)
