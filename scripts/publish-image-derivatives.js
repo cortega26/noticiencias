@@ -29,6 +29,32 @@ const R2_ENDPOINT = process.env.R2_ENDPOINT || '';
 const R2_PUBLIC_BASE_URL = process.env.R2_PUBLIC_BASE_URL || 'https://www.cdn.noticiencias.com';
 const imageDeliveryMode = getImageDeliveryMode();
 
+// Plan 013: bounded pools. Uploads are idempotent existence-checked
+// PUTs, so images and their width variants can fly in parallel. Limits
+// stay modest (4-8) to bound sharp/R2 pressure. Manifest assembly stays
+// ordered (results collected by index, assigned sequentially), so
+// writeManifest bytes are identical to the serial version.
+const IMAGE_POOL_SIZE = 6;
+const VARIANT_POOL_SIZE = 6;
+
+/**
+ * Run worker over items with at most `limit` in flight. Results are
+ * returned in input order regardless of completion order.
+ */
+async function runWithPool(items, limit, worker) {
+  const results = new Array(items.length);
+  let next = 0;
+  const runners = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) {
+      const index = next;
+      next += 1;
+      results[index] = await worker(items[index], index);
+    }
+  });
+  await Promise.all(runners);
+  return results;
+}
+
 const hasUploadConfig = Boolean(
   R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY && R2_BUCKET_NAME && R2_ENDPOINT && R2_PUBLIC_BASE_URL
 );
@@ -92,8 +118,7 @@ async function buildManifestEntry(sourceKey, client) {
   const hash = computeContentHash(absPath);
   const variantWidths = computeVariantWidths(originalWidth);
 
-  const variants = [];
-  for (const width of variantWidths) {
+  const variants = await runWithPool(variantWidths, VARIANT_POOL_SIZE, async (width) => {
     const height = computeVariantHeight(originalWidth, originalHeight, width);
     const objectKey = deriveObjectKey(sourceKey, hash, width, 'avif');
     const url = buildPublicUrl(R2_PUBLIC_BASE_URL, objectKey);
@@ -105,14 +130,14 @@ async function buildManifestEntry(sourceKey, client) {
       }
     }
 
-    variants.push({
+    return {
       width,
       height,
       format: 'avif',
       objectKey,
       url,
-    });
-  }
+    };
+  });
 
   return {
     originalWidth,
@@ -125,12 +150,20 @@ async function buildManifestEntry(sourceKey, client) {
 async function main() {
   const client = createClient();
   const existingManifest = loadManifest();
-  const nextManifest = {};
   const sourceKeys = collectLocalPostImageSources();
 
-  for (const sourceKey of sourceKeys) {
-    nextManifest[sourceKey] = await buildManifestEntry(sourceKey, client);
-  }
+  const entries = await runWithPool(
+    sourceKeys,
+    IMAGE_POOL_SIZE,
+    async (sourceKey) => await buildManifestEntry(sourceKey, client)
+  );
+
+  // Sequential assignment in sourceKeys order preserves manifest key order
+  // (and hence bytes) exactly as the former serial loop did.
+  const nextManifest = {};
+  sourceKeys.forEach((sourceKey, index) => {
+    nextManifest[sourceKey] = entries[index];
+  });
 
   const changed = writeManifest(nextManifest);
   const uploadMode = client
