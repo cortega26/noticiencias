@@ -14,9 +14,9 @@ const load = async function () {
       '~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,avif,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,AVIF,GIF,SVG}',
       '!~/assets/images/noti-logo.jpg',
     ]);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    // continue regardless of error
+    // Local collection unavailable: warn with context, keep passthrough behavior.
+    console.warn('[images] local image collection unavailable, using passthrough:', error);
   }
   return images;
 };

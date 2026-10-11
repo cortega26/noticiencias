@@ -14,8 +14,9 @@ try {
   if (existsSync(metricsPath)) {
     metrics = JSON.parse(readFileSync(metricsPath, 'utf-8'));
   }
-} catch {
-  // Metrics not yet generated
+} catch (error) {
+  // Metrics not yet generated: warn with source context, keep empty-state render.
+  console.warn('[dashboard] pipeline-metrics.json unreadable, rendering empty state:', error);
 }
 
 const content = metrics?.content;
