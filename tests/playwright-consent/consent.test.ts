@@ -200,13 +200,16 @@ test('newsletter submit queues one newsletter_submit event', async ({ page }) =>
   ]);
 });
 
-test('search sends a `search` event with the term and result count', async ({ page }) => {
+test('search sends a `search` event with a length bucket (never the raw term) and result count', async ({
+  page,
+}) => {
   await gotoSettled(page, '/buscar/?q=ciencia');
   await expect
     .poll(async () => (await events(page, 'search')).length, { timeout: 8000 })
     .toBeGreaterThan(0);
   const [first] = await events(page, 'search');
-  expect(first).toMatchObject({ search_term: 'ciencia', transport_type: 'beacon' });
+  expect(first).toMatchObject({ search_length: 'short', transport_type: 'beacon' });
+  expect(first).not.toHaveProperty('search_term');
   expect(typeof (first as { results_count: number }).results_count).toBe('number');
 });
 

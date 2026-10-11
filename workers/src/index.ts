@@ -115,6 +115,13 @@ export default {
 
     const response = new Response(originResponse.body, originResponse);
     addVaryAccept(response.headers);
+    // Plan 019: enforceable framing control at the edge. <meta> CSP cannot
+    // carry frame-ancestors (ignored by browsers) and X-Frame-Options via
+    // meta is unsupported; public/_headers is not applied on Pages. The
+    // Worker passthrough is the enforcement point for HTML responses.
+    // Meta tag in CommonMeta.astro stays as fallback; non-HTML assets are
+    // returned untouched above.
+    response.headers.set('X-Frame-Options', 'SAMEORIGIN');
     return response;
   },
 };

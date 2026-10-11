@@ -173,7 +173,9 @@ test('topic follow clicks are attributed on a hub', async ({ page }) => {
   expect(follow?.params).toMatchObject({ topic_slug: 'coral' });
 });
 
-test('search result clicks carry term and position', async ({ page }) => {
+test('search result clicks carry a length bucket (never the raw term) and position', async ({
+  page,
+}) => {
   await page.addInitScript(captureDataLayer);
   await preventNavigations(page);
 
@@ -185,5 +187,6 @@ test('search result clicks carry term and position', async ({ page }) => {
   await expect.poll(() => eventNames(page)).toContain('search_result_click');
   const events = await page.evaluate(() => window.__gaEvents);
   const result = events.find((event) => event.name === 'search_result_click');
-  expect(result?.params).toMatchObject({ search_term: 'ciencia', position: 0 });
+  expect(result?.params).toMatchObject({ search_length: 'short', position: 0 });
+  expect(result?.params).not.toHaveProperty('search_term');
 });

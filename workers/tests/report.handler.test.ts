@@ -18,6 +18,21 @@ function makeRequest(body: unknown, headers: Record<string, string> = {}): Reque
   });
 }
 
+// Simulate arrival via the Cloudflare CDN: the runtime populates request.cf,
+// which resolveClientIp() treats as the trust signal for CF-Connecting-IP.
+// Plain makeRequest() traffic models the direct-to-worker path (no cf).
+// NOTE: cf must ride the RequestInit (workerd exposes it as read-only);
+// assigning req.cf after construction throws.
+function makeCdnRequest(body: unknown, headers: Record<string, string> = {}): Request {
+  const json = typeof body === 'string' ? body : JSON.stringify(body);
+  return new Request('https://noticiencias.com/api/report', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...headers },
+    body: json,
+    cf: { country: 'CL' },
+  });
+}
+
 function makeFakeR2(shouldFail = false) {
   const objects = new Map<string, string>();
   return {
@@ -183,7 +198,8 @@ describe('handleReport', () => {
     const results: number[] = [];
     for (let i = 0; i < 6; i++) {
       // Vary the payload slightly so idempotency doesn't short-circuit this test.
-      const req = makeRequest(
+      // CDN arrival (request.cf) so the per-IP bucket applies.
+      const req = makeCdnRequest(
         { ...VALID_PAYLOAD, description: `intento ${i}` },
         { 'CF-Connecting-IP': '1.2.3.4' }
       );
@@ -193,6 +209,60 @@ describe('handleReport', () => {
 
     expect(results.slice(0, 5)).toEqual([201, 201, 201, 201, 201]);
     expect(results[5]).toBe(429);
+  });
+
+  it('uses the stricter shared bucket for direct requests with no IP headers (plan 019)', async () => {
+    const rateLimitKv = makeFakeKV();
+    const r2 = makeFakeR2();
+    const env = {
+      ENVIRONMENT: 'test',
+      REPORT_BUCKET: r2 as never,
+      RATE_LIMIT_KV: rateLimitKv as never,
+    } as Env;
+
+    const results: number[] = [];
+    for (let i = 0; i < 3; i++) {
+      const res = await handleReport(
+        makeRequest({ ...VALID_PAYLOAD, description: `directo ${i}` }),
+        env
+      );
+      results.push(res.status);
+    }
+
+    // Unknown bucket allows 2 per window, not the per-IP 5.
+    expect(results).toEqual([201, 201, 429]);
+    const unknownWrites = rateLimitKv.put.mock.calls.filter(([k]) =>
+      String(k).startsWith('ratelimit:unknown:')
+    );
+    expect(unknownWrites.length).toBeGreaterThan(0);
+  });
+
+  it('ignores a spoofed CF-Connecting-IP without CDN metadata — trusted source wins (plan 019)', async () => {
+    const rateLimitKv = makeFakeKV();
+    const r2 = makeFakeR2();
+    const env = {
+      ENVIRONMENT: 'test',
+      REPORT_BUCKET: r2 as never,
+      RATE_LIMIT_KV: rateLimitKv as never,
+    } as Env;
+
+    const results: number[] = [];
+    for (let i = 0; i < 3; i++) {
+      // No request.cf: direct path, so the header must not become the key.
+      const res = await handleReport(
+        makeRequest(
+          { ...VALID_PAYLOAD, description: `spoof ${i}` },
+          { 'CF-Connecting-IP': '9.9.9.9' }
+        ),
+        env
+      );
+      results.push(res.status);
+    }
+
+    expect(results).toEqual([201, 201, 429]);
+    const keys = rateLimitKv.put.mock.calls.map(([k]) => String(k));
+    expect(keys.some((k) => k.startsWith('ratelimit:unknown:'))).toBe(true);
+    expect(keys.some((k) => k.includes('9.9.9.9'))).toBe(false);
   });
 
   it('returns the same report id for an identical retried payload (idempotency)', async () => {
