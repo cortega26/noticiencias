@@ -90,3 +90,43 @@ not technical debt, and need a planning cycle to scope them. The technical-debt 
 (e2e flakes, editorial checker, related-content measurement, stale backlogs)
 is recorded in `docs/products/audit-2026-09/IMPLEMENTATION_LEDGER.md` and
 does not change this index.
+
+## Eighth pass (2026-10-11, full deep audit against `a37798c`)
+
+Full nine-category deep audit (correctness, security, performance, tests,
+tech-debt, dependencies, DX, docs) via parallel subagents; every finding
+below was vetted by opening the cited code. Operator selected "all the
+net-positive ones" → plans 010–019 below. Direction items stay unplanned
+(they map to existing rows: 005 TODO, 006 BLOCKED reframe, 009 IN
+PROGRESS) or to backend-ledger items (048 PARTIAL, 084 spec TODO,
+002-build unscheduled) and were not duplicated.
+
+| Plan | Title | Priority | Effort | Depends on | Status |
+| ---- | ----- | -------- | ------ | ---------- | ------ |
+| 010 | Lockfile hygiene (sharp RCE bump, audit fix, astro-embed removal, astro range) (`010-lockfile-hygiene.md`) | P1 | S | — | DONE (3 commits on `advisor/010-lockfile-hygiene` in `/tmp/opencode/exec-010`: sharp 0.35.5, zero HIGH, 790 tests + 248 dist files green; reviewed 2026-10-11, unmerged) |
+| 011 | Permalink UTC dates + duplicate normalization (`011-permalink-utc.md`) | P1 | S | — | DONE (3 commits on `advisor/011-permalink-utc` in `/tmp/opencode/exec-011`: UTC getters, trimSlash normalization, 5 new tests; 795 tests + 248 dist files green; reviewed 2026-10-11, unmerged. Merit-approved deviation: trimSlash-only, no cleanSlug — cleanSlug launders hostile absolute-URL permalinks past social-manifest fail-closed guards. Case-variant collisions remain theoretically possible.) |
+| 012 | Frontend output hardening (link schemes, JSON-LD, consent) (`012-frontend-output-hardening.md`) | P1 | S | — | TODO |
+| 013 | Build performance bundle (related, tag pages, llms-full, blog lookups, image pool) (`013-build-performance.md`) | P2 | S | — | TODO |
+| 014 | Search-budget triage spike, no migration (`014-search-budget-spike.md`) | P2 | S | — | TODO |
+| 015 | Characterization tests (blog, metadata, dist-sanity, images) (`015-characterization-tests.md`) | P1 | M | — | TODO |
+| 016 | DX gates that gate (lint-staged, typecheck, dedupe, hooks, workflows) (`016-frontend-dx-gates.md`) | P3 | S | — | TODO |
+| 017 | Frontend debt consolidation (images, search, layout, taxonomy, catches) (`017-frontend-debt.md`) | P3 | M | 015 | TODO |
+| 018 | OPERATOR_PENDING ADR pointer fix (`018-operator-pending-pointer.md`) | P3 | S | — | TODO |
+| 019 | Worker + analytics-privacy hardening (`019-worker-privacy-hardening.md`) | P2 | S | — | TODO |
+
+### Eighth-pass dependency notes
+
+- 015 (characterization tests) should land before 011/013/017 touch the
+  same code; if sequencing slips, each plan carries its own prerequisite
+  test step — do not run two executors on `src/utils/blog.ts` concurrently.
+- 010's lockfile pass pairs naturally with backend plan 130's lock regen
+  (different repos, no ordering constraint, just don't confuse the two).
+- 014 explicitly does NOT migrate search (rejected-list decision stands);
+  it produces the evidence the `check-search-budget.js` trigger clause asks for.
+
+### Eighth-pass findings considered and rejected
+
+- Pagefind/Orama migration: standing rejection (ungrounded); 014 is the
+  evidence pass the trigger clause requires, not a migration.
+- `serving/api.py` split and other backend items: live in the backend
+  ledger (plans 118–130), not duplicated here.
