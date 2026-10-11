@@ -30,7 +30,7 @@ export function isAnalyticsEnabled(id: unknown): boolean {
   return typeof id === 'string' && id.startsWith('G-');
 }
 
-function isDecision(value: unknown): value is ConsentDecision {
+export function isDecision(value: unknown): value is ConsentDecision {
   return value === 'granted' || value === 'denied';
 }
 

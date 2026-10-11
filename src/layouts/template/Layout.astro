@@ -14,6 +14,7 @@ import ConsentBanner from '~/components/ds/organisms/ConsentBanner.astro';
 import AnalyticsEvents from '~/components/ds/templates/AnalyticsEvents.astro';
 import BasicScripts from '~/components/ds/templates/BasicScripts.astro';
 import { footerData } from '~/navigation';
+import { serializeJsonLd } from '~/utils/json-ld';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -32,7 +33,7 @@ const logoSrc = new URL('/assets/images/default.png', siteUrl).href;
 
 const socialProfiles = footerData.socialLinks?.map((link) => link.href) ?? [];
 
-const organizationSchema = JSON.stringify({
+const organizationSchema = serializeJsonLd({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE.name,
@@ -48,7 +49,7 @@ const organizationSchema = JSON.stringify({
   },
 });
 
-const webSiteSchema = JSON.stringify({
+const webSiteSchema = serializeJsonLd({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE.name,
