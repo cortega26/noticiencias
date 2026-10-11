@@ -27,10 +27,6 @@ function sharedTagCountWithSets(originalTags: Set<string>, candidate: Post): num
   return count;
 }
 
-function sharedTagCount(original: Post, candidate: Post): number {
-  return sharedTagCountWithSets(new Set((original.tags ?? []).map((tag) => tag.slug)), candidate);
-}
-
 function sharesEvidenceType(original: Post, candidate: Post): boolean {
   return Boolean(
     original.evidence_subject_type &&
@@ -44,14 +40,6 @@ function sharesPublicationStatus(original: Post, candidate: Post): boolean {
     original.publication_status &&
     original.publication_status !== 'other' &&
     original.publication_status === candidate.publication_status
-  );
-}
-
-function relatedScore(original: Post, candidate: Post): number {
-  return relatedScoreWithSets(
-    original,
-    new Set((original.tags ?? []).map((tag) => tag.slug)),
-    candidate
   );
 }
 
