@@ -133,7 +133,8 @@ const posts = defineCollection({
             url: z
               .url()
               .refine(
-                (v) => v.toLowerCase().startsWith('http://') || v.toLowerCase().startsWith('https://'),
+                (v) =>
+                  v.toLowerCase().startsWith('http://') || v.toLowerCase().startsWith('https://'),
                 'URL must use http or https'
               ),
             publisher: z.string().optional(),
