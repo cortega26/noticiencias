@@ -28,10 +28,7 @@ function sharedTagCountWithSets(originalTags: Set<string>, candidate: Post): num
 }
 
 function sharedTagCount(original: Post, candidate: Post): number {
-  return sharedTagCountWithSets(
-    new Set((original.tags ?? []).map((tag) => tag.slug)),
-    candidate
-  );
+  return sharedTagCountWithSets(new Set((original.tags ?? []).map((tag) => tag.slug)), candidate);
 }
 
 function sharesEvidenceType(original: Post, candidate: Post): boolean {
@@ -96,7 +93,8 @@ function rankUncached(
   tagSets: Map<string, Set<string>>,
   maxResults: number
 ): RelatedSelection {
-  const originalTags = tagSets.get(originalPost.id) ?? new Set((originalPost.tags ?? []).map((tag) => tag.slug));
+  const originalTags =
+    tagSets.get(originalPost.id) ?? new Set((originalPost.tags ?? []).map((tag) => tag.slug));
   const related = allPosts
     .filter((post) => post.id !== originalPost.id)
     .map((post) => ({ post, score: relatedScoreWithSets(originalPost, originalTags, post) }))
@@ -122,7 +120,10 @@ function rankUncached(
  * sharing one tag-set map. Used by getStaticPaths to attach each page's
  * selection as a prop (one fetchPosts() call for the whole build).
  */
-export function rankAllRelatedPosts(allPosts: Post[], maxResults = 4): Map<string, RelatedSelection> {
+export function rankAllRelatedPosts(
+  allPosts: Post[],
+  maxResults = 4
+): Map<string, RelatedSelection> {
   const tagSets = buildTagSetMap(allPosts);
   let perList = rankCache.get(allPosts);
   if (!perList) {

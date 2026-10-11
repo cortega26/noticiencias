@@ -19,7 +19,12 @@ interface Props {
   relatedTopics?: TopicFrequency[];
 }
 
-const { page, tag, tagPosts: tagPostsProp, relatedTopics: relatedTopicsProp } = Astro.props as Props;
+const {
+  page,
+  tag,
+  tagPosts: tagPostsProp,
+  relatedTopics: relatedTopicsProp,
+} = Astro.props as Props;
 // Full tag post list + related topics arrive as props from
 // getStaticPathsBlogTag (single collection pass).
 const relatedTopics = relatedTopicsProp ?? [];
