@@ -1350,6 +1350,34 @@
       }
     ]
   },
+  "~/assets/images/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.webp": {
+    "originalWidth": 1200,
+    "originalHeight": 600,
+    "hash": "1f67d410008374b1",
+    "variants": [
+      {
+        "width": 400,
+        "height": 200,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 450,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.900.avif"
+      },
+      {
+        "width": 1200,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.1200.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.1200.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
