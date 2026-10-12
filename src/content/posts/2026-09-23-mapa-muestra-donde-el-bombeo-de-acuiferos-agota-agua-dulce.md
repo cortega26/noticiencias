@@ -14,7 +14,7 @@ tags:
 excerpt: Un análisis de GRACE y GRACE-FO identificó 40 regiones con cambios de agua asociados a actividades humanas; el mapa mide tendencias, no el volumen restante de cada acuífero.
 image: ~/assets/images/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.jpg
 image_alt: Mapa muestra dónde el bombeo de acuíferos agota agua dulce
-source_url: https://doi.org/10.1073/pnas.2600775123
+source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/
 refinery_id: '2601'
 corrected_at: '2026-10-12'
 correction_summary: 'Se añadió el estudio primario y se retiró una comparación de 45 % que no quedó verificada en la fuente; se precisaron el alcance regional y los límites del mapa.'
@@ -56,7 +56,7 @@ why_it_matters:
 confidence: Moderada — el estudio primario mejora la resolución regional de las tendencias, pero sus asociaciones no identifican por sí solas una causa local ni el volumen disponible en cada acuífero.
 sources:
   - title: Spatially refined satellite gravimetry captures human signatures in global terrestrial water storage trends
-    url: https://doi.org/10.1073/pnas.2600775123
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/
     publisher: Proceedings of the National Academy of Sciences
     role: primary
   - title: 'It has become very dire in a lot of places: New map reveals exactly where humans are adding and removing precious fresh water on Earth'
