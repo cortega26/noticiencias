@@ -13,8 +13,8 @@ tags:
   - ejercicio fisico
   - salud ósea
   - medicina regenerativa
-image: ~/assets/images/2026-01-27-250.webp
-image_alt: "Piezo1 identificado como 'sensor de ejercicio' interno crucial"
+image: ~/assets/images/2026-01-27-piezo1-mechanosensor-original.webp
+image_alt: 'Ilustración original de un canal Piezo1 en una membrana celular que responde a tensión mecánica.'
 source_url: https://sciencedaily.com/releases/2026/01/260127010149.htm
 series: 'Salud que importa'
 refinery_id: '250'

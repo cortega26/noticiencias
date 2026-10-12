@@ -5,7 +5,7 @@ layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 
-_Última actualización: 10 de octubre de 2026._
+_Última actualización: 12 de octubre de 2026._
 
 En Noticiencias explicamos qué información se trata al navegar, consultar artículos, enviar un reporte o suscribirse al boletín. **No vendemos listas de suscriptores ni datos personales de quienes nos contactan.** Esto no significa que la navegación sea anónima: intervienen proveedores técnicos y herramientas de medición, descritos a continuación.
 
@@ -36,7 +36,7 @@ Si pulsas **Aceptar**, se habilita únicamente el almacenamiento de analítica y
 
 ## Publicidad y Google AdSense
 
-**Situación a la fecha de actualización:** estamos evaluando incorporar Google AdSense, pero **no hemos habilitado anuncios programáticos**. El archivo `ads.txt` y las etiquetas de verificación no son prueba de que se estén sirviendo anuncios.
+**Situación a la fecha de actualización:** el 9 de octubre de 2026 solicitamos a Google AdSense revisar la elegibilidad del sitio. La revisión sigue en curso y **no hemos habilitado anuncios programáticos**. El archivo `ads.txt` y las etiquetas de verificación no son prueba de que se estén sirviendo anuncios.
 
 **Si se habilita publicidad**, Google y otros proveedores publicitarios podrán usar cookies propias o de terceros, balizas web, direcciones IP y otros identificadores para publicar anuncios, medirlos y, cuando proceda, personalizarlos según visitas anteriores. Antes de activar las etiquetas publicitarias revisaremos la política y las opciones de consentimiento según la configuración real. En las jurisdicciones donde Google exige una plataforma de gestión del consentimiento certificada, deberá utilizarse antes de mostrar anuncios allí. No se debe interpretar el aviso actual de analítica como consentimiento para publicidad personalizada.
 

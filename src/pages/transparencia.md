@@ -25,7 +25,7 @@ Para consultas generales, rectificaciones o asuntos legales fuera del formulario
 
 ## Publicidad, patrocinio y conflictos de interés
 
-Las decisiones editoriales no se condicionan a la contratación de anuncios. Noticiencias **todavía no muestra anuncios programáticos**; si incorpora Google AdSense, la publicidad deberá ser reconocible como tal y respetar las políticas y las condiciones de consentimiento que apliquen. Los patrocinios deberán estar identificados. Consulta [Patrocinios](/patrocinios/) y [Privacidad](/privacidad/).
+Las decisiones editoriales no se condicionan a la contratación de anuncios. Solicitamos a Google AdSense revisar el sitio el **9 de octubre de 2026**; la revisión sigue en curso y **todavía no mostramos anuncios programáticos**. Si se aprueba y decidimos habilitar AdSense, la publicidad deberá ser reconocible como tal y respetar las políticas y las condiciones de consentimiento que apliquen. Los patrocinios deberán estar identificados. Consulta [Patrocinios](/patrocinios/) y [Privacidad](/privacidad/).
 
 Buscamos identificar conflictos de interés relevantes que afecten la interpretación de una noticia, incluidos los comunicados por las fuentes. No afirmamos que una declaración externa garantice ausencia de sesgos.
 

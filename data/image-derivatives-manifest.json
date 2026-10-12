@@ -90,31 +90,38 @@
       }
     ]
   },
-  "~/assets/images/2026-01-23-article-107.png": {
-    "originalWidth": 1280,
-    "originalHeight": 720,
-    "hash": "0288aefbeca3c8fd",
+  "~/assets/images/2026-01-23-brazil-bone-harpoon-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "f85131c1de76b688",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-23-article-107.0288aefbeca3c8fd.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-article-107.0288aefbeca3c8fd.400.avif"
+        "objectKey": "posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-23-article-107.0288aefbeca3c8fd.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-article-107.0288aefbeca3c8fd.900.avif"
+        "objectKey": "posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.900.avif"
       },
       {
-        "width": 1280,
-        "height": 720,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-23-article-107.0288aefbeca3c8fd.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-article-107.0288aefbeca3c8fd.1280.avif"
+        "objectKey": "posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-23-brazil-bone-harpoon-original.f85131c1de76b688.1500.avif"
       }
     ]
   },
@@ -146,34 +153,6 @@
       }
     ]
   },
-  "~/assets/images/2026-01-25-article-86.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 800,
-    "hash": "d6a7854039e012ea",
-    "variants": [
-      {
-        "width": 400,
-        "height": 267,
-        "format": "avif",
-        "objectKey": "posts/2026-01-25-article-86.d6a7854039e012ea.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-86.d6a7854039e012ea.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 600,
-        "format": "avif",
-        "objectKey": "posts/2026-01-25-article-86.d6a7854039e012ea.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-86.d6a7854039e012ea.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 800,
-        "format": "avif",
-        "objectKey": "posts/2026-01-25-article-86.d6a7854039e012ea.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-86.d6a7854039e012ea.1200.avif"
-      }
-    ]
-  },
   "~/assets/images/2026-01-25-article-87.webp": {
     "originalWidth": 1200,
     "originalHeight": 799,
@@ -202,6 +181,41 @@
       }
     ]
   },
+  "~/assets/images/2026-01-25-daycare-microbiome-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "df003ed69203434e",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-daycare-microbiome-original.df003ed69203434e.1500.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-01-27-235.png": {
     "originalWidth": 1280,
     "originalHeight": 720,
@@ -227,41 +241,6 @@
         "format": "avif",
         "objectKey": "posts/2026-01-27-235.1f4dfe7931fd4c4c.1280.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-235.1f4dfe7931fd4c4c.1280.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-27-250.webp": {
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "hash": "9ebd2837d37db56a",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-250.9ebd2837d37db56a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-250.9ebd2837d37db56a.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-250.9ebd2837d37db56a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-250.9ebd2837d37db56a.900.avif"
-      },
-      {
-        "width": 1400,
-        "height": 788,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-250.9ebd2837d37db56a.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-250.9ebd2837d37db56a.1400.avif"
-      },
-      {
-        "width": 1920,
-        "height": 1080,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-250.9ebd2837d37db56a.1920.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-250.9ebd2837d37db56a.1920.avif"
       }
     ]
   },
@@ -346,6 +325,41 @@
         "format": "avif",
         "objectKey": "posts/2026-01-27-article-432.6e8bd601e0e7ee3e.1200.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-432.6e8bd601e0e7ee3e.1200.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-01-27-piezo1-mechanosensor-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "8370243a7b55904a",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-piezo1-mechanosensor-original.8370243a7b55904a.1500.avif"
       }
     ]
   },
@@ -1196,6 +1210,41 @@
       }
     ]
   },
+  "~/assets/images/2026-09-20-coral-cilia-flow-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "71e6404b1ecafade",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1500.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.webp": {
     "originalWidth": 777,
     "originalHeight": 514,
@@ -1214,34 +1263,6 @@
         "format": "avif",
         "objectKey": "posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.webp": {
-    "originalWidth": 1280,
-    "originalHeight": 670,
-    "hash": "bba550974943894f",
-    "variants": [
-      {
-        "width": 400,
-        "height": 209,
-        "format": "avif",
-        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 471,
-        "format": "avif",
-        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.900.avif"
-      },
-      {
-        "width": 1280,
-        "height": 670,
-        "format": "avif",
-        "objectKey": "posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.bba550974943894f.1280.avif"
       }
     ]
   },
@@ -1301,24 +1322,38 @@
       }
     ]
   },
-  "~/assets/images/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.webp": {
-    "originalWidth": 529,
-    "originalHeight": 292,
-    "hash": "f8dc583f28f7c789",
+  "~/assets/images/2026-09-25-ads-cft-holography-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "5d1c09daf53b0abd",
     "variants": [
       {
         "width": 400,
-        "height": 221,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.400.avif"
+        "objectKey": "posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.400.avif"
       },
       {
-        "width": 529,
-        "height": 292,
+        "width": 900,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.529.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.f8dc583f28f7c789.529.avif"
+        "objectKey": "posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-25-ads-cft-holography-original.5d1c09daf53b0abd.1500.avif"
       }
     ]
   },
