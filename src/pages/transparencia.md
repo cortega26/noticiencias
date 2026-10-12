@@ -7,7 +7,7 @@ excerpt: 'Compromisos de transparencia, correcciones y conflicto de interés.'
 
 ## Qué publicamos
 
-Cada pieza incluye fuentes enlazadas, fecha de verificación y método de traducción. No publicamos automáticamente.
+Cada pieza enlaza la fuente registrada. La fecha de verificación, el método de traducción y otros datos editoriales aparecen cuando están disponibles para esa pieza. No publicamos automáticamente.
 
 ## Correcciones
 
@@ -22,29 +22,25 @@ Declaramos cualquier conflicto de interés relevante en la fuente original o en 
 
 No almacenamos datos personales de visitantes en prompts. Para medir el uso del sitio usamos Google Analytics 4, con cookies de medición solo si las aceptas, y Cloudflare Web Analytics, sin cookies. Detalle, eventos que registramos y cómo cambiar tu elección en la [Política de Privacidad](/privacidad/).
 
-El boletín es la excepción declarada: almacena tu correo electrónico solo para enviarte la edición semanal; no usamos píxeles de apertura ni seguimiento de clics. Ver [Política de Privacidad](/privacidad/) para el detalle del proveedor y tus derechos sobre esos datos.
+El formulario del boletín envía tu correo a Buttondown para gestionar la suscripción y la confirmación. Buttondown puede tratar datos de uso del correo según su política y la configuración de la cuenta; no afirmamos que el seguimiento de aperturas o clics esté desactivado porque esa configuración no está verificada. Consulta la [Política de Privacidad de Noticiencias](/privacidad/) y la [Política de Privacidad de Buttondown](https://www.buttondown.com/legal/privacy).
 
 ## Métricas y financiamiento
 
-La medición está activa. Publicamos un informe trimestral abierto sobre crecimiento y sostenibilidad con estos contenidos: páginas más leídas, canales de llegada, consultas de búsqueda que traen lectores, y costo de infraestructura frente a presupuesto. Próximo informe: enero de 2026.
+La analítica está activa; la [Política de Privacidad](/privacidad/) describe las herramientas, los eventos registrados y su retención. La fecha de un próximo informe público sobre crecimiento y sostenibilidad no está anunciada.
 
 ## Calidad editorial agregada
 
-Muestreamos automáticamente una fracción de los artículos con un auditor
-editorial independiente del redactor (rigor epistémico, claridad, control
-de la especulación y engagement, cada uno de 0 a 10). Publicamos solo
-promedios agregados, nunca puntajes por artículo.
+Una muestra de artículos recibe una evaluación automatizada y no bloqueante
+con un modelo de lenguaje sobre rigor epistémico, claridad, control de la
+especulación y engagement (cada criterio de 0 a 10). No es una revisión humana
+independiente ni demuestra que cada pieza haya sido verificada. El sitio no
+muestra puntajes por artículo.
 
-Última ventana (5 auditorías, actualizada el 2026-09-16):
-
-- Rigor epistémico: 7,98
-- Claridad: 8,90
-- Control de la especulación: 8,76
-- Engagement: 8,26
-
-La muestra aún es pequeña: estos números describen las últimas
-auditorías, no todo el archivo, y se recalibran a medida que crece.
-Metodología y umbrales editoriales viven en el repositorio abierto.
+El auditor se activa por categorías y términos definidos o por una tasa de
+muestreo configurada. El backend conserva promedios acumulados, no una ventana
+móvil de las últimas cinco auditorías. No publicamos actualmente una cifra:
+falta un corte que permita reproducir su cohorte y cálculo. Metodología y
+umbrales editoriales viven en el repositorio abierto.
 
 ## Contacto
 

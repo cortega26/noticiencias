@@ -89,6 +89,6 @@ Todo esto queda a la vista en el recuadro «Fuentes y verificación» que acompa
 
 ### ¿Quieres entrenar el ojo?
 
-Cada viernes enviamos **Noticiencias Semanal**: una selección de los hallazgos de la semana con sus fuentes, su contexto y sus límites, explicados sin humo.
+El **boletín** reúne selecciones editoriales con sus fuentes, contexto y límites. No hay una frecuencia de envío garantizada.
 
 [Suscribirme al boletín](/newsletter)

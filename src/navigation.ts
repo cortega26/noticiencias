@@ -67,7 +67,7 @@ export const footerData = {
   ],
   secondaryLinks: [
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
-    { text: 'Boletín semanal', href: getPermalink('/newsletter/') },
+    { text: 'Boletín', href: getPermalink('/newsletter/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
     { text: 'Reportar un problema', href: getPermalink('/reportar-problema/') },
     { text: 'Patrocinios', href: getPermalink('/patrocinios/') },

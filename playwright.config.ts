@@ -19,6 +19,9 @@ import { defineConfig, devices } from '@playwright/test';
  * local build.
  */
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321';
+const PREVIEW_URL = new URL(BASE_URL);
+const PREVIEW_HOST = PREVIEW_URL.hostname;
+const PREVIEW_PORT = PREVIEW_URL.port || '4321';
 
 export default defineConfig({
   testDir: './tests/playwright',
@@ -52,11 +55,12 @@ export default defineConfig({
 
   // Always start (or reuse, outside CI) a local preview server against the
   // current dist/ build — in CI as much as locally. There is no live-site
-  // fallback here.
+  // fallback here. Vite's foreground static preview lets Playwright own the
+  // server lifetime; strictPort prevents silently testing another checkout.
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4321',
-    reuseExistingServer: !process.env.CI,
+    command: `node_modules/.bin/vite preview --config vite.preview.config.mjs --outDir dist --host ${PREVIEW_HOST} --port ${PREVIEW_PORT} --strictPort`,
+    url: BASE_URL,
+    reuseExistingServer: !process.env.CI && !process.env.PLAYWRIGHT_BASE_URL,
     timeout: 30000,
   },
 });

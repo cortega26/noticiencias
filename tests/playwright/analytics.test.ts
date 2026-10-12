@@ -51,14 +51,10 @@ test('article view and read depth fire on an article page', async ({ page }) => 
   expect(events.filter((name) => name === 'article_view')).toHaveLength(1);
 });
 
-test('newsletter impression, start and submit fire on the home capture', async ({ page }) => {
+test('newsletter submit records intent only, not provider acceptance or confirmation', async ({
+  page,
+}) => {
   await page.addInitScript(captureDataLayer);
-  await page.route('https://buttondown.com/**', (route) =>
-    route.fulfill({
-      status: 302,
-      headers: { location: 'https://buttondown.com/subscribe/confirm' },
-    })
-  );
 
   await page.goto('/');
   const form = page.locator('section[aria-labelledby="home-newsletter-cta"] form');
@@ -69,44 +65,20 @@ test('newsletter impression, start and submit fire on the home capture', async (
   await form.locator('input[type="email"]').fill('lector@example.com');
   await expect.poll(() => eventNames(page)).toContain('newsletter_start');
 
-  await form.locator('button[type="submit"]').click();
+  // A synthetic submit emits the site-owned intent event without sending a
+  // registration request to Buttondown or implying provider acceptance.
+  await form.evaluate((element) =>
+    element.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
+  );
   await expect.poll(() => eventNames(page)).toContain('newsletter_submit');
-  await expect.poll(() => eventNames(page)).toContain('newsletter_success');
+  const events = await eventNames(page);
+  expect(events).not.toContain('newsletter_success');
+  expect(events).not.toContain('newsletter_error');
 
   const params = await page.evaluate(() =>
     window.__gaEvents.find((event) => event.name === 'newsletter_submit')
   );
   expect(params?.params).toMatchObject({ method: 'form_submit', form_id: 'newsletter-hero' });
-
-  const success = await page.evaluate(() =>
-    window.__gaEvents.find((event) => event.name === 'newsletter_success')
-  );
-  expect(success?.params).toMatchObject({ form_id: 'newsletter-hero' });
-});
-
-test('a failed provider response emits newsletter_error', async ({ page }) => {
-  await page.addInitScript(captureDataLayer);
-  await page.route('https://buttondown.com/**', (route) =>
-    route.fulfill({
-      status: 500,
-      headers: { 'access-control-allow-origin': '*' },
-      body: '',
-    })
-  );
-
-  await page.goto('/');
-  const form = page.locator('section[aria-labelledby="home-newsletter-cta"] form');
-  await form.locator('input[type="email"]').fill('lector@example.com');
-  await form.locator('button[type="submit"]').click();
-
-  await expect.poll(() => eventNames(page)).toContain('newsletter_error');
-  const error = await page.evaluate(() =>
-    window.__gaEvents.find((event) => event.name === 'newsletter_error')
-  );
-  expect(error?.params).toMatchObject({
-    form_id: 'newsletter-hero',
-    error_type: 'http',
-  });
 });
 
 function preventNavigations(page: Page) {

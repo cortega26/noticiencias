@@ -1,5 +1,5 @@
 ---
-title: Los cilios del coral crean remolinos de oxígeno nocturnos y fallan cerca de 37 °C
+title: El calor agudo alteró la coordinación ciliar de un coral en laboratorio
 schema_version: 2
 date: 2026-09-20
 author: Noticiencias AI
@@ -11,7 +11,7 @@ tags:
   - oxígeno
   - temperatura
   - arrecife
-excerpt: Los cilios generan remolinos oxigenados en la oscuridad; su actividad disminuye alrededor de 37 °C y cesa al superar ~39 °C, poniendo en riesgo los pólipos.
+excerpt: En Porites lutea, la coordinación ciliar empezó a deteriorarse a 37 °C; los vórtices desaparecieron a 39 °C y a 41 °C hubo poca o ninguna actividad y mortalidad total en el experimento.
 image: ~/assets/images/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.webp
 image_alt: 'Microfotografía de fluorescencia del flujo de agua sobre cilios de coral: líneas luminosas rosas y violetas forman remolinos en espiral sobre un fondo púrpura.'
 source_url: https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/
@@ -20,63 +20,75 @@ headlines_variants:
   question: ¿Cómo sobreviven los corales de noche si sus cilios dejan de mover agua a alta temperatura?
   benefit: Entiende por qué el calentamiento oceánico amenaza la respiración nocturna de los corales
 summary_points:
-  - Un estudio con colonias de Porites lutea criadas en acuarios reveló que los diminutos cilios en los pólipos de coral, esenciales para su oxigenación, aumentan su velocidad al calentarse el agua para compensar la menor solubilidad del oxígeno.
-  - En estas colonias de Porites lutea, la demanda de oxígeno superó el aporte de los cilios alrededor de los 37 °C, y por encima de los 39 °C, los cilios dejaron de moverse y los pólipos murieron.
-  - Los investigadores observaron que los cilios del coral están organizados en patrones hexagonales que sincronizan su batido para crear vórtices eficientes, sugiriendo una integración funcional entre el esqueleto y el tejido vivo del coral.
-  - Este hallazgo plantea que la capacidad de los cilios para renovar el oxígeno podría ser un punto de quiebre crítico para la supervivencia de los corales ante el calentamiento oceánico, incluso antes de que aparezcan signos de blanqueamiento.
-  - El estudio subraya que los umbrales de temperatura identificados para la falla ciliar no son universales, y que el calentamiento global ya está llevando a muchos arrecifes hacia sus límites de tolerancia.
+  - En muestras de Porites lutea, un equipo midió el batido ciliar y el flujo de agua y oxígeno cerca del tejido durante un calentamiento agudo en oscuridad.
+  - La frecuencia del batido aumentó hasta 37 °C, donde empezó a perder regularidad; entre 38 y 40 °C descendió marcadamente.
+  - Los vórtices producidos por los cilios desaparecieron alrededor de 39 °C; a 41 °C hubo poco o ningún movimiento ciliar y la mortalidad alcanzó el 100 % en el experimento.
+  - Un modelo de transporte del estudio interpreta cómo el aumento de la demanda metabólica y la reducción del flujo ciliar pueden afectar el oxígeno; esa explicación depende de supuestos del modelo.
+  - Los autores proponen estudiar el batido ciliar como posible indicador de estrés, pero este trabajo no valida un método de monitoreo en arrecifes ni demuestra que anticipe el blanqueamiento.
 glossary:
   - term: Pólipos de coral
-    definition: Pequeños animales invertebrados que forman las colonias de coral, cubiertos de diminutos pelos vibrantes que les ayudan a respirar y alimentarse.
+    definition: Animales que forman las colonias de coral; sus tejidos mantienen intercambios con el agua circundante.
   - term: Cilios
-    definition: Estructuras microscópicas en forma de pelo que se agitan en la superficie de las células para mover fluidos, como el agua oxigenada alrededor de los corales.
+    definition: Prolongaciones móviles de algunas células que pueden generar flujo de agua junto a los tejidos.
   - term: Blanqueamiento de coral
     definition: Fenómeno en el que los corales estresados, generalmente por altas temperaturas, expulsan las algas con las que viven en simbiosis, perdiendo su color y su principal fuente de energía.
   - term: SensPIV
     definition: Una técnica avanzada que utiliza nanopartículas fluorescentes sensibles al oxígeno para visualizar y medir el flujo de oxígeno en fluidos, permitiendo estudiar la respiración a nivel microscópico.
 fact_check:
-  - label: Los pólipos de coral están cubiertos de diminutos pelos vibrantes que crean remolinos de agua oxigenada.
+  - label: En Porites lutea, los cilios medidos generaron flujos locales de agua que contribuyen al intercambio de oxígeno.
     status: confirmed
-  - label: Hasta 2014, se pensaba que los cilios de coral solo limpiaban la superficie.
+  - label: En las colonias estudiadas, la coordinación empezó a deteriorarse a 37 °C, los vórtices desaparecieron alrededor de 39 °C y a 41 °C hubo poca o ninguna actividad ciliar y mortalidad del 100 %.
     status: confirmed
-  - label: Por encima de los 39 °C, los cilios de las colonias de Porites lutea estudiadas dejaron de moverse por completo y los pólipos murieron.
+  - label: Las temperaturas observadas corresponden a un experimento agudo con una sola especie y no son umbrales universales para los corales.
     status: confirmed
-  - label: Los valores de temperatura de tolerancia para los cilios de coral no son un umbral universal para todas las especies.
-    status: confirmed
-  - label: La relación entre el fallo ciliar y el blanqueamiento es ambigua y necesita más investigación.
+  - label: El estudio no demuestra que el fallo ciliar anticipe el blanqueamiento en arrecifes.
     status: confirmed
 why_it_matters:
-  - Los arrecifes de coral son ecosistemas vitales para la biodiversidad marina y la protección costera en muchas regiones de Latinoamérica, y su declive afectaría directamente la pesca, el turismo y la economía local.
-  - Comprender cómo los corales se ven afectados por el calentamiento del agua puede ayudar a desarrollar estrategias de conservación más efectivas para los arrecifes de la región, que ya están bajo estrés climático.
-  - Este conocimiento permite un monitoreo más preciso de la salud de los corales, identificando señales tempranas de daño antes de que el blanqueamiento sea visible, lo cual es crucial para la gestión ambiental en países con costas coralinas.
-confidence: Moderada a alta — estudio revisado por pares publicado en Science con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.
+  - Las mediciones muestran cómo cambian el movimiento ciliar y el transporte local de oxígeno en Porites lutea bajo calentamiento agudo.
+  - El estudio aporta mediciones de flujo microscópico bajo calentamiento agudo; sus autores plantean preguntas para futuras pruebas en condiciones ambientales más realistas.
+  - La propuesta de usar cambios ciliares como señal temprana requiere validación en arrecifes y no establece una herramienta de monitoreo disponible.
+confidence: Moderada — estudio revisado por pares con mediciones controladas y tres réplicas biológicas; los resultados corresponden a una especie y el mecanismo incluye un modelo, sin validación de campo.
 sources:
   - title: Tiny Hairs That Help Corals Breathe May Malfunction in Warming Oceans
     url: https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/
     publisher: Wired
+    date: '2026-09-20'
+  - title: Corals Spin Tiny Vortices to Get Oxygen, but Not if It’s Too Hot
+    url: https://www.quantamagazine.org/corals-spin-tiny-vortices-to-get-oxygen-but-not-if-its-too-hot-20260805/
+    publisher: Quanta Magazine
+    date: '2026-08-05'
+    role: secondary
+  - title: Acute temperature effects on cilia beating increase coral deoxygenation
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/
+    publisher: Science Advances
+    date: '2026-05-20'
+    role: primary
+    doi: 10.1126/sciadv.aeg0950
 requires_uncertainty_note: true
-uncertainty_note: Los valores de 37 °C y 39 °C provienen de experimentos con una sola especie y no representan un umbral universal para todos los corales.
+uncertainty_note: Los valores de 37 °C, 39 °C y 41 °C corresponden a calentamiento agudo de Porites lutea en una cámara de laboratorio; no son umbrales universales ni se han validado como señal de blanqueamiento en arrecifes.
+corrected_at: '2026-10-09'
+correction_summary: 'Se separaron los resultados observados a 37, 39 y 41 °C, se precisaron las condiciones del experimento y se retiraron afirmaciones que los datos no validaban en arrecifes ni sobre blanqueamiento.'
 social:
   publish: true
   id: 1e2363b96dea9ba03e0b2402e00833f6d63b3f66e8df5e48a0c50aa18faeefb9
 ---
 
-¿Qué mantiene con vida a un coral cuando se apaga la luz y sus algas dejan de producir oxígeno?
+Un experimento de laboratorio siguió cómo el calentamiento alteraba el movimiento de los cilios del coral pétreo _Porites lutea_. El equipo midió el batido ciliar y los flujos de agua y oxígeno junto al tejido. Los resultados describen la respuesta aguda de una especie; no fijan el límite térmico de un arrecife.
 
-Los pólipos de coral están cubiertos de diminutos pelos vibrantes que, al agitarse, crean remolinos de agua oxigenada alrededor de sus tejidos. Durante el día reciben oxígeno de las algas que viven dentro de ellos, pero por la noche dependen exclusivamente de ese movimiento ciliar para sobrevivir. Hasta 2014 esos pelos se pensaba que sólo limpiaban la superficie; hoy sabemos que son esenciales para el metabolismo del coral.
+La cobertura periodística de Marlowe Starling apareció originalmente en _Quanta Magazine_ el 5 de agosto de 2026; _Wired_ la republicó con permiso el 20 de septiembre. Esta nota de Noticiencias sintetiza ese reportaje junto con el estudio original.
+
+Los cilios son prolongaciones celulares móviles que producen corrientes a escala microscópica. En los corales contribuyen al intercambio de sustancias entre el tejido y el agua, aunque su respuesta al estrés térmico y sus consecuencias para el animal aún no se comprenden por completo.
 
 ## Cómo midieron los investigadores la actividad ciliar
 
-Un equipo internacional publicó en _Science_ (mayo 2026) el primer estudio que cuantifica cómo varía la actividad de esos cilios cuando el agua se calienta. Los investigadores tomaron colonias de _Porites lutea_ criadas en acuarios y las expusieron a temperaturas progresivamente más altas, manteniendo la oscuridad para aislar el efecto de las algas. Con una cámara de alta velocidad midieron la frecuencia del batido ciliar y, usando una técnica llamada _SensPIV_ con nanopartículas fluorescentes sensibles al oxígeno, trazaron el flujo de O₂ que los remolinos transportaban hacia los tejidos.
+El estudio, publicado en _Science Advances_ el 20 de mayo de 2026, expuso muestras de _Porites lutea_ a una rampa escalonada de temperatura en una cámara de microscopio y en oscuridad. El equipo elevó el nivel 1 °C cada 30 minutos y lo mantuvo otros 30 minutos antes de registrar imágenes; la rampa completa duró alrededor de 14–15 horas. Usó imágenes de alta velocidad para medir la frecuencia del batido y velocimetría de partículas —junto con nanopartículas sensibles al oxígeno— para registrar el flujo y la concentración de O₂ cerca de la superficie. Los resultados incluyeron tres réplicas biológicas.
 
-A medida que el agua se calentó, los cilios aumentaron su velocidad para compensar la menor solubilidad del oxígeno. Sin embargo, alrededor de los 37 °C la demanda de O₂ del coral superó al aporte de los remolinos; los pelos empezaron a mover agua cada vez más pobre en oxígeno y, por encima de los 39 °C, dejaron de moverse por completo y los pólipos murieron. Los autores aclaran que esos valores no son un umbral universal: cada especie tiene su propio rango de tolerancia, pero el calentamiento oceánico ya está empujando a muchos arrecifes hacia esos límites.
+La frecuencia del batido aumentó desde 27 °C hasta alcanzar su máximo a 37 °C. A esa temperatura empezó a perder regularidad; entre 38 y 40 °C descendió marcadamente. Los flujos vorticales se mantuvieron en la mayoría de las temperaturas medidas, pero desaparecieron alrededor de 39 °C, cuando el movimiento ciliar estaba muy inhibido. A 41 °C hubo poco o ningún movimiento y la mortalidad llegó al 100 % en el experimento.
 
 ## Qué más revelaron los datos
 
-El trabajo también muestra que los cilios no actúan al azar. Sus bases están organizadas en patrones hexagonales que sincronizan el batido y generan vórtices con forma de sacacorchos, capaces de alejar partículas nocivas y dirigir nutrientes hacia la boca de los pólipos. Esta arquitectura sugiere que el esqueleto y el tejido vivo del coral están funcionalmente integrados, un detalle que pasaba desapercibido cuando se atribuía la salud del coral únicamente a sus algas simbióticas.
+El equipo combinó estas observaciones con un modelo de transporte de oxígeno. El modelo sugiere que, al subir la temperatura, el aumento de la demanda metabólica puede coincidir con una menor contribución del transporte ciliar. Es una interpretación basada en supuestos sobre el consumo de oxígeno del tejido, no una medición directa de un umbral térmico aplicable a todos los corales.
 
-Quedan preguntas abiertas. No está claro si el aumento de la velocidad ciliar responde a una señal química, a cambios en la viscosidad del agua de mar o a una combinación de ambos. Además, la relación entre el fallo ciliar y el blanqueamiento —cuando el coral expulsa sus algas— todavía es ambigua; probar los pelos bajo estrés lumínico sin aumento de temperatura podría aclarar si son un marcador temprano de distinto tipo de daño.
-
-El estudio cambia la forma de pensar sobre la vulnerabilidad de los corales: en lugar de centrase solo en la pérdida de algas, ahora vemos que la capacidad de los cilios para renovar el oxígeno alrededor del tejido puede ser el punto de quiebre antes de que aparezca cualquier signo visible de estrés. El siguiente paso será observar cómo esos mismos patrones de movimiento se comportan bajo ciclos normales de luz-oscuridad y bajo fluctuaciones más realistas de temperatura, para saber si el oxígeno, más que la temperatura o la luz, es el factor que determina cuál de dos vecinos en un mismo arrecife sobrevive a una ola de calor.
+Los autores proponen estudiar los cambios ciliares como posible indicador temprano de estrés. El experimento no probó su uso en arrecifes ni mostró que el deterioro ciliar preceda al blanqueamiento; esa aplicación necesita validación en condiciones naturales y con otras especies.
 
 <!-- source_identity: source_id=wired; source_name=Wired -->

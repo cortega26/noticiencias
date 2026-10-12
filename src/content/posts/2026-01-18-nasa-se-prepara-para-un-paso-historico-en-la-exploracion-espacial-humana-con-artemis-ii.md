@@ -1,7 +1,7 @@
 ---
-title: 'NASA prepara Artemis II, el regreso de humanos a la órbita lunar'
+title: 'NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años'
 schema_version: 1
-excerpt: 'La NASA ultima detalles para Artemis II, la misión que llevará humanos de regreso a la órbita lunar y más allá.'
+excerpt: 'Publicada el 18 de enero de 2026, esta nota anticipa el sobrevuelo lunar tripulado de Artemis II; una actualización fechada resume el vuelo de abril.'
 author: Noticiencias
 date: 2026-01-18
 categories:
@@ -19,9 +19,25 @@ headlines_variants:
   benefit: '¿Qué significa esta misión para el futuro de la exploración espacial y la humanidad?'
 investigation: false
 featured: false
+sources:
+  - title: 'What You Need to Know About NASA’s Artemis II Moon Mission'
+    url: 'https://www.nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/'
+    publisher: 'NASA'
+    date: '2026-01-16'
+    role: primary
+  - title: 'Artemis II: NASA’s First Crewed Lunar Flyby in 50 Years'
+    url: 'https://www.nasa.gov/mission/artemis-ii/'
+    publisher: 'NASA'
+    role: primary
+corrected_at: '2026-10-09'
+correction_summary: 'Se precisó que Artemis II realizó un sobrevuelo, no una órbita lunar; se corrigió la nota sobre la cita de Isaacman y se añadió una actualización fechada. El relato principal conserva el contexto del 18 de enero de 2026.'
 ---
 
-**NASA prepara Artemis II, el regreso de humanos a la órbita lunar**
+## Actualización — 9 de octubre de 2026
+
+Artemis II despegó el 1 de abril de 2026 y amerizó el 10 de abril, tras volar alrededor de la Luna. La noticia que sigue se publicó el 18 de enero de 2026 y conserva la información disponible entonces. [NASA registra los hitos de la misión](https://www.nasa.gov/mission/artemis-ii/).
+
+## Lo que se sabía antes del vuelo
 
 En un momento crucial de la historia del vuelo espacial humano, la agencia espacial norteamericana NASA está a punto de lanzar su segunda misión en el programa Artemis. Con Artemis II, la agencia espacial estadounidense hará un paso sin precedentes hacia la exploración lunar y más allá. Esta misión tiene como objetivo enviar a los astronautas más lejos de la Tierra que nunca antes, como parte del avance hacia una presencia lunar duradera; enviar estadounidenses a Marte sigue siendo una meta de misiones futuras del programa Artemis, no de Artemis II en sí.
 
@@ -31,7 +47,7 @@ La campaña Artemis tiene como objetivo alcanzar tres objetivos fundamentales: b
 
 La preparación para esta misión ha sido intensa, con los astronautas y el equipo de NASA trabajando incansablemente para asegurarse de que todo esté listo. El kit de prensa oficial para la misión Artemis II ahora está disponible, incluyendo información sobre los astronautas que llevarán a cabo la misión y otros recursos para medios.
 
-_Nota editorial: esta sección citaba previamente una segunda declaración atribuida a Isaacman sobre el envío de estadounidenses a Marte en esta misión. Esa cita no se encontró en la fuente oficial de NASA y fue retirada — Artemis II no incluye un viaje a Marte; NASA describe Marte como una meta de misiones futuras._
+_Nota editorial — 9 de octubre de 2026: la fuente oficial de NASA del 16 de enero sí contiene la declaración de Isaacman sobre enviar estadounidenses a Marte. La nota anterior afirmaba por error que esa cita no aparecía. En el comunicado, Marte es una meta futura de la campaña Artemis, no el destino de Artemis II._
 
 Con la misión Artemis II a punto de despegar, la comunidad científica y espacial se está emocionando ante la posibilidad de ver a los astronautas estadounidenses en acción. ¿Cuáles son tus expectativas para esta misión histórica? ¿Cómo crees que afectará la exploración lunar y la búsqueda de vida extraterrestre? Comparte tus pensamientos con nosotros.
 

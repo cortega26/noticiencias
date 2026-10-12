@@ -5,9 +5,9 @@ layout: '~/layouts/template/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 
-_Última actualización_: 18 de Septiembre de 2026
+_Última actualización_: 9 de octubre de 2026
 
-Esta Política de Privacidad explica qué datos recogemos cuando usas Noticiencias, para qué los usamos y qué derechos tienes sobre ellos. En resumen: nos escribes tu correo solo si te suscribes al boletín, medimos lectura con herramientas de analítica agregada y no vendemos ni compartimos tus datos con fines publicitarios.
+Esta Política de Privacidad explica qué datos recogemos cuando usas Noticiencias, para qué los usamos y qué derechos tienes sobre ellos. En resumen: nos escribes tu correo solo si te suscribes al boletín, medimos lectura con herramientas de analítica agregada y no vendemos tus datos personales. El estado y las condiciones de cualquier publicidad se explican más abajo.
 
 ## Interpretación y Definiciones
 
@@ -55,10 +55,10 @@ Utilizamos Cookies y tecnologías de seguimiento similares para rastrear la acti
 
 Medimos cómo se usa el sitio con dos herramientas, con fines estadísticos y editoriales (saber qué se lee, de dónde llega la gente y qué temas interesan):
 
-- **Google Analytics 4 (Google LLC).** Funciona con _Consent Mode_ de Google en modo avanzado. Al entrar por primera vez te mostramos un aviso con los botones "Aceptar" y "Rechazar", con el mismo peso visual. Debes saber que **el código de Google Analytics se carga en todas las visitas, incluso antes de que elijas**: hasta que aceptes, lo hace con el almacenamiento de cookies denegado y solo envía señales sin cookies (la dirección de la página, la hora y datos técnicos del navegador), que Google usa para estimaciones estadísticas. Si aceptas, Google Analytics guarda las cookies `_ga` y `_ga_<ID>` (con una duración de hasta dos años) para reconocer visitas repetidas y medir sesiones. Nunca concedemos almacenamiento publicitario ni personalización de anuncios: esas señales permanecen denegadas y Google Signals está desactivado. Según la documentación de Google, Google Analytics 4 no registra ni almacena direcciones IP individuales.
+- **Google Analytics 4 (Google LLC).** Funciona con _Consent Mode_ de Google en modo avanzado. Al entrar por primera vez te mostramos un aviso con los botones "Aceptar" y "Rechazar", con el mismo peso visual. Debes saber que **el código de Google Analytics se carga en todas las visitas, incluso antes de que elijas**: hasta que aceptes, lo hace con el almacenamiento de cookies denegado y solo envía señales sin cookies (la dirección de la página, la hora y datos técnicos del navegador), que Google usa para estimaciones estadísticas. Si aceptas, Google Analytics guarda las cookies `_ga` y `_ga_<ID>` (con una duración de hasta dos años) para reconocer visitas repetidas y medir sesiones. En la configuración actual no concedemos almacenamiento publicitario ni personalización de anuncios: esas señales permanecen denegadas y Google Signals está desactivado. Según la documentación de Google, Google Analytics 4 no registra ni almacena direcciones IP individuales.
 - **Cloudflare Web Analytics.** Baliza sin cookies que entrega métricas agregadas de tráfico y rendimiento, sin identificadores que sigan a una persona entre visitas. Por no usar cookies ni almacenamiento del navegador, no depende de tu elección en el aviso.
 
-Los eventos que registramos, además de las visitas a páginas, son: la visita a un artículo, el avance de lectura (50 % y 90 % del texto), el envío del formulario del boletín y su resultado (aceptado o fallido; solo el hecho, nunca tu correo), la aparición del formulario en pantalla y el inicio de escritura en él, los clics en enlaces a las fuentes originales, en historias relacionadas, en series, en temas y en categorías, los clics en botones para compartir, la apertura de un resultado de búsqueda, el uso del feed RSS de un tema, y las búsquedas que haces en el sitio. **El texto que escribes en el buscador no se envía a Google Analytics**: solo registramos su longitud aproximada (corta, media o larga) y cuántos resultados devolvió, nunca el contenido de tu consulta.
+Los eventos que registramos, además de las visitas a páginas, son: la visita a un artículo, el avance de lectura (50 % y 90 % del texto), el intento de envío del formulario del boletín, la aparición del formulario en pantalla y el inicio de escritura en él, los clics en enlaces a las fuentes originales, en historias relacionadas, en series, en temas y en categorías, los clics en botones para compartir, la apertura de un resultado de búsqueda, el uso del feed RSS de un tema, y las búsquedas que haces en el sitio. El evento del formulario indica intención de envío, no aceptación del proveedor ni confirmación de la suscripción; el sitio no recibe esa confirmación. **El texto que escribes en el buscador no se envía a Google Analytics**: solo registramos su longitud aproximada (corta, media o larga) y cuántos resultados devolvió, nunca el contenido de tu consulta.
 
 Conservamos los datos de eventos en Google Analytics durante 14 meses, el máximo que permite la herramienta.
 
@@ -66,12 +66,35 @@ Conservamos los datos de eventos en Google Analytics durante 14 meses, el máxim
 
 Puedes indicar a tu navegador que rechace todas las Cookies o que indique cuándo se envía una Cookie. Sin embargo, si no aceptas las Cookies, es posible que no puedas utilizar algunas partes de nuestro Servicio.
 
+## Publicidad programática y Google AdSense
+
+**Estado actual.** Noticiencias está preparando la posible incorporación de Google
+AdSense. La presencia de metadatos de verificación del editor y de un archivo
+`ads.txt` no significa que estemos mostrando anuncios. Actualmente no hemos
+habilitado anuncios programáticos en el sitio.
+
+**Si activamos anuncios.** Proveedores externos, incluido Google, podrán colocar
+y leer cookies o utilizar balizas web, direcciones IP y otros identificadores
+para publicar y medir publicidad. Las cookies publicitarias de Google permiten
+a Google y sus socios mostrar anuncios teniendo en cuenta visitas anteriores
+a Noticiencias o a otros sitios de Internet. La publicidad podrá ser
+personalizada o no personalizada según la configuración y el consentimiento
+aplicables. Consulta [cómo usa Google los datos en sitios de sus socios](https://policies.google.com/technologies/partner-sites)
+y [cómo gestionar los anuncios personalizados de Google](https://myadcenter.google.com/).
+
+Antes de incorporar etiquetas de anuncios, actualizaremos esta política para
+reflejar la configuración efectivamente utilizada y habilitaremos las opciones
+de consentimiento que correspondan. Para servir anuncios donde Google exige una
+plataforma de gestión del consentimiento certificada e integrada con IAB TCF
+(como el Espacio Económico Europeo, Reino Unido y Suiza), se deberá cumplir
+ese requisito antes de mostrar publicidad allí.
+
 ## Uso de tus Datos Personales
 
 La Compañía puede utilizar los Datos Personales para los siguientes propósitos:
 
 - **Para proporcionarte y mantener nuestro Servicio**, incluido el control del uso de nuestro Servicio.
-- **Para enviarte** la edición semanal del boletín y comunicaciones editoriales relacionadas con Noticiencias, a menos que hayas optado por no recibir dicha información.
+- **Para gestionar tu suscripción al boletín** y enviarte las ediciones que publiquemos después de que confirmes tu correo.
 
 ## Retención de tus Datos Personales
 
@@ -83,11 +106,11 @@ Tu información, incluidos los Datos Personales, se procesa en las oficinas oper
 
 Para la medición de audiencia utilizamos **Google LLC** (Estados Unidos, Google Analytics 4) y **Cloudflare, Inc.** (Estados Unidos, Cloudflare Web Analytics), que tratan los datos descritos en la sección "Medición de audiencia" conforme a sus propios términos de tratamiento de datos.
 
-Para el envío del boletín semanal utilizamos **Buttondown LLC** (Estados Unidos) como proveedor de servicios (sub-procesador). Almacena únicamente tu dirección de correo electrónico para el envío de la edición semanal; no recopilamos ni almacenamos métricas de apertura o clics, ya que ese seguimiento permanece desactivado. La transferencia internacional de datos hacia Buttondown se ampara en un acuerdo de procesamiento de datos (DPA). Puedes solicitar la exportación o eliminación de tus datos del boletín usando el enlace "Unsubscribe" en el pie de cada correo o escribiendo a `privacidad@noticiencias.com`.
+Para gestionar las suscripciones utilizamos **Buttondown LLC** (Estados Unidos). El formulario envía al proveedor la dirección de correo y el campo técnico `embed=1`; Buttondown gestiona el registro, la confirmación y los envíos. Su política describe los datos que puede tratar y las opciones de seguimiento disponibles. No hemos verificado si el seguimiento de aperturas o clics está desactivado en la cuenta de Noticiencias, así que no afirmamos que lo esté. Consulta la [Política de Privacidad de Buttondown](https://www.buttondown.com/legal/privacy). Puedes detener futuros envíos desde el enlace de baja incluido en cada correo o escribir a `privacidad@noticiencias.com` para solicitar ayuda con tus datos.
 
 ## Eliminación de tus Datos Personales
 
-Tienes derecho a eliminar o solicitar que te ayudemos a eliminar los Datos Personales que hemos recopilado sobre ti. Puedes darte de baja de nuestro boletín en cualquier momento utilizando el enlace "Unsubscribe" en el pie de página de nuestros correos electrónicos.
+Tienes derecho a solicitar acceso o eliminación de los Datos Personales que hemos recopilado sobre ti. El enlace de baja detiene futuros envíos; para solicitar acceso o eliminación, escribe a `privacidad@noticiencias.com` o consulta las opciones disponibles en Buttondown.
 
 ## Seguridad de tus Datos Personales
 

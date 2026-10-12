@@ -1,0 +1,30 @@
+<!-- Codex-generated original vector artwork for Noticiencias, 2026-10-09; no external image assets. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+  <rect width="1500" height="1000" fill="#edf0e8"/>
+  <path d="M0 730c250-77 430-15 660 18 289 41 521-102 840-28v280H0z" fill="#d8e3dc"/>
+  <circle cx="299" cy="282" r="190" fill="#f1d7bf" opacity=".75"/><circle cx="1158" cy="250" r="244" fill="#d7e1dc"/>
+  <g stroke="#324b5b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M137 716h510"/><path d="M203 716l-41 106h436l-42-106" fill="#be7658"/>
+    <path d="M289 474c0-73 50-128 121-128 69 0 121 55 121 128v106H289z" fill="#2e5164"/>
+    <path d="M328 385c0-59 36-96 84-96 50 0 85 39 85 96v44c0 50-35 83-85 83-51 0-84-34-84-83z" fill="#c98560"/>
+    <path d="M320 383c9-81 53-131 126-131 43 0 76 19 95 55-39-8-69 2-93 24-34 32-63 53-128 52z" fill="#293c4c"/>
+    <path d="M331 568l-55 116 42 34 94-107" fill="#c98560"/><path d="M473 568l81 89-30 43-110-72" fill="#c98560"/>
+    <path d="M365 580h110l32 136H336z" fill="#4d9285"/>
+  </g>
+  <g fill="none" stroke="#324b5b" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M900 188h167l59 60-58 60-77-45-69 89 65 64"/>
+    <circle cx="900" cy="188" r="50" fill="#d98b68"/><circle cx="1067" cy="188" r="50" fill="#d98b68"/>
+    <circle cx="1126" cy="248" r="47" fill="#d98b68"/><circle cx="991" cy="263" r="46" fill="#d98b68"/>
+    <circle cx="927" cy="352" r="47" fill="#d98b68"/><circle cx="992" cy="416" r="45" fill="#d98b68"/>
+    <path d="M992 416l113 86 95-43 92 76"/><path d="M1292 535v111h-82"/><path d="M1202 533l87 2"/><path d="M1290 644h88"/>
+  </g>
+  <g fill="#f7f4e9" stroke="#324b5b" stroke-width="10">
+    <circle cx="900" cy="188" r="13"/><circle cx="1067" cy="188" r="13"/><circle cx="1126" cy="248" r="13"/>
+    <circle cx="991" cy="263" r="12"/><circle cx="927" cy="352" r="12"/><circle cx="992" cy="416" r="12"/>
+  </g>
+  <path d="M845 475h-79v72" fill="none" stroke="#324b5b" stroke-width="13" stroke-linecap="round"/>
+  <path d="M745 555c0-18 13-31 31-31 17 0 30 13 30 31v58h-61z" fill="#324b5b"/><path d="M709 623h132" stroke="#324b5b" stroke-width="13" stroke-linecap="round"/>
+  <g fill="#3f8078"><rect x="168" y="842" width="93" height="90" rx="11"/><rect x="285" y="842" width="93" height="90" rx="11"/><rect x="402" y="842" width="93" height="90" rx="11"/></g>
+  <g stroke="#f7f4e9" stroke-width="6" opacity=".9"><path d="M190 865h49M307 865h49M424 865h49"/><path d="M190 887h49M307 887h49M424 887h49"/></g>
+  <path d="M853 852h493" stroke="#78958b" stroke-width="6" stroke-linecap="round" opacity=".55"/><circle cx="1320" cy="800" r="17" fill="#d98b68"/><circle cx="1370" cy="834" r="10" fill="#4d9285"/>
+</svg>

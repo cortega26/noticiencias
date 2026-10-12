@@ -50,9 +50,9 @@ fact_check:
   - label: El método no garantiza leer textos completos, solo fragmentos actualmente inaccesibles.
     status: confirmed
 why_it_matters:
-  - Recuperar conocimientos filosóficos antiguos enriquece el patrimonio cultural global, incluido el de América Latina, donde el estudio de la antigüedad clásica influye en la educación y el pensamiento crítico.
-  - Las técnicas de imagen no destructiva desarrolladas para estos rollos pueden aplicarse a otros documentos frágiles, beneficiando a archivos y museos latinoamericanos que preservan manuscritos indígenas y coloniales.
-  - Este avance muestra cómo la colaboración entre física, inteligencia artificial y arqueología puede generar herramientas de investigación nuevas, aunque su aplicación exige equipamiento especializado que no está disponible en todos los centros.
+  - Comparar las concentraciones de plomo de fragmentos antiguos con las ensayadas en las réplicas permite distinguir la prueba de concepto de un método ya validado para toda la colección.
+  - La fluorescencia de rayos X podría ayudar a priorizar los rollos con plomo detectable antes de invertir en tomografía y desenrollado virtual, pero falta verificarlo en piezas auténticas.
+  - Las réplicas con escritura conocida permiten evaluar algoritmos de lectura; su éxito no indica todavía cuánto texto podría recuperarse de los originales.
 confidence: Moderada — basada en un estudio experimental con réplicas y técnicas de imagen, aunque aún en fase de prueba y requiere equipamiento especializado.
 evidence_subject_type: experimental
 evidence_detail: Réplicas modernas de papiro carbonizadas en laboratorio; lectura con fluorescencia y tomografía de rayos X más desenrollado virtual.
@@ -78,6 +78,8 @@ sources:
     role: secondary
 requires_uncertainty_note: true
 uncertainty_note: Los resultados se obtuvieron con papiros modernos elaborados en laboratorio; aún no se ha probado la técnica en los auténticos rollos de Herculano.
+corrected_at: '2026-10-09'
+correction_summary: 'Se retiraron extrapolaciones sin respaldo a archivos latinoamericanos y se compararon las concentraciones de plomo documentadas en fragmentos antiguos con el mínimo ensayado en las pruebas de imagen.'
 social:
   publish: true
   id: 9d1e11ab861b72335a5967ea5355a53c83c2d9dd40b2824fc25458b8e2544dda
@@ -98,6 +100,8 @@ En este punto, el equipo liderado por Douglas Seiler se preguntó si un elemento
 Para probar la idea, los científicos elaboraron sus propios rollos de papiro. Tomaron papiro nuevo, lo escribieron con tintas que contenían distintas concentraciones de plomo y luego lo enrollaron en forma de rollo. Cada rollo se sometió a un horno de alta temperatura que replicó el calor extremo de la erupción, carbonizando el papiro y fijando la tinta en su interior.
 
 Los rollos carbonizados se analizaron primero con fluorescencia de rayos X, una técnica capaz de identificar los elementos presentes en una muestra. El plomo apareció en cada una de las concentraciones probadas, confirmando que el metal permanecía detectable incluso después del proceso de carbonización.
+
+Una comparación de sensibilidad ayuda a delimitar el alcance: investigaciones previas citadas por los autores habían medido 84 ± 5 y 16 ± 5 µg/cm² de plomo en letras de dos fragmentos antiguos. En las pruebas de imagen de este trabajo, el nivel más bajo ensayado fue 25 µg/cm². Por tanto, recuperar texto en las réplicas no demuestra que el método funcione con todas las concentraciones de plomo documentadas en papiros auténticos.
 
 A continuación, se aplicó tomografía de rayos X a los rollos y se utilizó un programa de software personalizado para reconstruir las capas internas del papiro. El software pudo separar virtualmente las láminas y, gracias al contraste que el plomo proporcionaba frente al papiro de carbono, los investigadores lograron recuperar varias palabras de los textos que habían escrito originalmente.
 

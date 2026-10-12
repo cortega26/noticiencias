@@ -223,6 +223,7 @@ describe('quick wins regression coverage', () => {
           'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
         );
         expect($form.find('input[name="email"][type="email"][required]').length, route).toBe(1);
+        expect($form.find('input[name="embed"][type="hidden"]').val(), route).toBe('1');
       });
     }
   });

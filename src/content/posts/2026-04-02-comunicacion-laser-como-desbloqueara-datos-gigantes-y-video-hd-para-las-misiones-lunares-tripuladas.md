@@ -1,7 +1,7 @@
 ---
 title: 'Comunicación láser: más datos y video para las misiones lunares tripuladas'
 schema_version: 1
-excerpt: La comunicación láser revoluciona las misiones lunares tripuladas. Permite video HD y grandes volúmenes de datos, crucial para Artemis II y futuras exploraciones.
+excerpt: En Artemis II, el sistema óptico O2O intercambió 484 GB durante la misión y transmitió cuando Orion tuvo línea de vista con estaciones terrestres.
 author: Noticiencias
 date: 2026-04-02
 categories:
@@ -13,45 +13,61 @@ tags:
   - exploración espacial
   - telemedicina
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
-image_alt: Terminal de comunicación láser de Lincoln Laboratory preparado para enviar datos de alta capacidad en misiones lunares
+image_alt: Lanzamiento de Artemis II desde el Complejo de Lanzamiento 39B del Centro Espacial Kennedy
 source_url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
 series: 'Espacio'
 refinery_id: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
 headlines_variants:
-  question: ¿Cómo Superará la Comunicación Láser los Límites de Datos para las Misiones Tripuladas a la Luna?
-  benefit: 'Conexión Lunar sin Precedentes: La Comunicación Láser Permitirá Experiencias Inmersivas y Telemedicina en Tiempo Real'
+  question: ¿Qué demostró la comunicación láser durante Artemis II?
+  benefit: 'Artemis II probó comunicaciones láser a distancia lunar: esto es lo que transmitió'
 investigation: false
 featured: false
+corrected_at: '2026-10-09'
+correction_summary: 'Se actualizó el artículo con los resultados del vuelo, se corrigieron la trayectoria lunar y la afirmación sobre el ancho de banda RF, y se distinguió el resultado de ILLUMA-T.'
+sources:
+  - title: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
+    url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
+    publisher: MIT News
+    date: '2026-04-02'
+    role: secondary
+  - title: NASA Laser Terminal Enhances Views During Artemis II Mission
+    url: https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/
+    publisher: NASA
+    role: primary
 ---
 
 ## Comunicación láser: más datos y video para las misiones lunares tripuladas
 
-Hace más de medio siglo, el "pequeño paso" de Neil Armstrong en la Luna resonó en la Tierra a través de ondas de radio, marcando el cenit de la era Apolo. La comunicación era posible, pero limitada: un testimonio humano a cuentagotas desde los confines del espacio. Ahora, mientras la humanidad se prepara para volver a la Luna con la misión tripulada Artemis II, el desafío y las demandas de la comunicación se han vuelto exponencialmente más complejos. ¿Cómo enviar videos de alta definición y grandes volúmenes de datos desde las cercanías lunares, permitiendo a los astronautas una conexión en tiempo real que antes era inimaginable y al público una ventana sin precedentes a la exploración? La respuesta no reside en un simple avance incremental, sino en un cambio fundamental de tecnología: la comunicación láser.
+**Actualización y corrección (9 de octubre de 2026).** Artemis II completó su misión en abril de 2026. NASA informó que O2O intercambió 484 GB de datos y transmitió cuando Orion tuvo línea de vista con estaciones terrestres. Una versión anterior describía una futura órbita lunar y decía que el ancho de banda de RF disminuía drásticamente con la distancia: Artemis II hizo un sobrevuelo, y MIT afirmó que RF no escala bien a distancias mayores. Los 1,2 Gbps citados abajo corresponden a la prueba ILLUMA-T en la Estación Espacial Internacional, no al enlace O2O de Artemis II. [Resultados de NASA](https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/).
 
-La comunicación espacial tradicional se basa en la radiofrecuencia (RF). Si bien ha sido una piedra angular de la exploración durante décadas, el espectro de RF está cada vez más congestionado y su ancho de banda disminuye drásticamente con la distancia. Es como intentar enviar un torrente de datos a través de una manguera de jardín que se hace más fina cuanto más lejos está la fuente. Esta limitación de velocidad y capacidad es crítica para las futuras misiones a la Luna y, especialmente, a Marte, donde las necesidades de datos —desde telemedicina hasta transmisión en vivo— se dispararán.
+Durante Apollo 11, la voz de Neil Armstrong llegó a la Tierra por radio. Más de cinco décadas después, Artemis II probó una alternativa óptica para enviar imágenes y datos desde una misión tripulada a la distancia lunar. El sistema O2O intercambió 484 GB durante el vuelo, aunque solo transmitía cuando Orion tenía línea de vista con estaciones terrestres. El resultado muestra tanto la capacidad de los láseres como la condición que limita la continuidad del enlace.
 
-Aquí es donde entra la comunicación láser (lasercom). En lugar de ondas de radio, utiliza haces de luz concentrados para transmitir información. Estos haces pueden transportar muchísima más información en mucho menos tiempo, con mayor seguridad y eficiencia energética, superando las limitaciones inherentes a la RF. La capacidad de enviar un volumen masivo de datos a gigabits por segundo, en contraste con los megabits por segundo de la RF, es un cambio de paradigma que podría redefinir nuestra presencia fuera de la Tierra.
+Las comunicaciones espaciales tradicionales usan radiofrecuencia (RF). La fuente de MIT describe el espectro disponible como muy congestionado y señala que los enlaces RF no escalan bien a distancias mayores. Eso no significa que el ancho de banda disminuya automáticamente con la distancia. La comunicación óptica ofrece otra opción de alta capacidad, aunque requiere apuntamiento preciso y línea de vista entre la nave y la estación receptora.
+
+La comunicación láser usa haces de luz concentrados para transmitir información. Puede ofrecer enlaces de mayor capacidad en ciertas condiciones, pero exige un apuntamiento muy preciso y visibilidad entre la nave y la estación terrestre. Por eso, una tasa alta no implica conexión continua: NASA informó que O2O transmitía cuando Orion tenía línea de vista con estaciones en tierra.
 
 ### El Ojo de Orion: MAScOT en Acción
 
-La histórica misión Artemis II no solo marca el regreso de humanos a la órbita lunar después de más de 50 años; también será la primera misión tripulada en probar esta revolucionaria tecnología lasercom en el espacio profundo. A bordo de la nave espacial Orion, el Sistema de Comunicación Óptica Orion Artemis II (O2O), desarrollado por el Laboratorio Lincoln del MIT en colaboración con el Centro de Vuelo Espacial Goddard de la NASA, es el encargado de esta tarea.
+Artemis II fue la primera misión tripulada en probar comunicaciones láser a distancia lunar. La nave realizó un sobrevuelo de la Luna; a bordo de Orion viajó el Sistema de Comunicación Óptica Orion Artemis II (O2O), desarrollado por el Laboratorio Lincoln del MIT en colaboración con el Centro de Vuelo Espacial Goddard de la NASA.
 
 El componente central de O2O es el Terminal Óptico Modular, Ágil y Escalable (MAScOT), un dispositivo compacto del tamaño de un gato doméstico. Equipado con un telescopio de cuatro pulgadas montado en un soporte giratorio de dos ejes, MAScOT apunta con una precisión extraordinaria a las estaciones terrestres en la Tierra, enviando y recibiendo datos a través de haces láser. Dentro de su estructura, la "óptica trasera" contiene lentes de enfoque, sensores de seguimiento y espejos de dirección rápida que permiten ese apuntamiento milimétrico.
 
-Durante la misión de 10 días alrededor de la Luna, el O2O se encargará de transmitir video e imágenes de alta resolución de la superficie lunar a la Tierra, demostrando por primera vez la viabilidad de una comunicación de banda ancha desde el espacio profundo para misiones tripuladas. La ingeniera principal de sistemas Farzana Khatri del Laboratorio Lincoln lo resume: "Las comunicaciones RF han cumplido bien su propósito, pero su espectro está muy congestionado y no se adapta bien a distancias más largas. La comunicación láser es una solución que podría resolver este problema, y el laboratorio ha sido pionero en este campo."
+Durante el vuelo de unos 10 días, O2O transmitió a la Tierra video de alta definición, fotos, procedimientos de vuelo, datos científicos y de ingeniería, y comunicaciones de voz. NASA informó un total de 484 GB intercambiados entre Orion y la Tierra; la transmisión por láser solo ocurría cuando había línea de vista con estaciones terrestres. La ingeniera principal de sistemas Farzana Khatri del Laboratorio Lincoln describió antes del vuelo las ventajas potenciales del sistema: "Las comunicaciones RF han cumplido bien su propósito, pero su espectro está muy congestionado y no se adapta bien a distancias más largas. La comunicación láser es una solución que podría resolver este problema, y el laboratorio ha sido pionero en este campo."
 
 ### Una Promesa con Precedentes: Éxito en la Estación Espacial
 
-Aunque Artemis II será el debut lunar de MAScOT, la tecnología ya demostró su impresionante capacidad en el espacio en noviembre de 2023. Como parte de la misión ILLUMA-T (Integrated Laser Communications Relay Demonstration) en la Estación Espacial Internacional, el equipo del Laboratorio Lincoln probó un enlace óptico que esperaba alcanzar tasas de datos de 622 Mbps de bajada y 51 Mbps de subida. Los resultados superaron con creces las expectativas: se lograron tasas de hasta 1.2 Gbps de bajada y 155 Mbps de subida.
+El terminal óptico MAScOT ya había volado en la misión ILLUMA-T a bordo de la Estación Espacial Internacional desde noviembre de 2023. En esa prueba de órbita terrestre baja, MIT informó tasas de hasta 1,2 Gbps de bajada y 155 Mbps de subida. Esas cifras pertenecen al enlace de ILLUMA-T y no son la tasa registrada por O2O durante Artemis II.
 
-Esta demostración de velocidades de gigabit por segundo desde una órbita terrestre baja sentó las bases para el tipo de transmisiones de video HD y datos masivos que se esperan de la órbita lunar con Artemis II. "Una nave espacial suele recoger una enorme cantidad de datos durante el primer día de una misión, y típicamente esos datos permanecen en la nave hasta que aterriza y pueden tardar meses en ser descargados," explica Khatri. "Con un enlace óptico funcionando a la velocidad más alta, deberíamos poder enviar todos los datos a la Tierra en pocas horas para un análisis inmediato."
+El ensayo de ILLUMA-T sirvió como antecedente tecnológico, pero no determina por sí solo el rendimiento de O2O a distancia lunar. Antes del vuelo, Khatri planteó que un enlace óptico de alta velocidad podría permitir descargar grandes volúmenes en pocas horas; el resultado público de Artemis II fue el intercambio total de 484 GB durante la misión.
 
 ### Más Allá de los Datos: Una Experiencia Humana Transformada
 
-Es crucial entender que, si bien el O2O representa un salto tecnológico, su misión en Artemis II es, ante todo, una demostración. No busca reemplazar de inmediato los sistemas de radiofrecuencia existentes, sino probar la robustez y eficacia de la comunicación láser en un entorno lunar con tripulación, como paso hacia un posible uso más amplio en el futuro. Los datos y el rendimiento obtenidos durante estos 10 días serán vitales para refinar la tecnología y validar su uso en misiones futuras como un sistema de comunicación primario.
+En Artemis II, O2O fue una demostración tecnológica que acompañó a los sistemas de radiofrecuencia. La misión mostró transmisión láser a distancia lunar, pero también que el enlace requiere línea de vista. Los 484 GB intercambiados son un resultado medido de ese vuelo; las futuras aplicaciones necesitarán más pruebas y planificación operativa antes de que pueda hablarse de un sistema principal de comunicaciones.
 
 El desarrollo de lasercom no es un esfuerzo reciente ni aislado. El Laboratorio Lincoln y la NASA llevan más de dos décadas en este campo, con una trayectoria que incluye misiones como la Lunar Laser Communication Demonstration (LLCD) de 2013, la LCRD de 2021 y la TeraByte Infrared Delivery (TBIRD) de 2022. Artemis II representa el siguiente hito lógico en esta progresión, llevando la tecnología a un entorno de exploración humana de profunda relevancia.
 
-La promesa de la comunicación láser va más allá de los fríos números de ancho de banda. Abre la puerta a una nueva era de exploración espacial donde la distancia ya no impone el mismo silencio. ¿Qué significa para los futuros astronautas en la Luna o en Marte poder recibir asistencia médica instantánea desde la Tierra, coordinarse en tiempo real con los equipos de control o compartir sus descubrimientos en vivo con el público? Significa una conexión humana más profunda, una presencia más interactiva y, en última instancia, una expansión de nuestra propia capacidad de exploración que el "pequeño paso" de Armstrong solo pudo soñar. Las lecciones aprendidas de Artemis II no solo allanarán el camino para que los humanos regresen a la superficie lunar y, eventualmente, a Marte, sino que redefinirán cómo imaginamos y experimentamos nuestra futura estancia en el cosmos.
+Antes del vuelo, investigadores del MIT plantearon como posibles usos la videoconferencia con médicos, la coordinación de la misión y la transmisión pública de imágenes. Artemis II no demostró una prestación de telemedicina: su resultado informado fue el intercambio de datos de la misión. Las pruebas sí aportan información para diseñar comunicaciones futuras en la Luna y, con más desafíos técnicos, en misiones a Marte.
+
+La fotografía de lanzamiento que acompaña este artículo fue tomada por Joel Kowsky/NASA, según el crédito publicado por MIT News. NASA permite el uso editorial factual de su material sujeto a sus pautas de atribución y no respaldo.
 
 <!-- source_identity: source_id=mit_news; source_name=MIT News -->

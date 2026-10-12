@@ -28,7 +28,7 @@ export const GET: APIRoute = async () => {
   let output = `# Noticiencias\n`;
   output += `> Traducimos ciencia, tecnología e internet de interés público a un español claro, responsable y verificable para 580 millones de hispanohablantes.\n\n`;
 
-  output += `Noticiencias combina selección automatizada de fuentes primarias (como estudios de Nature, Science, arXiv) con curación y edición humana para ofrecer contenido libre de clickbait y sensacionalismo. Todos los artículos incluyen grado de certidumbre, notas de incertidumbre explícitas, método de traducción y un enlace DOI directo a la fuente científica original.\n\n`;
+  output += `Noticiencias usa sistemas automatizados para seleccionar fuentes y preparar borradores; una persona decide si integrar las propuestas editoriales de artículos al sitio. Las fichas enlazan la fuente registrada y, según la información disponible para cada artículo, pueden incluir el estado de la evidencia, límites, método de traducción y enlaces DOI a fuentes primarias.\n\n`;
 
   output += `Para el corpus completo de artículos y páginas institucionales estructurado para modelos de lenguaje, consulte [llms-full.txt](${llmsFullUrl}).\n\n`;
 
