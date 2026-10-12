@@ -1042,6 +1042,34 @@
       }
     ]
   },
+  "~/assets/images/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.avif": {
+    "originalWidth": 1356,
+    "originalHeight": 668,
+    "hash": "46eec330bee3c29d",
+    "variants": [
+      {
+        "width": 400,
+        "height": 197,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 443,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.900.avif"
+      },
+      {
+        "width": 1356,
+        "height": 668,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.1356.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.1356.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.jpg": {
     "originalWidth": 1350,
     "originalHeight": 900,
