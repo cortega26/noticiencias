@@ -87,6 +87,7 @@ export interface Post {
    *  `getNormalizedPost`, read by layouts — never re-derived per render. */
   displayAuthor: string;
   isNoticienciasAi: boolean;
+  institutionalAuthor: boolean;
   sourcePublisher: string | null;
   sourceFallback:
     | {

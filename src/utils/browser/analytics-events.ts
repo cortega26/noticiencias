@@ -6,9 +6,8 @@
  * the Measurement ID null these calls are silent no-ops. Under advanced Consent
  * Mode, gtag itself decides what leaves the browser; events are not re-gated here.
  *
- * No PII: params are paths, slugs, domains, form ids and the search length
- * bucket. Search events never carry the query text (plan 019); the bucket
- * preserves only the shape of demand. Disclosed in `privacidad.md`.
+ * No free-form search terms: search events contain aggregate counts and safe paths only.
+ * Incoming search URLs are scrubbed before analytics bootstrap.
  */
 
 type Gtag = (command: 'event', name: string, params: Record<string, unknown>) => void;
@@ -50,25 +49,9 @@ export function trackEvent(name: AnalyticsEventName, params: Record<string, unkn
       transport_type: 'beacon',
       ...params,
     });
-  } catch (error) {
-    // Analytics must never break the page: warn with event context, no rethrow.
-    console.warn('[analytics] trackEvent failed for', name, error);
+  } catch {
+    // Analytics must never break the page.
   }
-}
-
-/** Minimized shape of a search query (plan 019): buckets, never raw text. */
-export type SearchLengthBucket = 'short' | 'medium' | 'long';
-
-/**
- * Bucket a raw search query by trimmed length so analytics keeps the shape
- * of demand without shipping user PII to GA4. Thresholds are documented in
- * docs/EDITORIAL_METRICS.md next to the search event contract.
- */
-export function searchLengthBucket(query: string): SearchLengthBucket {
-  const len = query.trim().length;
-  if (len <= 10) return 'short';
-  if (len <= 40) return 'medium';
-  return 'long';
 }
 
 /** Hostname of an external link, or null for same-site, relative or malformed hrefs. */
@@ -77,8 +60,6 @@ export function externalHost(href: string, currentOrigin: string): string | null
     const url = new URL(href, currentOrigin);
     return url.origin === currentOrigin ? null : url.hostname;
   } catch {
-    // Null contract: same-site, relative or malformed hrefs are not
-    // external — silence by design (no log; hot path per link).
     return null;
   }
 }

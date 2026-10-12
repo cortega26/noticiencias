@@ -65,8 +65,8 @@ import Button from '~/components/ds/atoms/Button.astro';
 <script>
   import { loadIndex, search } from '~/utils/browser/search-index';
   import { normalizeQuery } from '~/utils/search';
-  import { getQueryFromUrl, updateUrlWithQuery } from '~/utils/browser/search-url';
-  import { searchLengthBucket, trackEvent } from '~/utils/browser/analytics-events';
+  import { getQueryFromUrl, clearSearchQueryFromUrl } from '~/utils/browser/search-url';
+  import { trackEvent } from '~/utils/browser/analytics-events';
   import { buildNoResults, buildSearchCard, pageCountMessage } from '~/utils/browser/search-card';
 
   let activeInitPath = '';
@@ -143,25 +143,21 @@ import Button from '~/components/ds/atoms/Button.astro';
     const { results: resultsDiv, status } = refs;
 
     resultsDiv.innerHTML = '';
+    clearSearchQueryFromUrl();
 
     if (!query || !query.trim()) {
-      updateUrlWithQuery('');
       status.textContent = '';
       return;
     }
-
-    updateUrlWithQuery(query);
 
     const normalizedQuery = normalizeQuery(query);
 
     try {
       const results = search(`${normalizedQuery}*`);
       // GA4 recommended `search` event; a silent no-op while GA is off.
-      // Plan 019: minimized — length bucket, never the raw query text (PII).
-      trackEvent('search', {
-        search_length: searchLengthBucket(query),
-        results_count: results.length,
-      });
+      // Upstream #267 design (stronger than the planned length bucket): the
+      // raw query never leaves the browser, not even bucketed.
+      trackEvent('search', { results_count: results.length });
 
       if (results.length === 0) {
         status.textContent = '';

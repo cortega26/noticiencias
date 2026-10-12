@@ -12,6 +12,7 @@ const base: Post = {
   draft: false,
   displayAuthor: 'Noticiencias',
   isNoticienciasAi: false,
+  institutionalAuthor: true,
   sourcePublisher: null,
   sourceFallback: undefined,
   evidenceChips: [],

@@ -3,7 +3,6 @@ import {
   ARTICLE_READ_EVENTS,
   externalHost,
   readProgress,
-  searchLengthBucket,
   trackEvent,
 } from '../src/utils/browser/analytics-events';
 
@@ -12,7 +11,7 @@ describe('trackEvent', () => {
 
   it('is a silent no-op while GA is off (no window.gtag)', () => {
     vi.stubGlobal('window', {});
-    expect(() => trackEvent('search', { search_length: 'short' })).not.toThrow();
+    expect(() => trackEvent('search', { results_count: 0 })).not.toThrow();
   });
 
   it('sends a beacon-transport event through gtag with the given params', () => {
@@ -39,21 +38,6 @@ describe('trackEvent', () => {
       },
     });
     expect(() => trackEvent('newsletter_submit')).not.toThrow();
-  });
-});
-
-describe('searchLengthBucket', () => {
-  it('buckets by trimmed length (short ≤ 10, medium 11–40, long above)', () => {
-    expect(searchLengthBucket('ciencia')).toBe('short');
-    expect(searchLengthBucket('  ciencia  ')).toBe('short');
-    expect(searchLengthBucket('inteligencia artificial')).toBe('medium');
-    expect(searchLengthBucket('x'.repeat(41))).toBe('long');
-  });
-
-  it('never returns the query text', () => {
-    const bucket = searchLengthBucket('consulta-sensible-única');
-    expect(['short', 'medium', 'long']).toContain(bucket);
-    expect(bucket).not.toContain('consulta');
   });
 });
 

@@ -158,6 +158,10 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
     ? 'Equipo Noticiencias'
     : author || 'Noticiencias';
   const isNoticienciasAi = /noticiencias\s+ai/i.test(author ?? '');
+  // Upstream JSON-LD author typing: house/desk bylines render as Organization.
+  const institutionalAuthor = ['Equipo Noticiencias', 'Noticiencias', 'Equipo Editorial'].includes(
+    displayAuthor
+  );
   const sourcePublisher = resolveSourcePublisher({ source_url });
   const sourceFallback =
     sources?.length || !source_url
@@ -233,6 +237,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
 
     displayAuthor,
     isNoticienciasAi,
+    institutionalAuthor,
     sourcePublisher,
     sourceFallback,
     evidenceChips,

@@ -30,7 +30,9 @@ const imageAlt = post.image_alt ?? '';
 // Plan 017 step 3: resolved once in getNormalizedPost — reads, not derivations.
 const displayAuthor = post.displayAuthor;
 const isNoticienciasAi = post.isNoticienciasAi;
-const sourcePublisher = post.sourcePublisher;
+// Upstream JSON-LD author typing (PR #267-era): Organization for house
+// bylines, Person otherwise — computed in the view-model like the others.
+const institutionalAuthor = post.institutionalAuthor;
 const sourceFallback = post.sourceFallback;
 const evidenceChips = post.evidenceChips;
 const articleTopics = (post.tags ?? []).map((tag) => ({
@@ -78,11 +80,19 @@ const schema = serializeJsonLd({
   articleSection: post.category?.title,
   author: [
     {
-      '@type': 'Organization',
+      '@type': institutionalAuthor ? 'Organization' : 'Person',
       name: displayAuthor,
-      url: 'https://noticiencias.com/nosotros/',
+      ...(institutionalAuthor || displayAuthor === 'Carlos Ortega'
+        ? { url: 'https://noticiencias.com/nosotros/' }
+        : {}),
     },
   ],
+  // Editorial accountability is not evidence of an individual fact-check review.
+  editor: {
+    '@type': 'Person',
+    name: 'Carlos Ortega',
+    url: 'https://noticiencias.com/nosotros/',
+  },
   publisher: publisherOrg,
   mainEntityOfPage: {
     '@type': 'WebPage',
@@ -154,16 +164,38 @@ const breadcrumbItems = [
         )
       }
 
-      {
-        (!sourcePublisher || !isNoticienciasAi) && (
-          <p class="mt-6 text-sm font-medium text-text-muted">
-            Por{' '}
-            <a href="/nosotros/" class="text-text-body underline-offset-4 hover:underline">
-              {displayAuthor}
-            </a>
-          </p>
-        )
-      }
+      <div data-editorial-accountability class="mt-6 space-y-1 text-sm text-text-muted">
+        <p>
+          <span class="font-medium text-text-body">
+            {isNoticienciasAi ? 'Elaboración: síntesis asistida por IA' : 'Autoría'}
+          </span>
+          {isNoticienciasAi ? ' · ' : ': '}
+          <a
+            href="/nosotros/"
+            class="text-text-body underline underline-offset-4 hover:no-underline"
+          >
+            {displayAuthor}
+          </a>
+          {' · '}
+          <span class="font-medium text-text-body">Responsable editorial:</span>{' '}
+          <a
+            href="/nosotros/"
+            class="text-text-body underline underline-offset-4 hover:no-underline"
+          >
+            Carlos Ortega
+          </a>
+        </p>
+        {
+          post.updateDate && post.updateDate.getTime() !== post.publishDate.getTime() && (
+            <p>
+              Actualizado:{' '}
+              <time datetime={post.updateDate.toISOString()}>
+                {getFormattedDate(post.updateDate)}
+              </time>
+            </p>
+          )
+        }
+      </div>
 
       {
         image && (

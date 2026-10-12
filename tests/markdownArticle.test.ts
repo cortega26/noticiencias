@@ -41,6 +41,7 @@ const basePost: Post = {
   // serialized to the public Markdown artifact).
   displayAuthor: 'Noticiencias',
   isNoticienciasAi: false,
+  institutionalAuthor: true,
   sourcePublisher: 'Revista Ejemplo',
   sourceFallback: undefined,
   evidenceChips: [],
@@ -95,6 +96,7 @@ describe('serializePostToMarkdown', () => {
       investigation: true,
       displayAuthor: 'Noticiencias',
       isNoticienciasAi: false,
+      institutionalAuthor: true,
       sourcePublisher: null,
       sourceFallback: undefined,
       evidenceChips: [],
