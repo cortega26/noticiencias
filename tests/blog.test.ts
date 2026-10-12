@@ -284,7 +284,10 @@ describe('getStaticPathsBlogList', () => {
 
     expect(paginate).toHaveBeenCalledTimes(1);
     const [postsArg, optsArg] = paginate.mock.calls[0];
-    expect(postsArg.map((post: { id: string }) => post.id)).toEqual(['lista-b.md', 'lista-a.md']);
+    expect((postsArg as Array<{ id: string }>).map((post) => post.id)).toEqual([
+      'lista-b.md',
+      'lista-a.md',
+    ]);
     expect(optsArg).toEqual({ params: { blog: 'blog' }, pageSize: 6 });
     expect(paths).toEqual([{ params: { blog: 'blog', pageCount: 2 } }]);
   });
@@ -325,7 +328,7 @@ describe('getStaticPathsBlogCategory', () => {
 
     expect(paginate).toHaveBeenCalledTimes(1);
     const [postsArg, optsArg] = paginate.mock.calls[0];
-    expect(postsArg.map((post: { id: string }) => post.id)).toEqual(['cat-ciencia.md']);
+    expect((postsArg as Array<{ id: string }>).map((post) => post.id)).toEqual(['cat-ciencia.md']);
     expect(optsArg.params).toEqual({ category: 'ciencia' });
     expect(optsArg.props).toEqual({ category: { slug: 'ciencia', title: 'Ciencia' } });
     expect(paths).toContainEqual({ params: { category: 'ciencia', page: 1 } });
@@ -361,7 +364,10 @@ describe('getStaticPathsBlogTag', () => {
     expect(paginate.mock.calls.map(([posts]) => posts.length)).toEqual([2, 1]);
 
     const [saludPosts, saludOpts] = paginate.mock.calls[0];
-    expect(saludPosts.map((post: { id: string }) => post.id)).toEqual(['tag-dos.md', 'tag-uno.md']);
+    expect((saludPosts as Array<{ id: string }>).map((post) => post.id)).toEqual([
+      'tag-dos.md',
+      'tag-uno.md',
+    ]);
     expect(saludOpts.props).toMatchObject({
       tag: { slug: 'salud', title: 'Salud' },
       tagPosts: saludPosts,
