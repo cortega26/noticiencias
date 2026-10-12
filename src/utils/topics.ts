@@ -1,24 +1,9 @@
-export interface TopicHub {
-  slug: string;
-  description: string;
-}
+export type { TopicHub } from './taxonomy-copy';
+export { getTopicHub } from './taxonomy-copy';
 
 // P2-06: a tag becomes a quality hub only when it is a real topic (editorial
-// curation) and the corpus backs it with critical mass. `misión` is
-// deliberately absent: it collides between space missions and the editorial
-// mission statement. Descriptions live here until the publication contract
-// carries topic metadata (same pattern as series, DEC-023).
+// curation) and the corpus backs it with critical mass. Copy lives in the
+// interim taxonomy-copy module until the publication contract carries topic
+// metadata (same pattern as series, DEC-023). This file delegates;
+// exports stable.
 export const MIN_TOPIC_HUB_POSTS = 2;
-
-const TOPIC_HUB_DESCRIPTIONS: Record<string, string> = {
-  universo:
-    'Cosmología y estructura del universo: observaciones que ajustan lo que sabemos sobre su expansión y sus galaxias.',
-  galapagos: 'Ciencia en el archipiélago: especies, historia natural y conservación en Galápagos.',
-  coral:
-    'Biología de los arrecifes: cómo los corales responden al calor, al oxígeno y al cambio climático.',
-};
-
-export function getTopicHub(slug: string): TopicHub | undefined {
-  const description = TOPIC_HUB_DESCRIPTIONS[slug];
-  return description ? { slug, description } : undefined;
-}

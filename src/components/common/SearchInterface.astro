@@ -65,8 +65,9 @@ import Button from '~/components/ds/atoms/Button.astro';
 <script>
   import { loadIndex, search } from '~/utils/browser/search-index';
   import { normalizeQuery } from '~/utils/search';
-  import { clearSearchQueryFromUrl, getQueryFromUrl } from '~/utils/browser/search-url';
+  import { getQueryFromUrl, clearSearchQueryFromUrl } from '~/utils/browser/search-url';
   import { trackEvent } from '~/utils/browser/analytics-events';
+  import { buildNoResults, buildSearchCard, pageCountMessage } from '~/utils/browser/search-card';
 
   let activeInitPath = '';
 
@@ -154,89 +155,24 @@ import Button from '~/components/ds/atoms/Button.astro';
     try {
       const results = search(`${normalizedQuery}*`);
       // GA4 recommended `search` event; a silent no-op while GA is off.
+      // Upstream #267 design (stronger than the planned length bucket): the
+      // raw query never leaves the browser, not even bucketed.
       trackEvent('search', { results_count: results.length });
 
       if (results.length === 0) {
         status.textContent = '';
-        resultsDiv.innerHTML =
-          '<div class="border-y border-border-subtle py-8 text-text-muted"><p>No se encontraron resultados para <b id="no-results-query"></b>.</p></div>';
-        const querySpan = document.getElementById('no-results-query');
-        if (querySpan) querySpan.textContent = query;
+        resultsDiv.appendChild(buildNoResults(query));
         return;
       }
 
-      status.textContent = `Se encontraron ${results.length} resultados.`;
+      status.textContent = pageCountMessage(results.length);
 
       const ul = document.createElement('ul');
       ul.className = 'grid gap-6';
       resultsDiv.appendChild(ul);
 
       results.slice(0, 20).forEach(({ doc }, position) => {
-        const li = document.createElement('li');
-        // Two-column grid only when a thumbnail exists; otherwise the content
-        // would land in the fixed 160px column and render cramped (Stream C
-        // slim ships imageless store entries). Kept backward-compatible with
-        // older cached artifacts that still carry `image`.
-        li.className = doc.image
-          ? 'group grid gap-4 border-b border-border-subtle pb-5 sm:grid-cols-[160px_1fr]'
-          : 'group grid gap-4 border-b border-border-subtle pb-5';
-
-        if (doc.image) {
-          const imgLink = document.createElement('a');
-          imgLink.href = doc.url;
-          imgLink.dataset.analyticsSearchResult = String(position);
-          imgLink.className = 'block aspect-[4/3] overflow-hidden rounded-md bg-surface-highlight';
-          const img = document.createElement('img');
-          img.src = doc.image;
-          img.alt = doc.title;
-          img.className =
-            'h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:transform-none';
-          img.loading = 'lazy';
-          imgLink.appendChild(img);
-          li.appendChild(imgLink);
-        }
-
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'flex min-w-0 flex-col leading-normal';
-
-        const meta = document.createElement('p');
-        meta.className = 'mb-2 text-sm text-text-muted';
-        const category = Array.isArray(doc.categories) ? doc.categories[0] : '';
-        const date = doc.date
-          ? new Intl.DateTimeFormat('es', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            }).format(new Date(doc.date))
-          : '';
-        meta.textContent = [category, date].filter(Boolean).join(' · ');
-        contentDiv.appendChild(meta);
-
-        const h3 = document.createElement('h3');
-        h3.className = 'mb-2 font-heading text-xl font-bold tracking-tight text-text-body';
-        const titleLink = document.createElement('a');
-        titleLink.href = doc.url;
-        titleLink.dataset.analyticsSearchResult = String(position);
-        titleLink.className =
-          'transition-colors duration-200 hover:text-primary hover:underline underline-offset-4';
-        titleLink.textContent = doc.title;
-        h3.appendChild(titleLink);
-        contentDiv.appendChild(h3);
-
-        const desc = document.createElement('p');
-        desc.className = 'mb-3 line-clamp-3 text-sm leading-relaxed text-text-muted';
-        desc.textContent = doc.description || '';
-        contentDiv.appendChild(desc);
-
-        if (doc.tags) {
-          const tagsDiv = document.createElement('div');
-          tagsDiv.className = 'mt-auto text-xs font-medium text-text-muted';
-          tagsDiv.textContent = Array.isArray(doc.tags) ? doc.tags.join(', ') : String(doc.tags);
-          contentDiv.appendChild(tagsDiv);
-        }
-
-        li.appendChild(contentDiv);
-        ul.appendChild(li);
+        ul.appendChild(buildSearchCard(doc, position));
       });
     } catch (error) {
       console.error('Search error:', error);

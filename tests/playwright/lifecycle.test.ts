@@ -162,9 +162,21 @@ test.describe('lifecycle idempotency across page swaps', () => {
       `observer count grew linearly (navigations=${actualNavigations})`
     ).toBeLessThanOrEqual(actualNavigations);
 
-    // Scroll to trigger the observer
+    // Scroll to trigger the observer, then wait for observer callbacks to
+    // settle (consecutive idle frames with a stable count) instead of a
+    // fixed timeout.
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(300);
+    await page.evaluate(async () => {
+      const count = () => window.__observerCallbackCount || 0;
+      let last = -1;
+      let stableFrames = 0;
+      for (let frame = 0; frame < 60 && stableFrames < 3; frame++) {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        const next = count();
+        stableFrames = next === last ? stableFrames + 1 : 0;
+        last = next;
+      }
+    });
 
     // Check that callback count is reasonable — if disconnect() were missing,
     // leaked observers would fire callbacks on elements that scrolled into view,

@@ -7,7 +7,7 @@
 
 import { type Env, jsonResponse, errorResponse } from '../index';
 import { validateReportPayload } from '../utils/validate';
-import { checkRateLimit } from '../utils/rateLimit';
+import { checkRateLimit, resolveClientIp } from '../utils/rateLimit';
 
 // Generous for the form's text fields; well under Workers' own request-size
 // limits. Enforced before JSON.parse via Content-Length and a bounded
@@ -20,7 +20,10 @@ const MAX_BODY_BYTES = 20_000;
 const IDEMPOTENCY_WINDOW_SECONDS = 600;
 
 export async function handleReport(request: Request, env: Env): Promise<Response> {
-  const clientIp = request.headers.get('CF-Connecting-IP') || 'unknown';
+  // Plan 019: trusted identity first (CDN-gated CF-Connecting-IP), shared
+  // stricter 'unknown' bucket otherwise — the raw header alone is spoofable
+  // on a direct-to-worker path.
+  const clientIp = resolveClientIp(request);
 
   // NOTE: validación primero, rate-limit después (patrón Monedario).
   // El limiter hace KV.put por cada petición admitida; si se ejecutara

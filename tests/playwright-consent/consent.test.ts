@@ -253,7 +253,13 @@ test('read depth fires article_50 then article_90 once, not on load', async ({ p
     .poll(async () => (await events(page, 'article_90')).length, { timeout: 5000 })
     .toBe(1);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-  await page.waitForTimeout(300);
+  // Wait for analytics callbacks to settle (consecutive idle frames) so a
+  // duplicate event would have fired before the assertions below run.
+  await page.evaluate(async () => {
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+  });
   expect(await events(page, 'article_50')).toHaveLength(1);
   expect(await events(page, 'article_90')).toHaveLength(1);
 });

@@ -109,6 +109,11 @@
 <script>
   import { getRecentPosts, isIndexReady, loadIndex, search } from '~/utils/browser/search-index';
   import { normalizeQuery } from '~/utils/search';
+  import {
+    buildDialogItem,
+    dialogCountMessage,
+    dialogEmptyMessage,
+  } from '~/utils/browser/search-card';
 
   declare global {
     interface Window {
@@ -224,24 +229,16 @@
     activeIndex = -1;
 
     if (results.length === 0) {
-      refs.status.textContent = `Sin resultados para "${query}".`;
+      refs.status.textContent = dialogEmptyMessage(query);
       refs.allLink.href = `/buscar/?q=${encodeURIComponent(query)}`;
       return;
     }
 
-    refs.status.textContent = `${results.length} resultados.`;
+    refs.status.textContent = dialogCountMessage(results.length);
     refs.allLink.href = `/buscar/?q=${encodeURIComponent(query)}`;
 
     for (const { doc } of results) {
-      const li = document.createElement('li');
-      li.className = 'py-2';
-      const link = document.createElement('a');
-      link.href = doc.url;
-      link.className =
-        'block rounded-md px-2 py-1.5 text-sm font-medium text-text-body hover:bg-gray-100 hover:text-primary dark:hover:bg-gray-800';
-      link.textContent = doc.title;
-      li.appendChild(link);
-      refs.resultsList.appendChild(li);
+      refs.resultsList.appendChild(buildDialogItem(doc));
     }
   };
 

@@ -257,6 +257,48 @@ describe('content.config posts schema', () => {
     });
   });
 
+  describe('frontmatter link schemes (plan 012)', () => {
+    const sourceBase = { title: 'Source', url: 'https://example.com' };
+
+    it.each([['javascript:alert(1)'], ['data:text/html,<h1>x</h1>'], ['ftp://example.com/file']])(
+      'rejects sources[].url %p',
+      (url) => {
+        const result = schema.safeParse({ ...basePost, sources: [{ ...sourceBase, url }] });
+        expect(result.success).toBe(false);
+      }
+    );
+
+    it.each([['javascript:alert(1)'], ['data:text/html,<h1>x</h1>']])(
+      'rejects reviewer_profile_url %p',
+      (reviewer_profile_url) => {
+        const result = schema.safeParse({ ...basePost, reviewer_profile_url });
+        expect(result.success).toBe(false);
+      }
+    );
+
+    it('accepts https URLs for both fields', () => {
+      const result = schema.safeParse({
+        ...basePost,
+        sources: [{ ...sourceBase, url: 'https://example.com/article' }],
+        reviewer_profile_url: 'https://example.com/ada',
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it('accepts http URLs for both fields', () => {
+      const result = schema.safeParse({
+        ...basePost,
+        sources: [{ ...sourceBase, url: 'http://example.com/article' }],
+        reviewer_profile_url: 'http://example.com/ada',
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it('still accepts a post without reviewer_profile_url', () => {
+      expect(schema.safeParse(basePost).success).toBe(true);
+    });
+  });
+
   describe('social distribution config', () => {
     const hexId = 'a'.repeat(64);
 

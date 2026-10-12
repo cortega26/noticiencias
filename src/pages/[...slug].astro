@@ -1,25 +1,27 @@
 ---
-import { getPermalink } from '~/utils/permalinks';
 import { fetchPosts } from '~/utils/blog';
-import { rankRelatedPosts } from '~/utils/related';
+import { rankAllRelatedPosts, type RelatedSelection } from '~/utils/related';
 import PostLayout from '~/layouts/PostLayout.astro';
 import type { Post } from '~/types';
 
 export async function getStaticPaths() {
   const posts = await fetchPosts();
+  const relatedById = rankAllRelatedPosts(posts, 4);
   return posts.map((post) => ({
     params: { slug: post.permalink?.replace(/^\/|\/$/g, '') },
-    props: { post },
+    props: { post, related: relatedById.get(post.id) },
   }));
 }
 
 interface Props {
   post: Post;
+  related?: RelatedSelection;
 }
 
-const { post } = Astro.props;
-const url = post.permalink || getPermalink(post.slug, 'post');
-const related = rankRelatedPosts(post, await fetchPosts(), 4);
+const { post, related } = Astro.props;
+// Plan 017 step 3: permalink is always resolved in getNormalizedPost and
+// duplicates abort the build fail-closed in fetchPosts — no route fallback.
+const url = post.permalink;
 ---
 
 <PostLayout post={post} url={url} related={related}>

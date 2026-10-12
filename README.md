@@ -51,6 +51,11 @@ Useful local commands:
 - `npm run test:dist`
 - `npm run test:audit`
 - `npm run test:deploy -- <deployed-url>`
+- `npm run verify:ci`
+- `npm run test:e2e`
+- `npm run test:e2e:consent`
+- `npm run test:visual`
+- `npm run check:search-budget`
 
 The Content Guard workflow checks outbound links in published articles. Some
 publisher domains, including `openai.com`, reject automated requests from

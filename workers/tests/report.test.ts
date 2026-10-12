@@ -113,6 +113,24 @@ describe('validateReportPayload', () => {
     expect(result.errors.some((e) => e.includes('evidencia'))).toBe(true);
   });
 
+  it('rejects javascript: evidence_url (plan 019)', () => {
+    const result = validateReportPayload({
+      problem_type: 'content_factual',
+      evidence_url: 'javascript:alert(1)',
+    });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some((e) => e.includes('evidencia'))).toBe(true);
+  });
+
+  it('rejects data: evidence_url (plan 019)', () => {
+    const result = validateReportPayload({
+      problem_type: 'content_factual',
+      evidence_url: 'data:text/html,<script>alert(1)</script>',
+    });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some((e) => e.includes('evidencia'))).toBe(true);
+  });
+
   it('rejects invalid email format', () => {
     const result = validateReportPayload({
       problem_type: 'content_factual',

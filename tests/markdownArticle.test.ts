@@ -36,6 +36,15 @@ const basePost: Post = {
   refinery_id: 'internal-refinery-id-should-not-leak',
   editorial_score: 0.42,
   review_status: 'pending_internal_review',
+
+  // Plan 017 view-model fields (resolved in getNormalizedPost; never
+  // serialized to the public Markdown artifact).
+  displayAuthor: 'Noticiencias',
+  isNoticienciasAi: false,
+  institutionalAuthor: true,
+  sourcePublisher: 'Revista Ejemplo',
+  sourceFallback: undefined,
+  evidenceChips: [],
 };
 
 describe('serializePostToMarkdown', () => {
@@ -85,6 +94,12 @@ describe('serializePostToMarkdown', () => {
       publishDate: new Date('2026-01-15T00:00:00Z'),
       title: 'Título mínimo',
       investigation: true,
+      displayAuthor: 'Noticiencias',
+      isNoticienciasAi: false,
+      institutionalAuthor: true,
+      sourcePublisher: null,
+      sourceFallback: undefined,
+      evidenceChips: [],
     };
 
     const output = serializePostToMarkdown(minimalPost, 'body', 'https://noticiencias.com/post-2');

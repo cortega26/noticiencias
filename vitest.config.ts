@@ -103,12 +103,12 @@ export default defineConfig({
           lines: 100,
         },
         'src/utils/permalinks.ts': { statements: 91, branches: 71, functions: 90, lines: 90 },
-        'src/utils/blog.ts': { statements: 55, branches: 32, functions: 36, lines: 59 },
+        'src/utils/blog.ts': { statements: 71.91, branches: 50.61, functions: 51.72, lines: 75.91 },
         'src/utils/image-derivatives.ts': {
-          statements: 40,
-          branches: 33,
-          functions: 45,
-          lines: 40,
+          statements: 98.33,
+          branches: 92.45,
+          functions: 95,
+          lines: 97.95,
         },
 
         // Accepted gaps, documented in plans/031/spec.md — not chased in this

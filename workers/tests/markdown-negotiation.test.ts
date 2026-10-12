@@ -231,4 +231,20 @@ describe('worker Markdown negotiation (ADR-0008)', () => {
     expect(response.status).toBe(404);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
+
+  it('sets X-Frame-Options: SAMEORIGIN on HTML passthrough responses (plan 019)', async () => {
+    fetchSpy.mockResolvedValue(htmlResponse('<html>html</html>'));
+
+    const response = await fetchThrough(get('/ciencia/algun-articulo', 'text/html'));
+
+    expect(response.headers.get('X-Frame-Options')).toBe('SAMEORIGIN');
+  });
+
+  it('does not add framing headers to non-HTML assets (plan 019)', async () => {
+    fetchSpy.mockResolvedValue(assetResponse('body { color: red }', 'text/css; charset=utf-8'));
+
+    const response = await fetchThrough(get('/_astro/some-chunk.css'));
+
+    expect(response.headers.get('X-Frame-Options')).toBeNull();
+  });
 });

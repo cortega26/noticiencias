@@ -74,7 +74,7 @@ está activa pero no produce decisiones: no hay dimensiones que leer.
       llegar a **≥200**, aplicar el evaluador `make enrichment-eval` y tomar
       la decisión adopt / no-adopt con los umbrales pre-fijados (topics
       precision ≥ 0.90, sin regresión en slices críticos).
-- Verificación: decisión registrada en `docs/adr/0004-*` y baseline
+- Verificación: decisión registrada en `../noticiencias_news_collector/docs/adr/0004-curated-enrichment-registry-spike.md` y baseline
   comparable en `reports/evaluation/`.
 
 ## 4. Benchmark LLM
@@ -83,8 +83,8 @@ está activa pero no produce decisiones: no hay dimensiones que leer.
       visión), reactivar el protocolo: generate de C → judge → cross-critic →
       grounded → bundle → **ranking ciego de 12 ítems (operador)** y aplicar
       §8 mecánicamente.
-- Referencias: `docs/adr/0010-llm-routing.md`,
-  `reports/evaluation/llm-routing-2026-09.md`.
+- Referencias: `../noticiencias_news_collector/docs/adr/0010-llm-routing.md`,
+  `../noticiencias_news_collector/reports/evaluation/llm-routing-2026-09.md`.
 
 ## 5. Decisiones de producto (operador como product owner)
 
