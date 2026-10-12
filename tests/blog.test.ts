@@ -55,6 +55,21 @@ type EntryData = {
   permalink?: string;
   categories?: string[];
   tags?: string[];
+  sources?: {
+    title: string;
+    url: string;
+    role?: 'primary' | 'secondary';
+  }[];
+  evidence_subject_type?:
+    | 'humans'
+    | 'animals'
+    | 'in_vitro'
+    | 'computational'
+    | 'observational'
+    | 'experimental'
+    | 'mixed'
+    | 'unknown';
+  publication_status?: 'peer_reviewed' | 'preprint' | 'conference' | 'other';
 };
 
 const entry = (over: EntryData & { id?: string } = {}) => {
@@ -162,5 +177,200 @@ describe('fetchPosts duplicate-permalink guard (generated path)', () => {
       entry({ id: 'mi-post.md' }),
     ] as never);
     await expect(fetchPosts()).rejects.toThrow(/CRITICAL: Duplicate permalink "/);
+  });
+});
+
+describe('findPostsBySlugs', () => {
+  it('keeps only the slugs that resolve and skips the misses', async () => {
+    const { findPostsBySlugs, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: '2026-01-31-mi-post.md' }),
+      entry({ id: '2026-02-01-otro-post.md', date: new Date('2026-02-01T00:00:00Z') }),
+    ] as never);
+
+    const found = await findPostsBySlugs(['2026-01-31-mi-post', 'no-existe']);
+
+    expect(found).toHaveLength(1);
+    expect(found[0].id).toBe('2026-01-31-mi-post.md');
+    expect(found[0].slug).toBe('2026-01-31-mi-post');
+  });
+
+  it('returns an empty list for a non-array argument', async () => {
+    const { findPostsBySlugs } = await loadBlog();
+    await expect(findPostsBySlugs(undefined as never)).resolves.toEqual([]);
+  });
+});
+
+describe('findPostsByIds', () => {
+  it('keeps only the ids that resolve and skips the misses', async () => {
+    const { findPostsByIds, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: '2026-01-31-mi-post.md' }),
+      entry({ id: '2026-02-01-otro-post.md', date: new Date('2026-02-01T00:00:00Z') }),
+    ] as never);
+
+    const found = await findPostsByIds(['2026-01-31-mi-post.md', 'missing.md']);
+
+    expect(found).toHaveLength(1);
+    expect(found[0].id).toBe('2026-01-31-mi-post.md');
+  });
+
+  it('returns an empty list for a non-array argument', async () => {
+    const { findPostsByIds } = await loadBlog();
+    await expect(findPostsByIds(null as never)).resolves.toEqual([]);
+  });
+});
+
+describe('findLatestPosts', () => {
+  it('slices the newest posts down to the requested count', async () => {
+    const { findLatestPosts, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: 'viejo.md', date: new Date('2026-01-01T00:00:00Z') }),
+      entry({ id: 'nuevo.md', date: new Date('2026-02-01T00:00:00Z') }),
+      entry({ id: 'mas-nuevo.md', date: new Date('2026-03-01T00:00:00Z') }),
+    ] as never);
+
+    const latest = await findLatestPosts({ count: 2 });
+
+    expect(latest).toHaveLength(2);
+    expect(latest.map((post) => post.id)).toEqual(['mas-nuevo.md', 'nuevo.md']);
+  });
+});
+
+describe('evidence chips (via fetchPosts)', () => {
+  it('emits the primary-source chip when a source declares role primary', async () => {
+    const { fetchPosts, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({
+        id: 'evidencia.md',
+        sources: [
+          { title: 'Artículo', url: 'https://example.com/a', role: 'primary' },
+          { title: 'Cobertura', url: 'https://example.com/b', role: 'secondary' },
+        ],
+        evidence_subject_type: 'humans',
+        publication_status: 'peer_reviewed',
+      }),
+    ] as never);
+
+    const posts = await fetchPosts();
+
+    expect(posts[0].evidenceChips).toEqual([
+      'Modelo: personas',
+      'Revisión por pares',
+      'Fuente primaria',
+    ]);
+    expect(posts[0].sourceFallback).toEqual([
+      { title: 'Artículo', url: 'https://example.com/a', role: 'primary' },
+      { title: 'Cobertura', url: 'https://example.com/b', role: 'secondary' },
+    ]);
+  });
+});
+
+describe('getStaticPathsBlogList', () => {
+  it('passes every post to paginate and returns the pages it produces', async () => {
+    const { getStaticPathsBlogList, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: 'lista-a.md' }),
+      entry({ id: 'lista-b.md', date: new Date('2026-02-01T00:00:00Z') }),
+    ] as never);
+
+    const paginate = vi.fn(
+      (posts: unknown[], opts: { params: { blog?: string }; pageSize?: number }) => [
+        { params: { blog: opts.params.blog, pageCount: posts.length } },
+      ]
+    );
+
+    const paths = await getStaticPathsBlogList({ paginate } as never);
+
+    expect(paginate).toHaveBeenCalledTimes(1);
+    const [postsArg, optsArg] = paginate.mock.calls[0];
+    expect(postsArg.map((post: { id: string }) => post.id)).toEqual(['lista-b.md', 'lista-a.md']);
+    expect(optsArg).toEqual({ params: { blog: 'blog' }, pageSize: 6 });
+    expect(paths).toEqual([{ params: { blog: 'blog', pageCount: 2 } }]);
+  });
+});
+
+describe('getStaticPathsBlogPost', () => {
+  it('maps each post permalink to a path whose props carry the post', async () => {
+    const { fetchPosts, getStaticPathsBlogPost, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: 'post-uno.md' }),
+      entry({ id: 'post-dos.md', date: new Date('2026-02-01T00:00:00Z') }),
+    ] as never);
+
+    const posts = await fetchPosts();
+    const paths = await getStaticPathsBlogPost();
+
+    expect(paths).toHaveLength(2);
+    expect(paths.map((path) => path.params.blog)).toEqual(posts.map((post) => post.permalink));
+    expect(paths.map((path) => path.props.post)).toEqual(posts);
+  });
+});
+
+describe('getStaticPathsBlogCategory', () => {
+  it('paginates the categories that have posts', async () => {
+    const { getStaticPathsBlogCategory, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: 'cat-ciencia.md', categories: ['Ciencia'] }),
+    ] as never);
+
+    const paginate = vi.fn(
+      (
+        posts: unknown[],
+        opts: { params: { category?: string }; props?: { category?: unknown } }
+      ) => [{ params: { category: opts.params.category, page: posts.length } }]
+    );
+
+    const paths = await getStaticPathsBlogCategory({ paginate } as never);
+
+    expect(paginate).toHaveBeenCalledTimes(1);
+    const [postsArg, optsArg] = paginate.mock.calls[0];
+    expect(postsArg.map((post: { id: string }) => post.id)).toEqual(['cat-ciencia.md']);
+    expect(optsArg.params).toEqual({ category: 'ciencia' });
+    expect(optsArg.props).toEqual({ category: { slug: 'ciencia', title: 'Ciencia' } });
+    expect(paths).toContainEqual({ params: { category: 'ciencia', page: 1 } });
+  });
+});
+
+describe('getStaticPathsBlogTag', () => {
+  it('paginates every tag with its posts and related topics', async () => {
+    const { getStaticPathsBlogTag, getCollectionMock } = await loadBlog();
+    getCollectionMock.mockResolvedValue([
+      entry({ id: 'tag-uno.md', tags: ['Salud', 'Inteligencia Artificial'] }),
+      entry({
+        id: 'tag-dos.md',
+        date: new Date('2026-02-01T00:00:00Z'),
+        tags: ['Salud'],
+      }),
+    ] as never);
+
+    const paginate = vi.fn(
+      (
+        posts: unknown[],
+        opts: { params: Record<string, unknown>; props?: Record<string, unknown> }
+      ) => [{ params: { ...opts.params, captured: posts.length } }]
+    );
+
+    const paths = await getStaticPathsBlogTag({ paginate } as never);
+
+    expect(paginate).toHaveBeenCalledTimes(2);
+    expect(paginate.mock.calls.map(([, opts]) => opts.params)).toEqual([
+      { tag: 'salud', blog: 'temas' },
+      { tag: 'inteligencia-artificial', blog: 'temas' },
+    ]);
+    expect(paginate.mock.calls.map(([posts]) => posts.length)).toEqual([2, 1]);
+
+    const [saludPosts, saludOpts] = paginate.mock.calls[0];
+    expect(saludPosts.map((post: { id: string }) => post.id)).toEqual(['tag-dos.md', 'tag-uno.md']);
+    expect(saludOpts.props).toMatchObject({
+      tag: { slug: 'salud', title: 'Salud' },
+      tagPosts: saludPosts,
+      relatedTopics: [],
+    });
+
+    expect(paths).toEqual([
+      { params: { tag: 'salud', blog: 'temas', captured: 2 } },
+      { params: { tag: 'inteligencia-artificial', blog: 'temas', captured: 1 } },
+    ]);
   });
 });
