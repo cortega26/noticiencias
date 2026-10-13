@@ -1,6 +1,6 @@
 # Registro puntual de derechos de imagen
 
-Fecha de actualización: 2026-10-12. Este registro cubre los dos activos MIT sustituidos y seis ilustraciones nuevas que reemplazan imágenes con procedencia no verificada. No certifica derechos para el resto del catálogo. Los primeros cinco reemplazos ya están desplegados; el del artículo del 18-09-2026 está pendiente de publicación.
+Fecha de actualización: 2026-10-12. Este registro cubre los dos activos MIT sustituidos y nueve ilustraciones nuevas que reemplazan imágenes con procedencia no verificada. No certifica derechos para el resto del catálogo. Los seis reemplazos anteriores ya están desplegados y verificados; las tres nuevas ilustraciones están pendientes de publicación.
 
 ## Activos retirados
 
@@ -23,22 +23,25 @@ Fecha de actualización: 2026-10-12. Este registro cubre los dos activos MIT sus
 - **Uso permitido:** la solicitud del usuario del 09-10-2026 autoriza una alternativa original apta para el uso comercial del sitio. Los [términos de OpenAI](https://openai.com/policies/terms-of-use/) reconocen que, entre OpenAI y el usuario y hasta donde permite la ley, el usuario es propietario del output. No se invoca una licencia de terceros ni se afirma exclusividad o registro de copyright.
 - **Exportación:** WebP de 1500 × 1000 px mediante Sharp. SHA-256: `ea8092d810938de16524c163f4578bf835a756e9114f7b26952fb1f496269f74`; hash del manifest: `ea8092d810938de1`.
 
-### Seis ilustraciones editoriales generadas el 12-10-2026
+### Nueve ilustraciones editoriales generadas el 12-10-2026
 
-Las siguientes imágenes se generaron desde descripciones textuales para Noticiencias, sin imágenes de referencia, fotografías, logotipos ni otros archivos de terceros como entrada. Son ilustraciones editoriales; no representan fotografías documentales ni reconstrucciones verificadas de especímenes. Se registran como outputs generados, no como garantía de exclusividad o de ausencia de reclamaciones de terceros.
+Las siguientes imágenes se generaron desde descripciones textuales para Noticiencias, sin imágenes de referencia, fotografías, logotipos ni otros archivos de terceros como entrada. Son ilustraciones editoriales; no representan fotografías documentales, mapas científicos exactos ni reconstrucciones verificadas de especímenes. Se registran como outputs generados, no como garantía de exclusividad o de ausencia de reclamaciones de terceros.
 
 Los [términos de OpenAI](https://openai.com/policies/terms-of-use/) indican que, entre OpenAI y el usuario y en la medida permitida por la ley, el usuario posee el output y OpenAI cede los derechos que tenga sobre él. También advierten que outputs similares pueden producirse para otras personas y excluyen garantías, incluida la de no infracción. Este registro no reemplaza una evaluación legal ni acredita derechos sobre elementos que pudieran estar protegidos por ley.
 
-| Artículo                                | Activo                                                                       | Exportación          | SHA-256                                                            |
-| --------------------------------------- | ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------ |
-| Guardería y microbioma (25-01-2026)     | `src/assets/images/2026-01-25-daycare-microbiome-original.webp`              | WebP, 1500 × 1000 px | `df003ed69203434e038e3f001c243afcb05e481901866f9ebbdb159987fbfe99` |
-| Cilios de coral (20-09-2026)            | `src/assets/images/2026-09-20-coral-cilia-flow-original.webp`                | WebP, 1500 × 1000 px | `71e6404b1ecafade94f7dc39d38c00249b86bff4d8451c4779816f55dd7562ff` |
-| Holografía AdS/CFT (25-09-2026)         | `src/assets/images/2026-09-25-ads-cft-holography-original.webp`              | WebP, 1500 × 1000 px | `5d1c09daf53b0abd535e33c8323992401a1f28e0c66871bd8405de6619da8956` |
-| Sensor Piezo1 (27-01-2026)              | `src/assets/images/2026-01-27-piezo1-mechanosensor-original.webp`            | WebP, 1500 × 1000 px | `8370243a7b55904a6748da217d62f21c03912dcdcea7d81411209e7c770ef431` |
-| Arpones de hueso de Brasil (23-01-2026) | `src/assets/images/2026-01-23-brazil-bone-harpoon-original.webp`             | WebP, 1500 × 1000 px | `f85131c1de76b688f68fe205afe4a4e97e2b3b8b07aec3b7057cb958123b8a1d` |
-| Microesferas de alginato (18-09-2026)   | `src/assets/images/2026-09-18-pancreatic-islet-alginate-beads-original.webp` | WebP, 1500 × 1000 px | `22e763a61c85c9adf605b75fa5072d145a0003ad1305150acdb0ad4d68d87c43` |
+| Artículo                                          | Activo                                                                       | Exportación          | SHA-256                                                            |
+| ------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------ |
+| Guardería y microbioma (25-01-2026)               | `src/assets/images/2026-01-25-daycare-microbiome-original.webp`              | WebP, 1500 × 1000 px | `df003ed69203434e038e3f001c243afcb05e481901866f9ebbdb159987fbfe99` |
+| Cilios de coral (20-09-2026)                      | `src/assets/images/2026-09-20-coral-cilia-flow-original.webp`                | WebP, 1500 × 1000 px | `71e6404b1ecafade94f7dc39d38c00249b86bff4d8451c4779816f55dd7562ff` |
+| Holografía AdS/CFT (25-09-2026)                   | `src/assets/images/2026-09-25-ads-cft-holography-original.webp`              | WebP, 1500 × 1000 px | `5d1c09daf53b0abd535e33c8323992401a1f28e0c66871bd8405de6619da8956` |
+| Sensor Piezo1 (27-01-2026)                        | `src/assets/images/2026-01-27-piezo1-mechanosensor-original.webp`            | WebP, 1500 × 1000 px | `8370243a7b55904a6748da217d62f21c03912dcdcea7d81411209e7c770ef431` |
+| Arpones de hueso de Brasil (23-01-2026)           | `src/assets/images/2026-01-23-brazil-bone-harpoon-original.webp`             | WebP, 1500 × 1000 px | `f85131c1de76b688f68fe205afe4a4e97e2b3b8b07aec3b7057cb958123b8a1d` |
+| Microesferas de alginato (18-09-2026)             | `src/assets/images/2026-09-18-pancreatic-islet-alginate-beads-original.webp` | WebP, 1500 × 1000 px | `22e763a61c85c9adf605b75fa5072d145a0003ad1305150acdb0ad4d68d87c43` |
+| Ataque a Hugging Face (12-08-2026)                | `src/assets/images/2026-08-12-ai-sandbox-package-registry-original.webp`     | WebP, 1500 × 1000 px | `09db4079b24e295673256fa38d885ce6d01b03eb8e09a46443d7a411df45ecf9` |
+| Inyección indirecta de prompts (24-04-2026)       | `src/assets/images/2026-04-24-indirect-prompt-injection-original.webp`       | WebP, 1500 × 1000 px | `ee2ffb4ce0234ac10523e427166023daed0eace65d548d7e4249fec462d14da6` |
+| Mapa GRACE de almacenamiento de agua (23-09-2026) | `src/assets/images/2026-09-23-grace-water-storage-original.webp`             | WebP, 1500 × 1000 px | `4d805f6f0ab6f543829c5ba275e7b9d544a570af6f479bedd0dd2d1d853aa905` |
 
-La solicitud del usuario del 12-10-2026 autoriza reemplazar estas seis imágenes para preparar el sitio para una posible monetización. Las cinco primeras se desplegaron y verificaron en producción; la nueva ilustración del artículo de microesferas está registrada y el cambio local aún debe publicarse. El inventario completo y las 41 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
+Las solicitudes del usuario del 12-10-2026 autorizaron reemplazar estas nueve imágenes para preparar el sitio para una posible monetización. Los seis reemplazos anteriores se desplegaron y verificaron en producción; estas tres nuevas ilustraciones están registradas y pendientes de publicación. El inventario completo y las 38 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
 
 ## Riesgos concretos de procedencia de cinco imágenes reemplazadas
 
@@ -50,7 +53,7 @@ Estos datos describen la procedencia y permisos de las imágenes que usaban ante
 - **Piezo1 (27-01-2026):** [ScienceDaily](https://www.sciencedaily.com/releases/2026/01/260127010149.htm) acredita la imagen anterior como Shutterstock; no hay licencia independiente de Noticiencias registrada aquí: procedencia `UNVERIFIED`; referencia sustituida por `2026-01-27-piezo1-mechanosensor-original.webp`.
 - **Arpones (23-01-2026):** [Live Science](https://www.livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago) acredita la fotografía anterior al Museu Arqueológico de Sambaquis de Joinville. Esa línea no expresa una licencia para Noticiencias: procedencia `UNVERIFIED`; referencia sustituida por `2026-01-23-brazil-bone-harpoon-original.webp`. La licencia CC BY-NC-ND de [Nature Communications](https://www.nature.com/articles/s41467-025-67530-w) se refiere a sus imágenes incluidas allí; no se atribuye automáticamente a la fotografía del museo.
 
-Las cinco referencias locales anteriores ya se cambiaron por alternativas documentadas y se verificaron en producción tras el despliegue. La sustitución no otorga derechos sobre los activos anteriores. La nueva referencia del artículo de microesferas también se cambió localmente; su imagen pública podrá confirmarse después de publicar este cambio.
+Las referencias locales anteriores ya se cambiaron por alternativas documentadas y se verificaron en producción tras su despliegue. La sustitución no otorga derechos sobre los activos anteriores. Las nuevas referencias de los artículos de microesferas, seguridad de IA, inyección de prompts y almacenamiento de agua están registradas localmente; sus imágenes públicas podrán confirmarse después de publicar cada cambio pendiente.
 
 Las declaraciones públicas de financiación se actualizaron posteriormente en el PR #256. La activación futura de anuncios debe mantener alineados consentimiento, privacidad y política editorial.
 

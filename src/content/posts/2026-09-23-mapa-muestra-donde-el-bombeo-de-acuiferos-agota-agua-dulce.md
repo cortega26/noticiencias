@@ -12,8 +12,8 @@ tags:
   - agua subterránea
   - llanuras altas
 excerpt: Un análisis de GRACE y GRACE-FO identificó 40 regiones con cambios de agua asociados a actividades humanas; el mapa mide tendencias, no el volumen restante de cada acuífero.
-image: ~/assets/images/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.jpg
-image_alt: Mapa muestra dónde el bombeo de acuíferos agota agua dulce
+image: ~/assets/images/2026-09-23-grace-water-storage-original.webp
+image_alt: Ilustración conceptual de dos satélites en órbita observando cambios regionales de almacenamiento de agua sobre la Tierra
 source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/
 refinery_id: '2601'
 corrected_at: '2026-10-12'
