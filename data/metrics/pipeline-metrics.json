@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-12T15:17:36.829Z",
+  "generated_at": "2026-10-13T14:07:43.355Z",
   "content": {
-    "total_articles": 46,
-    "v2_articles": 34,
-    "total_words": 28581,
-    "avg_words": 621,
+    "total_articles": 49,
+    "v2_articles": 37,
+    "total_words": 29427,
+    "avg_words": 601,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 14
+        "count": 16
       },
       {
         "name": "Ciencia",
-        "count": 11
+        "count": 12
       },
       {
         "name": "Salud",
@@ -167,6 +167,30 @@
     ],
     "articles_by_date": [
       {
+        "slug": "2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos",
+        "title": "Bosques secundarios capturan carbono con rapidez, pero su recuperación depende del lugar",
+        "date": "2026-10-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — un estudio reúne mediciones de 45 sitios neotropicales y otro modela diez paisajes del Bosque Atlántico; sus resultados miden variables y alcances distintos y no describen una respuesta universal.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra",
+        "title": "Tres simulaciones sobre geoingeniería solar no alcanzaron un acuerdo",
+        "date": "2026-10-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — reporte periodístico basado en un ejercicio de simulación de expertos, sin datos empíricos ni publicación académica.",
+        "review_status": null
+      },
+      {
         "slug": "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero",
         "title": "¿Cómo una alga que busca luz controla el cerebro de un mamífero?",
         "date": "2026-10-05",
@@ -192,14 +216,14 @@
       },
       {
         "slug": "2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce",
-        "title": "Mapa muestra dónde el bombeo de acuíferos agota agua dulce",
+        "title": "Nuevo mapa GRACE identifica cambios humanos en el almacenamiento de agua",
         "date": "2026-09-23",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio basado en datos satelitales GRACE/GRACE-FO y métodos de alta resolución, pero los autores reconocen limitaciones para predecir agotamiento y la separación entre causas humanas y climáticas conserva incertidumbre.",
+        "confidence": "Moderada — el estudio primario mejora la resolución regional de las tendencias, pero sus asociaciones no identifican por sí solas una causa local ni el volumen disponible en cada acuífero.",
         "review_status": null
       },
       {
@@ -271,7 +295,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en datos observacionales de fuentes reconocidas (Copernicus, NOAA) pero incluye inferencias y especulaciones sobre la intensidad futura y los impactos regionales específicos.",
+        "confidence": "Moderada — las mediciones oceánicas y los avisos operativos son observaciones oficiales; la intensidad futura y sus impactos regionales siguen siendo pronósticos.",
         "review_status": null
       },
       {
@@ -284,6 +308,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda",
+        "title": "Las sesiones largas de eSports dañan tu espalda",
+        "date": "2026-08-28",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación basado en estudios citados pero sin presentar datos originales ni revisión por pares profunda.",
         "review_status": null
       },
       {
@@ -731,11 +767,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-12T15:17:36.149Z"
+    "generated_at": "2026-10-13T14:07:42.570Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 46,
+    "derivatives_available": 48,
     "missing_derivatives": 0
   },
   "health": {
@@ -745,16 +781,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "34 artículos v2 completos."
+      "detail": "37 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "46 artículo(s) con imagen y alt.",
+      "detail": "49 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "46 derivativos disponibles."
+      "detail": "48 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -763,10 +799,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "91 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "102 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 91,
+        "processed": 102,
         "failed": 0
       }
     },
