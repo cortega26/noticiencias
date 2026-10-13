@@ -8,9 +8,10 @@ excerpt: 'Patrocinio ético para Noticiencias: criterios, formatos y contacto.'
 ## Patrocinio ético
 
 Actualmente Noticiencias no muestra anuncios programáticos ni utiliza muros de pago.
-Estamos evaluando Google AdSense como una posible vía adicional de financiación:
-la verificación del sitio no implica que ya estemos mostrando anuncios. Si se
-activan, aparecerán diferenciados del contenido editorial y con los avisos de
+El 9 de octubre de 2026 solicitamos a Google AdSense revisar la elegibilidad del
+sitio; la revisión sigue en curso. Esta solicitud y las etiquetas de verificación
+no implican que ya mostremos anuncios. Si Google aprueba el sitio y decidimos
+activarlos, aparecerán diferenciados del contenido editorial y con los avisos de
 privacidad y consentimiento que correspondan.
 
 También aceptamos patrocinios puntuales alineados con la divulgación científica
