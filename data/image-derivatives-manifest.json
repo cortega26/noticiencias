@@ -699,31 +699,38 @@
       }
     ]
   },
-  "~/assets/images/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.png": {
-    "originalWidth": 1000,
+  "~/assets/images/2026-04-24-indirect-prompt-injection-original.webp": {
+    "originalWidth": 1500,
     "originalHeight": 1000,
-    "hash": "b64cdf78dadb451f",
+    "hash": "ee2ffb4ce0234ac1",
     "variants": [
       {
         "width": 400,
-        "height": 400,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.400.avif"
+        "objectKey": "posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.400.avif"
       },
       {
         "width": 900,
-        "height": 900,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.900.avif"
+        "objectKey": "posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.900.avif"
       },
       {
-        "width": 1000,
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.1400.avif"
+      },
+      {
+        "width": 1500,
         "height": 1000,
         "format": "avif",
-        "objectKey": "posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.1000.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.b64cdf78dadb451f.1000.avif"
+        "objectKey": "posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-24-indirect-prompt-injection-original.ee2ffb4ce0234ac1.1500.avif"
       }
     ]
   },
@@ -944,31 +951,38 @@
       }
     ]
   },
-  "~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp": {
-    "originalWidth": 980,
-    "originalHeight": 735,
-    "hash": "b04c6f6bb9c4fa31",
+  "~/assets/images/2026-08-12-ai-sandbox-package-registry-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "09db4079b24e2956",
     "variants": [
       {
         "width": 400,
-        "height": 300,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.400.avif"
+        "objectKey": "posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.400.avif"
       },
       {
         "width": 900,
-        "height": 675,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.900.avif"
+        "objectKey": "posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.900.avif"
       },
       {
-        "width": 980,
-        "height": 735,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.980.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.b04c6f6bb9c4fa31.980.avif"
+        "objectKey": "posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-12-ai-sandbox-package-registry-original.09db4079b24e2956.1500.avif"
       }
     ]
   },
@@ -1287,38 +1301,38 @@
       }
     ]
   },
-  "~/assets/images/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.jpg": {
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "hash": "1a9ee7da2b77f9e9",
+  "~/assets/images/2026-09-23-grace-water-storage-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "4d805f6f0ab6f543",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.400.avif"
+        "objectKey": "posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.900.avif"
+        "objectKey": "posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.900.avif"
       },
       {
         "width": 1400,
-        "height": 788,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1400.avif"
+        "objectKey": "posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.1400.avif"
       },
       {
-        "width": 1920,
-        "height": 1080,
+        "width": 1500,
+        "height": 1000,
         "format": "avif",
-        "objectKey": "posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1920.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth.1a9ee7da2b77f9e9.1920.avif"
+        "objectKey": "posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-23-grace-water-storage-original.4d805f6f0ab6f543.1500.avif"
       }
     ]
   },
