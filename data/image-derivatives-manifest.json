@@ -1385,6 +1385,34 @@
       }
     ]
   },
+  "~/assets/images/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.jpg": {
+    "originalWidth": 1152,
+    "originalHeight": 648,
+    "hash": "dc8e03dbbe15e4ba",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.900.avif"
+      },
+      {
+        "width": 1152,
+        "height": 648,
+        "format": "avif",
+        "objectKey": "posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.1152.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-06-neutrino-physicist-wins-2026-nobel-physics-prize.dc8e03dbbe15e4ba.1152.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.webp": {
     "originalWidth": 1200,
     "originalHeight": 600,
