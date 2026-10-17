@@ -12,8 +12,8 @@ tags:
   - microesfera
   - diabetes tipo 1
 excerpt: Investigadores de McGill encapsulan islotes derivados de células madre en microesferas de alginato de alta concentración, protegiéndolos en biorreactor y mejorando su viabilidad para terapia de diabetes tipo 1.
-image: ~/assets/images/2026-09-18-bridging-scale-up-to-transplantation-pluripotent-stem-cell-derived-pancreatic-islet-encapsulation-in-emulsion-generated-high-concentration-alginate-beads.jpg
-image_alt: Ilustración de microesferas translúcidas de alginato que encapsulan clústeres de células productoras de insulina sobre un fondo azul verdoso
+image: ~/assets/images/2026-09-18-pancreatic-islet-alginate-beads-original.webp
+image_alt: Ilustración conceptual de una microesfera transparente de alginato que contiene un cúmulo de células similares a islotes pancreáticos, junto a un biorreactor
 source_url: https://biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1
 refinery_id: '2315'
 headlines_variants:

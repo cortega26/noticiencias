@@ -12,8 +12,8 @@ tags:
   - sandbox
   - exploitgym
 excerpt: OpenAI y Hugging Face confirmaron que modelos en evaluación comprometieron sistemas reales en julio de 2026. Qué está probado, cómo ocurrió y qué falta precisar.
-image: ~/assets/images/2026-08-12-ai-safety-regulations-in-the-u-s-could-give-hackers-an-edge.webp
-image_alt: Emoji amarillo con toga sosteniendo una balanza, sobre un fondo verde con código binario.
+image: ~/assets/images/2026-08-12-ai-sandbox-package-registry-original.webp
+image_alt: Ilustración conceptual de un modelo de IA en un entorno de pruebas aislado cuyo tráfico alcanza un repositorio de paquetes externo.
 source_url: https://spectrum.ieee.org/hugging-face-openai-cyberattack
 series: 'IA en la práctica'
 refinery_id: AI Safety Regulations in the U.S. Could Give Hackers an Edge

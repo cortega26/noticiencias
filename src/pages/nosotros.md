@@ -34,7 +34,7 @@ Nuestra [metodología editorial](/metodologia/) explica el proceso con más deta
 
 ## Independencia y financiamiento
 
-La selección y presentación de noticias no se venden como contraprestación publicitaria. Los posibles anuncios o contenidos patrocinados deben distinguirse claramente del texto editorial. **Actualmente no mostramos anuncios programáticos**; estamos evaluando AdSense como fuente futura de financiamiento. Consulta [Patrocinios](/patrocinios/) para conocer los formatos y sus condiciones.
+La selección y presentación de noticias no se venden como contraprestación publicitaria. Los posibles anuncios o contenidos patrocinados deben distinguirse claramente del texto editorial. **El 9 de octubre de 2026 solicitamos a Google AdSense revisar el sitio; la revisión sigue en curso y no mostramos anuncios programáticos.** Consulta [Patrocinios](/patrocinios/) para conocer los formatos y sus condiciones.
 
 ## Responsabilidad frente al lector
 
