@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Post } from '~/types';
-import { evidenceLabels, publicationLabels } from '~/utils/evidence-labels';
+import { evidenceLabels, getFactCheckVerdict, publicationLabels } from '~/utils/evidence-labels';
 
 interface Source {
   title: string;
@@ -71,6 +71,10 @@ const confidenceLabel: Record<string, string> = {
 // so legacy posts render exactly as before.
 const primarySources = (sources ?? []).filter((s) => s.role === 'primary');
 const secondarySources = (sources ?? []).filter((s) => s.role !== 'primary');
+const annotatedFactChecks = (factCheck ?? []).map((check) => ({
+  ...check,
+  verdict: getFactCheckVerdict(check.status),
+}));
 
 const hasContent =
   Boolean(confidence) ||
@@ -247,15 +251,19 @@ const showHealthGuardrail =
       )
     }
     {
-      factCheck && factCheck.length > 0 && (
-        <ul class="grid gap-2">
-          {factCheck.map((check) => (
-            <li class="flex gap-2">
+      annotatedFactChecks.length > 0 && (
+        <ul class="grid gap-2" data-fact-check-verdicts>
+          {annotatedFactChecks.map((check) => (
+            <li class="flex gap-2" data-fact-check-status={check.status}>
               <Icon
-                name={check.status === 'verified' ? 'tabler:check' : 'tabler:info-circle'}
+                name={check.verdict.icon}
                 class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                aria-hidden="true"
               />
-              <span>{check.label}</span>
+              <span>
+                <strong class="font-semibold text-text-body">{check.verdict.label}:</strong>{' '}
+                {check.label}
+              </span>
             </li>
           ))}
         </ul>
