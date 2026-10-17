@@ -1126,6 +1126,34 @@
       }
     ]
   },
+  "~/assets/images/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.jpg": {
+    "originalWidth": 1280,
+    "originalHeight": 720,
+    "hash": "fe6e97b344dab577",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.900.avif"
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "format": "avif",
+        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.1280.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.1280.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.avif": {
     "originalWidth": 1356,
     "originalHeight": 668,
