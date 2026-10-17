@@ -30,3 +30,26 @@ export const publicationChipLabels: Record<NonNullable<Post['publication_status'
   conference: 'Congreso',
   other: 'otra vía',
 };
+
+/**
+ * Reader-facing verdicts for fact_check items. Unknown or future statuses
+ * must never appear as verified merely because they are unrecognized.
+ */
+export function getFactCheckVerdict(status: string): {
+  label: string;
+  variant: 'success' | 'warning' | 'error' | 'info';
+  icon: string;
+} {
+  switch (status.trim().toLowerCase()) {
+    case 'verified':
+    case 'confirmed':
+      return { label: 'Confirmado', variant: 'success', icon: 'tabler:check' };
+    case 'unsupported':
+      return { label: 'Sin respaldo', variant: 'warning', icon: 'tabler:alert-triangle' };
+    case 'debunked':
+    case 'contradicted':
+      return { label: 'Refutado', variant: 'error', icon: 'tabler:x' };
+    default:
+      return { label: 'Sin verificar', variant: 'info', icon: 'tabler:info-circle' };
+  }
+}
