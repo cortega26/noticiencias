@@ -32,9 +32,9 @@ En el ámbito de Ciencia y Tecnología, es común encontrar términos en inglés
 
 ## 3. Línea roja de monetización
 
-- No hay anuncios programáticos activos. Se está evaluando Google AdSense; el
-  estado público y las condiciones previstas se detallan en
-  [/patrocinios/](/patrocinios/) y [/privacidad/](/privacidad/).
+- No hay anuncios programáticos activos. Las condiciones previstas para una
+  eventual publicidad se detallan en [/patrocinios/](/patrocinios/) y
+  [/privacidad/](/privacidad/).
 - Ni la publicidad ni los patrocinios compran cobertura, selección de temas ni
   tono editorial. El patrocinio aceptable (boletín semanal, series etiquetadas)
   debe identificarse claramente.
