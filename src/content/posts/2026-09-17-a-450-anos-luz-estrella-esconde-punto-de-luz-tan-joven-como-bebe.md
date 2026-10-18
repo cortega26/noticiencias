@@ -12,8 +12,8 @@ tags:
   - formación planetaria
   - estrella recién nacida
 excerpt: A 450 años luz, se confirma el exoplaneta Elias 2-24 b, con menos de un millón de años, el mundo alienígena más joven jamás detectado.
-image: ~/assets/images/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.jpg
-image_alt: Estrella joven rodeada de un disco rojizo de polvo, con un pequeño planeta brillante formándose en un hueco del disco y un gran arco azulado de escombros a un lado.
+image: ~/assets/images/2026-09-17-young-planet-disk-gap-original.webp
+image_alt: 'Ilustración de una estrella rodeada de anillos de un disco protoplanetario con un hueco amplio donde brilla un planeta joven, y un arco azul de escombros a un lado.'
 source_url: https://doi.org/10.3847/2041-8213/ae9bb6
 refinery_id: '2298'
 corrected_at: '2026-10-12'

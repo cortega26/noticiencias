@@ -1126,94 +1126,108 @@
       }
     ]
   },
-  "~/assets/images/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.jpg": {
-    "originalWidth": 1280,
-    "originalHeight": 720,
-    "hash": "fe6e97b344dab577",
+  "~/assets/images/2026-09-05-humanoid-robot-sprint-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "c12b1e8cb124880a",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.400.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.900.avif"
-      },
-      {
-        "width": 1280,
-        "height": 720,
-        "format": "avif",
-        "objectKey": "posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.fe6e97b344dab577.1280.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.avif": {
-    "originalWidth": 1356,
-    "originalHeight": 668,
-    "hash": "366887ca87e49c01",
-    "variants": [
-      {
-        "width": 400,
-        "height": 197,
-        "format": "avif",
-        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 443,
-        "format": "avif",
-        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.900.avif"
-      },
-      {
-        "width": 1356,
-        "height": 668,
-        "format": "avif",
-        "objectKey": "posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.1356.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat.366887ca87e49c01.1356.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.jpg": {
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "hash": "8f1cbec2084f4ae2",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.900.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.900.avif"
       },
       {
         "width": 1400,
-        "height": 788,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1400.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1400.avif"
       },
       {
-        "width": 1920,
-        "height": 1080,
+        "width": 1500,
+        "height": 1000,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1920.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-newly-confirmed-baby-planet-is-the-youngest-alien-world-scientists-have-ever-discovered.8f1cbec2084f4ae2.1920.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1500.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-09-10-panama-canal-el-nino-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "6eba124879562fbd",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1500.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-09-17-young-planet-disk-gap-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "2efbc4ed41107775",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1500.avif"
       }
     ]
   },
@@ -1322,24 +1336,38 @@
       }
     ]
   },
-  "~/assets/images/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.webp": {
-    "originalWidth": 800,
-    "originalHeight": 450,
-    "hash": "fd91e02705861a4d",
+  "~/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "bc2841280edd6fc1",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.400.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.400.avif"
       },
       {
-        "width": 800,
-        "height": 450,
+        "width": 900,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.800.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-first-radio-waves-seen-from-an-exoplanet-hint-at-otherworldly-auroras.fd91e02705861a4d.800.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1500.avif"
       }
     ]
   },
