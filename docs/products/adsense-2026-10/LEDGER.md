@@ -45,7 +45,7 @@ Detalle y fuentes en el plan de trabajo. Resumen: **A** patrón de traducción/a
 
 | Fecha      | Cambio                                                                      | PR            | Estado     |
 | ---------- | --------------------------------------------------------------------------- | ------------- | ---------- |
-| 2026-10-18 | Línea base, causas y checklist (este documento) y triage de contenido       | frontend #299 | PR abierto |
+| 2026-10-18 | Línea base, causas y checklist (este documento), triage y comparables       | frontend #299 | PR abierto |
 | 2026-10-18 | Etiquetas de fuente exactas (fuente primaria vs. cobertura)                 | frontend #300 | PR abierto |
 | 2026-10-18 | Textos de confianza sin estado de AdSense obsoleto ni sobreafirmaciones     | frontend #301 | PR abierto |
 | 2026-10-18 | Redirecciones para URLs `/article-NNN/` y hubs `/categorias/`, `/recursos/` | frontend #302 | PR abierto |
