@@ -10,7 +10,7 @@ import SourceLine from '~/components/ds/molecules/SourceLine.astro';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/ds/molecules/Breadcrumbs.astro';
 import SocialShare from '~/components/template/common/SocialShare.astro';
-import { findImage } from '~/utils/images';
+import { adaptOpenGraphImages, findImage } from '~/utils/images';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
@@ -69,12 +69,23 @@ const publisherOrg = {
 
 const wordCount = post.content ? post.content.split(/\s+/).filter(Boolean).length : undefined;
 
+// JSON-LD needs absolute image URLs. Reuse the Open Graph adaptation so the
+// structured data and og:image point at the same optimized file; the raw
+// frontmatter value is a `~/assets/...` build alias, not a URL.
+const adaptedImages = await adaptOpenGraphImages(
+  { images: imageSrc ? [{ url: imageSrc }] : [] },
+  Astro.site
+);
+const schemaImages = (adaptedImages.images ?? [])
+  .map((adapted) => adapted.url)
+  .filter((adaptedUrl): adaptedUrl is string => Boolean(adaptedUrl));
+
 const schema = serializeJsonLd({
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
   headline: post.title.substring(0, 110),
   description: post.excerpt,
-  image: imageSrc ? [imageSrc] : [],
+  image: schemaImages,
   datePublished: post.publishDate.toISOString(),
   dateModified: (post.updateDate ?? post.publishDate).toISOString(),
   articleSection: post.category?.title,
