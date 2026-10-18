@@ -135,7 +135,7 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
           {post.readingTime && <span>{post.readingTime} min lectura</span>}
         </div>
 
-        <SourceLine post={post} showTranslationNote={false} class="mb-3" />
+        <SourceLine post={post} showTranslationNote={false} showCoverage={false} class="mb-3" />
 
         <h2
           class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold leading-tight text-text-body ${styles.title}`}
