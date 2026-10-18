@@ -1,6 +1,6 @@
 # Registro puntual de derechos de imagen
 
-Fecha de actualización: 2026-10-18. Este registro cubre los dos activos MIT sustituidos, nueve ilustraciones que reemplazan imágenes con procedencia no verificada y otras cuatro ilustraciones vectoriales del 18-10-2026. No certifica derechos para el resto del catálogo. Los reemplazos hasta el 12-10 ya están desplegados (PR #289); las cuatro ilustraciones del 18-10 están pendientes de publicación.
+Fecha de actualización: 2026-10-18. Este registro cubre los dos activos MIT sustituidos, nueve ilustraciones que reemplazan imágenes con procedencia no verificada y otras ocho ilustraciones vectoriales del 18-10-2026 (dos lotes de cuatro). No certifica derechos para el resto del catálogo. Los reemplazos hasta el 12-10 ya están desplegados (PR #289); las ocho ilustraciones del 18-10 están pendientes de publicación.
 
 ## Activos retirados
 
@@ -41,7 +41,7 @@ Los [términos de OpenAI](https://openai.com/policies/terms-of-use/) indican que
 | Inyección indirecta de prompts (24-04-2026)       | `src/assets/images/2026-04-24-indirect-prompt-injection-original.webp`       | WebP, 1500 × 1000 px | `ee2ffb4ce0234ac10523e427166023daed0eace65d548d7e4249fec462d14da6` |
 | Mapa GRACE de almacenamiento de agua (23-09-2026) | `src/assets/images/2026-09-23-grace-water-storage-original.webp`             | WebP, 1500 × 1000 px | `4d805f6f0ab6f543829c5ba275e7b9d544a570af6f479bedd0dd2d1d853aa905` |
 
-Las solicitudes del usuario del 12-10-2026 autorizaron reemplazar estas nueve imágenes para preparar el sitio para una posible monetización. Los seis reemplazos anteriores se desplegaron y verificaron en producción; estas tres nuevas ilustraciones están registradas y pendientes de publicación. El inventario completo y las 34 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
+Las solicitudes del usuario del 12-10-2026 autorizaron reemplazar estas nueve imágenes para preparar el sitio para una posible monetización. Los seis reemplazos anteriores se desplegaron y verificaron en producción; estas tres nuevas ilustraciones están registradas y pendientes de publicación. El inventario completo y las 31 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
 
 ### Cuatro ilustraciones vectoriales originales del 18-10-2026
 
@@ -60,6 +60,19 @@ Imágenes anteriores retiradas del repositorio el 18-10-2026 (siguen en el histo
 - **Geoingeniería solar:** GIF de la nota de [WIRED](https://wired.com/story/they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think/).
 - **Optogenética:** fotografía de la nota de [Ars Technica](https://arstechnica.com/science/2026/10/controlling-the-brain-with-light-earns-a-physiology-nobel/).
 - **Rollos del Vesubio:** fotografía de la nota de [SciTechDaily](https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/).
+
+### Cuatro ilustraciones vectoriales originales adicionales del 18-10-2026 (lote B)
+
+Mismas condiciones que el lote anterior: generadas con Claude Code desde descripciones textuales, sin imágenes de referencia ni activos de terceros; fuente editable en `docs/image-rights/originals/`; exportación WebP de 1500 × 1000 px mediante Sharp; ilustraciones esquemáticas, no fotografías documentales ni datos reales; sin garantía de exclusividad. La confirmación de los términos de Anthropic sigue pendiente del titular.
+
+| Artículo                                  | Activo                                                              | Fuente editable                                                     | SHA-256                                                            |
+| ----------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Radio y aurora en Beta Pictoris b (21-09) | `src/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp` | `docs/image-rights/originals/2026-09-21-exoplanet-radio-aurora.svg` | `bc2841280edd6fc194f8688f0bb6692a4a3848365ee2d49e116f81e096b360b9` |
+| Elias 2-24 b, planeta joven (17-09)       | `src/assets/images/2026-09-17-young-planet-disk-gap-original.webp`  | `docs/image-rights/originals/2026-09-17-young-planet-disk-gap.svg`  | `2efbc4ed41107775ebb91304643959f8894c6b15fe9a8fa773ea2fd0f78eb2ae` |
+| El Niño y el canal de Panamá (10-09)      | `src/assets/images/2026-09-10-panama-canal-el-nino-original.webp`   | `docs/image-rights/originals/2026-09-10-panama-canal-el-nino.svg`   | `6eba124879562fbd029bd88ebc177987e29776469ea6c606f87e94d92e3dfe29` |
+| Robot humanoide y Usain Bolt (05-09)      | `src/assets/images/2026-09-05-humanoid-robot-sprint-original.webp`  | `docs/image-rights/originals/2026-09-05-humanoid-robot-sprint.svg`  | `c12b1e8cb124880a10dce8a43ffc51a338d86ebd6ed428f9f930539fbf7393e1` |
+
+Las cuatro imágenes anteriores se retiraron del repositorio el 18-10-2026 (siguen en el historial de git). Sus nombres de archivo correspondían a títulos de notas periodísticas, es decir, las había descargado el pipeline desde la fuente, y no hay licencia de reutilización registrada en este repositorio (procedencia `UNVERIFIED`; no es una conclusión de infracción). La de la nota del robot humanoide procedía de [Live Science](https://livescience.com/technology/robotics/faster-than-usain-bolt-heres-all-the-records-robot-athletes-broke-at-this-years-world-humanoid-robot-games-in-china).
 
 ## Riesgos concretos de procedencia de cinco imágenes reemplazadas
 
