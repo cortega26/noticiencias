@@ -12,8 +12,8 @@ tags:
   - herculano
   - vesubio
 excerpt: Investigadores fabrican réplicas modernas de papiro con tinta con plomo y demuestran que los rayos X pueden leer su contenido tras carbonizarlas, abriendo camino a descifrar los rollos de Herculano.
-image: ~/assets/images/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.webp
-image_alt: 'Fotografía comparativa de dos rollos réplica de papiro vistos desde arriba: a la izquierda (a), un rollo sin carbonizar de color beige; a la derecha (b), su contraparte carbonizada y ennegrecida sostenida por una mano.'
+image: ~/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp
+image_alt: 'Ilustración de un rollo carbonizado atravesado por rayos X que revelan letras griegas en una pantalla, con la silueta del Vesubio al fondo.'
 source_url: https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/
 refinery_id: '2451'
 headlines_variants:

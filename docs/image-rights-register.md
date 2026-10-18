@@ -1,6 +1,6 @@
 # Registro puntual de derechos de imagen
 
-Fecha de actualización: 2026-10-12. Este registro cubre los dos activos MIT sustituidos y nueve ilustraciones nuevas que reemplazan imágenes con procedencia no verificada. No certifica derechos para el resto del catálogo. Los seis reemplazos anteriores ya están desplegados y verificados; las tres nuevas ilustraciones están pendientes de publicación.
+Fecha de actualización: 2026-10-18. Este registro cubre los dos activos MIT sustituidos, nueve ilustraciones que reemplazan imágenes con procedencia no verificada y otras cuatro ilustraciones vectoriales del 18-10-2026. No certifica derechos para el resto del catálogo. Los reemplazos hasta el 12-10 ya están desplegados (PR #289); las cuatro ilustraciones del 18-10 están pendientes de publicación.
 
 ## Activos retirados
 
@@ -41,7 +41,25 @@ Los [términos de OpenAI](https://openai.com/policies/terms-of-use/) indican que
 | Inyección indirecta de prompts (24-04-2026)       | `src/assets/images/2026-04-24-indirect-prompt-injection-original.webp`       | WebP, 1500 × 1000 px | `ee2ffb4ce0234ac10523e427166023daed0eace65d548d7e4249fec462d14da6` |
 | Mapa GRACE de almacenamiento de agua (23-09-2026) | `src/assets/images/2026-09-23-grace-water-storage-original.webp`             | WebP, 1500 × 1000 px | `4d805f6f0ab6f543829c5ba275e7b9d544a570af6f479bedd0dd2d1d853aa905` |
 
-Las solicitudes del usuario del 12-10-2026 autorizaron reemplazar estas nueve imágenes para preparar el sitio para una posible monetización. Los seis reemplazos anteriores se desplegaron y verificaron en producción; estas tres nuevas ilustraciones están registradas y pendientes de publicación. El inventario completo y las 38 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
+Las solicitudes del usuario del 12-10-2026 autorizaron reemplazar estas nueve imágenes para preparar el sitio para una posible monetización. Los seis reemplazos anteriores se desplegaron y verificaron en producción; estas tres nuevas ilustraciones están registradas y pendientes de publicación. El inventario completo y las 34 imágenes aún sin revisión individual están en [Inventario de imágenes del 12-10-2026](./image-rights-inventory-2026-10-12.md).
+
+### Cuatro ilustraciones vectoriales originales del 18-10-2026
+
+Se generaron con Claude Code desde descripciones textuales, sin imágenes de referencia, fotografías, logotipos ni otros archivos de terceros como entrada. Cada fuente editable es un SVG en `docs/image-rights/originals/`; el activo publicado es su exportación WebP de 1500 × 1000 px mediante Sharp. Son ilustraciones esquemáticas: no representan fotografías documentales, datos reales ni reconstrucciones verificadas. Se registran como outputs generados, no como garantía de exclusividad o de ausencia de reclamaciones de terceros; este registro no reemplaza una evaluación legal. Pendiente de confirmación del titular: que los términos vigentes de Anthropic para la cuenta usada permiten el uso comercial del output.
+
+| Artículo                         | Activo                                                                    | Fuente editable                                                           | SHA-256                                                            |
+| -------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Bosques secundarios (12-10-2026) | `src/assets/images/2026-10-12-secondary-forest-recovery-original.webp`    | `docs/image-rights/originals/2026-10-12-secondary-forest-recovery.svg`    | `78166607e59afcf65e6d063e25f204465c97d30ae67a062075bb7aad8f0cf736` |
+| Geoingeniería solar (12-10-2026) | `src/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp` | `docs/image-rights/originals/2026-10-12-solar-geoengineering-wargame.svg` | `01348051686cab4bd560a8156216424319d1784c41c507dde1af3b37fafe994a` |
+| Optogenética (05-10-2026)        | `src/assets/images/2026-10-05-optogenetics-light-neuron-original.webp`    | `docs/image-rights/originals/2026-10-05-optogenetics-light-neuron.svg`    | `b338efdffc7f7610f98d20c19b46aa078bcfe65612bb9c38f1dfbbacea28dc39` |
+| Rollos del Vesubio (20-09-2026)  | `src/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp`         | `docs/image-rights/originals/2026-09-20-vesuvius-scroll-xray.svg`         | `d85083e18866b1644ca26f41e361742864dbb0bcdaa427e8acbb53ebd01b408c` |
+
+Imágenes anteriores retiradas del repositorio el 18-10-2026 (siguen en el historial de git). Las cuatro habían sido descargadas por el pipeline desde la nota de la fuente, sin licencia de reutilización registrada en este repositorio (procedencia `UNVERIFIED`; no es una conclusión de infracción):
+
+- **Bosques secundarios:** retrato de la persona perfilada en la nota de [MIT Technology Review](https://technologyreview.com/2026/10/12/1145745/daisy-dent-ecologist-revealing-invisible-networks-revive-rainforests/), sin relación con los dos estudios que resume el artículo.
+- **Geoingeniería solar:** GIF de la nota de [WIRED](https://wired.com/story/they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think/).
+- **Optogenética:** fotografía de la nota de [Ars Technica](https://arstechnica.com/science/2026/10/controlling-the-brain-with-light-earns-a-physiology-nobel/).
+- **Rollos del Vesubio:** fotografía de la nota de [SciTechDaily](https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/).
 
 ## Riesgos concretos de procedencia de cinco imágenes reemplazadas
 

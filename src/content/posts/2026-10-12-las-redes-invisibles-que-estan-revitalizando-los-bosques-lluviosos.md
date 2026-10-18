@@ -12,8 +12,8 @@ tags:
   - barro colorado
   - bosque tropical
 excerpt: Dos estudios en bosques neotropicales documentan la captura de carbono durante la regeneración y modelan cómo la fragmentación limita la dispersión de semillas.
-image: ~/assets/images/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.webp
-image_alt: Las redes invisibles que están revitalizando los bosques lluviosos
+image: ~/assets/images/2026-10-12-secondary-forest-recovery-original.webp
+image_alt: 'Ilustración de tres etapas de regeneración de un bosque, del suelo despejado con tocones y plántulas a un bosque maduro, con una curva ascendente de recuperación de biomasa y un tucán que dispersa semillas.'
 source_url: https://doi.org/10.1038/nature16512
 refinery_id: '3344'
 correction_summary: 'Se sustituyó la adaptación extensa de una nota secundaria por una síntesis de dos estudios primarios y se separaron mediciones de carbono de resultados modelados sobre dispersores.'

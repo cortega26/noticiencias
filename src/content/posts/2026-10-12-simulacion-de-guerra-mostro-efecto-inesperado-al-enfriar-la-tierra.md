@@ -12,8 +12,8 @@ tags:
   - riesgo geopolítico
   - simulación climática
 excerpt: Un informe de tres ejercicios de crisis encontró obstáculos de confianza y competencia estratégica; sus resultados describen simulaciones, no predicen decisiones reales.
-image: ~/assets/images/2026-10-12-they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think.gif
-image_alt: Simulación de guerra mostró efecto inesperado al enfriar la Tierra
+image: ~/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp
+image_alt: 'Ilustración de la Tierra con una capa de partículas en la estratosfera que refleja la luz de un Sol atenuado, un termómetro alto y tres delegados sentados a una mesa de negociación.'
 source_url: https://cfg.eu/negotiating-solar-radiation-modification-governance/
 refinery_id: '3274'
 correction_summary: 'Se reemplazó una adaptación extensa de WIRED por una síntesis propia del informe original, con método, resultados y límites explícitos.'
