@@ -26,10 +26,19 @@ const tagBasePath = `/${String(tagPathname)
   .replace(/^\/+|\/+$/g, '')
   .toLowerCase()}/`;
 
+// Legacy `/article-NNN/` URLs (indexed before posts moved to descriptive
+// slugs) and hub paths that never had a page. Static hosting has no server
+// redirects, so Astro emits instant meta-refresh pages, which Google treats as
+// permanent redirects. Source -> target, both absolute paths with a trailing
+// slash. When a post is unpublished, retarget its entries here:
+// tests/legacy-redirects.test.ts fails if a target is no longer built.
+const legacyRedirects = JSON.parse(safeRead('data/legacy-redirects.json'));
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://noticiencias.com',
   prefetch: false,
+  redirects: legacyRedirects,
   integrations: [
     sitemap({
       filter: (page) =>
