@@ -8,11 +8,8 @@ excerpt: 'Patrocinio ético para Noticiencias: criterios, formatos y contacto.'
 ## Patrocinio ético
 
 Actualmente Noticiencias no muestra anuncios programáticos ni utiliza muros de pago.
-El 9 de octubre de 2026 solicitamos a Google AdSense revisar la elegibilidad del
-sitio; la revisión sigue en curso. Esta solicitud y las etiquetas de verificación
-no implican que ya mostremos anuncios. Si Google aprueba el sitio y decidimos
-activarlos, aparecerán diferenciados del contenido editorial y con los avisos de
-privacidad y consentimiento que correspondan.
+Si en el futuro se habilita publicidad, aparecerá diferenciada del contenido
+editorial y con los avisos de privacidad y consentimiento que correspondan.
 
 También aceptamos patrocinios puntuales alineados con la divulgación científica
 rigurosa: espacios en el boletín y series temáticas claramente etiquetadas
@@ -24,13 +21,6 @@ como patrocinadas.
 - Contenido patrocinado sin etiquetar, ni publirreportajes disfrazados de noticia.
 - Ceder decisión editorial: la categoría `Editorial` es solo contenido propio.
 - Patrocinios de afirmaciones de salud no verificadas.
-
-## Audiencia (cifras preliminares)
-
-La medición editorial está en curso. Publicaremos sesiones, mezcla de canales y
-concentración temática cuando dispongamos de cifras consolidadas (ver
-[transparencia](/transparencia/)). Hasta entonces, hablamos de encaje temático,
-no de volúmenes.
 
 ## Contacto
 

@@ -37,4 +37,25 @@ describe('published trust and AdSense disclosures', () => {
     expect(page('nosotros')).toContain('no es una validación científica independiente');
     expect(page('transparencia')).toContain('comprobación humana individual');
   });
+
+  it('does not publish a dated AdSense application status that can go stale', () => {
+    for (const name of ['nosotros', 'transparencia', 'patrocinios', 'privacidad']) {
+      const document = page(name);
+      expect(document, name).not.toContain('solicitamos a Google AdSense');
+      expect(document, name).not.toContain('sigue en curso');
+      expect(document, name).toMatch(
+        /no (mostramos|muestra|hemos habilitado) anuncios programáticos/
+      );
+    }
+    expect(page('privacidad')).toContain('ads.txt');
+  });
+
+  it('does not overstate human review or primary-source coverage', () => {
+    const methodology = page('metodologia');
+    expect(methodology).not.toContain('revisión humana para no publicar humo');
+    expect(methodology).toContain(
+      'si se apoya en una fuente primaria o solo en la cobertura de un medio'
+    );
+    expect(methodology).toContain('no implica necesariamente una revisión humana independiente');
+  });
 });
