@@ -1287,24 +1287,38 @@
       }
     ]
   },
-  "~/assets/images/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.webp": {
-    "originalWidth": 777,
-    "originalHeight": 514,
-    "hash": "9c04527d8120025b",
+  "~/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "d85083e18866b164",
     "variants": [
       {
         "width": 400,
-        "height": 265,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.400.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.400.avif"
       },
       {
-        "width": 777,
-        "height": 514,
+        "width": 900,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-mount-vesuvius-buried-these-scrolls-for-2-000-years-now-scientists-may-read-them.9c04527d8120025b.777.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1500.avif"
       }
     ]
   },
@@ -1399,59 +1413,108 @@
       }
     ]
   },
-  "~/assets/images/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.jpg": {
-    "originalWidth": 1152,
-    "originalHeight": 648,
-    "hash": "9f20d01fd6341e4f",
+  "~/assets/images/2026-10-05-optogenetics-light-neuron-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "b338efdffc7f7610",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.400.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.900.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.900.avif"
       },
       {
-        "width": 1152,
-        "height": 648,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.1152.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.9f20d01fd6341e4f.1152.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1500.avif"
       }
     ]
   },
-  "~/assets/images/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 600,
-    "hash": "1f67d410008374b1",
+  "~/assets/images/2026-10-12-secondary-forest-recovery-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "78166607e59afcf6",
     "variants": [
       {
         "width": 400,
-        "height": 200,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.400.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.400.avif"
       },
       {
         "width": 900,
-        "height": 450,
-        "format": "avif",
-        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.900.avif"
-      },
-      {
-        "width": 1200,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-the-ecologist-revealing-the-invisible-networks-that-revive-rainforests.1f67d410008374b1.1200.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1500.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp": {
+    "originalWidth": 1500,
+    "originalHeight": 1000,
+    "hash": "01348051686cab4b",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1400.avif"
+      },
+      {
+        "width": 1500,
+        "height": 1000,
+        "format": "avif",
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1500.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1500.avif"
       }
     ]
   },

@@ -12,8 +12,8 @@ tags:
   - chlamydomonas
   - neurona
 excerpt: El Nobel 2026 reconoce a Deisseroth, Hegemann y Nagel por crear la optogenética, que usa proteínas de algas para activar o silenciar neuronas con luz.
-image: ~/assets/images/2026-10-05-controlling-the-brain-with-light-earns-a-physiology-nobel.jpg
-image_alt: ¿Cómo una alga que busca luz controla el cerebro de un mamífero?
+image: ~/assets/images/2026-10-05-optogenetics-light-neuron-original.webp
+image_alt: 'Ilustración de una alga verde que emite luz azul desde su mancha ocular hacia una neurona con canales abiertos en su membrana, sobre la silueta de un cerebro.'
 source_url: https://arstechnica.com/science/2026/10/controlling-the-brain-with-light-earns-a-physiology-nobel/
 refinery_id: '3104'
 headlines_variants:

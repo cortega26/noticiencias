@@ -1,0 +1,35 @@
+<!-- Original vector artwork for Noticiencias, generated with Claude Code on 2026-10-18 from a text description; no external image assets. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1424"/><stop offset="1" stop-color="#17305a"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5db4ff" stop-opacity=".75"/><stop offset="1" stop-color="#5db4ff" stop-opacity=".05"/></linearGradient><radialGradient id="cell" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#8be07a"/><stop offset="1" stop-color="#3d9d4a"/></radialGradient><radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7cd66f" stop-opacity=".45"/><stop offset="1" stop-color="#7cd66f" stop-opacity="0"/></radialGradient></defs>
+<rect width="1500" height="1000" fill="url(#bg)"/>
+<g opacity=".9" fill="#1d3b6b"><path d="M820 420c-10-110 90-190 200-170 70-60 190-30 220 50 90 10 150 90 120 170 40 60 20 150-60 180-20 70-110 110-180 80-60 50-170 40-210-30-90 20-170-50-150-130-60-40-70-120 60-150z"/></g>
+<g fill="none" stroke="#244a82" stroke-width="10" stroke-linecap="round" opacity=".8"><path d="M930 330c40 30 30 80 80 100M1090 300c-10 50 30 80 20 130M1190 360c-30 30-20 70-60 100M1000 520c30-20 70-10 100-40M1160 540c-30 10-50 40-90 40"/></g>
+<circle cx="250" cy="500" r="230" fill="url(#glow)"/>
+<circle cx="250" cy="500" r="128" fill="url(#cell)" stroke="#2b7f3c" stroke-width="10"/>
+<path d="M170 560c-30-60 0-140 70-160 40-10 30 40 10 70-20 40-10 90-80 90z" fill="#2f8a43" opacity=".9"/>
+<circle cx="285" cy="470" r="38" fill="#bff0a6" opacity=".85"/>
+<circle cx="338" cy="520" r="14" fill="#f2653a"/><circle cx="338" cy="520" r="26" fill="none" stroke="#ffd1b8" stroke-width="5" opacity=".9"/>
+<g fill="none" stroke="#7cd66f" stroke-width="9" stroke-linecap="round"><path d="M210 384c-30-40 10-80-24-124s-60-20-90-60"/><path d="M262 376c10-50 60-60 56-110s-30-70-20-120"/></g>
+<path d="M352 506L880 330V690Z" fill="url(#beam)"/>
+<circle cx="447" cy="499" r="7" fill="#e8f5ff" opacity="0.90"/>
+<circle cx="521" cy="508" r="8" fill="#e8f5ff" opacity="0.82"/>
+<circle cx="595" cy="498" r="9" fill="#e8f5ff" opacity="0.74"/>
+<circle cx="669" cy="515" r="10" fill="#e8f5ff" opacity="0.66"/>
+<circle cx="743" cy="519" r="11" fill="#e8f5ff" opacity="0.58"/>
+<circle cx="817" cy="452" r="12" fill="#e8f5ff" opacity="0.50"/>
+<g stroke="#f08a8a" stroke-linecap="round" fill="none"><path d="M930 470c-40-70-30-130-90-160" stroke-width="16"/><path d="M930 470c-70 10-110-20-170-10" stroke-width="14"/><path d="M930 470c-30 90-80 120-80 190" stroke-width="16"/><path d="M930 470c20-80 90-120 120-200" stroke-width="14"/><path d="M840 310c-20-30-60-34-80-70M840 310c10-40 50-60 50-100M850 660c-40 20-90 10-110 50M850 660c30 40 20 80 60 110" stroke-width="10"/></g>
+<path d="M980 500c120 10 180 80 300 90s200 70 250 70" stroke="#f4a3a3" stroke-width="13" stroke-linecap="round" fill="none"/>
+<circle cx="1480" cy="662" r="15" fill="#f4a3a3"/>
+<circle cx="940" cy="490" r="78" fill="#f08a8a"/><circle cx="955" cy="498" r="30" fill="#c95b66"/>
+<circle cx="867" cy="463" r="13" fill="#5db4ff"/><circle cx="867" cy="463" r="6" fill="#fff"/>
+<circle cx="876" cy="445" r="13" fill="#5db4ff"/><circle cx="876" cy="445" r="6" fill="#fff"/>
+<circle cx="890" cy="430" r="13" fill="#5db4ff"/><circle cx="890" cy="430" r="6" fill="#fff"/>
+<circle cx="907" cy="419" r="13" fill="#5db4ff"/><circle cx="907" cy="419" r="6" fill="#fff"/>
+<circle cx="926" cy="413" r="13" fill="#5db4ff"/><circle cx="926" cy="413" r="6" fill="#fff"/>
+<circle cx="947" cy="412" r="13" fill="#5db4ff"/><circle cx="947" cy="412" r="6" fill="#fff"/>
+<circle cx="967" cy="417" r="13" fill="#5db4ff"/><circle cx="967" cy="417" r="6" fill="#fff"/>
+<path d="M1086 530l10-24h10l-8-20 22 30h-12l8 14z" fill="#ffe27a"/>
+<path d="M1196 586l10-24h10l-8-20 22 30h-12l8 14z" fill="#ffe27a"/>
+<path d="M1316 608l10-24h10l-8-20 22 30h-12l8 14z" fill="#ffe27a"/>
+<path d="M1406 660l10-24h10l-8-20 22 30h-12l8 14z" fill="#ffe27a"/>
+</svg>
