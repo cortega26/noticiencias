@@ -12,6 +12,9 @@ import { serializeJsonLd } from '~/utils/json-ld';
 
 const { items } = Astro.props;
 
+// Structured data requires absolute URLs; visible links keep their relative hrefs.
+const absoluteHref = (href: string) => new URL(href, Astro.site ?? 'https://noticiencias.com').href;
+
 const schema = serializeJsonLd({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -19,7 +22,7 @@ const schema = serializeJsonLd({
     '@type': 'ListItem',
     position: index + 1,
     name: item.label,
-    item: item.href,
+    item: absoluteHref(item.href),
   })),
 });
 ---
