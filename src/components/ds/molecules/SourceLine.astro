@@ -1,23 +1,37 @@
 ---
 import type { Post } from '~/types';
-import { resolveSourcePublisher } from '~/utils/source-publisher';
+import { resolveSourceAttribution } from '~/utils/source-publisher';
 
 interface Props {
   post: Post;
   showTranslationNote?: boolean;
+  showCoverage?: boolean;
   size?: 'xs' | 'sm';
   class?: string;
 }
 
-const { post, showTranslationNote = true, size = 'xs', class: className = '' } = Astro.props;
-const publisher = resolveSourcePublisher(post);
-const isTranslated = /noticiencias\s+ai/i.test(post.author ?? '');
+const {
+  post,
+  showTranslationNote = true,
+  showCoverage = true,
+  size = 'xs',
+  class: className = '',
+} = Astro.props;
+const { primary, coverage } = resolveSourceAttribution(post);
+const hasPrimary = primary.length > 0;
+const primaryLabel =
+  primary.slice(0, 2).join(', ') + (primary.length > 2 ? ` y ${primary.length - 2} más` : '');
+// "traducción" describes an adaptation of the cited article; a piece built on
+// primary sources is a synthesis and must not carry that label.
+const isTranslated = !hasPrimary && /noticiencias\s+ai/i.test(post.author ?? '');
 ---
 
 {
-  publisher && (
+  (hasPrimary || coverage) && (
     <p class={`font-medium text-text-muted ${size === 'sm' ? 'text-sm' : 'text-xs'} ${className}`}>
-      Fuente: <span class="text-text-body">{publisher}</span>
+      {hasPrimary ? 'Fuente primaria' : 'Fuente'}:{' '}
+      <span class="text-text-body">{hasPrimary ? primaryLabel : coverage}</span>
+      {hasPrimary && coverage && showCoverage && <span> · Cobertura: {coverage}</span>}
       {showTranslationNote && isTranslated && <span> · traducción NotiAI</span>}
     </p>
   )
