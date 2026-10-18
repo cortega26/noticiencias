@@ -43,9 +43,30 @@ Detalle y fuentes en el plan de trabajo. Resumen: **A** patrón de traducción/a
 
 ## 5. Changelog
 
-| Fecha      | Cambio                                          | PR / commit | Estado   |
-| ---------- | ----------------------------------------------- | ----------- | -------- |
-| 2026-10-18 | Línea base y registro de remediación (este doc) | pendiente   | en curso |
+| Fecha      | Cambio                                                                      | PR            | Estado     |
+| ---------- | --------------------------------------------------------------------------- | ------------- | ---------- |
+| 2026-10-18 | Línea base, causas y checklist (este documento) y triage de contenido       | frontend #299 | PR abierto |
+| 2026-10-18 | Etiquetas de fuente exactas (fuente primaria vs. cobertura)                 | frontend #300 | PR abierto |
+| 2026-10-18 | Textos de confianza sin estado de AdSense obsoleto ni sobreafirmaciones     | frontend #301 | PR abierto |
+| 2026-10-18 | Redirecciones para URLs `/article-NNN/` y hubs `/categorias/`, `/recursos/` | frontend #302 | PR abierto |
+| 2026-10-18 | JSON-LD con imagen y migas de pan absolutas                                 | frontend #303 | PR abierto |
+| 2026-10-18 | Héroes de portada (4) sustituidos por ilustraciones originales              | frontend #304 | PR abierto |
+| 2026-10-18 | Héroes de otros 4 posts recientes (apilado sobre #304)                      | frontend #305 | PR abierto |
+| 2026-10-18 | El backend deja de reutilizar imágenes de las fuentes (allowlist vacía)     | backend #374  | PR abierto |
+| 2026-10-18 | CI del backend: `plans/` en el checkout parcial del frontend                | backend #375  | PR abierto |
+
+El reloj de «8 semanas de constancia» del checklist arranca cuando estén fusionados y desplegados #300, #304/#305 y backend #374.
+
+## 5b. Pendientes que dependen del titular
+
+- Fusionar los PR en este orden: backend #375 → #374; frontend #299, #300, #301, #302, #303, #304 → #305.
+- Aprobar la lista de despublicación de `CONTENT_TRIAGE.md`.
+- Handle real de Buttondown (o autorizar ocultar los formularios): hoy el perfil público devuelve «Not found».
+- Confirmar que los términos vigentes de Anthropic permiten el uso comercial de las ilustraciones generadas.
+- Decidir si el aviso «síntesis asistida por IA» se muestra en todos los posts: hoy solo en los 25 con autor «Noticiencias AI»; los 25 antiguos con autor «Noticiencias» no lo llevan.
+- `robots.txt`: `facebookexternalhit` es el rastreador de vistas previas, no de entrenamiento (ADR-0008 lo trata como entrenamiento); valorar sustituirlo por `meta-externalagent`.
+- GA4: los envíos duplicados a `www.google.com/g/collect` indican señales publicitarias a nivel de propiedad; revisar Admin → Recopilación de datos (Google Signals) y vínculos con Google Ads, porque la política de privacidad dice que están desactivados.
+- Opcional: 301 reales con Cloudflare Bulk Redirects (hoy son páginas con meta refresh).
 
 ## 6. Medición semanal
 
