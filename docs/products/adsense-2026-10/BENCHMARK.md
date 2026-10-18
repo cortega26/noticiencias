@@ -24,3 +24,11 @@ Sin datos: cienciaplus.com, amazings.es, levante-emv.com, tecnovedades.com, elmu
 - Todos muestran autoría o un canal de contacto visibles. Ninguno de ellos declara en portada que sus textos sean adaptaciones.
 - Es una muestra pequeña y con sesgo de supervivencia: no demuestra que la edad o el volumen sean requisito, solo que, entre los sitios comparables que sí monetizan con AdSense, ninguno es nuevo. Encaja con la causa C del diagnóstico (audiencia e historial) y con la hipótesis de que el revisor evalúa señales que no dependen del texto de la solicitud.
 - Siguiente paso útil, cuando exista tiempo humano: comparar 3 posts de `astrobitacora.com` con sus fuentes en inglés para ver cuánto valor añaden (I4 aplicado a un comparable).
+
+## Evidencia de la comunidad (I2, búsqueda acotada)
+
+No se encontró ningún caso verificable de un sitio de noticias traducidas que fuera rechazado y luego aprobado tras cambios concretos; lo disponible son opiniones de foros y blogs, no política de Google.
+
+- Un usuario de [ForoBeta](https://forobeta.com/temas/adsense-rechaza-mi-sitio-sin-motivo.853728/) atribuye el rechazo por «bajo valor» a texto duplicado en otros sitios del mismo tema y recomienda reescribir las noticias con criterio propio y usar imágenes distintas de las de la fuente (coincide con las causas A y B).
+- En otro hilo de [ForoBeta](https://forobeta.com/temas/como-mejorar-mi-sitio-para-cumplir-con-adsense.918473/) se comenta que el criterio es inconsistente: sitios de 14 artículos aprobados y de más de 100 rechazados. No hay umbral fijo de volumen.
+- La [guía de la comunidad oficial de AdSense](https://support.google.com/adsense/community-guide/326104930/%C2%BFc%C3%B3mo-solucionar-el-problema-de-desaprobaci%C3%B3n-de-adsense-por-contenido-de-bajo-valor?hl=es) habla de evaluar experiencia, autoridad y confiabilidad, y de que el tráfico de baja calidad pesa en contra.
