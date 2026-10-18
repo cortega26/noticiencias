@@ -53,8 +53,12 @@ export class SiteAuditor {
       const $ = cheerio.load(content);
       // const pageUrl = '/' + file;
 
-      // Check SEO
-      this.checkSEO($, file);
+      // Check SEO. Astro redirect stubs (instant meta refresh + noindex +
+      // canonical to the target) are deliberately minimal: the target page
+      // carries the SEO fields, so only its links are audited below.
+      if ($('meta[http-equiv="refresh"]').length === 0) {
+        this.checkSEO($, file);
+      }
 
       // Check Links
       $('a').each((_, el) => {

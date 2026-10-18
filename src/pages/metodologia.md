@@ -2,7 +2,7 @@
 title: 'Metodología Editorial'
 permalink: /metodologia/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Cómo elegimos, traducimos y revisamos cada artículo: automatización para cubrir mucho, revisión humana para no publicar humo, y las fuentes siempre a la vista.'
+excerpt: 'Cómo elegimos, preparamos y publicamos cada artículo: automatización para vigilar muchas fuentes, una persona que decide qué se publica y las fuentes a la vista.'
 ---
 
 Internet está lleno de titulares de ciencia exagerados. **Noticiencias** nació para lo contrario: contar qué se ha descubierto de verdad, con qué respaldo y con qué límites, en un español claro y con las fuentes a la vista.
@@ -15,7 +15,7 @@ No somos un agregador que copia titulares ni un blog de opinión. Combinamos her
 
 Tres ideas guían todo lo que hacemos.
 
-**Ir hacia la evidencia, no hacia el rumor.** Partimos de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints. Desde ahí buscamos el estudio original para enlazarlo y leerlo con calma.
+**Ir hacia la evidencia, no hacia el rumor.** Partimos de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints. Desde ahí, cuando la nota remite a un estudio, buscamos el original para enlazarlo; la ficha de cada artículo indica si se apoya en una fuente primaria o solo en la cobertura de un medio.
 
 **Contar los matices.** Un hallazgo sin contexto engaña. Decimos en qué se basa —cuánta gente participó, si se probó en personas, animales o simulaciones— y qué dudas plantea la propia comunidad científica.
 
