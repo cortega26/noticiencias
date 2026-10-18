@@ -11,30 +11,30 @@ Noticiencias es un medio digital independiente que explica ciencia, salud y tecn
 
 ## Quién está detrás
 
-**Carlos Ortega** dirige Noticiencias y responde por sus criterios de publicación, su operación y las correcciones editoriales. Es un proyecto unipersonal con automatización propia, vinculado a [Tooltician](https://tooltician.com/), con operación en Chile. No presentamos una redacción de especialistas ni un comité científico que no tenemos.
+**Carlos Ortega** dirige Noticiencias, decide qué se publica y responde por sus criterios editoriales, su operación y sus correcciones. Es un proyecto unipersonal con automatización propia, vinculado a [Tooltician](https://tooltician.com/) y con operación en Chile.
 
 Puedes escribir directamente al responsable a través de nuestra [página de contacto](/contacto/). El [repositorio público](https://github.com/cortega26/noticiencias) permite inspeccionar parte del código, las reglas editoriales y su historial de cambios.
 
 ## Qué publicamos
 
-Cubrir ciencia, medicina, tecnología e internet exige distinguir resultados de laboratorio, estudios preliminares, aplicaciones reales y especulación. Priorizamos noticias con una fuente identificable y contexto útil para lectores hispanohablantes.
+Explicamos hallazgos de ciencia, medicina, tecnología e internet para lectores hispanohablantes: qué se descubrió, con qué evidencia, qué límites tiene y qué falta saber. Priorizamos noticias con una fuente identificable y contexto útil.
 
-Las piezas pueden ser síntesis o adaptaciones de información publicada por universidades, revistas científicas, investigadores y medios especializados. **No deben interpretarse automáticamente como investigaciones originales de Noticiencias.** Cuando una pieza depende de un estudio o fuente externa, enlazamos las referencias disponibles y procuramos señalar sus límites.
+Noticiencias no realiza investigación científica propia: explica la de otros. Cada pieza enlaza la fuente en que se basa, y su ficha de «Fuentes y verificación» indica si se apoya en una fuente primaria (el estudio o el comunicado original) o en la cobertura de un medio.
 
 ## Cómo se prepara una noticia
 
 El proceso combina herramientas automatizadas con decisiones editoriales:
 
-1. **Detección y selección:** sistemas propios identifican publicaciones científicas y técnicas que podrían interesar a nuestros lectores.
-2. **Elaboración asistida:** herramientas de IA pueden ayudar a resumir, traducir, adaptar y revisar borradores. Una redacción asistida por IA no es una validación científica independiente.
-3. **Decisión de publicación:** una persona decide qué propuestas integrar al sitio. El registro de integración no demuestra, por sí solo, una comprobación manual exhaustiva de cada afirmación.
-4. **Fuentes y correcciones:** las fichas de los artículos muestran los datos editoriales disponibles para esa pieza. Corregimos errores documentados y distinguimos las modificaciones verificadas de revisiones que no podemos acreditar.
+1. **Detección y selección:** sistemas propios vigilan publicaciones científicas y técnicas; una persona decide qué historias merecen una pieza.
+2. **Elaboración asistida por IA:** herramientas de IA preparan el borrador (resumen, traducción al español, glosario y estructura). Una redacción asistida por IA no es una validación científica independiente.
+3. **Controles y decisión de publicación:** el borrador pasa por controles automáticos y una persona decide si se integra al sitio. No afirmamos que cada dato haya recibido una comprobación humana individual.
+4. **Fuentes y correcciones:** las fichas de los artículos muestran los datos editoriales disponibles para esa pieza. Corregimos los errores documentados y lo indicamos en la propia pieza.
 
 Nuestra [metodología editorial](/metodologia/) explica el proceso con más detalle. La [página de transparencia](/transparencia/) recoge los criterios de corrección, las limitaciones de la evaluación automatizada y la relación con anunciantes.
 
 ## Independencia y financiamiento
 
-La selección y presentación de noticias no se venden como contraprestación publicitaria. Los posibles anuncios o contenidos patrocinados deben distinguirse claramente del texto editorial. **El 9 de octubre de 2026 solicitamos a Google AdSense revisar el sitio; la revisión sigue en curso y no mostramos anuncios programáticos.** Consulta [Patrocinios](/patrocinios/) para conocer los formatos y sus condiciones.
+La selección y presentación de noticias no se venden como contraprestación publicitaria. Actualmente no mostramos anuncios programáticos. Si se habilita publicidad o patrocinio, será reconocible como tal y estará separado del texto editorial. Consulta [Patrocinios](/patrocinios/) para conocer los formatos y sus condiciones.
 
 ## Responsabilidad frente al lector
 

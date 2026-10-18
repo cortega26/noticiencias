@@ -7,7 +7,7 @@ excerpt: 'Cómo atribuimos fuentes, distinguimos la asistencia de IA y gestionam
 
 ## Fuentes y autoría
 
-Noticiencias publica síntesis y adaptaciones de hallazgos científicos y tecnológicos. Los artículos enlazan las fuentes disponibles; sus fichas pueden incluir estado de la evidencia, método de traducción, notas de incertidumbre y fechas de modificación documentadas. **No todas las piezas contienen el mismo grado de detalle ni la misma verificación.**
+Noticiencias explica hallazgos científicos y tecnológicos publicados por otros. Los artículos enlazan las fuentes disponibles; sus fichas pueden incluir estado de la evidencia, notas de incertidumbre y fechas de modificación documentadas. **El grado de detalle y de verificación varía entre piezas:** la ficha de cada artículo indica lo que consta para esa pieza.
 
 Una fuente externa no debe confundirse con el responsable editorial del sitio. La dirección editorial recae en **Carlos Ortega**, como se explica en [Acerca de](/nosotros/).
 
@@ -25,7 +25,7 @@ Para consultas generales, rectificaciones o asuntos legales fuera del formulario
 
 ## Publicidad, patrocinio y conflictos de interés
 
-Las decisiones editoriales no se condicionan a la contratación de anuncios. Solicitamos a Google AdSense revisar el sitio el **9 de octubre de 2026**; la revisión sigue en curso y **todavía no mostramos anuncios programáticos**. Si se aprueba y decidimos habilitar AdSense, la publicidad deberá ser reconocible como tal y respetar las políticas y las condiciones de consentimiento que apliquen. Los patrocinios deberán estar identificados. Consulta [Patrocinios](/patrocinios/) y [Privacidad](/privacidad/).
+Las decisiones editoriales no se condicionan a la contratación de anuncios. **Actualmente no mostramos anuncios programáticos.** Si se habilita publicidad, deberá ser reconocible como tal y respetar las políticas y las condiciones de consentimiento que apliquen. Los patrocinios deberán estar identificados. Consulta [Patrocinios](/patrocinios/) y [Privacidad](/privacidad/).
 
 Buscamos identificar conflictos de interés relevantes que afecten la interpretación de una noticia, incluidos los comunicados por las fuentes. No afirmamos que una declaración externa garantice ausencia de sesgos.
 
@@ -33,7 +33,7 @@ Buscamos identificar conflictos de interés relevantes que afecten la interpreta
 
 Google Analytics 4 utiliza Consent Mode avanzado: el código carga antes de la elección y puede enviar señales sin cookies; las cookies de analítica se activan solo con aceptación. Cloudflare Web Analytics aporta medición sin cookies. El boletín se gestiona mediante Buttondown. Explicamos los datos, proveedores, retención declarada y mecanismos de rechazo en nuestra [Política de Privacidad](/privacidad/).
 
-No enviamos deliberadamente los textos de los reportes de lectores a prompts públicos de IA. Los reportes pueden almacenarse mediante la infraestructura técnica del sitio. No publicamos aquí cifras de audiencia o de calidad que aún no podamos respaldar con una medición reproducible.
+No enviamos deliberadamente los textos de los reportes de lectores a prompts públicos de IA. Los reportes pueden almacenarse mediante la infraestructura técnica del sitio.
 
 ## Responsable y canales
 
