@@ -80,6 +80,26 @@ describe('buildEnvelope', () => {
     expect(envelope.publication_ids).toEqual(['refinery-1', 'refinery-2']);
   });
 
+  it('passes through exact publication-attempt references unchanged', () => {
+    const refs = [
+      {
+        refinery_id: 'refinery-1',
+        pull_request_number: 42,
+        content_sha256: 'a'.repeat(64),
+      },
+    ];
+    const envelope = buildEnvelope({
+      event: 'publish_complete',
+      status: 'success',
+      diagnostics: { check: 'deploy', status: 'pass' },
+      publicationIds: ['refinery-1'],
+      publicationAttemptRefs: refs,
+      githubEnv,
+    });
+
+    expect(envelope.publication_attempt_refs).toEqual(refs);
+  });
+
   it('defaults publication_ids to an empty array when omitted', () => {
     const envelope = buildEnvelope({
       event: 'publish_complete',
@@ -89,6 +109,7 @@ describe('buildEnvelope', () => {
     });
 
     expect(envelope.publication_ids).toEqual([]);
+    expect(envelope.publication_attempt_refs).toEqual([]);
   });
 });
 

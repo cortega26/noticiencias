@@ -58,6 +58,7 @@ describe('post-publish-callback.js', () => {
     expect(payload.diagnostics[0].commit_sha).toBeUndefined();
 
     expect(Array.isArray(payload.publication_ids)).toBe(true);
+    expect(Array.isArray(payload.publication_attempt_refs)).toBe(true);
   });
 
   it('skips notification (and never calls sendWebhookNotification) when BACKEND_WEBHOOK_URL is unset', async () => {

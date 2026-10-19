@@ -9,7 +9,7 @@
  * through a payload file and a subprocess.
  *
  * CLI usage:
- *   node scripts/backend-notify.js --status=pass|fail --payload-file=<path> [--publication-ids-file=<path>]
+ *   node scripts/backend-notify.js --status=pass|fail --payload-file=<path> [--publication-ids-file=<path>] [--publication-attempt-refs-file=<path>]
  *
  * Environment:
  *   BACKEND_WEBHOOK_URL — backend webhook endpoint (required)
@@ -29,6 +29,7 @@
  *     frontend_ref: "<sha>",
  *     run_url: "https://github.com/<owner>/<repo>/actions/runs/<run_id>",
  *     publication_ids: ["<refinery_id>", ...],
+ *     publication_attempt_refs: [{ refinery_id, pull_request_number, content_sha256 }, ...],
  *     delivery_id: "v1:<run_id>:<event>"   // present in CI; backend dedupes
  *   }
  *
@@ -78,9 +79,17 @@ function deliveryIdFor({ event, runId }) {
  * @param {string} opts.status
  * @param {object | object[]} opts.diagnostics
  * @param {string[]} [opts.publicationIds]
+ * @param {Array<{refinery_id: string, pull_request_number: number, content_sha256: string}>} [opts.publicationAttemptRefs]
  * @param {Record<string, string | undefined>} [opts.githubEnv]
  */
-export function buildEnvelope({ event, status, diagnostics, publicationIds = [], githubEnv = {} }) {
+export function buildEnvelope({
+  event,
+  status,
+  diagnostics,
+  publicationIds = [],
+  publicationAttemptRefs = [],
+  githubEnv = {},
+}) {
   const env = githubEnv;
   const repo = env.GITHUB_REPOSITORY || 'unknown';
   const sha = env.GITHUB_SHA || 'unknown';
@@ -98,6 +107,7 @@ export function buildEnvelope({ event, status, diagnostics, publicationIds = [],
     run_url: `https://github.com/${repo}/actions/runs/${runId}`,
     timestamp: new Date().toISOString(),
     publication_ids: publicationIds || [],
+    publication_attempt_refs: publicationAttemptRefs || [],
     ...(deliveryId ? { delivery_id: deliveryId } : {}),
   };
 }
@@ -235,6 +245,7 @@ async function main() {
   let payloadFile = null;
   let event = 'validation_result';
   let publicationIdsFile = null;
+  let publicationAttemptRefsFile = null;
 
   for (const arg of args) {
     if (arg.startsWith('--status=')) {
@@ -245,10 +256,12 @@ async function main() {
       event = arg.slice('--event='.length);
     } else if (arg.startsWith('--publication-ids-file=')) {
       publicationIdsFile = arg.slice('--publication-ids-file='.length);
+    } else if (arg.startsWith('--publication-attempt-refs-file=')) {
+      publicationAttemptRefsFile = arg.slice('--publication-attempt-refs-file='.length);
     } else if (arg === '--help' || arg === '-h') {
       console.log(`Usage:
-  node scripts/backend-notify.js --status=pass|fail --payload-file=<path> [--publication-ids-file=<path>]
-  node scripts/backend-notify.js --status=pass|fail --payload-file=<path> --event=publish_complete [--publication-ids-file=<path>]
+  node scripts/backend-notify.js --status=pass|fail --payload-file=<path> [--publication-ids-file=<path>] [--publication-attempt-refs-file=<path>]
+  node scripts/backend-notify.js --status=pass|fail --payload-file=<path> --event=publish_complete [--publication-ids-file=<path>] [--publication-attempt-refs-file=<path>]
 
 Environment:
   BACKEND_WEBHOOK_URL — backend webhook endpoint (required)
@@ -301,11 +314,31 @@ Environment:
     }
   }
 
+  let publicationAttemptRefs = [];
+  if (publicationAttemptRefsFile) {
+    try {
+      const raw = readFileSync(resolve(publicationAttemptRefsFile), 'utf-8');
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        publicationAttemptRefs = parsed;
+      } else {
+        console.error(
+          `[backend-notify] --publication-attempt-refs-file must contain a JSON array, got ${typeof parsed}`
+        );
+      }
+    } catch (e) {
+      console.error(
+        `[backend-notify] Cannot read publication-attempt-refs file: ${publicationAttemptRefsFile}\\n${e.message}`
+      );
+    }
+  }
+
   const payload = buildEnvelope({
     event,
     status,
     diagnostics,
     publicationIds,
+    publicationAttemptRefs,
     githubEnv: process.env,
   });
 
