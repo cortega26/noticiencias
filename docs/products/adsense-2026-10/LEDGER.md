@@ -43,30 +43,30 @@ Detalle y fuentes en el plan de trabajo. Resumen: **A** patrón de traducción/a
 
 ## 5. Changelog
 
-| Fecha      | Cambio                                                                      | PR            | Estado     |
-| ---------- | --------------------------------------------------------------------------- | ------------- | ---------- |
-| 2026-10-18 | Línea base, causas y checklist (este documento), triage y comparables       | frontend #299 | PR abierto |
-| 2026-10-18 | Etiquetas de fuente exactas (fuente primaria vs. cobertura)                 | frontend #300 | PR abierto |
-| 2026-10-18 | Textos de confianza sin estado de AdSense obsoleto ni sobreafirmaciones     | frontend #301 | PR abierto |
-| 2026-10-18 | Redirecciones para URLs `/article-NNN/` y hubs `/categorias/`, `/recursos/` | frontend #302 | PR abierto |
-| 2026-10-18 | JSON-LD con imagen y migas de pan absolutas                                 | frontend #303 | PR abierto |
-| 2026-10-18 | Héroes de portada (4) sustituidos por ilustraciones originales              | frontend #304 | PR abierto |
-| 2026-10-18 | Héroes de otros 4 posts recientes (apilado sobre #304)                      | frontend #305 | PR abierto |
-| 2026-10-18 | El backend deja de reutilizar imágenes de las fuentes (allowlist vacía)     | backend #374  | PR abierto |
-| 2026-10-18 | CI del backend: `plans/` en el checkout parcial del frontend                | backend #375  | PR abierto |
+| Fecha      | Cambio                                                                   | PR            | Estado                 |
+| ---------- | ------------------------------------------------------------------------ | ------------- | ---------------------- |
+| 2026-10-18 | Línea base, causas y checklist (este documento), triage y comparables    | frontend #299 | Fusionado y desplegado |
+| 2026-10-18 | Etiquetas de fuente exactas (fuente primaria vs. cobertura)              | frontend #300 | Fusionado y desplegado |
+| 2026-10-18 | Textos de confianza sin estado de AdSense obsoleto ni sobreafirmaciones  | frontend #301 | Fusionado y desplegado |
+| 2026-10-18 | Redirecciones para `/article-NNN/` y hubs `/categorias/`, `/recursos/`   | frontend #302 | Fusionado y desplegado |
+| 2026-10-18 | JSON-LD con imagen y migas de pan absolutas                              | frontend #303 | Fusionado y desplegado |
+| 2026-10-18 | Héroes de portada (4) sustituidos por ilustraciones originales           | frontend #304 | Fusionado y desplegado |
+| 2026-10-18 | Héroes de otros 4 posts recientes (#305 se cerró solo al borrar su base) | frontend #306 | Fusionado y desplegado |
+| 2026-10-18 | CI del backend: `plans/` en el checkout parcial del frontend             | backend #375  | Fusionado              |
+| 2026-10-18 | El backend deja de reutilizar imágenes de las fuentes (allowlist vacía)  | backend #374  | Fusionado              |
 
-El reloj de «8 semanas de constancia» del checklist arranca cuando estén fusionados y desplegados #300, #304/#305 y backend #374.
+Todo lo anterior está en producción desde el 2026-10-18 (despliegue de `7e39fbfa`, verificado con `npm run test:deploy`). El reloj de «8 semanas de constancia» del checklist arrancó ese día; el backend aplica la política de imágenes en cuanto se actualice el checkout local con `git pull`.
 
 ## 5b. Pendientes que dependen del titular
 
-- Fusionar los PR en este orden: backend #375 → #374; frontend #299, #300, #301, #302, #303, #304 → #305.
-- Aprobar la lista de despublicación de `CONTENT_TRIAGE.md`.
+- Aprobar la lista de despublicación de `CONTENT_TRIAGE.md` (6 posts) y el orden de reescritura.
 - Handle real de Buttondown (o autorizar ocultar los formularios): hoy el perfil público devuelve «Not found».
 - Confirmar que los términos vigentes de Anthropic permiten el uso comercial de las ilustraciones generadas.
 - Decidir si el aviso «síntesis asistida por IA» se muestra en todos los posts: hoy solo en los 25 con autor «Noticiencias AI»; los 25 antiguos con autor «Noticiencias» no lo llevan.
 - `robots.txt`: `facebookexternalhit` es el rastreador de vistas previas, no de entrenamiento (ADR-0008 lo trata como entrenamiento); valorar sustituirlo por `meta-externalagent`.
-- GA4: los envíos duplicados a `www.google.com/g/collect` indican señales publicitarias a nivel de propiedad; revisar Admin → Recopilación de datos (Google Signals) y vínculos con Google Ads, porque la política de privacidad dice que están desactivados.
+- GA4: los envíos duplicados a `www.google.com/g/collect` indican señales publicitarias a nivel de propiedad; revisar Admin → Recopilación de datos (Google Signals) y vínculos con Google Ads, porque la política de privacidad dice que están desactivados. No ampliar el CSP.
 - Opcional: 301 reales con Cloudflare Bulk Redirects (hoy son páginas con meta refresh).
+- Con la protección de rama estricta (`validate` y `build` sobre una cabeza actualizada), los PR apilados se cierran solos cuando se borra su rama base: fusionar el padre sin `--delete-branch` o reabrir el hijo contra `main`.
 
 ## 6. Medición semanal
 
