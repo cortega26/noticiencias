@@ -1,5 +1,7 @@
 # Inventario de imágenes y triage editorial — 12 de octubre de 2026
 
+**Actualización de imágenes — 19-10-2026:** se renovaron diez exportaciones vectoriales con imágenes raster de 1536 × 1024 px, generadas con IA y ajustadas a cada artículo: MicroMasters, automatización, bosques, geoingeniería, optogenética, papiros, Beta Pictoris b, Elias 2-24 b, canal de Panamá y robot humanoide. Se conservaron sus rutas y las nueve ilustraciones raster anteriores. Los nuevos hashes, prompts y la comparación visual están en el [registro de derechos](./image-rights-register.md#renovación-de-calidad-del-19-10-2026). El despliegue de esta renovación está pendiente; las fechas y estados anteriores de este inventario son históricos.
+
 ## Alcance y lectura de este inventario
 
 Se registraron 49 referencias de imagen en 49 artículos Markdown. El pipeline local de derivados procesa las fuentes raster de los artículos; el GIF de la nota de geoingeniería se sustituyó el 18-10-2026 por una ilustración WebP. La tabla combina los datos de fuentes, `fact_check`, `why_it_matters` e imagen que ya estaban en los frontmatter; **contar esos campos no equivale a validar cada afirmación**. Las entradas sin `role` aparecen como «rol no registrado»; el render actual las trata como fuentes secundarias, así que no se infiere que sean primarias.

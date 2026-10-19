@@ -13,7 +13,7 @@ tags:
   - 'cursos en línea'
   - 'transformación profesional'
 image: '~/assets/images/2026-01-15-micromasters-learning-original.webp'
-image_alt: 'Ilustración original de una persona que estudia gestión de cadenas de suministro frente a una computadora con una ruta de nodos logísticos.'
+image_alt: 'Ilustración generada con IA de una persona que estudia logística en una computadora, junto a un cuaderno y cajas de envío.'
 source_url: 'https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115'
 refinery_id: '135'
 headlines_variants:
@@ -30,6 +30,8 @@ sources:
 corrected_at: '2026-10-09'
 correction_summary: 'Se precisó la secuencia entre el MicroMasters y el programa combinado, y se añadió el dato de empleo de la cohorte presencial 2025 de SCM, sin atribuirlo al curso en línea ni generalizarlo a otros estudiantes.'
 ---
+
+_Imagen de portada: recreación editorial generada con IA; no representa a Kevin Power ni un curso real del MIT._
 
 ## De Supply Chain Analytics a un programa combinado
 

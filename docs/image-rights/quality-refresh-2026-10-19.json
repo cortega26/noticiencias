@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-19",
+  "base_sha": "de8f5faa219e6b3f1cbe87043e0bbb2b4a286314",
+  "status": "Prepared locally; production not verified",
+  "scope": "Ten vector exports replaced; nine earlier detailed raster images retained",
+  "input_images": [
+    {
+      "scope": "Robot framing edit only",
+      "source": "Own generated image",
+      "sha256": "9b300d64ff50dc3bae6f3356ddc7c26de4b754454e63a7039f70ebdebf0d4070"
+    }
+  ],
+  "records": [
+    {
+      "number": 1,
+      "article": "src/content/posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md",
+      "title": "Del MicroMasters del MIT a una maestría: el recorrido de Kevin Power",
+      "asset": "src/assets/images/2026-01-15-micromasters-learning-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. Subject: an anonymous adult studying supply-chain management online at a modest home desk in the evening, seen in a three-quarter over-the-shoulder close view, face not identifiable. Hands naturally on laptop and notebook; on the laptop a softly defocused abstract logistics network, no legible interface or words. A few small cardboard shipping boxes and an open technical notebook subtly establish logistics. Window side-light mixing with warm practical desk lamp, tactile wood, paper, realistic clothing. A thoughtful attainable learning scene, not a graduation, no university building or branding and no likeness of Kevin Power. Prioritize beautifully observed atmosphere over busy props.",
+      "generated_png_sha256": "41d3e56c300b10f026fc313df49ccf7202ac5f7d71634611ee46c4d74de7e45e",
+      "previous_webp_sha256": "084503a98dab624a254c1c6fee5ba582212da3e27ad9cc0c065feb00ad15849e",
+      "webp_sha256": "4bc1fe4140556eadfa1fbd82957d3214c3c98e14d7abda91f148797eb996f2d6",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 211702,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de una persona que estudia logística en una computadora, junto a un cuaderno y cajas de envío.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA; no representa a Kevin Power ni un curso real del MIT."
+    },
+    {
+      "number": 2,
+      "article": "src/content/posts/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md",
+      "title": "Estudio: la automatización explica 52 % del aumento de desigualdad entre grupos en EE. UU. (1980–2016)",
+      "asset": "src/assets/images/2026-05-07-automation-wages-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. Editorial recreation in a realistic manufacturing hall: one anonymous industrial worker in navy workwear and clear safety glasses stands behind a safe partition studying a robotic assembly station. The worker is a central human presence, orange industrial robot arm manipulating a plain metal part behind the partition, depth of factory machinery softly out of focus. Respect plausible machinery scale and safe separation; side-light reveals brushed steel, slightly worn industrial surfaces and fabric. Natural steel gray and warm orange palette, cinematic but credible, no threatening sentient robot, no money, charts or implication that an individual has been fired. Topic is the historical relationship of task automation and wages, not a tech miracle.",
+      "generated_png_sha256": "83a5888214a9b3a5b61cbcb69f3365b87bfe6b001a951b4dcd71fe2eadb94941",
+      "previous_webp_sha256": "ea8092d810938de16524c163f4578bf835a756e9114f7b26952fb1f496269f74",
+      "webp_sha256": "e39e18aa75363d6a5dd9e46014442c315ba36374bfb95cecfa581ae7a69e96dd",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 230966,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un trabajador que observa un brazo robótico de ensamblaje desde una zona protegida de una fábrica.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de automatización industrial; no documenta una empresa ni un trabajador del estudio."
+    },
+    {
+      "number": 12,
+      "article": "src/content/posts/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md",
+      "title": "Bosques secundarios capturan carbono con rapidez, pero su recuperación depende del lugar",
+      "asset": "src/assets/images/2026-10-12-secondary-forest-recovery-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. Lush neotropical secondary forest regenerating beside an older forest fragment, inspired by Brazil's Atlantic Forest. An intimate low-angle foreground of vigorous young native broadleaf saplings with wet textured leaves rising out of leaf litter, naturally transitioning into varied mid-height trees and a taller irregular canopy in the distance. One small forest bird perched discreetly with a fleshy fruit in its beak provides a subtle seed dispersal cue; it must look ecologically plausible and not dominate the forest. Fine morning mist and shafts of soft sunlight, vivid but natural emerald, olive and warm earth, richly layered botanical detail. One continuous believable landscape, not evenly staged steps of recovery, no buried glowing root networks, graphs or carbon symbols. Show regeneration, not a claim that recovery is complete.",
+      "generated_png_sha256": "de15170cfdc02bea6da57befe7fc98c64d17170ff643f280f199ab5f4ab9cdda",
+      "previous_webp_sha256": "78166607e59afcf65e6d063e25f204465c97d30ae67a062075bb7aad8f0cf736",
+      "webp_sha256": "d303612d65976fbae551c56b8867f5ba0c17baba753493e5a068316a31eaf703",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 589234,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de plántulas y árboles jóvenes junto a un dosel tropical, con un ave que lleva un fruto.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de regeneración de bosque; no documenta una parcela de los estudios."
+    },
+    {
+      "number": 13,
+      "article": "src/content/posts/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra.md",
+      "title": "Tres simulaciones sobre geoingeniería solar no alcanzaron un acuerdo",
+      "asset": "src/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. A carefully staged conceptual research tabletop exercise about governance of solar geoengineering. Wide oblique close view across an understated seminar table: six anonymous adult researchers in everyday professional clothes seen mostly as hands, shoulders and soft background silhouettes, studying printed climate scenario sheets with abstract illegible maps, notebooks and plain card pieces. At the center a beautiful small matte physical globe of Earth lit by a warm beam of window sunlight, linking sunlight and planetary policy. Mood thoughtful, unresolved, human; subtle cinematic depth and tactile paper. Not heads of state, not an actual UN negotiation or real government meeting, no flags or organization emblems, no war imagery, airplanes spraying, deployed particles, visible disaster or invented climate results. Focus on a simulated discussion, because the article describes three role-playing exercises.",
+      "generated_png_sha256": "df2fa7b1631ac64fb99c51f02df4a3218e60fff5086ec25e0d581dc846e7e35a",
+      "previous_webp_sha256": "01348051686cab4bd560a8156216424319d1784c41c507dde1af3b37fafe994a",
+      "webp_sha256": "dd5d038bd4bfad8fef48763140810cd202e94a96639658380bbf1060f87e5c19",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 210116,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un ejercicio de discusión con mapas climáticos, tarjetas y un globo terrestre sobre una mesa.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de un ejercicio de discusión; no es una fotografía de las simulaciones ni de una negociación gubernamental."
+    },
+    {
+      "number": 14,
+      "article": "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md",
+      "title": "¿Cómo una alga que busca luz controla el cerebro de un mamífero?",
+      "asset": "src/assets/images/2026-10-05-optogenetics-light-neuron-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: scientific-educational. Visually exquisite three-dimensional biomedical editorial illustration of optogenetics. A slender optical fiber tip enters the upper left and emits a physically modest narrow blue illumination cone onto a branching mammalian neuron in a richly textured dim neural-tissue microenvironment. Show a single prominent semi-translucent amber-gold neuronal soma and branching dendrites; a localized blue illuminated area on its membrane suggests light-sensitive ion channels, with a subtle warm signal along one axon. Biological microtexture, coherent scale within the scene, selective focus, dark indigo and restrained cyan/amber contrast. The render is conceptual rather than an exact molecular structure or a microscopy image. No glowing alga projecting a laser, no whole brain outline, exposed person, metallic circuitry, invented protein diagram, labels or claim of a treatment. The key idea is externally delivered light activating an engineered neuron.",
+      "generated_png_sha256": "21a4743996c011c0d9b0d61a044c55fa3ede9eb8b33d81906071ee954f689935",
+      "previous_webp_sha256": "b338efdffc7f7610f98d20c19b46aa078bcfe65612bb9c38f1dfbbacea28dc39",
+      "webp_sha256": "b69e8b2c407cd7eca6ff14db51a9ff7bcb1fc7efb03db93c2e4bede8b75111e7",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 242970,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de una fibra óptica que ilumina una neurona con luz azul en una escena celular conceptual.",
+      "visible_credit": "Imagen de portada: ilustración conceptual generada con IA de estimulación neuronal con luz; no es una imagen de microscopía ni una estructura molecular exacta."
+    },
+    {
+      "number": 15,
+      "article": "src/content/posts/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos.md",
+      "title": "¿El plomo en la tinta lee los rollos del Vesubio sin abrirlos?",
+      "asset": "src/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. An elegant archaeology-and-imaging laboratory still life: a small rolled carbonized papyrus replica lying horizontally in an inert foam cradle on the sample stage of a compact industrial X-ray microtomography instrument. The roll is a fragile charcoal-black cylindrical bundle with exquisitely detailed layered fibrous edges and cracks, not a smooth wooden log. The instrument's dark circular scanning aperture is softly out of focus behind it; a background monitor shows only abstract gray tomographic concentric layered slices, no writing. Warm raking key light on the papyrus and cool clean laboratory ambient, museum conservation atmosphere. Close-up, one coherent scene. No visible X-ray beams, no readable recovered Greek letters, no eruption, no operator hands handling the fragile object. It illustrates a lab experiment with a replica, not a verified ancient artifact or a newly decoded text.",
+      "generated_png_sha256": "c72ba55b2226602219c6d1dd662f6372071e7b1892ef4b07462f1e90c8e61234",
+      "previous_webp_sha256": "d85083e18866b1644ca26f41e361742864dbb0bcdaa427e8acbb53ebd01b408c",
+      "webp_sha256": "f6183187cb566e983ec05474dfac2e6c8d6dade418788370209e2b723057cdd4",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 207632,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de una réplica de papiro carbonizado en un soporte de laboratorio junto a un equipo de tomografía.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de una réplica de papiro en un laboratorio; no muestra un rollo auténtico ni texto antiguo recuperado."
+    },
+    {
+      "number": 16,
+      "article": "src/content/posts/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora.md",
+      "title": "Una señal de radio localizada en Beta Pictoris b apunta a una posible aurora",
+      "asset": "src/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: scientific-educational. High-end astronomical artist's impression of a young massive gas giant inspired by Beta Pictoris b. The planet fills the middle-right of the frame, three-quarter globe with deep burnt-umber and copper cloud bands, softly turbulent atmospheric detail. A delicate magenta-violet auroral oval glows just above the upper polar atmosphere on the nightside, thin and physically restrained rather than giant light ribbons. A small bright blue-white host star far off to the left and a faint nearly edge-on debris disk provide context, expansive deep space with sparse stars. Dramatic but scientifically restrained planetary lighting and crisp atmospheric rim. This depicts a proposed auroral interpretation, not an observed optical photo. No Earth oceans or continents, radio-wave rings, radio dishes floating in space, instrument plots, oversized nebula or Earthlike landscape.",
+      "generated_png_sha256": "3219e0f899efcd8d6564de64870000818fa5d2f73b61a27a48b944615df5a79e",
+      "previous_webp_sha256": "bc2841280edd6fc194f8688f0bb6692a4a3848365ee2d49e116f81e096b360b9",
+      "webp_sha256": "b2a84f95b01d0461bf49a01814893ef89b9e19d2d4f4e0067c3e46aa04f96c99",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 128982,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un planeta gigante gaseoso con una aurora violeta en el polo y una estrella distante.",
+      "visible_credit": "Imagen de portada: interpretación artística generada con IA de la hipótesis auroral; no es una fotografía de Beta Pictoris b ni una observación directa de su aurora."
+    },
+    {
+      "number": 17,
+      "article": "src/content/posts/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe.md",
+      "title": "A 450 años luz, estrella esconde punto de luz tan joven como bebé",
+      "asset": "src/assets/images/2026-09-17-young-planet-disk-gap-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: scientific-educational. A sophisticated astronomical artist's impression of a young planet forming in a dusty protoplanetary disk, inspired by Elias 2-24 b. Oblique aerial space view with one small luminous young central star left of center, a broad dusty circumstellar disk glowing softly amber and ochre, and one clear annular dark gap carved within the disk. A small self-luminous reddish young gas giant sits in the gap at middle-right, visibly much smaller than the star-to-planet distance; a delicate local swirl of accreting dust near the planet. Thick granular dust textures, physically suggestive volumetric scattering, subtle warm starlight against very dark space. The planet should be discernible at thumbnail size without becoming a second star or colliding with its star. One coherent scene, no concentric neon circles, planets arranged on drawn orbit tracks, spiral galaxy, artistic arcs unrelated to the disk or claim this is a telescope image.",
+      "generated_png_sha256": "d6ab312d40fcd796fbc39e0f68b42eef6c89aeee387d0058c094547b6fdadd71",
+      "previous_webp_sha256": "2efbc4ed41107775ebb91304643959f8894c6b15fe9a8fa773ea2fd0f78eb2ae",
+      "webp_sha256": "a000b1fdb5acd079d5d3dabbd9351f54b91e024a0dccfcf49b6ec1627665aa62",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 243974,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un planeta joven dentro de un hueco en un disco de gas y polvo alrededor de una estrella.",
+      "visible_credit": "Imagen de portada: interpretación artística generada con IA de formación planetaria; no es una imagen telescópica de Elias 2-24 b."
+    },
+    {
+      "number": 18,
+      "article": "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md",
+      "title": "El Niño 2026 ya está ralentizando el tráfico del Canal de Panamá",
+      "asset": "src/assets/images/2026-09-10-panama-canal-el-nino-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. An editorial recreation of water-dependent shipping at the Panama Canal, not a documentary photo of a specific dated voyage. Elevated three-quarter view of a single large modern container ship centered inside a believable concrete canal lock chamber, distinct parallel lock walls and a miter gate in the distance, tropical green hills and a broad lake horizon beyond. Exposed weather-stained concrete above the muted blue-green water quietly emphasizes water management, but do not portray an empty canal or an extreme disaster. Rows of colorful unbranded containers and realistic ship geometry, generous spatial depth, warm humid afternoon sun, slight atmospheric haze, cinematic yet credible natural color. No floating charts, rulers, down arrows, thermometers, giant burning sun, fabricated measurable water level, names or flags. Clearly a lock, not a container ship at sea or beached on dry land.",
+      "generated_png_sha256": "f5584aeb2d546ec8b6a70708fab76f1cacc81b8a24eed61ad4a6a7b9baf80008",
+      "previous_webp_sha256": "6eba124879562fbd029bd88ebc177987e29776469ea6c606f87e94d92e3dfe29",
+      "webp_sha256": "d2b10ba238f0c43b3dbba2ae0abb53fead45c3439ef88a668eb2ae2713d5d153",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 459926,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un portacontenedores en una esclusa de canal, entre muros de hormigón y colinas tropicales.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de navegación en una esclusa; no documenta un tránsito ni un nivel de agua medido en el canal de Panamá."
+    },
+    {
+      "number": 19,
+      "article": "src/content/posts/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt.md",
+      "title": "¿Un robot humanoide corrió más rápido que Usain Bolt?",
+      "asset": "src/assets/images/2026-09-05-humanoid-robot-sprint-original.webp",
+      "tool": "image_gen built-in",
+      "prompt": "Create ONE final-quality editorial image for a Spanish science news site, landscape 3:2, 1536x1024 or higher native resolution. Sophisticated commissioned magazine art direction, exceptionally detailed materials, convincing light, strong focal subject readable at thumbnail size, restrained natural colors. Keep essential subjects within the central 75% for responsive crops. No typography, letters, numbers, logos, watermark, border, collage, split-screen, infographic, clip-art, flat vector shapes, stock iconography or exaggerated sci-fi effects. This is an editorial reconstruction, not documentary evidence of a real person, event or measured result. Use case: photorealistic-natural. Dynamic editorial reconstruction of a generic experimental bipedal humanoid robot sprinting alone on a terracotta running track in a testing stadium. Low three-quarter side view, the entire robot sharp and centered with clean track-lane lines receding behind. Plausible lightweight articulated robotics: graphite carbon-fiber shins and thighs, brushed aluminum joints, compact white torso with exposed realistic mechanics, minimal short arms ending in simple blunt grippers, no human musculature, no expressive face. One foot in forward swing and the other just leaving the track, mechanically balanced running posture. Warm late-afternoon side light, subtle panning blur in the empty stands, fine dust and material detail. Generic machine, not an asserted accurate likeness of Tiangong Ultra. No human competitor, finish-line victory, medals, timers, records, fire, sponsors or invented logo. Convey locomotion research without illustrating an unverified numerical performance claim.",
+      "generated_png_sha256": "71fb06c0dddad0e0e572e89439e462de95fd093c848a13321c9e6ff7ef8bbbfb",
+      "previous_webp_sha256": "c12b1e8cb124880a10dce8a43ffc51a338d86ebd6ed428f9f930539fbf7393e1",
+      "webp_sha256": "aaa00049493e2330d8e2d15ea3c0a9b674e773507c426787898bddc06c6655b3",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 188668,
+      "export": {
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "resized": false
+      },
+      "image_alt": "Ilustración generada con IA de un robot bípedo experimental corriendo solo en una pista de atletismo.",
+      "visible_credit": "Imagen de portada: recreación editorial generada con IA de un robot genérico; no es una fotografía de Tiangong Ultra ni una prueba de sus marcas deportivas.",
+      "framing_edit": {
+        "tool": "image_gen built-in",
+        "input": "Own previously generated image, no third-party reference",
+        "input_png_sha256": "9b300d64ff50dc3bae6f3356ddc7c26de4b754454e63a7039f70ebdebf0d4070",
+        "prompt": "Edit this editorial robot image. Preserve the same generic robot design, plausible running posture, terracotta track, warm late-afternoon side light, empty stadium, polished detailed photorealistic reconstruction style, and no lettering or logos. Change only the framing: pull the camera back substantially so the ENTIRE robot including its complete head and both feet occupies at most 58 percent of the image height, centered vertically, with at least 22 percent clear image height ABOVE the head and at least 20 percent track BELOW the lowest foot. Keep the robot sharp and recognizable. This must survive a centered crop from 3:2 to 16:9 without cutting the head or feet. Final native landscape output 1536x1024. No text, watermark, extra robot or people."
+      }
+    }
+  ]
+}

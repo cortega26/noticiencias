@@ -9,7 +9,7 @@ tags:
   - popular science
 excerpt: NOAA informó una anomalía de +2,1 °C en Niño-3.4 en su boletín del 8 de octubre; el Canal mantiene medidas de ahorro y anunció más cupos desde el 15 de octubre.
 image: ~/assets/images/2026-09-10-panama-canal-el-nino-original.webp
-image_alt: 'Ilustración de un buque portacontenedores en una esclusa del canal de Panamá con una regla de nivel de agua y una flecha hacia abajo, bajo un sol intenso y olas de calor.'
+image_alt: 'Ilustración generada con IA de un portacontenedores en una esclusa de canal, entre muros de hormigón y colinas tropicales.'
 source_url: https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml
 refinery_id: '2018'
 corrected_at: '2026-10-12'
@@ -80,6 +80,8 @@ social:
   publish: true
   id: 8f7ff1d0af94455f789a29c5ec80d3e68077c2033281e50c00a28dd123f1d110
 ---
+
+_Imagen de portada: recreación editorial generada con IA de navegación en una esclusa; no documenta un tránsito ni un nivel de agua medido en el canal de Panamá._
 
 ## Actualización editorial — 12 de octubre de 2026
 

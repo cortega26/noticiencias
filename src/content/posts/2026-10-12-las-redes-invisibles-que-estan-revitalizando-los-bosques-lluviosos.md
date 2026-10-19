@@ -13,7 +13,7 @@ tags:
   - bosque tropical
 excerpt: Dos estudios en bosques neotropicales documentan la captura de carbono durante la regeneración y modelan cómo la fragmentación limita la dispersión de semillas.
 image: ~/assets/images/2026-10-12-secondary-forest-recovery-original.webp
-image_alt: 'Ilustración de tres etapas de regeneración de un bosque, del suelo despejado con tocones y plántulas a un bosque maduro, con una curva ascendente de recuperación de biomasa y un tucán que dispersa semillas.'
+image_alt: 'Ilustración generada con IA de plántulas y árboles jóvenes junto a un dosel tropical, con un ave que lleva un fruto.'
 source_url: https://doi.org/10.1038/nature16512
 refinery_id: '3344'
 correction_summary: 'Se sustituyó la adaptación extensa de una nota secundaria por una síntesis de dos estudios primarios y se separaron mediciones de carbono de resultados modelados sobre dispersores.'
@@ -75,6 +75,8 @@ social:
   publish: true
   id: b587196de4bb316c648967b394b6cbeb3f2421fa0556a436a648b4d1855b0730
 ---
+
+_Imagen de portada: recreación editorial generada con IA de regeneración de bosque; no documenta una parcela de los estudios._
 
 Los bosques secundarios vuelven a crecer después de que se abandona o reduce una perturbación, pero no todos siguen la misma trayectoria. Dos estudios neotropicales permiten separar dos preguntas: cuánto carbono puede acumular la biomasa durante la regeneración y cómo la fragmentación del paisaje afecta la llegada de semillas.
 

@@ -12,7 +12,7 @@ tags:
   - beta pictoris
 excerpt: Un preprint basado en observaciones de MeerKAT localiza emisiones de radio en Beta Pictoris b y propone un origen auroral; la interpretación aún debe confirmarse.
 image: ~/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp
-image_alt: 'Ilustración de un exoplaneta gigante con un arco de aurora sobre su polo, ondas de radio que viajan hacia dos radiotelescopios y una estrella brillante con su disco de escombros al fondo.'
+image_alt: 'Ilustración generada con IA de un planeta gigante gaseoso con una aurora violeta en el polo y una estrella distante.'
 source_url: https://arxiv.org/abs/2609.16720
 refinery_id: '2955'
 headlines_variants:
@@ -71,6 +71,8 @@ social:
   publish: true
   id: 4b7613427d6403c072d8a80d249f7085bc3c3df96104f340860293d36a67ea46
 ---
+
+_Imagen de portada: interpretación artística generada con IA de la hipótesis auroral; no es una fotografía de Beta Pictoris b ni una observación directa de su aurora._
 
 ## Una señal separada de la estrella
 
