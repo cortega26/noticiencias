@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-25T19:37:48.189Z",
+  "generatedAt": "2026-10-19T11:21:42.216Z",
   "backendRef": "main",
   "pythonIR": {
     "version": 1,
@@ -444,6 +444,8 @@
             "type": "number",
             "optional": true,
             "constraints": {
+              "gt": 0,
+              "positive": true,
               "integer": true
             },
             "unionTypes": null,
