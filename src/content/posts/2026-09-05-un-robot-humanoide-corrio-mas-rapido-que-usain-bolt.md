@@ -12,8 +12,8 @@ tags:
   - usain bolt
   - juegos mundiales de robots
 excerpt: Tiangong Ultra, un robot humanoide, completó los 100 m en 8,64 s, superando a Usain Bolt, aunque sus limitaciones le impiden recibir medallas en pruebas de relevos.
-image: ~/assets/images/2026-09-05-faster-than-usain-bolt-here-s-all-the-records-robot-athletes-broke-at-this-year-s-world-humanoid-robot-games-in-china.jpg
-image_alt: ¿Un robot humanoide corrió más rápido que Usain Bolt?
+image: ~/assets/images/2026-09-05-humanoid-robot-sprint-original.webp
+image_alt: 'Ilustración de un robot humanoide corriendo hacia una meta con un cronómetro arriba y la silueta de un atleta humano unos pasos atrás.'
 source_url: https://livescience.com/technology/robotics/faster-than-usain-bolt-heres-all-the-records-robot-athletes-broke-at-this-years-world-humanoid-robot-games-in-china
 refinery_id: '1779'
 headlines_variants:
