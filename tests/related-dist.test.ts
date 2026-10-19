@@ -28,7 +28,8 @@ describe('related content on articles (P2-01)', () => {
       .find('article h2 a')
       .map((_, el) => page(el).text().trim())
       .get();
-    expect(titles.length).toBe(2);
+    expect(titles.length).toBe(3);
+    expect(titles.join(' | ')).toContain('Shanidar');
     expect(titles.join(' | ')).toContain('Arpones');
     expect(titles.join(' | ')).toContain('Herramientas');
   });
