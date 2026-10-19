@@ -2,65 +2,44 @@
 title: 'Acerca de Noticiencias'
 permalink: /nosotros/
 layout: ../layouts/template/MarkdownLayout.astro
-excerpt: 'Noticiencias es un medio de ciencia y tecnología en español con foco en rigor editorial, trazabilidad y claridad. Conoce nuestro equipo, metodología y compromisos.'
+excerpt: 'Quién es responsable de Noticiencias, qué publicamos y cómo utilizamos fuentes, automatización y correcciones editoriales.'
 header:
   overlay_color: '#333'
 ---
 
-## Misión editorial
+Noticiencias es un medio digital independiente que explica ciencia, salud y tecnología en español. Nuestro objetivo es hacer accesibles hallazgos complejos **sin ocultar las fuentes ni las incertidumbres**.
 
-Noticiencias traduce ciencia, tecnología e internet de interés público a un español claro, responsable y verificable. Priorizamos evidencia primaria, contexto y límites para evitar el hype.
+## Quién está detrás
 
-Nuestro propósito es cerrar la brecha entre los hallazgos científicos y tecnológicos y los 580 millones de hispanohablantes que merecen entenderlos sin intermediarios sensacionalistas.
+**Carlos Ortega** dirige Noticiencias, decide qué se publica y responde por sus criterios editoriales, su operación y sus correcciones. Es un proyecto unipersonal con automatización propia, vinculado a [Tooltician](https://tooltician.com/) y con operación en Chile.
 
-## Qué cubrimos
+Puedes escribir directamente al responsable a través de nuestra [página de contacto](/contacto/). El [repositorio público](https://github.com/cortega26/noticiencias) permite inspeccionar parte del código, las reglas editoriales y su historial de cambios.
 
-- Ciencia, clima, energía y materiales con impacto social real.
-- Tecnología, IA, internet, software y plataformas que cambian cómo vivimos.
-- Salud pública, evidencia clínica y hallazgos biomédicos relevantes.
-- Investigaciones originales, contexto crítico y descubrimientos con consecuencias concretas.
+## Qué publicamos
 
-## Cómo trabajamos
+Explicamos hallazgos de ciencia, medicina, tecnología e internet para lectores hispanohablantes: qué se descubrió, con qué evidencia, qué límites tiene y qué falta saber. Priorizamos noticias con una fuente identificable y contexto útil.
 
-Cada pieza enlaza la fuente registrada. Según la información disponible para ese artículo, su ficha también puede incluir el método de traducción, el estado de la evidencia, verificaciones y límites. Consulta nuestra [metodología editorial](/metodologia/) para conocer el proceso.
+Noticiencias no realiza investigación científica propia: explica la de otros. Cada pieza enlaza la fuente en que se basa, y su ficha de «Fuentes y verificación» indica si se apoya en una fuente primaria (el estudio o el comunicado original) o en la cobertura de un medio.
 
-Nuestro proceso combina **selección automatizada** —a partir de medios científicos de referencia, salas de prensa de universidades y centros de investigación, y repositorios de preprints— con una decisión humana de publicación. Para las propuestas editoriales de artículos, una persona decide si integrarlas al sitio; el historial registra esas integraciones y sus cambios. Rastreamos los hallazgos hasta las fuentes disponibles y explicamos sus límites cuando la información lo permite.
+## Cómo se prepara una noticia
 
-Las fichas pueden incluir:
+El proceso combina herramientas automatizadas con decisiones editoriales:
 
-- **Estado de la evidencia**: una valoración en lenguaje llano, cuando está disponible para esa pieza.
-- **Verificaciones**: qué afirmaciones han sido contrastadas y con qué resultado.
-- **Notas de incertidumbre**: pueden señalar límites de la evidencia cuando esa información está disponible para la pieza.
-- **Método de traducción**: cómo se preparó el texto, cuando ese dato está disponible.
+1. **Detección y selección:** sistemas propios vigilan publicaciones científicas y técnicas; una persona decide qué historias merecen una pieza.
+2. **Elaboración asistida por IA:** herramientas de IA preparan el borrador (resumen, traducción al español, glosario y estructura). Una redacción asistida por IA no es una validación científica independiente.
+3. **Controles y decisión de publicación:** el borrador pasa por controles automáticos y una persona decide si se integra al sitio. No afirmamos que cada dato haya recibido una comprobación humana individual.
+4. **Fuentes y correcciones:** las fichas de los artículos muestran los datos editoriales disponibles para esa pieza. Corregimos los errores documentados y lo indicamos en la propia pieza.
 
-## Independencia editorial
+Nuestra [metodología editorial](/metodologia/) explica el proceso con más detalle. La [página de transparencia](/transparencia/) recoge los criterios de corrección, las limitaciones de la evaluación automatizada y la relación con anunciantes.
 
-Noticiencias es un proyecto editorialmente independiente. No recibimos financiación de gobiernos, partidos políticos ni corporaciones cuyas actividades cubrimos. Nuestras decisiones editoriales no están condicionadas por anunciantes ni patrocinadores.
+## Independencia y financiamiento
 
-Si alguna vez establecemos acuerdos de financiación, los haremos públicos en nuestra [página de transparencia](/transparencia/).
+La selección y presentación de noticias no se venden como contraprestación publicitaria. Actualmente no mostramos anuncios programáticos. Si se habilita publicidad o patrocinio, será reconocible como tal y estará separado del texto editorial. Consulta [Patrocinios](/patrocinios/) para conocer los formatos y sus condiciones.
 
-## Equipo
+## Responsabilidad frente al lector
 
-Noticiencias es un medio unipersonal con automatización propia, dirigido por [Carlos Ortega](https://tooltician.com) ([código y proceso abiertos en GitHub](https://github.com/cortega26/noticiencias)). El modelo de trabajo es híbrido:
-
-- **Automatización editorial**: sistemas propios monitorizan fuentes científicas y técnicas, extraen hallazgos relevantes y generan borradores estructurados con referencias rastreables.
-- **Decisión humana de publicación**: los sistemas preparan borradores y propuestas editoriales; una persona decide cuáles integrar a la rama principal. El historial registra esas integraciones y sus cambios.
-- **Dirección editorial**: Carlos Ortega es responsable de la línea temática, los estándares de calidad y la mejora continua del proceso. Puedes revisar el [marco de gobernanza editorial](https://github.com/cortega26/noticiencias) en GitHub.
-
-Este modelo permite cubrir más ciencia relevante sin los sesgos y limitaciones de tiempo de las redacciones tradicionales, manteniendo la trazabilidad y la responsabilidad editorial — con una persona concreta respondiendo por cada decisión editorial.
-
-## Credenciales y estándares
-
-Nos guían los siguientes compromisos, cada uno verificable:
-
-- **Trazabilidad**: las fichas enlazan las fuentes registradas; la información sobre evidencia y sus límites depende de los datos disponibles para cada artículo. Ver [cómo trabajamos](/metodologia/).
-- **Corrección pública**: los errores se corrigen con nota de actualización visible. Si encuentras algo que no cuadra, [repórtalo aquí](/reportar-problema/).
-- **Actualización continua**: los artículos se revisan y actualizan cuando nueva evidencia cambia las conclusiones.
-- **Evaluación automatizada**: una muestra de artículos se evalúa con un modelo de lenguaje; la página de [transparencia](/transparencia/) describe su alcance y sus límites.
-- **Privacidad**: nuestra [política de privacidad](/privacidad/) describe las herramientas de medición, los datos que registran y las opciones disponibles para los usuarios.
-
-## Contacto
-
-- **Consultas editoriales o correcciones**: [formulario de contacto](/reportar-problema/).
-- **Propuestas técnicas**: abre un issue en [GitHub](https://github.com/cortega26/noticiencias) con la etiqueta `agents:proposal`.
-- **Redes sociales**: síguenos en [X/Twitter](https://twitter.com/noti_ciencias) y [LinkedIn](https://www.linkedin.com/company/111101311/).
+- **Atribución:** enlazamos las fuentes disponibles y distinguimos nuestro trabajo de la investigación original.
+- **Correcciones:** puedes [reportar un problema](/reportar-problema/) indicando la URL y la evidencia; no presentamos la recepción del reporte como una corrección ya realizada.
+- **Salud:** los artículos son informativos y no sustituyen una consulta profesional o una evaluación médica individual.
+- **Privacidad:** explicamos cómo funcionan las herramientas de analítica y el boletín en nuestra [Política de Privacidad](/privacidad/).
+- **Contacto:** disponemos de un [canal público](/contacto/) para consultas generales, legales, comerciales y relacionadas con datos personales.

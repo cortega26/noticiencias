@@ -127,7 +127,12 @@ export function validateReportPayload(body: unknown): ValidationResult {
   const evidenceUrl = validateOptionalString(data, 'evidence_url', 'URL de evidencia', errors);
   if (evidenceUrl !== undefined) {
     try {
-      new URL(evidenceUrl);
+      const url = new URL(evidenceUrl);
+      // Plan 019: scheme allowlist — javascript:/data: URIs would persist to
+      // R2/email and execute on render. Only http(s) evidence links accepted.
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+        errors.push('URL de evidencia no es válida');
+      }
     } catch {
       errors.push('URL de evidencia no es válida');
     }

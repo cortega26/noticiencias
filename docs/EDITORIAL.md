@@ -32,7 +32,10 @@ En el ámbito de Ciencia y Tecnología, es común encontrar términos en inglés
 
 ## 3. Línea roja de monetización
 
-- Sin publicidad programática ni rastreo de terceros, en salud o en general.
-- El patrocinio aceptable (boletín semanal, series etiquetadas) nunca compra
-  cobertura ni tono. Detalle público en [/patrocinios/](/patrocinios/).
+- No hay anuncios programáticos activos. Las condiciones previstas para una
+  eventual publicidad se detallan en [/patrocinios/](/patrocinios/) y
+  [/privacidad/](/privacidad/).
+- Ni la publicidad ni los patrocinios compran cobertura, selección de temas ni
+  tono editorial. El patrocinio aceptable (boletín semanal, series etiquetadas)
+  debe identificarse claramente.
 - La categoría `Editorial` queda reservada a piezas propias de Noticiencias.

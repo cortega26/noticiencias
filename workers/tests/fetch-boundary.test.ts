@@ -26,13 +26,20 @@ function post(path: string, body: unknown, headers: Record<string, string> = {})
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...headers },
     body: json,
+    // Simulate CDN arrival (plan 019): resolveClientIp() only trusts
+    // CF-Connecting-IP when request.cf is present. Without this, boundary
+    // POSTs would share the stricter 'unknown' bucket across tests.
+    // (Minimal stub: only presence is read. Full IncomingRequestCfProperties
+    // needs enterprise bot-management fields nothing here consumes.)
+    cf: { country: 'CL' } as unknown as IncomingRequestCfProperties,
   });
 }
 
 /**
  * Each test gets its own client IP so the per-file shared KV storage does
- * not accumulate rate-limit hits across tests (rate limiting keys on
- * CF-Connecting-IP, which defaults to 'unknown' when absent).
+ * not accumulate rate-limit hits across tests (rate limiting keys on the
+ * CDN-gated CF-Connecting-IP; direct requests without request.cf share the
+ * stricter 'unknown' bucket instead — see plan 019).
  */
 let ipCounter = 0;
 function uniqueIp(): string {

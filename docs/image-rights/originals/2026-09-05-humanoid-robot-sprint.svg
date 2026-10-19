@@ -1,0 +1,57 @@
+<!-- Original vector artwork for Noticiencias, generated with Claude Code on 2026-10-18 from a text description; no external image assets. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#172a4a"/><stop offset="1" stop-color="#34527f"/></linearGradient></defs>
+<rect width="1500" height="1000" fill="url(#sky)"/>
+<circle cx="40" cy="240" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="190" cy="210" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="340" cy="240" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="490" cy="210" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="640" cy="240" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="790" cy="210" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="940" cy="240" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="1090" cy="210" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="1240" cy="240" r="6" fill="#ffe9a8" opacity=".5"/>
+<circle cx="1390" cy="210" r="6" fill="#ffe9a8" opacity=".5"/>
+<path d="M0 560C300 500 700 520 1100 490S1400 500 1500 480V700H0Z" fill="#243c63"/>
+<path d="M0 720H1500V1000H0Z" fill="#c4553a"/>
+<path d="M0 760H1500M0 850H1500M0 940H1500" stroke="#f4e9dd" stroke-width="6" opacity=".85"/>
+<rect x="1250" y="430" width="14" height="300" fill="#e8eef4"/><rect x="1420" y="430" width="14" height="300" fill="#e8eef4"/>
+<rect x="1264" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1264" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1277" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1277" y="466" width="13" height="26" fill="#fff"/>
+<rect x="1290" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1290" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1303" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1303" y="466" width="13" height="26" fill="#fff"/>
+<rect x="1316" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1316" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1329" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1329" y="466" width="13" height="26" fill="#fff"/>
+<rect x="1342" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1342" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1355" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1355" y="466" width="13" height="26" fill="#fff"/>
+<rect x="1368" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1368" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1381" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1381" y="466" width="13" height="26" fill="#fff"/>
+<rect x="1394" y="440" width="13" height="26" fill="#fff"/>
+<rect x="1394" y="466" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1407" y="440" width="13" height="26" fill="#1a1f2b"/>
+<rect x="1407" y="466" width="13" height="26" fill="#fff"/>
+<g stroke="#0f1b30" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".75"><path d="M330 600L372 500" stroke-width="34"/><path d="M330 600L420 650L470 600" stroke-width="22"/><path d="M330 600L270 660L205 640" stroke-width="22"/><path d="M372 505L430 560L470 520" stroke-width="18"/><path d="M372 505L320 540L300 600" stroke-width="18"/></g><circle cx="392" cy="466" r="26" fill="#0f1b30" opacity=".75"/>
+<g stroke-linecap="round" stroke-linejoin="round" fill="none">
+<path d="M780 600L700 690L612 730" stroke="#c9d4df" stroke-width="40"/><circle cx="700" cy="690" r="20" fill="#5d7185" stroke="none"/><rect x="570" y="716" width="76" height="26" rx="12" fill="#6c8197" stroke="none"/>
+<path d="M860 440L800 500L790 580" stroke="#9fb0c0" stroke-width="28"/><circle cx="800" cy="500" r="15" fill="#5d7185" stroke="none"/>
+<path d="M800 590L880 410" stroke="#e8eef4" stroke-width="104"/>
+<path d="M826 540L866 450" stroke="#3a97ff" stroke-width="30"/>
+<path d="M800 600L900 650L960 730" stroke="#dce5ee" stroke-width="40"/><circle cx="900" cy="650" r="20" fill="#5d7185" stroke="none"/><rect x="940" y="716" width="82" height="26" rx="12" fill="#6c8197" stroke="none"/>
+<path d="M880 430L960 470L1010 410" stroke="#dce5ee" stroke-width="28"/><circle cx="960" cy="470" r="15" fill="#5d7185" stroke="none"/>
+</g>
+<g><rect x="860" y="304" width="104" height="82" rx="26" fill="#e8eef4"/><rect x="876" y="326" width="76" height="30" rx="14" fill="#16233a"/><circle cx="930" cy="341" r="9" fill="#3a97ff"/><rect x="896" y="382" width="30" height="26" rx="8" fill="#8fa2b4"/></g>
+<path d="M560 430h170" stroke="#d6e4f2" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+<path d="M500 500h230" stroke="#d6e4f2" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+<path d="M540 570h160" stroke="#d6e4f2" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+<g transform="translate(750 150)"><circle r="92" fill="#e8eef4" stroke="#8fa2b4" stroke-width="12"/><circle r="70" fill="#16233a"/><rect x="-14" y="-122" width="28" height="26" rx="8" fill="#8fa2b4"/><path d="M0 0V-52M0 0L34 22" stroke="#ffd27a" stroke-width="9" stroke-linecap="round"/><circle r="10" fill="#ffd27a"/></g>
+</svg>

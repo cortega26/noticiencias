@@ -145,7 +145,7 @@ test('topic follow clicks are attributed on a hub', async ({ page }) => {
   expect(follow?.params).toMatchObject({ topic_slug: 'coral' });
 });
 
-test('search result clicks carry term and position', async ({ page }) => {
+test('search result clicks contain only safe path and position', async ({ page }) => {
   await page.addInitScript(captureDataLayer);
   await preventNavigations(page);
 
@@ -157,5 +157,27 @@ test('search result clicks carry term and position', async ({ page }) => {
   await expect.poll(() => eventNames(page)).toContain('search_result_click');
   const events = await page.evaluate(() => window.__gaEvents);
   const result = events.find((event) => event.name === 'search_result_click');
-  expect(result?.params).toMatchObject({ search_term: 'ciencia', position: 0 });
+  expect(result?.params).toMatchObject({ position: 0 });
+  expect(result?.params).not.toHaveProperty('search_term');
+  expect(await page.evaluate(() => window.location.search)).toBe('');
+});
+
+test('inbound search query is usable but absent from GA payloads and browser URL', async ({
+  page,
+}) => {
+  await page.addInitScript(captureDataLayer);
+  const privateTerm = 'lector.privado@example.com';
+  await page.goto('/buscar/?q=' + encodeURIComponent(privateTerm));
+
+  await expect(page.locator('#search-box')).toHaveValue(privateTerm);
+  await expect.poll(() => eventNames(page)).toContain('search');
+  expect(await page.evaluate(() => window.location.search)).toBe('');
+
+  const dataLayer = await page.evaluate(() => JSON.stringify(window.dataLayer));
+  expect(dataLayer).not.toContain(privateTerm);
+  const search = await page.evaluate(() =>
+    window.__gaEvents.find((event) => event.name === 'search')
+  );
+  expect(search?.params).toHaveProperty('results_count');
+  expect(search?.params).not.toHaveProperty('search_term');
 });

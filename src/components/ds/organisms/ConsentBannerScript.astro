@@ -1,6 +1,5 @@
 <script>
-  import { consentUpdateFor, readConsent, writeConsent } from '~/utils/browser/consent';
-  import type { ConsentDecision } from '~/utils/browser/consent';
+  import { consentUpdateFor, isDecision, readConsent, writeConsent } from '~/utils/browser/consent';
 
   // Module scripts run once per full page load, not per ClientRouter swap, while
   // the banner element is replaced with the body on every navigation. So: one
@@ -18,7 +17,11 @@
 
     const choice = target?.closest<HTMLElement>('[data-consent-choice]');
     if (choice) {
-      const decision = choice.dataset.consentChoice as ConsentDecision;
+      const decision = choice.dataset.consentChoice;
+      if (!isDecision(decision)) {
+        console.warn('[consent] ignoring unknown consent choice', decision);
+        return;
+      }
       writeConsent(decision);
       (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag?.(
         'consent',

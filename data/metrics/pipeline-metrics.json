@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-09T13:12:56.926Z",
+  "generated_at": "2026-10-19T13:07:18.960Z",
   "content": {
-    "total_articles": 43,
-    "v2_articles": 31,
-    "total_words": 28462,
-    "avg_words": 662,
+    "total_articles": 50,
+    "v2_articles": 38,
+    "total_words": 30309,
+    "avg_words": 606,
     "categories": [
       {
         "name": "Tecnología",
-        "count": 13
+        "count": 16
       },
       {
         "name": "Ciencia",
-        "count": 9
+        "count": 13
       },
       {
         "name": "Salud",
@@ -167,15 +167,75 @@
     ],
     "articles_by_date": [
       {
+        "slug": "2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos",
+        "title": "Bosques secundarios capturan carbono con rapidez, pero su recuperación depende del lugar",
+        "date": "2026-10-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — un estudio reúne mediciones de 45 sitios neotropicales y otro modela diez paisajes del Bosque Atlántico; sus resultados miden variables y alcances distintos y no describen una respuesta universal.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra",
+        "title": "Tres simulaciones sobre geoingeniería solar no alcanzaron un acuerdo",
+        "date": "2026-10-12",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — reporte periodístico basado en un ejercicio de simulación de expertos, sin datos empíricos ni publicación académica.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero",
+        "title": "¿Cómo una alga que busca luz controla el cerebro de un mamífero?",
+        "date": "2026-10-05",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Alta — basado en el anuncio oficial del Premio Nobel y descripciones de la técnica respaldadas por amplia literatura científica revisada por pares.",
+        "review_status": null
+      },
+      {
         "slug": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo",
-        "title": "Si la gravedad actúa como proyector, el universo podría ser holograma",
+        "title": "AdS/CFT: qué demuestra la holografía y qué sigue abierto",
         "date": "2026-09-25",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — La idea holográfica es un pilar teórico consolidado en contextos específicos (AdS/CFT), pero su extensión a nuestro universo y las predicciones observables aún no están verificadas experimentalmente, manteniéndose en el ámbito de cálculos y suposiciones.",
+        "confidence": "Moderada — la dualidad AdS/CFT está formulada para modelos anti-de Sitter; su extensión al cosmos observado no cuenta aquí con una prueba observacional directa.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce",
+        "title": "Nuevo mapa GRACE identifica cambios humanos en el almacenamiento de agua",
+        "date": "2026-09-23",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — el estudio primario mejora la resolución regional de las tendencias, pero sus asociaciones no identifican por sí solas una causa local ni el volumen disponible en cada acuífero.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora",
+        "title": "Una señal de radio localizada en Beta Pictoris b apunta a una posible aurora",
+        "date": "2026-09-21",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada: la señal y su localización son resultados observacionales del preprint; el origen auroral y el campo magnético se infieren mediante un modelo de emisión.",
         "review_status": null
       },
       {
@@ -192,14 +252,14 @@
       },
       {
         "slug": "2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral",
-        "title": "Los cilios del coral crean remolinos de oxígeno nocturnos y fallan cerca de 37 °C",
+        "title": "El calor agudo alteró la coordinación ciliar de un coral en laboratorio",
         "date": "2026-09-20",
         "categories": [
           "Biología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada a alta — estudio revisado por pares publicado en Science con metodología sólida y controlada en acuarios, aunque los autores reconocen limitaciones y preguntas abiertas para futuras investigaciones en condiciones más realistas.",
+        "confidence": "Moderada — estudio revisado por pares con mediciones controladas y tres réplicas biológicas; los resultados corresponden a una especie y el mecanismo incluye un modelo, sin validación de campo.",
         "review_status": null
       },
       {
@@ -235,7 +295,19 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en datos observacionales de fuentes reconocidas (Copernicus, NOAA) pero incluye inferencias y especulaciones sobre la intensidad futura y los impactos regionales específicos.",
+        "confidence": "Moderada — las mediciones oceánicas y los avisos operativos son observaciones oficiales; la intensidad futura y sus impactos regionales siguen siendo pronósticos.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt",
+        "title": "¿Un robot humanoide corrió más rápido que Usain Bolt?",
+        "date": "2026-09-05",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación basado en declaraciones de expertos y datos del evento, sin revisión por pares de los resultados.",
         "review_status": null
       },
       {
@@ -248,6 +320,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda",
+        "title": "Las sesiones largas de eSports dañan tu espalda",
+        "date": "2026-08-28",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — artículo de divulgación basado en estudios citados pero sin presentar datos originales ni revisión por pares profunda.",
         "review_status": null
       },
       {
@@ -288,14 +372,14 @@
       },
       {
         "slug": "2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face",
-        "title": "¿Un modelo de IA realizó más de 17 500 acciones en Hugging Face?",
+        "title": "Cómo modelos de OpenAI comprometieron Hugging Face durante pruebas de seguridad",
         "date": "2026-08-12",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — el informe se basa en análisis de seguridad y comunicados oficiales, pero incluye hipótesis no verificadas sobre el origen del ataque.",
+        "confidence": "Alta para la atribución del incidente por los informes de OpenAI y Hugging Face; las métricas de 17 500 acciones y 300 por hora se atribuyen a IEEE Spectrum y no constituyen una auditoría independiente de Noticiencias.",
         "review_status": null
       },
       {
@@ -336,7 +420,7 @@
       },
       {
         "slug": "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva",
-        "title": "Elias Thorne: el farero ficticio que las IA repiten como si existiera",
+        "title": "Elias y los faros: por qué cuatro modelos de IA repiten historias parecidas",
         "date": "2026-06-12",
         "categories": [
           "Tecnología"
@@ -372,14 +456,14 @@
       },
       {
         "slug": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia",
-        "title": "El MIT vincula la automatización con el 52 % del aumento de la desigualdad desde 1980",
+        "title": "Estudio: la automatización explica 52 % del aumento de desigualdad entre grupos en EE. UU. (1980–2016)",
         "date": "2026-05-07",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — el estudio de MIT utiliza un amplio conjunto de datos (500 grupos demográficos, 49 industrias) pero la información proviene de un comunicado de prensa y no se presentan detalles metodológicos completos ni limitaciones explícitas.",
+        "confidence": "Moderada — es un estudio académico revisado por pares con estimaciones basadas en datos históricos de EE. UU.; sus resultados no se generalizan automáticamente fuera del país y periodo analizados.",
         "review_status": null
       },
       {
@@ -540,7 +624,7 @@
       },
       {
         "slug": "2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas",
-        "title": "Desafío global contra el sarampión por falta de confianza en las vacunas",
+        "title": "Sarampión: por qué las brechas de vacunación favorecen nuevos brotes",
         "date": "2026-01-27",
         "categories": [
           "Salud"
@@ -583,7 +667,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada-alta — estudio publicado con revisión por pares en Signal Transduction and Targeted Therapy (con DOI), reportado por ScienceDaily; no se detalla el tamaño de muestra en la nota de divulgación.",
+        "confidence": "Evidencia preclínica — el estudio usó modelos de ratón y células madre mesenquimales humanas in vitro; no probó eficacia ni seguridad de un tratamiento en pacientes.",
         "review_status": null
       },
       {
@@ -600,14 +684,14 @@
       },
       {
         "slug": "2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma",
-        "title": "La guardería: un lugar donde los bebés intercambian microorganismos y desarrollan su microbioma",
+        "title": "Cómo compartían cepas bacterianas los bebés de tres guarderías",
         "date": "2026-01-25",
         "categories": [
           "Salud"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio revisado por pares publicado en Nature con muestra de 43 bebés y análisis detallado de transmisión microbiana.",
+        "confidence": "Moderada — estudio longitudinal revisado por pares en tres centros, con modelado metagenómico; las estimaciones de origen no prueban cada transmisión y no evalúan resultados clínicos.",
         "review_status": null
       },
       {
@@ -624,7 +708,7 @@
       },
       {
         "slug": "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas",
-        "title": "Arpones de hace 5.000 años en Brasil: caza de ballenas antes de lo pensado",
+        "title": "Arpones de hueso en Brasil apuntan a la caza de ballenas hace casi 5.000 años",
         "date": "2026-01-23",
         "categories": [
           "Arqueología"
@@ -648,7 +732,7 @@
       },
       {
         "slug": "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii",
-        "title": "NASA prepara Artemis II, el regreso de humanos a la órbita lunar",
+        "title": "NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años",
         "date": "2026-01-18",
         "categories": [
           "Astronomía"
@@ -660,7 +744,7 @@
       },
       {
         "slug": "2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados",
-        "title": "Científicos descubren ADN preservado en guepardos momificados",
+        "title": "El ADN de guepardos momificados revela dos linajes históricos en Arabia",
         "date": "2026-01-17",
         "categories": [
           "Biología"
@@ -672,7 +756,7 @@
       },
       {
         "slug": "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras",
-        "title": "El curso del MIT que llevó a un ingeniero a una nueva carrera",
+        "title": "Del MicroMasters del MIT a una maestría: el recorrido de Kevin Power",
         "date": "2026-01-15",
         "categories": [
           "Tecnología"
@@ -695,11 +779,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-09T13:12:56.155Z"
+    "generated_at": "2026-10-19T13:07:18.158Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 43,
+    "derivatives_available": 50,
     "missing_derivatives": 0
   },
   "health": {
@@ -709,16 +793,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "31 artículos v2 completos."
+      "detail": "38 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "43 artículo(s) con imagen y alt.",
+      "detail": "50 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "43 derivativos disponibles."
+      "detail": "50 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -727,10 +811,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "14 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "120 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 14,
+        "processed": 120,
         "failed": 0
       }
     },

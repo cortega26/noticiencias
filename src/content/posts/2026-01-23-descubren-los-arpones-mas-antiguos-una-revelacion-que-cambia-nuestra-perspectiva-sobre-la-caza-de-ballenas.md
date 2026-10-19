@@ -11,8 +11,8 @@ tags:
   - 'arqueología'
   - 'historia antigua'
   - 'caza'
-image: '~/assets/images/2026-01-23-article-107.png'
-image_alt: 'Descubren los Arpones Más Antiguos: Una Revelación que Cambia Nuestra Perspectiva sobre la Caza de Ballenas'
+image: '~/assets/images/2026-01-23-brazil-bone-harpoon-original.webp'
+image_alt: 'Ilustración original de dos arpones de hueso prehistóricos sobre una roca.'
 source_url: 'https://livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago'
 refinery_id: '107'
 headlines_variants:

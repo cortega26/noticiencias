@@ -73,9 +73,10 @@ if (normalized) {
 const _image =
   typeof props.src === 'object' &&
   props.src !== null &&
-  'width' in props.src &&
-  'height' in props.src &&
-  'src' in props.src
+  normalized?.kind === 'local' &&
+  normalized.width !== undefined &&
+  normalized.height !== undefined &&
+  Boolean(normalized.src)
     ? props.src
     : await findImage(finalSrc);
 
@@ -88,9 +89,11 @@ let avifSource:
     }
   | undefined = undefined;
 
+const resolvedClassification = typeof _image === 'string' ? normalizeImage(_image) : null;
+
 if (
   typeof _image === 'string' &&
-  (_image.startsWith('http://') || _image.startsWith('https://')) &&
+  resolvedClassification?.kind === 'remote' &&
   isUnpicCompatible(_image)
 ) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);

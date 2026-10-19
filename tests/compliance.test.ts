@@ -51,6 +51,25 @@ describe('Compliance & Security Suite', () => {
     });
   });
 
+  // Plan 019: framing control cannot live in <meta> (frame-ancestors ignored,
+  // X-Frame-Options unsupported there) and _headers is not applied on Pages,
+  // so the Worker is the enforcement point for HTML responses.
+  describe('Framing control lives at the Worker edge', () => {
+    it('sets X-Frame-Options: SAMEORIGIN on HTML passthrough responses', () => {
+      const source = fs.readFileSync(path.join(__dirname, '../workers/src/index.ts'), 'utf-8');
+      expect(source).toContain("response.headers.set('X-Frame-Options', 'SAMEORIGIN')");
+    });
+
+    it('documents the meta/edge split in DEPLOYMENT_SECURITY_HEADERS.md', () => {
+      const content = fs.readFileSync(
+        path.join(__dirname, '../docs/DEPLOYMENT_SECURITY_HEADERS.md'),
+        'utf-8'
+      );
+      expect(content).toContain('X-Frame-Options: SAMEORIGIN');
+      expect(content).toContain('workers/src/index.ts');
+    });
+  });
+
   it('should have critical placeholder images', () => {
     const defaultImg = path.join(publicDir, 'assets/images/default.png');
     const heroImg = path.join(publicDir, 'assets/images/hero-image.png');

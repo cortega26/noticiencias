@@ -42,6 +42,11 @@ const SOCIAL_ID_RE = /^[0-9a-f]{64}$/;
 // P2-07: `corrected_at` + `correction_summary` travel together; a
 // half-correction (one without the other) is rejected below.
 
+// Frontmatter link fields accept http(s) URLs only. The refinement lives
+// inline as `.refine(...)` on `z.url()` so the line-based parser in
+// scripts/check-contract-sync.js still sees the `z.url()` base type;
+// no `//` comments inside the `z.object` body (same rule as above).
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
 
@@ -125,7 +130,13 @@ const posts = defineCollection({
         .array(
           z.object({
             title: z.string().min(1),
-            url: z.url(),
+            url: z
+              .url()
+              .refine(
+                (v) =>
+                  v.toLowerCase().startsWith('http://') || v.toLowerCase().startsWith('https://'),
+                'URL must use http or https'
+              ),
             publisher: z.string().optional(),
             date: z.string().optional(),
             role: z.enum(['primary', 'secondary']).optional(),
@@ -149,7 +160,13 @@ const posts = defineCollection({
       publication_status: z.enum(['peer_reviewed', 'preprint', 'conference', 'other']).optional(),
       reviewer_name: z.string().min(1).max(120).optional(),
       reviewer_role: z.string().min(1).max(120).optional(),
-      reviewer_profile_url: z.url().optional(),
+      reviewer_profile_url: z
+        .url()
+        .refine(
+          (v) => v.toLowerCase().startsWith('http://') || v.toLowerCase().startsWith('https://'),
+          'URL must use http or https'
+        )
+        .optional(),
       review_date: z
         .string()
         .regex(/^\d{4}-\d{2}-\d{2}$/, 'review_date must be YYYY-MM-DD')

@@ -200,13 +200,15 @@ test('newsletter submit queues one newsletter_submit event', async ({ page }) =>
   ]);
 });
 
-test('search sends a `search` event with the term and result count', async ({ page }) => {
+test('search sends aggregate result count without the term', async ({ page }) => {
   await gotoSettled(page, '/buscar/?q=ciencia');
   await expect
     .poll(async () => (await events(page, 'search')).length, { timeout: 8000 })
     .toBeGreaterThan(0);
   const [first] = await events(page, 'search');
-  expect(first).toMatchObject({ search_term: 'ciencia', transport_type: 'beacon' });
+  expect(first).toMatchObject({ transport_type: 'beacon' });
+  expect(first).not.toHaveProperty('search_term');
+  expect(await page.evaluate(() => window.location.search)).toBe('');
   expect(typeof (first as { results_count: number }).results_count).toBe('number');
 });
 
@@ -251,7 +253,13 @@ test('read depth fires article_50 then article_90 once, not on load', async ({ p
     .poll(async () => (await events(page, 'article_90')).length, { timeout: 5000 })
     .toBe(1);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-  await page.waitForTimeout(300);
+  // Wait for analytics callbacks to settle (consecutive idle frames) so a
+  // duplicate event would have fired before the assertions below run.
+  await page.evaluate(async () => {
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+  });
   expect(await events(page, 'article_50')).toHaveLength(1);
   expect(await events(page, 'article_90')).toHaveLength(1);
 });

@@ -220,9 +220,7 @@
 
     const searchPosition = link.getAttribute('data-analytics-search-result');
     if (searchPosition) {
-      const searchBox = document.getElementById('search-box');
       trackEvent('search_result_click', {
-        search_term: searchBox instanceof HTMLInputElement ? searchBox.value.trim() : '',
         target_path: new URL(link.href, window.location.origin).pathname,
         position: Number.parseInt(searchPosition, 10),
       });

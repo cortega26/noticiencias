@@ -28,7 +28,7 @@ test('search index JSON is accessible', async ({ page }) => {
   // Plan 039: the artifact is now a versioned object { version, index, store }
   // instead of a top-level array of documents.
   expect(data).toBeTruthy();
-  expect(data.version).toBe(1);
+  expect(data.version).toBe(2);
   expect(data.index).toBeTruthy();
   expect(data.store).toBeTruthy();
   const storeEntries = Object.keys(data.store);

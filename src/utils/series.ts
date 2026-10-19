@@ -1,4 +1,5 @@
 import { cleanSlug } from './permalinks';
+import { getSeriesDescription } from './taxonomy-copy';
 import type { Post } from '~/types';
 
 export interface SeriesDossier {
@@ -13,21 +14,9 @@ export interface SeriesDossier {
   posts: Post[];
 }
 
-// Series copy lives here until the publication contract carries a
-// `series_description` field (LAW-F1 sealed; see DEC-023). Unknown series
-// fall back to a neutral line instead of inventing a description.
-const SERIES_DESCRIPTIONS: Record<string, string> = {
-  Espacio:
-    'Astronomía, exploración espacial y cosmología: los hallazgos que amplían el mapa del universo.',
-  'IA en la práctica':
-    'Inteligencia artificial aplicada: herramientas, plataformas y sus efectos reales.',
-  'Salud que importa':
-    'Medicina, biología humana y salud pública, con el modelo experimental a la vista.',
-};
-
-function fallbackDescription(name: string): string {
-  return `Serie de Noticiencias sobre ${name}.`;
-}
+// Series copy lives in the interim taxonomy-copy module until the
+// publication contract carries a `series_description` field (LAW-F1 sealed;
+// see DEC-023). This file delegates to getSeriesDescription; exports stable.
 
 function byOldest(a: Post, b: Post): number {
   return a.publishDate.valueOf() - b.publishDate.valueOf();
@@ -49,7 +38,7 @@ export function buildSeriesDossiers(posts: Post[]): SeriesDossier[] {
       return {
         name,
         slug: cleanSlug(name),
-        description: SERIES_DESCRIPTIONS[name] ?? fallbackDescription(name),
+        description: getSeriesDescription(name),
         count: ordered.length,
         latestDate: ordered[ordered.length - 1].publishDate,
         firstPost: ordered[0],

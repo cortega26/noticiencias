@@ -7,9 +7,9 @@
  *   - search.json exists and is valid JSON
  *   - artifact has version, index, store keys
  *   - store entries do NOT contain 'content' (raw post body)
- *   - all canonical refs (URLs) are unique
+ *   - short numeric Lunr refs map to unique canonical URLs
  *   - store has at least one entry
- *   - deterministic serialization (documents sorted by URL)
+ *   - deterministic serialization (numeric refs and canonical URLs sorted)
  *   - gzip size under 150KB (deployment-friendly ceiling)
  *
  * Exits 0 on success, 1 on failure.
@@ -24,6 +24,12 @@
  * and truncates descriptions to 160 chars at build time
  * (`SEARCH_STORE_DESCRIPTION_MAX_LENGTH`). Re-measure after slim; if gzip
  * still crosses WARN_BYTES (135KB), schedule the Pagefind migration next.
+ *
+ * Re-measured 2026-10-11 (plan 014 spike, post-slim): 147274 bytes gzip at
+ * 43 posts (~3.4 KB/post avg; ~3.6 KB/post marginal over the 7 posts since
+ * 2026-09-16 — the slim did not move the slope). Headroom ~6.3KB ~= 2 posts
+ * (<1 week at 3 posts/week); WARN threshold (135KB) already crossed.
+ * Verdict: trigger near — see docs/search-budget-verdict.md.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
@@ -56,8 +62,8 @@ try {
 if (!artifact || typeof artifact !== 'object') {
   fail('search artifact is not an object');
 }
-if (artifact.version !== 1) {
-  fail(`search artifact version is ${artifact.version}, expected 1`);
+if (artifact.version !== 2) {
+  fail(`search artifact version is ${artifact.version}, expected 2`);
 }
 if (!artifact.index) {
   fail('search artifact is missing the index field');
@@ -78,17 +84,30 @@ for (const [url, entry] of storeEntries) {
   }
 }
 
-// Check unique canonical refs (URLs)
-const urls = storeEntries.map(([url]) => url);
+// v2 uses short stringified numeric Lunr refs, independent of canonical URLs.
+// Require a dense deterministic sequence so every posting maps to a store entry.
+const refs = storeEntries.map(([ref]) => ref);
+for (const [position, ref] of refs.entries()) {
+  if (ref !== String(position)) {
+    fail(`search store ref ${ref} at position ${position} is not a sequential numeric identifier`);
+  }
+}
+
+const urls = storeEntries.map(([ref, entry]) => {
+  if (!entry || typeof entry.url !== 'string' || !entry.url.startsWith('/')) {
+    fail(`search store ref ${ref} has no canonical relative URL`);
+  }
+  return entry.url;
+});
 const uniqueUrls = new Set(urls);
 if (uniqueUrls.size !== urls.length) {
   fail(`store has ${urls.length} entries but only ${uniqueUrls.size} unique URLs (duplicates)`);
 }
 
-// Check deterministic serialization (store keys should be sorted by URL)
-const sortedUrls = [...urls].sort();
+// The numeric refs correspond to documents sorted by canonical URL.
+const sortedUrls = [...urls].sort((a, b) => a.localeCompare(b));
 if (JSON.stringify(urls) !== JSON.stringify(sortedUrls)) {
-  console.warn('⚠️  store keys are not sorted by URL — serialization may not be deterministic');
+  fail('search store URLs are not sorted — artifact serialization is not deterministic');
 }
 
 // Check gzip size

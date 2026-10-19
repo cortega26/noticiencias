@@ -12,8 +12,8 @@ tags:
   - entropía
   - principio
 excerpt: 'La correspondencia AdS/CFT relaciona gravedad en modelos anti-de Sitter con una teoría cuántica en su frontera; aplicarla a nuestro universo sigue siendo una pregunta abierta.'
-image: ~/assets/images/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.webp
-image_alt: Si la gravedad actúa como proyector, el universo podría ser holograma
+image: ~/assets/images/2026-09-25-ads-cft-holography-original.webp
+image_alt: 'Ilustración original de una geometría de espacio-tiempo conectada con una frontera representada como una malla.'
 source_url: https://quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/
 refinery_id: '2671'
 headlines_variants:

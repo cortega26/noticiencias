@@ -51,6 +51,17 @@ Useful local commands:
 - `npm run test:dist`
 - `npm run test:audit`
 - `npm run test:deploy -- <deployed-url>`
+- `npm run verify:ci`
+- `npm run test:e2e`
+- `npm run test:e2e:consent`
+- `npm run test:visual`
+- `npm run check:search-budget`
+
+The Content Guard workflow checks outbound links in published articles. Some
+publisher domains, including `openai.com`, reject automated requests from
+GitHub runner IPs while the referenced pages remain publicly accessible.
+These domains are excluded from the automated HTTP link probe only; original
+sources remain clickable in articles and must be verified when added.
 
 ## Image Derivatives
 

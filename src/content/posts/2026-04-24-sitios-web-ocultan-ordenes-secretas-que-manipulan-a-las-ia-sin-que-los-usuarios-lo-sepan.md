@@ -10,8 +10,8 @@ tags:
   - common crawl
   - google threat intelligence
 excerpt: Investigadores de Google descubrieron que sitios públicos insertan instrucciones ocultas en páginas web para manipular el comportamiento de las inteligencias artificiales que las leen.
-image: ~/assets/images/2026-04-24-ai-threats-in-the-wild-the-current-state-of-prompt-injections-on-the-web.png
-image_alt: 'Esquema de amenazas de inyección de prompts en la web mostrando cómo instrucciones ocultas en sitios web manipulan sistemas de inteligencia artificial'
+image: ~/assets/images/2026-04-24-indirect-prompt-injection-original.webp
+image_alt: 'Ilustración de una página web con instrucciones ocultas en una capa subyacente que desvían la respuesta de un asistente de IA'
 source_url: https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html
 series: 'IA en la práctica'
 refinery_id: 'AI threats in the wild: The current state of prompt injections on the web'

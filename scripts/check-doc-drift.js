@@ -58,6 +58,7 @@ const DEFAULT_DOC_FILES = [
   'docs/DEPLOYMENT_SECURITY_HEADERS.md',
   'docs/EDITORIAL.md',
   'docs/EDITORIAL_VOICE.md',
+  'docs/OPERATOR_PENDING.md',
 ];
 
 const DOC_FILES = (() => {
@@ -228,6 +229,7 @@ function resolveDocPath(rawPath, docDir) {
     'data/',
     'public/',
     'workers/',
+    'plans/',
     '.github/',
     '.contract-snapshots/',
   ];

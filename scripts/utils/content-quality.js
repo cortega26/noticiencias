@@ -143,7 +143,10 @@ function collectFrontmatterDiagnostics(data) {
     diagnostics.push('tags must contain at least one non-empty editorial tag');
   }
 
-  if (!isValidHttpUrl(data.source_url)) {
+  // Original first-party editorials do not have an external source story.
+  // When a source is supplied it must still be a valid absolute URL.
+  const originalEditorial = categories[0]?.toLowerCase() === 'editorial';
+  if ((!originalEditorial || data.source_url != null) && !isValidHttpUrl(data.source_url)) {
     diagnostics.push('source_url must be an absolute http(s) URL');
   }
 

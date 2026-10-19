@@ -19,27 +19,7 @@ env:
   R2_PUBLIC_BASE_URL: ${{ secrets.CLOUDFLARE_R2_PUBLIC_BASE_URL }}
 
 jobs:
-  gate:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Setup Node
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: 🚦 Pre-Publish Gate
-        run: node scripts/pre-publish-gate.js
-
   package:
-    needs: gate
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout your repository using git
@@ -56,6 +36,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: 🚦 Pre-Publish Gate
+        run: node scripts/pre-publish-gate.js
+        timeout-minutes: 5
 
       - name: Restore Astro image cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
@@ -77,9 +61,9 @@ jobs:
           const mode = getImageDeliveryMode();
 
           if (mode === 'r2') {
-            console.log('::notice::Image delivery mode is r2; builds will require CDN-backed derivatives when needed.');
+            console.log('Image delivery mode is r2; builds will require CDN-backed derivatives when needed.');
           } else {
-            console.log('::notice::Image delivery mode is github; builds will emit local Astro-managed assets and skip R2 derivative uploads.');
+            console.log('Image delivery mode is github; builds will emit local Astro-managed assets and skip R2 derivative uploads.');
           }
           EOF
 
@@ -100,15 +84,11 @@ jobs:
   deploy:
     needs: package
     runs-on: ubuntu-24.04
+    # Keep the Pages environment for deployment protection rules. GitHub can
+    # flag even a public, static environment URL as potentially secret; publish
+    # the canonical public link in the successful job summary instead.
     environment:
-      # Static canonical URL (custom domain). A dynamic
-      # `url: ${{ steps.deployment.outputs.page_url }}` makes the runner
-      # skip setting the environment URL ("may contain secret" warning)
-      # and would point at the github.io origin instead of the domain
-      # readers actually visit. Step outputs are still used directly
-      # where functionally needed (verify, post-publish callback).
       name: github-pages
-      url: https://noticiencias.com
     steps:
       - name: Checkout Source for Verification
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -140,6 +120,11 @@ jobs:
           DEPLOY_CHECK_MODE: hybrid
         run: npm run test:deploy -- ${{ steps.deployment.outputs.page_url }}
 
+      - name: Publish canonical site URL
+        if: success()
+        run: |
+          echo 'Published: https://noticiencias.com' >> "$GITHUB_STEP_SUMMARY"
+
       - name: 📣 Post-Publish Callback
         if: success()
         env:
@@ -155,7 +140,7 @@ jobs:
 
       - name: Upload backend notification diagnostics
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: backend-notify-failure
           path: ${{ runner.temp }}/backend-notify-failure.json
