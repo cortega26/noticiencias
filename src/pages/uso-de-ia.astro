@@ -1,0 +1,91 @@
+---
+import MarkdownLayout from '~/layouts/template/MarkdownLayout.astro';
+
+const frontmatter = {
+  title: 'Uso de inteligencia artificial',
+  excerpt:
+    'Cómo usamos IA en Noticiencias, cómo etiquetamos las imágenes editoriales y quién responde por lo que publicamos.',
+};
+---
+
+<MarkdownLayout frontmatter={frontmatter}>
+  <p>
+    La inteligencia artificial forma parte de nuestras herramientas, no de nuestra autoridad
+    editorial. La usamos para procesar más información y hacerla legible en español; la decisión de
+    publicar y la responsabilidad por lo publicado son humanas.
+  </p>
+
+  <h2>Cómo usamos la IA</h2>
+  <p>
+    Modelos de lenguaje nos ayudan a detectar temas, traducir y resumir fuentes, y preparar
+    borradores. También pueden asistir la revisión de claridad o la comparación entre un borrador y
+    su fuente. Son tareas de asistencia: no sustituyen el juicio editorial ni convierten una salida
+    automática en un hecho verificado.
+  </p>
+  <p>
+    Las imágenes editoriales —las ilustraciones que acompañan un artículo— pueden generarse con IA.
+    Cuando eso ocurre, lo indicamos en la propia pieza.
+  </p>
+
+  <h2>Cómo etiquetamos las imágenes</h2>
+  <p>
+    Toda imagen editorial generada o asistida por IA lleva una etiqueta visible bajo la imagen que
+    identifica su origen (por ejemplo, «Ilustración generada con IA»). No la presentamos como
+    fotografía de un hecho real, de una persona o de un lugar. Tampoco usamos una imagen generada
+    para sugerir que documenta el hallazgo del que habla el artículo.
+  </p>
+  <p>
+    El texto alternativo describe la imagen para quien usa lectores de pantalla; la etiqueta visible
+    bajo la imagen es la que informa a cualquier lector de que fue generada con IA.
+  </p>
+  <p>
+    Cuando no consta el origen de una imagen, no la publicamos como si fuera documental. Si
+    detectamos un error de etiquetado, lo corregimos y dejamos constancia.
+  </p>
+
+  <h2>Supervisión humana</h2>
+  <p>
+    Una persona decide qué se publica. Esa decisión no equivale a una revisión humana independiente
+    de cada afirmación: identificamos a un revisor solo cuando existe constancia de esa revisión.
+    Los controles automáticos pueden señalar problemas, pero no sustituyen la responsabilidad
+    editorial.
+  </p>
+  <p>
+    El equipo puede editar, reescribir o descartar cualquier borrador. Ninguna pieza se publica solo
+    porque un modelo la haya generado.
+  </p>
+
+  <h2>Fuentes y atribución</h2>
+  <p>
+    Enlazamos las fuentes disponibles y, cuando existe, el DOI del estudio. La ficha «Fuentes y
+    verificación» indica el estado de la evidencia y los límites que constan para cada pieza. Una
+    imagen con IA no es una fuente: es una ilustración editorial y así se identifica.
+  </p>
+  <p>
+    El crédito de una imagen puede corresponder a Noticiencias, a una herramienta generativa o a un
+    proveedor externo. No atribuimos una imagen a una persona o institución sin base.
+  </p>
+
+  <h2>Correcciones</h2>
+  <p>
+    Si encuentras un error factual, de traducción, de atribución o un etiquetado de imagen
+    incorrecto, envíanos un <a href="/reportar-problema/">reporte con la URL y la evidencia</a>.
+    Corregimos lo que se pueda verificar y, cuando el cambio es relevante, lo explicamos en la
+    pieza.
+  </p>
+  <p>
+    Para consultas generales o cuestiones que no encajan en el formulario, usa la página de
+    <a href="/contacto/">contacto</a>.
+  </p>
+
+  <h2>Contacto</h2>
+  <p>
+    La dirección editorial recae en Carlos Ortega. Puedes escribirnos a través de
+    <a href="/contacto/">Contacto</a> o
+    <a href="/reportar-problema/">Reportar un problema</a>.
+  </p>
+  <p>
+    Esta política se revisa cuando cambian nuestras herramientas, nuestros flujos de publicación o
+    la forma en que etiquetamos las imágenes.
+  </p>
+</MarkdownLayout>
