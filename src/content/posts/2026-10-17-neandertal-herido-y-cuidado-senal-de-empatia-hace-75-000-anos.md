@@ -13,7 +13,7 @@ tags:
   - entierro intencional
 excerpt: Una lanza de 75.000 años dejó una herida letal en Shanidar A, con señales de cura y posible entierro intencional.
 image: ~/assets/images/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.png
-image_alt: "Ilustración generada con IA: restos de un hombro de Neandertal con una perforación de lanza, sostenidos por manos enguantadas en un laboratorio."
+image_alt: 'Ilustración generada con IA: restos de un hombro de Neandertal con una perforación de lanza, sostenidos por manos enguantadas en un laboratorio.'
 source_url: https://404media.co/this-might-be-the-earliest-known-spear-murder-in-earths-history/
 refinery_id: '3724'
 headlines_variants:
@@ -64,7 +64,7 @@ social:
   id: 95af47ac3fa11d7cc9f6f6db9fe178b80a952c809be7724827765af4ea1dd3b6
 ---
 
-*Imagen de portada: ilustración generada con inteligencia artificial (Noticiencias). No es una fotografía del hallazgo.*
+_Imagen de portada: ilustración generada con inteligencia artificial (Noticiencias). No es una fotografía del hallazgo._
 
 Hace 75 000 años, una punta de lanza se clavó en la escápula izquierda de un neandertal llamado Shanidar A, atravesó su pecho y salió por la zona superior de la espalda. La herida, visible hoy en el fósil conservado en el Leverhulme Centre for Human Evolutionary Studies de la Universidad de Cambridge, es uno de los rastros más directos de una posible agresión entre individuos de nuestra especie extinta.
 
