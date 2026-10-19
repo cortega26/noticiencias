@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-18T11:00:22.007Z",
+  "generated_at": "2026-10-19T13:07:18.960Z",
   "content": {
     "total_articles": 50,
     "v2_articles": 38,
-    "total_words": 30076,
-    "avg_words": 602,
+    "total_words": 30309,
+    "avg_words": 606,
     "categories": [
       {
         "name": "Tecnología",
@@ -779,11 +779,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-18T11:00:21.112Z"
+    "generated_at": "2026-10-19T13:07:18.158Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 49,
+    "derivatives_available": 50,
     "missing_derivatives": 0
   },
   "health": {
@@ -802,7 +802,7 @@
     },
     "derivatives": {
       "status": "pass",
-      "detail": "49 derivativos disponibles."
+      "detail": "50 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -811,10 +811,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "109 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "120 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 109,
+        "processed": 120,
         "failed": 0
       }
     },
