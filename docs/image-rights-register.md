@@ -1,13 +1,38 @@
 # Registro puntual de derechos de imagen
 
-Fecha de actualización: 2026-10-18. Este registro cubre los dos activos MIT sustituidos, nueve ilustraciones que reemplazan imágenes con procedencia no verificada y otras ocho ilustraciones vectoriales del 18-10-2026 (dos lotes de cuatro). No certifica derechos para el resto del catálogo. Los reemplazos hasta el 12-10 ya están desplegados (PR #289); las ocho ilustraciones del 18-10 están pendientes de publicación.
+Fecha de actualización: 2026-10-19. Este registro cubre 19 alternativas generadas para artículos. Diez exportaciones vectoriales se sustituyen ahora por imágenes raster detalladas. Esta renovación está preparada en el repositorio; no acredita su despliegue ni una aprobación de AdSense. No certifica derechos para el resto del catálogo.
+
+## Renovación de calidad del 19-10-2026
+
+Se sustituyen las dos ilustraciones vectoriales de MicroMasters y automatización, más las ocho de los PR #304 y #306. Las nueve ilustraciones raster anteriores del 12-10 permanecen sin cambios. Las diez nuevas imágenes se generaron con la herramienta integrada `image_gen` de Codex, a partir de descripciones específicas de cada artículo, sin imágenes de referencia ni activos de terceros como entrada en la generación inicial. El encuadre del robot se ajustó después usando únicamente su propia imagen generada.
+
+Son recreaciones editoriales e interpretaciones artísticas generadas con IA. No documentan personas, lugares, eventos, especímenes ni resultados observados. Cada artículo incorpora un crédito visible y un texto alternativo descriptivo que lo aclara. No se atribuyen a las imágenes licencias de fotografías anteriores ni se garantiza exclusividad.
+
+Las salidas tienen resolución nativa de 1536 × 1024 px (3:2), sin ampliación, exportadas con Sharp a WebP de calidad 90 y esfuerzo 6. Se conservan las rutas de los artículos y de los activos; cambian los hashes y los derivados. El modo de entrega continúa siendo `github`: regenerar el manifiesto no acredita cargas ni disponibilidad en R2. Los SVG anteriores se conservan como historial, **no son la fuente de los nuevos WebP**.
+
+| Artículo                      | Activo actual                                                             | SHA-256 del WebP actual                                            |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| MicroMasters y logística      | `src/assets/images/2026-01-15-micromasters-learning-original.webp`        | `4bc1fe4140556eadfa1fbd82957d3214c3c98e14d7abda91f148797eb996f2d6` |
+| Automatización y salarios     | `src/assets/images/2026-05-07-automation-wages-original.webp`             | `e39e18aa75363d6a5dd9e46014442c315ba36374bfb95cecfa581ae7a69e96dd` |
+| Regeneración de bosques       | `src/assets/images/2026-10-12-secondary-forest-recovery-original.webp`    | `d303612d65976fbae551c56b8867f5ba0c17baba753493e5a068316a31eaf703` |
+| Simulaciones de geoingeniería | `src/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp` | `dd5d038bd4bfad8fef48763140810cd202e94a96639658380bbf1060f87e5c19` |
+| Optogenética                  | `src/assets/images/2026-10-05-optogenetics-light-neuron-original.webp`    | `b69e8b2c407cd7eca6ff14db51a9ff7bcb1fc7efb03db93c2e4bede8b75111e7` |
+| Papiros y tomografía          | `src/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp`         | `f6183187cb566e983ec05474dfac2e6c8d6dade418788370209e2b723057cdd4` |
+| Beta Pictoris b y auroras     | `src/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp`       | `b2a84f95b01d0461bf49a01814893ef89b9e19d2d4f4e0067c3e46aa04f96c99` |
+| Planeta joven Elias 2-24 b    | `src/assets/images/2026-09-17-young-planet-disk-gap-original.webp`        | `a000b1fdb5acd079d5d3dabbd9351f54b91e024a0dccfcf49b6ec1627665aa62` |
+| Canal de Panamá               | `src/assets/images/2026-09-10-panama-canal-el-nino-original.webp`         | `d2b10ba238f0c43b3dbba2ae0abb53fead45c3439ef88a668eb2ae2713d5d153` |
+| Robot bípedo                  | `src/assets/images/2026-09-05-humanoid-robot-sprint-original.webp`        | `aaa00049493e2330d8e2d15ea3c0a9b674e773507c426787898bddc06c6655b3` |
+
+Los [prompts completos y datos de procedencia](./image-rights/quality-refresh-2026-10-19.json) registran el hash del PNG generado, el hash de la exportación anterior y el actual, dimensiones, parámetros de exportación, texto alternativo y crédito. La [comparación antes/después](./image-rights/quality-refresh-2026-10-19.webp) reúne los diez cambios.
 
 ## Activos retirados
 
 - **Artículo del 15-01-2026 sobre el MicroMasters.** El [perfil de MIT News](https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115) identifica la fotografía con el crédito «Photo: Emma Perakis». Sus [términos de uso](https://news.mit.edu/terms-of-use) ofrecen las imágenes descargables bajo CC BY-NC-ND para uso no comercial. No había autorización comercial separada documentada en este repositorio. Se retiraron el JPEG local y su entrada del manifiesto; ya no quedan derivados de esta fotografía en el repositorio ni en el manifiesto activo. Los cuatro objetos R2 autorizados también se eliminaron y sus URL exactas devolvieron 404 tras la purga verificada (ver sección de limpieza).
 - **Artículo del 07-05-2026 sobre automatización.** El [artículo de MIT News](https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507) acredita la imagen «MIT News; iStock». Esa atribución no acredita una licencia comercial de iStock y no se encontró una autorización separada en el repositorio. Se retiraron el JPEG local y su entrada del manifest; no se conserva ningún recorte ni derivado.
 
-## Activos nuevos
+## Versiones anteriores y nueve imágenes raster conservadas
+
+Las subsecciones siguientes conservan la procedencia y los hashes de sus respectivas fechas. Las dos imágenes MIT y los ocho WebP vectoriales del 18-10 se reemplazaron por los activos actuales de la tabla anterior; sus afirmaciones de fuente SVG y estado de publicación son históricas. Las nueve imágenes raster del 12-10 siguen vigentes.
 
 ### Artículo del 15-01-2026
 

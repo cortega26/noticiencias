@@ -12,7 +12,7 @@ tags:
   - recorte salarial
 excerpt: 'Un análisis de EE. UU. (1980–2016) estima que la automatización explica el 52 % del aumento de desigualdad entre grupos. La disipación de rentas explica cerca de una quinta parte de esa contribución; el resultado no es un pronóstico para hoy.'
 image: '~/assets/images/2026-05-07-automation-wages-original.webp'
-image_alt: 'Ilustración original de una persona trabajadora junto a un brazo robótico articulado.'
+image_alt: 'Ilustración generada con IA de un trabajador que observa un brazo robótico de ensamblaje desde una zona protegida de una fábrica.'
 source_url: https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507
 series: 'IA en la práctica'
 refinery_id: 'Study: Firms often use automation to control certain workers’ wages'
@@ -65,6 +65,8 @@ sources:
 corrected_at: '2026-10-09'
 correction_summary: 'Se precisó que el 52 % corresponde al aumento de desigualdad entre grupos en EE. UU. entre 1980 y 2016, y se añadió el artículo académico primario.'
 ---
+
+_Imagen de portada: recreación editorial generada con IA de automatización industrial; no documenta una empresa ni un trabajador del estudio._
 
 Un estudio de Daron Acemoglu y Pascual Restrepo analiza cómo se relacionó la automatización con los salarios en Estados Unidos entre 1980 y 2016. Sus estimaciones atribuyen a la automatización el 52 % del aumento de la desigualdad salarial **entre grupos** durante ese periodo. No significa que explique el 52 % de toda la desigualdad ni que mida lo ocurrido después de 2016.
 

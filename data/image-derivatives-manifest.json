@@ -1,36 +1,36 @@
 {
   "~/assets/images/2026-01-15-micromasters-learning-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "084503a98dab624a",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "4bc1fe4140556ead",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-15-micromasters-learning-original.084503a98dab624a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.084503a98dab624a.400.avif"
+        "objectKey": "posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-15-micromasters-learning-original.084503a98dab624a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.084503a98dab624a.900.avif"
+        "objectKey": "posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-15-micromasters-learning-original.084503a98dab624a.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.084503a98dab624a.1400.avif"
+        "objectKey": "posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-01-15-micromasters-learning-original.084503a98dab624a.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.084503a98dab624a.1500.avif"
+        "objectKey": "posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-15-micromasters-learning-original.4bc1fe4140556ead.1536.avif"
       }
     ]
   },
@@ -735,37 +735,37 @@
     ]
   },
   "~/assets/images/2026-05-07-automation-wages-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "ea8092d810938de1",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "e39e18aa75363d6a",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-05-07-automation-wages-original.ea8092d810938de1.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.ea8092d810938de1.400.avif"
+        "objectKey": "posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-05-07-automation-wages-original.ea8092d810938de1.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.ea8092d810938de1.900.avif"
+        "objectKey": "posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-05-07-automation-wages-original.ea8092d810938de1.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.ea8092d810938de1.1400.avif"
+        "objectKey": "posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-05-07-automation-wages-original.ea8092d810938de1.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.ea8092d810938de1.1500.avif"
+        "objectKey": "posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-07-automation-wages-original.e39e18aa75363d6a.1536.avif"
       }
     ]
   },
@@ -1127,107 +1127,107 @@
     ]
   },
   "~/assets/images/2026-09-05-humanoid-robot-sprint-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "c12b1e8cb124880a",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "aaa00049493e2330",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.400.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.900.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1400.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.c12b1e8cb124880a.1500.avif"
+        "objectKey": "posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-05-humanoid-robot-sprint-original.aaa00049493e2330.1536.avif"
       }
     ]
   },
   "~/assets/images/2026-09-10-panama-canal-el-nino-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "6eba124879562fbd",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "d2b10ba238f0c43b",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.400.avif"
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.900.avif"
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1400.avif"
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.6eba124879562fbd.1500.avif"
+        "objectKey": "posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-10-panama-canal-el-nino-original.d2b10ba238f0c43b.1536.avif"
       }
     ]
   },
   "~/assets/images/2026-09-17-young-planet-disk-gap-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "2efbc4ed41107775",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "a000b1fdb5acd079",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.400.avif"
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.900.avif"
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1400.avif"
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.2efbc4ed41107775.1500.avif"
+        "objectKey": "posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-17-young-planet-disk-gap-original.a000b1fdb5acd079.1536.avif"
       }
     ]
   },
@@ -1302,72 +1302,72 @@
     ]
   },
   "~/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "d85083e18866b164",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "f6183187cb566e98",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.400.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.900.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1400.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.d85083e18866b164.1500.avif"
+        "objectKey": "posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-vesuvius-scroll-xray-original.f6183187cb566e98.1536.avif"
       }
     ]
   },
   "~/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "bc2841280edd6fc1",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "b2a84f95b01d0461",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.400.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.900.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1400.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.bc2841280edd6fc1.1500.avif"
+        "objectKey": "posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-21-exoplanet-radio-aurora-original.b2a84f95b01d0461.1536.avif"
       }
     ]
   },
@@ -1442,107 +1442,107 @@
     ]
   },
   "~/assets/images/2026-10-05-optogenetics-light-neuron-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "b338efdffc7f7610",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "b69e8b2c407cd7ec",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.400.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.900.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1400.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b338efdffc7f7610.1500.avif"
+        "objectKey": "posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-05-optogenetics-light-neuron-original.b69e8b2c407cd7ec.1536.avif"
       }
     ]
   },
   "~/assets/images/2026-10-12-secondary-forest-recovery-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "78166607e59afcf6",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "d303612d65976fba",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.400.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.900.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1400.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.78166607e59afcf6.1500.avif"
+        "objectKey": "posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-secondary-forest-recovery-original.d303612d65976fba.1536.avif"
       }
     ]
   },
   "~/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "01348051686cab4b",
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "dd5d038bd4bfad8f",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.400.avif"
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.900.avif"
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1400.avif"
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.01348051686cab4b.1500.avif"
+        "objectKey": "posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-12-solar-geoengineering-wargame-original.dd5d038bd4bfad8f.1536.avif"
       }
     ]
   },

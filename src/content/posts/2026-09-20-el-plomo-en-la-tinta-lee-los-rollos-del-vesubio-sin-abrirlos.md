@@ -13,7 +13,7 @@ tags:
   - vesubio
 excerpt: Investigadores fabrican réplicas modernas de papiro con tinta con plomo y demuestran que los rayos X pueden leer su contenido tras carbonizarlas, abriendo camino a descifrar los rollos de Herculano.
 image: ~/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp
-image_alt: 'Ilustración de un rollo carbonizado atravesado por rayos X que revelan letras griegas en una pantalla, con la silueta del Vesubio al fondo.'
+image_alt: 'Ilustración generada con IA de una réplica de papiro carbonizado en un soporte de laboratorio junto a un equipo de tomografía.'
 source_url: https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/
 refinery_id: '2451'
 headlines_variants:
@@ -84,6 +84,8 @@ social:
   publish: true
   id: 9d1e11ab861b72335a5967ea5355a53c83c2d9dd40b2824fc25458b8e2544dda
 ---
+
+_Imagen de portada: recreación editorial generada con IA de una réplica de papiro en un laboratorio; no muestra un rollo auténtico ni texto antiguo recuperado._
 
 Un rollo de papiro carbonizado, negro como carbón y tan frágil que al menor contacto se deshace, ha permanecido sellado desde que el Vesubio entró en erupción hace casi dos milenios. Hallado entre las ruinas de Herculano, cerca de Nápoles, ese rollo guarda palabras que ningún ojo moderno ha podido descifrar sin riesgo de destruirlo. ¿Cómo leer lo que está dentro sin abrirlo?
 

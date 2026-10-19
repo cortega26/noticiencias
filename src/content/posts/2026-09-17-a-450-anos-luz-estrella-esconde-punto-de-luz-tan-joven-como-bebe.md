@@ -13,7 +13,7 @@ tags:
   - estrella recién nacida
 excerpt: A 450 años luz, se confirma el exoplaneta Elias 2-24 b, con menos de un millón de años, el mundo alienígena más joven jamás detectado.
 image: ~/assets/images/2026-09-17-young-planet-disk-gap-original.webp
-image_alt: 'Ilustración de una estrella rodeada de anillos de un disco protoplanetario con un hueco amplio donde brilla un planeta joven, y un arco azul de escombros a un lado.'
+image_alt: 'Ilustración generada con IA de un planeta joven dentro de un hueco en un disco de gas y polvo alrededor de una estrella.'
 source_url: https://doi.org/10.3847/2041-8213/ae9bb6
 refinery_id: '2298'
 corrected_at: '2026-10-12'
@@ -79,6 +79,8 @@ social:
   publish: true
   id: 131cdfdaa993954bc9e9df1705e82bc8372e50d675980eff41b029700022b467
 ---
+
+_Imagen de portada: interpretación artística generada con IA de formación planetaria; no es una imagen telescópica de Elias 2-24 b._
 
 A 450 años luz de la Tierra, una estrella recién nacida guarda en su disco de gas y polvo un punto de luz que apenas tiene la edad de un recién nacido humano. Ese punto es Elias 2-24 b, un exoplaneta que, con menos de un millón de años, se convierte en el mundo alienígena más joven jamás confirmado.
 
