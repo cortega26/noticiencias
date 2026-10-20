@@ -19,8 +19,8 @@
  *   2 — usage error or file not found
  */
 
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
+import { existsSync, readFileSync, statSync, writeFileSync } from 'fs';
+import { dirname, join, resolve } from 'path';
 import { format } from 'prettier';
 
 // ---------------------------------------------------------------------------
@@ -30,6 +30,7 @@ import { format } from 'prettier';
 const args = process.argv.slice(2);
 let mode = 'compare'; // 'compare' | 'snapshot' | 'generate-snapshot'
 let strictMode = false;
+let printFields = false;
 let pyPath, tsPath, snapshotPath, generatePath;
 
 for (let i = 0; i < args.length; i++) {
@@ -41,12 +42,15 @@ for (let i = 0; i < args.length; i++) {
     generatePath = args[++i];
   } else if (args[i] === '--strict') {
     strictMode = true;
+  } else if (args[i] === '--print-fields') {
+    printFields = true;
   } else if (args[i] === '--help' || args[i] === '-h') {
     console.log(`Usage:
   node check-contract-sync.js <frontend_schema.py> <config.ts>
   node check-contract-sync.js --strict <frontend_schema.py> <config.ts>
   node check-contract-sync.js --snapshot <snapshot.json> <config.ts>
-  node check-contract-sync.js --generate-snapshot <out.json> <frontend_schema.py> <config.ts>`);
+  node check-contract-sync.js --generate-snapshot <out.json> <frontend_schema.py> <config.ts>
+  node check-contract-sync.js --print-fields <config.ts>`);
     process.exit(0);
   } else if (!pyPath && mode !== 'snapshot') {
     pyPath = args[i];
@@ -63,7 +67,18 @@ if (mode === 'snapshot') {
   pyPath = null;
 }
 
-if ((mode === 'compare' || mode === 'generate-snapshot') && (!pyPath || !tsPath)) {
+// --print-fields only needs the TypeScript config path.
+if (printFields) {
+  tsPath = tsPath || pyPath;
+  pyPath = null;
+}
+
+if (printFields && !tsPath) {
+  console.error('Usage: node scripts/check-contract-sync.js --print-fields <config.ts>');
+  process.exit(2);
+}
+
+if (!printFields && (mode === 'compare' || mode === 'generate-snapshot') && (!pyPath || !tsPath)) {
   console.error('Usage: node scripts/check-contract-sync.js <frontend_schema.py> <config.ts>');
   console.error(
     '       node scripts/check-contract-sync.js --snapshot <snapshot.json> <config.ts>'
@@ -71,6 +86,7 @@ if ((mode === 'compare' || mode === 'generate-snapshot') && (!pyPath || !tsPath)
   console.error(
     '       node scripts/check-contract-sync.js --generate-snapshot <out.json> <py-path> <ts-path>'
   );
+  console.error('       node scripts/check-contract-sync.js --print-fields <config.ts>');
   process.exit(2);
 }
 
@@ -949,14 +965,194 @@ function parseZodDefault(methodStr) {
   return val;
 }
 
+// ---------------------------------------------------------------------------
+// TypeScript schema module resolution
+//
+// The structural z.object can live inline in content.config.ts (fixtures) or
+// in a separate module imported by it (src/schemas/post.ts). Resolution is
+// textual on purpose: this gate stays line-based and does not execute Zod.
+// ---------------------------------------------------------------------------
+
+const TS_MODULE_EXTENSIONS = ['.ts', '.tsx', '.mts', '.js', '.mjs'];
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function isLocalModuleSpecifier(spec) {
+  return spec.startsWith('./') || spec.startsWith('../') || spec.startsWith('~/');
+}
+
+function resolveModulePath(spec, fromFile) {
+  const fromDir = dirname(resolve(fromFile));
+  const base = spec.startsWith('~/') ? resolve(fromDir, spec.slice(2)) : resolve(fromDir, spec);
+  const candidates = [
+    base,
+    ...TS_MODULE_EXTENSIONS.map((ext) => `${base}${ext}`),
+    ...TS_MODULE_EXTENSIONS.map((ext) => join(base, `index${ext}`)),
+  ];
+  return (
+    candidates.find((candidate) => existsSync(candidate) && statSync(candidate).isFile()) || null
+  );
+}
+
+function findSchemaIdentifier(source) {
+  const match = source.match(/\bschema\s*:\s*([A-Za-z_$][\w$]*)/);
+  return match ? match[1] : null;
+}
+
+function findDeclarationStart(source, identifier) {
+  const re = new RegExp(
+    `\\b(?:export\\s+)?(?:const|let|var)\\s+${escapeRegExp(identifier)}\\s*[:=]`
+  );
+  const match = re.exec(source);
+  return match ? match.index : -1;
+}
+
+/**
+ * Collect import/re-export bindings from a module. Only the local name and the
+ * module specifier matter; the parser follows named, default, and re-exported
+ * identifiers so a schema can be re-exported from content.config.ts.
+ */
+function parseModuleBindings(source) {
+  const bindings = [];
+  let match;
+
+  const namedRe = /\bimport\s+(?:type\s+)?\{([^}]*)\}\s+from\s+['"]([^'"]+)['"]/g;
+  while ((match = namedRe.exec(source)) !== null) {
+    for (const part of match[1].split(',')) {
+      const cleaned = part.trim().replace(/^type\s+/, '');
+      if (!cleaned) continue;
+      const [imported, local] = cleaned.split(/\s+as\s+/).map((s) => s.trim());
+      bindings.push({ local: local || imported, spec: match[2] });
+    }
+  }
+
+  const defaultRe = /\bimport\s+([A-Za-z_$][\w$]*)\s+from\s+['"]([^'"]+)['"]/g;
+  while ((match = defaultRe.exec(source)) !== null) {
+    bindings.push({ local: match[1], spec: match[2] });
+  }
+
+  // `export { x } from './mod'` / `export { x as y } from './mod'`
+  const reexportRe = /\bexport\s+(?:type\s+)?\{([^}]*)\}\s+from\s+['"]([^'"]+)['"]/g;
+  while ((match = reexportRe.exec(source)) !== null) {
+    for (const part of match[1].split(',')) {
+      const cleaned = part.trim().replace(/^type\s+/, '');
+      if (!cleaned) continue;
+      const [imported, local] = cleaned.split(/\s+as\s+/).map((s) => s.trim());
+      bindings.push({ local: local || imported, spec: match[2] });
+    }
+  }
+
+  return bindings;
+}
+
+function findLocalBinding(source, identifier) {
+  return parseModuleBindings(source).find(
+    (binding) => binding.local === identifier && isLocalModuleSpecifier(binding.spec)
+  );
+}
+
+/**
+ * Locate the source that defines the posts schema. Returns the config source
+ * (for Astro refinements and cross-field markers) plus the defining module
+ * source and the declaration offset used for object extraction.
+ */
+function loadTypeScriptSchema(configPath) {
+  const resolvedConfigPath = resolve(configPath);
+  const configSource = readFileSync(resolvedConfigPath, 'utf-8');
+
+  // Fast path: inline `schema: z...` (test fixtures and legacy configs).
+  if (configSource.includes('schema: z')) {
+    return {
+      configSource,
+      schemaSource: configSource,
+      schemaPath: resolvedConfigPath,
+      schemaStart: configSource.indexOf('schema: z'),
+    };
+  }
+
+  const identifier = findSchemaIdentifier(configSource);
+  if (!identifier) {
+    throw new Error(
+      'Could not find "schema: z" or "schema: <identifier>" in the TypeScript config'
+    );
+  }
+
+  const configDeclaration = findDeclarationStart(configSource, identifier);
+  if (configDeclaration !== -1) {
+    return {
+      configSource,
+      schemaSource: configSource,
+      schemaPath: resolvedConfigPath,
+      schemaStart: configDeclaration,
+    };
+  }
+
+  let currentPath = resolvedConfigPath;
+  let currentSource = configSource;
+  const visited = new Set([resolvedConfigPath]);
+
+  for (let depth = 0; depth < 5; depth++) {
+    const binding = findLocalBinding(currentSource, identifier);
+    let nextPath;
+
+    if (binding) {
+      nextPath = resolveModulePath(binding.spec, currentPath);
+      if (!nextPath) {
+        throw new Error(`Cannot resolve module "${binding.spec}" imported from ${currentPath}`);
+      }
+    } else {
+      // Follow `export * from './module'` if present.
+      const star = currentSource.match(/\bexport\s+\*\s+from\s+['"]([^'"]+)['"]/);
+      if (!star) break;
+      nextPath = resolveModulePath(star[1], currentPath);
+      if (!nextPath) {
+        throw new Error(`Cannot resolve module "${star[1]}" re-exported from ${currentPath}`);
+      }
+    }
+
+    if (visited.has(nextPath)) {
+      throw new Error(`Circular schema module import involving ${nextPath}`);
+    }
+    visited.add(nextPath);
+
+    const nextSource = readFileSync(nextPath, 'utf-8');
+    const declaration = findDeclarationStart(nextSource, identifier);
+    if (declaration !== -1) {
+      return {
+        configSource,
+        schemaSource: nextSource,
+        schemaPath: nextPath,
+        schemaStart: declaration,
+      };
+    }
+
+    currentPath = nextPath;
+    currentSource = nextSource;
+  }
+
+  throw new Error(`Could not resolve the structural schema "${identifier}" from ${configPath}`);
+}
+
+/**
+ * Combine the config and schema-module sources for marker checks. Cross-field
+ * refinements stay in the config while structural markers (e.g. social's
+ * `publish: z.boolean()`) move with the object, so both are evidence.
+ */
+function combineTypeScriptSources(loaded) {
+  if (loaded.configSource === loaded.schemaSource) return loaded.configSource;
+  return `${loaded.configSource}\n${loaded.schemaSource}`;
+}
+
 /**
  * Parse the TypeScript config.ts file into a SchemaIR.
  */
-function parseTypeScriptSchema(source) {
+function parseTypeScriptSchema(source, schemaStart = null) {
   // Find the schema: z.object({...}) block
   // It's in the form: schema: z\n    .object({\n      field: ...,\n    })\n    .superRefine(...)
-  // First find "schema: z"
-  const schemaIdx = source.indexOf('schema: z');
+  // First find "schema: z", or the resolved module declaration.
+  const schemaIdx = Number.isInteger(schemaStart) ? schemaStart : source.indexOf('schema: z');
   if (schemaIdx === -1) {
     throw new Error('Could not find "schema: z" in config.ts');
   }
@@ -1282,7 +1478,7 @@ function checkCrossFieldInvariants(pySourceOrNull, tsSource) {
           severity: 'error',
           category: 'cross_field_invariant',
           path: `cross-field.${inv.id}`,
-          message: `[cross-field invariant ${inv.id}] ${inv.title} — frontend mirror missing: content.config.ts does not contain "${marker}"`,
+          message: `[cross-field invariant ${inv.id}] ${inv.title} — frontend mirror missing: the config/schema sources do not contain "${marker}"`,
         });
       }
     }
@@ -1440,6 +1636,30 @@ async function main() {
   let pyIr, tsIr;
   let pySourceForInvariants = null;
 
+  if (printFields) {
+    let loaded;
+    try {
+      loaded = loadTypeScriptSchema(tsPath);
+    } catch (e) {
+      console.error(`Cannot read TypeScript schema: ${tsPath}\n${e.message}`);
+      process.exit(2);
+    }
+
+    try {
+      const ir = parseTypeScriptSchema(loaded.schemaSource, loaded.schemaStart);
+      const fields = ir.models['AstroPost']?.fields ?? [];
+      if (fields.length === 0) {
+        console.error('No fields extracted from the TypeScript schema.');
+        process.exit(2);
+      }
+      console.log(fields.map((field) => field.name).join('\n'));
+      process.exit(0);
+    } catch (e) {
+      console.error(`Failed to parse TypeScript schema: ${e.message}`);
+      process.exit(2);
+    }
+  }
+
   if (mode === 'generate-snapshot') {
     // Generate snapshot from Python schema
     let pySource;
@@ -1463,16 +1683,16 @@ async function main() {
     }
 
     // Also read TS to check consistency
-    let tsSource;
+    let tsLoaded;
     try {
-      tsSource = readFileSync(resolve(tsPath), 'utf-8');
+      tsLoaded = loadTypeScriptSchema(tsPath);
     } catch (e) {
       console.error(`Cannot read TypeScript schema: ${tsPath}\n${e.message}`);
       process.exit(2);
     }
 
     try {
-      tsIr = parseTypeScriptSchema(tsSource);
+      tsIr = parseTypeScriptSchema(tsLoaded.schemaSource, tsLoaded.schemaStart);
     } catch (e) {
       console.error(`Failed to parse TypeScript schema: ${e.message}`);
       process.exit(2);
@@ -1516,7 +1736,7 @@ async function main() {
 
     // Also run comparison to validate the snapshot
     const diffs = compareSchemas(pyIr, tsIr, strictMode);
-    diffs.push(...checkCrossFieldInvariants(pySource, tsSource));
+    diffs.push(...checkCrossFieldInvariants(pySource, combineTypeScriptSources(tsLoaded)));
     const exitCode = printReport(diffs, strictMode);
     process.exit(exitCode);
   }
@@ -1580,17 +1800,17 @@ async function main() {
     }
   }
 
-  // Load TypeScript schema
-  let tsSource;
+  // Load TypeScript schema (inline or from the imported structural module)
+  let tsLoaded;
   try {
-    tsSource = readFileSync(resolve(tsPath), 'utf-8');
+    tsLoaded = loadTypeScriptSchema(tsPath);
   } catch (e) {
     console.error(`Cannot read TypeScript schema: ${tsPath}\n${e.message}`);
     process.exit(2);
   }
 
   try {
-    tsIr = parseTypeScriptSchema(tsSource);
+    tsIr = parseTypeScriptSchema(tsLoaded.schemaSource, tsLoaded.schemaStart);
   } catch (e) {
     console.error(`Failed to parse TypeScript schema: ${e.message}`);
     process.exit(2);
@@ -1609,7 +1829,9 @@ async function main() {
   // Compare
   const diffs = compareSchemas(pyIr, tsIr, strictMode);
   if (mode !== 'snapshot') {
-    diffs.push(...checkCrossFieldInvariants(pySourceForInvariants, tsSource));
+    diffs.push(
+      ...checkCrossFieldInvariants(pySourceForInvariants, combineTypeScriptSources(tsLoaded))
+    );
   }
   const exitCode = printReport(diffs, strictMode);
   process.exit(exitCode);

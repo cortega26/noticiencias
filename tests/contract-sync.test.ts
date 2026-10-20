@@ -104,6 +104,79 @@ describe('check-contract-sync', () => {
     });
   });
 
+  // ── Structural schema module extraction ────────────────────────
+  describe('structural schema module extraction', () => {
+    const EXPECTED_FIELDS = [
+      'title',
+      'schema_version',
+      'excerpt',
+      'author',
+      'date',
+      'categories',
+      'tags',
+      'image',
+      'image_alt',
+      'permalink',
+      'source_url',
+      'refinery_id',
+      'headlines_variants',
+      'translation_method',
+      'editorial_score',
+      'review_status',
+      'confidence',
+      'investigation',
+      'requires_uncertainty_note',
+      'featured',
+      'featured_rank',
+      'summary_points',
+      'uncertainty_note',
+      'glossary',
+      'fact_check',
+      'evidence_subject_type',
+      'evidence_detail',
+      'why_it_matters',
+      'series',
+      'sources',
+      'social',
+      'institution',
+      'publication_status',
+      'reviewer_name',
+      'reviewer_role',
+      'reviewer_profile_url',
+      'review_date',
+      'known_points',
+      'open_questions',
+      'corrected_at',
+      'correction_summary',
+    ];
+
+    it('extracts the exact top-level field set from the imported module', () => {
+      const result = runSync(`--print-fields ${resolve('src/content.config.ts')}`);
+      expect(result.exitCode).toBe(0);
+      expect(result.stdout.trim().split('\n')).toEqual(EXPECTED_FIELDS);
+    });
+
+    it('resolves a schema re-exported from content.config.ts', () => {
+      const tmp = mkdtempSync(join(tmpdir(), 'contract-sync-module-'));
+      try {
+        writeFileSync(
+          join(tmp, 'post.ts'),
+          "import { z } from 'astro/zod';\nexport const postSchema = z.object({\n  title: z.string().min(5),\n  author: z.string().default('X'),\n});\n"
+        );
+        writeFileSync(
+          join(tmp, 'content.config.ts'),
+          "export { postSchema } from './post';\nconst posts = { schema: postSchema };\n"
+        );
+
+        const result = runSync(`--print-fields ${join(tmp, 'content.config.ts')}`);
+        expect(result.exitCode).toBe(0);
+        expect(result.stdout.trim().split('\n')).toEqual(['title', 'author']);
+      } finally {
+        rmSync(tmp, { recursive: true, force: true });
+      }
+    });
+  });
+
   // ── Snapshot mode ──────────────────────────────────────────────
   describe('snapshot mode', () => {
     const SNAPSHOT_PATH = resolve('tests/fixtures/contract-sync/test-snapshot.json');

@@ -90,7 +90,7 @@
       "npm run check:image-alt",
       "npm run check:slug-quality"
     ],
-    "src/content.config.ts": [
+    "src/{content.config.ts,schemas/post.ts}": [
       "npm run check:contract-sync"
     ],
     "src/content/posts/*.md": [
