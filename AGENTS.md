@@ -55,7 +55,7 @@ Current architectural pillars:
 - `src/components/common/`: site-specific reusable fragments, including the site shell header/logo and the metadata helpers migrated out of the retired `template` layer.
 - `src/utils/`: reusable data and URL helpers. These must stay mostly pure.
 
-The template layer (`src/components/template/`, `src/layouts/template/`) was retired by plan 183; no files remain there. Until the superseding ADR lands (plan 060 §9.5), do not reintroduce files under those paths. `ds` components must not import the retired layer.
+The template layer (`src/components/template/`, `src/layouts/template/`) was retired by plan 183 and **ADR-0014** supersedes ADR-0002. The paths are gone and must not be recreated: new presentational work goes to `src/components/ds/`, site-specific fragments to `src/components/common/`, and page chrome to `src/layouts/`.
 
 ### 1.1) Data flow
 
@@ -107,13 +107,13 @@ Rules:
 - `src/layouts/` must not contain collection querying, taxonomy normalization, or ad hoc content repair logic.
 - `src/components/ds/` are presentational building blocks for the Noticiencias UI. They must accept typed props and remain route-agnostic.
 - `src/components/common/` is for site-specific reusable fragments that do not fit the `ds` atom/molecule/organism taxonomy, including the site shell header/logo and metadata plumbing.
-- `src/components/template/` and `src/layouts/template/` are retired (plan 183): no live files remain. Do not add files there; the guard and layer are removed by the superseding ADR (plan 060 §9.5).
+- `src/components/template/` and `src/layouts/template/` are retired by **ADR-0014**; the paths do not exist and must not be recreated. New work goes to `ds/`, `common/` or `layouts/`.
 
 Reject in review:
 
 - A page importing low-level browser helpers and DOM logic directly when a component should own it.
 - A layout repairing malformed content or parsing frontmatter strings.
-- A `ds` component importing from `components/template/`.
+- A file importing from the retired `components/template/` or `layouts/template/` paths.
 
 ### LAW-F3: Server-first rendering is the default
 

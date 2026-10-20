@@ -1,7 +1,7 @@
 # ADR-0002: Two UI layers (ds and template) with a one-way dependency rule
 
 - **Date**: 2024-01-01
-- **Status**: Accepted
+- **Status**: Superseded by [ADR-0014](0014-retire-two-ui-layers.md) (2026-10-20)
 
 ## Context
 

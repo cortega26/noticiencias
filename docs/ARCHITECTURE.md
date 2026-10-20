@@ -119,7 +119,9 @@ freeze guard is intentionally still in place until the superseding ADR (plan
 ### `src/components/common/`
 
 Owns site-specific shared fragments that are not Noticiencias design-system primitives,
-including the Astrowind-derived shell migrated out of the retired template layer.
+including the Astrowind-derived shell. The former two-layer structure is retired by
+[ADR-0014](adr/0014-retire-two-ui-layers.md): `ds` owns primitives, `common` site
+fragments, and `layouts` page chrome; the template paths are gone.
 
 ### `src/utils/`
 

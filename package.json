@@ -41,7 +41,6 @@
     "schema:update": "UPDATE_SCHEMA=1 vitest run tests/post-json-schema.test.ts",
     "check:tags": "node scripts/check-tags.js",
     "check:translation-residue": "node scripts/check-translation-residue.js",
-    "check:freeze": "node scripts/freeze-template.js",
     "check:search-budget": "node scripts/check-search-budget.js",
     "generate:metrics": "node scripts/generate-metrics.js",
     "test:dist": "node scripts/dist-sanity.js",
@@ -50,7 +49,7 @@
     "test:e2e": "playwright test",
     "build:consent-fixture": "NOTICIENCIAS_GA_ID=G-E2ETEST00 astro build --outDir dist-consent",
     "test:e2e:consent": "npm run build:consent-fixture && playwright test -c playwright.consent.config.ts",
-    "validate:content": "npm run check:content && astro sync && astro check && npm run check:freeze",
+    "validate:content": "npm run check:content && astro sync && astro check",
     "verify:ci": "npm run lint && npm run validate:content && npm run build && npm run test:dist && npm run check:search-budget && npm run test:audit && CI=1 npm run test:e2e && npm run test:e2e:consent && npm run check:contract-sync"
   },
   "dependencies": {
