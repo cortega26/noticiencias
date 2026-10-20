@@ -122,3 +122,47 @@ this repo's other test fixtures use `example.com` for placeholder sources.
 No fabricated real-world sources, fact checks, glossary entries, or
 confidence levels appear in any fixture — see plan 060's evidence-baseline
 rule against inventing editorial content.
+
+### Phase 6 (v1 results, 2026-10-20, plan 175)
+
+The neutral artifact for this corpus is `src/schemas/post.schema.json`,
+generated from `postStructuralSchema` (`src/schemas/post.ts`) with Zod 4's
+`z.toJSONSchema`. Regenerate it with `npm run schema:update`; never edit it by
+hand. `tests/post-json-schema.test.ts` asserts deterministic regeneration
+against the committed bytes and runs in `npm run test:audit`.
+
+Decisions this phase made explicit (continuing "Known design gap" above):
+
+- **Date representation.** Frontmatter dates are **strings** in the neutral
+  artifact: `date` is
+  `{ "oneOf": [{ "type": "string", "format": "date" }, { "type": "string", "format": "date-time" }] }`.
+  That matches this corpus (date-only `YYYY-MM-DD`) and the backend's
+  `Union[date, datetime]`. Zod consumes `Date` objects because Astro's loader
+  parses unquoted frontmatter dates before validation; the parity test converts
+  each fixture string to an explicit UTC `Date` (`YYYY-MM-DDT00:00:00.000Z`)
+  before calling Zod, and documents that conversion.
+- **Unknown properties remain allowed.** Zod silently strips unknown keys and
+  Pydantic accepts-and-ignores them (no `extra="forbid"`), so the generated
+  schema omits `additionalProperties` at the top level and on nested objects
+  (JSON Schema's allow-by-default). `social` is the exception: it is strict in
+  both contracts and stays `"additionalProperties": false`. The
+  `additional-property-stripped` fixture validates against the JSON Schema and
+  both Zod contracts, and the test also asserts Zod strips the unknown key.
+- **Structural vs semantic scope.** The artifact is generated from
+  `postStructuralSchema` only. The `schema_version >= 2` editorial
+  requirements, the correction pair, `featured_rank`, `image_alt`, the
+  `social.id` rule and the `doi`/role rule live in `src/content.config.ts`'s
+  `superRefine`, which `z.toJSONSchema` cannot encode. Consequently the five
+  `invalid/v2-missing-{summary-points,glossary,fact-check,confidence,sources}.json`
+  fixtures pass the structural artifact and fail the full posts schema (and
+  Pydantic); the test names this gap explicitly. The `http(s)`-only source URL
+  refinement is likewise not encoded — `format: "uri"` accepts any scheme,
+  while both Zod contracts reject non-http(s) URLs.
+- **Corpus correction (no content change).** `invalid/v2-missing-why-it-matters.json`
+  is **valid** under the current contract: P0-06/DEC-003 removed the minimum
+  for `why_it_matters` (0–3 items, absence allowed), and Pydantic mirrors that.
+  The file is left frozen per the versioning rule; the test asserts it is valid
+  under both Zod contracts and the JSON Schema so the stale label cannot hide a
+  regression.
+
+Version stays **v1**: no fixture was added, removed, or edited.
