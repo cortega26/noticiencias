@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Noticiencias post frontmatter (structural)",
+  "type": "object",
+  "properties": {
+    "author": { "default": "Noticiencias", "type": "string" },
+    "categories": {
+      "default": [],
+      "items": { "type": "string" },
+      "type": "array"
+    },
+    "confidence": { "type": "string" },
+    "corrected_at": { "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "type": "string" },
+    "correction_summary": {
+      "maxLength": 500,
+      "minLength": 1,
+      "type": "string"
+    },
+    "date": {
+      "oneOf": [
+        { "format": "date", "type": "string" },
+        { "format": "date-time", "type": "string" }
+      ]
+    },
+    "editorial_score": { "type": "number" },
+    "evidence_detail": { "maxLength": 280, "minLength": 1, "type": "string" },
+    "evidence_subject_type": {
+      "enum": [
+        "humans",
+        "animals",
+        "in_vitro",
+        "computational",
+        "observational",
+        "experimental",
+        "mixed",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "excerpt": { "minLength": 10, "type": "string" },
+    "fact_check": {
+      "items": {
+        "properties": {
+          "label": { "type": "string" },
+          "status": { "type": "string" }
+        },
+        "required": ["label", "status"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "featured": { "default": false, "type": "boolean" },
+    "featured_rank": {
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991,
+      "type": "integer"
+    },
+    "glossary": {
+      "items": {
+        "properties": {
+          "definition": { "minLength": 1, "type": "string" },
+          "term": { "minLength": 1, "type": "string" }
+        },
+        "required": ["term", "definition"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "headlines_variants": {
+      "properties": {
+        "benefit": { "type": "string" },
+        "question": { "type": "string" }
+      },
+      "type": "object"
+    },
+    "image": {
+      "anyOf": [
+        { "type": "string" },
+        {
+          "properties": {
+            "alt": { "type": "string" },
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            },
+            "src": { "type": "string" },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          },
+          "required": ["src", "width", "height"],
+          "type": "object"
+        }
+      ]
+    },
+    "image_alt": { "type": "string" },
+    "institution": { "maxLength": 160, "minLength": 1, "type": "string" },
+    "investigation": { "default": false, "type": "boolean" },
+    "known_points": {
+      "items": { "minLength": 1, "type": "string" },
+      "maxItems": 3,
+      "type": "array"
+    },
+    "open_questions": {
+      "items": { "minLength": 1, "type": "string" },
+      "maxItems": 3,
+      "type": "array"
+    },
+    "permalink": { "type": "string" },
+    "publication_status": {
+      "enum": ["peer_reviewed", "preprint", "conference", "other"],
+      "type": "string"
+    },
+    "refinery_id": { "type": "string" },
+    "requires_uncertainty_note": { "default": false, "type": "boolean" },
+    "review_date": { "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "type": "string" },
+    "review_status": { "type": "string" },
+    "reviewer_name": { "maxLength": 120, "minLength": 1, "type": "string" },
+    "reviewer_profile_url": { "format": "uri", "type": "string" },
+    "reviewer_role": { "maxLength": 120, "minLength": 1, "type": "string" },
+    "schema_version": {
+      "default": 1,
+      "maximum": 9007199254740991,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "series": { "type": "string" },
+    "social": {
+      "additionalProperties": false,
+      "properties": {
+        "id": { "pattern": "^[0-9a-f]{64}$", "type": "string" },
+        "publish": { "default": false, "type": "boolean" }
+      },
+      "type": "object"
+    },
+    "source_url": { "format": "uri", "type": "string" },
+    "sources": {
+      "items": {
+        "properties": {
+          "date": { "type": "string" },
+          "doi": { "pattern": "^10\\.\\d{4,}\\/.+", "type": "string" },
+          "publisher": { "type": "string" },
+          "role": { "enum": ["primary", "secondary"], "type": "string" },
+          "title": { "minLength": 1, "type": "string" },
+          "url": { "format": "uri", "type": "string" }
+        },
+        "required": ["title", "url"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary_points": {
+      "items": { "minLength": 1, "type": "string" },
+      "maxItems": 5,
+      "minItems": 2,
+      "type": "array"
+    },
+    "tags": { "default": [], "items": { "type": "string" }, "type": "array" },
+    "title": { "minLength": 5, "type": "string" },
+    "translation_method": { "type": "string" },
+    "uncertainty_note": { "type": "string" },
+    "why_it_matters": {
+      "items": { "minLength": 1, "type": "string" },
+      "maxItems": 3,
+      "type": "array"
+    }
+  },
+  "required": ["date", "excerpt", "image", "title"]
+}
