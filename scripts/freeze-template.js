@@ -2,20 +2,11 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 
 const allowedTemplateFiles = new Set([
-  'src/components/template/common/Image.astro',
-  'src/components/template/common/Metadata.astro',
-  'src/components/template/common/Analytics.astro',
-  'src/components/template/common/CommonMeta.astro',
-  'src/components/template/common/buildHead.ts',
-  'src/components/template/common/seo.ts',
-  'src/components/template/CustomStyles.astro',
-  'src/components/template/blog/ToBlogLink.astro',
-  'src/components/template/ui/Button.astro',
-  // Plan 112 deleted the unused widgets (Pricing, Testimonials, Brands,
-  // CallToAction) — entries removed with the files, not kept stale.
-  // Plan 181 deleted the remaining unreachable template components —
-  // entries removed with the files as well.
-  'src/components/template/widgets/Header.astro',
+  // Plan 183 moved the last live surfaces out of `src/components/template/`
+  // and deleted the two dead layouts, so no template files remain. The guard
+  // is intentionally left in place until the superseding ADR (plan 060 §9.5)
+  // removes the layer: any reintroduced file under the frozen path is still
+  // an architecture violation.
 ]);
 
 try {

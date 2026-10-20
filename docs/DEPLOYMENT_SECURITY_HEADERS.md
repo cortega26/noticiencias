@@ -16,7 +16,7 @@ with current image, analytics and API origins before applying it.
 
 The `Content-Security-Policy` line below is kept byte-identical to the
 `<meta http-equiv="Content-Security-Policy">` tag in
-`src/components/template/common/CommonMeta.astro`, which is the enforcing copy
+`src/components/common/CommonMeta.astro`, which is the enforcing copy
 on GitHub Pages. `tests/compliance.test.ts` treats that meta tag as the single
 source of truth and fails if this document or `public/_headers` drifts from it,
 so edit the component first and mirror the change here.

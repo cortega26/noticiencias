@@ -1,7 +1,7 @@
 ---
 title: 'Patrocinios'
 permalink: /patrocinios/
-layout: ../layouts/template/MarkdownLayout.astro
+layout: ../layouts/MarkdownLayout.astro
 excerpt: 'Patrocinio ético para Noticiencias: criterios, formatos y contacto.'
 ---
 

@@ -39,7 +39,7 @@ vi.mock('~/utils/utils', () => ({
 }));
 
 import { getCanonical } from '../src/utils/permalinks';
-import { buildHead } from '../src/components/template/common/buildHead';
+import { buildHead } from '../src/components/common/buildHead';
 
 function findMeta(tags: ReturnType<typeof buildHead>, key: string, value: string) {
   return tags.filter(

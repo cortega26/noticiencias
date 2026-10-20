@@ -18,7 +18,7 @@ The frontend is a static Astro site with:
 - site and blog path configuration in `src/config.yaml`
 - route entrypoints in `src/pages/`
 - shared layout and metadata plumbing in `src/layouts/`
-- two UI layers, `components/ds/` and `components/template/`
+- one UI layer, `components/ds/`, plus site-specific `components/common/` fragments (the `template/` layer is retired, plan 183)
 - scoped browser behavior with global Astro `ClientRouter` navigation
 - a separate Cloudflare Worker under `workers/` for API routes and Markdown content negotiation
 
@@ -40,7 +40,7 @@ These files are the source of truth for the exact contract they implement:
    - canonical permalink and canonical URL helper behavior
 4. `src/utils/blog.ts`
    - normalized post loading, taxonomy extraction, and duplicate permalink detection
-5. `src/components/template/common/Metadata.astro`
+5. `src/components/common/Metadata.astro`
    - final SEO tag emission path
 6. `.github/workflows/*.yml` and `package.json`
    - authoritative CI and validation commands
@@ -87,11 +87,11 @@ Cross-repo rule:
 - The `posts` frontmatter contract includes an optional `social` object (`{ publish: boolean = false, id?: 64-char lowercase hex }`) for social-distribution opt-in — mirror of `SocialConfig` in the backend `news_collector/contracts/frontend_schema.py`. Absent by default; an explicit `social: null` is rejected on both sides; unknown keys inside `social` are rejected.
 - New contributor guidance must reference `src/content/posts/`, not legacy \_posts or src/content/post/ (deprecated path, does not exist).
 - Category and tag archive pathnames come from `src/config.yaml`, currently `categorias` and `temas`.
-- Metadata flows through page/layout props into `src/components/template/common/Metadata.astro`; pages should not bypass that path for normal SEO.
+- Metadata flows through page/layout props into `src/components/common/Metadata.astro`; pages should not bypass that path for normal SEO.
 - Search is implemented as:
   - build-time serialized Lunr index + compact result store in `src/pages/search.json.js` (via `src/utils/build-search-index.ts`, plan 039); v2 uses numeric Lunr refs mapped to store entries with canonical URLs to reduce gzip without changing the indexed text
   - browser-only `lunr.Index.load()` deserialize in `src/components/common/SearchInterface.astro`
-- View transitions are globally enabled in `src/layouts/template/Layout.astro`; routed page scripts must therefore be idempotent across Astro navigations.
+- View transitions are globally enabled in `src/layouts/Layout.astro`; routed page scripts must therefore be idempotent across Astro navigations.
 - `src/pages/social-manifest.json.ts` builds `/social-manifest.json` — a public, operational JSON snapshot of every article route this build publishes with its normalized `social` config and canonical URL, plus build provenance. It is not linked from the site and is excluded from the sitemap (an explicit `/social-manifest.json` filter in `astro.config.mjs`, since `@astrojs/sitemap` does emit JSON endpoint routes — cf. the `/search.json` exclusion); `scripts/dist-sanity.js` asserts both.
 - Tag archive pages under `/temas/[tag]/` are `robots: { index: false }` (`src/pages/temas/[tag]/[...page].astro`); the sitemap filter in `astro.config.mjs` excludes them, reading the tag base path from `src/config.yaml`'s `apps.blog.tag.pathname` at build time (the same source `TAG_BASE` in `src/utils/permalinks.ts` derives from) rather than a hardcoded `/temas/` literal, so the exclusion still holds if the taxonomy pathname is ever renamed (Ahrefs Site Audit flagged 150 `/temas/` URLs as "noindex page in sitemap" before this filter existed).
 - Legacy and hub URLs that no longer have a page redirect through `data/legacy-redirects.json` (source → target, both absolute paths with a trailing slash), loaded by `astro.config.mjs` into Astro's `redirects`. The host is static (GitHub Pages), so these are instant meta-refresh pages (`noindex`, canonical to the target), not HTTP 301s; they never enter the sitemap. Unpublishing a post must retarget or remove its entries in the same change — `tests/legacy-redirects.test.ts` fails when a target is not built or is itself a redirect.
