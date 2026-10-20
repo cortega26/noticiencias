@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { ANALYTICS, SITE } from 'astrowind:config';
 import { isAnalyticsEnabled } from '~/utils/browser/consent';
-import { getHomePermalink } from '~/utils/permalinks';
+import { getHomePermalink, getPermalink } from '~/utils/permalinks';
 
 interface Link {
   text?: string;
@@ -34,6 +34,13 @@ const {
 
 // Plan 009: lets people change their analytics choice; only meaningful while GA4 is on.
 const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics?.id);
+
+// Plan 169: the AI-use policy sits with the legal links, which navigation.ts
+// passes as secondaryLinks.
+const footerSecondaryLinks = [
+  ...secondaryLinks,
+  { text: 'Uso de IA', href: getPermalink('/uso-de-ia/') },
+];
 ---
 
 <footer
@@ -53,7 +60,7 @@ const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics
         </p>
         <div class="text-sm text-muted flex flex-wrap gap-x-1 gap-y-1">
           {
-            secondaryLinks.map(({ text, href }, index) => (
+            footerSecondaryLinks.map(({ text, href }, index) => (
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
@@ -67,7 +74,7 @@ const showConsentToggle = isAnalyticsEnabled(ANALYTICS?.vendors?.googleAnalytics
           {
             showConsentToggle && (
               <>
-                {secondaryLinks.length ? ' · ' : ''}
+                {footerSecondaryLinks.length ? ' · ' : ''}
                 <button
                   type="button"
                   data-consent-open

@@ -4,7 +4,7 @@ schema_version: 2
 date: 2026-10-17
 author: Noticiencias AI
 categories:
-  - Tecnología
+  - Arqueología
 tags:
   - shanidar a
   - herida de lanza
@@ -63,8 +63,6 @@ social:
   publish: true
   id: 95af47ac3fa11d7cc9f6f6db9fe178b80a952c809be7724827765af4ea1dd3b6
 ---
-
-_Imagen de portada: ilustración generada con inteligencia artificial (Noticiencias). No es una fotografía del hallazgo._
 
 Hace 75 000 años, una punta de lanza se clavó en la escápula izquierda de un neandertal llamado Shanidar A, atravesó su pecho y salió por la zona superior de la espalda. La herida, visible hoy en el fósil conservado en el Leverhulme Centre for Human Evolutionary Studies de la Universidad de Cambridge, es uno de los rastros más directos de una posible agresión entre individuos de nuestra especie extinta.
 
