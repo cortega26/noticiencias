@@ -1028,7 +1028,9 @@ export async function runPostDeployCheck(
     try {
       json = JSON.parse(searchProbe.result.body);
     } catch (error) {
-      throw new Error(`Search Index verification failed: invalid JSON (${error.message})`);
+      throw new Error(`Search Index verification failed: invalid JSON (${error.message})`, {
+        cause: error,
+      });
     }
 
     const searchResult = verifySearchJson(json);

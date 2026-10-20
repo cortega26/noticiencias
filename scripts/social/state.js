@@ -911,7 +911,7 @@ async function runTransition({
   requireSession(session);
   let attempt = 0;
   let lastConflictState = null;
-  let sizeWarning = false;
+  let sizeWarning;
   while (attempt < maxAttempts) {
     attempt += 1;
     const { state, blobSha } = await loadState({ store });
