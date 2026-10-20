@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { buildHead, type HeadTag } from '../../src/components/template/common/buildHead';
-import type { SeoProps } from '../../src/components/template/common/seo';
+import { buildHead, type HeadTag } from '../../src/components/common/buildHead';
+import type { SeoProps } from '../../src/components/common/seo';
 
 /**
  * Plan social-distribution §11: buildHead must emit twitter:title,

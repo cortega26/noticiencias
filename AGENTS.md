@@ -52,10 +52,10 @@ Current architectural pillars:
 - `src/pages/`: route entrypoints and static path generation.
 - `src/layouts/`: page shells and metadata composition.
 - `src/components/ds/`: Noticiencias-specific design-system primitives and article UI.
-- `src/components/template/`: Astrowind-derived site shell, widgets, and shared template pieces.
+- `src/components/common/`: site-specific reusable fragments, including the site shell header/logo and the metadata helpers migrated out of the retired `template` layer.
 - `src/utils/`: reusable data and URL helpers. These must stay mostly pure.
 
-The repo currently has two UI layers: `ds` and `template`. They are not interchangeable. New work must preserve that boundary instead of blending both systems into an unstructured component pool.
+The template layer (`src/components/template/`, `src/layouts/template/`) was retired by plan 183; no files remain there. Until the superseding ADR lands (plan 060 §9.5), do not reintroduce files under those paths. `ds` components must not import the retired layer.
 
 ### 1.1) Data flow
 
@@ -63,7 +63,7 @@ The repo currently has two UI layers: `ds` and `template`. They are not intercha
 2. `src/content.config.ts` validates frontmatter at build time
 3. `src/utils/blog.ts` normalizes collection entries into `Post` shape
 4. Pages consume normalized posts to build list, taxonomy, series, RSS, article pages
-5. Layouts forward metadata to `src/components/template/common/Metadata.astro` for SEO tags
+5. Layouts forward metadata to `src/components/common/Metadata.astro` for SEO tags
 6. Astro emits static output to `dist/`
 7. GitHub Actions deploys `dist/` to GitHub Pages
 
@@ -106,8 +106,8 @@ Rules:
 - `src/layouts/` own page chrome, document metadata plumbing, and shared structural wrappers.
 - `src/layouts/` must not contain collection querying, taxonomy normalization, or ad hoc content repair logic.
 - `src/components/ds/` are presentational building blocks for the Noticiencias UI. They must accept typed props and remain route-agnostic.
-- `src/components/template/` own the Astrowind shell and legacy widget system. They may compose `ds` pieces when useful; `ds` components must not import `template` components.
-- `src/components/common/` is for site-specific reusable fragments that do not fit the `ds` atom/molecule/organism taxonomy.
+- `src/components/common/` is for site-specific reusable fragments that do not fit the `ds` atom/molecule/organism taxonomy, including the site shell header/logo and metadata plumbing.
+- `src/components/template/` and `src/layouts/template/` are retired (plan 183): no live files remain. Do not add files there; the guard and layer are removed by the superseding ADR (plan 060 §9.5).
 
 Reject in review:
 
@@ -209,7 +209,7 @@ The shared metadata path is:
 
 - page computes metadata
 - layout passes metadata
-- `src/components/template/common/Metadata.astro` emits SEO tags
+- `src/components/common/Metadata.astro` emits SEO tags
 
 Do not bypass this path unless fixing the metadata path itself.
 

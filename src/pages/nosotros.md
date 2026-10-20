@@ -1,7 +1,7 @@
 ---
 title: 'Acerca de Noticiencias'
 permalink: /nosotros/
-layout: ../layouts/template/MarkdownLayout.astro
+layout: ../layouts/MarkdownLayout.astro
 excerpt: 'Quién es responsable de Noticiencias, qué publicamos y cómo utilizamos fuentes, automatización y correcciones editoriales.'
 header:
   overlay_color: '#333'

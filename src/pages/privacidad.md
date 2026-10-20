@@ -1,7 +1,7 @@
 ---
 title: 'Política de Privacidad'
 description: 'Qué datos trata Noticiencias, con qué proveedores, cómo funciona el consentimiento y cómo ejercer tus derechos.'
-layout: '~/layouts/template/MarkdownLayout.astro'
+layout: '~/layouts/MarkdownLayout.astro'
 permalink: /privacidad/
 ---
 

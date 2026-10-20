@@ -1,7 +1,7 @@
 ---
 title: 'Detector de hype: leer ciencia sin que te vendan humo'
 description: 'Las preguntas que usamos en Noticiencias para distinguir un hallazgo real de una promesa de marketing, y que puedes aplicar a cualquier titular.'
-layout: '~/layouts/template/MarkdownLayout.astro'
+layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 Casi cualquier hallazgo científico puede convertirse en un titular espectacular. Un avance pequeño de laboratorio se anuncia como «la cura del cáncer» o «el fin de la crisis energética», y para cuando la noticia llega a tus redes ya perdió casi todos los matices que traía el estudio original.

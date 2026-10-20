@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const meta = readFileSync(
-  fileURLToPath(new URL('../src/components/template/common/CommonMeta.astro', import.meta.url)),
+  fileURLToPath(new URL('../src/components/common/CommonMeta.astro', import.meta.url)),
   'utf8'
 );
 const adsTxt = readFileSync(fileURLToPath(new URL('../public/ads.txt', import.meta.url)), 'utf8');

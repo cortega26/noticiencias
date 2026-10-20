@@ -1,7 +1,7 @@
 ---
 title: 'Metodología Editorial'
 permalink: /metodologia/
-layout: ../layouts/template/MarkdownLayout.astro
+layout: ../layouts/MarkdownLayout.astro
 excerpt: 'Cómo elegimos, preparamos y publicamos cada artículo: automatización para vigilar muchas fuentes, una persona que decide qué se publica y las fuentes a la vista.'
 ---
 

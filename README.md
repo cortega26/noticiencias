@@ -10,10 +10,10 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 
 ## Current State
 
-- Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/template/Layout.astro`](src/layouts/template/Layout.astro).
+- Rendering model: server-first Astro with `ClientRouter` view transitions enabled in [`src/layouts/Layout.astro`](src/layouts/Layout.astro).
 - Content contract: the only authoritative post schema is [`src/content.config.ts`](src/content.config.ts).
 - Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](src/config.yaml).
-- Metadata emission: pages pass metadata through layouts into [`src/components/template/common/Metadata.astro`](src/components/template/common/Metadata.astro).
+- Metadata emission: pages pass metadata through layouts into [`src/components/common/Metadata.astro`](src/components/common/Metadata.astro).
 - URL and taxonomy helpers: [`src/utils/permalinks.ts`](src/utils/permalinks.ts) and [`src/utils/blog.ts`](src/utils/blog.ts).
 - Search: build-time JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only Lunr UI on [`src/pages/buscar.astro`](src/pages/buscar.astro).
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`.
@@ -24,8 +24,7 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 - `src/pages/`: route entrypoints and static path generation.
 - `src/layouts/`: page shells and metadata plumbing.
 - `src/components/ds/`: Noticiencias design-system primitives.
-- `src/components/template/`: Astrowind-derived shell, blog widgets, and shared template pieces.
-- `src/components/common/`: site-specific reusable fragments that do not fit `ds` or `template`.
+- `src/components/common/`: site-specific reusable fragments, the site shell header/logo pieces, and template-derived metadata helpers.
 - `src/utils/`: mostly pure data, permalink, search, and image helpers.
 - `src/integration/`: custom integration that exposes `astrowind:config` from `src/config.yaml`.
 - `tests/`: Vitest coverage for search helpers, slug uniqueness, site integrity, and compliance checks.

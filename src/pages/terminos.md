@@ -1,7 +1,7 @@
 ---
 title: 'Términos y Condiciones'
 description: 'Condiciones de uso del contenido informativo de Noticiencias, atribución, limitaciones y contacto.'
-layout: '~/layouts/template/MarkdownLayout.astro'
+layout: '~/layouts/MarkdownLayout.astro'
 permalink: /terminos/
 ---
 

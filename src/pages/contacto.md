@@ -1,7 +1,7 @@
 ---
 title: 'Contacto'
 description: 'Cómo contactar a Noticiencias por consultas editoriales, privacidad, correcciones, asuntos legales o patrocinios.'
-layout: '~/layouts/template/MarkdownLayout.astro'
+layout: '~/layouts/MarkdownLayout.astro'
 permalink: /contacto/
 ---
 

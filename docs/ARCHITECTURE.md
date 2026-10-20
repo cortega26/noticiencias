@@ -23,10 +23,8 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
   - page shells and metadata plumbing
 - `src/components/ds/`
   - route-agnostic Noticiencias UI primitives
-- `src/components/template/`
-  - Astrowind-derived shell, widgets, and blog-facing template components
 - `src/components/common/`
-  - site-specific reusable fragments outside the `ds` or `template` layers
+  - site-specific reusable fragments outside the `ds` layer, including the shell and metadata helpers
 - `src/utils/`
   - mostly pure helpers for blog normalization, permalinks, search URLs, filesystem safety, and images
 - `src/integration/`
@@ -40,7 +38,7 @@ The frontend is a static publishing surface for Noticiencias. Its core layers ar
 2. `src/content.config.ts` validates frontmatter during `astro sync`, `astro check`, and build. A post with `schema_version >= 2` must carry all six editorial enrichment fields (`summary_points`, `glossary`, `fact_check`, `why_it_matters`, `confidence`, `sources`) — this is enforced unconditionally (no permissive/informational mode; there is no environment flag that relaxes it). `scripts/check-editorial-fields.js` mirrors the same rule for the standalone pre-publish gate. The schema also accepts an optional `social` object (`{ publish, id }`) for social-distribution opt-in — the mirror of `SocialConfig` in the backend contract; absent by default, `social: null` rejected on both sides.
 3. `src/utils/blog.ts` normalizes collection entries into the local `Post` shape and fails closed on duplicate permalinks.
 4. `src/pages/` routes use those normalized posts to build list, taxonomy, series, RSS, and article pages.
-5. Layouts pass page metadata into `src/components/template/common/Metadata.astro`.
+5. Layouts pass page metadata into `src/components/common/Metadata.astro`.
 6. Astro emits static output into `dist/`.
 7. GitHub Actions deploys `dist/` to GitHub Pages and sends a backend callback containing the changed `refinery_id`, originating PR number, and exact post-content hash; the backend uses that evidence to apply the callback to one publication attempt only.
 
@@ -111,28 +109,17 @@ Rules:
 - typed props
 - no import from `src/components/template/`
 
-### `src/components/template/`
+### `src/components/template/` (retired)
 
-Owns the site shell and legacy Astrowind-derived composition layer.
-
-Rules:
-
-- may compose `ds` components
-- may own small browser helpers tied to template behavior
-- must not become a generic dumping ground for arbitrary app logic
+Plan 183 moved the last live surfaces into `src/components/common/` and
+`src/layouts/`, and deleted `PageLayout`/`LandingLayout`. No files remain. The
+freeze guard is intentionally still in place until the superseding ADR (plan
+060 §9.5) removes the layer; do not add files under this path.
 
 ### `src/components/common/`
 
-Owns site-specific shared fragments that are neither Noticiencias design-system primitives nor
-Astrowind template widgets.
-
-Current compatibility note:
-
-- `src/components/common/Image.astro` mirrors the frozen template image primitive so `ds`
-  components and legacy template callers render through the same image pipeline.
-- `src/components/template/common/Image.astro` is a compatibility wrapper only. It is the only
-  sanctioned exception in the template freeze check because it delegates to the common primitive.
-- Do not reintroduce independent image behavior in the frozen template layer.
+Owns site-specific shared fragments that are not Noticiencias design-system primitives,
+including the Astrowind-derived shell migrated out of the retired template layer.
 
 ### `src/utils/`
 
@@ -155,9 +142,9 @@ Current important files:
 The metadata path is:
 
 1. route computes metadata
-2. `BaseLayout.astro` or template layout receives it
-3. `src/layouts/template/Layout.astro` renders document shell
-4. `src/components/template/common/Metadata.astro` emits SEO tags
+2. `BaseLayout.astro` or `MarkdownLayout.astro` receives it
+3. `src/layouts/Layout.astro` renders document shell
+4. `src/components/common/Metadata.astro` emits SEO tags
 
 Canonical URLs should resolve through `getCanonical()` in `src/utils/permalinks.ts` or through metadata that ultimately lands in that shared path.
 
@@ -200,7 +187,7 @@ Canonical URLs should resolve through `getCanonical()` in `src/utils/permalinks.
 
 The frontend is not a client-heavy app, but it does have controlled browser behavior:
 
-- `ClientRouter` view transitions in `src/layouts/template/Layout.astro`
+- `ClientRouter` view transitions in `src/layouts/Layout.astro`
 - theme and common template scripts
 - search UI in `src/components/common/SearchInterface.astro`
 

@@ -5,7 +5,7 @@
 > Out of scope: code changes to pages, layouts, or components.
 > **Current state**: `src/pages/recursos/` contains exactly
 > `src/pages/recursos/detector-de-hype.md` (frontmatter
-> `layout: '~/layouts/template/MarkdownLayout.astro'`, five-question guide
+> `layout: '~/layouts/MarkdownLayout.astro'`, five-question guide
 > ending with a newsletter CTA). Homepage section
 > `src/components/common/DailyDesk.astro` ("Para leer con criterio") links
 > Detector de hype, `src/pages/metodologia.md`, and `src/pages/buscar.astro`.

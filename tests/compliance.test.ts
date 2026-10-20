@@ -22,7 +22,7 @@ describe('Compliance & Security Suite', () => {
   // with nothing to catch it. The meta tag is the source of truth here.
   describe('Content-Security-Policy stays in sync across its three copies', () => {
     const metaSource = fs.readFileSync(
-      path.join(__dirname, '../src/components/template/common/CommonMeta.astro'),
+      path.join(__dirname, '../src/components/common/CommonMeta.astro'),
       'utf-8'
     );
     const canonical = metaSource.match(/content="(default-src[^"]+)"/)?.[1];
