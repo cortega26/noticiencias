@@ -7,6 +7,8 @@
  *
  * Supports an allowlist for dynamic imports or content-referenced
  * components via a JSON file at .component-reachability-allowlist.json.
+ * Allowlist entries are repo-relative POSIX paths (a leading "./" or
+ * Windows separators are normalized; absolute paths still work).
  *
  * Usage: node scripts/check-component-reachability.js
  * Exits 0 if no unapproved unreachable components, 1 otherwise.
@@ -125,13 +127,25 @@ while (queue.length > 0) {
 let allowlist = [];
 if (existsSync(ALLOWLIST_PATH)) {
   allowlist = JSON.parse(readFileSync(ALLOWLIST_PATH, 'utf-8'));
+  if (!Array.isArray(allowlist)) {
+    console.error('❌ .component-reachability-allowlist.json must contain a JSON array of paths.');
+    process.exit(1);
+  }
 }
 
+// Normalize an allowlist entry to the absolute path the checker compares
+// against. Entries are repo-relative POSIX paths, but tolerate "./", Windows
+// separators, and already-absolute paths (the pre-plan-181 format).
+function normalizeAllowlistEntry(entry) {
+  const posix = String(entry).trim().replace(/\\/g, '/').replace(/^\.\//, '');
+  return resolve(ROOT, posix);
+}
+
+const allowlisted = new Set(allowlist.map(normalizeAllowlistEntry));
+
 // Find unreachable components
-const allComponents = findComponents(join(SRC, 'components'));
-const unreachable = allComponents.filter(
-  (comp) => !reachable.has(comp) && !allowlist.includes(comp)
-);
+const allComponents = findComponents(join(SRC, 'components')).sort();
+const unreachable = allComponents.filter((comp) => !reachable.has(comp) && !allowlisted.has(comp));
 
 if (unreachable.length === 0) {
   console.log('✅ All components are reachable from active roots.');

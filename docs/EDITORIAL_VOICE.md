@@ -233,7 +233,7 @@ Cada una de estas decisiones es candidata a issue/PR independiente. La numeraci�
 Auditoría rápida del estado actual al 2026-05-17. Sirve como baseline para medir progreso.
 
 - **Tags con `#`** (`ArticleCard.astro:121`) — D1.
-- **Inconsistencia de chips** (`ArticleCard` vs `Tags.astro`) — D2.
+- **Inconsistencia de chips** (`ArticleCard` vs `TagPill.astro`) — D2.
 - **Copy sin gancho** ("Vías de regreso", "Guías de lectura" en `DailyDesk.astro`) — falla "Curioso": describe en lugar de invitar.
 - **`investigation: true` sin tratamiento visual diferenciado** — falla "Riguroso" y desperdicia un campo de schema.
 - **`sources[]` y `uncertainty_note` poco visibles en la lectura del artículo** — falla "Evidencia a la vista".
