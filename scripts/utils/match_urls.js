@@ -87,7 +87,7 @@ files.forEach((file) => {
     // Or check how many chars match?
     // Let's check LCS or just containment
 
-    let score = 0;
+    let score;
     if (normSlug.includes(normTitle)) score = 100;
     else if (normTitle.includes(normSlug)) score = 100;
     else {

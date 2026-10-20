@@ -1088,7 +1088,7 @@ async function manifestUnchanged({ fetchManifest, originalDigest }) {
 
 /** Read the closed §18 GitHub Variables + repository context from `process.env`. */
 export function loadConfigFromEnv(env = process.env) {
-  let enabledPlatforms = [];
+  let enabledPlatforms;
   try {
     enabledPlatforms = JSON.parse(env.SOCIAL_PLATFORMS ?? '[]');
     if (!Array.isArray(enabledPlatforms)) enabledPlatforms = [];

@@ -856,7 +856,7 @@ function parseZodChain(fieldName, chain) {
  */
 function splitZodMethods(chain) {
   const methods = [];
-  let i = 0;
+  let i;
 
   // Find the initial z.X() call
   let depth = 0;
