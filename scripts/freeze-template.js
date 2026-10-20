@@ -8,9 +8,6 @@ const allowedTemplateFiles = new Set([
   'src/components/template/common/CommonMeta.astro',
   'src/components/template/common/buildHead.ts',
   'src/components/template/common/seo.ts',
-  // Plan 112 mounts the share component in PostLayout (copy-link added);
-  // its click handling already lives in ds/ BasicScripts via data attrs.
-  'src/components/template/common/SocialShare.astro',
   'src/components/template/CustomStyles.astro',
   'src/components/template/blog/ToBlogLink.astro',
   'src/components/template/ui/Button.astro',
@@ -19,9 +16,6 @@ const allowedTemplateFiles = new Set([
   // Plan 181 deleted the remaining unreachable template components —
   // entries removed with the files as well.
   'src/components/template/widgets/Header.astro',
-  // Plan 023 (durable reader reports) owns the report-problem form; it stays
-  // in the template layer until the form is migrated to ds/ in a later plan.
-  'src/components/template/widgets/ReportForm.astro',
 ]);
 
 try {
