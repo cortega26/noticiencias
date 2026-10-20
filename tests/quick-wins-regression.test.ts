@@ -56,15 +56,17 @@ describe('quick wins regression coverage', () => {
     );
   });
 
-  it('keeps ds components independent from the frozen template layer', () => {
-    const dsFiles = collectFiles(path.join(srcDir, 'components', 'ds'), (filePath) =>
-      filePath.endsWith('.astro')
+  it('does not reintroduce the retired template layer (ADR-0014)', () => {
+    const sourceFiles = collectFiles(srcDir, (filePath) =>
+      /\.(astro|ts|js|md|mdx)$/.test(filePath)
     );
-    const violations = dsFiles.filter((filePath) =>
-      fs.readFileSync(filePath, 'utf8').includes('components/template/')
+    const violations = sourceFiles.filter((filePath) =>
+      /(?:components|layouts)\/template\//.test(fs.readFileSync(filePath, 'utf8'))
     );
 
     expect(violations).toEqual([]);
+    expect(fs.existsSync(path.join(srcDir, 'components', 'template'))).toBe(false);
+    expect(fs.existsSync(path.join(srcDir, 'layouts', 'template'))).toBe(false);
   });
 
   it('keeps BaseLayout callers on the metadata prop path', () => {
