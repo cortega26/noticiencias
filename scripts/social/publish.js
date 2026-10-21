@@ -54,6 +54,20 @@ const DEFAULT_AMBIGUITY_BLOCK_AFTER_MS = 24 * 60 * 60 * 1000;
 /** §13 "a +15 s y +60 s" bounded polling of newly-ACCEPTED Buffer ids. */
 const DEFAULT_POLL_DELAYS_MS = Object.freeze([15_000, 60_000]);
 
+/**
+ * Ledger writes made after the remote side already acted are best-effort (the
+ * run must still return its summary), but a failure must never be silent: it
+ * becomes a GitHub Actions warning annotation. Workflow commands are read from
+ * stderr too, which keeps the JSON summary on stdout clean.
+ */
+export function warnStateWriteFailed(what, socialId, platform) {
+  return (error) => {
+    const message = `${what} for ${socialId}/${platform}: ${error?.message ?? String(error)}`;
+    const escaped = message.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+    console.error(`::warning title=Social state write failed::${escaped}`);
+  };
+}
+
 function isPlainObject(value) {
   return value != null && typeof value === 'object' && !Array.isArray(value);
 }
@@ -444,7 +458,7 @@ export async function runDistribution(deps) {
               intentId: item.intentId,
               result: translated.recordResult,
               now,
-            }).catch(() => {});
+            }).catch(warnStateWriteFailed('recordResult', item.socialId, item.platform));
           }
         }
       }
@@ -924,7 +938,7 @@ async function finishBlueskySend({
       platform: 'bluesky',
       intentId,
       sendInvoked: false,
-    }).catch(() => {});
+    }).catch(warnStateWriteFailed('releaseUnsentReservation', candidate.social_id, 'bluesky'));
     return {
       manifestChanged: true,
       row: { social_id: candidate.social_id, platform: 'bluesky', result: 'MANIFEST_CHANGED' },
@@ -1027,7 +1041,7 @@ async function sendReservedCandidate({
       platform,
       intentId,
       sendInvoked: false,
-    }).catch(() => {});
+    }).catch(warnStateWriteFailed('releaseUnsentReservation', candidate.social_id, platform));
     return {
       manifestChanged: true,
       row: { social_id: candidate.social_id, platform, result: 'MANIFEST_CHANGED' },
