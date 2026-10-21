@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { parseCliFlags, resolveMode } from '../../scripts/social/publish.js';
+import { describe, expect, it, vi } from 'vitest';
+import { parseCliFlags, resolveMode, warnStateWriteFailed } from '../../scripts/social/publish.js';
 
 /**
  * Regression tests for the CLI → mode wiring (social-distribution publish
@@ -64,5 +64,44 @@ describe('resolveMode', () => {
   it('treats a missing or malformed flags object as dry-run', () => {
     expect(resolveMode(undefined)).toBe('dry-run');
     expect(resolveMode({})).toBe('dry-run');
+  });
+});
+
+describe('warnStateWriteFailed', () => {
+  it('turns a swallowed ledger-write failure into a stderr warning annotation', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      await Promise.reject(new Error('CAS conflict')).catch(
+        warnStateWriteFailed('releaseUnsentReservation', 'soc-1', 'bluesky')
+      );
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy.mock.calls[0][0]).toBe(
+        '::warning title=Social state write failed::releaseUnsentReservation for soc-1/bluesky: CAS conflict'
+      );
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it('escapes newlines and percent signs so a message cannot inject workflow commands', () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      warnStateWriteFailed('recordResult', 'soc-2', 'x')(new Error('100%\n::error::injected'));
+      const line = String(spy.mock.calls[0][0]);
+      expect(line).not.toContain('\n');
+      expect(line).toContain('100%25%0A::error::injected');
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it('copes with non-Error rejections', () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      warnStateWriteFailed('recordResult', 'soc-3', 'x')('plain string');
+      expect(String(spy.mock.calls[0][0])).toContain('soc-3/x: plain string');
+    } finally {
+      spy.mockRestore();
+    }
   });
 });
