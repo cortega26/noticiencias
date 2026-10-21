@@ -13,7 +13,9 @@ permissions:
 jobs:
   lighthouse:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    # The production build alone now takes ~9.5 min (323 s on 2026-10-15, 566 s on
+    # 2026-10-21 and growing with the article count); 10 min cancelled the audit step.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
