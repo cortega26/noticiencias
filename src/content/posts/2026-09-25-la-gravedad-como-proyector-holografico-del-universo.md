@@ -62,7 +62,7 @@ sources:
     publisher: arXiv
     role: primary
   - title: Black Holes and Entropy
-    url: https://web.archive.org/web/20240809233824/http://astrofrelat.fcaglp.unlp.edu.ar/agujeros_negros/media/Papers/Bekenstein_1973-Black_Holes_and_Entropy.pdf
+    url: https://doi.org/10.1103/PhysRevD.7.2333
     publisher: Physical Review D
     date: '1973-04-15'
     role: primary
