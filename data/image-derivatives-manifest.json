@@ -1546,6 +1546,41 @@
       }
     ]
   },
+  "~/assets/images/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "f1c6713543cdd18c",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.f1c6713543cdd18c.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.png": {
     "originalWidth": 1672,
     "originalHeight": 941,
