@@ -60,6 +60,8 @@ jobs:
           echo "SEO: ${SEO}"
           echo "Best Practices: ${BP}"
 
+          echo "LIGHTHOUSE_SCORES=P=${PERF} A=${A11Y} S=${SEO} B=${BP}" >> $GITHUB_ENV
+
           # Alert if any score is below 80
           if [ "$PERF" -lt 80 ] || [ "$A11Y" -lt 80 ] || [ "$SEO" -lt 80 ] || [ "$BP" -lt 80 ]; then
             echo "::warning::Lighthouse scores below threshold: P=${PERF} A=${A11Y} S=${SEO} B=${BP}"
@@ -68,23 +70,62 @@ jobs:
 
           kill %1 || true
 
-      - name: Create issue on low scores
-        if: env.LOW_SCORES == 'true'
+      - name: Open, update or close the Lighthouse issue
+        # Runs on every successful audit so a recovery closes the issue and a
+        # repeated low score updates the open one instead of filing a duplicate.
         uses: actions/github-script@e69ef5462fd455e02edcaf4dd7708eda96b9eda0 # v7.0.0
         with:
           script: |
+            const { owner, repo } = context.repo;
             const title = '📉 Lighthouse: Puntuaciones bajas detectadas';
-            const body = [
-              'El monitoreo mensual de Lighthouse detectó puntuaciones por debajo del umbral de 80.',
-              '',
-              'Revisa los reportes en `reports/lighthouse-home.json` para más detalles.',
-              `- [Ver ejecución](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
-            ].join('\n');
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            const scores = process.env.LIGHTHOUSE_SCORES;
+            const low = process.env.LOW_SCORES === 'true';
 
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body,
-              labels: ['performance'],
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'open',
+              labels: 'performance',
+              per_page: 100,
             });
+            const existing = open.filter((issue) => !issue.pull_request && issue.title === title);
+
+            if (low && existing.length === 0) {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body: [
+                  'El monitoreo mensual de Lighthouse detectó puntuaciones por debajo del umbral de 80.',
+                  '',
+                  `- Puntuaciones: ${scores}`,
+                  '- Revisa los reportes en `reports/lighthouse-home.json` para más detalles.',
+                  `- [Ver ejecución](${runUrl})`,
+                ].join('\n'),
+                labels: ['performance'],
+              });
+            } else if (low) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing[0].number,
+                body: `Sigue por debajo del umbral de 80 (${scores}). [Ver ejecución](${runUrl})`,
+              });
+            } else {
+              for (const issue of existing) {
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: issue.number,
+                  body: `Puntuaciones recuperadas (${scores}). Cierro el issue. [Ver ejecución](${runUrl})`,
+                });
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: issue.number,
+                  state: 'closed',
+                  state_reason: 'completed',
+                });
+              }
+            }
