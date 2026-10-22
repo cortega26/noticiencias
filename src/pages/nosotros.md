@@ -15,11 +15,15 @@ Noticiencias es un medio digital independiente que explica ciencia, salud y tecn
 
 Puedes escribir directamente al responsable a través de nuestra [página de contacto](/contacto/). El [repositorio público](https://github.com/cortega26/noticiencias) permite inspeccionar parte del código, las reglas editoriales y su historial de cambios.
 
+## Para quién escribimos
+
+Para lectores que quieren entender qué sostiene un hallazgo y qué conclusiones todavía no se pueden sacar. Empezamos por dos hilos de lectura: [carbono en bosques y suelos](/recursos/carbono-bosques-suelos/) y [exoplanetas, atmósferas y posibles biosignaturas](/recursos/exoplanetas-atmosferas-biosignaturas/).
+
 ## Qué publicamos
 
 Explicamos hallazgos de ciencia, medicina, tecnología e internet para lectores hispanohablantes: qué se descubrió, con qué evidencia, qué límites tiene y qué falta saber. Priorizamos noticias con una fuente identificable y contexto útil.
 
-Noticiencias no realiza investigación científica propia: explica la de otros. Cada pieza enlaza la fuente en que se basa, y su ficha de «Fuentes y verificación» indica si se apoya en una fuente primaria (el estudio o el comunicado original) o en la cobertura de un medio.
+Noticiencias no realiza investigación científica propia: explica la de otros. Cada pieza enlaza la fuente en que se basa, y su ficha de «Fuentes y límites» indica si se apoya en una fuente primaria (el estudio o el comunicado original) o en la cobertura de un medio.
 
 ## Cómo se prepara una noticia
 
@@ -41,5 +45,5 @@ La selección y presentación de noticias no se venden como contraprestación pu
 - **Atribución:** enlazamos las fuentes disponibles y distinguimos nuestro trabajo de la investigación original.
 - **Correcciones:** puedes [reportar un problema](/reportar-problema/) indicando la URL y la evidencia; no presentamos la recepción del reporte como una corrección ya realizada.
 - **Salud:** los artículos son informativos y no sustituyen una consulta profesional o una evaluación médica individual.
-- **Privacidad:** explicamos cómo funcionan las herramientas de analítica y el boletín en nuestra [Política de Privacidad](/privacidad/).
+- **Privacidad:** explicamos cómo funcionan las herramientas de analítica y los canales de contacto en nuestra [Política de Privacidad](/privacidad/).
 - **Contacto:** disponemos de un [canal público](/contacto/) para consultas generales, legales, comerciales y relacionadas con datos personales.

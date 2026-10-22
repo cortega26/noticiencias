@@ -85,14 +85,10 @@ form:
   # (R2 bucket noticiencias-reports) was provisioned and verified live
   # (plan 023, 2026-08-11): POST -> 201 with report id, idempotent retries.
   endpoint: 'https://noticiencias.com/api/report'
-  # Newsletter capture endpoint — deliberately separate from the report
-  # endpoint (the two forms have different wire contracts). Wired to
-  # Buttondown (plan 008, ADR-0009, 2026-09-16): plain-HTML form POST,
-  # single "email" field, double opt-in on by default, open/click
-  # tracking left off. Operator-supplied username; billing and Friday
-  # send owned by Carlos Ortega. Sending domain: Buttondown subdomain
-  # (no custom-domain DNS configured).
-  newsletter_endpoint: 'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
+  # Newsletter is parked: the public destination returned 404 on 2026-10-22.
+  # Restore only after a recorded destination + double-opt-in verification;
+  # endpoint presence alone does not prove an operational subscription flow.
+  newsletter_endpoint: ''
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

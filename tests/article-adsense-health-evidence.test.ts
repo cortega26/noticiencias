@@ -27,4 +27,12 @@ describe('AdSense health evidence consistency', () => {
     expect($('article').text()).toContain('37,8 %');
     expect($('article').text()).toContain('185 países');
   });
+  it('does not infer a preclinical result from missing model metadata', () => {
+    const $ = loadDistArticle(
+      '2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable'
+    );
+    const panel = $('#fuentes-y-limites').text();
+    expect(panel).toContain('Modelo no documentado:');
+    expect(panel).not.toContain('Estudio preclínico:');
+  });
 });

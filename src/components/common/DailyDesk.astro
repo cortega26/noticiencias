@@ -1,7 +1,6 @@
 ---
 import ArticleCard from '~/components/ds/organisms/ArticleCard.astro';
 import SectionHeading from '~/components/ds/molecules/SectionHeading.astro';
-import NewsletterCapture from '~/components/common/NewsletterCapture.astro';
 import TopicStrip from '~/components/common/TopicStrip.astro';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
@@ -29,21 +28,24 @@ const weeklyDescription = weekly.inWindow
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
-  <header class="mb-8 pb-6 border-b border-border-subtle/50 relative">
-    <p class="mb-2 text-xs font-bold text-primary uppercase tracking-wider">
+  <header class="mb-8 border-b border-border-subtle pb-6">
+    <p class="mb-3 text-sm text-text-muted">
       Portada · {editionLabel}
     </p>
-    <h1 class="max-w-5xl font-heading text-4xl font-black leading-none text-text-body md:text-6xl">
-      Ciencia y tecnología para leer con criterio.
+    <h1
+      class="max-w-4xl text-balance font-heading text-3xl font-bold leading-tight text-text-body sm:text-4xl lg:text-5xl"
+    >
+      Ciencia en español, con la evidencia a la vista.
     </h1>
     <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
-      Una edición en español para entrar rápido en los hallazgos, las dudas y las consecuencias de
-      cada historia.
+      Qué se encontró, cómo se sabe y qué sigue abierto. Explicaciones y noticias para leer la
+      ciencia con criterio.
     </p>
-    <div
-      class="absolute bottom-0 left-0 w-32 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"
+    <a
+      href="/metodologia/"
+      class="mt-3 inline-block py-1 text-sm font-semibold text-primary underline underline-offset-4 hover:no-underline"
+      >Cómo trabajamos con las fuentes</a
     >
-    </div>
   </header>
 
   {
@@ -61,33 +63,41 @@ const weeklyDescription = weekly.inWindow
     )
   }
 
-  <section
-    class="mt-8 rounded-xl border border-border-subtle bg-surface-paper px-5 py-6 sm:px-8"
-    aria-labelledby="home-newsletter-cta"
-  >
-    <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-      <div>
-        <h2
-          id="home-newsletter-cta"
-          class="font-heading text-xl font-bold leading-tight text-text-body sm:text-2xl"
-        >
-          La selección editorial, en tu correo
-        </h2>
-        <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
-          Hallazgos y fuentes para volver a leer. Sin frecuencia de envío garantizada.
+  <section class="mt-10 border-y border-border-subtle py-7" aria-labelledby="home-guides">
+    <h2 id="home-guides" class="font-heading text-2xl font-bold text-text-body">
+      Entender antes de concluir
+    </h2>
+    <p class="mt-2 max-w-3xl text-base leading-relaxed text-text-muted">
+      Dos guías para distinguir un hallazgo de lo que todavía falta demostrar.
+    </p>
+    <div class="mt-6 grid gap-6 md:grid-cols-2 md:gap-10">
+      <article>
+        <p class="text-sm text-text-muted">Clima y ecología</p>
+        <h3 class="mt-2 text-balance font-heading text-2xl font-bold leading-snug text-text-body">
           <a
-            href="/newsletter/"
-            class="font-semibold text-primary underline-offset-4 hover:underline"
+            href="/recursos/carbono-bosques-suelos/"
+            class="hover:text-primary hover:underline underline-offset-4"
+            >El carbono que entra al bosque no siempre se queda</a
           >
-            Qué incluye
-          </a>
+        </h3>
+        <p class="mt-3 leading-relaxed text-text-muted">
+          Qué distingue el flujo de carbono, las reservas y el almacenamiento duradero en bosques y
+          suelos.
         </p>
-      </div>
-      <NewsletterCapture
-        variant="inline"
-        formId="newsletter-hero"
-        class="w-full sm:w-[380px] sm:shrink-0"
-      />
+      </article>
+      <article>
+        <p class="text-sm text-text-muted">Espacio</p>
+        <h3 class="mt-2 text-balance font-heading text-2xl font-bold leading-snug text-text-body">
+          <a
+            href="/recursos/exoplanetas-atmosferas-biosignaturas/"
+            class="hover:text-primary hover:underline underline-offset-4"
+            >De detectar un planeta a buscar señales de vida</a
+          >
+        </h3>
+        <p class="mt-3 leading-relaxed text-text-muted">
+          Las pruebas que permiten hablar de un exoplaneta, su atmósfera y una posible biosignatura.
+        </p>
+      </article>
     </div>
   </section>
 
@@ -116,7 +126,7 @@ const weeklyDescription = weekly.inWindow
           title="Serie destacada"
           description="Una colección para leer un hilo completo, del primer artículo al último."
         />
-        <div class="mt-6 flex flex-col gap-4 rounded-xl border border-border-subtle bg-surface-paper p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mt-6 flex flex-col gap-4 border-y border-border-subtle py-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h3 class="font-heading text-2xl font-bold text-text-body">{featuredSeries.name}</h3>
             <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
@@ -177,10 +187,10 @@ const weeklyDescription = weekly.inWindow
     }
   </nav>
 
-  <section class="mt-14 rounded-xl border border-border-subtle/50 bg-surface-highlight p-6 sm:p-8">
+  <section class="mt-12 border-t border-border-subtle pt-8">
     <SectionHeading
       title="Para leer con criterio"
-      description="Piezas para volver cuando una noticia científica llega demasiado vestida de promesa."
+      description="Preguntas para evaluar una noticia, nuestro método y el archivo completo."
     />
     <div class="mt-6 grid gap-5 md:grid-cols-3">
       <a
@@ -213,10 +223,3 @@ const weeklyDescription = weekly.inWindow
     </div>
   </section>
 </div>
-
-<NewsletterCapture
-  formId="newsletter-final"
-  title="Boletín Noticiencias"
-  description="Hallazgos, fuentes y temas para volver a leer. Sin frecuencia de envío garantizada."
-  class="mt-4"
-/>

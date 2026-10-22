@@ -31,7 +31,7 @@ Buscamos identificar conflictos de interés relevantes que afecten la interpreta
 
 ## Datos de audiencia y tratamiento de información
 
-Google Analytics 4 utiliza Consent Mode avanzado: el código carga antes de la elección y puede enviar señales sin cookies; las cookies de analítica se activan solo con aceptación. Cloudflare Web Analytics aporta medición sin cookies. El boletín se gestiona mediante Buttondown. Explicamos los datos, proveedores, retención declarada y mecanismos de rechazo en nuestra [Política de Privacidad](/privacidad/).
+Google Analytics 4 utiliza Consent Mode avanzado: el código carga antes de la elección y puede enviar señales sin cookies; las cookies de analítica se activan solo con aceptación. Cloudflare Web Analytics aporta medición sin cookies. Las suscripciones por correo están deshabilitadas; el canal [RSS](/rss.xml) sigue disponible. Explicamos los datos, proveedores, retención declarada y mecanismos de rechazo en nuestra [Política de Privacidad](/privacidad/).
 
 No enviamos deliberadamente los textos de los reportes de lectores a prompts públicos de IA. Los reportes pueden almacenarse mediante la infraestructura técnica del sitio.
 

@@ -43,12 +43,16 @@ export function getFactCheckVerdict(status: string): {
   switch (status.trim().toLowerCase()) {
     case 'verified':
     case 'confirmed':
-      return { label: 'Confirmado', variant: 'success', icon: 'tabler:check' };
+      return { label: 'Respaldado por la fuente', variant: 'success', icon: 'tabler:check' };
     case 'unsupported':
-      return { label: 'Sin respaldo', variant: 'warning', icon: 'tabler:alert-triangle' };
+      return {
+        label: 'Sin respaldo en las fuentes',
+        variant: 'warning',
+        icon: 'tabler:alert-triangle',
+      };
     case 'debunked':
     case 'contradicted':
-      return { label: 'Refutado', variant: 'error', icon: 'tabler:x' };
+      return { label: 'Contradicho por las fuentes', variant: 'error', icon: 'tabler:x' };
     default:
       return { label: 'Sin verificar', variant: 'info', icon: 'tabler:info-circle' };
   }

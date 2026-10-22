@@ -8,7 +8,6 @@ export const GET: APIRoute = async () => {
   const nosotrosUrl = String(getCanonical(getPermalink('/nosotros/')));
   const metodologiaUrl = String(getCanonical(getPermalink('/metodologia/')));
   const transparenciaUrl = String(getCanonical(getPermalink('/transparencia/')));
-  const newsletterUrl = String(getCanonical(getPermalink('/newsletter/')));
   const rssUrl = String(getCanonical(getPermalink('/rss.xml')));
   const llmsFullUrl = String(getCanonical(getPermalink('/llms-full.txt')));
   const hypeUrl = String(getCanonical(getPermalink('/recursos/detector-de-hype/')));
@@ -26,7 +25,7 @@ export const GET: APIRoute = async () => {
   ];
 
   let output = `# Noticiencias\n`;
-  output += `> Traducimos ciencia, tecnología e internet de interés público a un español claro, responsable y verificable para 580 millones de hispanohablantes.\n\n`;
+  output += `> Ciencia en español, con fuentes, contexto y límites de la evidencia.\n\n`;
 
   output += `Noticiencias usa sistemas automatizados para seleccionar fuentes y preparar borradores; una persona decide si integrar las propuestas editoriales de artículos al sitio. Las fichas enlazan la fuente registrada y, según la información disponible para cada artículo, pueden incluir el estado de la evidencia, límites, método de traducción y enlaces DOI a fuentes primarias.\n\n`;
 
@@ -36,7 +35,6 @@ export const GET: APIRoute = async () => {
   output += `- [Nosotros](${nosotrosUrl}): Misión editorial, equipo y compromisos de la organización.\n`;
   output += `- [Metodología](${metodologiaUrl}): Proceso de automatización híbrido y curación humana.\n`;
   output += `- [Transparencia](${transparenciaUrl}): Compromisos sobre conflictos de interés, correcciones y privacidad.\n`;
-  output += `- [Boletín](${newsletterUrl}): Suscripción al boletín de noticias de Noticiencias.\n`;
   output += `- [Canal RSS](${rssUrl}): Feed RSS oficial de la publicación.\n`;
   output += `- [Código Fuente](https://github.com/cortega26/noticiencias): Nuestro repositorio de código abierto en GitHub.\n\n`;
 

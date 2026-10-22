@@ -83,12 +83,10 @@ Por eso intentamos deshacer el camino en lugar de alargarlo:
 - **Avisamos de lo que aún no se sabe.** Si el hallazgo es provisional o hay resultados que se contradicen, lo marcamos con una nota de incertidumbre.
 - **Quitamos los adjetivos de más.** Antes de publicar, el borrador pasa por varios controles automáticos —puntuación editorial, legibilidad y políticas de contenido— y luego una persona lo revisa y lo aprueba. Lo que no llega al listón se corrige o se descarta.
 
-Todo esto queda a la vista en el recuadro «Fuentes y verificación» que acompaña a cada artículo. El detalle completo está en nuestra [metodología](/metodologia/).
+Todo esto queda a la vista en el recuadro «Fuentes y límites» que acompaña a cada artículo. El detalle completo está en nuestra [metodología](/metodologia/).
 
 ---
 
 ### ¿Quieres entrenar el ojo?
 
-El **boletín** reúne selecciones editoriales con sus fuentes, contexto y límites. No hay una frecuencia de envío garantizada.
-
-[Suscribirme al boletín](/newsletter)
+Sigue las nuevas publicaciones mediante [RSS](/rss.xml) o consulta el [archivo de artículos](/blog/).

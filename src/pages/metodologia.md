@@ -29,13 +29,19 @@ Tres ideas guían todo lo que hacemos.
 
 2. **Lectura y traducción.** Recogemos el contenido a través de los canales RSS oficiales y respetando las condiciones de cada sitio. Guardamos los datos del estudio —autores, institución, DOI— y unos modelos de lenguaje preparan una primera versión en español, con sus apartados: «Lo esencial», «Qué cambia» y un glosario de términos difíciles.
 
-3. **Controles automáticos.** Cada borrador pasa por comprobaciones con criterios definidos. El crítico editorial puntúa y puede enviar problemas recuperables a reparación; si falla técnicamente o no resuelve una observación, esa etapa no bloquea por sí sola la publicación. El verificador compara afirmaciones con la fuente y puede detener una publicación si las marca como discutidas; si no logra verificarlas, las deja como inciertas. Los controles de titulares pueden pedir cambios y la medida de legibilidad registra una señal para el equipo editorial.
+3. **Controles automáticos.** El crítico técnico comprueba la traducción y la integridad del texto. Si persisten problemas después de hasta dos reparaciones acotadas, el trabajo se detiene. El crítico editorial contrasta el borrador con la evidencia disponible: las afirmaciones materiales sin respaldo o la paráfrasis cercana que sigan sin resolverse después de una reparación dejan el trabajo en espera. Una fuente incompleta o una incertidumbre expresada honestamente no constituyen, por sí solas, esos defectos. Si un titular sigue siendo sensacionalista o carece de respaldo después de sus intentos de corrección, también queda en espera.
 
-4. **Revisión y publicación.** Las propuestas editoriales del recolector llegan como cambios al repositorio web. Una persona decide si se integran a la rama principal; luego el sitio ejecuta sus comprobaciones y publica el cambio. El historial registra la integración y qué cambió.
+   Si un control editorial o de titulares falta, se omite o falla por un problema técnico, queda **sin verificar**: no se registra como una revisión superada. En ese caso solo puede prepararse una propuesta en borrador pendiente de revisión humana. El contraste de afirmaciones con las fuentes consultadas no aporta, por sí mismo, corroboración independiente.
 
-5. **La ficha de fuentes.** Cada artículo se publica con su recuadro **«Fuentes y verificación»**, que enlaza la fuente registrada. Según la información disponible, también muestra el estado de la evidencia, sus límites, el método de traducción y enlaces a fuentes primarias.
+4. **Revisión y publicación.** Las propuestas editoriales del recolector llegan como cambios al repositorio web. Para cada artículo nuevo o reescritura sustancial, el flujo exige una revisión humana final del titular, el cuerpo y los metadatos, junto con la evidencia y los asuntos pendientes. Completar y registrar esa revisión depende del responsable editorial; ni una propuesta en borrador ni los controles automáticos la sustituyen. Identificamos a un revisor solo cuando consta esa revisión. La integración aprobada en la rama principal activa las comprobaciones y la publicación del sitio; el historial registra qué cambió.
+
+5. **La ficha de fuentes.** Cada artículo se publica con su recuadro **«Fuentes y límites»**, que enlaza la fuente registrada. Según la información disponible, también muestra el estado de la evidencia, sus límites, el método de traducción y enlaces a fuentes primarias.
 
 ---
+
+## Qué significa «respaldado por la fuente»
+
+Los controles de afirmaciones comparan el texto con las fuentes consultadas. Que una fuente respalde una afirmación no demuestra por sí solo que el hallazgo sea definitivo, reproducible o aplicable a otros contextos. Tampoco equivale a una comprobación independiente ni a una revisión humana individual. Una valoración editorial de confianza no reemplaza la lectura de la evidencia y sus límites.
 
 ## Cuando algo cambia
 
@@ -48,6 +54,4 @@ La ciencia avanza corrigiéndose a sí misma, y nuestro periodismo también.
 
 ### Ciencia sin hype
 
-Las decisiones editoriales no se subordinan a la publicidad. Actualmente no mostramos anuncios programáticos y estamos [evaluando vías de financiación](/patrocinios/) sin comprometer nuestra independencia. Si te sirve lo que hacemos, suscríbete al boletín.
-
-[Suscribirse al boletín](/newsletter)
+Las decisiones editoriales no se subordinan a la publicidad. Actualmente no mostramos anuncios programáticos y estamos [evaluando vías de financiación](/patrocinios/) sin comprometer nuestra independencia. Puedes seguir nuestras publicaciones mediante [RSS](/rss.xml) o consultar el [archivo](/blog/).

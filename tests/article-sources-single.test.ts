@@ -5,7 +5,7 @@ import { loadDistArticle } from './helpers/load-dist-article';
 // P0-07: source links must render in exactly one block (TrustPanel).
 // ArticleRail no longer renders its own "Fuentes" section, so each article
 // must have zero bare <h2>Fuentes</h2> and exactly one "Fuentes y
-// verificación" panel. (An in-text [Fuente](url) citation inside the prose
+// límites" panel. (An in-text [Fuente](url) citation inside the prose
 // body is intentional and out of scope for this guard.)
 const CASES = [
   '2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos.md',
@@ -22,8 +22,10 @@ describe('P0-07 single sources block', () => {
       const bareFuentes = $('h2').filter((_, el) => $(el).text().trim() === 'Fuentes');
       expect(bareFuentes.length).toBe(0);
 
-      const trustPanel = $('h2').filter((_, el) => $(el).text().includes('Fuentes y verificación'));
+      const trustPanel = $('h2').filter((_, el) => $(el).text().includes('Fuentes y límites'));
       expect(trustPanel.length).toBe(1);
+      expect($('#fuentes-y-limites').length).toBe(1);
+      expect($('a[href="#fuentes-y-limites"]').length).toBe(1);
     });
   }
 });
