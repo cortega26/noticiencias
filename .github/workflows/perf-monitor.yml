@@ -43,11 +43,30 @@ jobs:
           npx --yes serve dist -p 4173 &
           sleep 3
 
-          lighthouse http://localhost:4173 \
-            --output=json \
-            --output-path=reports/lighthouse-home.json \
-            --chrome-flags="--headless --no-sandbox" \
-            --only-categories=performance,accessibility,seo,best-practices
+          audit() {
+            lighthouse http://localhost:4173 \
+              --output=json \
+              --output-path="$1" \
+              --chrome-flags="--headless --no-sandbox" \
+              --only-categories=performance,accessibility,seo,best-practices \
+              "${@:2}"
+          }
+
+          # Lighthouse's default 4x CPU slowdown assumes a fast host; a runner
+          # (benchmarkIndex ~570) is already slow and gets over-throttled, which
+          # inflates TBT and the score. A probe run measures the runner, the
+          # slowdown is scaled to it (same emulated device, same 80 threshold)
+          # and the score is the median of three runs. See
+          # scripts/lighthouse-calibration.cjs.
+          audit reports/lighthouse-probe.json
+          SLOWDOWN=$(node scripts/lighthouse-calibration-cli.mjs slowdown reports/lighthouse-probe.json)
+          echo "cpuSlowdownMultiplier: ${SLOWDOWN}"
+          for run in 1 2 3; do
+            audit "reports/lighthouse-run-${run}.json" "--throttling.cpuSlowdownMultiplier=${SLOWDOWN}"
+          done
+          node scripts/lighthouse-calibration-cli.mjs median \
+            reports/lighthouse-run-1.json reports/lighthouse-run-2.json reports/lighthouse-run-3.json \
+            > reports/lighthouse-home.json
 
           # Extract scores
           PERF=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories.performance.score*100))")
@@ -60,6 +79,16 @@ jobs:
           echo "SEO: ${SEO}"
           echo "Best Practices: ${BP}"
 
+          # Diagnostics: the score depends on the runner's CPU (benchmarkIndex) and
+          # on which metric drags, so print both next to the score.
+          node -e "
+            const r = require('./reports/lighthouse-home.json');
+            console.log('benchmarkIndex:', Math.round(r.environment.benchmarkIndex));
+            for (const id of ['first-contentful-paint', 'largest-contentful-paint', 'total-blocking-time', 'cumulative-layout-shift', 'speed-index']) {
+              console.log(id + ':', r.audits[id].displayValue);
+            }
+          "
+
           echo "LIGHTHOUSE_SCORES=P=${PERF} A=${A11Y} S=${SEO} B=${BP}" >> $GITHUB_ENV
 
           # Alert if any score is below 80
@@ -69,6 +98,15 @@ jobs:
           fi
 
           kill %1 || true
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lighthouse-reports
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Open, update or close the Lighthouse issue
         # Runs on every successful audit so a recovery closes the issue and a

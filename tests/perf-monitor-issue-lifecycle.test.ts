@@ -65,13 +65,28 @@ describe('perf-monitor issue lifecycle', () => {
 describe('perf-monitor workflow', () => {
   const workflow = load(readFileSync(WORKFLOW_PATH, 'utf8')) as {
     jobs: {
-      lighthouse: { 'timeout-minutes': number; steps: Array<{ with?: { script?: string } }> };
+      lighthouse: {
+        'timeout-minutes': number;
+        steps: Array<{ run?: string; with?: { script?: string } }>;
+      };
     };
   };
   const job = workflow.jobs.lighthouse;
 
   it('leaves room for the production build before the audit (~9.5 min on 2026-10-21)', () => {
     expect(job['timeout-minutes']).toBeGreaterThanOrEqual(20);
+  });
+
+  it('calibrates the CPU slowdown to the runner but keeps the 80 pass threshold', () => {
+    const audit = job.steps
+      .map((step) => step.run ?? '')
+      .find((script) => script.includes('lighthouse http://localhost:4173'));
+    expect(audit).toContain('scripts/lighthouse-calibration-cli.mjs slowdown');
+    expect(audit).toContain('--throttling.cpuSlowdownMultiplier=');
+    expect(audit).toContain('scripts/lighthouse-calibration-cli.mjs median');
+    for (const score of ['PERF', 'A11Y', 'SEO', 'BP']) {
+      expect(audit).toContain(`"$${score}" -lt 80`);
+    }
   });
 
   it('delegates the issue lifecycle to the tested module', () => {
