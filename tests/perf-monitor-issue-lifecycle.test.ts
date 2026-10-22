@@ -14,9 +14,9 @@ type Issue = { number: number; title: string; pull_request?: object };
 
 async function run(low: boolean, open: Issue[]) {
   const calls: Array<[string, Params]> = [];
-  const push = (name: string, params: Params) => {
+  function push(name: string, params: Params) {
     calls.push([name, params]);
-  };
+  }
   const github = {
     paginate: async () => open,
     rest: {
