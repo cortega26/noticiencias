@@ -6,7 +6,9 @@ import {
   medianReport,
 } from '../scripts/lighthouse-calibration.cjs';
 
-const report = (performance: number) => ({ categories: { performance: { score: performance } } });
+function report(performance: number) {
+  return { categories: { performance: { score: performance } } };
+}
 
 describe('cpuSlowdownFor', () => {
   it('keeps Lighthouse default 4x on a fast, developer-class host', () => {

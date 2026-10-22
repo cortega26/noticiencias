@@ -7,7 +7,9 @@ import calibration from './lighthouse-calibration.cjs';
  *   node scripts/lighthouse-calibration-cli.mjs median <report.json>...
  */
 const [command, ...files] = process.argv.slice(2);
-const read = (file) => JSON.parse(readFileSync(file, 'utf8'));
+function read(file) {
+  return JSON.parse(readFileSync(file, 'utf8'));
+}
 
 if (command === 'slowdown' && files.length === 1) {
   process.stdout.write(
