@@ -13,7 +13,9 @@ permissions:
 jobs:
   lighthouse:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    # The production build alone now takes ~9.5 min (323 s on 2026-10-15, 566 s on
+    # 2026-10-21 and growing with the article count); 10 min cancelled the audit step.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -41,11 +43,30 @@ jobs:
           npx --yes serve dist -p 4173 &
           sleep 3
 
-          lighthouse http://localhost:4173 \
-            --output=json \
-            --output-path=reports/lighthouse-home.json \
-            --chrome-flags="--headless --no-sandbox" \
-            --only-categories=performance,accessibility,seo,best-practices
+          audit() {
+            lighthouse http://localhost:4173 \
+              --output=json \
+              --output-path="$1" \
+              --chrome-flags="--headless --no-sandbox" \
+              --only-categories=performance,accessibility,seo,best-practices \
+              "${@:2}"
+          }
+
+          # Lighthouse's default 4x CPU slowdown assumes a fast host; a runner
+          # (benchmarkIndex ~570) is already slow and gets over-throttled, which
+          # inflates TBT and the score. A probe run measures the runner, the
+          # slowdown is scaled to it (same emulated device, same 80 threshold)
+          # and the score is the median of three runs. See
+          # scripts/lighthouse-calibration.cjs.
+          audit reports/lighthouse-probe.json
+          SLOWDOWN=$(node scripts/lighthouse-calibration-cli.mjs slowdown reports/lighthouse-probe.json)
+          echo "cpuSlowdownMultiplier: ${SLOWDOWN}"
+          for run in 1 2 3; do
+            audit "reports/lighthouse-run-${run}.json" "--throttling.cpuSlowdownMultiplier=${SLOWDOWN}"
+          done
+          node scripts/lighthouse-calibration-cli.mjs median \
+            reports/lighthouse-run-1.json reports/lighthouse-run-2.json reports/lighthouse-run-3.json \
+            > reports/lighthouse-home.json
 
           # Extract scores
           PERF=$(node -e "const r=require('./reports/lighthouse-home.json'); console.log(Math.round(r.categories.performance.score*100))")
@@ -58,6 +79,18 @@ jobs:
           echo "SEO: ${SEO}"
           echo "Best Practices: ${BP}"
 
+          # Diagnostics: the score depends on the runner's CPU (benchmarkIndex) and
+          # on which metric drags, so print both next to the score.
+          node -e "
+            const r = require('./reports/lighthouse-home.json');
+            console.log('benchmarkIndex:', Math.round(r.environment.benchmarkIndex));
+            for (const id of ['first-contentful-paint', 'largest-contentful-paint', 'total-blocking-time', 'cumulative-layout-shift', 'speed-index']) {
+              console.log(id + ':', r.audits[id].displayValue);
+            }
+          "
+
+          echo "LIGHTHOUSE_SCORES=P=${PERF} A=${A11Y} S=${SEO} B=${BP}" >> $GITHUB_ENV
+
           # Alert if any score is below 80
           if [ "$PERF" -lt 80 ] || [ "$A11Y" -lt 80 ] || [ "$SEO" -lt 80 ] || [ "$BP" -lt 80 ]; then
             echo "::warning::Lighthouse scores below threshold: P=${PERF} A=${A11Y} S=${SEO} B=${BP}"
@@ -66,23 +99,25 @@ jobs:
 
           kill %1 || true
 
-      - name: Create issue on low scores
-        if: env.LOW_SCORES == 'true'
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lighthouse-reports
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Open, update or close the Lighthouse issue
+        # Runs on every successful audit so a recovery closes the issue and a
+        # repeated low score updates the open one instead of filing a duplicate.
         uses: actions/github-script@e69ef5462fd455e02edcaf4dd7708eda96b9eda0 # v7.0.0
         with:
           script: |
-            const title = '📉 Lighthouse: Puntuaciones bajas detectadas';
-            const body = [
-              'El monitoreo mensual de Lighthouse detectó puntuaciones por debajo del umbral de 80.',
-              '',
-              'Revisa los reportes en `reports/lighthouse-home.json` para más detalles.',
-              `- [Ver ejecución](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
-            ].join('\n');
-
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body,
-              labels: ['performance'],
+            const { syncLighthouseIssue } = require(`${process.env.GITHUB_WORKSPACE}/scripts/perf-monitor-issue.cjs`);
+            await syncLighthouseIssue({
+              github,
+              context,
+              scores: process.env.LIGHTHOUSE_SCORES,
+              low: process.env.LOW_SCORES === 'true',
             });
