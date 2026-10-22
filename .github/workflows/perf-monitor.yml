@@ -60,6 +60,16 @@ jobs:
           echo "SEO: ${SEO}"
           echo "Best Practices: ${BP}"
 
+          # Diagnostics: the score depends on the runner's CPU (benchmarkIndex) and
+          # on which metric drags, so print both next to the score.
+          node -e "
+            const r = require('./reports/lighthouse-home.json');
+            console.log('benchmarkIndex:', Math.round(r.environment.benchmarkIndex));
+            for (const id of ['first-contentful-paint', 'largest-contentful-paint', 'total-blocking-time', 'cumulative-layout-shift', 'speed-index']) {
+              console.log(id + ':', r.audits[id].displayValue);
+            }
+          "
+
           echo "LIGHTHOUSE_SCORES=P=${PERF} A=${A11Y} S=${SEO} B=${BP}" >> $GITHUB_ENV
 
           # Alert if any score is below 80
@@ -69,6 +79,15 @@ jobs:
           fi
 
           kill %1 || true
+
+      - name: Upload Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lighthouse-home-report
+          path: reports/lighthouse-home.json
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Open, update or close the Lighthouse issue
         # Runs on every successful audit so a recovery closes the issue and a
