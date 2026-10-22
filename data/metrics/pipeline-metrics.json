@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-21T11:44:30.586Z",
+  "generated_at": "2026-10-22T11:47:25.325Z",
   "content": {
-    "total_articles": 51,
-    "v2_articles": 39,
-    "total_words": 31131,
-    "avg_words": 610,
+    "total_articles": 52,
+    "v2_articles": 40,
+    "total_words": 32313,
+    "avg_words": 621,
     "categories": [
       {
         "name": "Tecnología",
@@ -12,7 +12,7 @@
       },
       {
         "name": "Ciencia",
-        "count": 13
+        "count": 14
       },
       {
         "name": "Salud",
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — basado en un solo espécimen con limitaciones reconocidas por los autores.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales",
+        "title": "Cómo el subsuelo, sin cerebro, toma 'decisiones' clave para el clima global.",
+        "date": "2026-10-15",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — Basado en investigaciones y observaciones científicas que describen mecanismos complejos y comportamientos estratégicos en las redes fúngicas, aunque el propio artículo señala que apenas se está comenzando a comprender su totalidad.",
         "review_status": null
       },
       {
@@ -791,11 +803,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-21T11:44:29.722Z"
+    "generated_at": "2026-10-22T11:47:24.675Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 51,
+    "derivatives_available": 52,
     "missing_derivatives": 0
   },
   "health": {
@@ -805,16 +817,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "39 artículos v2 completos."
+      "detail": "40 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "51 artículo(s) con imagen y alt.",
+      "detail": "52 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "51 derivativos disponibles."
+      "detail": "52 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -823,10 +835,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "139 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "153 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 139,
+        "processed": 153,
         "failed": 0
       }
     },
