@@ -3,8 +3,9 @@ title: 'Bosques secundarios capturan carbono con rapidez, pero su recuperación 
 schema_version: 2
 date: 2026-10-12
 author: Noticiencias AI
+permalink: 'tecnologia/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos'
 categories:
-  - Tecnología
+  - Biología
 tags:
   - regeneración natural
   - dispersión de semillas

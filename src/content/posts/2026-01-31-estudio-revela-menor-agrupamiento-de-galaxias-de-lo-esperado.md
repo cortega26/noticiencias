@@ -1,38 +1,72 @@
 ---
-title: 'Estudio revela menor agrupamiento de galaxias de lo esperado'
+title: 'DES y el agrupamiento de materia: por qué una tensión no refuta por sí sola el modelo'
 schema_version: 1
-excerpt: 'Un estudio cosmológico revela menor agrupamiento de galaxias que lo esperado según la teoría del universo estándar.'
+excerpt:
+  DES Y6 obtiene un valor de S8 menor que el inferido del fondo cósmico. La diferencia depende de los parámetros
+  comparados, los datos y el modelo cosmológico.
 author: Noticiencias
 date: 2026-01-31
 categories:
-  - 'Astronomía'
-permalink: 'ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado'
+  - Astronomía
+permalink: ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado
 tags:
-  - 'universo'
-  - 'galaxias'
-  - 'cosmología'
-image: '~/assets/images/2026-01-31-article-520.jpg'
-image_alt: 'Estudio revela menor agrupamiento de galaxias de lo esperado'
-source_url: 'https://scientificamerican.com/article/largest-galaxy-survey-yet-confirms-that-the-universe-is-not-clumpy-enough/'
-series: 'Espacio'
+  - universo
+  - galaxias
+  - cosmología
+image: ~/assets/images/2026-01-31-article-520.jpg
+image_alt: Estudio revela menor agrupamiento de galaxias de lo esperado
+source_url: https://scientificamerican.com/article/largest-galaxy-survey-yet-confirms-that-the-universe-is-not-clumpy-enough/
+series: Espacio
 refinery_id: '520'
 headlines_variants:
-  question: '¿Por qué las galaxias se agrupan menos de lo previsto en el Universo?'
-  benefit: 'Avance en la comprensión de la evolución cósmica y la teoría del universo estándar'
+  question: ¿Qué significa la diferencia entre DES y el fondo cósmico?
+  benefit: Leer una tensión cosmológica sin confundirla con una refutación
 investigation: false
 featured: false
+correction_summary:
+  Se sustituyen afirmaciones genéricas de refutación por la comparación precisa de S8 y del conjunto
+  de parámetros, y se añaden las referencias primarias.
+sources:
+  - title: 'Dark Energy Survey Year 6 Results: Cosmological Constraints from Galaxy Clustering and Weak Lensing'
+    url: https://arxiv.org/abs/2601.14559
+    publisher: arXiv / DES Collaboration
+    role: primary
+  - title: 'DES Y6 Cosmology Results: Papers'
+    url: https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/
+    publisher: Dark Energy Survey
+publication_status: preprint
+evidence_subject_type: observational
+evidence_detail:
+  Inferencias cosmológicas a partir de correlaciones observadas, comparadas bajo ΛCDM; no prueba
+  directa de una nueva teoría.
+corrected_at: '2026-10-22'
+social:
+  publish: false
 ---
 
-**La observación cósmica más ambiciosa revela la distribución irregular de galaxias en el Universo**
+Los resultados del Dark Energy Survey no se resumen bien como «el modelo funciona» o «el modelo quedó refutado». Una comparación concreta muestra un valor menor de un parámetro de agrupamiento de materia que el inferido del fondo cósmico de microondas. **La magnitud de la diferencia depende de qué se compara.**
 
-¿Cuán irregular es realmente el Universo? La respuesta a esta pregunta ha sido objeto de estudio y debate durante décadas entre los cosmólogos. Recientemente, un equipo de astrónomos ha publicado el mapa cósmico más detallado hasta la fecha, cubriendo una gran sección del cielo sur de la Tierra. Este esfuerzo, llevado a cabo por el Observatorio de la Energía Oscura (DES), ha proporcionado nuevos insights sobre la distribución de las galaxias en el Universo.
+## Qué informa el análisis original
 
-Entre 2013 y 2019, el equipo del DES utilizó un telescopio en el Observatorio Interamericano Cerro Tololo en Chile para recopilar datos sobre aproximadamente 150 millones de galaxias. Además, detectaron y estudiaron más de 1.500 explosiones de supernovas, que pueden ser utilizadas como "balizas" para rastrear la historia de expansión del Universo. El análisis de estos datos se centró en cuatro aspectos clave: el brillo y las características de las supernovas, la agrupación de galaxias en el espacio y el tiempo, el tamaño evolutivo de los restos de ondas de presión generadas en la infancia del Universo, y la distorsión de imágenes de galaxias de fondo causada por grandes concentraciones de materia oscura invisible.
+El [trabajo de DES Y6 sobre agrupamiento y lentes débiles](https://arxiv.org/abs/2601.14559), en su versión arXiv consultada, obtiene **S8 = 0,789 ± 0,012** dentro del modelo ΛCDM, con intervalo del 68 %. S8 combina la amplitud de agrupamiento de materia y la densidad de materia.
 
-Los resultados combinados de este estudio refinan las mediciones anteriores del DES y confirman que la gravedad no ha agrupado a las galaxias tanto como se anticipaba según la teoría estándar de la evolución del Universo. Esto plantea un rompecabezas para los cosmólogos, ya que sugiere que el Universo puede ser menos irregular de lo que se pensaba.
+Frente a una combinación de datos del fondo cósmico de Planck, ACT y SPT, el artículo informa una diferencia de **2,6σ si se proyecta solo en S8**, y de **1,8σ al comparar el conjunto de parámetros**. Esas dos cifras corresponden a comparaciones distintas: no deben intercambiarse según cuál produzca un titular más contundente.
 
-Es importante destacar que este estudio se basa en una observación cósmica sin precedentes. Sin embargo, los resultados no permiten concluir que la teoría estándar de la evolución del Universo sea incorrecta; más bien reflejan una tensión aún no resuelta entre las observaciones y las predicciones del modelo.
+## Una diferencia de parámetro no es una conclusión universal
 
-En el contexto de la cosmología actual, este estudio se suma a una serie de descubrimientos que han cuestionado nuestra comprensión del Universo. La observación de la expansión acelerada del Universo, la existencia de materia oscura y energía oscura, y la distribución irregular de galaxias en el Universo son solo algunos de los temas que siguen siendo objeto de investigación y debate.
+| Pregunta                    | Qué necesitamos conservar                                           |
+| --------------------------- | ------------------------------------------------------------------- |
+| ¿Qué estimación es menor?   | Nombre del parámetro, valor e intervalo                             |
+| ¿Menor respecto a qué?      | El conjunto de datos y modelo de referencia                         |
+| ¿Qué significa el número σ? | La comparación exacta y sus supuestos estadísticos                  |
+| ¿Prueba una nueva física?   | Alternativas, calibraciones y resultados que permitan distinguirlas |
 
-En conclusión, la observación cósmica más ambiciosa realizada hasta la fecha ha proporcionado nuevos insights sobre la distribución de galaxias en el Universo. Aunque los resultados sugieren que el Universo puede ser menos irregular de lo que se pensaba, es importante reconocer los límites del estudio y la necesidad de seguir investigando para profundizar nuestra comprensión del cosmos. La cosmología es un campo en constante evolución, y estudios como este nos recuerdan que siempre hay más que aprender sobre el Universo y su misteriosa naturaleza.
+La palabra «tensión» señala que hay una diferencia que examinar. No identifica automáticamente su causa. Interpretarla exige estudiar tanto las hipótesis físicas como los procedimientos de medición y análisis; el dato no elige por sí solo entre ellos.
+
+## No confundir todos los resultados de DES
+
+La [colección de trabajos originales](https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/) incluye distintas sondas y combinaciones. El artículo también presenta resultados al añadir otros datos; no corresponde citar una cifra de una combinación como si describiera todas.
+
+Nuestro [explicador del catálogo y las muestras de DES](/ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica/) responde a una pregunta diferente: por qué 669 millones de objetos catalogados no son la muestra de cada medición. Ambos textos conservan su URL original, pero ahora separan método y comparación estadística.
+
+Para seguir la historia, el criterio útil es preguntar si una nueva observación o calibración modifica el valor, su incertidumbre o la comparación. El registro de corrección documenta qué cambió en esta explicación.

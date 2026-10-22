@@ -21,11 +21,13 @@ headlines_variants:
   question: ¿Cómo pudo un cohete con dos motores fallidos alcanzar el espacio y reingresar?
   benefit: Lo que el vuelo de Starship V3 significa para el futuro de los viajes a la Luna
 requires_uncertainty_note: true
+corrected_at: '2026-10-22'
+correction_summary: 'Se retiró una comparación incorrecta: un cohete de 124 metros no es más alto que la Torre Eiffel.'
 ---
 
 El viernes, el cielo sobre el Golfo de México se partió en dos.
 
-No fue un trueno. No fue un relámpago. Fue un cohete de 124 metros de altura —más alto que la Torre Eiffel— que despegó con 81 millones de newtons de empuje, el impulso más fuerte que cualquier máquina humana haya generado hasta hoy. Starship V3, la versión más reciente del cohete de SpaceX, no solo despegó: voló, se separó, reingresó y aterrizó como se planeó. Y lo hizo con un motor apagado, otro fallando, y sin intentar recuperar ninguna de sus dos etapas.
+No fue un trueno. No fue un relámpago. Fue un cohete de 124 metros de altura que despegó con 81 millones de newtons de empuje, el impulso más fuerte que cualquier máquina humana haya generado hasta hoy. Starship V3, la versión más reciente del cohete de SpaceX, no solo despegó: voló, se separó, reingresó y aterrizó como se planeó. Y lo hizo con un motor apagado, otro fallando, y sin intentar recuperar ninguna de sus dos etapas.
 
 Nadie esperaba que fuera perfecto.
 

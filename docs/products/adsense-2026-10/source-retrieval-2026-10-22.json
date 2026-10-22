@@ -1,0 +1,703 @@
+{
+  "retrieved_at": "2026-10-22",
+  "records": [
+    {
+      "url": "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115",
+      "status": 200,
+      "resolved_url": "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115",
+      "bytes_sha256": "de97d1665d1a9993a2f0cd56ca0c9de50ec34d4c51ca891dc61b8fca32d5f496",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nature.com/articles/s43247-025-03021-6",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s43247-025-03021-6",
+      "bytes_sha256": "ad492a7e65aece81428d3a90f6dead8abb4fd60b108a9247bb34bcfb4c76bdfa",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nature.com/articles/s43247-026-03258-9",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s43247-026-03258-9",
+      "bytes_sha256": "39dbdb5078cf7af834c7bdf93abe58a4dce6b103ddc0ba8afc166ab3750338ef",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/animals/cats/ancient-mummified-cheetahs-discovered-in-saudi-arabia-contain-preserved-dna-from-the-long-lost-population",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/animals/cats/ancient-mummified-cheetahs-discovered-in-saudi-arabia-contain-preserved-dna-from-the-long-lost-population",
+      "bytes_sha256": "38c11e3b4423d7bd51d197f173e3972fca6729729886ab163f5e0b4736af3f4d",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/",
+      "status": 200,
+      "resolved_url": "https://www.nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/",
+      "bytes_sha256": "0425ec1a9fa0010aa4e4b2793dc6cfec2c045a9f19632928c155948e908aa5d5",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nasa.gov/mission/artemis-ii/",
+      "status": 200,
+      "resolved_url": "https://www.nasa.gov/mission/artemis-ii/",
+      "bytes_sha256": "13297d02e1498fe40eabcbabc70ca81e51bc3cf406cb10d446d466ed575c22b3",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-025-67530-w",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41467-025-67530-w",
+      "bytes_sha256": "c32ac56f2d1dc37b9329545c031b7e85408eaec7fb3f6a1385ad3de26c36c776",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/archaeology/some-of-the-oldest-harpoons-ever-found-reveal-indigenous-people-in-brazil-were-hunting-whales-5-000-years-ago",
+      "bytes_sha256": "eaa8bb2721a8029fc212921ff2680b8f09f2415c35a6526dd7cfb1506feb7351",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arstechnica.com/science/2026/01/did-edison-accidentally-make-graphene-in-1879/",
+      "status": 403,
+      "resolved_url": "https://arstechnica.com/science/2026/01/did-edison-accidentally-make-graphene-in-1879/",
+      "bytes_sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41493360/",
+      "status": 203,
+      "resolved_url": "https://pubmed.ncbi.nlm.nih.gov/41493360/",
+      "bytes_sha256": "1e7973a615605fb5ad914db3e390d7ef924ee1ef0cb1ebd27c9d2b4a8d21de51",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scientificamerican.com/article/quantum-physicists-just-supersized-schroedingers-cat/",
+      "status": 200,
+      "resolved_url": "https://www.scientificamerican.com/article/quantum-physicists-just-supersized-schroedingers-cat/",
+      "bytes_sha256": "ce322c99a20413ba9e823ee3245ba31ef68fbb6e60f3d8682d361dd4a11a6095",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scientificamerican.com/article/babies-who-attend-daycare-share-good-germs-too/",
+      "status": 200,
+      "resolved_url": "https://www.scientificamerican.com/article/babies-who-attend-daycare-share-good-germs-too/",
+      "bytes_sha256": "796c5cad967ec9b8fec1081ae7ea377e1e98da094321c016d14835ec65623eb2",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-09983-z",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41586-025-09983-z",
+      "bytes_sha256": "75392787310ebe1dd008b15ec1d9a19603f6f90e514479b56cf80191bc698f43",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arstechnica.com/science/2026/01/meet-the-mysterious-electrides/",
+      "status": 403,
+      "resolved_url": "https://arstechnica.com/science/2026/01/meet-the-mysterious-electrides/",
+      "bytes_sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.who.int/europe/news/item/11-02-2026-measles-cases-dropped-in-europe-and-central-asia-in-2025-compared-to-the-previous-year--but-the-risk-of-outbreaks-remains---unicef-and-who%E2%81%A0",
+      "status": 200,
+      "resolved_url": "https://www.who.int/europe/news/item/11-02-2026-measles-cases-dropped-in-europe-and-central-asia-in-2025-compared-to-the-previous-year--but-the-risk-of-outbreaks-remains---unicef-and-who%E2%81%A0",
+      "bytes_sha256": "fb0144c3eec27a7b1b86929c4ab673ff81654f65db1ec9e11439e810556c027e",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.paho.org/en/measles-multi-country-outbreak-2026",
+      "status": 200,
+      "resolved_url": "https://www.paho.org/en/measles-multi-country-outbreak-2026",
+      "bytes_sha256": "69a0d46f08634bb489662def49d819112d9b57d9dca100bf87d386c8e305701d",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/measles-and-rubella-elimination-uk/uk-measles-and-rubella-elimination",
+      "status": 200,
+      "resolved_url": "https://www.gov.uk/government/publications/measles-and-rubella-elimination-uk/uk-measles-and-rubella-elimination",
+      "bytes_sha256": "e8c117f81563e5e3aaa70a31fcb82bb987050c9c28310330898d1d9ea756f5fb",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://newscientist.com/article/2513398-to-halt-measles-resurgence-we-must-fight-the-plague-of-misinformation/",
+      "status": 200,
+      "resolved_url": "https://www.newscientist.com/article/2513398-to-halt-measles-resurgence-we-must-fight-the-plague-of-misinformation/",
+      "bytes_sha256": "1fe3dda1f3e3c05f606ad595b42a6cde847167b658e6b16e1a11e6a2bc99b308",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/archaeology/human-evolution/160-000-year-old-sophisticated-stone-tools-discovered-in-china-may-not-have-been-made-by-homo-sapiens",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/archaeology/human-evolution/160-000-year-old-sophisticated-stone-tools-discovered-in-china-may-not-have-been-made-by-homo-sapiens",
+      "bytes_sha256": "146a0127adf8c13cf129d640532662369e269bfc6836b449d5e13bda285a5a15",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://technologyreview.com/2026/01/27/1131780/stratospheric-internet-take-off/",
+      "status": 403,
+      "resolved_url": "https://technologyreview.com/2026/01/27/1131780/stratospheric-internet-take-off/",
+      "bytes_sha256": "32f2fa940d4b4fe19aca1e53a24e5aac29c57b7c5ee78588325b87f1b649c864",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://sciencedaily.com/releases/2026/01/260127010149.htm",
+      "status": 200,
+      "resolved_url": "https://sciencedaily.com/releases/2026/01/260127010149.htm",
+      "bytes_sha256": "16d0083d4335eda951bf4186384bfe5016d79b430b099ec3aa68e0378ff0c837",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41392-025-02455-w",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41392-025-02455-w",
+      "bytes_sha256": "d09831fa47e8b4e7bec0166441f595016ff7da958b653c8e672549ccfcd02fc1",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot/",
+      "status": 200,
+      "resolved_url": "https://techcrunch.com/2026/01/27/everything-you-need-to-know-about-viral-personal-ai-assistant-clawdbot-now-moltbot/",
+      "bytes_sha256": "c5c0804ed8c21b56b6729c791d8cb31b422e6388108dbe42c746480bcaad3484",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/physics-mathematics/dark-energy/the-dream-has-come-true-standard-model-of-cosmology-holds-up-in-massive-6-year-study-of-the-universe-with-one-big-caveat",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/physics-mathematics/dark-energy/the-dream-has-come-true-standard-model-of-cosmology-holds-up-in-massive-6-year-study-of-the-universe-with-one-big-caveat",
+      "bytes_sha256": "df869ea79479d8a6d8fd5e47b5dcba04142932e90840b8be1058f998533862e4",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/",
+      "status": 200,
+      "resolved_url": "https://www.scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/",
+      "bytes_sha256": "3ae248a831e0fe846584ab469e5dc6d3d137dfd1b3b7e3aff1da6cdc32919fb7",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/",
+      "status": 200,
+      "resolved_url": "https://www.scientificamerican.com/article/these-two-habits-are-linked-to-more-than-a-third-of-all-cancer-cases/",
+      "bytes_sha256": "f7dd160cee2dcc6125b7dc528aa7161f37e87ceb2f423d12ba73461f2e1e9898",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41591-026-04219-7",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41591-026-04219-7",
+      "bytes_sha256": "c0f3997c1906d65b35edf32770cba3aa483a573073bc905208f1d154c5d1be83",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scitechdaily.com/this-unexpected-ingredient-makes-bread-much-healthier/",
+      "status": 200,
+      "resolved_url": "https://scitechdaily.com/this-unexpected-ingredient-makes-bread-much-healthier/",
+      "bytes_sha256": "d06156cb132df02de6fbeb57b7f35cf3ea05ebef1994f0cd5db6497ca2efd382",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://microsoft.com/en-us/research/blog/project-silicas-advances-in-glass-storage-technology/",
+      "status": 200,
+      "resolved_url": "https://www.microsoft.com/en-us/research/blog/project-silicas-advances-in-glass-storage-technology/",
+      "bytes_sha256": "531b95b844968b914f18db996ad5453c997541ce1d187f055aba0624167e83a9",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401",
+      "status": 200,
+      "resolved_url": "https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401",
+      "bytes_sha256": "764de25151a020c995384c80cc4bda85229144fef60cda7c407900aa5b1ba50e",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402",
+      "status": 200,
+      "resolved_url": "https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402",
+      "bytes_sha256": "f7f799df457d17594b832dda88a261870f9280d249b49f25f72c35ca3d30507b",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/",
+      "status": 200,
+      "resolved_url": "https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/",
+      "bytes_sha256": "a3b2e947b6e498eab1c01b11b9e0715e1435cc0c88f88e6ef2d7d93ca178350f",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim",
+      "status": 200,
+      "resolved_url": "https://wlab.yale.edu/posts/2026-03-31-experiments-refute-dark-matter-claim",
+      "bytes_sha256": "50508e5352b7e93cfbe0b4aff4acbd535c77e0ab837e22ad3ffa0b253caf13b1",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html",
+      "status": 200,
+      "resolved_url": "https://blog.google/security/prompt-injections-web/",
+      "bytes_sha256": "fab7bc37660a6ed8c63b0b0a6f094c9d0747582f6126e9dc4b90b915548a5756",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://economics.yale.edu/research/automation-and-rent-dissipation-implications-wages-inequality-and-productivity",
+      "status": 200,
+      "resolved_url": "https://economics.yale.edu/research/automation-and-rent-dissipation-implications-wages-inequality-and-productivity",
+      "bytes_sha256": "37422c3f7a7961c86cd215e69731a700b2d98b11946a9295e24458893ae1fd08",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507",
+      "status": 200,
+      "resolved_url": "https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507",
+      "bytes_sha256": "b777873129f6ce75ae73697a8990b543a4aefc999ea6d597a0475c444bd5e0a3",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scientificamerican.com/article/ocean-census-reveals-more-than-1-100-new-species/",
+      "status": 200,
+      "resolved_url": "https://www.scientificamerican.com/article/ocean-census-reveals-more-than-1-100-new-species/",
+      "bytes_sha256": "4821403bbe6ab308d826c12f127515c98027db86f5238cc719157449a765ed46",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://huggingface.co/blog/muse-glimmer",
+      "status": 200,
+      "resolved_url": "https://huggingface.co/blog/muse-glimmer",
+      "bytes_sha256": "523223248c8aa8558eb48e148a7646d812cd7c2f80eb4bb101224c619ae437dd",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721",
+      "status": 200,
+      "resolved_url": "https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721",
+      "bytes_sha256": "707ee0f85e65946ca5330edb09ccb0e640c7e61e10e36c2f7d69e46f4408dee9",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://spectrum.ieee.org/hugging-face-openai-cyberattack",
+      "status": 403,
+      "resolved_url": "https://spectrum.ieee.org/hugging-face-openai-cyberattack",
+      "bytes_sha256": "30b2298ea161f16d4bb499c707856d5c7f20e7ccf9e3a63ffa352664984755ef",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://openai.com/es-419/index/hugging-face-model-evaluation-security-incident/",
+      "status": 403,
+      "resolved_url": "https://openai.com/es-419/index/hugging-face-model-evaluation-security-incident/",
+      "bytes_sha256": "f88be3f9720413705354c7b971e95c41b125c95a4653bd3ccfe0825e433fb772",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://openai.com/es-419/index/hugging-face-incident-and-the-road-ahead/",
+      "status": 403,
+      "resolved_url": "https://openai.com/es-419/index/hugging-face-incident-and-the-road-ahead/",
+      "bytes_sha256": "4e3c59fa48cd1d5eb0e59874ea319c4786d3212f926e29a4de5e74b3d561d8ee",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "status": 200,
+      "resolved_url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "bytes_sha256": "f92ad78d7665f0112225dcdd15f2f74125224dc9a4dfc86dd560201afd35439f",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/",
+      "status": 200,
+      "resolved_url": "https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/",
+      "bytes_sha256": "c7c3fe3e691c313c2a4190c97deacb1290736a1cbe1b3f05b6b5c5449b03a937",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot",
+      "status": 200,
+      "resolved_url": "https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot",
+      "bytes_sha256": "375a3b570417b8b85def9b1519c64e5e9c0eb1cdd99b9fa38946c9cc3f2fb396",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://theconversation.com/galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery-272318",
+      "status": 200,
+      "resolved_url": "https://theconversation.com/galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery-272318",
+      "bytes_sha256": "d17f786e718a3210ce9550d4ff673b6efb90f2aae571ffe226e104531b53f3e0",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://newscientist.com/article/2586640-where-and-when-to-see-2027s-solar-eclipse-of-the-century/",
+      "status": 200,
+      "resolved_url": "https://www.newscientist.com/article/2586640-where-and-when-to-see-2027s-solar-eclipse-of-the-century/",
+      "bytes_sha256": "ee1cdba2d0d4fd93aa9de7a8ca770aaf2b197a4e5b5c7e3b1b78b84166cb0e1c",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://theconversation.com/professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries-288253",
+      "status": 200,
+      "resolved_url": "https://theconversation.com/professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries-288253",
+      "bytes_sha256": "1d172e119311e329bb4f3420bb632c344f6032d1faa40c347e5cdab0e26ce6f8",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/technology/robotics/faster-than-usain-bolt-heres-all-the-records-robot-athletes-broke-at-this-years-world-humanoid-robot-games-in-china",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/technology/robotics/faster-than-usain-bolt-heres-all-the-records-robot-athletes-broke-at-this-years-world-humanoid-robot-games-in-china",
+      "bytes_sha256": "7ce3bdf85eaaad5e27c65deb40a4d7d2952ae7a5f9bb1dadb7288e989d9ec748",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "status": 200,
+      "resolved_url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "bytes_sha256": "e0e2a3b2309a68e7dbe860438b1ecc55e660789d3db329b350a1019a355eebb4",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://pancanal.com/canal-de-panama-adopta-medidas-adicionales-para-atender-la-reduccion-de-precipitaciones-en-la-cuenca-hidrografica/",
+      "status": 403,
+      "resolved_url": "https://pancanal.com/canal-de-panama-adopta-medidas-adicionales-para-atender-la-reduccion-de-precipitaciones-en-la-cuenca-hidrografica/",
+      "bytes_sha256": "32f2fa940d4b4fe19aca1e53a24e5aac29c57b7c5ee78588325b87f1b649c864",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "status": 200,
+      "resolved_url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "bytes_sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://pancanal.com/wp-content/uploads/2026/04/ADV-36-2026-Increase-in-the-Number-of-Neopanamax-Booking-Slots-Draft-Adjustment-and-Transit-Reservation-System.pdf",
+      "status": 403,
+      "resolved_url": "https://pancanal.com/wp-content/uploads/2026/04/ADV-36-2026-Increase-in-the-Number-of-Neopanamax-Booking-Slots-Draft-Adjustment-and-Transit-Reservation-System.pdf",
+      "bytes_sha256": "32f2fa940d4b4fe19aca1e53a24e5aac29c57b7c5ee78588325b87f1b649c864",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://theconversation.com/2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat-291490",
+      "status": 200,
+      "resolved_url": "https://theconversation.com/2026s-el-nino-is-shaping-up-to-be-a-doozy-its-already-affecting-global-shipping-fish-behavior-and-heat-291490",
+      "bytes_sha256": "23b843218c7233b842f522540016c7cb9cb8a4e7886fcb6fc78660e51b2ff096",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.3847/2041-8213/ae9bb6",
+      "status": 200,
+      "resolved_url": "https://iopscience.iop.org/article/10.3847/2041-8213/ae9bb6",
+      "bytes_sha256": "883010e941d63a690b75ddfaf973258a7d9e2fd06983e60e1dc68a5cee3170c7",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/space/exoplanets/this-million-year-old-baby-planet-is-the-youngest-world-scientists-have-ever-discovered",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/space/exoplanets/this-million-year-old-baby-planet-is-the-youngest-world-scientists-have-ever-discovered",
+      "bytes_sha256": "cf2c0c9059e96e684a7e62c83ef7d43203083c8717c5dcf4299ba89ea644662e",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://science.nasa.gov/universe/newfound-baby-planet-smashes-record-for-youngest-known-world/",
+      "status": 200,
+      "resolved_url": "https://science.nasa.gov/universe/newfound-baby-planet-smashes-record-for-youngest-known-world/",
+      "bytes_sha256": "4b646003d62a03bc0b6823c64f7e4d60be093a83935c9e95946c911baf3a83bd",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/",
+      "status": 200,
+      "resolved_url": "https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/",
+      "bytes_sha256": "8d6536ae639e2dc6cb670dc4dbb54e269d6c67b879bdd84ac47611f6855c29b0",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1",
+      "status": 200,
+      "resolved_url": "https://www.biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1",
+      "bytes_sha256": "f2d24e0f41e8030a394eaff7c135e36073980dbb69828e9fd6175cd620620a94",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1371/journal.pone.0353485",
+      "status": 200,
+      "resolved_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0353485",
+      "bytes_sha256": "bcfabb6f951243bc645ee298b24ac3b6d6d7b443bc12e212bf87c5dddf111305",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/",
+      "status": 200,
+      "resolved_url": "https://scitechdaily.com/mount-vesuvius-buried-these-scrolls-for-2000-years-now-scientists-may-read-them/",
+      "bytes_sha256": "bdee891572000636f3b89e1104c4d85494529a10d09ef1852f451c4ec222474f",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/",
+      "status": 200,
+      "resolved_url": "https://www.wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/",
+      "bytes_sha256": "f43867083ccaf575b2767c30e970857d1713a6226cb49d471d92f1010deaffd8",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.quantamagazine.org/corals-spin-tiny-vortices-to-get-oxygen-but-not-if-its-too-hot-20260805/",
+      "status": 200,
+      "resolved_url": "https://www.quantamagazine.org/corals-spin-tiny-vortices-to-get-oxygen-but-not-if-its-too-hot-20260805/",
+      "bytes_sha256": "4c396270a69a808325f23e18a397a5bebea09a19ec436dfd164253b621d9d2c8",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/",
+      "status": 200,
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/",
+      "bytes_sha256": "626fc6530d1f8e4b7ae0b707b18e72daea6a4dea84fcd78671cd60538cd78159",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.16720",
+      "status": 200,
+      "resolved_url": "https://arxiv.org/abs/2609.16720",
+      "bytes_sha256": "9b2e6428b7a42bd20c566b81f2fa9da7006dea47df5acafc2ed547092e43a0b1",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/",
+      "status": 200,
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/",
+      "bytes_sha256": "5cc39a4378aaa50f64d552bc5bc7833a812fe647e63abcb825cc25d2d3601b63",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://livescience.com/planet-earth/it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth",
+      "status": 200,
+      "resolved_url": "https://www.livescience.com/planet-earth/it-has-become-very-dire-in-a-lot-of-places-new-map-reveals-exactly-where-humans-are-adding-and-removing-precious-fresh-water-on-earth",
+      "bytes_sha256": "3005c4fe9cecd698f445cebe37cc12cdd95b02ec5e5509da7335ecc240f07299",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/",
+      "status": 200,
+      "resolved_url": "https://www.quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/",
+      "bytes_sha256": "6ca3a722f00fbd3391a16d3cd0aea61fea958a4c39acdf37988b3022eedcef1f",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/9711200",
+      "status": 200,
+      "resolved_url": "https://arxiv.org/abs/hep-th/9711200",
+      "bytes_sha256": "54734e53990a690ab54d9f6623241b4ac2b23c04deb8ecfaabbbcd958a737632",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1103/PhysRevD.7.2333",
+      "status": 403,
+      "resolved_url": "https://link.aps.org/doi/10.1103/PhysRevD.7.2333",
+      "bytes_sha256": "e728f4bbb3c0e637680a9840255af8f85033a245a1bd3c7fbd9221c8374ee8fc",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arstechnica.com/science/2026/10/controlling-the-brain-with-light-earns-a-physiology-nobel/",
+      "status": 403,
+      "resolved_url": "https://arstechnica.com/science/2026/10/controlling-the-brain-with-light-earns-a-physiology-nobel/",
+      "bytes_sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/nature16512",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/nature16512",
+      "bytes_sha256": "3c953e62ad6ca3812ee218f8dc1e3557fb12989781527ee498cb8038204ff0b7",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41558-024-01989-1",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41558-024-01989-1",
+      "bytes_sha256": "407dd4fdc99fe2cf128c43bb682da1acc825e75d9dc6c323cf6b7039accb7894",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://technologyreview.com/2026/10/12/1145745/daisy-dent-ecologist-revealing-invisible-networks-revive-rainforests/",
+      "status": 403,
+      "resolved_url": "https://technologyreview.com/2026/10/12/1145745/daisy-dent-ecologist-revealing-invisible-networks-revive-rainforests/",
+      "bytes_sha256": "32f2fa940d4b4fe19aca1e53a24e5aac29c57b7c5ee78588325b87f1b649c864",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://cfg.eu/negotiating-solar-radiation-modification-governance/",
+      "status": 200,
+      "resolved_url": "https://cfg.eu/negotiating-solar-radiation-modification-governance/",
+      "bytes_sha256": "fe19d2d0d15b8cd69bd95ad22d502713bc720e7e479af3c763cc83d1fb7dce7f",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://wired.com/story/they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think/",
+      "status": 200,
+      "resolved_url": "https://www.wired.com/story/they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think/",
+      "bytes_sha256": "2189752a3ee67331ba2b74d5e00f61e416b420fed7b1864f607c3c13252cfe1e",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/",
+      "status": 200,
+      "resolved_url": "https://www.quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/",
+      "bytes_sha256": "7e068161c11ac103c56042481187746e13849e1fd3c953d45a91e157a5bad659",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://404media.co/this-might-be-the-earliest-known-spear-murder-in-earths-history/",
+      "status": 200,
+      "resolved_url": "https://www.404media.co/this-might-be-the-earliest-known-spear-murder-in-earths-history/",
+      "bytes_sha256": "95f3371fd4bdd0755e7815721a69a0d830d9fb4c82c9d7471ffcd06c4c06925b",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2027Aug02Tgoogle.html",
+      "status": 200,
+      "resolved_url": "https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2027Aug02Tgoogle.html",
+      "bytes_sha256": "32297313cbe83008f480f52b584229c7cf0ca1190fa0f19dc41de69afc449b94",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html",
+      "status": 200,
+      "resolved_url": "https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html",
+      "bytes_sha256": "a9c08f5b4b51d5c85ccfa18d8bfccd98ec8a7d93f06e2d40691943b4105acf9e",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://science.nasa.gov/eclipses/safety/",
+      "status": 200,
+      "resolved_url": "https://science.nasa.gov/eclipses/safety/",
+      "bytes_sha256": "5c3efa2ed87316c5b66c057544d6449b3236be3fb8a35d066ce2851e5ee243d1",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.14559",
+      "status": 200,
+      "resolved_url": "https://arxiv.org/abs/2601.14559",
+      "bytes_sha256": "191f4df3c96bdf0f37d93ec56d83d3c23d2ca733c365b516b497a6daf807d9fb",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/",
+      "status": 200,
+      "resolved_url": "https://pingprod.fnal.gov/idp/SSO.saml2?SAMLRequest=hZJPT8JAEMW%2FSrN3%2Bg8Q3LQkSG1CgkpAPXgxmzKUje1undm28u3dlqh4gdMms%2B%2FN%2FN7sRiTKouLz2hzUBj5rION8lYUi3l%2FErEbFtSBJXIkSiJuMb%2BcPKx66Pq9QG53pgp1ZLjsEEaCRWjFnmcTsPRj7STAdBUk6vL9bBOF0kqQTfzRMk%2BR2EgQpc14ByepjZu3WRFTDUpERytiSH94MAn8Qhs9ByEdjPh69MSexGaQSpncdjKmIe14lVW5xd%2B5eicLNdePJXeVtt09uBx0yZ6EVQdf0En52EvGsRrTnQJZVITNpmJNqzKDfYsz2oiDoWNc2rmzgtzL%2FSd8Nq0vALWAjM3jZrP5I27Z1dwI%2FQAHmR6qxgaOrMfdKKAqtvEqT2QBVHQqbRR0%2B79eCs2stIu9cHZ2e%2FtGmXCZrbYMcuxiluLKEriJ3g30v5QaFImmXYeNZvnaBIIyNbLAG5s1OI%2F9%2FsNk3&RelayState=https%3A%2F%2Fwww.darkenergysurvey.org%2Fdes-y6-cosmology-results-papers%2F&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=N1GWqAjSGvLUjuo5Ngk0RDt6yh2GUyyRA7C2kgXMMf662ChXraFJgmObUEruGt9LE5DnYxEuIIWbC3lffZeeZmgFthQKUlODIqwiPU61VaOUXpHHFaH9t%2FKhOrQLoElt8yvG98DDNEX8MlWDXiXmSji9dorf%2Fc9WBkcLy5L2ybFFrIQfUktGYCQBfvi7RU%2FcJBdBvuR0YQ7C6WONx6Y7yk%2BSUcQ%2Bkvn0Iyfrq1Ocb0CTGxEY%2FH1240gvd3l738xMU%2Fb0vsvAdTdGM67CKJevgUVmXK10AqWEdleFQc4IjdAS99hWVqAHlgpOC9utFLvWglVFKJelltmmZOxgIKO5og%3D%3D",
+      "bytes_sha256": "e802c749854bca99aa1312dbb9ab4615cc25d7e08b90a089ea60dab868f6ffc4",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1016/j.cub.2023.02.027",
+      "status": 200,
+      "resolved_url": "https://linkinghub.elsevier.com/retrieve/pii/S0960982223001677",
+      "bytes_sha256": "90352e9332b90b22b92e66b68ae55816cbeb9098a3952b39692fe9b518df6de8",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1126/science.adu4373",
+      "status": 403,
+      "resolved_url": "https://www.science.org/doi/10.1126/science.adu4373",
+      "bytes_sha256": "96d14fe6bd2201a8059c1babf4c351f1064d6a47a4c54c4249cdca395fb6642b",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-12/",
+      "status": 200,
+      "resolved_url": "https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-12/",
+      "bytes_sha256": "03d6b8dc40e45eb5db0860d48ffb36524bbd6984013387d6ec065536a84cff74",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.30865",
+      "status": 200,
+      "resolved_url": "https://arxiv.org/abs/2605.30865",
+      "bytes_sha256": "cf51e92873a746e6a147e02b160dec7d389e33cd08fa4804d555ef7ad56d431f",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2501.05739",
+      "status": 200,
+      "resolved_url": "https://arxiv.org/abs/2501.05739",
+      "bytes_sha256": "fca82b0f0816a6dec2c83c203ae87158f14275d974e108ff4db12805bf3a4af6",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1136/bmjsem-2021-001149",
+      "status": 403,
+      "resolved_url": "https://bmjopensem.bmj.com/lookup/doi/10.1136/bmjsem-2021-001149",
+      "bytes_sha256": "b240b9b375b0bf515e921468d8c99708fb5a6fe8736c11c99e4d8b1425b95740",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1186/s40798-026-01083-0",
+      "status": 200,
+      "resolved_url": "https://link.springer.com/article/10.1186/s40798-026-01083-0",
+      "bytes_sha256": "75a9a136637b4e7270c5075f009ac4bcf3dbce3449d6c07df63054652b36d4f2",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41598-026-69193-z",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41598-026-69193-z",
+      "bytes_sha256": "8c0a04a53794f731d1b2a41a916d55ce01391999760feb67eb4665a5af1fa431",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.ljmu.ac.uk/about-us/news/articles/2026/10/16/shanidar",
+      "status": 200,
+      "resolved_url": "https://www.ljmu.ac.uk/about-us/news/articles/2026/10/16/shanidar",
+      "bytes_sha256": "2262424dc18cca482c2b5ba0dee3f518da24e6b244a4d91aa734cb8e7579824a",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://newn.cam.ac.uk/newnham-news/fatal-neanderthal-wound-early-evidence-wooden-spear-attack",
+      "status": 200,
+      "resolved_url": "https://newn.cam.ac.uk/newnham-news/fatal-neanderthal-wound-early-evidence-wooden-spear-attack",
+      "bytes_sha256": "c114e83c9601e9a353a7dc86f9445adaf5e5f56d927a44f9da389df2f51c062e",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1073/pnas.1936192100",
+      "status": 403,
+      "resolved_url": "https://pnas.org/doi/full/10.1073/pnas.1936192100",
+      "bytes_sha256": "f85f6e02d1fcdf8572bb37ba5f0538e21174d7e10553637a24bef8a63ed4120d",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/nn1525",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/nn1525",
+      "bytes_sha256": "40afd04d1a24827e98d1349e812ee45276aa28d6f24288aae569451d73b6b71d",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41591-021-01351-4",
+      "status": 200,
+      "resolved_url": "https://www.nature.com/articles/s41591-021-01351-4",
+      "bytes_sha256": "c7ee03a7e198c10f56dc0bff38827e4bfc11c6fe919c69af0c80168c95054709",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    },
+    {
+      "url": "https://www.nsf.gov/bio/updates/nsf-bio-congratulates-winners-2026-nobel-prize-physiology-or",
+      "status": 200,
+      "resolved_url": "https://www.nsf.gov/bio/updates/nsf-bio-congratulates-winners-2026-nobel-prize-physiology-or",
+      "bytes_sha256": "39e392a168c802230717a59d5d4f107debbfc0dd26907e9b87b0bdfb1d348d89",
+      "phase": "branch correction sources",
+      "retrieval_only": "HTTP success is not evidence of claim support, source independence or human review."
+    }
+  ]
+}

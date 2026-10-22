@@ -16,8 +16,8 @@ image: ~/assets/images/2026-09-17-young-planet-disk-gap-original.webp
 image_alt: 'Ilustración generada con IA de un planeta joven dentro de un hueco en un disco de gas y polvo alrededor de una estrella.'
 source_url: https://doi.org/10.3847/2041-8213/ae9bb6
 refinery_id: '2298'
-corrected_at: '2026-10-12'
-correction_summary: 'Se añadió el estudio primario y se precisó que el récord previo estaba compartido por planetas de PDS 70 y WISPIT 2.'
+corrected_at: '2026-10-22'
+correction_summary: 'Se añadió el estudio primario y se precisó que el récord previo estaba compartido por planetas de PDS 70 y WISPIT 2. El 22 de octubre se retiró la comparación literal de la edad planetaria con la de un recién nacido humano.'
 headlines_variants:
   question: ¿Qué es ese punto de luz tan joven como un bebé a 450 años luz?
   benefit: Cómo el descubrimiento del exoplaneta más joven ayuda a comprender los inicios de la Tierra
@@ -82,7 +82,7 @@ social:
 
 _Imagen de portada: interpretación artística generada con IA de formación planetaria; no es una imagen telescópica de Elias 2-24 b._
 
-A 450 años luz de la Tierra, una estrella recién nacida guarda en su disco de gas y polvo un punto de luz que apenas tiene la edad de un recién nacido humano. Ese punto es Elias 2-24 b, un exoplaneta que, con menos de un millón de años, se convierte en el mundo alienígena más joven jamás confirmado.
+A 450 años luz de la Tierra, una estrella recién nacida guarda en su disco de gas y polvo un punto de luz asociado a un planeta de menos de un millón de años. Ese punto es Elias 2-24 b, un exoplaneta que, con menos de un millón de años, se convierte en el mundo alienígena más joven jamás confirmado.
 
 **Contexto del fenómeno y de la pregunta abierta**  
 Los planetas nacen del disco protoplanetario que rodea a su estrella madre: el gas y el polvo se agrupan por gravedad, formando un núcleo que luego atrae más material. Hasta hace poco, los astrónomos solo podían observar esos mundos recién formados cuando ya habían abierto un hueco suficientemente grande en el disco, lo que correspondía a edades de varios millones de años. Esa limitación dejaba una laguna en nuestra comprensión de los primeros momentos de la formación planetaria, incluido el proceso que dio origen a la Tierra.
