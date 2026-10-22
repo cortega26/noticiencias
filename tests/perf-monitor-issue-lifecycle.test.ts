@@ -14,7 +14,7 @@ type Issue = { number: number; title: string; pull_request?: object };
 
 async function run(low: boolean, open: Issue[]) {
   const calls: Array<[string, Params]> = [];
-  const record = (name: string) => async (params: Params) => {
+  const push = (name: string, params: Params) => {
     calls.push([name, params]);
   };
   const github = {
@@ -22,9 +22,9 @@ async function run(low: boolean, open: Issue[]) {
     rest: {
       issues: {
         listForRepo: 'listForRepo',
-        create: record('create'),
-        createComment: record('createComment'),
-        update: record('update'),
+        create: async (params: Params) => push('create', params),
+        createComment: async (params: Params) => push('createComment', params),
+        update: async (params: Params) => push('update', params),
       },
     },
   };
