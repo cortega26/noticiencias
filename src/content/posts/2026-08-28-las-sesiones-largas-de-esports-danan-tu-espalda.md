@@ -54,7 +54,7 @@ why_it_matters:
 confidence: Moderada para describir los resultados de las muestras; limitada para generalizar o establecer causalidad.
 sources:
   - title: Mental health symptoms in electronic football players
-    url: https://doi.org/10.1136/bmjsem-2021-001149
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8506853/
     publisher: BMJ Open Sport & Exercise Medicine
     role: primary
     doi: 10.1136/bmjsem-2021-001149
@@ -88,7 +88,7 @@ Los estudios sobre salud en esports describen molestias y síntomas que merecen 
 
 ## De dónde salen el 22 %, el 37 % y el 45 %
 
-El [estudio de Pereira y colaboradores de 2021](https://doi.org/10.1136/bmjsem-2021-001149) analizó una encuesta transversal a 292 jugadores adultos de eFootball registrados en la plataforma FPF Esports. La muestra fue de conveniencia; no representa automáticamente a todos los jugadores portugueses ni a todos los esports.
+El [estudio de Pereira y colaboradores de 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8506853/) analizó una encuesta transversal a 292 jugadores adultos de eFootball registrados en la plataforma FPF Esports. La muestra fue de conveniencia; no representa automáticamente a todos los jugadores portugueses ni a todos los esports.
 
 Los cuestionarios identificaron síntomas de ansiedad en el 22 %, síntomas de depresión en el 37 % y alteraciones del sueño en el 45 %. **No es correcto decir que el 37 % recibió un diagnóstico de «ansiedad o depresión».** Son categorías distintas y sus porcentajes no deben sumarse: una persona puede presentar más de un tipo de síntoma.
 

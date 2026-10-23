@@ -63,7 +63,7 @@ confidence:
   evaluarse por intervención y población.
 sources:
   - title: Channelrhodopsin-2, a directly light-gated cation-selective membrane channel
-    url: https://doi.org/10.1073/pnas.1936192100
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC283525/
     publisher: PNAS
     role: primary
     doi: 10.1073/pnas.1936192100
@@ -105,7 +105,7 @@ El reconocimiento del Nobel de Fisiología o Medicina 2026 a Karl Deisseroth, Pe
 
 ## Dos resultados que no son el mismo experimento
 
-En 2003, [Nagel y colaboradores](https://doi.org/10.1073/pnas.1936192100) caracterizaron channelrhodopsin-2, una proteína procedente del alga unicelular _Chlamydomonas reinhardtii_. Mostraron que funciona como un canal de membrana selectivo para cationes y activado directamente por luz.
+En 2003, [Nagel y colaboradores](https://pmc.ncbi.nlm.nih.gov/articles/PMC283525/) caracterizaron channelrhodopsin-2, una proteína procedente del alga unicelular _Chlamydomonas reinhardtii_. Mostraron que funciona como un canal de membrana selectivo para cationes y activado directamente por luz.
 
 En 2005, [Boyden, Zhang, Bamberg, Nagel y Deisseroth](https://doi.org/10.1038/nn1525) expresaron esa proteína en neuronas de mamífero. La iluminación permitió controlar su actividad con precisión temporal de milisegundos. Ese experimento conectó una propiedad molecular con una herramienta para investigar células nerviosas.
 
