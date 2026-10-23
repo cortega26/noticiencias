@@ -55,7 +55,7 @@ sources:
     role: primary
     doi: 10.1016/j.cub.2023.02.027
   - title: Global density and biomass of arbuscular mycorrhizal fungal networks
-    url: https://doi.org/10.1126/science.adu4373
+    url: https://pubmed.ncbi.nlm.nih.gov/42275513/
     publisher: Science
     role: primary
     doi: 10.1126/science.adu4373
@@ -96,7 +96,7 @@ La unidad expresa carbono como equivalente de CO2; no significa que los hongos a
 | Carbono presente en biomasa o suelo       | Cuánto hay en el momento de medir              | Cómo cambia el depósito con el tiempo       |
 | Cambio neto atribuible a una intervención | Diferencia frente a un escenario de referencia | Duración, seguimiento y riesgo de reversión |
 
-Un trabajo de [Science de 2026](https://doi.org/10.1126/science.adu4373) aborda otra pregunta: la extensión y biomasa de las redes de hongos micorrícicos arbusculares. Combina datos de 322 estudios y más de 16.000 muestras de suelo con modelos. Esa cartografía ayuda a localizar vacíos de observación; tampoco convierte la biomasa estimada en una garantía de almacenamiento duradero.
+Un trabajo de [Science de 2026](https://pubmed.ncbi.nlm.nih.gov/42275513/) aborda otra pregunta: la extensión y biomasa de las redes de hongos micorrícicos arbusculares. Combina datos de 322 estudios y más de 16.000 muestras de suelo con modelos. Esa cartografía ayuda a localizar vacíos de observación; tampoco convierte la biomasa estimada en una garantía de almacenamiento duradero.
 
 ## Por qué no basta con decir que «mitigan emisiones»
 
