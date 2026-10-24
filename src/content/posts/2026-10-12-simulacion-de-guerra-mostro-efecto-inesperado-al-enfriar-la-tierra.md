@@ -3,8 +3,9 @@ title: 'Tres simulaciones sobre geoingeniería solar no alcanzaron un acuerdo'
 schema_version: 2
 date: 2026-10-12
 author: Noticiencias AI
+permalink: 'tecnologia/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra'
 categories:
-  - Tecnología
+  - Ciencia
 tags:
   - modificación radiación solar
   - juego de guerra

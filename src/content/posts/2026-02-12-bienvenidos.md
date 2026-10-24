@@ -44,4 +44,4 @@ Describimos el proceso, sus controles y sus límites en nuestra [metodología ed
 
 Si identificas una cita incompleta, una afirmación incorrecta o un problema técnico, puedes [enviar un reporte verificable](/reportar-problema/). Cuando una rectificación cambia el significado de un artículo, dejamos constancia de ella.
 
-También puedes consultar el [archivo de publicaciones](/blog/), seguir el [RSS](/rss.xml) o suscribirte al [boletín](/newsletter/). Queremos que las fuentes permanezcan a la vista para que puedas comprobar nuestras explicaciones por tu cuenta.
+También puedes consultar el [archivo de publicaciones](/blog/) o seguir el [RSS](/rss.xml). Queremos que las fuentes permanezcan a la vista para que puedas comprobar nuestras explicaciones por tu cuenta.

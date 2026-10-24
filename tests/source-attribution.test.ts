@@ -112,8 +112,10 @@ describe('rendered source line', () => {
   });
 
   it('keeps the translation label for an adaptation of a single secondary article', () => {
-    const text = sourceLine('2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres');
-    expect(text).toContain('Fuente: New Scientist');
+    const text = sourceLine(
+      '2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado'
+    );
+    expect(text).toContain('Fuente: Yale News');
     expect(text).toContain('traducción NotiAI');
   });
 
