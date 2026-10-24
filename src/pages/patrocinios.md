@@ -12,8 +12,8 @@ Si en el futuro se habilita publicidad, aparecerá diferenciada del contenido
 editorial y con los avisos de privacidad y consentimiento que correspondan.
 
 También aceptamos patrocinios puntuales alineados con la divulgación científica
-rigurosa: espacios en el boletín y series temáticas claramente etiquetadas
-como patrocinadas.
+rigurosa: series temáticas claramente etiquetadas como patrocinadas. No ofrecemos
+espacios en un boletín mientras las suscripciones por correo estén deshabilitadas.
 
 ## Lo que nunca hacemos
 

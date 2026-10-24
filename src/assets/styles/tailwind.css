@@ -115,3 +115,10 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+/* Keep wide evidence comparisons scrollable within the reading column. */
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}

@@ -59,7 +59,7 @@ describe('GA4 funnel wiring (P2-03)', () => {
     expect(page('[data-analytics-related]').attr('data-analytics-related')).toBe('related');
   });
 
-  it('marks topic, series and newsletter hooks on the surfaces that render them', () => {
+  it('marks topic and series hooks while newsletter capture is disabled', () => {
     const home = load(readDistHtml('/'));
     expect(home('[data-analytics-topic]').length).toBeGreaterThan(0);
     expect(home('[data-analytics-series]').length).toBeGreaterThan(0);
@@ -67,7 +67,7 @@ describe('GA4 funnel wiring (P2-03)', () => {
     const formIds = home('[data-newsletter-form-id]')
       .map((_, element) => home(element).attr('data-newsletter-form-id'))
       .get();
-    expect(formIds).toEqual(['newsletter-hero', 'newsletter-final']);
+    expect(formIds).toEqual([]);
 
     expect(load(readDistHtml('/series/'))('[data-analytics-series]').length).toBeGreaterThan(0);
   });

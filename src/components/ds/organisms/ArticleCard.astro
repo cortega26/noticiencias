@@ -35,7 +35,7 @@ const styles = {
   lead: {
     article: 'grid gap-5 lg:grid-cols-[1.25fr_0.75fr] border-b border-border-subtle pb-6',
     image: 'aspect-[16/10] lg:aspect-[4/3]',
-    title: 'text-3xl md:text-5xl',
+    title: 'text-2xl sm:text-3xl lg:text-4xl',
     excerpt: 'text-base md:text-lg',
   },
   standard: {
@@ -91,35 +91,40 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
   ) : (
     <article class={`group ${styles.article} ${className}`}>
       {image && (
-        <a
-          href={href}
-          class={`block overflow-hidden rounded-md bg-surface-highlight ${styles.image}`}
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            width={variant === 'lead' ? 1200 : 640}
-            height={variant === 'lead' ? 800 : 420}
-            widths={[320, 640, 900, 1200]}
-            sizes={
-              variant === 'lead'
-                ? '(max-width: 1024px) 100vw, 760px'
-                : '(max-width: 768px) 100vw, 420px'
-            }
-            class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:transform-none"
-            loading={variant === 'lead' ? 'eager' : 'lazy'}
-            fetchpriority={variant === 'lead' ? 'high' : 'auto'}
-          />
-        </a>
+        <figure class="min-w-0">
+          <a
+            href={href}
+            class={`block overflow-hidden rounded-md bg-surface-highlight ${styles.image}`}
+          >
+            <Image
+              src={image}
+              alt={imageAlt}
+              width={variant === 'lead' ? 1200 : 640}
+              height={variant === 'lead' ? 800 : 420}
+              widths={[320, 640, 900, 1200]}
+              sizes={
+                variant === 'lead'
+                  ? '(max-width: 1024px) 100vw, 760px'
+                  : '(max-width: 768px) 100vw, 420px'
+              }
+              class="h-full w-full object-cover"
+              loading={variant === 'lead' ? 'eager' : 'lazy'}
+              fetchpriority={variant === 'lead' ? 'high' : 'auto'}
+            />
+          </a>
+          {variant === 'lead' && imageAlt && (
+            <figcaption class="mt-2 text-xs leading-relaxed text-text-muted">{imageAlt}</figcaption>
+          )}
+        </figure>
       )}
 
       <div
         class:list={[
-          'flex min-w-0 flex-col',
+          'flex min-w-0 flex-col justify-center',
           { 'mt-4': image && (variant === 'standard' || variant === 'compact') },
         ]}
       >
-        <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
+        <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-text-muted">
           {post.investigation && <InvestigationBadge size="sm" />}
           {post.category && (
             <TopicBadge
@@ -138,7 +143,7 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
         <SourceLine post={post} showTranslationNote={false} showCoverage={false} class="mb-3" />
 
         <h2
-          class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold leading-tight text-text-body ${styles.title}`}
+          class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold text-balance break-words leading-snug text-text-body ${styles.title}`}
         >
           <a
             href={href}

@@ -4,11 +4,11 @@ import { loadDistArticle } from './helpers/load-dist-article';
 
 describe('fact-check editorial verdicts', () => {
   it.each([
-    ['confirmed', 'Confirmado', 'success', 'tabler:check'],
-    ['verified', 'Confirmado', 'success', 'tabler:check'],
-    ['unsupported', 'Sin respaldo', 'warning', 'tabler:alert-triangle'],
-    ['debunked', 'Refutado', 'error', 'tabler:x'],
-    ['contradicted', 'Refutado', 'error', 'tabler:x'],
+    ['confirmed', 'Respaldado por la fuente', 'success', 'tabler:check'],
+    ['verified', 'Respaldado por la fuente', 'success', 'tabler:check'],
+    ['unsupported', 'Sin respaldo en las fuentes', 'warning', 'tabler:alert-triangle'],
+    ['debunked', 'Contradicho por las fuentes', 'error', 'tabler:x'],
+    ['contradicted', 'Contradicho por las fuentes', 'error', 'tabler:x'],
     ['unverified', 'Sin verificar', 'info', 'tabler:info-circle'],
     ['future_status', 'Sin verificar', 'info', 'tabler:info-circle'],
   ])('renders %s as %s', (status, label, variant, icon) => {
@@ -20,13 +20,17 @@ describe('fact-check editorial verdicts', () => {
     expect(getFactCheckVerdict(' UNKNOWN ')).toEqual(getFactCheckVerdict('unverified'));
   });
 
-  it('shows an explicit confirmed verdict in a published article', () => {
+  it('explains source support without claiming independent confirmation', () => {
     const $ = loadDistArticle('2026-09-18-noticia-cientifica');
-    const verdicts = $('[data-fact-check-verdicts] [data-fact-check-status]');
+    const panel = $('#fuentes-y-limites');
+    expect(panel.text()).toContain('no equivale a una confirmación científica independiente');
+    expect(panel.text()).not.toContain('Evidencia robusta');
+    expect(panel.text()).not.toContain('Valoración automática');
+    const verdicts = panel.find('[data-fact-check-verdicts] [data-fact-check-status]');
     expect(verdicts.length).toBeGreaterThan(0);
     verdicts.each((_, element) => {
       expect($(element).attr('data-fact-check-status')).toBe('confirmed');
-      expect($(element).text()).toContain('Confirmado:');
+      expect($(element).text()).toContain('Respaldado por la fuente:');
     });
   });
 });

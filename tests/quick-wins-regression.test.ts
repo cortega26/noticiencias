@@ -213,34 +213,38 @@ describe('quick wins regression coverage', () => {
     expect(renderedStrips).toBeGreaterThan(0);
   });
 
-  it('renders working no-JS Buttondown subscribe forms now that the provider endpoint is configured (plan 008)', () => {
-    for (const route of ['/newsletter/', '/']) {
-      const page = load(readDistHtml(route));
-      const forms = page('form[aria-label="Suscripción al boletín"]');
-      expect(forms.length, route).toBeGreaterThan(0);
-      forms.each((_, form) => {
-        const $form = page(form);
-        expect($form.attr('method'), route).toBe('post');
-        expect($form.attr('action'), route).toBe(
-          'https://buttondown.com/api/emails/embed-subscribe/noticiencias'
-        );
-        expect($form.find('input[name="email"][type="email"][required]').length, route).toBe(1);
-        expect($form.find('input[name="embed"][type="hidden"]').val(), route).toBe('1');
-      });
+  it('hides unverified subscription forms and promises across built surfaces', () => {
+    const htmlFiles = collectFiles(distDir, (file) => file.endsWith('.html'));
+    for (const file of htmlFiles) {
+      const page = load(fs.readFileSync(file, 'utf8'));
+      expect(page('form[data-newsletter-form]').length, file).toBe(0);
+      expect(page('form[action*="buttondown"]').length, file).toBe(0);
+      expect(page('input[type="email"]').length, file).toBe(0);
+      expect(page('a[href="/newsletter/"]').length, file).toBe(0);
+      expect(page('main').text(), file).not.toMatch(
+        /suscr[ií]b(?:ete|irme|irse)|recibirás un correo de confirmación/i
+      );
     }
+    expect(fs.readFileSync(path.join(distDir, 'llms.txt'), 'utf8')).not.toContain(
+      'Suscripción al boletín'
+    );
   });
 
-  it('keeps an early inline capture and the closing capture on the home page', () => {
+  it('offers RSS and archive on the legacy newsletter route', () => {
+    const page = load(readDistHtml('/newsletter/'));
+    expect(page('main').text()).toContain('Las suscripciones por correo están deshabilitadas');
+    expect(page('main a[href="/rss.xml"]').length).toBe(1);
+    expect(page('main a[href="/blog/"]').length).toBe(1);
+  });
+
+  it('promotes both evidence portfolios on the homepage', () => {
     const page = load(readDistHtml('/'));
-    const forms = page('form[aria-label="Suscripción al boletín"]');
-
-    expect(forms.length).toBe(2);
-    expect(page('#home-newsletter-cta').length).toBe(1);
-    expect(page('#home-newsletter-cta').closest('section').find('form').length).toBe(1);
-
-    const emailIds = forms
-      .map((_, form) => page(form).find('input[name="email"]').attr('id'))
-      .get();
-    expect(new Set(emailIds).size).toBe(emailIds.length);
+    const guides = page('section[aria-labelledby="home-guides"]');
+    expect(guides.find('a[href="/recursos/carbono-bosques-suelos/"]').length).toBe(1);
+    expect(guides.find('a[href="/recursos/exoplanetas-atmosferas-biosignaturas/"]').length).toBe(1);
+    expect(page('h1').length).toBe(1);
+    expect(page('h1').text()).toContain('Ciencia en español, con la evidencia a la vista');
+    const lead = page('section[aria-label="Historia principal"] figure').first();
+    expect(lead.find('figcaption').text()).toBe(lead.find('img').attr('alt'));
   });
 });

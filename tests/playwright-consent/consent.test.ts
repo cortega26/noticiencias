@@ -182,22 +182,12 @@ const stubExternal = (page: Page) =>
 const ARTICLE =
   '/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/';
 
-test('newsletter submit queues one newsletter_submit event', async ({ page }) => {
+test('disabled newsletter page emits no subscription intent', async ({ page }) => {
   await gotoSettled(page, '/newsletter/');
-  // The undismissed fixed banner covers the submit button on mobile
-  // viewports (real overlap, FU-013). This test is about the submit event,
-  // not the banner, so establish a known consent state first.
   await clickBannerChoice(page, 'Rechazar');
   await expect(banner(page)).toBeHidden();
-  // Cancel the real POST to Buttondown; the delegated tracker still sees the submit.
-  await page.locator('form[data-analytics-newsletter]').evaluate((form) => {
-    form.addEventListener('submit', (e) => e.preventDefault());
-  });
-  await page.getByLabel('Correo electrónico').fill('lector@example.com');
-  await page.getByRole('button', { name: 'Suscribirme' }).click();
-  expect(await events(page, 'newsletter_submit')).toEqual([
-    { transport_type: 'beacon', method: 'form_submit', form_id: 'newsletter-landing' },
-  ]);
+  await expect(page.locator('form[data-analytics-newsletter]')).toHaveCount(0);
+  expect(await events(page, 'newsletter_submit')).toEqual([]);
 });
 
 test('search sends aggregate result count without the term', async ({ page }) => {

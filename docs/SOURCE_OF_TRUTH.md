@@ -136,3 +136,19 @@ repo-root `CHANGELOG.md` are **historical evidence**, not active documentation. 
 - If a current doc conflicts with a historical record, the active doc wins.
 - `npm run check:doc-drift` checks only active docs; historical scopes are deliberately excluded.
 - A PR that only edits historical scopes does not need an active-doc review.
+
+## Reader experience and newsletter status (2026-10-22)
+
+The frontend retains the existing article schema and source status values. The
+reader-facing `confirmed`/`verified` labels express support by the supplied
+sources, not independent scientific confirmation or individual human review.
+The source panel explains that distinction and links the correction channel.
+
+`src/config.yaml` keeps `form.newsletter_endpoint` empty. The public Buttondown
+destination returned HTTP 404 on a read-only check on 2026-10-22; the site removes
+subscription forms and promises across homepage, taxonomy, footer and trust
+pages. The existing `/newsletter/` URL provides RSS/archive alternatives.
+Reactivation requires a recorded verified destination and confirmation flow,
+followed by restoration of the form and matching public/privacy copy. A nonempty
+endpoint alone is not sufficient evidence. Existing analytics event handlers
+remain dormant without form markup; no confirmed subscription is inferred.

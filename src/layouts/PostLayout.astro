@@ -152,7 +152,7 @@ const breadcrumbItems = [
 
       <h1
         class:list={[
-          'text-4xl font-black leading-tight text-text-body md:text-6xl',
+          'max-w-4xl text-balance break-words text-3xl font-bold leading-tight text-text-body sm:text-4xl lg:text-5xl',
           post.investigation ? 'font-serif' : 'font-heading',
         ]}
       >
@@ -161,7 +161,13 @@ const breadcrumbItems = [
 
       <SourceLine post={post} size="sm" class="mt-5" />
 
-      {post.excerpt && <p class="mt-5 text-xl leading-relaxed text-text-muted">{post.excerpt}</p>}
+      {
+        post.excerpt && (
+          <p class="mt-5 max-w-3xl text-lg leading-relaxed text-text-muted sm:text-xl">
+            {post.excerpt}
+          </p>
+        )
+      }
 
       {
         evidenceChips.length > 0 && (
@@ -230,7 +236,12 @@ const breadcrumbItems = [
       }
     </header>
 
-    <div class="mx-auto mt-6 flex max-w-5xl justify-end">
+    <div class="mx-auto mt-6 flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-3">
+      <a
+        href="#fuentes-y-limites"
+        class="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4 hover:no-underline"
+        >Fuentes y límites</a
+      >
       <SocialShare text={post.title} url={canonical} />
     </div>
 
@@ -239,7 +250,7 @@ const breadcrumbItems = [
       // why_it_matters, 0-3 items per P0-06). The block vanishes when empty.
       // Name follows DEC-018 (repo voice guardrail).
       post.why_it_matters && post.why_it_matters.length > 0 && (
-        <section class="not-prose mx-auto mt-10 max-w-6xl border-l-4 border-primary bg-surface-paper p-5">
+        <section class="not-prose mx-auto mt-8 max-w-5xl border-l-2 border-primary py-2 pl-5">
           <h2 class="font-heading text-xl font-bold text-text-body">Qué cambia</h2>
           {post.why_it_matters.map((item) => (
             <p class="mt-3 leading-relaxed text-text-muted">{item}</p>
@@ -248,13 +259,13 @@ const breadcrumbItems = [
       )
     }
 
-    <div class="mx-auto mt-10 grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+    <div class="mx-auto mt-10 grid max-w-5xl gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
       <div class="min-w-0">
         <ArticleRail post={post} variant="inline" sections={['summary']} class="mb-8 lg:hidden" />
 
         <div
           data-analytics-article
-          class="prose prose-lg prose-serif max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
+          class="prose prose-lg prose-serif max-w-[68ch] dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-headings:text-balance prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-md prose-li:my-0"
         >
           <slot />
         </div>

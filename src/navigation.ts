@@ -42,6 +42,14 @@ export const headerData = {
             links: [
               ...overflowSections.map(categoryLink),
               { text: 'Series', href: getPermalink('/series/') },
+              {
+                text: 'Carbono en bosques y suelos',
+                href: getPermalink('/recursos/carbono-bosques-suelos/'),
+              },
+              {
+                text: 'Exoplanetas y señales de vida',
+                href: getPermalink('/recursos/exoplanetas-atmosferas-biosignaturas/'),
+              },
             ],
           },
         ]
@@ -62,6 +70,10 @@ export const footerData = {
         { text: 'Acerca de', href: getPermalink('/nosotros/') },
         { text: 'Contacto', href: getPermalink('/contacto/') },
         { text: 'Metodología', href: getPermalink('/metodologia/') },
+        {
+          text: 'Criterios de corrección',
+          href: `${getPermalink('/transparencia/')}#correcciones-y-actualizaciones`,
+        },
         { text: 'Transparencia', href: getPermalink('/transparencia/') },
       ],
     },
@@ -69,7 +81,6 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Privacidad', href: getPermalink('/privacidad/') },
     { text: 'Términos', href: getPermalink('/terminos/') },
-    { text: 'Boletín', href: getPermalink('/newsletter/') },
     { text: 'RSS', href: getAsset('/rss.xml') },
     { text: 'Reportar un problema', href: getPermalink('/reportar-problema/') },
     { text: 'Patrocinios', href: getPermalink('/patrocinios/') },

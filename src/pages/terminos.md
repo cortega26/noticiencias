@@ -5,7 +5,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 permalink: /terminos/
 ---
 
-_Última actualización: 10 de octubre de 2026._
+_Última actualización: 22 de octubre de 2026._
 
 Estos términos describen el uso de [Noticiencias](https://noticiencias.com/), un proyecto editorial independiente dirigido por **Carlos Ortega**, con operación en Chile. Para consultas, utiliza la [página de contacto](/contacto/).
 
@@ -25,11 +25,11 @@ Puedes compartir enlaces y citas breves con atribución, de acuerdo con la legis
 
 El [formulario de reportes](/reportar-problema/) existe para comunicar errores y fallas técnicas verificables; no garantiza una respuesta individual ni una decisión editorial determinada. Evita remitir datos sensibles, información falsa, contenido ilícito o datos de terceros sin autorización.
 
-El boletín es opcional y requiere confirmación mediante Buttondown. La suscripción puede cancelarse desde cada envío.
+Las suscripciones por correo están deshabilitadas. Puedes seguir las publicaciones mediante [RSS](/rss.xml) sin proporcionar una dirección de correo.
 
 ## Publicidad y datos personales
 
-Si incorporamos publicidad o colaboraciones comerciales, deberán identificarse de forma diferenciada. La [Política de Privacidad](/privacidad/) explica qué datos se tratan en la navegación y el boletín y cómo ejercer tus derechos. Los acuerdos comerciales se describen en [Patrocinios](/patrocinios/).
+Si incorporamos publicidad o colaboraciones comerciales, deberán identificarse de forma diferenciada. La [Política de Privacidad](/privacidad/) explica qué datos se tratan en la navegación y los canales de contacto y cómo ejercer tus derechos. Los acuerdos comerciales se describen en [Patrocinios](/patrocinios/).
 
 ## Disponibilidad y cambios
 

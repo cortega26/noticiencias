@@ -51,34 +51,12 @@ test('article view and read depth fire on an article page', async ({ page }) => 
   expect(events.filter((name) => name === 'article_view')).toHaveLength(1);
 });
 
-test('newsletter submit records intent only, not provider acceptance or confirmation', async ({
-  page,
-}) => {
+test('disabled newsletter surfaces emit no signup or subscription events', async ({ page }) => {
   await page.addInitScript(captureDataLayer);
-
-  await page.goto('/');
-  const form = page.locator('section[aria-labelledby="home-newsletter-cta"] form');
-  await form.scrollIntoViewIfNeeded();
-
-  await expect.poll(() => eventNames(page)).toContain('newsletter_impression');
-
-  await form.locator('input[type="email"]').fill('lector@example.com');
-  await expect.poll(() => eventNames(page)).toContain('newsletter_start');
-
-  // A synthetic submit emits the site-owned intent event without sending a
-  // registration request to Buttondown or implying provider acceptance.
-  await form.evaluate((element) =>
-    element.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
-  );
-  await expect.poll(() => eventNames(page)).toContain('newsletter_submit');
+  await page.goto('/newsletter/');
+  await expect(page.locator('form[data-newsletter-form]')).toHaveCount(0);
   const events = await eventNames(page);
-  expect(events).not.toContain('newsletter_success');
-  expect(events).not.toContain('newsletter_error');
-
-  const params = await page.evaluate(() =>
-    window.__gaEvents.find((event) => event.name === 'newsletter_submit')
-  );
-  expect(params?.params).toMatchObject({ method: 'form_submit', form_id: 'newsletter-hero' });
+  expect(events.filter((name) => name.startsWith('newsletter_'))).toEqual([]);
 });
 
 function preventNavigations(page: Page) {

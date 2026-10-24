@@ -61,9 +61,9 @@ const {
 } = Astro.props;
 
 const confidenceLabel: Record<string, string> = {
-  alta: 'Evidencia robusta',
-  media: 'Evidencia preliminar',
-  baja: 'Evidencia en debate',
+  alta: 'alta',
+  media: 'media',
+  baja: 'baja',
 };
 
 // P0-01: primary sources (verified paper/DOI) outrank secondary coverage.
@@ -91,23 +91,35 @@ const hasContent =
   (factCheck?.length ?? 0) > 0 ||
   (sources?.length ?? 0) > 0;
 
-if (!hasContent) return null;
-
 // P0-02: human-readable evidence labels (shared map). `unknown`/absent is
 // never upgraded: Salud posts without human evidence get a strong guardrail.
 
-const showHealthGuardrail =
-  isHealthCategory && !!evidenceSubjectType && evidenceSubjectType !== 'humans';
+const showHealthGuardrail = isHealthCategory && evidenceSubjectType !== 'humans';
 
 // P0-03: publication record labels (shared map). Rendered only when data exists.
 ---
 
-<aside class="not-prose my-10 rounded-md border border-border-subtle bg-surface-paper p-5">
+<aside
+  id="fuentes-y-limites"
+  class="not-prose my-10 scroll-mt-24 border-y border-border-subtle py-6"
+>
   <h2 class="flex items-center gap-2 font-heading text-xl font-bold text-text-body">
-    <Icon name="tabler:shield-check" class="h-5 w-5 text-primary" />
-    Fuentes y verificación
+    <Icon name="tabler:books" class="h-5 w-5 text-primary" />
+    Fuentes y límites
   </h2>
 
+  <p class="mt-3 text-sm leading-relaxed text-text-muted">
+    El respaldo indica coincidencia con las fuentes consultadas; no equivale a una confirmación
+    científica independiente ni a una revisión humana de cada afirmación.
+  </p>
+  {
+    !hasContent && (
+      <p class="mt-4 text-sm leading-relaxed text-text-muted">
+        Esta pieza no tiene fuentes ni controles adicionales registrados en su ficha. No presentamos
+        esa ausencia como una verificación.
+      </p>
+    )
+  }
   <div class="mt-4 grid gap-4 text-sm leading-relaxed text-text-muted">
     {
       // P2-07: substantive corrections are visible first, with date.
@@ -122,7 +134,7 @@ const showHealthGuardrail =
     {
       confidence && (
         <p>
-          <strong class="text-text-body">Estado de la evidencia:</strong>{' '}
+          <strong class="text-text-body">Valoración registrada:</strong>{' '}
           {confidenceLabel[confidence.toLowerCase()] ?? confidence}
         </p>
       )
@@ -137,9 +149,7 @@ const showHealthGuardrail =
                 class="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400"
               />
               <div>
-                <h4 class="font-bold text-amber-900 dark:text-amber-100">
-                  Importante / Qué falta saber:
-                </h4>
+                <h3 class="font-bold text-amber-900 dark:text-amber-100">Qué falta saber:</h3>
                 <p class="mt-1 text-sm leading-relaxed">{uncertaintyNote}</p>
               </div>
             </div>
@@ -181,7 +191,12 @@ const showHealthGuardrail =
       showHealthGuardrail && (
         <div class="my-2 rounded-md border-l-4 border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 p-4 text-amber-950 dark:text-amber-200">
           <p class="text-sm leading-relaxed">
-            {evidenceSubjectType === 'mixed' ? (
+            {!evidenceSubjectType || evidenceSubjectType === 'unknown' ? (
+              <>
+                <strong>Modelo no documentado:</strong> la ficha no permite establecer si estos
+                resultados se probaron en personas. No son una recomendación médica.
+              </>
+            ) : evidenceSubjectType === 'mixed' ? (
               <>
                 <strong>Evidencia mixta:</strong> parte de estos resultados no se probó en personas.
                 Verifica qué fase aplica antes de sacar conclusiones médicas.
@@ -252,7 +267,11 @@ const showHealthGuardrail =
     }
     {
       annotatedFactChecks.length > 0 && (
-        <ul class="grid gap-2" data-fact-check-verdicts>
+        <ul
+          class="grid gap-3"
+          aria-label="Respaldo de afirmaciones en las fuentes"
+          data-fact-check-verdicts
+        >
           {annotatedFactChecks.map((check) => (
             <li class="flex gap-2" data-fact-check-status={check.status}>
               <Icon
@@ -376,4 +395,15 @@ const showHealthGuardrail =
       )
     }
   </div>
+  <p class="mt-5 text-sm text-text-muted">
+    ¿Encontraste un error? <a
+      href="/reportar-problema/"
+      class="text-primary underline underline-offset-4 hover:no-underline"
+      >Envía la URL y la evidencia</a
+    >. Consulta nuestros <a
+      href="/transparencia/#correcciones-y-actualizaciones"
+      class="text-primary underline underline-offset-4 hover:no-underline"
+      >criterios de corrección</a
+    >.
+  </p>
 </aside>

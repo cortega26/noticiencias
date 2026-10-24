@@ -53,7 +53,12 @@ describe('navigation data', () => {
   it('keeps Arqueología and Series under the overflow menu', () => {
     const overflow = headerData.links.find((link) => link.text === 'Más') as MenuEntry;
 
-    expect(overflow.links?.map((link) => link.text)).toEqual(['Arqueología', 'Series']);
+    expect(overflow.links?.map((link) => link.text)).toEqual([
+      'Arqueología',
+      'Series',
+      'Carbono en bosques y suelos',
+      'Exoplanetas y señales de vida',
+    ]);
   });
 
   it('always exposes a Buscar action', () => {
