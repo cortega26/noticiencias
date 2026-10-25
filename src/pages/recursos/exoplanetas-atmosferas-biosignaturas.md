@@ -6,7 +6,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 Una señal astronómica puede sugerir un planeta, permitir estudiar su atmósfera o aportar una posible pista biológica. **Son conclusiones distintas, con pruebas distintas.** Leerlas como si fueran equivalentes convierte una medición interesante en una certeza que no existe.
 
-Esta guía organiza esas preguntas y ofrece una comparación original para leer futuras noticias. Se preparó con asistencia de IA a partir de las fuentes indicadas; no contiene observaciones propias ni una revisión independiente acreditada por especialistas.
+Esta guía organiza esas preguntas y ofrece una comparación para leer futuras noticias a partir de las fuentes indicadas. No contiene observaciones propias ni una revisión independiente acreditada por especialistas.
 
 ## La observación y sus interpretaciones
 

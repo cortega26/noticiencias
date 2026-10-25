@@ -189,6 +189,7 @@ Rules:
 - Avoid shipping page-wide scripts when a component-scoped script is sufficient.
 - Avoid duplicate collection fetches, duplicate render passes, and repeated expensive parsing in loops.
 - Search, blog listing, taxonomy pages, and image-heavy surfaces are performance-sensitive. Prefer precomputed data and deterministic transforms over repeated work during build.
+- Article bylines identify the display author and responsible editor. Explain general AI assistance in the linked editorial policy rather than repeating process boilerplate in article headers and source panels. Preserve visible generated-image labels, original editorial metadata, and documented reviewer details; never imply a human review that did not occur. Mentions of AI as a reporting subject are unaffected.
 
 ## 3) Contracts That Must Stay Stable
 

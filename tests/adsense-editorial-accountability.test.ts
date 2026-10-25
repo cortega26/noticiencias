@@ -41,11 +41,40 @@ describe('article editorial accountability', () => {
     });
   }
 
-  it('labels AI assistance without inventing individual human review', () => {
+  it('uses institutional attribution and links the assistance policy without inventing human review', () => {
     const $ = loadDistArticle('2026-09-18-noticia-cientifica');
     const byline = $('[data-editorial-accountability]').text();
-    expect(byline).toContain('Elaboración: síntesis asistida por IA');
+    expect(byline).toContain('Equipo Noticiencias');
+    expect(byline).not.toContain('síntesis asistida por IA');
     expect(byline).not.toContain('Revisión por Carlos Ortega');
+    expect($('#fuentes-y-limites a[href="/uso-de-ia/"]').text()).toContain(
+      'Cómo elaboramos el contenido'
+    );
+    expect($('#fuentes-y-limites').text()).not.toContain('síntesis asistida por IA');
+
+    const article = $('script[type="application/ld+json"]')
+      .map((_, script) => JSON.parse($(script).html() ?? '{}'))
+      .get()
+      .find((schema) => schema['@type'] === 'NewsArticle');
+    expect(article.author).toEqual([
+      {
+        '@type': 'Organization',
+        name: 'Equipo Noticiencias',
+        url: 'https://noticiencias.com/nosotros/',
+      },
+    ]);
+    expect($('#fuentes-y-limites').text()).not.toContain('Revisión editorial:');
+  });
+
+  it('keeps generated-image provenance visible and the policy accessible', () => {
+    const $ = loadDistArticle(
+      '2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos'
+    );
+    const hero = $('article header figure');
+    expect(hero.find('figcaption').text()).toContain('generada con IA');
+    expect(hero.find('figcaption').text()).toBe(hero.find('img').attr('alt'));
+    expect($('footer a[href="/uso-de-ia/"]').length).toBe(1);
+    expect($('[data-analytics-article]').text()).not.toContain('Imagen de portada:');
   });
 
   it('shows a documented correction date, not an invented review date', () => {
