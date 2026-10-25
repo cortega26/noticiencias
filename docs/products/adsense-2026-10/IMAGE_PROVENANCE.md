@@ -17,6 +17,18 @@ No se certifican licencias por el nombre del archivo. El snapshot del archivo co
 
 Los SVG se sirven íntegros porque el contenido vectorial y sus etiquetas no necesitan derivados raster. No se sustituyeron las portadas profesionales existentes.
 
+## Shanidar A: un reemplazo preparado el 24-oct-2026
+
+Se preparó una ilustración conceptual nueva de una escápula genérica sobre papel de estudio, junto a una lupa. No muestra un arma, una perforación ni una reconstrucción del ataque o del fósil de Shanidar A. El crédito y el texto alternativo del artículo lo aclaran.
+
+El [recibo de generación](../../image-rights/2026-10-24-shanidar-image-generation.json) conserva el prompt y vincula los bytes devueltos por `image_gen` con el PNG nativo incluido en el repositorio y su exportación WebP. La identidad de los archivos se comprueba por SHA-256; no se presenta como una certificación de derechos exclusivos o de revisión científica.
+
+- Original: `docs/image-rights/originals/2026-10-24-shanidar-scapula-study.png`.
+- Activo propuesto: `src/assets/images/2026-10-17-shanidar-scapula-study-original.webp`, SHA-256 `483809951141cd6521d35f09cd360453b5a73271e235629a881830959572f500`.
+- **Estado: revisión visual y publicación pendientes.** En esta rama hay un reemplazo documentado más: 21 de las 52 portadas tienen procedencia trazada y quedan 31 pendientes. El recuento de producción sigue siendo 32 pendientes hasta aprobar, desplegar y comprobar este reemplazo.
+
+El snapshot del 22-oct y el triage de las imágenes observadas entonces permanecen históricos; no se reescriben sus rutas o hashes para aparentar que el reemplazo ya estaba publicado.
+
 ## Pendientes
 
-32 activos restantes no tienen hash actual vinculado a una autorización en los registros frontend inspeccionados. El snapshot identifica exactamente artículo/ruta/hash. La falta de registro no demuestra infracción, pero impide declarar resuelta la procedencia. Revisar recibos backend, autor, licencia y condiciones de cada imagen; aprobar alternativas específicas cuando no pueda cerrarse el permiso. La revisión visual de relevancia de todo el archivo está pendiente: ni disponer de alt ni de un archivo propio demuestra que una imagen no induzca a error.
+En la referencia de producción siguen pendientes 32 activos sin hash vinculado a una autorización en los registros inspeccionados; la propuesta de Shanidar reduce ese conjunto a 31 solo en esta rama. El snapshot identifica exactamente artículo/ruta/hash. La falta de registro no demuestra infracción, pero impide declarar resuelta la procedencia. Revisar recibos backend, autor, licencia y condiciones de cada imagen; aprobar alternativas específicas cuando no pueda cerrarse el permiso. La revisión visual de relevancia de todo el archivo está pendiente: ni disponer de alt ni de un archivo propio demuestra que una imagen no induzca a error.

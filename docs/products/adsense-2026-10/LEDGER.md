@@ -84,6 +84,8 @@ El titular autorizó commit, merge y publicación el 24-oct. Esta autorización 
 
 ## 5 d. Decisiones y trabajo aún abierto
 
+- **Paso acotado preparado el 24-oct:** se sustituyó en una rama aislada la portada de Shanidar por una ilustración conceptual original, con PNG nativo, WebP y [recibo de generación](../../image-rights/2026-10-24-shanidar-image-generation.json). La aprobación visual del titular y el despliegue están pendientes. El recuento de procedencia baja de 32 a 31 pendientes en esa propuesta; producción conserva 32 hasta verificar la publicación. No se modificó el contenido factual del artículo ni el resto del archivo.
+
 - El archivo sigue triado 52/52, sin rehabilitación factual completa ni revisión humana factual/semántica acreditada. Realizar y registrar esa revisión del contenido final; la autorización de integración del 24-oct no la sustituye. Cualquier lista concreta de retiros requiere autorización del titular.
 - Cerrar errores materiales y la procedencia o sustitución de las 32 imágenes pendientes; no solicitar revisión mientras existan.
 - Completar la comparación vieja/nueva de la cadena editorial con un candidato real revisado y aceptación humana semántica. No se ha acreditado una ejecución satisfactoria de ese candidato; el plan 191 del backend permanece **PARCIAL**.

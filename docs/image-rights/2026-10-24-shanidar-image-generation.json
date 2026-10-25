@@ -1,0 +1,57 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-24T21:55:07Z",
+  "article": "src/content/posts/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.md",
+  "base_commit": "8742de514e1e0a3678d71131ddca838083c07dbf",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "transparent_background": false,
+  "prompt": "Use case: scientific-educational.\nAsset type: original editorial hero illustration for a Spanish evidence-first science article about Shanidar A. Create ONE polished, landscape 16:9 raster illustration at high native resolution (approximately 1536 pixels wide or larger).\nPrimary request: a sophisticated, tactile, hand-painted editorial illustration of archaeological observation, rather than a reconstruction of an attack. A single recognisable human shoulder blade (scapula), rendered as an explicitly illustrative anatomical study, rests on an unmarked cream archival support on a quiet research desk. A simple magnifying lens lies beside it, signalling careful examination. The thin triangular scapular blade, spine and shallow socket should be plausible and coherent, without claiming to reproduce any particular fossil. Beautiful restrained chiaroscuro, subtle bone and paper textures, warm ivory against muted charcoal and earthy umber; commissioned museum/science-magazine visual quality, not flat vector clip art. The shoulder blade is the clear focal subject, readable at thumbnail size. Keep all important subject matter inside the central 70 percent so both wide hero and social-preview crops remain legible.\nEvidence boundary: this is a conceptual illustration about examining a shoulder blade; it is NOT a photograph or a scientifically validated reconstruction of Shanidar A. Do not recreate a specific wound, fracture pattern, fossil specimen, measurement or anatomical trajectory. Do not show a spear or other weapon (none was recovered), an attacker, victims, blood, combat, care, burial, flowers, faces or a cave scene. Do not imply an intentional attack or identified assailant.\nConstraints: generate from this text alone. No reference images, copied photographs, third-party artwork, logos, lettering, labels, numbers, scales, rulers, watermarks, borders, panels or dramatic sensational effects. No visible text anywhere. Non-graphic, calm and intellectually serious. The AI/conceptual caption will be supplied outside the image in the website.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a161af-dfae-7d81-a966-3b2b696e49fb/exec-033f196d-94f8-47d6-91ea-985001f280ab.png",
+  "tool_output_observation": "The built-in tool returned this PNG in this task. Its exact bytes are preserved in this branch as the original below; this receipt is recorded by the agent, not a signed provider attestation.",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-24-shanidar-scapula-study.png",
+    "sha256": "537da1d10c65beb0fa541562e8f8a8f47608191fc19709fd50e42dd71ccd2284",
+    "bytes": 2239095,
+    "width": 1672,
+    "height": 941,
+    "tool_output_file_mtime_utc": "2026-10-24T21:50:31.967Z"
+  },
+  "exported": {
+    "path": "src/assets/images/2026-10-17-shanidar-scapula-study-original.webp",
+    "sha256": "483809951141cd6521d35f09cd360453b5a73271e235629a881830959572f500",
+    "bytes": 202348,
+    "width": 1672,
+    "height": 941,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.png",
+    "sha256": "3f18537bcc850eb272c10c0a8a41d36d17dcca5be9c7e2e70d03f3387e692aec",
+    "provenance": "UNVERIFIED: no matching generation/rights receipt found; the old asset remains recoverable in Git history at base_commit."
+  },
+  "evidence_boundary": "Conceptual illustration of examining a generic scapula. No recovered weapon, wound pattern, measurements, attacker, care, burial or forensic reconstruction is depicted. It is not the Shanidar A fossil or documentary evidence.",
+  "context_sources": [
+    {
+      "url": "https://www.ljmu.ac.uk/about-us/news/articles/2026/10/16/shanidar",
+      "consulted": "2026-10-24",
+      "use": "Textual subject/context only. No source image used as input or copied."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-026-69193-z",
+      "access": "Direct retrieval was blocked by the publisher authentication redirect in this task. Do not claim the full study was re-read for this image."
+    }
+  ],
+  "rights_statement": "New output generated in this task from text alone, with no reference-image inputs. Provenance is documented; no claim of exclusive copyright, a third-party licence, anatomical validation or human scientific review is made.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

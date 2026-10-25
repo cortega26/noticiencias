@@ -1,5 +1,16 @@
 # Registro puntual de derechos de imagen
 
+## Shanidar A: reemplazo preparado el 24-10-2026
+
+Se generó una nueva ilustración conceptual con la herramienta integrada `image_gen` de Codex, desde texto y sin imágenes de referencia. Muestra una escápula genérica y una lupa; no reproduce el fósil de Shanidar A, su lesión ni un ataque. No contiene un arma supuestamente recuperada. El artículo la identifica expresamente como ilustración conceptual generada con IA.
+
+- Original nativo conservado: `docs/image-rights/originals/2026-10-24-shanidar-scapula-study.png`; SHA-256 `537da1d10c65beb0fa541562e8f8a8f47608191fc19709fd50e42dd71ccd2284`.
+- Exportación para el artículo: `src/assets/images/2026-10-17-shanidar-scapula-study-original.webp`; SHA-256 `483809951141cd6521d35f09cd360453b5a73271e235629a881830959572f500`; 1672 × 941 px, WebP calidad 90, sin redimensionado.
+- [Recibo de generación registrado en esta tarea](./image-rights/2026-10-24-shanidar-image-generation.json): prompt íntegro, herramienta, archivo devuelto, hashes, dimensiones, conversión y límites. Es un registro del agente, no una certificación firmada del proveedor ni una revisión científica.
+- La imagen anterior, de procedencia no acreditada, deja de ser una dependencia del artículo y del manifest en esta rama; sus bytes y SHA-256 se conservan en el historial Git y en el recibo. No se ejecutó ningún borrado de R2 ni purga de CDN.
+
+**Estado:** preparado para revisión visual del titular, sin despliegue. La procedencia del nuevo output está documentada; no se afirma exclusividad de derechos ni validación anatómica. La publicación y la pertinencia final siguen pendientes.
+
 Fecha de actualización: 2026-10-19. Este registro cubre 19 alternativas generadas para artículos. Diez exportaciones vectoriales se sustituyen ahora por imágenes raster detalladas. Esta renovación está preparada en el repositorio; no acredita su despliegue ni una aprobación de AdSense. No certifica derechos para el resto del catálogo.
 
 ## Renovación de calidad del 19-10-2026
