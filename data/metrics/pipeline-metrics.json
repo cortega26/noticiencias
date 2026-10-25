@@ -1,22 +1,26 @@
 {
-  "generated_at": "2026-10-23T11:34:18.659Z",
+  "generated_at": "2026-10-25T11:21:38.275Z",
   "content": {
     "total_articles": 52,
     "v2_articles": 40,
-    "total_words": 32313,
-    "avg_words": 621,
+    "total_words": 29791,
+    "avg_words": 573,
     "categories": [
       {
-        "name": "Tecnología",
-        "count": 16
+        "name": "Ciencia",
+        "count": 15
       },
       {
-        "name": "Ciencia",
-        "count": 14
+        "name": "Tecnología",
+        "count": 12
       },
       {
         "name": "Salud",
-        "count": 6
+        "count": 7
+      },
+      {
+        "name": "Biología",
+        "count": 5
       },
       {
         "name": "Astronomía",
@@ -25,10 +29,6 @@
       {
         "name": "Arqueología",
         "count": 4
-      },
-      {
-        "name": "Biología",
-        "count": 3
       },
       {
         "name": "Química",
@@ -168,26 +168,26 @@
     "articles_by_date": [
       {
         "slug": "2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos",
-        "title": "¿Fue herido a propósito o por accidente el neandertal de Shanidar?",
+        "title": "Shanidar A: una lesión compatible con una lanza, sin autor conocido",
         "date": "2026-10-17",
         "categories": [
           "Arqueología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — basado en un solo espécimen con limitaciones reconocidas por los autores.",
+        "confidence": "Moderada para la interpretación del trauma; la identificación del arma y la intención siguen siendo indirectas.",
         "review_status": null
       },
       {
         "slug": "2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales",
-        "title": "Cómo el subsuelo, sin cerebro, toma 'decisiones' clave para el clima global.",
+        "title": "Hongos y carbono: un gran flujo hacia el suelo no demuestra almacenamiento permanente",
         "date": "2026-10-15",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — Basado en investigaciones y observaciones científicas que describen mecanismos complejos y comportamientos estratégicos en las redes fúngicas, aunque el propio artículo señala que apenas se está comenzando a comprender su totalidad.",
+        "confidence": "Moderada: estimaciones globales de una síntesis, con incertidumbre reconocida; no prueba permanencia ni una intervención climática.",
         "review_status": null
       },
       {
@@ -195,7 +195,7 @@
         "title": "Bosques secundarios capturan carbono con rapidez, pero su recuperación depende del lugar",
         "date": "2026-10-12",
         "categories": [
-          "Tecnología"
+          "Biología"
         ],
         "schema_version": 2,
         "editorial_score": null,
@@ -207,7 +207,7 @@
         "title": "Tres simulaciones sobre geoingeniería solar no alcanzaron un acuerdo",
         "date": "2026-10-12",
         "categories": [
-          "Tecnología"
+          "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
@@ -216,14 +216,14 @@
       },
       {
         "slug": "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero",
-        "title": "¿Cómo una alga que busca luz controla el cerebro de un mamífero?",
+        "title": "Optogenética: cómo proteínas sensibles a la luz permiten estudiar neuronas",
         "date": "2026-10-05",
         "categories": [
-          "Tecnología"
+          "Biología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — basado en el anuncio oficial del Premio Nobel y descripciones de la técnica respaldadas por amplia literatura científica revisada por pares.",
+        "confidence": "Alta para los resultados experimentales descritos en sus contextos; las aplicaciones clínicas deben evaluarse por intervención y población.",
         "review_status": null
       },
       {
@@ -336,26 +336,26 @@
       },
       {
         "slug": "2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos",
-        "title": "El eclipse solar de 2027 durará seis minutos y veintitrés segundos",
+        "title": "Eclipse solar de 2027: hasta 6 minutos y 23 segundos, según el lugar",
         "date": "2026-08-28",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación de New Scientist basado en declaraciones de expertos y cálculos astronómicos establecidos, aunque no presenta datos originales ni revisión por pares explícita.",
+        "confidence": "Alta para la geometría calculada bajo los supuestos indicados; la visibilidad meteorológica futura no está garantizada.",
         "review_status": null
       },
       {
         "slug": "2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda",
-        "title": "Las sesiones largas de eSports dañan tu espalda",
+        "title": "Salud en esports: qué describen los estudios y qué no demuestra una encuesta",
         "date": "2026-08-28",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en estudios citados pero sin presentar datos originales ni revisión por pares profunda.",
+        "confidence": "Moderada para describir los resultados de las muestras; limitada para generalizar o establecer causalidad.",
         "review_status": null
       },
       {
@@ -372,14 +372,14 @@
       },
       {
         "slug": "2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees",
-        "title": "Por qué tu sensor de glucosa podría estar revelando más de lo que crees",
+        "title": "GlucoFM: qué predice el modelo de glucosa y qué falta para usarlo clínicamente",
         "date": "2026-08-26",
         "categories": [
-          "Tecnología"
+          "Salud"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — resultados prometedores de un modelo auto‑supervisado presentado en un blog de Google Research; se necesita validación en estudios revisados por pares y con cohorts más grandes y diversos.",
+        "confidence": "Moderada para las evaluaciones reportadas por los desarrolladores; utilidad clínica no establecida por esas métricas.",
         "review_status": null
       },
       {
@@ -600,7 +600,7 @@
       },
       {
         "slug": "2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado",
-        "title": "Estudio revela menor agrupamiento de galaxias de lo esperado",
+        "title": "DES y el agrupamiento de materia: por qué una tensión no refuta por sí sola el modelo",
         "date": "2026-01-31",
         "categories": [
           "Astronomía"
@@ -624,14 +624,14 @@
       },
       {
         "slug": "2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica",
-        "title": "Observatorio de la Energía Oscura refina comprensión de expansión cósmica",
+        "title": "DES: qué diferencia el catálogo de 669 millones de objetos del análisis cosmológico",
         "date": "2026-01-28",
         "categories": [
           "Astronomía"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio basado en seis años de datos y análisis de cientos de millones de galaxias, aunque el artículo reconoce limitaciones en el ajuste de los modelos.",
+        "confidence": "Moderada: análisis cosmológico dependiente de modelos y de calibración; referencias originales citadas en sus versiones arXiv.",
         "review_status": null
       },
       {
@@ -803,7 +803,7 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-23T11:34:18.031Z"
+    "generated_at": "2026-10-25T11:21:37.621Z"
   },
   "images": {
     "delivery_mode": "github",
@@ -835,10 +835,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "155 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "160 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 155,
+        "processed": 160,
         "failed": 0
       }
     },
