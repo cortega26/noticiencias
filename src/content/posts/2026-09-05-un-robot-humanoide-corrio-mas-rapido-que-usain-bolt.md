@@ -64,8 +64,6 @@ social:
   id: 76b0525bf007a633ba4d9c1a56b15b541f11e121b3a2c17636f6fe34bb2edf3a
 ---
 
-_Imagen de portada: recreación editorial generada con IA de un robot genérico; no es una fotografía de Tiangong Ultra ni una prueba de sus marcas deportivas._
-
 ¿Más rápido que Usain Bolt? Un robot humanoide llamado Tiangong Ultra cruzó la meta de los 100 m en 8,64 segundos, casi un segundo por debajo del récord establecido por el jamaiquino en 2009. El dato llama la atención porque, al mismo tiempo, esos mismos robots no pudieron subir al podio para recibir sus medallas: carecen de manos para tomar el testigo ni de la capacidad para detenerse sin chocar contra una barrera. Ese contraste entre velocidad pura y limitaciones prácticas es el punto de partida para entender qué significan realmente los récords de los Juegos Mundiales de Robots Humanóides de 2026.
 
 Los juegos se desarrollaron entre el 22 y el 26 de agosto en el Óvalo Nacional de Patinaje de Velocidad de Pekín. Participaron 2 056 máquinas de 666 equipos de 16 países, y además de las pruebas de velocidad y salto, compitieron en fútbol, artes marciales y tareas industriales como la logística de almacenes o el ensamblaje tipo fábrica. En las carreras, Tiangong Ultra también mejoró los tiempos humanos de los 400 m (38,15 s frente a los 43,03 s de Wayde van Niekerk) y de los 1 500 m (2 min 21,6 s frente a los 3 min 26 s de Hicham El Guerrouj). En el salto de altura estático alcanzó 2,88 m, superando la marca previa de un robot en la edición de 2025, aunque el récord humano de Javier Sotomayor (2,45 m) se obtuvo con carrera y la técnica del Fosbury flop, lo que hace que las dos pruebas no sean directamente comparables.

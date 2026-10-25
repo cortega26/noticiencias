@@ -81,8 +81,6 @@ evidence_detail:
   funeraria.
 ---
 
-_Imagen de portada: ilustración conceptual generada con IA; no es una fotografía del fósil de Shanidar A ni una reconstrucción de su lesión._
-
 Una lesión ósea puede conservar el rastro de un impacto sin revelar quién lo causó. Ese es el límite central de un estudio sobre **Shanidar A**, un neandertal de hace unos 75.000 años: la escápula tiene una perforación que los investigadores consideran compatible con una lanza de madera, pero no se conserva el arma.
 
 ## Qué se observó

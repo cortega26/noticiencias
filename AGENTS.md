@@ -176,6 +176,7 @@ Rules:
 - Use the Astro image pipeline or the shared image component by default.
 - Raw `<img>` is allowed only when Astro image processing cannot handle the source or when the source is already an external, runtime-only URL.
 - Every image needs meaningful `alt` text. Decorative images must use empty alt text intentionally, not by omission.
+- Hero image provenance and AI/conceptual labels belong in `image_alt`, which `PostLayout` renders once as the visible caption. Do not repeat that disclosure in article Markdown or add an "Imagen de portada:" paragraph, including during editorial rewrites and image refreshes. `npm run check:content-quality` blocks these body paragraphs.
 
 ### LAW-F8: SEO, accessibility, and performance are first-class constraints
 

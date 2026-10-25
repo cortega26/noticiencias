@@ -78,8 +78,6 @@ evidence_subject_type: observational
 evidence_detail: Síntesis de estudios y modelos globales de asignación de carbono; no ensayo de remoción permanente.
 ---
 
-_Imagen de portada: ilustración generada con IA de raíces e hifas; no muestra una red medida ni flujos cuantificados._
-
 Los hongos asociados a raíces reciben carbono que las plantas fijaron mediante fotosíntesis. Esa transferencia puede ser enorme, pero **carbono que entra en una red no significa carbono que permanece allí**. Confundir ambas cosas transforma un resultado sobre el ciclo del carbono en una promesa climática que el estudio no demuestra.
 
 ## Qué significa la cifra de 13,12 gigatoneladas

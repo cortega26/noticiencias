@@ -66,8 +66,6 @@ corrected_at: '2026-10-09'
 correction_summary: 'Se precisó que el 52 % corresponde al aumento de desigualdad entre grupos en EE. UU. entre 1980 y 2016, y se añadió el artículo académico primario.'
 ---
 
-_Imagen de portada: recreación editorial generada con IA de automatización industrial; no documenta una empresa ni un trabajador del estudio._
-
 Un estudio de Daron Acemoglu y Pascual Restrepo analiza cómo se relacionó la automatización con los salarios en Estados Unidos entre 1980 y 2016. Sus estimaciones atribuyen a la automatización el 52 % del aumento de la desigualdad salarial **entre grupos** durante ese periodo. No significa que explique el 52 % de toda la desigualdad ni que mida lo ocurrido después de 2016.
 
 El análisis combina información de distintas fuentes estadounidenses y compara 500 grupos demográficos en 49 industrias. La investigación se centra en qué tareas y trabajadores fueron más expuestos a la automatización, no en un pronóstico sobre todos los empleos o tecnologías futuras.

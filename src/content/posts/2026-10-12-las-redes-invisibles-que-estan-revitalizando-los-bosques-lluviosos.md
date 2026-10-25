@@ -77,8 +77,6 @@ social:
   id: b587196de4bb316c648967b394b6cbeb3f2421fa0556a436a648b4d1855b0730
 ---
 
-_Imagen de portada: recreación editorial generada con IA de regeneración de bosque; no documenta una parcela de los estudios._
-
 Los bosques secundarios vuelven a crecer después de que se abandona o reduce una perturbación, pero no todos siguen la misma trayectoria. Dos estudios neotropicales permiten separar dos preguntas: cuánto carbono puede acumular la biomasa durante la regeneración y cómo la fragmentación del paisaje afecta la llegada de semillas.
 
 ## La biomasa puede recuperarse rápido, con mucha variación
