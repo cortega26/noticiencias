@@ -42,7 +42,8 @@ npm run test:dist         # dist sanity checks (run after build)
    `.github/workflows/content-guard.yml` for the authoritative CI step list.
 3. For dependency changes, inspect `npm ls --omit=dev --all` separately
    and triage nested peer errors before deciding whether a fix is needed.
-   Where registry access exists, run `npm audit --omit=dev` and assess actual
+   Where registry access exists, run `npm audit` in both the root and `workers/`
+   (including development dependencies), then `npm audit --omit=dev`, and assess actual
    exposure. If the registry or a clean install is unavailable, mark that
    check as unverified rather than passed.
 4. The aggregate command already includes build, dist and unit tests; do not
@@ -128,3 +129,17 @@ If you are working on front-end content, layout, or components only, the setup s
 in this file are sufficient. If your change touches the publication contract, frontmatter
 schema, permalink helpers, category/tag taxonomy, or any cross-repo behavior, use the
 full runbook and run validation in both repos.
+
+## Security dependency overrides
+
+The security refresh of 2026-10-25 aligns Vitest and coverage at 4.1.12 and
+removes the unnecessary fast-uri major override and advances vulnerable
+brace-expansion, sharp and Undici pins. Workers also override Zod 4.4.3
+to 4.6.6 for the constrained-collection memory-exhaustion advisory.
+Typography's pinned selector-parser 6.0.10 is overridden to 7.1.6; validate
+compatibility with the full build and tests when updating it. Keep overrides
+under review: a historical override can prevent a patched transitive update.
+See [the security record](docs/audits/2026-10-25-security-quality.md).
+
+Content Guard runs `npm audit --include=dev --audit-level=low` for both the root and workers,
+including development dependencies. Audit failures block the workflow.

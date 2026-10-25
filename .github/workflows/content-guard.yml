@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit dependencies (including development)
+        run: npm audit --include=dev --audit-level=low
+
       - name: 🧹 Lint (ESLint + Prettier)
         run: npm run lint
 
@@ -184,6 +187,10 @@ jobs:
         # needs its node_modules installed before it can run.
         working-directory: workers
         run: npm ci
+
+      - name: Audit Worker dependencies (including development)
+        working-directory: workers
+        run: npm audit --include=dev --audit-level=low
 
       - name: ⚙️ Worker suite (fetch-boundary + coverage, workerd runtime)
         # Plan 031 Step 3/4: the Worker tests run inside the real workerd
