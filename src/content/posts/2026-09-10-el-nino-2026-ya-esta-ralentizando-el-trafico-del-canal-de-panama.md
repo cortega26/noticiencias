@@ -81,8 +81,6 @@ social:
   id: 8f7ff1d0af94455f789a29c5ec80d3e68077c2033281e50c00a28dd123f1d110
 ---
 
-_Imagen de portada: recreación editorial generada con IA de navegación en una esclusa; no documenta un tránsito ni un nivel de agua medido en el canal de Panamá._
-
 ## Actualización editorial — 12 de octubre de 2026
 
 La versión inicial atribuyó al Pacífico central una anomalía de 3 a 4 °C y afirmó que el episodio podía ser el más intenso en 150 años. El boletín de NOAA del 8 de octubre reporta +2,1 °C en la región Niño-3.4; el umbral histórico que usa NOAA se refiere a eventos desde 1950 y se calcula con el índice RONI de tres meses. Corregimos esos datos y añadimos los avisos operativos vigentes del Canal de Panamá.

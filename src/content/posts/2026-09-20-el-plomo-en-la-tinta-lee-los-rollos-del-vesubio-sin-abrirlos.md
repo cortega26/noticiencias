@@ -85,8 +85,6 @@ social:
   id: 9d1e11ab861b72335a5967ea5355a53c83c2d9dd40b2824fc25458b8e2544dda
 ---
 
-_Imagen de portada: recreación editorial generada con IA de una réplica de papiro en un laboratorio; no muestra un rollo auténtico ni texto antiguo recuperado._
-
 Un rollo de papiro carbonizado, negro como carbón y tan frágil que al menor contacto se deshace, ha permanecido sellado desde que el Vesubio entró en erupción hace casi dos milenios. Hallado entre las ruinas de Herculano, cerca de Nápoles, ese rollo guarda palabras que ningún ojo moderno ha podido descifrar sin riesgo de destruirlo. ¿Cómo leer lo que está dentro sin abrirlo?
 
 ## Contexto

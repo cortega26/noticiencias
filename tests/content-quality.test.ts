@@ -46,6 +46,51 @@ afterEach(() => {
 });
 
 describe('content quality diagnostics', () => {
+  it.each([
+    '_Imagen de portada: ilustración conceptual generada con IA; no es una fotografía del fósil de Shanidar A ni una reconstrucción de su lesión._',
+    'Imagen de portada: ilustración generada con IA.',
+    '**Imagen de portada:** recreación editorial generada con IA.',
+    '*IMAGEN DE\nPORTADA: ilustración generada con IA.*',
+  ])('rejects a hero disclosure repeated in article prose: %s', (note) => {
+    const repoRoot = makeRepo();
+    writePost(
+      repoRoot,
+      '2026-04-02-repeated-caption.md',
+      `${note}\n\n## Hallazgo\n\nTexto del artículo.`
+    );
+
+    expect(collectContentQualityDiagnostics({ repoRoot }).errors).toEqual(
+      expect.arrayContaining([expect.stringContaining('hero-caption-in-body')])
+    );
+  });
+
+  it('allows AI disclosure in image_alt and discussion of AI in the article', () => {
+    const repoRoot = makeRepo();
+    writePost(
+      repoRoot,
+      '2026-04-02-caption-only.md',
+      `## Cómo se evalúan las imágenes generadas con IA
+
+Los investigadores compararon imágenes generadas con inteligencia artificial con fotografías del estudio. Examinaron qué detalles podían reconocer los participantes y qué errores se repetían en las respuestas. La comparación describe el conjunto evaluado y no permite atribuir el resultado a todas las herramientas disponibles ni a todos sus posibles usos.
+
+El equipo distinguió los resultados observados de las interpretaciones propuestas. La muestra y las condiciones de la prueba limitan el alcance de las conclusiones y deberán tenerse en cuenta antes de comparar estos datos con otros trabajos.
+
+La investigación plantea preguntas sobre cómo comunicar el origen de las imágenes y cómo estudiar la comprensión de los lectores. Estas preguntas requieren evidencia adicional y no quedan resueltas por una única prueba.`
+    );
+    const file = path.join(repoRoot, 'src', 'content', 'posts', '2026-04-02-caption-only.md');
+    fs.writeFileSync(
+      file,
+      fs
+        .readFileSync(file, 'utf8')
+        .replace(
+          'Imagen descriptiva para una noticia de prueba',
+          'Ilustración conceptual generada con IA; no reproduce un hallazgo real.'
+        )
+    );
+
+    expect(collectContentQualityDiagnostics({ repoRoot }).errors).toEqual([]);
+  });
+
   it('rejects placeholder-style stub articles', () => {
     const repoRoot = makeRepo();
     writePost(

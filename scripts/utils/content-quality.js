@@ -9,6 +9,12 @@ export const MIN_TITLE_LENGTH = 20;
 export const MAX_TITLE_LENGTH = 140;
 export const BLOCKED_CONTENT_PATTERNS = [
   {
+    // PostLayout already renders image_alt below the hero. Keep its provenance
+    // and conceptual/AI disclosure there, never in a second Markdown paragraph.
+    id: 'hero-caption-in-body',
+    pattern: /^\s*[*_]{0,3}imagen\s+de\s+portada\s*[*_]{0,3}\s*:/im,
+  },
+  {
     id: 'placeholder-language',
     pattern:
       /ilegible\s+y\s+corrupt|impidiendo\s+la\s+elaboraci[oó]n\s+de\s+un\s+texto|no\s+se\s+pudo\s+(?:elaborar|construir|redactar)\s+un\s+art[ií]culo/i,

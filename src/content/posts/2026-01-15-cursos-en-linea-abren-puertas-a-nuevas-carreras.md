@@ -31,8 +31,6 @@ corrected_at: '2026-10-09'
 correction_summary: 'Se precisó la secuencia entre el MicroMasters y el programa combinado, y se añadió el dato de empleo de la cohorte presencial 2025 de SCM, sin atribuirlo al curso en línea ni generalizarlo a otros estudiantes.'
 ---
 
-_Imagen de portada: recreación editorial generada con IA; no representa a Kevin Power ni un curso real del MIT._
-
 ## De Supply Chain Analytics a un programa combinado
 
 Kevin Power se graduó en ingeniería de fabricación mientras trabajaba a tiempo completo en una refinería de petróleo. Después de graduarse, buscó formación adicional y comenzó Supply Chain Analytics (SC0x), un curso en línea del MicroMasters en gestión de cadenas de suministro de MITx.

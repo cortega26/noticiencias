@@ -80,8 +80,6 @@ social:
   id: 131cdfdaa993954bc9e9df1705e82bc8372e50d675980eff41b029700022b467
 ---
 
-_Imagen de portada: interpretación artística generada con IA de formación planetaria; no es una imagen telescópica de Elias 2-24 b._
-
 A 450 años luz de la Tierra, una estrella recién nacida guarda en su disco de gas y polvo un punto de luz asociado a un planeta de menos de un millón de años. Ese punto es Elias 2-24 b, un exoplaneta que, con menos de un millón de años, se convierte en el mundo alienígena más joven jamás confirmado.
 
 **Contexto del fenómeno y de la pregunta abierta**  

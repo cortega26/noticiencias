@@ -72,8 +72,6 @@ social:
   id: 4b7613427d6403c072d8a80d249f7085bc3c3df96104f340860293d36a67ea46
 ---
 
-_Imagen de portada: interpretación artística generada con IA de la hipótesis auroral; no es una fotografía de Beta Pictoris b ni una observación directa de su aurora._
-
 ## Una señal separada de la estrella
 
 Beta Pictoris b es un planeta gigante joven que orbita la estrella Beta Pictoris. El equipo de Kevin N. Ortiz Ceballos, Edo Berger y Yvette Cendes presenta observaciones de radio realizadas con MeerKAT, un conjunto de antenas situado en Sudáfrica. El artículo científico está disponible como preprint en arXiv desde el 15 de septiembre de 2026.

@@ -69,8 +69,6 @@ social:
   id: bf92dccb4b73ed944e067d74423a95c0af15a382392358959a3dc277f3841061
 ---
 
-_Imagen de portada: recreación editorial generada con IA de un ejercicio de discusión; no es una fotografía de las simulaciones ni de una negociación gubernamental._
-
 La modificación de la radiación solar (SRM) agrupa propuestas para reflejar una parte de la energía solar y reducir la temperatura media global. Su eventual gobernanza plantea preguntas sobre investigación, despliegue, control y seguimiento. Un informe del proyecto SAFEGEOGOV examinó esos problemas mediante negociaciones simuladas, no mediante pruebas climáticas ni decisiones de gobiernos reales.
 
 ## Cómo se hicieron los ejercicios
