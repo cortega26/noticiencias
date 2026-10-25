@@ -1,0 +1,22 @@
+[
+  {
+    "draft": "buffer-provider",
+    "repo": "frontend",
+    "base": "33af5626a09d96ee6046bc9907e73e5433c04074",
+    "patchSha256": "08fb4e1d43345dd29c2fbfc7ce5bb648bf3c7a878bfdc77f4a581af23149f5bf",
+    "bytes": 122622,
+    "files": [
+      {
+        "path": "scripts/social/providers/buffer.js",
+        "sha256": "d8bfb0975f7641daca7dbf5aa23e3dfaf6f47b6a8ea6a61b6cc1af3cb48b2d5b",
+        "bytes": 63876
+      },
+      {
+        "path": "tests/social/buffer.test.ts",
+        "sha256": "996257b9dbc8efd70d6d574f0c6da4a0e91aa13d4424239540094315bc2033f6",
+        "bytes": 55191
+      }
+    ],
+    "reconstructionVerified": true
+  }
+]

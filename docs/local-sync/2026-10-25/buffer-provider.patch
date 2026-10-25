@@ -1,0 +1,3178 @@
+diff --git a/scripts/social/providers/buffer.js b/scripts/social/providers/buffer.js
+new file mode 100644
+index 00000000..361ebbe0
+--- /dev/null
++++ b/scripts/social/providers/buffer.js
+@@ -0,0 +1,1573 @@
++import { ERROR_CLASS, HttpError, classifyStatus, requestJson } from '../http.js';
++
++/**
++ * Buffer GraphQL publishing adapter for the social publisher — Facebook Page, X
++ * and LinkedIn Page (plan social-distribution §1 / §3 / §6 / §10 / §12 / §13 /
++ * §15 / §17 / §18, package 7).
++ *
++ * > Provenance note. `SOCIAL_DISTRIBUTION_IMPLEMENTATION_PLAN.md` was briefly
++ * > lost from disk (it lived outside both repos and `/tmp` was cleared). A
++ * > byte-for-byte copy was recovered from the Claude Code session transcripts
++ * > and is kept alongside both repos at
++ * > `../SOCIAL_DISTRIBUTION_IMPLEMENTATION_PLAN.md` (the `noticiencias/` product
++ * > root). Section numbers below refer to it.
++ *
++ * ### What this adapter is
++ *
++ * It receives **frozen** content (`SocialPost` from `content.js`, §12) plus a
++ * validated destination and performs the Buffer GraphQL calls. It does NOT:
++ * - decide editorial eligibility (`article.js` / the orchestrator do that),
++ * - regenerate or re-truncate the copy (`content.js` already did, once),
++ * - persist ledger state (`state.js` owns `state.json`; this module returns
++ *   structured results the orchestrator feeds to `recordResult` /
++ *   `recordReconciliation` — see {@link toRecordResult}, {@link pollToRecordResult}
++ *   and {@link reconciliationParams}),
++ * - own polling cadence or the global API budget (that is the package-8
++ *   orchestrator's job — this module exposes single reads and bounded batches).
++ *
++ * ### Boundaries — and the one guarantee this adapter deliberately does NOT copy
++ *
++ * The Bluesky adapter can return `safeToRetry: true` on an HTTP 429 because its
++ * `putRecord` freezes an `rkey` up front and reconciles by that exact key, so a
++ * "429" that actually hid a completed write is caught structurally. **Buffer has
++ * no idempotency key for `createPost`** (§1 / §6 / §13: "No se encontraron
++ * idempotency key/client ID en `CreatePostInput`"). So:
++ *
++ * - A `create` executes **at most one** HTTP request. No transparent retry lives
++ *   in transport, auth or a helper. `../http.js` performs no retries and, with
++ *   `followRedirects: false`, makes exactly one `fetch` call (a 3xx makes it
++ *   throw *after* the bytes went out — which classifies AMBIGUOUS, never
++ *   "rejected without effect").
++ * - After a possible send, the default classification is **AMBIGUOUS** unless
++ *   there is affirmative evidence the request was rejected with no side effect
++ *   (§6 / §17). `safeToRetry: true` is emitted ONLY for a rate-limit signal that
++ *   also carries no post id anywhere in the response — the request never reached
++ *   a create handler.
++ * - A timeout / 5xx / unknown GraphQL error with no recoverable id does **not**
++ *   authorise another `create`. The pair goes AMBIGUOUS and is resolved by a
++ *   read: {@link createBufferClient} `get` (a known id) or `reconcile` (list the
++ *   channel and match the frozen copy). Zero matches is **not** proof of
++ *   absence; truncated pagination is **not** proof of uniqueness (§5 / §13).
++ * - There is no login/session step. Nothing `ensureSession`-shaped precedes a
++ *   call — the Bearer key is sent on each request and a 401 stops the run.
++ *
++ * ### Sources consulted — 2026-09-07
++ *
++ * The plan's §13 and §29 were compiled from a careful read on 2026-09-05; this
++ * package re-checked the Buffer developer docs on 2026-09-07. Those re-checks
++ * were read through a summarising fetch, not raw HTML, so where a field is not
++ * doc-confirmed it is either taken from the plan (a reviewed authority inside
++ * this repo) or made configuration-supplied and validated at runtime rather than
++ * shipped as a guess.
++ *
++ * | Fact | Provenance |
++ * |---|---|
++ * | Endpoint `https://api.buffer.com`, `POST`, `Authorization: Bearer`, `{ query, variables }` body | doc-confirmed (getting-started) + plan §13 |
++ * | GraphQL always HTTP 200; typed union errors in `data`, non-recoverable errors in top-level `errors[]` with `extensions.code` (`RATE_LIMIT_EXCEEDED`, `UNAUTHORIZED`, `FORBIDDEN`, `NOT_FOUND`, `UNEXPECTED`); HTTP 401/429 also occur | doc-confirmed (error-handling, api-limits) + plan §13 |
++ * | `CreatePostInput` required: `channelId`, `mode`, `schedulingType`, `needsApproval`, `assets`; optional `text`, `saveToDraft` | doc-confirmed (reference) |
++ * | `ShareMode` includes `shareNow`; `SchedulingType` `automatic` | doc-confirmed (reference) + plan §3 (the narrative guide omits `shareNow`; the enum has it — use the enum) |
++ * | `assets: [{ link: { url: <canonical> } }]` for a link post, `[]` for X | plan §10 authority (`AssetInput` shape not quoted verbatim in the fetched docs) |
++ * | createPost union: `... on PostActionSuccess { post { id status channelId text externalLink sentAt } }`, `... on MutationError { message }` | doc-confirmed (error-handling: "Always include `... on MutationError { message }`") + plan §13 |
++ * | `PostStatus` values `draft` / `error` / `needs_approval` / `scheduled` / `sending` / `sent` | plan §13 authority (fetched pages showed only `scheduled` / `sent` / `error`; §3 pre-flags the stale `buffer` label). Encoded as a decision table with a safe default so an unlisted value still cannot trigger a create. |
++ * | Rate-limit headers `RateLimit` / `RateLimit-Policy` / `Retry-After`; HTTP 429 | doc-confirmed (api-limits) |
++ * | `posts(first, after, input: { organizationId, filter: { channelIds } })` → `{ edges { node }, pageInfo { hasNextPage endCursor } }`; do NOT restrict `status` | plan §13 authority + doc-confirmed shape (get-posts-for-channels) |
++ * | `account { organizations { id name } }`, then `channels(input: { organizationId }) { id name service type }`; X service is `twitter` | doc-confirmed field names (reference, get-organizations, get-channels) + plan §13 (`twitter`). `ChannelType` enum values are NOT doc-confirmed → the expected `type` (and `service`) per platform is configuration-supplied and validated observed-equals-configured. |
++ * | Free plan: 100 req / 15 min, 250 / 24 h, 3 000 / 30 days; 3 channels; 10 pending posts / channel | doc-confirmed (api-limits, pricing) + plan §13. Budget/cadence belong to the orchestrator, not here. |
++ */
++
++// --- constants -------------------------------------------------------
++
++/** The Buffer platforms this adapter drives (Bluesky is a separate adapter). */
++export const BUFFER_PLATFORMS = Object.freeze(['facebook', 'x', 'linkedin']);
++
++/** Single GraphQL endpoint (doc-confirmed: getting-started / plan §13). */
++export const BUFFER_API_URL = 'https://api.buffer.com';
++export const BUFFER_API_HOST = 'api.buffer.com';
++
++/**
++ * Default `service` expected per platform — doc-backed: §13 states X's service
++ * is `twitter`; Facebook and LinkedIn are self-naming. `inspectChannels`
++ * validates the *observed* service equals this (or a caller override), so a
++ * profile can never be substituted for a Page's service (§13 / task §2).
++ *
++ * There is deliberately NO default `type`: `ChannelType` enum literals are not
++ * doc-confirmed, so `type` is validated ONLY when the caller supplies it
++ * explicitly. A phase-0 doctor run reads the real literal back from
++ * `DiscoveryResult.channels[platform].type` and pins it in config (§22 phase 0).
++ */
++export const DEFAULT_CHANNEL_SERVICE = Object.freeze({
++  facebook: 'facebook',
++  x: 'twitter',
++  linkedin: 'linkedin',
++});
++
++/** Reconciliation pagination ceiling per run (plan §13: "máximo diez páginas"). */
++export const MAX_RECONCILE_PAGES = 10;
++/** Page size for the reconciliation list (plan §13 example: `first: 100`). */
++export const RECONCILE_PAGE_SIZE = 100;
++/** Aliased `post` reads per batched request (plan §13: "máximo 10 por request"). */
++export const MAX_BATCH_GET = 10;
++
++const DEFAULT_READ_TIMEOUT_MS = 15_000;
++const DEFAULT_WRITE_TIMEOUT_MS = 30_000;
++/** Fallback wait applied to a RETRYABLE result when no `Retry-After` is present. */
++const DEFAULT_RETRY_DELAY_MS = 15 * 60_000;
++
++const ORG_ID_RE = /^[A-Za-z0-9:_-]{1,128}$/;
++const CHANNEL_ID_RE = /^[A-Za-z0-9:_-]{1,128}$/;
++const POST_ID_RE = /^[A-Za-z0-9:_-]{1,128}$/;
++
++/**
++ * What a Buffer `PostStatus` means for the ledger. `sent` is the ONLY value that
++ * confirms publication (task §3); `error` is an operational failure that keeps
++ * its id and is never re-created (§13); `draft` / `needs_approval` are
++ * unexpected MVP configuration and stop that channel (§13); everything
++ * else — including a value not in this table — keeps the id and follows up,
++ * never a create.
++ *
++ * @type {Readonly<Record<string, 'published'|'failed'|'channel-misconfigured'|'pending'>>}
++ */
++export const POST_STATUS_ACTION = Object.freeze({
++  sent: 'published',
++  error: 'failed',
++  draft: 'channel-misconfigured',
++  needs_approval: 'channel-misconfigured',
++  scheduled: 'pending',
++  sending: 'pending',
++});
++
++/** Resolve a `PostStatus` to its ledger action; an unknown value follows up. */
++export function postStatusAction(status) {
++  return POST_STATUS_ACTION[String(status)] ?? 'pending';
++}
++
++/**
++ * The outcomes a `create` can produce — the discriminant of a
++ * {@link PublishResult}. Exported so the mapping can be asserted, not
++ * re-derived from prose.
++ *
++ * - `accepted`        — Buffer returned a post id but not `sent`. The id is
++ *   recorded before any polling; a later `sent` promotes it to PUBLISHED. An
++ *   `unexpected-status` warning rides along for `draft` / `needs_approval`.
++ * - `confirmed`       — the returned post is already `status: sent`. Buffer id +
++ *   `externalLink` are returned.
++ * - `failed-with-id`  — the returned post is `status: error`. Keep the id; do
++ *   NOT create another object; a human repairs *that* object in Buffer (§13 /
++ *   §17).
++ * - `rejected`        — a recognised, no-effect content rejection
++ *   (`InvalidInputError`). Permanent for this payload until the copy/config is
++ *   fixed.
++ * - `channel-blocked` — a recognised channel-level rejection with no effect
++ *   (queue full / disconnected / permission). Stop this channel; a human acts.
++ * - `rate-limited`    — a rate-limit signal (HTTP 429 or top-level
++ *   `RATE_LIMIT_EXCEEDED`) with NO post id anywhere in the response. The request
++ *   never reached a create handler → provably no effect.
++ * - `auth-invalid`    — HTTP 401/403 or `UNAUTHORIZED` / `FORBIDDEN`. A
++ *   misconfiguration or a revoked key: every send this run fails the same way.
++ * - `ambiguous`       — everything else after a possible send (timeout, 5xx,
++ *   non-JSON body, a 2xx without a usable id, an unknown GraphQL error). Cannot
++ *   be proven rejected-without-effect → reconcile, never re-create.
++ */
++export const PUBLISH_OUTCOME = Object.freeze({
++  ACCEPTED: 'accepted',
++  CONFIRMED: 'confirmed',
++  FAILED_WITH_ID: 'failed-with-id',
++  REJECTED: 'rejected',
++  CHANNEL_BLOCKED: 'channel-blocked',
++  RATE_LIMITED: 'rate-limited',
++  AUTH_INVALID: 'auth-invalid',
++  AMBIGUOUS: 'ambiguous',
++});
++
++/** Structured decisions from {@link createBufferClient} `reconcile`. */
++export const RECONCILE_DECISION = Object.freeze({
++  /** Exactly one match and that post is `sent` → adopt as PUBLISHED. */
++  CONFIRMED: 'confirmed',
++  /** Exactly one match, not yet `sent` → adopt as ACCEPTED (with its id). */
++  ADOPT_ACCEPTED: 'adopt-accepted',
++  /** Multiple matches, a foreign channel, or a different post at a known id. */
++  CONFLICT: 'conflict',
++  /** Zero matches, truncated pagination, a partial/failed read — no claim. */
++  UNCERTAIN: 'uncertain',
++});
++
++/** Structured outcomes from {@link createBufferClient} `inspectChannels`. */
++export const DISCOVERY_OUTCOME = Object.freeze({
++  OK: 'ok',
++  READ_FAILED: 'read-failed',
++  ORG_NOT_FOUND: 'org-not-found',
++  CHANNEL_NOT_IN_ORG: 'channel-not-in-org',
++  SERVICE_MISMATCH: 'service-mismatch',
++  TYPE_MISMATCH: 'type-mismatch',
++});
++
++/** `get` / single-post read states. */
++export const READ_STATE = Object.freeze({
++  PRESENT: 'present',
++  ABSENT: 'absent',
++  UNKNOWN: 'unknown',
++});
++
++// --- GraphQL documents (frozen module constants, variables only) ----
++
++/**
++ * Every operation is a constant document with `$variables` — content is NEVER
++ * interpolated into the query string (§10 / §21: a future dry-run transport
++ * accepts only "documentos de consulta constantes aprobados"). These are
++ * exported for that allowlist.
++ */
++export const GQL = Object.freeze({
++  ACCOUNT_ORGANIZATIONS: `query AccountOrganizations {
++  account { id organizations { id name } }
++}`,
++
++  CHANNELS: `query Channels($organizationId: OrganizationId!) {
++  channels(input: { organizationId: $organizationId }) {
++    id
++    name
++    service
++    type
++  }
++}`,
++
++  CREATE_POST: `mutation CreatePost(
++  $channelId: ChannelId!
++  $text: String
++  $mode: ShareMode!
++  $schedulingType: SchedulingType!
++  $needsApproval: Boolean!
++  $saveToDraft: Boolean
++  $assets: [AssetInput!]!
++) {
++  createPost(input: {
++    channelId: $channelId
++    text: $text
++    mode: $mode
++    schedulingType: $schedulingType
++    needsApproval: $needsApproval
++    saveToDraft: $saveToDraft
++    assets: $assets
++  }) {
++    __typename
++    ... on PostActionSuccess {
++      post { id status channelId text externalLink sentAt }
++    }
++    ... on MutationError { message }
++  }
++}`,
++
++  POST_BY_ID: `query PostById($id: PostId!) {
++  post(input: { id: $id }) {
++    id
++    status
++    channelId
++    text
++    externalLink
++    sentAt
++  }
++}`,
++
++  POSTS_BY_CHANNEL: `query PostsByChannel(
++  $organizationId: OrganizationId!
++  $channelId: ChannelId!
++  $first: Int!
++  $after: String
++) {
++  posts(
++    first: $first
++    after: $after
++    input: { organizationId: $organizationId, filter: { channelIds: [$channelId] } }
++  ) {
++    edges {
++      node { id status channelId text externalLink sentAt createdAt }
++    }
++    pageInfo { hasNextPage endCursor }
++  }
++}`,
++});
++
++/**
++ * Build a batched aliased `post` document for up to {@link MAX_BATCH_GET} ids.
++ * Only aliases and variable *names* are generated — both are fixed identifiers,
++ * never caller data — and each id is still passed as a `$pN` variable.
++ * @param {number} count
++ * @returns {string}
++ */
++export function batchPostsDocument(count) {
++  const n = Math.min(Math.max(1, Math.trunc(count)), MAX_BATCH_GET);
++  const params = Array.from({ length: n }, (_, i) => `$p${i}: PostId!`).join(', ');
++  const selections = Array.from(
++    { length: n },
++    (_, i) =>
++      `  a${i}: post(input: { id: $p${i} }) { id status channelId text externalLink sentAt }`
++  ).join('\n');
++  return `query PostsByIds(${params}) {\n${selections}\n}`;
++}
++
++// --- errors ---------------------------------------------------------
++
++/**
++ * A programming-level failure (bad input, impossible config). Expected
++ * operational outcomes are returned as a {@link PublishResult} / structured
++ * object, not thrown. `message` is already redacted by the transport when it
++ * wraps an HTTP failure.
++ */
++export class BufferError extends Error {
++  /**
++   * @param {string} code stable — `CONFIG` for caller mistakes, otherwise a
++   *   {@link PUBLISH_OUTCOME} / {@link DISCOVERY_OUTCOME} value
++   * @param {string} message already sanitized
++   * @param {Record<string, unknown>} [detail]
++   */
++  constructor(code, message, detail = {}) {
++    super(message);
++    this.name = 'BufferError';
++    this.code = code;
++    this.detail = detail;
++  }
++}
++
++// --- small helpers ------------------------------------------------
++
++function isPlainObject(value) {
++  return value != null && typeof value === 'object' && !Array.isArray(value);
++}
++
++function isNonEmptyString(value) {
++  return typeof value === 'string' && value.trim() !== '';
++}
++
++/** Deterministic JSON (keys sorted). Used for evidence clipping, never a hash. */
++export function canonicalJson(value) {
++  if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'null';
++  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
++  const keys = Object.keys(value).sort();
++  return `{${keys.map((k) => `${JSON.stringify(k)}:${canonicalJson(value[k])}`).join(',')}}`;
++}
++
++/** Clip an arbitrary value to a bounded JSON string for evidence payloads. */
++function clip(value, max = 600) {
++  const text = canonicalJson(value);
++  return text.length > max ? `${text.slice(0, max)}…` : text;
++}
++
++/**
++ * Whole-URL equality after normalization. NEVER a substring test: the
++ * reconciliation "URLs parecidas" case exists because `…/a/` is a prefix of
++ * `…/a/b/` — an `includes()` on either side would wrongly match (§5 / task §5).
++ * @param {unknown} a
++ * @param {unknown} b
++ * @returns {boolean}
++ */
++export function sameCanonical(a, b) {
++  if (!isNonEmptyString(a) || !isNonEmptyString(b)) return false;
++  let ua;
++  let ub;
++  try {
++    ua = new URL(String(a));
++    ub = new URL(String(b));
++  } catch {
++    return false;
++  }
++  return ua.href === ub.href;
++}
++
++/** Top-level GraphQL `errors[]`, normalized to `[{ message, code }]`. */
++function topLevelErrors(json) {
++  if (!isPlainObject(json) || !Array.isArray(json.errors)) return [];
++  return json.errors.filter(isPlainObject).map((e) => ({
++    message: isNonEmptyString(e.message) ? String(e.message) : '',
++    code:
++      isPlainObject(e.extensions) && isNonEmptyString(e.extensions.code)
++        ? String(e.extensions.code)
++        : null,
++  }));
++}
++
++function firstErrorCode(errors) {
++  for (const e of errors) if (e.code) return e.code;
++  return null;
++}
++
++/** A `post` object echoed by Buffer, normalized to the fields we consume. */
++function normalizePost(raw) {
++  if (!isPlainObject(raw) || !isNonEmptyString(raw.id)) return null;
++  return {
++    id: String(raw.id),
++    status: isNonEmptyString(raw.status) ? String(raw.status) : null,
++    channelId: isNonEmptyString(raw.channelId) ? String(raw.channelId) : null,
++    text: typeof raw.text === 'string' ? raw.text : null,
++    externalLink: isNonEmptyString(raw.externalLink) ? String(raw.externalLink) : null,
++    sentAt: isNonEmptyString(raw.sentAt) ? String(raw.sentAt) : null,
++    createdAt: isNonEmptyString(raw.createdAt) ? String(raw.createdAt) : null,
++  };
++}
++
++/**
++ * Dig a post object out of a `data.createPost` union payload.
++ * @returns {{ typename: string|null, post: object|null, message: string|null }}
++ */
++function readCreatePayload(json) {
++  const node = isPlainObject(json) && isPlainObject(json.data) ? json.data.createPost : null;
++  if (!isPlainObject(node)) return { typename: null, post: null, message: null };
++  const typename = isNonEmptyString(node.__typename) ? String(node.__typename) : null;
++  const post = normalizePost(node.post);
++  const message = isNonEmptyString(node.message) ? String(node.message) : null;
++  return { typename, post, message };
++}
++
++// --- create classification (pure) ------------------------------
++
++/**
++ * @typedef {object} PublishResult
++ * @property {string} outcome one of {@link PUBLISH_OUTCOME}
++ * @property {string} [providerId] the Buffer post id, whenever one is recoverable
++ * @property {string} [externalUrl] Buffer's `externalLink`
++ * @property {string|null} [providerStatus] the raw `PostStatus` when known
++ * @property {string|null} [errorClass] transport {@link ERROR_CLASS} for a transport failure
++ * @property {string|null} [errorCode] the GraphQL error code / `__typename`
++ * @property {number|null} [retryAfterMs] parsed `Retry-After` (on `rate-limited`)
++ * @property {boolean} [safeToRetry] `true` ONLY for a rate-limit signal with no post id
++ * @property {string|null} [warning] a stable channel-level warning code
++ * @property {Record<string, unknown>} evidence structured, non-secret facts
++ */
++
++/**
++ * Classify a completed `createPost` HTTP response (any status) into a
++ * {@link PublishResult}. Pure: every input is an argument.
++ *
++ * @param {{
++ *   httpStatus: number,
++ *   headers: Record<string, string>,
++ *   json: unknown,
++ *   retryAfterMs: number|null,
++ *   expectedChannelId: string,
++ * }} input
++ * @returns {PublishResult}
++ */
++export function classifyCreateResponse({
++  httpStatus,
++  headers = {},
++  json,
++  retryAfterMs = null,
++  expectedChannelId,
++}) {
++  const cls = classifyStatus(Number(httpStatus) || 0, headers);
++  const errors = topLevelErrors(json);
++  const errorCode = firstErrorCode(errors);
++  const { typename, post, message } = readCreatePayload(json);
++
++  const rateSignal = cls === ERROR_CLASS.RATE_LIMITED || errorCode === 'RATE_LIMIT_EXCEEDED';
++  const authSignal =
++    cls === ERROR_CLASS.AUTH || errorCode === 'UNAUTHORIZED' || errorCode === 'FORBIDDEN';
++
++  // Auth first: it dominates everything and stops the run. A 401/403 that also
++  // carries a post id (a contradictory response) still halts, but the id rides
++  // along so the orchestrator can persist ACCEPTED before halting and reconcile
++  // it after the key is rotated.
++  if (authSignal) {
++    return {
++      outcome: PUBLISH_OUTCOME.AUTH_INVALID,
++      ...(post ? { providerId: post.id, providerStatus: post.status } : {}),
++      errorClass: cls === ERROR_CLASS.AUTH ? cls : null,
++      errorCode,
++      evidence: {
++        phase: 'create',
++        httpStatus,
++        errorCode,
++        errors: errors.map((e) => e.message),
++        ...(post ? { recoverable_id: post.id } : {}),
++      },
++    };
++  }
++
++  // A recoverable post id always wins over a co-occurring error: keep the id,
++  // never confirm on an incomplete response (§6). A `sent` status alongside
++  // top-level errors is still only ACCEPTED — a later poll confirms it.
++  if (post) {
++    if (post.channelId && expectedChannelId && post.channelId !== expectedChannelId) {
++      return {
++        outcome: PUBLISH_OUTCOME.AMBIGUOUS,
++        providerId: post.id,
++        providerStatus: post.status,
++        evidence: {
++          phase: 'create',
++          reason: 'created post is for a different channel',
++          expected: expectedChannelId,
++          got: post.channelId,
++        },
++      };
++    }
++    const action = postStatusAction(post.status);
++    const base = {
++      providerId: post.id,
++      providerStatus: post.status,
++      ...(post.externalLink ? { externalUrl: post.externalLink } : {}),
++      evidence: {
++        phase: 'create',
++        httpStatus,
++        status: post.status,
++        ...(errors.length > 0 ? { coOccurringErrors: errors.map((e) => e.message) } : {}),
++      },
++    };
++    if (errors.length > 0 || cls !== ERROR_CLASS.OK) {
++      // Partial response: an id but also an error / non-2xx. Retain the id,
++      // classify AMBIGUOUS-with-id via ACCEPTED so it is polled, not re-created.
++      return { outcome: PUBLISH_OUTCOME.ACCEPTED, ...base };
++    }
++    if (action === 'published') return { outcome: PUBLISH_OUTCOME.CONFIRMED, ...base };
++    if (action === 'failed') return { outcome: PUBLISH_OUTCOME.FAILED_WITH_ID, ...base };
++    if (action === 'channel-misconfigured') {
++      return {
++        outcome: PUBLISH_OUTCOME.ACCEPTED,
++        ...base,
++        warning: `unexpected-status:${post.status}`,
++      };
++    }
++    return { outcome: PUBLISH_OUTCOME.ACCEPTED, ...base };
++  }
++
++  // No post id anywhere. A rate-limit signal here is provably no-effect: the
++  // request never reached a create handler (§17 "429 auténtico que rechaza
++  // solicitud"). This is the ONLY path to safeToRetry for a create.
++  if (rateSignal) {
++    return {
++      outcome: PUBLISH_OUTCOME.RATE_LIMITED,
++      errorCode,
++      retryAfterMs: retryAfterMs ?? null,
++      safeToRetry: true,
++      evidence: { phase: 'create', httpStatus, reason: 'rate limited before a create handler' },
++    };
++  }
++
++  // A typed error in `data.createPost`. Only the two error names actually
++  // observed in the Buffer docs are given a specific, non-ambiguous meaning;
++  // EVERY other typed error — current or future — falls through to the §6
++  // AMBIGUOUS catch-all. A regex on `__typename` is not used precisely because
++  // it could route a future error into `safeToRetry` (an automatic re-send).
++  if (typename && typename !== 'PostActionSuccess') {
++    if (typename === 'InvalidInputError') {
++      return {
++        outcome: PUBLISH_OUTCOME.REJECTED,
++        errorCode: typename,
++        evidence: { phase: 'create', typename, message: message ?? null },
++      };
++    }
++    if (typename === 'LimitReachedError') {
++      return {
++        outcome: PUBLISH_OUTCOME.CHANNEL_BLOCKED,
++        errorCode: typename,
++        warning: 'channel-queue-full',
++        // The create was rejected pre-handler → no effect. A later retry waits
++        // for the channel queue to drain; the ledger's attempt cap still applies.
++        safeToRetry: true,
++        evidence: { phase: 'create', typename, message: message ?? null },
++      };
++    }
++    return {
++      outcome: PUBLISH_OUTCOME.AMBIGUOUS,
++      errorCode: typename,
++      safeToRetry: false,
++      evidence: { phase: 'create', typename, message: message ?? null },
++    };
++  }
++
++  // A `PostActionSuccess` union with no usable post, a 2xx with no `data`, an
++  // unknown top-level error, a 5xx, a 4xx that is not auth/rate — all AMBIGUOUS
++  // after a possible send. Never a new create.
++  return {
++    outcome: PUBLISH_OUTCOME.AMBIGUOUS,
++    errorClass: cls === ERROR_CLASS.OK ? null : cls,
++    errorCode,
++    safeToRetry: false,
++    evidence: {
++      phase: 'create',
++      httpStatus,
++      reason: 'no confirmable post id and no proof of a no-effect rejection',
++      ...(typename ? { typename } : {}),
++      ...(errors.length > 0 ? { errors: errors.map((e) => e.message) } : {}),
++    },
++  };
++}
++
++// --- reconciliation matching (pure) --------------------------
++
++/**
++ * Match a channel's listed posts against the frozen copy. A match requires,
++ * simultaneously (§5 / §13 / task §5):
++ * - `post.channelId === channelId` (never adopt a foreign channel's post),
++ * - `post.text === frozenText` (whole-string equality, not a substring scan),
++ * - the canonical agrees: `post.externalLink` whole-URL-equals `canonicalUrl`,
++ *   OR there is no `externalLink` (X link posts carry the canonical only in the
++ *   text, which the text equality above already pins).
++ *
++ * Ids are de-duplicated across pages before the caller counts matches (§5
++ * "Considera IDs repetidos entre páginas").
++ *
++ * @param {{
++ *   posts: Array<{ id: string, status?: string|null, channelId?: string|null, text?: string|null, externalLink?: string|null, sentAt?: string|null }>,
++ *   frozenText: string,
++ *   canonicalUrl: string,
++ *   channelId: string,
++ * }} params
++ * @returns {Array<{ id: string, status: string|null, externalLink: string|null, sentAt: string|null }>}
++ */
++export function matchChannelPosts({ posts, frozenText, canonicalUrl, channelId }) {
++  if (!isNonEmptyString(frozenText) || !isNonEmptyString(canonicalUrl)) {
++    throw new BufferError('CONFIG', 'matchChannelPosts needs a frozen text and canonical url');
++  }
++  if (!isNonEmptyString(channelId)) {
++    throw new BufferError('CONFIG', 'matchChannelPosts needs the expected channelId');
++  }
++  const seen = new Set();
++  const matches = [];
++  for (const raw of Array.isArray(posts) ? posts : []) {
++    const post = normalizePost(raw);
++    if (!post || seen.has(post.id)) continue;
++    seen.add(post.id);
++    if (post.channelId !== channelId) continue;
++    if (post.text !== frozenText) continue;
++    if (post.externalLink && !sameCanonical(post.externalLink, canonicalUrl)) continue;
++    matches.push({
++      id: post.id,
++      status: post.status,
++      externalLink: post.externalLink,
++      sentAt: post.sentAt,
++    });
++  }
++  return matches;
++}
++
++// --- client -------------------------------------------------------
++
++/**
++ * @typedef {object} DiscoveryResult
++ * @property {boolean} ok
++ * @property {string} outcome one of {@link DISCOVERY_OUTCOME}
++ * @property {Record<string, { channelId: string, service: string, type: string }>} [channels]
++ *   the validated channels, keyed by platform (only on `ok`)
++ * @property {object} diagnostics structured, non-secret detail — always present
++ */
++
++/**
++ * @typedef {object} SingleReadResult
++ * @property {string} state one of {@link READ_STATE}
++ * @property {object} [post] the normalized post (on `present`)
++ * @property {object} evidence
++ */
++
++/**
++ * Create a Buffer client bound to one API key + organization. The key lives only
++ * in this closure; nothing is persisted and nothing happens until a method is
++ * called (no session, no import-time I/O).
++ *
++ * @param {{
++ *   fetchImpl: import('../http.js').FetchLike,
++ *   apiKey: string,
++ *   organizationId: string,
++ *   readTimeoutMs?: number,
++ *   writeTimeoutMs?: number,
++ * }} config
++ */
++export function createBufferClient(config) {
++  const {
++    fetchImpl,
++    apiKey,
++    organizationId,
++    readTimeoutMs = DEFAULT_READ_TIMEOUT_MS,
++    writeTimeoutMs = DEFAULT_WRITE_TIMEOUT_MS,
++  } = config || {};
++
++  if (typeof fetchImpl !== 'function') {
++    throw new BufferError('CONFIG', 'fetchImpl must be injected');
++  }
++  if (!isNonEmptyString(apiKey)) {
++    throw new BufferError('CONFIG', 'apiKey is required');
++  }
++  if (!ORG_ID_RE.test(String(organizationId))) {
++    throw new BufferError('CONFIG', 'organizationId must be a Buffer organization id');
++  }
++
++  const secrets = [apiKey];
++
++  function baseOptions(timeoutMs) {
++    return {
++      fetchImpl,
++      method: 'POST',
++      headers: {
++        Authorization: `Bearer ${apiKey}`,
++        'Content-Type': 'application/json',
++      },
++      allowedHosts: [BUFFER_API_HOST],
++      // One fetch, no redirect-following: a fixed API endpoint must never send
++      // the Bearer key to a redirect target (§18), and a create must be exactly
++      // one request (§13).
++      followRedirects: false,
++      timeoutMs,
++      secrets,
++    };
++  }
++
++  /**
++   * Issue one GraphQL request. Returns `{ result, json }` for any HTTP status;
++   * throws {@link HttpError} only when no usable response was produced. Never
++   * retries.
++   */
++  async function gql(query, variables, timeoutMs) {
++    return requestJson(BUFFER_API_URL, {
++      ...baseOptions(timeoutMs),
++      body: JSON.stringify(variables === undefined ? { query } : { query, variables }),
++    });
++  }
++
++  // --- discovery ------------------------------------------------
++
++  /**
++   * Verify the configured organization and channels (task §2 / §13 / §22
++   * phase 0). Read-only. Validates, for each configured platform, that the
++   * channel id belongs to the organization and its `service` equals the
++   * configured value (or {@link DEFAULT_CHANNEL_SERVICE}); `type` is validated
++   * only when the caller pins it explicitly, and the observed literal is always
++   * reported back in `diagnostics` for the doctor to record. Never auto-selects
++   * the first channel; never substitutes a Page for a profile.
++   *
++   * @param {{
++   *   expected: Record<string, { channelId: string, service?: string, type?: string }>,
++   * }} params
++   * @returns {Promise<DiscoveryResult>}
++   */
++  async function inspectChannels({ expected }) {
++    if (!isPlainObject(expected) || Object.keys(expected).length === 0) {
++      throw new BufferError('CONFIG', 'inspectChannels needs an `expected` channel map');
++    }
++    for (const [platform, cfg] of Object.entries(expected)) {
++      if (!BUFFER_PLATFORMS.includes(platform)) {
++        throw new BufferError('CONFIG', `unknown Buffer platform ${JSON.stringify(platform)}`);
++      }
++      if (!isPlainObject(cfg) || !CHANNEL_ID_RE.test(String(cfg.channelId))) {
++        throw new BufferError('CONFIG', `expected.${platform}.channelId is missing or malformed`);
++      }
++    }
++
++    // 1. Organizations — the configured org must be present.
++    let orgs;
++    try {
++      const { result, json } = await gql(GQL.ACCOUNT_ORGANIZATIONS, undefined, readTimeoutMs);
++      const errs = topLevelErrors(json);
++      if (classifyStatus(result.status, result.headers) !== ERROR_CLASS.OK || errs.length > 0) {
++        return readFailed('account read failed', {
++          httpStatus: result.status,
++          errors: errs.map((e) => e.message),
++        });
++      }
++      orgs =
++        isPlainObject(json.data) && isPlainObject(json.data.account)
++          ? json.data.account.organizations
++          : null;
++    } catch (error) {
++      return readFailed('account read threw', transportEvidence(error));
++    }
++    if (
++      !Array.isArray(orgs) ||
++      !orgs.some((o) => isPlainObject(o) && String(o.id) === organizationId)
++    ) {
++      return {
++        ok: false,
++        outcome: DISCOVERY_OUTCOME.ORG_NOT_FOUND,
++        diagnostics: {
++          configured_organization_id: organizationId,
++          visible_organization_ids: Array.isArray(orgs)
++            ? orgs.filter(isPlainObject).map((o) => String(o.id))
++            : [],
++        },
++      };
++    }
++
++    // 2. Channels of that organization.
++    let channels;
++    try {
++      const { result, json } = await gql(GQL.CHANNELS, { organizationId }, readTimeoutMs);
++      const errs = topLevelErrors(json);
++      if (classifyStatus(result.status, result.headers) !== ERROR_CLASS.OK || errs.length > 0) {
++        return readFailed('channels read failed', {
++          httpStatus: result.status,
++          errors: errs.map((e) => e.message),
++        });
++      }
++      channels = isPlainObject(json.data) ? json.data.channels : null;
++    } catch (error) {
++      return readFailed('channels read threw', transportEvidence(error));
++    }
++    if (!Array.isArray(channels)) {
++      return readFailed('channels read returned no list', {});
++    }
++    const byId = new Map(
++      channels
++        .filter((c) => isPlainObject(c) && isNonEmptyString(c.id))
++        .map((c) => [String(c.id), c])
++    );
++
++    const validated = {};
++    const perChannel = {};
++    for (const [platform, cfg] of Object.entries(expected)) {
++      const wantService = isNonEmptyString(cfg.service)
++        ? String(cfg.service)
++        : (DEFAULT_CHANNEL_SERVICE[platform] ?? null);
++      // `type` is validated only when explicitly configured — there is no
++      // guessed `ChannelType` literal to fail closed against.
++      const wantType = isNonEmptyString(cfg.type) ? String(cfg.type) : null;
++      const channelId = String(cfg.channelId);
++      const found = byId.get(channelId);
++      if (!found) {
++        return {
++          ok: false,
++          outcome: DISCOVERY_OUTCOME.CHANNEL_NOT_IN_ORG,
++          diagnostics: {
++            platform,
++            configured_channel_id: channelId,
++            organization_channel_ids: [...byId.keys()],
++          },
++        };
++      }
++      const observedService = isNonEmptyString(found.service) ? String(found.service) : null;
++      const observedType = isNonEmptyString(found.type) ? String(found.type) : null;
++      if (wantService && observedService !== wantService) {
++        return {
++          ok: false,
++          outcome: DISCOVERY_OUTCOME.SERVICE_MISMATCH,
++          diagnostics: {
++            platform,
++            configured_channel_id: channelId,
++            expected_service: wantService,
++            observed_service: observedService,
++          },
++        };
++      }
++      if (wantType && observedType !== wantType) {
++        return {
++          ok: false,
++          outcome: DISCOVERY_OUTCOME.TYPE_MISMATCH,
++          diagnostics: {
++            platform,
++            configured_channel_id: channelId,
++            expected_type: wantType,
++            observed_type: observedType,
++          },
++        };
++      }
++      validated[platform] = { channelId, service: observedService, type: observedType };
++      perChannel[platform] = {
++        name: isNonEmptyString(found.name) ? String(found.name) : null,
++        // The real, observed `ChannelType` literal — pin this in config (§22 phase 0).
++        observed_service: observedService,
++        observed_type: observedType,
++        type_enforced: wantType != null,
++      };
++    }
++
++    return {
++      ok: true,
++      outcome: DISCOVERY_OUTCOME.OK,
++      channels: validated,
++      diagnostics: { organization_id: organizationId, channels: perChannel },
++    };
++
++    function readFailed(reason, extra) {
++      return {
++        ok: false,
++        outcome: DISCOVERY_OUTCOME.READ_FAILED,
++        diagnostics: { reason, ...extra },
++      };
++    }
++  }
++
++  // --- create --------------------------------------------------
++
++  /**
++   * Create one Buffer post from a FROZEN {@link import('../content.js').SocialPost}.
++   * Immediate publication: `mode: shareNow`, `schedulingType: automatic`,
++   * `needsApproval: false`, `saveToDraft: false`. Link post for Facebook /
++   * LinkedIn (`assets: [{ link: { url: canonical } }]`); no asset for X
++   * (`assets: []`). Exactly one HTTP request; no retry anywhere.
++   *
++   * @param {{ post: import('../content.js').SocialPost }} params
++   * @returns {Promise<PublishResult>}
++   */
++  async function create({ post }) {
++    if (!isPlainObject(post)) throw new BufferError('CONFIG', 'create needs a SocialPost object');
++    if (!BUFFER_PLATFORMS.includes(post.platform)) {
++      throw new BufferError(
++        'CONFIG',
++        `create is Buffer-only (facebook/x/linkedin), got ${JSON.stringify(post.platform)}`
++      );
++    }
++    if (!CHANNEL_ID_RE.test(String(post.account_key))) {
++      throw new BufferError('CONFIG', 'post.account_key must be the Buffer channel id');
++    }
++    if (typeof post.text !== 'string' || post.text === '') {
++      throw new BufferError('CONFIG', 'post.text is empty');
++    }
++    if (!isNonEmptyString(post.canonical_url)) {
++      throw new BufferError('CONFIG', 'post.canonical_url is required');
++    }
++
++    const channelId = String(post.account_key);
++    const assets = post.platform === 'x' ? [] : [{ link: { url: String(post.canonical_url) } }];
++
++    const variables = {
++      channelId,
++      text: post.text,
++      mode: 'shareNow',
++      schedulingType: 'automatic',
++      needsApproval: false,
++      saveToDraft: false,
++      assets,
++    };
++
++    let result;
++    let json;
++    try {
++      ({ result, json } = await gql(GQL.CREATE_POST, variables, writeTimeoutMs));
++    } catch (error) {
++      return classifyCreateThrow(error);
++    }
++    return classifyCreateResponse({
++      httpStatus: result.status,
++      headers: result.headers,
++      json,
++      retryAfterMs: result.retryAfterMs ?? null,
++      expectedChannelId: channelId,
++    });
++  }
++
++  /**
++   * Map a thrown transport failure on the create path. Buffer has no idempotency
++   * key, so a thrown error is exactly the §6 "no hay evidencia suficiente de
++   * rechazo sin efecto" case: classify AMBIGUOUS, never a new create — even a
++   * DNS failure, which §17 would permit retrying, is safer resolved by a read
++   * (`reconcile` finds nothing → stays uncertain → human) than by a blind
++   * re-send against a provider that cannot dedupe.
++   */
++  function classifyCreateThrow(error) {
++    const errorClass = error instanceof HttpError ? error.errorClass : ERROR_CLASS.CONNECTION;
++    const sanitized =
++      error instanceof HttpError ? error.sanitizedMessage : 'create transport failure';
++    return {
++      outcome: PUBLISH_OUTCOME.AMBIGUOUS,
++      errorClass,
++      errorCode: null,
++      retryAfterMs: error instanceof HttpError ? (error.retryAfterMs ?? null) : null,
++      safeToRetry: false,
++      evidence: {
++        phase: 'create',
++        reason: 'transport failure / lost response',
++        message: sanitized,
++      },
++    };
++  }
++
++  // --- reads --------------------------------------------------
++
++  /**
++   * Read one post by Buffer id (`post(input: { id })`). Used for polling an
++   * ACCEPTED entry (task §4). Read-only; a failed read keeps the caller's id and
++   * status (returns `unknown`), a `NOT_FOUND` returns `absent` — neither
++   * authorises re-creating the post.
++   *
++   * @param {{ id: string }} params
++   * @returns {Promise<SingleReadResult>}
++   */
++  async function get({ id }) {
++    if (!POST_ID_RE.test(String(id))) throw new BufferError('CONFIG', 'get needs a Buffer post id');
++    let result;
++    let json;
++    try {
++      ({ result, json } = await gql(GQL.POST_BY_ID, { id: String(id) }, readTimeoutMs));
++    } catch (error) {
++      return {
++        state: READ_STATE.UNKNOWN,
++        evidence: { reason: 'read threw', ...transportEvidence(error) },
++      };
++    }
++    return interpretSingleRead(result, isPlainObject(json?.data) ? json.data.post : null, json);
++  }
++
++  /**
++   * Read up to {@link MAX_BATCH_GET} posts in one aliased request (task §4 —
++   * "lecturas agrupadas necesarias para el futuro polling"). Returns a map from
++   * id to {@link SingleReadResult}; ids beyond the cap are rejected as a CONFIG
++   * error rather than silently split (the orchestrator owns batching cadence).
++   *
++   * Per-alias resolution is exact: an alias with a post object → `present`, an
++   * alias whose field is `null` / absent → `unknown`. A *single top-level*
++   * `NOT_FOUND` in a batched response is NOT attributable to one alias, so
++   * {@link interpretSingleRead} would mark every alias in that batch `absent`.
++   * `absent` only drives an `alert` (never a create), so this is safe today —
++   * but package 8 should prefer per-id {@link get} when it needs a trustworthy
++   * `absent`, and treat a batched `absent` as "re-check individually".
++   *
++   * @param {{ ids: string[] }} params
++   * @returns {Promise<Record<string, SingleReadResult>>}
++   */
++  async function getMany({ ids }) {
++    if (!Array.isArray(ids) || ids.length === 0) {
++      throw new BufferError('CONFIG', 'getMany needs a non-empty id list');
++    }
++    if (ids.length > MAX_BATCH_GET) {
++      throw new BufferError('CONFIG', `getMany accepts at most ${MAX_BATCH_GET} ids per request`);
++    }
++    for (const id of ids) {
++      if (!POST_ID_RE.test(String(id)))
++        throw new BufferError('CONFIG', `malformed post id ${JSON.stringify(id)}`);
++    }
++    const doc = batchPostsDocument(ids.length);
++    const variables = Object.fromEntries(ids.map((id, i) => [`p${i}`, String(id)]));
++
++    let result;
++    let json;
++    try {
++      ({ result, json } = await gql(doc, variables, readTimeoutMs));
++    } catch (error) {
++      const ev = { reason: 'batch read threw', ...transportEvidence(error) };
++      return Object.fromEntries(
++        ids.map((id) => [String(id), { state: READ_STATE.UNKNOWN, evidence: ev }])
++      );
++    }
++    const out = {};
++    const data = isPlainObject(json?.data) ? json.data : {};
++    ids.forEach((id, i) => {
++      out[String(id)] = interpretSingleRead(result, data[`a${i}`] ?? null, json);
++    });
++    return out;
++  }
++
++  function interpretSingleRead(result, rawPost, json) {
++    const cls = classifyStatus(result.status, result.headers);
++    const errs = topLevelErrors(json);
++    const code = firstErrorCode(errs);
++    const post = normalizePost(rawPost);
++    if (post) {
++      return { state: READ_STATE.PRESENT, post, evidence: { httpStatus: result.status } };
++    }
++    if (cls === ERROR_CLASS.AUTH || code === 'UNAUTHORIZED' || code === 'FORBIDDEN') {
++      return {
++        state: READ_STATE.UNKNOWN,
++        evidence: { reason: 'auth', httpStatus: result.status, code },
++      };
++    }
++    if (cls === ERROR_CLASS.NOT_FOUND || code === 'NOT_FOUND') {
++      return { state: READ_STATE.ABSENT, evidence: { httpStatus: result.status, code } };
++    }
++    return {
++      state: READ_STATE.UNKNOWN,
++      evidence: { httpStatus: result.status, code, errors: errs.map((e) => e.message) },
++    };
++  }
++
++  /**
++   * List every post on a channel, all statuses, paginating up to
++   * {@link MAX_RECONCILE_PAGES} pages (§13). Returns the de-duplicated posts, and
++   * `complete: false` when pagination was truncated, a page errored, or a page
++   * body was partial — the caller must NOT treat that as a full view (§5).
++   *
++   * @param {{ channelId: string, maxPages?: number, pageSize?: number }} params
++   * @returns {Promise<{ posts: object[], complete: boolean, pages: number, evidence: object }>}
++   */
++  async function listChannelPosts({
++    channelId,
++    maxPages = MAX_RECONCILE_PAGES,
++    pageSize = RECONCILE_PAGE_SIZE,
++  }) {
++    if (!CHANNEL_ID_RE.test(String(channelId))) {
++      throw new BufferError('CONFIG', 'listChannelPosts needs a channelId');
++    }
++    const cap = Math.min(Math.max(1, Math.trunc(maxPages)), MAX_RECONCILE_PAGES);
++    const first = Math.min(Math.max(1, Math.trunc(pageSize)), RECONCILE_PAGE_SIZE);
++    const byId = new Map();
++    let after = null;
++    let pages = 0;
++    let complete = false;
++    const notes = [];
++
++    while (pages < cap) {
++      pages += 1;
++      let result;
++      let json;
++      try {
++        ({ result, json } = await gql(
++          GQL.POSTS_BY_CHANNEL,
++          { organizationId, channelId: String(channelId), first, after },
++          readTimeoutMs
++        ));
++      } catch (error) {
++        notes.push({ page: pages, reason: 'read threw', ...transportEvidence(error) });
++        return { posts: [...byId.values()], complete: false, pages, evidence: { notes } };
++      }
++      const errs = topLevelErrors(json);
++      if (classifyStatus(result.status, result.headers) !== ERROR_CLASS.OK || errs.length > 0) {
++        notes.push({ page: pages, httpStatus: result.status, errors: errs.map((e) => e.message) });
++        return { posts: [...byId.values()], complete: false, pages, evidence: { notes } };
++      }
++      const conn = isPlainObject(json.data) ? json.data.posts : null;
++      if (!isPlainObject(conn) || !Array.isArray(conn.edges)) {
++        notes.push({ page: pages, reason: 'partial page body' });
++        return { posts: [...byId.values()], complete: false, pages, evidence: { notes } };
++      }
++      for (const edge of conn.edges) {
++        const post = normalizePost(isPlainObject(edge) ? edge.node : null);
++        if (post && !byId.has(post.id)) byId.set(post.id, post);
++      }
++      const pageInfo = isPlainObject(conn.pageInfo) ? conn.pageInfo : null;
++      if (!pageInfo || typeof pageInfo.hasNextPage !== 'boolean') {
++        notes.push({ page: pages, reason: 'missing pageInfo.hasNextPage' });
++        return { posts: [...byId.values()], complete: false, pages, evidence: { notes } };
++      }
++      if (!pageInfo.hasNextPage) {
++        complete = true;
++        break;
++      }
++      if (!isNonEmptyString(pageInfo.endCursor)) {
++        notes.push({ page: pages, reason: 'hasNextPage but no endCursor' });
++        return { posts: [...byId.values()], complete: false, pages, evidence: { notes } };
++      }
++      after = String(pageInfo.endCursor);
++    }
++
++    if (!complete) notes.push({ reason: 'page cap reached before hasNextPage went false', cap });
++    return { posts: [...byId.values()], complete, pages, evidence: { notes } };
++  }
++
++  // --- reconcile ----------------------------------------------
++
++  /**
++   * Reconcile one AMBIGUOUS pair by reading Buffer — NEVER by creating another
++   * post (§5 / §6). Two modes:
++   *
++   * - a `providerId` is known (a partial create response carried an id): read
++   *   that post, check it is on the expected channel and matches the frozen copy.
++   * - no `providerId`: list the channel (bounded pagination) and match by
++   *   `channelId` + exact frozen text + whole-URL canonical.
++   *
++   * Decision rules (§5): exactly one match → adopt (PUBLISHED if `sent`, else
++   * ACCEPTED); more than one → conflict; zero matches → uncertain (NOT proof of
++   * absence); any truncated/partial/failed read → uncertain (NO uniqueness
++   * claim). Returns evidence; the descriptor is built by
++   * {@link reconciliationParams}.
++   *
++   * @param {{
++   *   channelId: string,
++   *   providerId?: string|null,
++   *   frozenText: string,
++   *   canonicalUrl: string,
++   *   maxPages?: number,
++   * }} params
++   * @returns {Promise<{ decision: string, providerId?: string, externalUrl?: string|null, status?: string|null, matchIds?: string[], evidence: object }>}
++   */
++  async function reconcile({ channelId, providerId, frozenText, canonicalUrl, maxPages }) {
++    if (!CHANNEL_ID_RE.test(String(channelId))) {
++      throw new BufferError('CONFIG', 'reconcile needs a channelId');
++    }
++    if (!isNonEmptyString(frozenText) || !isNonEmptyString(canonicalUrl)) {
++      throw new BufferError('CONFIG', 'reconcile needs the frozen text and canonical url');
++    }
++
++    if (isNonEmptyString(providerId)) {
++      const read = await get({ id: String(providerId) });
++      if (read.state === READ_STATE.ABSENT) {
++        // §4: a 404 of a known id does NOT authorise re-creating it, and is not
++        // proof it was never accepted — a human confirms.
++        return {
++          decision: RECONCILE_DECISION.UNCERTAIN,
++          evidence: { mode: 'by-id', reason: 'known id is absent', read: read.evidence },
++        };
++      }
++      if (read.state !== READ_STATE.PRESENT) {
++        return {
++          decision: RECONCILE_DECISION.UNCERTAIN,
++          evidence: { mode: 'by-id', reason: 'read failed', read: read.evidence },
++        };
++      }
++      const p = read.post;
++      if (p.channelId !== String(channelId)) {
++        return {
++          decision: RECONCILE_DECISION.CONFLICT,
++          evidence: {
++            mode: 'by-id',
++            reason: 'id is on a different channel',
++            expected: String(channelId),
++            got: p.channelId,
++          },
++        };
++      }
++      const contentOk =
++        p.text === frozenText && (!p.externalLink || sameCanonical(p.externalLink, canonicalUrl));
++      if (!contentOk) {
++        return {
++          decision: RECONCILE_DECISION.CONFLICT,
++          evidence: { mode: 'by-id', reason: 'a different post occupies this id', found: clip(p) },
++        };
++      }
++      if (p.status === 'error') {
++        return {
++          decision: RECONCILE_DECISION.CONFLICT,
++          providerId: p.id,
++          evidence: {
++            mode: 'by-id',
++            reason: 'provider reports the post errored',
++            status: p.status,
++          },
++        };
++      }
++      return {
++        decision:
++          postStatusAction(p.status) === 'published'
++            ? RECONCILE_DECISION.CONFIRMED
++            : RECONCILE_DECISION.ADOPT_ACCEPTED,
++        providerId: p.id,
++        externalUrl: p.externalLink,
++        status: p.status,
++        evidence: { mode: 'by-id', status: p.status },
++      };
++    }
++
++    const listed = await listChannelPosts({ channelId: String(channelId), maxPages });
++    const matches = matchChannelPosts({
++      posts: listed.posts,
++      frozenText,
++      canonicalUrl,
++      channelId: String(channelId),
++    });
++    const evidence = {
++      mode: 'by-list',
++      pages: listed.pages,
++      listComplete: listed.complete,
++      scanned: listed.posts.length,
++      matched: matches.length,
++      matchIds: matches.map((m) => m.id),
++      list: listed.evidence,
++    };
++
++    if (matches.length > 1) {
++      return {
++        decision: RECONCILE_DECISION.CONFLICT,
++        matchIds: matches.map((m) => m.id),
++        evidence,
++      };
++    }
++    if (!listed.complete) {
++      // A truncated / partial / failed listing cannot affirm global uniqueness
++      // (§5), even a single match — a second duplicate could sit on an unseen
++      // page. No adoption.
++      return { decision: RECONCILE_DECISION.UNCERTAIN, evidence };
++    }
++    if (matches.length === 1) {
++      const m = matches[0];
++      return {
++        decision:
++          postStatusAction(m.status) === 'published'
++            ? RECONCILE_DECISION.CONFIRMED
++            : RECONCILE_DECISION.ADOPT_ACCEPTED,
++        providerId: m.id,
++        externalUrl: m.externalLink,
++        status: m.status,
++        evidence,
++      };
++    }
++    // Zero matches over a complete listing — still NOT proof of absence (§5).
++    return { decision: RECONCILE_DECISION.UNCERTAIN, evidence };
++  }
++
++  return {
++    /** @internal test seam — the organization this client is bound to. */
++    organizationId,
++    inspectChannels,
++    create,
++    get,
++    getMany,
++    listChannelPosts,
++    reconcile,
++  };
++}
++
++function transportEvidence(error) {
++  return {
++    errorClass: error instanceof HttpError ? error.errorClass : ERROR_CLASS.CONNECTION,
++    ...(error instanceof HttpError && error.status ? { httpStatus: error.status } : {}),
++  };
++}
++
++// --- translation to the ledger's input contracts ---------------
++
++/**
++ * @typedef {object} LedgerSendResult the shape `state.recordResult` accepts (its
++ *   `SendResult` typedef).
++ * @property {string} status one of the `state.STATUS` values
++ * @property {string} [providerId]
++ * @property {string} [externalUrl]
++ * @property {string} [errorClass]
++ * @property {boolean} [safeToRetry]
++ * @property {string} [retryAt] ISO
++ * @property {Record<string, unknown>} [evidence]
++ */
++
++/**
++ * Translate a {@link PublishResult} from `create` into what
++ * `state.recordResult` accepts. `create` runs against a `PUBLISHING` entry, so
++ * the reachable targets are `ACCEPTED | PUBLISHED | AMBIGUOUS | RETRYABLE |
++ * FAILED_PERMANENT`; `state.recordResult` refuses a `RETRYABLE` without
++ * `safeToRetry === true` AND an ISO `retryAt` (`UNSAFE_RETRYABLE`).
++ *
++ * | outcome         | result                                                                     |
++ * |-----------------|----------------------------------------------------------------------------|
++ * | confirmed       | `{ recordResult: { status:'PUBLISHED', providerId, externalUrl } }`         |
++ * | accepted        | `{ recordResult: { status:'ACCEPTED', providerId, externalUrl? }, warning? }` — id recorded before polling; `warning` set for `draft`/`needs_approval` so the orchestrator can stop the channel (§13) |
++ * | failed-with-id  | `{ recordResult: { status:'FAILED_PERMANENT', providerId } }` — keep the id; a human repairs that object; no new create (§13/§17) |
++ * | rejected        | `{ recordResult: { status:'FAILED_PERMANENT', errorClass? } }`             |
++ * | channel-blocked | `LimitReachedError` (channel queue full, rejected pre-handler) → `{ recordResult: { status:'RETRYABLE', safeToRetry:true, retryAt }, warning:'channel-queue-full' }`. (A `channel-blocked` without `safeToRetry` maps to `FAILED_PERMANENT`, but nothing currently produces that.) |
++ * | rate-limited    | `{ recordResult: { status:'RETRYABLE', safeToRetry:true, retryAt } }` — §17 "429 auténtico que rechaza solicitud → Sí"; provable no-effect only because there is no post id in the response AND `../http.js` follows no redirects. The retry re-freezes a fresh payload via a new `recordIntent`; Buffer has no fixed-key backstop. |
++ * | auth-invalid    | `{ halt:'auth-invalid' }` — stop the run; if the (contradictory) response also carried a post id, `{ halt:'auth-invalid', recordResult:{ status:'ACCEPTED', providerId } }` so the id survives the key rotation |
++ * | ambiguous       | `{ recordResult: { status:'AMBIGUOUS', errorClass? } }` — reconcile next    |
++ *
++ * @param {PublishResult} pub
++ * @param {{ now?: () => number, retryDelayMs?: number }} [options]
++ * @returns {{ recordResult?: LedgerSendResult, halt?: string, warning?: string, evidence?: Record<string, unknown> }}
++ */
++export function toRecordResult(
++  pub,
++  { now = () => Date.now(), retryDelayMs = DEFAULT_RETRY_DELAY_MS } = {}
++) {
++  if (!isPlainObject(pub) || !isNonEmptyString(pub.outcome)) {
++    throw new BufferError('CONFIG', 'toRecordResult needs a PublishResult with an outcome');
++  }
++  const evidence = isPlainObject(pub.evidence) ? pub.evidence : {};
++  const retryAtFrom = (extraMs) => {
++    const at = typeof now === 'function' ? now() : Date.now();
++    const wait = Math.max(retryDelayMs, Number(extraMs) || 0);
++    return new Date(at + wait).toISOString();
++  };
++
++  switch (pub.outcome) {
++    case PUBLISH_OUTCOME.CONFIRMED:
++      return {
++        recordResult: {
++          status: 'PUBLISHED',
++          providerId: pub.providerId,
++          ...(pub.externalUrl ? { externalUrl: pub.externalUrl } : {}),
++          evidence,
++        },
++      };
++    case PUBLISH_OUTCOME.ACCEPTED:
++      return {
++        recordResult: {
++          status: 'ACCEPTED',
++          providerId: pub.providerId,
++          ...(pub.externalUrl ? { externalUrl: pub.externalUrl } : {}),
++          evidence,
++        },
++        ...(pub.warning ? { warning: pub.warning } : {}),
++      };
++    case PUBLISH_OUTCOME.FAILED_WITH_ID:
++      return {
++        recordResult: {
++          status: 'FAILED_PERMANENT',
++          providerId: pub.providerId,
++          ...(pub.errorClass ? { errorClass: pub.errorClass } : {}),
++          evidence,
++        },
++      };
++    case PUBLISH_OUTCOME.REJECTED:
++      return {
++        recordResult: {
++          status: 'FAILED_PERMANENT',
++          ...(pub.errorClass ? { errorClass: pub.errorClass } : {}),
++          evidence,
++        },
++      };
++    case PUBLISH_OUTCOME.CHANNEL_BLOCKED:
++      if (pub.safeToRetry === true) {
++        return {
++          recordResult: {
++            status: 'RETRYABLE',
++            safeToRetry: true,
++            retryAt: retryAtFrom(pub.retryAfterMs),
++            evidence,
++          },
++          ...(pub.warning ? { warning: pub.warning } : {}),
++        };
++      }
++      return {
++        recordResult: { status: 'FAILED_PERMANENT', evidence },
++        ...(pub.warning ? { warning: pub.warning } : {}),
++      };
++    case PUBLISH_OUTCOME.RATE_LIMITED:
++      return {
++        recordResult: {
++          status: 'RETRYABLE',
++          safeToRetry: true,
++          retryAt: retryAtFrom(pub.retryAfterMs),
++          evidence,
++        },
++      };
++    case PUBLISH_OUTCOME.AUTH_INVALID:
++      // Halt the run. If the contradictory response also carried a post id,
++      // persist it as ACCEPTED first so it is not lost across the key rotation.
++      return {
++        halt: 'auth-invalid',
++        ...(isNonEmptyString(pub.providerId)
++          ? { recordResult: { status: 'ACCEPTED', providerId: pub.providerId, evidence } }
++          : {}),
++        evidence,
++      };
++    case PUBLISH_OUTCOME.AMBIGUOUS:
++      return {
++        recordResult: {
++          status: 'AMBIGUOUS',
++          ...(pub.errorClass ? { errorClass: pub.errorClass } : {}),
++          evidence,
++        },
++      };
++    default:
++      throw new BufferError(
++        'CONFIG',
++        `unmappable PublishResult outcome ${JSON.stringify(pub.outcome)}`
++      );
++  }
++}
++
++/**
++ * Translate a `get` {@link SingleReadResult} — a poll of an ACCEPTED entry —
++ * into a `state.recordResult` descriptor. From `ACCEPTED` the ONLY legal targets
++ * are `PUBLISHED` and `FAILED_PERMANENT` (`state.RESULT_TRANSITIONS`); anything
++ * else emits **no ledger call**, keeping the id and status intact (task §4 "un
++ * 404 de un ID conocido no autoriza recrearlo").
++ *
++ * | read                              | descriptor                                              |
++ * |-----------------------------------|--------------------------------------------------------|
++ * | present, `sent`, channel matches  | `{ call:'recordResult', result:{ status:'PUBLISHED', providerId, externalUrl } }` |
++ * | present, `error`                  | `{ call:'recordResult', result:{ status:'FAILED_PERMANENT', providerId } }` |
++ * | present, other status             | `{ call:null, note:'still pending' }`                    |
++ * | present, channel mismatch         | `{ call:null, alert:'channel-mismatch' }`                |
++ * | absent (known id 404)             | `{ call:null, alert:'known-id-absent' }`                 |
++ * | unknown (read failed)             | `{ call:null, note:'read failed' }`                      |
++ *
++ * @param {SingleReadResult} read
++ * @param {{ expectedChannelId: string, providerId: string }} ctx
++ * @returns {{ call: 'recordResult'|null, result?: LedgerSendResult, note?: string, alert?: string, evidence: object }}
++ */
++export function pollToRecordResult(read, { expectedChannelId, providerId } = {}) {
++  if (!isPlainObject(read) || !isNonEmptyString(read.state)) {
++    throw new BufferError('CONFIG', 'pollToRecordResult needs a SingleReadResult');
++  }
++  const evidence = isPlainObject(read.evidence) ? read.evidence : {};
++
++  if (read.state === READ_STATE.ABSENT) {
++    return { call: null, alert: 'known-id-absent', evidence };
++  }
++  if (read.state !== READ_STATE.PRESENT) {
++    return { call: null, note: 'read failed; keep id and status', evidence };
++  }
++  const p = read.post;
++  if (expectedChannelId && p.channelId && p.channelId !== String(expectedChannelId)) {
++    return { call: null, alert: 'channel-mismatch', evidence: { ...evidence, got: p.channelId } };
++  }
++  const action = postStatusAction(p.status);
++  if (action === 'published') {
++    return {
++      call: 'recordResult',
++      result: {
++        status: 'PUBLISHED',
++        providerId: providerId ?? p.id,
++        ...(p.externalLink ? { externalUrl: p.externalLink } : {}),
++        evidence: { ...evidence, status: p.status },
++      },
++      evidence,
++    };
++  }
++  if (action === 'failed') {
++    return {
++      call: 'recordResult',
++      result: {
++        status: 'FAILED_PERMANENT',
++        providerId: providerId ?? p.id,
++        evidence: { ...evidence, status: p.status },
++      },
++      evidence,
++    };
++  }
++  return { call: null, note: `still ${p.status ?? 'pending'}`, evidence };
++}
++
++/**
++ * Translate a `reconcile` decision into a `state.recordReconciliation`
++ * descriptor. Returns a descriptor; it does NOT call the ledger — the
++ * orchestrator re-applies its controls first (task §6 "La reconciliación
++ * devuelve evidencia; nunca ejecuta otro create"). All descriptors here are
++ * automatic `adopt` / `block`; a human `authorize-retry` is never emitted from
++ * an ambiguous Buffer pair (§15 / §28: kept blocked, "preferir entrega omitida
++ * a duplicación incierta").
++ *
++ * | decision       | descriptor                                                                        |
++ * |----------------|----------------------------------------------------------------------------------|
++ * | confirmed      | `{ call:'recordReconciliation', kind:'adopt', target:'PUBLISHED', providerId, externalUrl }` |
++ * | adopt-accepted | `{ call:'recordReconciliation', kind:'adopt', target:'ACCEPTED', providerId }`    |
++ * | conflict       | `{ call:'recordReconciliation', kind:'block', resolution:{ actor, reason, evidence } }` |
++ * | uncertain      | `{ call:null, note }` — keep the reservation, re-check next run                    |
++ *
++ * @param {{ decision: string, providerId?: string, externalUrl?: string|null, status?: string|null, matchIds?: string[], evidence?: object }} recon
++ * @param {{ actor?: string, reason?: string }} [meta]
++ */
++export function reconciliationParams(recon, { actor = 'social-orchestrator', reason } = {}) {
++  if (!isPlainObject(recon) || !isNonEmptyString(recon.decision)) {
++    throw new BufferError('CONFIG', 'reconciliationParams needs a decision');
++  }
++  const evidence = isPlainObject(recon.evidence) ? recon.evidence : {};
++  switch (recon.decision) {
++    case RECONCILE_DECISION.CONFIRMED:
++      return {
++        call: 'recordReconciliation',
++        kind: 'adopt',
++        target: 'PUBLISHED',
++        ...(isNonEmptyString(recon.providerId) ? { providerId: recon.providerId } : {}),
++        ...(isNonEmptyString(recon.externalUrl) ? { externalUrl: recon.externalUrl } : {}),
++        resolution: {
++          actor,
++          reason: reason ?? 'a single Buffer post matches the frozen copy and is sent',
++          evidence,
++        },
++      };
++    case RECONCILE_DECISION.ADOPT_ACCEPTED:
++      return {
++        call: 'recordReconciliation',
++        kind: 'adopt',
++        target: 'ACCEPTED',
++        ...(isNonEmptyString(recon.providerId) ? { providerId: recon.providerId } : {}),
++        ...(isNonEmptyString(recon.externalUrl) ? { externalUrl: recon.externalUrl } : {}),
++        resolution: {
++          actor,
++          reason: reason ?? 'a single Buffer post matches the frozen copy; not yet sent',
++          evidence,
++        },
++      };
++    case RECONCILE_DECISION.CONFLICT:
++      return {
++        call: 'recordReconciliation',
++        kind: 'block',
++        resolution: {
++          actor,
++          reason: reason ?? 'more than one match, a foreign channel, or a different post at the id',
++          evidence,
++        },
++      };
++    case RECONCILE_DECISION.UNCERTAIN:
++      return {
++        call: null,
++        note: 'reconciliation is uncertain (zero matches is not absence; a truncated list is not uniqueness); keep the reservation and re-check next run',
++        evidence,
++      };
++    default:
++      throw new BufferError(
++        'CONFIG',
++        `unknown reconcile decision ${JSON.stringify(recon.decision)}`
++      );
++  }
++}
+diff --git a/tests/social/buffer.test.ts b/tests/social/buffer.test.ts
+new file mode 100644
+index 00000000..dbcfb44f
+--- /dev/null
++++ b/tests/social/buffer.test.ts
+@@ -0,0 +1,1593 @@
++import { createHash } from 'node:crypto';
++import { Buffer } from 'node:buffer';
++import { describe, expect, it, vi } from 'vitest';
++
++import {
++  BufferError,
++  DISCOVERY_OUTCOME,
++  GQL,
++  PUBLISH_OUTCOME,
++  RECONCILE_DECISION,
++  batchPostsDocument,
++  classifyCreateResponse,
++  createBufferClient,
++  matchChannelPosts,
++  pollToRecordResult,
++  postStatusAction,
++  reconciliationParams,
++  sameCanonical,
++  toRecordResult,
++} from '../../scripts/social/providers/buffer.js';
++import { makeSocialPost } from '../../scripts/social/content.js';
++import {
++  StateError,
++  recordIntent,
++  recordReconciliation,
++  recordResult,
++  serializeState,
++  validateState,
++} from '../../scripts/social/state.js';
++
++/**
++ * Plan social-distribution §1 / §3 / §6 / §10 / §12 / §13 / §15 / §17 (package
++ * 7): the Buffer GraphQL adapter for Facebook Page, X and LinkedIn Page.
++ *
++ * The master plan was recovered from the session transcripts and is kept at
++ * `../SOCIAL_DISTRIBUTION_IMPLEMENTATION_PLAN.md` (the `noticiencias/` product
++ * root). These tests follow it and the real `http.js` / `content.js` /
++ * `state.js` contracts. Every `fetch` is a fake single-endpoint router — no
++ * network, no clock, no waiting. The `integration` block wires the adapter to
++ * the real `content.js` and `state.js` (including `recordResult` /
++ * `recordReconciliation`) and asserts the **number of creates** and the **final
++ * ledger status**, not just returned object shapes.
++ *
++ * Sources for the API contract are recorded in `buffer.js`'s module JSDoc
++ * (re-checked 2026-09-07 through summarising fetches; where a field is not
++ * doc-confirmed it is plan-§13 authority or runtime-validated config).
++ */
++
++// --- fakes ----------------------------------------------------------
++
++type Init = { method?: string; headers?: Record<string, string>; body?: unknown };
++type GqlCall = {
++  url: string;
++  method: string;
++  headers: Record<string, string>;
++  query: string;
++  variables: Record<string, unknown>;
++};
++type Handler = (call: GqlCall) => Response | Promise<Response>;
++
++const sha = (text: string) => createHash('sha256').update(Buffer.from(text, 'utf8')).digest('hex');
++
++function lower(headers?: Record<string, string>): Record<string, string> {
++  const out: Record<string, string> = {};
++  for (const [k, v] of Object.entries(headers ?? {})) out[k.toLowerCase()] = String(v);
++  return out;
++}
++
++const OPERATIONS = [
++  'mutation CreatePost',
++  'query AccountOrganizations',
++  'query Channels(',
++  'query PostById',
++  'query PostsByChannel',
++  'query PostsByIds',
++] as const;
++
++/** Route a fake `fetch` for the single Buffer endpoint by the GraphQL document. */
++function bufferRouter(routes: Partial<Record<(typeof OPERATIONS)[number], Handler>>) {
++  const calls: GqlCall[] = [];
++  const fn = vi.fn(async (url: string, init: Init = {}) => {
++    const parsed = JSON.parse(String(init.body ?? '{}'));
++    const call: GqlCall = {
++      url,
++      method: init.method ?? 'GET',
++      headers: lower(init.headers),
++      query: String(parsed.query ?? ''),
++      variables: (parsed.variables ?? {}) as Record<string, unknown>,
++    };
++    calls.push(call);
++    for (const op of OPERATIONS) {
++      if (call.query.includes(op) && routes[op]) return routes[op]!(call);
++    }
++    throw new Error(`bufferRouter: no route for query starting ${call.query.slice(0, 40)}`);
++  });
++  return Object.assign(fn, {
++    calls,
++    of: (op: (typeof OPERATIONS)[number]) => calls.filter((c) => c.query.includes(op)),
++    createCalls: () => calls.filter((c) => c.query.includes('mutation CreatePost')),
++  });
++}
++
++const jsonResponse = (obj: unknown, status = 200, headers: Record<string, string> = {}) =>
++  new Response(JSON.stringify(obj), {
++    status,
++    headers: { 'content-type': 'application/json', ...headers },
++  });
++
++// --- constants ----------------------------------------------------
++
++const API_KEY = 'buffer-test-key-000000';
++const ORG_ID = 'org-noticiencias';
++const CH = { facebook: 'ch-fb', x: 'ch-x', linkedin: 'ch-li' };
++const CANONICAL = 'https://noticiencias.com/ciencia/eclipse-solar-2027/';
++const NOW_MS = 1_756_000_000_000;
++
++function client(routes: Parameters<typeof bufferRouter>[0], over: Record<string, unknown> = {}) {
++  const fetchImpl = bufferRouter(routes);
++  const c = createBufferClient({
++    fetchImpl,
++    apiKey: API_KEY,
++    organizationId: ORG_ID,
++    ...over,
++  });
++  return { c, fetchImpl };
++}
++
++function post(platform: 'facebook' | 'x' | 'linkedin', over: Record<string, unknown> = {}) {
++  return makeSocialPost(
++    {
++      title: 'Los físicos confirman la duración exacta del eclipse solar total de 2027',
++      description:
++        'Un consorcio internacional publica la efeméride con seis cifras significativas.',
++      canonical_url: CANONICAL,
++      ...over,
++    },
++    { platform, account_key: CH[platform] }
++  );
++}
++
++/** A Buffer `post` object as the API would echo it. */
++function apiPost(over: Record<string, unknown> = {}) {
++  return {
++    id: 'post-1',
++    status: 'scheduled',
++    channelId: CH.facebook,
++    text: '',
++    externalLink: CANONICAL,
++    sentAt: null,
++    ...over,
++  };
++}
++
++const orgsOk: Handler = () =>
++  jsonResponse({
++    data: { account: { id: 'acct-1', organizations: [{ id: ORG_ID, name: 'Noticiencias' }] } },
++  });
++
++const channelsOk: Handler = () =>
++  jsonResponse({
++    data: {
++      channels: [
++        { id: CH.facebook, name: 'Noticiencias FB', service: 'facebook', type: 'page' },
++        { id: CH.x, name: 'Noticiencias X', service: 'twitter', type: 'profile' },
++        { id: CH.linkedin, name: 'Noticiencias LI', service: 'linkedin', type: 'page' },
++      ],
++    },
++  });
++
++const EXPECTED = {
++  facebook: { channelId: CH.facebook },
++  x: { channelId: CH.x },
++  linkedin: { channelId: CH.linkedin },
++};
++
++// ---------------------------------------------------------------
++// A stateful fake Buffer backend: create stores a post, then the
++// handler decides what (if anything) to return. Lets a create "land"
++// server-side while the client sees a timeout / 5xx (§20, task test 6).
++// ---------------------------------------------------------------
++
++function fakeBackend() {
++  const posts = new Map<string, Record<string, unknown>>();
++  let seq = 0;
++
++  return {
++    posts,
++    add(over: Record<string, unknown> = {}) {
++      const id = `srv-${++seq}`;
++      const rec = { id, status: 'scheduled', sentAt: null, ...over } as {
++        id: string;
++        status: unknown;
++        sentAt: unknown;
++        channelId: unknown;
++        text: unknown;
++        externalLink: unknown;
++      };
++      posts.set(id, rec);
++      return rec;
++    },
++    list(channelId: string) {
++      return [...posts.values()].filter((p) => p.channelId === channelId);
++    },
++    createHandler(
++      opts: {
++        /** if set, the fake stores the post then the response fails this way */
++        failAfterStore?: 'timeout' | 500;
++        status?: string;
++      } = {}
++    ): Handler {
++      return (call) => {
++        const v = call.variables;
++        const rec = this.add({
++          channelId: v.channelId,
++          text: v.text,
++          externalLink:
++            Array.isArray(v.assets) && v.assets.length > 0
++              ? (v.assets[0] as { link: { url: string } }).link.url
++              : null,
++          status: opts.status ?? 'scheduled',
++        });
++        if (opts.failAfterStore === 'timeout') {
++          const err = new Error('socket hang up');
++          err.name = 'TimeoutError';
++          return Promise.reject(err);
++        }
++        if (opts.failAfterStore === 500)
++          return jsonResponse({ errors: [{ message: 'boom' }] }, 500);
++        return jsonResponse({
++          data: {
++            createPost: {
++              __typename: 'PostActionSuccess',
++              post: {
++                id: rec.id,
++                status: rec.status,
++                channelId: rec.channelId,
++                text: rec.text,
++                externalLink: rec.externalLink,
++                sentAt: rec.sentAt,
++              },
++            },
++          },
++        });
++      };
++    },
++    listHandler(pageSize = 2): Handler {
++      return (call) => {
++        const channelId = String(call.variables.channelId);
++        const after = call.variables.after == null ? 0 : Number(call.variables.after);
++        const all = this.list(channelId);
++        const slice = all.slice(after, after + pageSize);
++        const nextIndex = after + pageSize;
++        const hasNextPage = nextIndex < all.length;
++        return jsonResponse({
++          data: {
++            posts: {
++              edges: slice.map((n) => ({
++                node: {
++                  id: n.id,
++                  status: n.status,
++                  channelId: n.channelId,
++                  text: n.text,
++                  externalLink: n.externalLink,
++                  sentAt: n.sentAt,
++                  createdAt: '2026-09-07T00:00:00.000Z',
++                },
++              })),
++              pageInfo: { hasNextPage, endCursor: hasNextPage ? String(nextIndex) : null },
++            },
++          },
++        });
++      };
++    },
++  };
++}
++
++// --- ledger fake (copied from bluesky.test.ts; §25 allows fixtures beside the test) ---
++
++function fakeLedger(initial: Record<string, unknown>) {
++  let text = serializeState(initial as never).text;
++  let blob = sha(text);
++  let n = 1;
++  let commit = 'c1';
++  const store = {
++    async readBranchHead() {
++      return { commitSha: commit };
++    },
++    async readFileAtCommit(_c: string) {
++      return { contentText: text, blobSha: blob };
++    },
++    async putFile({
++      expectedBlobSha,
++      contentText,
++    }: {
++      expectedBlobSha: string;
++      contentText: string;
++      message: string;
++    }) {
++      if (expectedBlobSha !== blob) throw new StateError('CAS_CONFLICT', 'blob moved');
++      text = contentText;
++      blob = sha(text);
++      commit = `c${++n}`;
++      return { commitSha: commit, blobSha: blob };
++    },
++    async createOrphanBranch() {
++      throw new StateError('BRANCH_EXISTS', 'exists');
++    },
++  };
++  return {
++    store,
++    peek: () => JSON.parse(text) as Record<string, unknown>,
++    entry(socialId: string, platform: string) {
++      const s = JSON.parse(text) as {
++        articles: Record<string, { platforms: Record<string, Record<string, unknown>> }>;
++      };
++      return s.articles[socialId]?.platforms?.[platform];
++    },
++  };
++}
++
++function freshState(over: Record<string, unknown> = {}) {
++  return {
++    schema_version: 1,
++    initialized_at: '2026-01-01T00:00:00.000Z',
++    revision: 0,
++    last_transition_nonce: null,
++    last_allocated_bluesky_micros: 0,
++    proven_deploys: {},
++    articles: {},
++    ...over,
++  };
++}
++
++// =================================================================
++// 1. Discovery: correct, and wrong organization / channel / type
++// =================================================================
++
++describe('1. channel discovery', () => {
++  it('validates the org and every configured channel (service + type)', async () => {
++    const { c } = client({ 'query AccountOrganizations': orgsOk, 'query Channels(': channelsOk });
++    const res = await c.inspectChannels({ expected: EXPECTED });
++    expect(res.ok).toBe(true);
++    expect(res.outcome).toBe(DISCOVERY_OUTCOME.OK);
++    expect(res.channels).toEqual({
++      facebook: { channelId: CH.facebook, service: 'facebook', type: 'page' },
++      x: { channelId: CH.x, service: 'twitter', type: 'profile' },
++      linkedin: { channelId: CH.linkedin, service: 'linkedin', type: 'page' },
++    });
++  });
++
++  it('never auto-selects the first channel: an unknown configured id is CHANNEL_NOT_IN_ORG', async () => {
++    const { c } = client({ 'query AccountOrganizations': orgsOk, 'query Channels(': channelsOk });
++    const res = await c.inspectChannels({
++      expected: { ...EXPECTED, facebook: { channelId: 'ch-not-mine' } },
++    });
++    expect(res.ok).toBe(false);
++    expect(res.outcome).toBe(DISCOVERY_OUTCOME.CHANNEL_NOT_IN_ORG);
++    expect(res.diagnostics).toMatchObject({
++      platform: 'facebook',
++      configured_channel_id: 'ch-not-mine',
++    });
++  });
++
++  it('flags a configured org that the account cannot see', async () => {
++    const { c } = client({
++      'query AccountOrganizations': () =>
++        jsonResponse({
++          data: { account: { id: 'a', organizations: [{ id: 'someone-else', name: 'X' }] } },
++        }),
++      'query Channels(': channelsOk,
++    });
++    const res = await c.inspectChannels({ expected: EXPECTED });
++    expect(res).toMatchObject({ ok: false, outcome: DISCOVERY_OUTCOME.ORG_NOT_FOUND });
++    expect((res.diagnostics as Record<string, unknown>).visible_organization_ids).toEqual([
++      'someone-else',
++    ]);
++  });
++
++  it('rejects a Page substituted for a profile (SERVICE_MISMATCH) and a wrong type (TYPE_MISMATCH)', async () => {
++    const svc = client({
++      'query AccountOrganizations': orgsOk,
++      'query Channels(': () =>
++        jsonResponse({
++          data: {
++            channels: [
++              { id: CH.facebook, name: 'FB', service: 'facebook', type: 'page' },
++              // X channel is actually a facebook profile — must not be accepted.
++              { id: CH.x, name: 'oops', service: 'facebook', type: 'profile' },
++              { id: CH.linkedin, name: 'LI', service: 'linkedin', type: 'page' },
++            ],
++          },
++        }),
++    });
++    expect((await svc.c.inspectChannels({ expected: EXPECTED })).outcome).toBe(
++      DISCOVERY_OUTCOME.SERVICE_MISMATCH
++    );
++
++    const typ = client({
++      'query AccountOrganizations': orgsOk,
++      'query Channels(': () =>
++        jsonResponse({
++          data: {
++            channels: [
++              { id: CH.linkedin, name: 'LI personal', service: 'linkedin', type: 'profile' },
++            ],
++          },
++        }),
++    });
++    // `type` is enforced only when the caller pins it explicitly.
++    const res = await typ.c.inspectChannels({
++      expected: { linkedin: { channelId: CH.linkedin, type: 'page' } },
++    });
++    expect(res.outcome).toBe(DISCOVERY_OUTCOME.TYPE_MISMATCH);
++    expect(res.diagnostics).toMatchObject({ expected_type: 'page', observed_type: 'profile' });
++  });
++
++  it('type is not enforced against a guessed literal: an unconfigured type passes and is reported back', async () => {
++    const { c } = client({
++      'query AccountOrganizations': orgsOk,
++      'query Channels(': () =>
++        jsonResponse({
++          data: {
++            channels: [{ id: CH.linkedin, name: 'LI', service: 'linkedin', type: 'company' }],
++          },
++        }),
++    });
++    // No `type` in config → discovery succeeds and hands back the real literal
++    // for the phase-0 doctor to pin.
++    const res = await c.inspectChannels({ expected: { linkedin: { channelId: CH.linkedin } } });
++    expect(res.ok).toBe(true);
++    expect(res.channels!.linkedin.type).toBe('company');
++    const diag = res.diagnostics as { channels: Record<string, { observed_type: string }> };
++    expect(diag.channels.linkedin.observed_type).toBe('company');
++  });
++
++  it('a failed discovery read is READ_FAILED, not a false negative', async () => {
++    const { c } = client({
++      'query AccountOrganizations': () => jsonResponse({ errors: [{ message: 'nope' }] }, 500),
++      'query Channels(': channelsOk,
++    });
++    expect((await c.inspectChannels({ expected: EXPECTED })).outcome).toBe(
++      DISCOVERY_OUTCOME.READ_FAILED
++    );
++  });
++});
++
++// =================================================================
++// 2. Exact create payload for Facebook, X and LinkedIn
++// =================================================================
++
++describe('2. create payload', () => {
++  it('Facebook: shareNow + automatic + explicit needsApproval/saveToDraft + a link asset', async () => {
++    const p = post('facebook');
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: { createPost: { __typename: 'PostActionSuccess', post: apiPost({ id: 'fb-1' }) } },
++        }),
++    });
++    await c.create({ post: p });
++    const call = fetchImpl.createCalls()[0];
++    expect(call.method).toBe('POST');
++    expect(call.headers.authorization).toBe(`Bearer ${API_KEY}`);
++    expect(call.query).toBe(GQL.CREATE_POST);
++    expect(call.variables).toEqual({
++      channelId: CH.facebook,
++      text: p.text,
++      mode: 'shareNow',
++      schedulingType: 'automatic',
++      needsApproval: false,
++      saveToDraft: false,
++      assets: [{ link: { url: CANONICAL } }],
++    });
++    // Content is only ever in `variables`, never interpolated into the document.
++    expect(call.query.includes(p.text)).toBe(false);
++  });
++
++  it('X: identical control fields but assets: [] (link lives in the text)', async () => {
++    const p = post('x');
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: {
++            createPost: {
++              __typename: 'PostActionSuccess',
++              post: apiPost({ id: 'x-1', channelId: CH.x }),
++            },
++          },
++        }),
++    });
++    await c.create({ post: p });
++    expect(fetchImpl.createCalls()[0].variables).toMatchObject({
++      channelId: CH.x,
++      mode: 'shareNow',
++      schedulingType: 'automatic',
++      needsApproval: false,
++      saveToDraft: false,
++      assets: [],
++    });
++    expect(p.text).toContain(CANONICAL);
++  });
++
++  it('LinkedIn: a link asset, same as Facebook', async () => {
++    const p = post('linkedin');
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: {
++            createPost: {
++              __typename: 'PostActionSuccess',
++              post: apiPost({ id: 'li-1', channelId: CH.linkedin }),
++            },
++          },
++        }),
++    });
++    await c.create({ post: p });
++    expect(fetchImpl.createCalls()[0].variables.assets).toEqual([{ link: { url: CANONICAL } }]);
++  });
++
++  it('one create is exactly one HTTP request', async () => {
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: { createPost: { __typename: 'PostActionSuccess', post: apiPost() } },
++        }),
++    });
++    await c.create({ post: post('facebook') });
++    expect(fetchImpl.calls).toHaveLength(1);
++  });
++});
++
++// =================================================================
++// 3. Accepted -> poll shows sent -> confirmation
++// =================================================================
++
++describe('3. accepted then confirmed by a poll', () => {
++  it('create returns scheduled (ACCEPTED, id kept); a later get sees sent -> PUBLISHED', async () => {
++    const p = post('facebook');
++    const { c } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: {
++            createPost: {
++              __typename: 'PostActionSuccess',
++              post: apiPost({ id: 'fb-42', status: 'scheduled' }),
++            },
++          },
++        }),
++      'query PostById': () =>
++        jsonResponse({
++          data: {
++            post: {
++              id: 'fb-42',
++              status: 'sent',
++              channelId: CH.facebook,
++              text: p.text,
++              externalLink: CANONICAL,
++              sentAt: '2026-09-07T12:00:00.000Z',
++            },
++          },
++        }),
++    });
++
++    const created = await c.create({ post: p });
++    expect(created.outcome).toBe(PUBLISH_OUTCOME.ACCEPTED);
++    expect(created.providerId).toBe('fb-42');
++    expect(toRecordResult(created).recordResult).toMatchObject({
++      status: 'ACCEPTED',
++      providerId: 'fb-42',
++    });
++
++    const read = await c.get({ id: 'fb-42' });
++    const descriptor = pollToRecordResult(read, {
++      expectedChannelId: CH.facebook,
++      providerId: 'fb-42',
++    });
++    expect(descriptor.call).toBe('recordResult');
++    expect(descriptor.result).toMatchObject({
++      status: 'PUBLISHED',
++      providerId: 'fb-42',
++      externalUrl: CANONICAL,
++    });
++  });
++
++  it('create returns sent directly -> CONFIRMED -> PUBLISHED', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: {
++          createPost: {
++            __typename: 'PostActionSuccess',
++            post: apiPost({ status: 'sent', externalLink: CANONICAL }),
++          },
++        },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.CONFIRMED);
++    expect(toRecordResult(out).recordResult).toMatchObject({
++      status: 'PUBLISHED',
++      externalUrl: CANONICAL,
++    });
++  });
++});
++
++// =================================================================
++// 4. Publish error with the id retained
++// =================================================================
++
++describe('4. publish error keeps the id', () => {
++  it('a created post that comes back status:error -> FAILED_PERMANENT WITH provider_id, no new create', async () => {
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse({
++          data: {
++            createPost: {
++              __typename: 'PostActionSuccess',
++              post: apiPost({ id: 'fb-err', status: 'error' }),
++            },
++          },
++        }),
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.FAILED_WITH_ID);
++    expect(out.providerId).toBe('fb-err');
++    const mapped = toRecordResult(out);
++    expect(mapped.recordResult).toMatchObject({ status: 'FAILED_PERMANENT', providerId: 'fb-err' });
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++});
++
++// =================================================================
++// 5. GraphQL errors, partial responses, unknown status
++// =================================================================
++
++describe('5. GraphQL errors / partial / unknown status', () => {
++  it('InvalidInputError (HTTP 200) -> REJECTED / FAILED_PERMANENT (no effect, fixable copy)', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: { createPost: { __typename: 'InvalidInputError', message: 'Text is required' } },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.REJECTED);
++    expect(toRecordResult(out).recordResult?.status).toBe('FAILED_PERMANENT');
++  });
++
++  it('a partial response (a post id AND a top-level error) keeps the id as ACCEPTED, never CONFIRMED', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: {
++          createPost: {
++            __typename: 'PostActionSuccess',
++            post: apiPost({ id: 'fb-p', status: 'sent' }),
++          },
++        },
++        errors: [{ message: 'a downstream hiccup', extensions: { code: 'UNEXPECTED' } }],
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.ACCEPTED);
++    expect(out.providerId).toBe('fb-p');
++    expect(out.evidence).toMatchObject({ coOccurringErrors: ['a downstream hiccup'] });
++  });
++
++  it('an unknown PostStatus with an id -> ACCEPTED (follow up), never a second create', () => {
++    expect(postStatusAction('queued_for_review')).toBe('pending');
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: {
++          createPost: {
++            __typename: 'PostActionSuccess',
++            post: apiPost({ id: 'fb-u', status: 'queued_for_review' }),
++          },
++        },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.ACCEPTED);
++    expect(out.providerId).toBe('fb-u');
++  });
++
++  it('draft / needs_approval come back ACCEPTED with an unexpected-status warning', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: {
++          createPost: {
++            __typename: 'PostActionSuccess',
++            post: apiPost({ id: 'fb-d', status: 'draft' }),
++          },
++        },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.ACCEPTED);
++    expect(out.warning).toBe('unexpected-status:draft');
++    expect(toRecordResult(out).warning).toBe('unexpected-status:draft');
++  });
++
++  it('an unknown typed error after a possible send is AMBIGUOUS (not rejected)', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: { data: { createPost: { __typename: 'SomeBrandNewError', message: '???' } } },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++  });
++
++  it('LimitReachedError (channel queue full) -> CHANNEL_BLOCKED, no-effect -> a RETRYABLE result', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: { createPost: { __typename: 'LimitReachedError', message: '10 pending posts' } },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.CHANNEL_BLOCKED);
++    expect(out.safeToRetry).toBe(true);
++    const mapped = toRecordResult(out, { now: () => NOW_MS });
++    expect(mapped.recordResult).toMatchObject({ status: 'RETRYABLE', safeToRetry: true });
++    expect(mapped.warning).toBe('channel-queue-full');
++  });
++
++  it('an unrecognized typed error name is NOT pattern-matched into a retry: it falls through to AMBIGUOUS', () => {
++    // Only `InvalidInputError` / `LimitReachedError` get a specific meaning; a
++    // name like this one must not be routed to safeToRetry by a regex.
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: {
++        data: {
++          createPost: { __typename: 'ChannelPermissionError', message: 'reconnect the channel' },
++        },
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++    expect(out.safeToRetry).toBe(false);
++    expect(toRecordResult(out).recordResult?.status).toBe('AMBIGUOUS');
++  });
++
++  it('a 200 with no usable post id is AMBIGUOUS, not a create candidate', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: { data: { createPost: { __typename: 'PostActionSuccess', post: null } } },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++  });
++
++  it('a non-JSON 200 body is AMBIGUOUS (http.js throws MALFORMED_RESPONSE)', async () => {
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        new Response('<html>gateway</html>', {
++          status: 200,
++          headers: { 'content-type': 'text/html' },
++        }),
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++});
++
++// =================================================================
++// 6. Timeout / 5xx after the fake created the post -> reconcile finds it, no 2nd create
++// =================================================================
++
++describe('6. lost create response reconciled without a second create', () => {
++  for (const failure of ['timeout', 500] as const) {
++    it(`create ${failure}s after the post was stored; reconcile lists it; still exactly one create`, async () => {
++      const backend = fakeBackend();
++      const p = post('facebook');
++      const { c, fetchImpl } = client({
++        'mutation CreatePost': backend.createHandler({ failAfterStore: failure }),
++        'query PostsByChannel': backend.listHandler(2),
++      });
++
++      const created = await c.create({ post: p });
++      expect(created.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++      expect(created.safeToRetry).not.toBe(true);
++
++      const recon = await c.reconcile({
++        channelId: CH.facebook,
++        frozenText: p.text,
++        canonicalUrl: p.canonical_url,
++      });
++      expect([RECONCILE_DECISION.CONFIRMED, RECONCILE_DECISION.ADOPT_ACCEPTED]).toContain(
++        recon.decision
++      );
++      expect(recon.providerId).toBe('srv-1');
++
++      const descriptor = reconciliationParams(recon);
++      expect(descriptor.call).toBe('recordReconciliation');
++      expect(descriptor.kind).toBe('adopt');
++
++      // The whole episode issued exactly ONE create.
++      expect(fetchImpl.createCalls()).toHaveLength(1);
++    });
++  }
++});
++
++// =================================================================
++// 7. Reconcile: zero, several, a match on a later page, truncated pages
++// =================================================================
++
++describe('7. reconciliation matching', () => {
++  const p = post('facebook');
++
++  function listing(nodes: Array<Record<string, unknown>>, pageSize = 2): Handler {
++    return (call) => {
++      const after = call.variables.after == null ? 0 : Number(call.variables.after);
++      const slice = nodes.slice(after, after + pageSize);
++      const nextIndex = after + pageSize;
++      const hasNextPage = nextIndex < nodes.length;
++      return jsonResponse({
++        data: {
++          posts: {
++            edges: slice.map((node) => ({ node })),
++            pageInfo: { hasNextPage, endCursor: hasNextPage ? String(nextIndex) : null },
++          },
++        },
++      });
++    };
++  }
++
++  const matchNode = (id: string, over: Record<string, unknown> = {}) => ({
++    id,
++    status: 'sent',
++    channelId: CH.facebook,
++    text: p.text,
++    externalLink: CANONICAL,
++    sentAt: '2026-09-07T12:00:00.000Z',
++    createdAt: '2026-09-07T00:00:00.000Z',
++    ...over,
++  });
++
++  it('zero matches over a complete listing -> UNCERTAIN (not proof of absence)', async () => {
++    const { c } = client({
++      'query PostsByChannel': listing([
++        matchNode('n1', {
++          text: 'a different post entirely',
++          externalLink: 'https://noticiencias.com/otro/',
++        }),
++      ]),
++    });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.UNCERTAIN);
++    expect(reconciliationParams(recon).call).toBeNull();
++  });
++
++  it('several matches -> CONFLICT (human review)', async () => {
++    const { c } = client({ 'query PostsByChannel': listing([matchNode('n1'), matchNode('n2')]) });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.CONFLICT);
++    expect(recon.matchIds).toEqual(['n1', 'n2']);
++    expect(reconciliationParams(recon)).toMatchObject({
++      call: 'recordReconciliation',
++      kind: 'block',
++    });
++  });
++
++  it('a single match on a LATER page is still found and adopted', async () => {
++    const nodes = [
++      matchNode('x1', { text: 'noise 1', externalLink: 'https://noticiencias.com/n1/' }),
++      matchNode('x2', { text: 'noise 2', externalLink: 'https://noticiencias.com/n2/' }),
++      matchNode('x3', { text: 'noise 3', externalLink: 'https://noticiencias.com/n3/' }),
++      matchNode('the-one'),
++    ];
++    const { c, fetchImpl } = client({ 'query PostsByChannel': listing(nodes, 2) });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.CONFIRMED);
++    expect(recon.providerId).toBe('the-one');
++    expect(fetchImpl.of('query PostsByChannel').length).toBeGreaterThan(1);
++  });
++
++  it('truncated pagination -> UNCERTAIN even with one visible match (no uniqueness claim)', async () => {
++    // hasNextPage stays true past the page cap.
++    const { c } = client({
++      'query PostsByChannel': (call) => {
++        const after = call.variables.after == null ? 0 : Number(call.variables.after);
++        return jsonResponse({
++          data: {
++            posts: {
++              edges:
++                after === 0
++                  ? [{ node: matchNode('m1') }]
++                  : [
++                      {
++                        node: matchNode(`pad-${after}`, {
++                          text: 'x',
++                          externalLink: 'https://noticiencias.com/x/',
++                        }),
++                      },
++                    ],
++              pageInfo: { hasNextPage: true, endCursor: String(after + 1) },
++            },
++          },
++        });
++      },
++    });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++      maxPages: 3,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.UNCERTAIN);
++    expect((recon.evidence as Record<string, unknown>).listComplete).toBe(false);
++  });
++
++  it('an errored page mid-listing -> UNCERTAIN, never an absence claim', async () => {
++    const { c } = client({
++      'query PostsByChannel': (call) => {
++        const after = call.variables.after == null ? 0 : Number(call.variables.after);
++        if (after === 0)
++          return jsonResponse({
++            data: { posts: { edges: [], pageInfo: { hasNextPage: true, endCursor: '1' } } },
++          });
++        return jsonResponse({ errors: [{ message: 'server blip' }] }, 500);
++      },
++    });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.UNCERTAIN);
++  });
++
++  it('dedupes an id that appears on two pages before counting matches', async () => {
++    const { c } = client({
++      'query PostsByChannel': (call) => {
++        const after = call.variables.after == null ? 0 : Number(call.variables.after);
++        return jsonResponse({
++          data: {
++            posts: {
++              edges: [{ node: matchNode('dup') }],
++              pageInfo: { hasNextPage: after < 2, endCursor: String(after + 1) },
++            },
++          },
++        });
++      },
++    });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++      maxPages: 5,
++    });
++    // Same id three times → one match, not "several".
++    expect(recon.decision).toBe(RECONCILE_DECISION.CONFIRMED);
++    expect(recon.providerId).toBe('dup');
++  });
++});
++
++// =================================================================
++// 8. Similar URLs must not match
++// =================================================================
++
++describe('8. lookalike URLs', () => {
++  it('sameCanonical is whole-URL, not a prefix test', () => {
++    expect(sameCanonical('https://noticiencias.com/a/', 'https://noticiencias.com/a/')).toBe(true);
++    expect(sameCanonical('https://noticiencias.com/a/', 'https://noticiencias.com/a/b/')).toBe(
++      false
++    );
++    expect(
++      sameCanonical('https://noticiencias.com/eclipse', 'https://noticiencias.com/eclipse/')
++    ).toBe(false);
++    expect(sameCanonical('https://noticiencias.com/a/?x=1', 'https://noticiencias.com/a/')).toBe(
++      false
++    );
++  });
++
++  it('matchChannelPosts rejects a post whose externalLink is a sibling/prefix URL', () => {
++    const p = post('facebook');
++    const matches = matchChannelPosts({
++      posts: [
++        {
++          id: 'sib',
++          status: 'sent',
++          channelId: CH.facebook,
++          text: p.text,
++          externalLink: 'https://noticiencias.com/ciencia/eclipse-solar-2027',
++        },
++        {
++          id: 'child',
++          status: 'sent',
++          channelId: CH.facebook,
++          text: p.text,
++          externalLink: 'https://noticiencias.com/ciencia/eclipse-solar-2027/2028/',
++        },
++      ],
++      frozenText: p.text,
++      canonicalUrl: CANONICAL,
++      channelId: CH.facebook,
++    });
++    expect(matches).toEqual([]);
++  });
++
++  it('matchChannelPosts requires the exact frozen text and the exact channel', () => {
++    const p = post('facebook');
++    const good = {
++      id: 'ok',
++      status: 'sent',
++      channelId: CH.facebook,
++      text: p.text,
++      externalLink: CANONICAL,
++    };
++    expect(
++      matchChannelPosts({
++        posts: [good],
++        frozenText: p.text,
++        canonicalUrl: CANONICAL,
++        channelId: CH.facebook,
++      })
++    ).toHaveLength(1);
++    // wrong channel
++    expect(
++      matchChannelPosts({
++        posts: [{ ...good, channelId: CH.x }],
++        frozenText: p.text,
++        canonicalUrl: CANONICAL,
++        channelId: CH.facebook,
++      })
++    ).toHaveLength(0);
++    // text off by a trailing space
++    expect(
++      matchChannelPosts({
++        posts: [{ ...good, text: `${p.text} ` }],
++        frozenText: p.text,
++        canonicalUrl: CANONICAL,
++        channelId: CH.facebook,
++      })
++    ).toHaveLength(0);
++  });
++
++  it('an X-style post (no externalLink) matches on exact text alone', () => {
++    const p = post('x');
++    const matches = matchChannelPosts({
++      posts: [{ id: 'x9', status: 'sent', channelId: CH.x, text: p.text, externalLink: null }],
++      frozenText: p.text,
++      canonicalUrl: p.canonical_url,
++      channelId: CH.x,
++    });
++    expect(matches).toHaveLength(1);
++  });
++});
++
++// =================================================================
++// 9. 429 recognized vs an ambiguous response, no implicit resend
++// =================================================================
++
++describe('9. rate limiting vs ambiguity', () => {
++  it('HTTP 429 with no post id -> RATE_LIMITED, safeToRetry, RETRYABLE with an ISO retryAt', async () => {
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () =>
++        jsonResponse(
++          {
++            errors: [{ message: 'Too many requests', extensions: { code: 'RATE_LIMIT_EXCEEDED' } }],
++          },
++          429,
++          { 'retry-after': '30' }
++        ),
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.RATE_LIMITED);
++    expect(out.safeToRetry).toBe(true);
++    const mapped = toRecordResult(out, { now: () => NOW_MS });
++    expect(mapped.recordResult).toMatchObject({ status: 'RETRYABLE', safeToRetry: true });
++    expect(Number.isNaN(Date.parse(mapped.recordResult!.retryAt as string))).toBe(false);
++    // The adapter itself never loops.
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++
++  it('a top-level RATE_LIMIT_EXCEEDED at HTTP 200 with no post id is also RATE_LIMITED', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 200,
++      headers: {},
++      json: { errors: [{ message: 'slow down', extensions: { code: 'RATE_LIMIT_EXCEEDED' } }] },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.RATE_LIMITED);
++    expect(out.safeToRetry).toBe(true);
++  });
++
++  it('a 5xx after a possible send is AMBIGUOUS and NOT safeToRetry', async () => {
++    const { c } = client({
++      'mutation CreatePost': () => jsonResponse({ errors: [{ message: 'oops' }] }, 503),
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++    expect(out.safeToRetry).toBe(false);
++    expect(toRecordResult(out).recordResult?.status).toBe('AMBIGUOUS');
++  });
++
++  it('a timeout after a possible send is AMBIGUOUS and NOT safeToRetry', async () => {
++    const { c } = client({
++      'mutation CreatePost': () => {
++        const err = new Error('socket hang up');
++        err.name = 'TimeoutError';
++        return Promise.reject(err);
++      },
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out).toMatchObject({ outcome: PUBLISH_OUTCOME.AMBIGUOUS, safeToRetry: false });
++  });
++
++  it('a 429 that also carries a post id keeps the id (ACCEPTED), it is not "safe to retry"', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 429,
++      headers: { 'retry-after': '5' },
++      json: {
++        data: { createPost: { __typename: 'PostActionSuccess', post: apiPost({ id: 'weird' }) } },
++      },
++      retryAfterMs: 5000,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.ACCEPTED);
++    expect(out.providerId).toBe('weird');
++    expect(out.safeToRetry).not.toBe(true);
++  });
++
++  it('401 -> auth-invalid -> halt', async () => {
++    const { c } = client({
++      'mutation CreatePost': () =>
++        jsonResponse(
++          { errors: [{ message: 'bad key', extensions: { code: 'UNAUTHORIZED' } }] },
++          401
++        ),
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AUTH_INVALID);
++    expect(toRecordResult(out)).toMatchObject({ halt: 'auth-invalid' });
++    expect(toRecordResult(out).recordResult).toBeUndefined();
++  });
++
++  it('a contradictory 401-with-post-id still halts, but persists the id as ACCEPTED first', () => {
++    const out = classifyCreateResponse({
++      httpStatus: 401,
++      headers: {},
++      json: {
++        data: { createPost: { __typename: 'PostActionSuccess', post: apiPost({ id: 'odd-1' }) } },
++        errors: [{ message: 'bad key', extensions: { code: 'UNAUTHORIZED' } }],
++      },
++      retryAfterMs: null,
++      expectedChannelId: CH.facebook,
++    });
++    expect(out.outcome).toBe(PUBLISH_OUTCOME.AUTH_INVALID);
++    expect(out.providerId).toBe('odd-1');
++    const mapped = toRecordResult(out);
++    expect(mapped.halt).toBe('auth-invalid');
++    expect(mapped.recordResult).toMatchObject({ status: 'ACCEPTED', providerId: 'odd-1' });
++  });
++
++  it('scrubs the api key out of a transport failure message', async () => {
++    const { c } = client({
++      'mutation CreatePost': () => {
++        const err = new Error(`upstream saw key ${API_KEY}`);
++        err.name = 'TimeoutError';
++        return Promise.reject(err);
++      },
++    });
++    const out = await c.create({ post: post('facebook') });
++    expect(JSON.stringify(out)).not.toContain(API_KEY);
++  });
++});
++
++// =================================================================
++// 10. Known id with a failed read or a 404
++// =================================================================
++
++describe('10. polling a known id that fails to read', () => {
++  it('a 404 of a known id -> no ledger call, alert only (never re-create)', async () => {
++    const { c } = client({
++      'query PostById': () =>
++        jsonResponse({ errors: [{ message: 'gone', extensions: { code: 'NOT_FOUND' } }] }, 200),
++    });
++    const read = await c.get({ id: 'post-known' });
++    expect(read.state).toBe('absent');
++    const d = pollToRecordResult(read, {
++      expectedChannelId: CH.facebook,
++      providerId: 'post-known',
++    });
++    expect(d).toMatchObject({ call: null, alert: 'known-id-absent' });
++  });
++
++  it('a read failure (5xx / timeout) -> unknown -> no ledger call, id and status kept', async () => {
++    const five = client({
++      'query PostById': () => jsonResponse({ errors: [{ message: 'x' }] }, 500),
++    });
++    const r1 = await five.c.get({ id: 'p1' });
++    expect(r1.state).toBe('unknown');
++    expect(
++      pollToRecordResult(r1, { expectedChannelId: CH.facebook, providerId: 'p1' }).call
++    ).toBeNull();
++
++    const to = client({
++      'query PostById': () => {
++        const err = new Error('reset');
++        (err as { code?: string }).code = 'ECONNRESET';
++        return Promise.reject(err);
++      },
++    });
++    expect((await to.c.get({ id: 'p1' })).state).toBe('unknown');
++  });
++
++  it('reconcile by a known id whose read fails -> UNCERTAIN (a 404 does not license re-create)', async () => {
++    const { c } = client({
++      'query PostById': () =>
++        jsonResponse({ errors: [{ message: 'gone', extensions: { code: 'NOT_FOUND' } }] }, 200),
++    });
++    const p = post('facebook');
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      providerId: 'lost-id',
++      frozenText: p.text,
++      canonicalUrl: p.canonical_url,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.UNCERTAIN);
++    expect(reconciliationParams(recon).call).toBeNull();
++  });
++
++  it('reconcile by id: a present post on the WRONG channel -> CONFLICT', async () => {
++    const p = post('facebook');
++    const { c } = client({
++      'query PostById': () =>
++        jsonResponse({
++          data: {
++            post: {
++              id: 'mine',
++              status: 'sent',
++              channelId: CH.linkedin,
++              text: p.text,
++              externalLink: CANONICAL,
++            },
++          },
++        }),
++    });
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      providerId: 'mine',
++      frozenText: p.text,
++      canonicalUrl: p.canonical_url,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.CONFLICT);
++  });
++
++  it('getMany batches aliased reads and reports per-id state', async () => {
++    const { c, fetchImpl } = client({
++      'query PostsByIds': () =>
++        jsonResponse({
++          data: {
++            a0: {
++              id: 'i0',
++              status: 'sent',
++              channelId: CH.facebook,
++              text: 't',
++              externalLink: CANONICAL,
++            },
++            a1: null,
++          },
++        }),
++    });
++    const res = await c.getMany({ ids: ['i0', 'i1'] });
++    expect(res.i0.state).toBe('present');
++    expect(res.i1.state).toBe('unknown');
++    expect(fetchImpl.of('query PostsByIds')).toHaveLength(1);
++    expect(batchPostsDocument(2)).toContain('a1: post(input: { id: $p1 })');
++  });
++
++  it('getMany refuses more than the batch cap rather than silently splitting', async () => {
++    const { c } = client({});
++    await expect(
++      c.getMany({ ids: Array.from({ length: 11 }, (_, i) => `id${i}`) })
++    ).rejects.toBeInstanceOf(BufferError);
++  });
++});
++
++// =================================================================
++// 11. Integration with the real content.js + state.js contracts
++// =================================================================
++
++describe('11. integration: content + ledger, create count and final status', () => {
++  async function reserve(
++    ledger: ReturnType<typeof fakeLedger>,
++    socialId: string,
++    p: ReturnType<typeof post>
++  ) {
++    return recordIntent({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      article: {
++        social_id: socialId,
++        collection_id: `col-${socialId.slice(0, 4)}`,
++        canonical_url: p.canonical_url,
++      },
++      platform: p.platform,
++      destination: { account_key: p.account_key },
++      payload: {
++        frozenPayload: p,
++        payloadHash: p.payload_hash,
++        generatorVersion: p.generator_version,
++      },
++      now: () => NOW_MS,
++    });
++  }
++
++  it('accepted -> ledger ACCEPTED; poll sent -> ledger PUBLISHED; a re-run does not create again', async () => {
++    const ledger = fakeLedger(freshState());
++    const socialId = 'a'.repeat(64);
++    const p = post('facebook');
++
++    const reserved = await reserve(ledger, socialId, p);
++    expect(reserved.outcome).toBe('applied');
++
++    const backend = fakeBackend();
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': backend.createHandler({ status: 'scheduled' }),
++      'query PostById': () => {
++        const srv = backend.list(CH.facebook)[0];
++        return jsonResponse({
++          data: {
++            post: {
++              id: srv.id,
++              status: 'sent',
++              channelId: CH.facebook,
++              text: srv.text,
++              externalLink: srv.externalLink,
++              sentAt: '2026-09-07T12:00:00.000Z',
++            },
++          },
++        });
++      },
++    });
++
++    const created = await c.create({ post: p });
++    const mapped = toRecordResult(created);
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'facebook',
++      intentId: reserved.intentId as string,
++      result: mapped.recordResult as never,
++      now: () => NOW_MS,
++    });
++    expect(ledger.entry(socialId, 'facebook')!.status).toBe('ACCEPTED');
++    expect(ledger.entry(socialId, 'facebook')!.provider_id).toBe('srv-1');
++
++    // Poll → PUBLISHED.
++    const read = await c.get({ id: 'srv-1' });
++    const poll = pollToRecordResult(read, { expectedChannelId: CH.facebook, providerId: 'srv-1' });
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'facebook',
++      intentId: reserved.intentId as string,
++      result: poll.result as never,
++      now: () => NOW_MS,
++    });
++    const finalEntry = ledger.entry(socialId, 'facebook')!;
++    expect(finalEntry.status).toBe('PUBLISHED');
++    expect(finalEntry.external_url).toBe(CANONICAL);
++    expect(() => validateState(ledger.peek())).not.toThrow();
++
++    // A re-run: the pair is PUBLISHED → recordIntent short-circuits, no create.
++    const again = await reserve(ledger, socialId, p);
++    expect(again.outcome).toBe('noop');
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++
++  it('ambiguous create -> reconcile adopts the single match -> ledger PUBLISHED, still one create', async () => {
++    const ledger = fakeLedger(freshState());
++    const socialId = 'b'.repeat(64);
++    const p = post('linkedin');
++    const reserved = await reserve(ledger, socialId, p);
++
++    const backend = fakeBackend();
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': backend.createHandler({ failAfterStore: 'timeout', status: 'sent' }),
++      'query PostsByChannel': backend.listHandler(5),
++    });
++
++    const created = await c.create({ post: p });
++    expect(created.outcome).toBe(PUBLISH_OUTCOME.AMBIGUOUS);
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'linkedin',
++      intentId: reserved.intentId as string,
++      result: toRecordResult(created).recordResult as never,
++      now: () => NOW_MS,
++    });
++    expect(ledger.entry(socialId, 'linkedin')!.status).toBe('AMBIGUOUS');
++
++    const recon = await c.reconcile({
++      channelId: CH.linkedin,
++      frozenText: p.text,
++      canonicalUrl: p.canonical_url,
++    });
++    expect(recon.decision).toBe(RECONCILE_DECISION.CONFIRMED);
++    const descriptor = reconciliationParams(recon, { actor: 'social-orchestrator' }) as Record<
++      string,
++      unknown
++    >;
++
++    const applied = await recordReconciliation({
++      store: ledger.store,
++      session: { runId: 'run-2', attempt: 1 },
++      socialId,
++      platform: 'linkedin',
++      intentId: reserved.intentId as string,
++      kind: descriptor.kind as never,
++      target: descriptor.target as never,
++      providerId: descriptor.providerId as string,
++      externalUrl: descriptor.externalUrl as string,
++      resolution: descriptor.resolution as never,
++      now: () => NOW_MS,
++    });
++    expect(applied.outcome).toBe('applied');
++    expect(ledger.entry(socialId, 'linkedin')!.status).toBe('PUBLISHED');
++    expect(ledger.entry(socialId, 'linkedin')!.provider_id).toBe('srv-1');
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++
++  it('ambiguous create -> reconcile finds several matches -> ledger BLOCKED, no create on the block path', async () => {
++    const ledger = fakeLedger(freshState());
++    const socialId = 'c'.repeat(64);
++    const p = post('facebook');
++    const reserved = await reserve(ledger, socialId, p);
++
++    const dup = (id: string) => ({
++      id,
++      status: 'sent',
++      channelId: CH.facebook,
++      text: p.text,
++      externalLink: CANONICAL,
++      sentAt: '2026-09-07T12:00:00.000Z',
++      createdAt: '2026-09-07T00:00:00.000Z',
++    });
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': () => {
++        const err = new Error('socket hang up');
++        err.name = 'TimeoutError';
++        return Promise.reject(err);
++      },
++      'query PostsByChannel': () =>
++        jsonResponse({
++          data: {
++            posts: {
++              edges: [{ node: dup('d1') }, { node: dup('d2') }],
++              pageInfo: { hasNextPage: false, endCursor: null },
++            },
++          },
++        }),
++    });
++
++    const created = await c.create({ post: p });
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'facebook',
++      intentId: reserved.intentId as string,
++      result: toRecordResult(created).recordResult as never,
++      now: () => NOW_MS,
++    });
++
++    const recon = await c.reconcile({
++      channelId: CH.facebook,
++      frozenText: p.text,
++      canonicalUrl: p.canonical_url,
++    });
++    const descriptor = reconciliationParams(recon) as Record<string, unknown>;
++    await recordReconciliation({
++      store: ledger.store,
++      session: { runId: 'run-2', attempt: 1 },
++      socialId,
++      platform: 'facebook',
++      intentId: reserved.intentId as string,
++      kind: descriptor.kind as never,
++      resolution: descriptor.resolution as never,
++      now: () => NOW_MS,
++    });
++    expect(ledger.entry(socialId, 'facebook')!.status).toBe('BLOCKED');
++    // frozen payload retained for the human review.
++    expect(ledger.entry(socialId, 'facebook')!.frozen_payload).toBeTruthy();
++    expect(fetchImpl.createCalls()).toHaveLength(1);
++  });
++
++  it('a confirmed Facebook + a failed LinkedIn: the confirmed pair is never re-sent', async () => {
++    const ledger = fakeLedger(freshState());
++    const socialId = 'd'.repeat(64);
++    const fb = post('facebook');
++    const li = post('linkedin');
++
++    const rFb = await reserve(ledger, socialId, fb);
++    const rLi = await reserve(ledger, socialId, li);
++
++    const { c, fetchImpl } = client({
++      'mutation CreatePost': (call) => {
++        if (call.variables.channelId === CH.facebook)
++          return jsonResponse({
++            data: {
++              createPost: {
++                __typename: 'PostActionSuccess',
++                post: {
++                  id: 'fb-ok',
++                  status: 'sent',
++                  channelId: CH.facebook,
++                  text: fb.text,
++                  externalLink: CANONICAL,
++                  sentAt: '2026-09-07T12:00:00.000Z',
++                },
++              },
++            },
++          });
++        return jsonResponse({
++          data: {
++            createPost: { __typename: 'InvalidInputError', message: 'channel disconnected' },
++          },
++        });
++      },
++    });
++
++    const fbRes = await c.create({ post: fb });
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'facebook',
++      intentId: rFb.intentId as string,
++      result: toRecordResult(fbRes).recordResult as never,
++      now: () => NOW_MS,
++    });
++    const liRes = await c.create({ post: li });
++    await recordResult({
++      store: ledger.store,
++      session: { runId: 'run-1', attempt: 1 },
++      socialId,
++      platform: 'linkedin',
++      intentId: rLi.intentId as string,
++      result: toRecordResult(liRes).recordResult as never,
++      now: () => NOW_MS,
++    });
++
++    expect(ledger.entry(socialId, 'facebook')!.status).toBe('PUBLISHED');
++    expect(ledger.entry(socialId, 'linkedin')!.status).toBe('FAILED_PERMANENT');
++
++    // Next run: Facebook is PUBLISHED → its reservation short-circuits.
++    const again = await reserve(ledger, socialId, fb);
++    expect(again.outcome).toBe('noop');
++    // Two creates total (fb once, li once); the confirmed pair was not re-sent.
++    expect(fetchImpl.createCalls()).toHaveLength(2);
++  });
++});
