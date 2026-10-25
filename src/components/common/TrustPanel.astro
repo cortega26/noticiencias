@@ -228,17 +228,20 @@ const showHealthGuardrail = isHealthCategory && evidenceSubjectType !== 'humans'
       )
     }
     {
-      // P0-09: accountability. A human reviewer is named only when the
-      // metadata records a real review; otherwise the institutional line.
-      // The AI-assistance claim renders only for AI-authored pieces.
+      // P0-09: name a reviewer only when metadata records a real review.
+      // Explain assistance in the linked policy instead of repeating process
+      // boilerplate. Keep a recorded reviewer distinct from the site byline.
       (isAiAssisted || reviewerName) && (
         <p>
           {isAiAssisted && (
             <>
-              <strong class="text-text-body">Elaboración:</strong> síntesis asistida por IA.{' '}
+              <a href="/uso-de-ia/" class="underline-offset-4 hover:underline">
+                Cómo elaboramos el contenido
+              </a>
+              {reviewerName ? ' · ' : ''}
             </>
           )}
-          {reviewerName ? (
+          {reviewerName && (
             <>
               <strong class="text-text-body">Revisión editorial:</strong>{' '}
               {reviewerProfileUrl ? (
@@ -255,11 +258,6 @@ const showHealthGuardrail = isHealthCategory && evidenceSubjectType !== 'humans'
               )}
               {reviewerRole ? ` (${reviewerRole})` : ''}
               {reviewDate ? ` · ${reviewDate}` : ''}.
-            </>
-          ) : (
-            <>
-              <strong class="text-text-body">Responsabilidad editorial:</strong> Equipo
-              Noticiencias.
             </>
           )}
         </p>

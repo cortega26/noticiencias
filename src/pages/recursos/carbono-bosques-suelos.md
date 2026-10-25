@@ -6,7 +6,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 Un bosque que crece puede acumular carbono; un suelo recibe y pierde carbono continuamente. Para interpretar una noticia climática necesitamos saber **qué se midió, durante cuánto tiempo y frente a qué comparación**. Una cifra grande de fotosíntesis, biomasa o transferencia a hongos responde a preguntas diferentes.
 
-Esta guía reúne una comparación de estudios y preguntas prácticas. Es una síntesis preparada con asistencia de IA; las fuentes permiten examinar su fundamento. No presenta trabajo de campo propio ni acredita una revisión científica independiente.
+Esta guía reúne una comparación de estudios y preguntas prácticas a partir de las fuentes indicadas. No presenta trabajo de campo propio ni acredita una revisión científica independiente.
 
 ## Del aire al suelo, y también de regreso
 

@@ -30,7 +30,7 @@ Noticiencias no realiza investigación científica propia: explica la de otros. 
 El proceso combina herramientas automatizadas con decisiones editoriales:
 
 1. **Detección y selección:** sistemas propios vigilan publicaciones científicas y técnicas; una persona decide qué historias merecen una pieza.
-2. **Elaboración asistida por IA:** herramientas de IA preparan el borrador (resumen, traducción al español, glosario y estructura). Una redacción asistida por IA no es una validación científica independiente.
+2. **Borrador:** herramientas de IA ayudan a preparar el resumen, la traducción al español, el glosario y la estructura. El borrador no es una validación científica independiente.
 3. **Controles y decisión de publicación:** el borrador pasa por controles automáticos y una persona decide si se integra al sitio. No afirmamos que cada dato haya recibido una comprobación humana individual.
 4. **Fuentes y correcciones:** las fichas de los artículos muestran los datos editoriales disponibles para esa pieza. Corregimos los errores documentados y lo indicamos en la propia pieza.
 
