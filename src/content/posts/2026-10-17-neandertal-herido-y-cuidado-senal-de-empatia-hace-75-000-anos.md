@@ -14,10 +14,10 @@ tags:
 excerpt:
   Una perforación en la escápula de Shanidar A sugiere una herida de lanza hace unos 75.000 años. El arma,
   la intención y el agresor no están demostrados.
-image: ~/assets/images/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.png
+image: ~/assets/images/2026-10-17-shanidar-scapula-study-original.webp
 image_alt:
-  'Ilustración generada con IA: restos de un hombro de Neandertal con una perforación de lanza, sostenidos
-  por manos enguantadas en un laboratorio.'
+  'Ilustración conceptual generada con IA de una escápula sobre papel de estudio junto a una lupa; no
+  reproduce el fósil de Shanidar A.'
 source_url: https://404media.co/this-might-be-the-earliest-known-spear-murder-in-earths-history/
 refinery_id: '3724'
 headlines_variants:
@@ -81,7 +81,7 @@ evidence_detail:
   funeraria.
 ---
 
-_Imagen de portada: ilustración generada con IA; no es una fotografía del fósil ni una reconstrucción forense validada._
+_Imagen de portada: ilustración conceptual generada con IA; no es una fotografía del fósil de Shanidar A ni una reconstrucción de su lesión._
 
 Una lesión ósea puede conservar el rastro de un impacto sin revelar quién lo causó. Ese es el límite central de un estudio sobre **Shanidar A**, un neandertal de hace unos 75.000 años: la escápula tiene una perforación que los investigadores consideran compatible con una lanza de madera, pero no se conserva el arma.
 
