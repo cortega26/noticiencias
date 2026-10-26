@@ -1,5 +1,5 @@
 ---
-title: 'GlucoFM: qué predice el modelo de glucosa y qué falta para usarlo clínicamente'
+title: 'La IA de Google que aprende a leer los sensores de glucosa: qué logra y qué no'
 schema_version: 2
 date: 2026-08-26
 author: Noticiencias AI

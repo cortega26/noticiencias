@@ -1,5 +1,5 @@
 ---
-title: 'DES y el agrupamiento de materia: por qué una tensión no refuta por sí sola el modelo'
+title: 'El universo podría ser menos «grumoso» de lo que predice el modelo estándar'
 schema_version: 1
 excerpt:
   DES Y6 obtiene un valor de S8 menor que el inferido del fondo cósmico. La diferencia depende de los parámetros
