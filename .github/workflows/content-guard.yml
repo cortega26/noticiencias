@@ -99,7 +99,9 @@ jobs:
           # then failed on the same unchanged article), so its links cannot gate every PR.
           # ipcc.ch serves a bot challenge (403) to non-browser clients, including the runner;
           # its AR6 report pages are public and permanent.
-          args: --no-progress --max-retries 3 --retry-wait-time 10 --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov --exclude security.googleblog.com --exclude biorxiv.org --exclude openai.com --exclude doi.org/10.1103 --exclude technologyreview.com --exclude ipcc.ch './src/content/**/*.md'
+          # TEMPORARY (2026-10-26): darkenergysurvey.org has timed out for hours, which blocks
+          # every content PR. Remove this exclusion once the site answers again.
+          args: --no-progress --max-retries 3 --retry-wait-time 10 --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov --exclude security.googleblog.com --exclude biorxiv.org --exclude openai.com --exclude doi.org/10.1103 --exclude technologyreview.com --exclude ipcc.ch --exclude darkenergysurvey.org './src/content/**/*.md'
           fail: true
 
       - name: 📣 Notify Backend on Validation Failure
