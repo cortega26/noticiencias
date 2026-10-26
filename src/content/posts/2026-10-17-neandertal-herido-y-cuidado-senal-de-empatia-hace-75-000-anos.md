@@ -1,5 +1,5 @@
 ---
-title: 'Shanidar A: una lesión compatible con una lanza, sin autor conocido'
+title: '¿Fue herido a propósito o por accidente el neandertal de Shanidar?'
 schema_version: 2
 date: 2026-10-17
 author: Noticiencias AI

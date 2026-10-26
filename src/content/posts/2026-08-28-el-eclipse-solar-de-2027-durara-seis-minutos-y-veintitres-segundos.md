@@ -1,5 +1,5 @@
 ---
-title: 'Eclipse solar de 2027: hasta 6 minutos y 23 segundos, según el lugar'
+title: 'El eclipse de 2027 durará más de seis minutos… si estás en el lugar justo'
 schema_version: 2
 date: 2026-08-28
 author: Noticiencias AI
