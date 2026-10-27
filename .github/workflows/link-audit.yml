@@ -1,0 +1,75 @@
+name: Link Audit
+
+# Whole-site external link audit. Content Guard only checks the posts a change
+# adds or modifies, so a page cited by an old article can never block a new
+# one; broken or unreachable links across the archive are reported here instead.
+# Non-blocking: it keeps ONE open issue (found by its marker) updated with the
+# latest report and closes it when the audit comes back clean.
+
+on:
+  schedule:
+    - cron: '17 9 * * 1' # Mondays 09:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: link-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: 🔗 Link Checker (whole site)
+        id: lychee
+        uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
+        with:
+          # Hosts that permanently block runner probes live in .lycheeignore.
+          args: --no-progress --max-retries 3 --retry-wait-time 10 './src/content/**/*.md'
+          output: ./lychee/out.md
+          fail: false
+
+      - name: Update the link audit issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          marker='<!-- link-audit -->'
+          title='Link audit: broken or unreachable links in published content'
+          # Match the marker in the body itself: search indexing of HTML
+          # comments is not guaranteed and a miss would open duplicates.
+          issue=$(gh issue list --state open --limit 200 --json number,body \
+            --jq "[.[] | select(.body | contains(\"$marker\"))][0].number // empty")
+
+          if [ "$EXIT_CODE" = "0" ]; then
+            if [ -n "$issue" ]; then
+              gh issue comment "$issue" --body "The audit is clean again ($RUN_URL). Closing."
+              gh issue close "$issue"
+            fi
+            echo "No broken links."
+            exit 0
+          fi
+
+          {
+            echo "$marker"
+            echo "Weekly whole-site link audit ($RUN_URL)."
+            echo
+            echo "These links do not block publication: Content Guard only checks the posts a change touches."
+            echo "Fix or replace each link in its post, or add the host to \`.lycheeignore\` only if it permanently rejects automated checks."
+            echo
+            cat ./lychee/out.md
+          } > body.md
+
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --body-file body.md
+            echo "Updated issue #$issue"
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi

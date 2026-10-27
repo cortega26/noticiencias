@@ -40,6 +40,10 @@ npm run test:dist         # dist sanity checks (run after build)
    test suite, and coverage-threshold unit tests and explicit-viewport
    Playwright projects not reproduced here — see
    `.github/workflows/content-guard.yml` for the authoritative CI step list.
+   External links are checked only in the posts a change adds or modifies;
+   the whole archive is audited weekly by `.github/workflows/link-audit.yml`,
+   which keeps one non-blocking issue updated. Hosts that permanently reject
+   automated checks go in `.lycheeignore` (never a site that is merely down).
 3. For dependency changes, inspect `npm ls --omit=dev --all` separately
    and triage nested peer errors before deciding whether a fix is needed.
    Where registry access exists, run `npm audit` in both the root and `workers/`
