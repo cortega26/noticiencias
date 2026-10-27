@@ -1616,6 +1616,69 @@
       }
     ]
   },
+  "~/assets/images/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "32a81a90966f2e9e",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/default.png": {
+    "originalWidth": 1024,
+    "originalHeight": 572,
+    "hash": "bae717e6ba555df4",
+    "variants": [
+      {
+        "width": 400,
+        "height": 223,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 503,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.900.avif"
+      },
+      {
+        "width": 1024,
+        "height": 572,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.1024.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.1024.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.png": {
     "originalWidth": 1672,
     "originalHeight": 941,
@@ -1648,34 +1711,6 @@
         "format": "avif",
         "objectKey": "posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1672.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1672.avif"
-      }
-    ]
-  },
-  "~/assets/images/default.png": {
-    "originalWidth": 1024,
-    "originalHeight": 572,
-    "hash": "bae717e6ba555df4",
-    "variants": [
-      {
-        "width": 400,
-        "height": 223,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 503,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.900.avif"
-      },
-      {
-        "width": 1024,
-        "height": 572,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.1024.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.1024.avif"
       }
     ]
   }
