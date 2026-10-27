@@ -1,3 +1,7 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+import { load } from 'cheerio';
 import { describe, expect, it } from 'vitest';
 
 import { loadDistArticle } from './helpers/load-dist-article';
@@ -75,6 +79,17 @@ describe('article editorial accountability', () => {
     expect(hero.find('figcaption').text()).toBe(hero.find('img').attr('alt'));
     expect($('footer a[href="/uso-de-ia/"]').length).toBe(1);
     expect($('[data-analytics-article]').text()).not.toContain('Imagen de portada:');
+  });
+
+  it('keeps the image disclosure on the article page, not on home cards', () => {
+    // The AI-image disclosure is the hero caption of the article page; the home
+    // cards keep it only as the image alt text (accessibility), never as a caption.
+    const home = load(fs.readFileSync(path.join(__dirname, '..', 'dist', 'index.html'), 'utf8'));
+    const captions = home('figcaption').filter((_, el) =>
+      home(el).text().includes('generada con IA')
+    );
+    expect(captions.length).toBe(0);
+    expect(home('img[alt*="generada con IA"]').length).toBeGreaterThan(0);
   });
 
   it('shows a documented correction date, not an invented review date', () => {
