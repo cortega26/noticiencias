@@ -78,7 +78,7 @@ sources:
     publisher: arXiv / DES Collaboration
     role: primary
   - title: 'DES Y6 Cosmology Results: Papers'
-    url: https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/
+    url: https://web.archive.org/web/20260814075704/https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/
     publisher: Dark Energy Survey
 correction_summary:
   Se corrige la identificación de 669 millones de objetos como galaxias usadas en un único análisis;
@@ -119,7 +119,7 @@ Estas observaciones se interpretan dentro de modelos como ΛCDM y wCDM. Comparar
 
 ## Cómo leer la conclusión sin perder el alcance
 
-La [lista de trabajos de DES](https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/) separa catálogo, calibraciones y análisis. Todos pertenecen al mismo programa de investigación: no son necesariamente verificaciones independientes por aparecer en documentos distintos.
+La [lista de trabajos de DES](https://web.archive.org/web/20260814075704/https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/) separa catálogo, calibraciones y análisis. Todos pertenecen al mismo programa de investigación: no son necesariamente verificaciones independientes por aparecer en documentos distintos.
 
 Para interpretar un titular conviene localizar **la muestra usada, el observable y el modelo**. Un resultado compatible con una energía oscura constante no demuestra que esa sea la única explicación posible. Una discrepancia con otra combinación de datos tampoco invalida por sí sola todo el marco cosmológico.
 
