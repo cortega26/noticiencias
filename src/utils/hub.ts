@@ -121,6 +121,28 @@ export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {
     .slice(0, count);
 }
 
+/**
+ * Recurring topics for the home topic strip. Tags vary a lot between recent
+ * articles, so a fixed 18-post window can contain no tag that repeats and the
+ * strip would vanish whenever a new article pushes one out. Widen the window
+ * until enough topics recur; a topic still needs at least two articles.
+ */
+export function getRecurringTopics(
+  posts: Post[],
+  {
+    windows = [18, 60],
+    count = 6,
+    minTopics = 3,
+  }: { windows?: number[]; count?: number; minTopics?: number } = {}
+): TopicFrequency[] {
+  let topics: TopicFrequency[] = [];
+  for (const size of windows) {
+    topics = getTopicFrequency(posts.slice(0, size), count);
+    if (topics.length >= minTopics) break;
+  }
+  return topics;
+}
+
 export function getRelatedTopics(
   posts: Post[],
   activeTagSlug: string,

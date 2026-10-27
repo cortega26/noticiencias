@@ -4,7 +4,7 @@ import DailyDesk from '~/components/common/DailyDesk.astro';
 import { fetchPosts } from '~/utils/blog';
 import {
   getEditionDate,
-  getTopicFrequency,
+  getRecurringTopics,
   selectArchivePosts,
   selectFeaturedPosts,
   selectRecentPosts,
@@ -22,7 +22,7 @@ const archivePosts = selectArchivePosts(allPosts, {
   excludeIds: [...leadPostIds, ...weeklyPostIds],
 });
 const featuredSeries = buildSeriesDossiers(allPosts)[0] ?? null;
-const topicRadar = getTopicFrequency(allPosts.slice(0, 18));
+const topicRadar = getRecurringTopics(allPosts);
 
 const metadata = {
   title: 'Noticiencias - Portada científica en español.',
