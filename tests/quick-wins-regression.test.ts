@@ -245,6 +245,8 @@ describe('quick wins regression coverage', () => {
     expect(page('h1').length).toBe(1);
     expect(page('h1').text()).toContain('Ciencia en español, con la evidencia a la vista');
     const lead = page('section[aria-label="Historia principal"] figure').first();
-    expect(lead.find('figcaption').text()).toBe(lead.find('img').attr('alt'));
+    // The image disclosure is shown on the article page; home keeps it as alt only.
+    expect(lead.find('figcaption').length).toBe(0);
+    expect(lead.find('img').attr('alt')).toBeTruthy();
   });
 });
