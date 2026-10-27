@@ -20,15 +20,15 @@ headlines_variants:
   question: ¿Cómo nace una nube de 1.600 km en Marte sin polvo? Un modelo lo explica
   benefit: Por qué una nube imposible en Marte obliga a reescribir sus modelos climáticos
 summary_points:
-  - Una nube diaria de más de 1.600 km se forma cada mañana de primavera y verano junto al volcán Arsia Mons en Marte y se disipa al mediodía.
+  - Una nube diaria de más de 1.600 km se forma cada mañana de primavera y verano junto al volcán Arsia Mons en Marte y luego se disipa.
   - 'Un estudio en Nature Geoscience modeló su formación por primera vez y sugiere que los cristales de hielo surgen por nucleación homogénea: el vapor de agua se solidifica sin partículas de polvo ni sales como semillas.'
   - El modelo requiere un enfriamiento de 30 °C en 10 minutos y una humedad relativa más de 100.000 veces superior a cualquier valor medido en la Tierra.
-  - El ascenso brutal de aire húmedo es impulsado por una onda gravitacional generada al chocar el viento contra la ladera del volcán de 20 km de altura.
+  - El ascenso brutal de aire húmedo es impulsado por una onda de gravedad atmosférica generada al chocar el viento contra la ladera del volcán de 20 km de altura.
   - El hallazgo proviene de una simulación numérica; la humedad extrema y la nucleación homogénea no se han medido in situ ni se han observado en la atmósfera de Venus ni en la alta atmósfera terrestre.
 glossary:
   - term: Nucleación homogénea
     definition: Proceso por el cual el vapor de agua se transforma directamente en cristales de hielo sin necesidad de partículas (polvo, sal, ceniza) que actúen como superficies de condensación.
-  - term: Onda gravitacional atmosférica
+  - term: Onda de gravedad atmosférica
     definition: Onda que se propaga en un fluido estratificado (como la atmósfera) cuando la gravedad actúa como fuerza restauradora; en este caso generada por el viento al chocar contra la ladera del volcán.
   - term: Sobresaturación
     definition: Estado en el que el aire contiene más vapor de agua del que permitiría el equilibrio termodinámico a esa temperatura y presión (humedad relativa > 100 %).
@@ -63,7 +63,7 @@ social:
   id: 198f788b3edc3da2ecf21a3daa2f6d2ea6f9fdc7674073bdf47d517349ada03e
 ---
 
-Cada mañana de primavera y verano en Marte, una nube nace junto al flanco del volcán Arsia Mons y se estira hasta superar los 1.600 kilómetros —la distancia entre Nueva York y Kansas City— para luego desvanecerse al mediodía. El ciclo se repite durante meses. Desde que una sonda la captó en 2018, la Nube Alargada de Arsia Mons (AMEC) resistió toda explicación. Un estudio publicado en _Nature Geoscience_ acaba de modelar su formación por primera vez y sugiere que la nube existe gracias a un proceso físico que, aunque está en los libros de texto, nunca se había visto en la atmósfera de ningún planeta.
+Cada mañana de primavera y verano en Marte, una nube nace junto al flanco del volcán Arsia Mons y se estira hasta superar los 1.600 kilómetros —la distancia entre Nueva York y Kansas City— para luego desvanecerse. El ciclo se repite durante meses. Desde que una sonda la captó en 2018, la Nube Alargada de Arsia Mons (AMEC) resistió toda explicación. Un estudio publicado en _Nature Geoscience_ acaba de modelar su formación por primera vez y sugiere que la nube existe gracias a un proceso físico que, aunque está en los libros de texto, nunca se había visto en la atmósfera de ningún planeta.
 
 ## El enigma de una nube que no debería existir
 
@@ -73,7 +73,7 @@ Para que eso ocurra, la atmósfera marciana debe enfriarse 30 °C en apenas diez
 
 ## Cómo el volcán escribe la nube
 
-Arsia Mons mide unos 20 kilómetros de altura. Cuando el viento choca contra su ladera, genera una onda atmosférica que catapulta aire húmedo desde la superficie hasta gran altura en minutos. Ese ascenso brutal provoca el enfriamiento relámpago y la sobresaturación necesaria para que el vapor se solidifique sin intermediarios. La nube resultante no es un capricho estacional: es la huella visible de una onda gravitacional gigante que recorre la atmósfera cada mañana.
+Arsia Mons mide unos 20 kilómetros de altura. Cuando el viento choca contra su ladera, genera una onda atmosférica que catapulta aire húmedo desde la superficie hasta gran altura en minutos. Ese ascenso brutal provoca el enfriamiento relámpago y la sobresaturación necesaria para que el vapor se solidifique sin intermediarios. La nube resultante no es un capricho estacional: es la huella visible de la onda de gravedad que el volcán genera cada mañana.
 
 ## Lo que el modelo deja sin resolver
 
