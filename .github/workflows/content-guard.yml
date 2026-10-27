@@ -85,23 +85,31 @@ jobs:
             exit 1
           fi
 
-      - name: 🔗 Link Checker
+      # Links are checked only in the content this change adds or modifies: an
+      # external page cited by a months-old post must never block a new article.
+      # The whole site is audited weekly by link-audit.yml (non-blocking issue).
+      - name: Collect changed content
+        id: changed_content
+        env:
+          BASE_SHA: >-
+            ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            echo "No base commit to diff against; skipping the link check."
+            files=""
+          else
+            files=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$GITHUB_SHA" -- 'src/content/**/*.md' | tr '\n' ' ')
+          fi
+          echo "files=${files}" >> "$GITHUB_OUTPUT"
+          if [ -n "$files" ]; then echo "Checking links in: $files"; else echo "No content changes."; fi
+
+      - name: 🔗 Link Checker (changed content)
+        if: steps.changed_content.outputs.files != ''
         uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
         with:
-          # Retries ride through transient HTTP 429 rate limits; security.googleblog.com
-          # is excluded because Google persistently rate-limits runner IPs, and biorxiv.org
-          # because it answers 429 to runner IPs (preprint source links would fail every PR).
-          # openai.com serves 403 to GitHub runner link probes even when the official
-          # pages are publicly readable; editorial sources are independently verified.
-          # APS DOIs (doi.org/10.1103/...) resolve to journals.aps.org, which answers 403
-          # to runner IPs; the DOI is the canonical, permanent identifier of the source.
-          # technologyreview.com answers 403 to runner IPs intermittently (it passed and
-          # then failed on the same unchanged article), so its links cannot gate every PR.
-          # ipcc.ch serves a bot challenge (403) to non-browser clients, including the runner;
-          # its AR6 report pages are public and permanent.
-          # TEMPORARY (2026-10-26): darkenergysurvey.org has timed out for hours, which blocks
-          # every content PR. Remove this exclusion once the site answers again.
-          args: --no-progress --max-retries 3 --retry-wait-time 10 --exclude scientificamerican.com --exclude techxplore.com --exclude nasa.gov --exclude www.nasa.gov --exclude security.googleblog.com --exclude biorxiv.org --exclude openai.com --exclude doi.org/10.1103 --exclude technologyreview.com --exclude ipcc.ch --exclude darkenergysurvey.org './src/content/**/*.md'
+          # Retries ride through transient 429s. Hosts that permanently block
+          # runner probes live in .lycheeignore, shared with link-audit.yml.
+          args: --no-progress --max-retries 3 --retry-wait-time 10 ${{ steps.changed_content.outputs.files }}
           fail: true
 
       - name: 📣 Notify Backend on Validation Failure
