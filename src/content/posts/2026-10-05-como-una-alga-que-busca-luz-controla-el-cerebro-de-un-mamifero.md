@@ -1,5 +1,5 @@
 ---
-title: 'Optogenética: cómo proteínas sensibles a la luz permiten estudiar neuronas'
+title: 'Cómo la proteína de un alga permitió encender neuronas con luz, la base de un Nobel'
 schema_version: 2
 date: 2026-10-05
 author: Noticiencias AI

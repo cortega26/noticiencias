@@ -1,5 +1,5 @@
 ---
-title: 'DES: qué diferencia el catálogo de 669 millones de objetos del análisis cosmológico'
+title: '669 millones de objetos en el cielo: ¿cuáles sirven para medir la energía oscura?'
 schema_version: 2
 excerpt:
   'El catálogo Y6 Gold contiene 669 millones de objetos. El análisis de agrupamiento y lentes usa muestras

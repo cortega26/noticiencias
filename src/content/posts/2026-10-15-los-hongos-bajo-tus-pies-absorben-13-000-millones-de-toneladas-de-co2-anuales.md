@@ -1,5 +1,5 @@
 ---
-title: 'Hongos y carbono: un gran flujo hacia el suelo no demuestra almacenamiento permanente'
+title: 'Las plantas envían a los hongos una enorme cantidad de carbono cada año: ¿se queda allí?'
 schema_version: 2
 date: 2026-10-15
 author: Noticiencias AI
