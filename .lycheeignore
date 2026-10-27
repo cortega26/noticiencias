@@ -1,0 +1,20 @@
+# Link-checker exclusions shared by Content Guard (changed posts only) and the
+# weekly Link Audit (whole site). One regular expression per line.
+#
+# Only hosts that PERMANENTLY reject GitHub runner probes belong here. A site
+# that is down for a while must NOT be added: Content Guard no longer checks
+# old posts, and the weekly audit is the place to report it.
+
+# Rate-limits or blocks runner IPs (429/403) although the pages are public.
+scientificamerican\.com
+techxplore\.com
+nasa\.gov
+security\.googleblog\.com
+biorxiv\.org
+openai\.com
+technologyreview\.com
+# Bot challenge (403) for any non-browser client.
+ipcc\.ch
+# APS DOIs resolve to journals.aps.org, which answers 403 to runner IPs; the DOI
+# is the canonical, permanent identifier of the source.
+doi\.org/10\.1103

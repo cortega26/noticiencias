@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   getEditionDate,
   getRelatedTopics,
+  getRecurringTopics,
   getTopicFrequency,
   selectArchivePosts,
   selectFeaturedPosts,
@@ -124,6 +125,34 @@ describe('hub curation helpers', () => {
       'energia',
       'salud',
     ]);
+  });
+
+  it('widens the window until enough topics recur', () => {
+    const tag = (slug: string) => ({ slug, title: slug });
+    const recent = Array.from({ length: 4 }, (_, i) =>
+      post({ id: `r${i}`, tags: [tag(`unico-${i}`)] })
+    );
+    const older = Array.from({ length: 6 }, (_, i) =>
+      post({ id: `o${i}`, tags: [tag(['ia', 'salud', 'clima'][i % 3])] })
+    );
+
+    expect(getTopicFrequency(recent, 6)).toEqual([]);
+    const topics = getRecurringTopics([...recent, ...older], { windows: [4, 10] });
+    expect(topics.map((topic) => topic.slug).sort()).toEqual(['clima', 'ia', 'salud']);
+  });
+
+  it('keeps the first window when it already has enough recurring topics', () => {
+    const tag = (slug: string) => ({ slug, title: slug });
+    const posts = Array.from({ length: 6 }, (_, i) =>
+      post({ id: `p${i}`, tags: [tag(['ia', 'salud', 'clima'][i % 3])] })
+    );
+    const extra = [
+      post({ id: 'x', tags: [tag('fuera')] }),
+      post({ id: 'y', tags: [tag('fuera')] }),
+    ];
+
+    const topics = getRecurringTopics([...posts, ...extra], { windows: [6, 8] });
+    expect(topics.map((topic) => topic.slug)).not.toContain('fuera');
   });
 
   it('returns an empty topic list when recent posts have no tags', () => {
