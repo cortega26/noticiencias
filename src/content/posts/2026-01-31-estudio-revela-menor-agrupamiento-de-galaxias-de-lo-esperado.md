@@ -32,7 +32,7 @@ sources:
     publisher: arXiv / DES Collaboration
     role: primary
   - title: 'DES Y6 Cosmology Results: Papers'
-    url: https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/
+    url: https://web.archive.org/web/20260814075704/https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/
     publisher: Dark Energy Survey
 publication_status: preprint
 evidence_subject_type: observational
@@ -65,7 +65,7 @@ La palabra «tensión» señala que hay una diferencia que examinar. No identifi
 
 ## No confundir todos los resultados de DES
 
-La [colección de trabajos originales](https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/) incluye distintas sondas y combinaciones. El artículo también presenta resultados al añadir otros datos; no corresponde citar una cifra de una combinación como si describiera todas.
+La [colección de trabajos originales](https://web.archive.org/web/20260814075704/https://www.darkenergysurvey.org/des-y6-cosmology-results-papers/) incluye distintas sondas y combinaciones. El artículo también presenta resultados al añadir otros datos; no corresponde citar una cifra de una combinación como si describiera todas.
 
 Nuestro [explicador del catálogo y las muestras de DES](/ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica/) responde a una pregunta diferente: por qué 669 millones de objetos catalogados no son la muestra de cada medición. Ambos textos conservan su URL original, pero ahora separan método y comparación estadística.
 
