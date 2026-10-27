@@ -1,5 +1,5 @@
 ---
-title: 'Salud en esports: qué describen los estudios y qué no demuestra una encuesta'
+title: '¿Les pasan factura a la espalda las maratones de eSports? Lo que dicen las encuestas'
 schema_version: 2
 date: 2026-08-28
 author: Noticiencias AI
