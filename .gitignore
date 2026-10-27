@@ -53,3 +53,6 @@ data/*.db-shm
 # Astro cache
 .astro/
 dist-consent/
+
+# per-article analytics dataset (#233, #234); regenerate with npm run analytics:dataset
+data/analytics/
