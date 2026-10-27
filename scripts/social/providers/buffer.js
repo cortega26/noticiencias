@@ -232,10 +232,10 @@ const CREATE_POST_MUTATION = `
   }
 `;
 
-const POST_FIELDS = 'id status channelId text externalLink sentAt assets { link { url } }';
+const POST_FIELDS = 'id status channelId text externalLink sentAt';
 
 function buildGetPostsQuery(ids) {
-  const variableDefs = ids.map((_, i) => `$id${i}: ID!`).join(', ');
+  const variableDefs = ids.map((_, i) => `$id${i}: PostId!`).join(', ');
   const aliasFields = ids
     .map((_, i) => `p${i}: post(input: { id: $id${i} }) { ${POST_FIELDS} }`)
     .join('\n    ');
@@ -771,10 +771,7 @@ export function createBufferClient(config) {
     const matches = posts.filter((p) => {
       const textMatches = normalizeForCompare(p.text) === normalizedFrozen;
       if (!textMatches) return false;
-      const inText = typeof p.text === 'string' && p.text.includes(canonicalUrl);
-      const assetLinks = Array.isArray(p.assets) ? p.assets : [];
-      const inAsset = assetLinks.some((a) => a?.link?.url === canonicalUrl);
-      return inText || inAsset;
+      return typeof p.text === 'string' && p.text.includes(canonicalUrl);
     });
 
     if (matches.length === 1) {

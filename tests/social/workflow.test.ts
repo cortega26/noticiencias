@@ -1,8 +1,11 @@
 import { describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { load } from 'js-yaml';
 import { HttpError } from '../../scripts/social/http.js';
 import {
   DEPLOY_WORKFLOW_PATH,
   getRunStatus,
+  REQUIRED_DEPLOY_JOBS,
   verifyDeployProof,
 } from '../../scripts/social/github.js';
 
@@ -62,7 +65,7 @@ const runStatus = (over: Record<string, unknown> = {}): RunStatus => {
     // attempt's view. Both default to a clean single attempt 1.
     run: { ...runFacts(), ...((runOver as object) ?? {}) },
     latestRun: { ...runFacts(), ...((latestOver as object) ?? {}) },
-    jobs: (jobsOver as RunStatus['jobs']) ?? [job('gate'), job('package'), job('deploy')],
+    jobs: (jobsOver as RunStatus['jobs']) ?? [job('package'), job('deploy')],
     ...rest,
   } as RunStatus;
 };
@@ -71,6 +74,15 @@ const expected = { repository: REPO, defaultBranch: 'main' };
 const now = () => Date.parse('2026-09-06T12:00:00Z');
 
 describe('verifyDeployProof', () => {
+  it('requires only job IDs that exist in the deploy workflow', () => {
+    const workflow = load(
+      readFileSync(new URL('../../.github/workflows/deploy.yml', import.meta.url), 'utf8')
+    ) as { jobs: Record<string, unknown> };
+
+    expect(REQUIRED_DEPLOY_JOBS).toEqual(['package', 'deploy']);
+    expect(Object.keys(workflow.jobs)).toEqual(expect.arrayContaining([...REQUIRED_DEPLOY_JOBS]));
+  });
+
   it('verifies a clean deploy and binds the proof to the manifest digest', () => {
     const out = verifyDeployProof({
       provenance: provenance(),
@@ -98,7 +110,6 @@ describe('verifyDeployProof', () => {
         run: { run_attempt: 1, conclusion: 'failure' }, // attempt 1 overall failed
         latestRun: { run_attempt: 2, status: 'completed', conclusion: 'success' },
         jobs: [
-          job('gate', { run_attempt: 1 }),
           job('package', { run_attempt: 1 }),
           job('deploy', { run_attempt: 1, conclusion: 'failure' }),
           job('deploy', { run_attempt: 2, conclusion: 'success' }),
@@ -133,7 +144,6 @@ describe('verifyDeployProof', () => {
       runStatus: runStatus({
         latestRun: { run_attempt: 2, status: 'completed', conclusion: 'success' },
         jobs: [
-          job('gate', { run_attempt: 1 }),
           job('package', { run_attempt: 1 }),
           job('deploy', { run_attempt: 1, conclusion: 'success' }),
           job('deploy', { run_attempt: 2, status: 'in_progress', conclusion: null }),
@@ -146,7 +156,7 @@ describe('verifyDeployProof', () => {
   });
 
   it('does not approve off historical successes when the relevant deploy failed', () => {
-    // gate@1 + package@1 green, but every deploy at the commit failed.
+    // package@1 green, but every deploy at the commit failed.
     const out = verifyDeployProof({
       provenance: provenance(),
       manifestDigest: DIGEST,
@@ -154,7 +164,6 @@ describe('verifyDeployProof', () => {
         run: { run_attempt: 1, conclusion: 'failure' },
         latestRun: { run_attempt: 2, status: 'completed', conclusion: 'failure' },
         jobs: [
-          job('gate', { run_attempt: 1 }),
           job('package', { run_attempt: 1 }),
           job('deploy', { run_attempt: 1, conclusion: 'failure' }),
           job('deploy', { run_attempt: 2, conclusion: 'failure' }),
@@ -174,11 +183,7 @@ describe('verifyDeployProof', () => {
       runStatus: runStatus({
         run: { run_attempt: 2 },
         latestRun: { run_attempt: 2 },
-        jobs: [
-          job('gate', { run_attempt: 1 }),
-          job('package', { run_attempt: 1 }),
-          job('deploy', { run_attempt: 2 }),
-        ],
+        jobs: [job('package', { run_attempt: 1 }), job('deploy', { run_attempt: 2 })],
       }),
       expected,
       now,
@@ -285,11 +290,7 @@ describe('verifyDeployProof', () => {
         provenance: provenance(),
         manifestDigest: DIGEST,
         runStatus: runStatus({
-          jobs: [
-            job('gate'),
-            job('package'),
-            job('deploy', { status: 'in_progress', conclusion: null }),
-          ],
+          jobs: [job('package'), job('deploy', { status: 'in_progress', conclusion: null })],
         }),
         expected,
       }).trust
@@ -302,7 +303,7 @@ describe('verifyDeployProof', () => {
         provenance: provenance(),
         manifestDigest: DIGEST,
         runStatus: runStatus({
-          jobs: [job('gate'), job('package'), job('deploy', { conclusion: 'failure' })],
+          jobs: [job('package'), job('deploy', { conclusion: 'failure' })],
         }),
         expected,
       }).trust
@@ -429,7 +430,7 @@ describe('getRunStatus', () => {
     const fetchImpl = actionsApi({
       run: { status: 200, body: runBody({ run_attempt: 2, head_sha: SHA.toUpperCase() }) },
       attempt: { status: 200, body: runBody({ run_attempt: 1, head_sha: SHA.toUpperCase() }) },
-      jobs: { status: 200, body: jobsBody([apiJob('gate'), apiJob('deploy')], 2) },
+      jobs: { status: 200, body: jobsBody([apiJob('package'), apiJob('deploy')], 2) },
     });
 
     const out = await getRunStatus({ fetchImpl, repository: REPO, runId: '123', attempt: 1 });
@@ -531,7 +532,6 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
       jobs: {
         status: 200,
         body: jobsBody([
-          apiJob('gate', { run_attempt: 1 }),
           apiJob('package', { run_attempt: 1 }),
           apiJob('deploy', { run_attempt: 1, conclusion: 'failure' }),
           apiJob('deploy', { run_attempt: 2, conclusion: 'success' }),
@@ -554,7 +554,6 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
       jobs: {
         status: 200,
         body: jobsBody([
-          apiJob('gate', { run_attempt: 1 }),
           apiJob('package', { run_attempt: 1 }),
           apiJob('deploy', { run_attempt: 1 }),
         ]),
@@ -564,7 +563,7 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
     expect(verify(runStatus).trust).toBe('deferred');
   });
 
-  it('historical gate/package successes present but every deploy at the commit failed → blocked', async () => {
+  it('package succeeded but every deploy at the commit failed → blocked', async () => {
     const fetchImpl = actionsApi({
       run: {
         status: 200,
@@ -574,7 +573,6 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
       jobs: {
         status: 200,
         body: jobsBody([
-          apiJob('gate', { run_attempt: 1 }),
           apiJob('package', { run_attempt: 1 }),
           apiJob('deploy', { run_attempt: 1, conclusion: 'failure' }),
           apiJob('deploy', { run_attempt: 2, conclusion: 'failure' }),
@@ -595,7 +593,6 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
       jobs: {
         status: 200,
         body: jobsBody([
-          apiJob('gate', { run_attempt: 1 }),
           apiJob('package', { run_attempt: 1 }),
           apiJob('deploy', { run_attempt: 2 }),
         ]),
@@ -613,11 +610,7 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
       attempt: { status: 200, body: runBody() },
       jobs: {
         status: 200,
-        body: jobsBody([
-          apiJob('gate'),
-          apiJob('package'),
-          apiJob('deploy', { head_sha: 'b'.repeat(40) }),
-        ]),
+        body: jobsBody([apiJob('package'), apiJob('deploy', { head_sha: 'b'.repeat(40) })]),
       },
     });
     const runStatus = await getRunStatus({ fetchImpl, repository: REPO, runId: '123', attempt: 1 });
@@ -697,7 +690,7 @@ describe('getRunStatus → verifyDeployProof (integration)', () => {
     const fetchImpl = actionsApi({
       run: { status: 200, body: runBody() },
       attempt: { status: 200, body: runBody() },
-      jobs: { status: 200, body: jobsBody([apiJob('gate'), apiJob('package'), apiJob('deploy')]) },
+      jobs: { status: 200, body: jobsBody([apiJob('package'), apiJob('deploy')]) },
     });
     const runStatus = await getRunStatus({ fetchImpl, repository: REPO, runId: '123', attempt: 1 });
     const out = verify(runStatus);

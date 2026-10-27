@@ -315,6 +315,8 @@ describe('createBufferClient().get', () => {
     });
     const results = await client.get({ ids });
     expect(fetchImpl.calls).toHaveLength(1);
+    expect(fetchImpl.calls[0].body.query).toContain('$id0: PostId!');
+    expect(fetchImpl.calls[0].body.query).not.toMatch(/\bassets\s*\{/);
     expect(results).toHaveLength(MAX_POST_IDS_PER_REQUEST);
     for (const r of results) expect(r.outcome).toBe(BUFFER_OUTCOME.PUBLISHED);
   });
@@ -358,17 +360,18 @@ describe('createBufferClient().reconcile', () => {
 
   it('adopts on exactly one unambiguous match (status sent -> target PUBLISHED)', async () => {
     const { client } = baseClient({
-      ListPosts: () =>
-        listPage([
+      ListPosts: (call) => {
+        expect(call.body.query).not.toMatch(/\bassets\s*\{/);
+        return listPage([
           {
             id: 'match-1',
             status: 'sent',
             channelId: 'fb-channel-1',
             text: frozenText,
             externalLink: 'https://facebook.com/p/1',
-            assets: [],
           },
-        ]),
+        ]);
+      },
     });
     const recon = await client.reconcile({
       channelId: 'fb-channel-1',
@@ -396,7 +399,6 @@ describe('createBufferClient().reconcile', () => {
             status: 'scheduled',
             channelId: 'fb-channel-1',
             text: frozenText,
-            assets: [],
           },
         ]),
     });
@@ -413,8 +415,8 @@ describe('createBufferClient().reconcile', () => {
     const { client } = baseClient({
       ListPosts: () =>
         listPage([
-          { id: 'dup-1', status: 'sent', channelId: 'c1', text: frozenText, assets: [] },
-          { id: 'dup-2', status: 'sent', channelId: 'c1', text: frozenText, assets: [] },
+          { id: 'dup-1', status: 'sent', channelId: 'c1', text: frozenText },
+          { id: 'dup-2', status: 'sent', channelId: 'c1', text: frozenText },
         ]),
     });
     const recon = await client.reconcile({ channelId: 'c1', frozenText, canonicalUrl: CANONICAL });
@@ -428,7 +430,7 @@ describe('createBufferClient().reconcile', () => {
   it('is UNCERTAIN on zero matches even after a COMPLETE listing (never proof of absence)', async () => {
     const { client } = baseClient({
       ListPosts: () =>
-        listPage([{ id: 'other', status: 'sent', channelId: 'c1', text: 'unrelated', assets: [] }]),
+        listPage([{ id: 'other', status: 'sent', channelId: 'c1', text: 'unrelated' }]),
     });
     const recon = await client.reconcile({ channelId: 'c1', frozenText, canonicalUrl: CANONICAL });
     expect(recon.decision).toBe(RECONCILE_DECISION.UNCERTAIN);
@@ -461,14 +463,14 @@ describe('createBufferClient().reconcile', () => {
         if (call === 1) {
           expect(after).toBeNull();
           return listPage(
-            [{ id: 'p1', status: 'sent', channelId: 'c1', text: 'x', assets: [] }],
+            [{ id: 'p1', status: 'sent', channelId: 'c1', text: 'x' }],
             true,
             'cursor-a'
           );
         }
         expect(after).toBe('cursor-a');
         return listPage(
-          [{ id: 'match-1', status: 'sent', channelId: 'c1', text: frozenText, assets: [] }],
+          [{ id: 'match-1', status: 'sent', channelId: 'c1', text: frozenText }],
           false,
           null
         );
@@ -476,23 +478,6 @@ describe('createBufferClient().reconcile', () => {
     });
     const recon = await client.reconcile({ channelId: 'c1', frozenText, canonicalUrl: CANONICAL });
     expect(fetchImpl.calls).toHaveLength(2);
-    expect(recon.decision).toBe(RECONCILE_DECISION.CONFIRMED);
-  });
-
-  it('matches via a link asset URL even when the text differs only if the frozen text still matches exactly', async () => {
-    const { client } = baseClient({
-      ListPosts: () =>
-        listPage([
-          {
-            id: 'asset-match',
-            status: 'sent',
-            channelId: 'c1',
-            text: frozenText,
-            assets: [{ link: { url: CANONICAL } }],
-          },
-        ]),
-    });
-    const recon = await client.reconcile({ channelId: 'c1', frozenText, canonicalUrl: CANONICAL });
     expect(recon.decision).toBe(RECONCILE_DECISION.CONFIRMED);
   });
 });

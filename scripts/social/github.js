@@ -31,14 +31,14 @@ import { ERROR_CLASS, HttpError, classifyStatus, requestJson } from './http.js';
  * - `GET …/runs/{id}/jobs?filter=all` — every job of every attempt, each
  *   carrying its own `run_attempt` + `head_sha`
  *   (https://docs.github.com/en/rest/actions/workflow-jobs). Re-running only
- *   the failed `deploy` job creates attempt N+1 while `gate`/`package` keep
- *   their attempt-N records, so this list is the source of truth for which
- *   attempt did what.
+ *   the failed `deploy` job creates attempt N+1 while `package` keeps its
+ *   attempt-N record (including the pre-publish gate step), so this list is
+ *   the source of truth for which attempt did what.
  *
  * Trust requires, at the manifest commit:
  * - `package` succeeded **at exactly `build_attempt`** (that attempt is the
  *   one that stamped `GITHUB_RUN_ATTEMPT` into the manifest);
- * - `gate` succeeded at an attempt `<= build_attempt` (it gated that build);
+ * - the pre-publish gate step succeeded inside the `package` job;
  * - `deploy` succeeded at an attempt `>= build_attempt` (the deploy — which
  *   contains the "Verify Deployment" step — that published this build);
  * - no later attempt of this run is still running, and the newest `deploy`
@@ -58,7 +58,9 @@ import { ERROR_CLASS, HttpError, classifyStatus, requestJson } from './http.js';
 
 export const GITHUB_API_HOST = 'api.github.com';
 export const DEPLOY_WORKFLOW_PATH = '.github/workflows/deploy.yml';
-export const REQUIRED_DEPLOY_JOBS = Object.freeze(['gate', 'package', 'deploy']);
+// These are the job IDs in deploy.yml. The pre-publish gate is a step inside
+// `package`, not a separate Actions job.
+export const REQUIRED_DEPLOY_JOBS = Object.freeze(['package', 'deploy']);
 /**
  * Events a trustworthy production deploy run can originate from. `deploy.yml`
  * triggers on `push` (to a main branch) and `workflow_dispatch`; `dynamic` is
@@ -447,9 +449,6 @@ export function verifyDeployProof(params) {
     // `package` stamped GITHUB_RUN_ATTEMPT into the manifest: it must have
     // succeeded at *exactly* the declared attempt.
     package: (a) => a === buildAttempt,
-    // `gate` gated that build: same attempt or an earlier one it was carried
-    // from.
-    gate: (a) => a <= buildAttempt,
     // `deploy` (which contains "Verify Deployment") published it: at the build
     // attempt or a later deploy-only rerun.
     deploy: (a) => a >= buildAttempt,
