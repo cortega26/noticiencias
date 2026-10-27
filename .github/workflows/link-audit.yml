@@ -28,6 +28,9 @@ jobs:
 
       - name: 🔗 Link Checker (whole site)
         id: lychee
+        # The action can exit non-zero on broken links even with fail: false;
+        # the report must still reach the issue step.
+        continue-on-error: true
         uses: lycheeverse/lychee-action@7cd0af4c74a61395d455af97419279d86aafaede # v2.0.2
         with:
           # Hosts that permanently block runner probes live in .lycheeignore.
@@ -36,9 +39,10 @@ jobs:
           fail: false
 
       - name: Update the link audit issue
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-          EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+          EXIT_CODE: ${{ steps.lychee.outputs.exit_code || (steps.lychee.outcome == 'success' && '0' || '2') }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           marker='<!-- link-audit -->'
