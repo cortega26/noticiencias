@@ -12,8 +12,8 @@ tags:
   - marte
   - física atmosférica
 excerpt: 'Un estudio en Nature Geoscience modela por primera vez la nube alargada de Arsia Mons: se forma por nucleación homogénea, física teórica nunca vista en la naturaleza.'
-image: ~/assets/images/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.png
-image_alt: 'Ilustración generada con IA: nube alargada de hielo de agua sobre el flanco del volcán Arsia Mons, en Marte, al amanecer.'
+image: ~/assets/images/2026-10-24-arsia-mons-elongated-cloud-original.webp
+image_alt: 'Ilustración generada con IA: una nube blanca y alargada nace en el flanco del volcán escudo Arsia Mons y se extiende sobre la superficie de Marte.'
 source_url: https://arstechnica.com/science/2026/10/a-1000-mile-cloud-on-mars-may-reveal-physics-never-seen-in-nature/
 refinery_id: '3941'
 headlines_variants:

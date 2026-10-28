@@ -1,0 +1,231 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-28T04:34:00.742Z",
+  "base_commit": "9e087dcdc8a997944f26f94e28144bb409a0f9a2",
+  "tool": "OpenAI imagegen (Codex built-in image_gen) via Noticiencias art director v2 (backend plan 202)",
+  "images": [
+    {
+      "article": "src/content/posts/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo.md",
+      "prompt": "Hand-painted digital scientific illustration in the style of a high-end science journal feature plate. Anatomically and physically correct forms, soft matte rendering, restrained palette, painterly depth; not a glossy 3D render.\n\nA Plasmodium merozoite is caught in the exact moment of invading a red blood cell, with a highly detailed 'moving junction' appearing as a distinct, temporary protein portal actively invaginating and reshaping the host cell membrane.\n\nMain subject: A Plasmodium merozoite (the invasive stage of the parasite), elongated and partially inserted into a red blood cell. The 'moving junction' is visible as a crescent-shaped, dense protein complex forming a funnel-like invagination in the red blood cell membrane around the parasite's anterior end.\nSetting: The scene is a microscopic view within a blood vessel, with a few out-of-focus, healthy red blood cells in the background, providing context for the main action.\nComposition: Medium close-up, slightly angled to show depth. The Plasmodium parasite and the 'moving junction' are centered within the frame, occupying a large portion (well within the central 50% of the width). The parasite is depicted entering the red blood cell, with the membrane clearly curving inward around it, emphasizing the active reshaping process. Landscape 16:9 frame. Keep the main subject whole and inside the central half of the width so the image still works cropped to a square; the side thirds only carry context.\nLighting and palette: Clean, uniform scientific illumination. The palette features muted reds for the red blood cell, contrasting with purples, blues, and subtle greens for the Plasmodium parasite and the 'moving junction' proteins. A delicate, slightly contrasting hue (e.g., pale yellow or orange) can highlight the reshaped lipid membrane. The overall mood is precise and analytical.\nAccuracy: The Plasmodium merozoite's morphology (elongated, anterior end pointed) and its relative size compared to the red blood cell; The red blood cell's characteristic biconcave disc shape, but visibly deforming and invaginating at the point of invasion; The 'moving junction' is a complex, wedge-like protein structure beneath the red blood cell membrane, actively causing its inward curvature; The red blood cell membrane should not appear ruptured or damaged, but rather smoothly remodeled and resealed around the invading parasite; The process duration is very short (less than a minute), so the image should convey a dynamic, snapshot-in-time feel.\nAvoid: Depicting the inhibitor protein, as its efficacy is only proven in vitro; Showing the parasite fully inside the red blood cell or completely free, as the focus is on the act of invasion and the portal; Any 'flashy' or artificial glowing effects on the proteins or cells that are not scientifically accurate; Generic images of parasites floating near blood cells without showing the specific invasion mechanism; Human figures, medical equipment, or other elements not directly related to the microscopic process; any text, letters, numbers, labels, logos, watermarks or interface elements.",
+      "art_direction": {
+        "candidates": [
+          {
+            "idea": "Plasmodium parasite actively invading a red blood cell, with the 'moving junction' forming a visible protein-based portal that reshapes the cell membrane.",
+            "thumbnail": 5,
+            "fidelity": 5,
+            "freshness": 4
+          },
+          {
+            "idea": "Close-up of the 'moving junction' protein complex with an inhibitor protein docked into it, symbolizing the blocking mechanism.",
+            "thumbnail": 2,
+            "fidelity": 4,
+            "freshness": 3
+          },
+          {
+            "idea": "Split image showing a Plasmodium parasite approaching a red blood cell, and then a red blood cell with the parasite already inside, membrane sealed and no trace of entry.",
+            "thumbnail": 3,
+            "fidelity": 4,
+            "freshness": 3
+          }
+        ],
+        "visual_idea": "A Plasmodium merozoite is caught in the exact moment of invading a red blood cell, with a highly detailed 'moving junction' appearing as a distinct, temporary protein portal actively invaginating and reshaping the host cell membrane.",
+        "focal_subject": "A Plasmodium merozoite (the invasive stage of the parasite), elongated and partially inserted into a red blood cell. The 'moving junction' is visible as a crescent-shaped, dense protein complex forming a funnel-like invagination in the red blood cell membrane around the parasite's anterior end.",
+        "setting": "The scene is a microscopic view within a blood vessel, with a few out-of-focus, healthy red blood cells in the background, providing context for the main action.",
+        "style": "scientific_illustration",
+        "composition": "Medium close-up, slightly angled to show depth. The Plasmodium parasite and the 'moving junction' are centered within the frame, occupying a large portion (well within the central 50% of the width). The parasite is depicted entering the red blood cell, with the membrane clearly curving inward around it, emphasizing the active reshaping process.",
+        "lighting_and_palette": "Clean, uniform scientific illumination. The palette features muted reds for the red blood cell, contrasting with purples, blues, and subtle greens for the Plasmodium parasite and the 'moving junction' proteins. A delicate, slightly contrasting hue (e.g., pale yellow or orange) can highlight the reshaped lipid membrane. The overall mood is precise and analytical.",
+        "accuracy_notes": [
+          "The Plasmodium merozoite's morphology (elongated, anterior end pointed) and its relative size compared to the red blood cell.",
+          "The red blood cell's characteristic biconcave disc shape, but visibly deforming and invaginating at the point of invasion.",
+          "The 'moving junction' is a complex, wedge-like protein structure beneath the red blood cell membrane, actively causing its inward curvature.",
+          "The red blood cell membrane should not appear ruptured or damaged, but rather smoothly remodeled and resealed around the invading parasite.",
+          "The process duration is very short (less than a minute), so the image should convey a dynamic, snapshot-in-time feel."
+        ],
+        "avoid": [
+          "Depicting the inhibitor protein, as its efficacy is only proven in vitro.",
+          "Showing the parasite fully inside the red blood cell or completely free, as the focus is on the act of invasion and the portal.",
+          "Any 'flashy' or artificial glowing effects on the proteins or cells that are not scientifically accurate.",
+          "Generic images of parasites floating near blood cells without showing the specific invasion mechanism.",
+          "Human figures, medical equipment, or other elements not directly related to the microscopic process."
+        ],
+        "alt_text_es": "Una ilustración científica muestra un parásito de malaria (Plasmodium) en el proceso de invadir un glóbulo rojo, con el portal proteico de la unión móvil invaginando activamente la membrana celular."
+      },
+      "input_images": [],
+      "original": {
+        "path": "docs/image-rights/originals/2026-10-28-2026-10-23-malaria-merozoite-invasion.png",
+        "sha256": "e887dccb6678444e8093cb55439a5e97d344105e89f470f0675baf355b68c08d",
+        "bytes": 2262836,
+        "width": 1672,
+        "height": 941
+      },
+      "exported": {
+        "path": "src/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp",
+        "sha256": "07964cd8589a2b196420d2539a9c55db8a9376a0d25386861da8608c5e8e5017",
+        "bytes": 227208,
+        "width": 1672,
+        "height": 941,
+        "parameters": {
+          "format": "webp",
+          "quality": 90,
+          "effort": 6,
+          "resized": false
+        }
+      },
+      "replaces": {
+        "path": "src/assets/images/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.png",
+        "sha256": "6bbeda42d26a7a38bf12b50aaeff1e891a2b61cf54274736e1f5a48a8c7ac095"
+      }
+    },
+    {
+      "article": "src/content/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md",
+      "prompt": "Editorial documentary photograph for a premium science magazine cover story. Real camera and lens behaviour, natural light, believable textures, restrained colour grading.\n\nAn incredibly long, wispy cloud, over 1600 km in length, emerging from the flank of the majestic Arsia Mons volcano on the red Martian surface, conveying its vast scale and unique formation site.\n\nMain subject: The Arsia Mons Elongated Cloud (AMEC), depicted as a bright, white, and translucent atmospheric phenomenon, stretching horizontally across the frame.\nSetting: The Martian landscape, featuring the reddish, rocky surface of Mars and the immense, distinct conical shape of the Arsia Mons shield volcano in the background/midground. The sky is hazy Martian orange.\nComposition: A low-angle, wide shot as if from an orbital perspective, looking somewhat horizontally across the Martian surface. The elongated cloud dominates the central 50% of the width, stretching from the base or flank of the volcano towards the horizon. The volcano itself is visible, providing scale and context. The composition should make the cloud appear truly enormous. Landscape 16:9 frame. Keep the focal point that tells the story inside the central half of the width so the image still works cropped to a square; backgrounds and textures may fill the frame, and the side thirds only carry context.\nLighting and palette: Morning light, casting soft shadows, emphasizing the cloud's form against the Martian surface. Predominant colors are the deep reddish-browns and ochres of Mars for the landscape, contrasted with the luminous white or pale-blue hues of the cloud. The sky is a gradient of hazy orange to a muted, deep blue-grey at higher altitudes.\nAccuracy: Arsia Mons is a broad, gently sloping shield volcano tens of kilometres wide with a large summit caldera; never a steep conical peak; The cloud must be visibly long and slender, exceeding 1600 km in apparent length; It must be positioned immediately adjacent to the base or flank of a large shield volcano (Arsia Mons); The Martian surface and sky should adhere to the typical reddish-orange palette observed on Mars; The image represents a real, observed cloud whose formation mechanism is explained by a model; it does not depict the invisible process of homogeneous nucleation directly.\nAvoid: a steep cone-shaped mountain; Any depiction of molecular structures or processes like homogeneous nucleation; Human elements (astronauts, scientific equipment not visible from orbit); Exaggerated or fictionalized 'sci-fi' elements (unrealistic colors, alien structures); Showing the cloud as a solid, opaque mass rather than a translucent atmospheric phenomenon; Clichéd representations of scientific research (e.g., scientists in labs); any text, letters, numbers, labels, logos, watermarks or interface elements.",
+      "art_direction": {
+        "candidates": [
+          {
+            "idea": "A massive, elongated cloud stretching across the Martian horizon next to the colossal Arsia Mons volcano, emphasizing its immense scale and unique location.",
+            "thumbnail": 5,
+            "fidelity": 5,
+            "freshness": 4
+          },
+          {
+            "idea": "A close-up scientific illustration of water molecules forming ice crystals without a dust particle, representing homogeneous nucleation.",
+            "thumbnail": 1,
+            "fidelity": 3,
+            "freshness": 2
+          },
+          {
+            "idea": "An abstract visualization of an atmospheric gravity wave ascending the flank of Arsia Mons, with an invisible plume of moist air.",
+            "thumbnail": 2,
+            "fidelity": 4,
+            "freshness": 3
+          }
+        ],
+        "visual_idea": "An incredibly long, wispy cloud, over 1600 km in length, emerging from the flank of the majestic Arsia Mons volcano on the red Martian surface, conveying its vast scale and unique formation site.",
+        "focal_subject": "The Arsia Mons Elongated Cloud (AMEC), depicted as a bright, white, and translucent atmospheric phenomenon, stretching horizontally across the frame.",
+        "setting": "The Martian landscape, featuring the reddish, rocky surface of Mars and the immense, distinct conical shape of the Arsia Mons shield volcano in the background/midground. The sky is hazy Martian orange.",
+        "style": "photo_editorial",
+        "composition": "A low-angle, wide shot as if from an orbital perspective, looking somewhat horizontally across the Martian surface. The elongated cloud dominates the central 50% of the width, stretching from the base or flank of the volcano towards the horizon. The volcano itself is visible, providing scale and context. The composition should make the cloud appear truly enormous.",
+        "lighting_and_palette": "Morning light, casting soft shadows, emphasizing the cloud's form against the Martian surface. Predominant colors are the deep reddish-browns and ochres of Mars for the landscape, contrasted with the luminous white or pale-blue hues of the cloud. The sky is a gradient of hazy orange to a muted, deep blue-grey at higher altitudes.",
+        "accuracy_notes": [
+          "Arsia Mons is a broad, gently sloping shield volcano tens of kilometres wide with a large summit caldera; never a steep conical peak.",
+          "The cloud must be visibly long and slender, exceeding 1600 km in apparent length.",
+          "It must be positioned immediately adjacent to the base or flank of a large shield volcano (Arsia Mons).",
+          "The Martian surface and sky should adhere to the typical reddish-orange palette observed on Mars.",
+          "The image represents a real, observed cloud whose formation mechanism is explained by a model; it does not depict the invisible process of homogeneous nucleation directly."
+        ],
+        "avoid": [
+          "a steep cone-shaped mountain",
+          "Any depiction of molecular structures or processes like homogeneous nucleation.",
+          "Human elements (astronauts, scientific equipment not visible from orbit).",
+          "Exaggerated or fictionalized 'sci-fi' elements (unrealistic colors, alien structures).",
+          "Showing the cloud as a solid, opaque mass rather than a translucent atmospheric phenomenon.",
+          "Clichéd representations of scientific research (e.g., scientists in labs)."
+        ],
+        "alt_text_es": "Una enorme y alargada nube blanca de más de 1.600 km se extiende junto al volcán Arsia Mons en la superficie rojiza de Marte."
+      },
+      "input_images": [],
+      "original": {
+        "path": "docs/image-rights/originals/2026-10-28-2026-10-24-arsia-mons-elongated-cloud.png",
+        "sha256": "40e04264d49205cce21590963a82f887bdf64452061e4e99b35e3a241606ae72",
+        "bytes": 2304762,
+        "width": 1672,
+        "height": 941
+      },
+      "exported": {
+        "path": "src/assets/images/2026-10-24-arsia-mons-elongated-cloud-original.webp",
+        "sha256": "caaf524384a619ed2a04e4cbc8d975ffb088487672713bd1166315e4b110f193",
+        "bytes": 265260,
+        "width": 1672,
+        "height": 941,
+        "parameters": {
+          "format": "webp",
+          "quality": 90,
+          "effort": 6,
+          "resized": false
+        }
+      },
+      "replaces": {
+        "path": "src/assets/images/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.png",
+        "sha256": "32a81a90966f2e9e1628251a5ae12eabee5fbc1bfd001deb56d0e7a1bd5fbd11"
+      }
+    },
+    {
+      "article": "src/content/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.md",
+      "prompt": "Hand-painted digital scientific illustration in the style of a high-end science journal feature plate. Anatomically and physically correct forms, soft matte rendering, restrained palette, painterly depth; not a glossy 3D render.\n\nA magnified scientific illustration of the surface of a Porites lutea coral polyp, capturing the dynamic activity of its cilia and the microscopic water vortices they create, which progressively weaken and disappear from left to right, symbolizing the effect of acute heat stress.\n\nMain subject: A dense, accurately depicted carpet of cilia on the coral polyp's surface. Above them, transparent, swirling currents and flow patterns (vortices) of water, optionally with subtle, luminous nanoparticulate tracers.\nSetting: The immediate microscopic environment just above the coral tissue, in a dark, controlled laboratory setting. The background fades to a deep, indistinct blue or black, emphasizing the close-up view.\nComposition: Extreme close-up on the coral surface, depicted horizontally. The left side shows vigorously beating cilia creating clear, strong, organized water vortices. Towards the right, the cilia's movement becomes erratic, then slows significantly, and the vortices weaken, dissipate, and eventually vanish, leaving still or chaotic water patterns. The transition should be a smooth gradient. The active cilia and strong vortices on the left half will occupy the central 50% of the image's width. Landscape 16:9 frame. Keep the main subject whole and inside the central half of the width so the image still works cropped to a square; the side thirds only carry context.\nLighting and palette: Soft, even, almost 'dark-field' microscopic illumination to highlight the cilia and water flow. A palette of deep ocean blues, teals, and dark greens for the coral tissue and background water, contrasted with luminous whites, light blues, and hints of green for the swirling water currents and potential tracers, especially prominent where the flow is strong and organized. The parts where the cilia are inactive will have less luminescence or appear more muted.\nAccuracy: Cilia should be anatomically correct for Porites lutea, including shape, density, and beating mechanism (even if simplified); The water vortices are abstract representations of flow dynamics from the model and observation; they should appear as currents or paths, not solid structures; The gradient must clearly show the progression from coordinated, vigorous movement and strong vortices to inhibited movement and absent vortices, consistent with the article's temperature-dependent observations (e.g., strong flow on the left, vanishing at the right); The setting is a lab experiment; avoid any natural reef elements or bright sunlight; The image must not depict full coral bleaching, only the disruption of ciliary function and associated water flow.\nAvoid: Depiction of temperature numbers or explicit thermometers within the scene; Showing entire coral colonies or a large fragment that doesn't emphasize the microscopic scale; Any visual elements that imply a natural reef environment or 'in situ' observation; Generic 'stressed coral' imagery, such as bleached coral; Stylized representations that are overly cartoonish or lack scientific precision in the depiction of cilia; People in lab coats or hands holding equipment; any text, letters, numbers, labels, logos, watermarks or interface elements.",
+      "art_direction": {
+        "candidates": [
+          {
+            "idea": "Microscopic view of coral cilia showing various states of beating and vortex generation across a temperature gradient.",
+            "thumbnail": 4,
+            "fidelity": 5,
+            "freshness": 3
+          },
+          {
+            "idea": "Photo-editorial of a Porites lutea coral fragment in a dark laboratory beaker, hinting at experimental conditions.",
+            "thumbnail": 3,
+            "fidelity": 4,
+            "freshness": 2
+          },
+          {
+            "idea": "Scientific illustration focusing on the microscopic water vortices generated by coral cilia, showing their progressive disappearance due to heat.",
+            "thumbnail": 4,
+            "fidelity": 5,
+            "freshness": 4
+          }
+        ],
+        "visual_idea": "A magnified scientific illustration of the surface of a Porites lutea coral polyp, capturing the dynamic activity of its cilia and the microscopic water vortices they create, which progressively weaken and disappear from left to right, symbolizing the effect of acute heat stress.",
+        "focal_subject": "A dense, accurately depicted carpet of cilia on the coral polyp's surface. Above them, transparent, swirling currents and flow patterns (vortices) of water, optionally with subtle, luminous nanoparticulate tracers.",
+        "setting": "The immediate microscopic environment just above the coral tissue, in a dark, controlled laboratory setting. The background fades to a deep, indistinct blue or black, emphasizing the close-up view.",
+        "style": "scientific_illustration",
+        "composition": "Extreme close-up on the coral surface, depicted horizontally. The left side shows vigorously beating cilia creating clear, strong, organized water vortices. Towards the right, the cilia's movement becomes erratic, then slows significantly, and the vortices weaken, dissipate, and eventually vanish, leaving still or chaotic water patterns. The transition should be a smooth gradient. The active cilia and strong vortices on the left half will occupy the central 50% of the image's width.",
+        "lighting_and_palette": "Soft, even, almost 'dark-field' microscopic illumination to highlight the cilia and water flow. A palette of deep ocean blues, teals, and dark greens for the coral tissue and background water, contrasted with luminous whites, light blues, and hints of green for the swirling water currents and potential tracers, especially prominent where the flow is strong and organized. The parts where the cilia are inactive will have less luminescence or appear more muted.",
+        "accuracy_notes": [
+          "Cilia should be anatomically correct for Porites lutea, including shape, density, and beating mechanism (even if simplified).",
+          "The water vortices are abstract representations of flow dynamics from the model and observation; they should appear as currents or paths, not solid structures.",
+          "The gradient must clearly show the progression from coordinated, vigorous movement and strong vortices to inhibited movement and absent vortices, consistent with the article's temperature-dependent observations (e.g., strong flow on the left, vanishing at the right).",
+          "The setting is a lab experiment; avoid any natural reef elements or bright sunlight.",
+          "The image must not depict full coral bleaching, only the disruption of ciliary function and associated water flow."
+        ],
+        "avoid": [
+          "Depiction of temperature numbers or explicit thermometers within the scene.",
+          "Showing entire coral colonies or a large fragment that doesn't emphasize the microscopic scale.",
+          "Any visual elements that imply a natural reef environment or 'in situ' observation.",
+          "Generic 'stressed coral' imagery, such as bleached coral.",
+          "Stylized representations that are overly cartoonish or lack scientific precision in the depiction of cilia.",
+          "People in lab coats or hands holding equipment."
+        ],
+        "alt_text_es": "Ilustración científica microscópica de cilios de coral, mostrando vórtices de agua vigorosos que se disipan progresivamente, representando el deterioro por calor agudo."
+      },
+      "input_images": [],
+      "original": {
+        "path": "docs/image-rights/originals/2026-10-28-2026-09-20-coral-cilia-vortices.png",
+        "sha256": "900db87108cbd854b4aef820d238b9041967603eff3e26ff4d07c4b6e6f23b13",
+        "bytes": 2657662,
+        "width": 1672,
+        "height": 941
+      },
+      "exported": {
+        "path": "src/assets/images/2026-09-20-coral-cilia-vortices-original.webp",
+        "sha256": "c65dfe80367b1794855c35e1d804126adffaba3f0c24aa6dc1053ba1929e2c75",
+        "bytes": 349712,
+        "width": 1672,
+        "height": 941,
+        "parameters": {
+          "format": "webp",
+          "quality": 90,
+          "effort": 6,
+          "resized": false
+        }
+      },
+      "replaces": {
+        "path": "src/assets/images/2026-09-20-coral-cilia-flow-original.webp",
+        "sha256": "71e6404b1ecafade94f7dc39d38c00249b86bff4d8451c4779816f55dd7562ff"
+      }
+    }
+  ],
+  "rights_statement": "New outputs generated from text alone, with no reference-image inputs. Provenance is documented; no claim of exclusive copyright, a third-party licence or independent scientific review is made.",
+  "review": {
+    "visual_owner_approval": "approved 2026-10-27 (4-article comparison); Mars regenerated to fix the volcano shape",
+    "independent_scientific_review": "not_performed"
+  }
+}

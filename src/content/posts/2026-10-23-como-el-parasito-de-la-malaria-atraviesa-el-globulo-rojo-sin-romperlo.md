@@ -12,8 +12,8 @@ tags:
   - moving junction
   - inhibidor proteico
 excerpt: Criomicroscopía revela la estructura del portal que usa Plasmodium para invadir células; un inhibidor lo bloquea en cultivo, pero falta probarlo in vivo.
-image: ~/assets/images/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.png
-image_alt: 'Ilustración generada con IA: el parásito de la malaria atraviesa la membrana de un glóbulo rojo a través de un anillo de unión.'
+image: ~/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp
+image_alt: 'Ilustración generada con IA: un parásito de la malaria entra en un glóbulo rojo a través de una unión de proteínas que hunde la membrana sin romperla.'
 source_url: https://quantamagazine.org/malaria-parasite-caught-in-the-act-of-breaking-and-entering-20261023/
 refinery_id: '4021'
 headlines_variants:

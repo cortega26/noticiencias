@@ -12,8 +12,8 @@ tags:
   - temperatura
   - arrecife
 excerpt: En Porites lutea, la coordinación ciliar empezó a deteriorarse a 37 °C; los vórtices desaparecieron a 39 °C y a 41 °C hubo poca o ninguna actividad y mortalidad total en el experimento.
-image: ~/assets/images/2026-09-20-coral-cilia-flow-original.webp
-image_alt: 'Ilustración original de un coral con cilios que mueven el agua en pequeños remolinos.'
+image: ~/assets/images/2026-09-20-coral-cilia-vortices-original.webp
+image_alt: 'Ilustración generada con IA: los cilios de un coral generan remolinos de agua que se debilitan de izquierda a derecha, como ocurre con el calor agudo.'
 source_url: https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/
 refinery_id: '2422'
 headlines_variants:
