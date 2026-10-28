@@ -2,7 +2,7 @@
 
 ## Imágenes de portada v2: reemplazo del 28-10-2026
 
-Tres ilustraciones nuevas, generadas con la herramienta integrada `image_gen` de Codex a partir del director de arte v2 del backend (plan 202), solo desde texto y sin imágenes de referencia. El propietario aprobó la dirección visual el 27-10-2026 en una comparación de cuatro artículos. La de Marte se regeneró para corregir la forma del volcán: Arsia Mons es un volcán escudo, no un cono. El artículo de Shanidar A conserva su imagen del 24-10-2026, porque la versión v2 reproducía la lesión concreta del fósil como si fuera una fotografía.
+Tres ilustraciones nuevas, generadas con la herramienta integrada `image_gen` de Codex a partir del director de arte v2 del backend (plan 202), solo desde texto y sin imágenes de referencia. El propietario aprobó la dirección visual el 27-10-2026 en una comparación de cuatro artículos. La de Marte se regeneró para corregir la forma del volcán: Arsia Mons es un volcán escudo, no un cono. La imagen de Shanidar A se trata en la sección siguiente.
 
 Son ilustraciones conceptuales generadas con IA, identificadas así en su texto alternativo. No documentan especímenes, lugares ni resultados observados. Originales nativos en `docs/image-rights/originals/2026-10-28-*.png`; exportación WebP de calidad 90 con Sharp, 1672 × 941 px, sin redimensionar. [Recibo con prompt íntegro, dirección de arte y hashes](./image-rights/2026-10-28-hero-images-v2.json). Es un registro del agente, no una certificación del proveedor ni una revisión científica.
 
@@ -11,6 +11,15 @@ Son ilustraciones conceptuales generadas con IA, identificadas así en su texto 
 | como-el-parasito-de-la-malaria-atraviesa-el-globu | `src/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp` | `07964cd8589a2b196420d2539a9c55db8a9376a0d25386861da8608c5e8e5017` | `src/assets/images/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.png`                        |
 | un-modelo-explica-una-nube-marciana-de-1-600-km-c | `src/assets/images/2026-10-24-arsia-mons-elongated-cloud-original.webp` | `caaf524384a619ed2a04e4cbc8d975ffb088487672713bd1166315e4b110f193` | `src/assets/images/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.png` |
 | pelos-diminutos-la-clave-inesperada-para-la-super | `src/assets/images/2026-09-20-coral-cilia-vortices-original.webp`       | `c65dfe80367b1794855c35e1d804126adffaba3f0c24aa6dc1053ba1929e2c75` | `src/assets/images/2026-09-20-coral-cilia-flow-original.webp`                                                         |
+
+## Shanidar A: imagen v2 por decisión del propietario (28-10-2026)
+
+El propietario eligió la imagen v2 del director de arte (backend, plan 202) en lugar de la ilustración genérica del 24-10-2026, después de que se le advirtiera que reproduce la perforación en estilo fotográfico. Se generó con `image_gen` de Codex solo desde texto, sin imágenes de referencia. Es una recreación generada con IA, no una fotografía del fósil Shanidar A ni evidencia documental, y el texto alternativo lo dice expresamente.
+
+- Original nativo: `docs/image-rights/originals/2026-10-28-shanidar-scapula-perforation.png`; SHA-256 `05233d9594dd222b4f45c8a02201d9b7842407ff5a666a41437b3f306f9cc407`.
+- Exportación: `src/assets/images/2026-10-17-shanidar-scapula-perforation-original.webp`; SHA-256 `83e68712de62c8d26183941a2ff472d44a01cab649df890817a42cd2484d11cc`; 1672 × 941 px, WebP calidad 90, sin redimensionar.
+- Reemplaza `src/assets/images/2026-10-17-shanidar-scapula-study-original.webp` (SHA-256 `483809951141cd6521d35f09cd360453b5a73271e235629a881830959572f500`), que se conserva en el historial Git junto con su original de 24-10-2026.
+- [Recibo con prompt íntegro, dirección de arte y hashes](./image-rights/2026-10-28-shanidar-hero-v2.json).
 
 ## Shanidar A: reemplazo preparado el 24-10-2026
 

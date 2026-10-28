@@ -1,0 +1,79 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-28T11:16:17.245Z",
+  "base_commit": "bb67d97eb90e0a2f581bd426072cca782b683be7",
+  "article": "src/content/posts/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.md",
+  "tool": "OpenAI imagegen (Codex built-in image_gen) via Noticiencias art director v2 (backend plan 202)",
+  "input_images": [],
+  "prompt": "Editorial documentary photograph for a premium science magazine cover story. Real camera and lens behaviour, natural light, believable textures, restrained colour grading.\n\nAn impactful close-up of a 75,000-year-old Neanderthal scapula, highlighting a distinct 15mm circular perforation and radiating fractures as the central and observable evidence of an ancient injury.\n\nMain subject: The fossilized left scapula of Neanderthal Shanidar A, prominently featuring an almost circular perforation approximately 15mm in diameter, with clear radial fracture lines extending from the hole. The bone should appear ancient, textured, and slightly earthy.\nSetting: A dark, neutral, and out-of-focus background with minimal texture, subtly suggestive of the cave environment but ensuring the bone remains the absolute focus.\nComposition: An extreme close-up where the scapula fills most of the frame. The perforation is positioned centrally within the 50% central width of the image. The bone is slightly angled to enhance the visibility of the perforation's depth and fracture details. Sharp focus is on the injury itself. Landscape 16:9 frame. Keep the main subject whole and inside the central half of the width so the image still works cropped to a square; the side thirds only carry context.\nLighting and palette: Soft, directional lighting from above and slightly to the side, creating subtle shadows that define the bone's contours and the perforation's depth. The mood is scientific and slightly mysterious. Dominant colors are ochre, bone-white, and earthy greys for the scapula, set against a very dark brown or deep grey background.\nAccuracy: The perforation must be clearly visible, circular, and approximately 15mm in diameter; Prominent radial fractures emanating from the perforation are essential; The bone must unequivocally appear as an ancient, fossilized Neanderthal scapula; The image must strictly focus on the scapula from Shanidar A.\nAvoid: Any depiction of a Neanderthal individual, whether alive, injured, or dead; Any form of weapon (spear, projectile, etc.), either piercing the bone or shown nearby; Any scene implying an attack, accident, or social interaction (e.g., care, burial); Modern archaeological tools, human hands, or laboratory equipment; Abstract representations of emotion, intention, or pain; Any wide shot of Shanidar Cave that would diminish the focus on the bone; any text, letters, numbers, labels, logos, watermarks or interface elements.",
+  "art_direction": {
+    "candidates": [
+      {
+        "idea": "A close-up of the ancient Neanderthal scapula, clearly showing the 15mm circular perforation and radial fractures.",
+        "thumbnail": 5,
+        "fidelity": 5,
+        "freshness": 4
+      },
+      {
+        "idea": "The perforated scapula, with the tip of a hypothetical wooden spear positioned next to or above the perforation, but clearly not in it.",
+        "thumbnail": 4,
+        "fidelity": 3,
+        "freshness": 3
+      },
+      {
+        "idea": "A wide shot of the interior of Shanidar Cave with the discovery area subtly highlighted, and a small inset of the perforated scapula.",
+        "thumbnail": 2,
+        "fidelity": 4,
+        "freshness": 3
+      }
+    ],
+    "visual_idea": "An impactful close-up of a 75,000-year-old Neanderthal scapula, highlighting a distinct 15mm circular perforation and radiating fractures as the central and observable evidence of an ancient injury.",
+    "focal_subject": "The fossilized left scapula of Neanderthal Shanidar A, prominently featuring an almost circular perforation approximately 15mm in diameter, with clear radial fracture lines extending from the hole. The bone should appear ancient, textured, and slightly earthy.",
+    "setting": "A dark, neutral, and out-of-focus background with minimal texture, subtly suggestive of the cave environment but ensuring the bone remains the absolute focus.",
+    "style": "photo_editorial",
+    "composition": "An extreme close-up where the scapula fills most of the frame. The perforation is positioned centrally within the 50% central width of the image. The bone is slightly angled to enhance the visibility of the perforation's depth and fracture details. Sharp focus is on the injury itself.",
+    "lighting_and_palette": "Soft, directional lighting from above and slightly to the side, creating subtle shadows that define the bone's contours and the perforation's depth. The mood is scientific and slightly mysterious. Dominant colors are ochre, bone-white, and earthy greys for the scapula, set against a very dark brown or deep grey background.",
+    "accuracy_notes": [
+      "The perforation must be clearly visible, circular, and approximately 15mm in diameter.",
+      "Prominent radial fractures emanating from the perforation are essential.",
+      "The bone must unequivocally appear as an ancient, fossilized Neanderthal scapula.",
+      "The image must strictly focus on the scapula from Shanidar A."
+    ],
+    "avoid": [
+      "Any depiction of a Neanderthal individual, whether alive, injured, or dead.",
+      "Any form of weapon (spear, projectile, etc.), either piercing the bone or shown nearby.",
+      "Any scene implying an attack, accident, or social interaction (e.g., care, burial).",
+      "Modern archaeological tools, human hands, or laboratory equipment.",
+      "Abstract representations of emotion, intention, or pain.",
+      "Any wide shot of Shanidar Cave that would diminish the focus on the bone."
+    ],
+    "alt_text_es": "Primer plano de una escápula de neandertal fosilizada de Shanidar A, mostrando una perforación circular de 15 mm con fracturas radiales."
+  },
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-28-shanidar-scapula-perforation.png",
+    "sha256": "05233d9594dd222b4f45c8a02201d9b7842407ff5a666a41437b3f306f9cc407",
+    "bytes": 2620030,
+    "width": 1672,
+    "height": 941
+  },
+  "exported": {
+    "path": "src/assets/images/2026-10-17-shanidar-scapula-perforation-original.webp",
+    "sha256": "83e68712de62c8d26183941a2ff472d44a01cab649df890817a42cd2484d11cc",
+    "bytes": 299176,
+    "width": 1672,
+    "height": 941,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-10-17-shanidar-scapula-study-original.webp",
+    "sha256": "483809951141cd6521d35f09cd360453b5a73271e235629a881830959572f500"
+  },
+  "evidence_boundary": "Photo-like AI recreation of a scapula with a circular perforation, generated from text. It is not the Shanidar A fossil, a photograph of it or documentary evidence; the alt text says so.",
+  "owner_decision": "On 2026-10-28 the owner chose this image over the generic scapula-and-lens illustration of 2026-10-24, after being told it reproduces the lesion in a photo-like style.",
+  "rights_statement": "New output generated from text alone, with no reference-image inputs. No claim of exclusive copyright, third-party licence or scientific review is made."
+}

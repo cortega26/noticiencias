@@ -14,10 +14,8 @@ tags:
 excerpt:
   Una perforación en la escápula de Shanidar A sugiere una herida de lanza hace unos 75.000 años. El arma,
   la intención y el agresor no están demostrados.
-image: ~/assets/images/2026-10-17-shanidar-scapula-study-original.webp
-image_alt:
-  'Ilustración conceptual generada con IA de una escápula sobre papel de estudio junto a una lupa; no
-  reproduce el fósil de Shanidar A.'
+image: ~/assets/images/2026-10-17-shanidar-scapula-perforation-original.webp
+image_alt: 'Recreación generada con IA de una escápula neandertal con una perforación circular y fracturas radiales; no es una fotografía del fósil Shanidar A.'
 source_url: https://404media.co/this-might-be-the-earliest-known-spear-murder-in-earths-history/
 refinery_id: '3724'
 headlines_variants:
