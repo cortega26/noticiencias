@@ -1266,38 +1266,38 @@
       }
     ]
   },
-  "~/assets/images/2026-09-20-coral-cilia-flow-original.webp": {
-    "originalWidth": 1500,
-    "originalHeight": 1000,
-    "hash": "71e6404b1ecafade",
+  "~/assets/images/2026-09-20-coral-cilia-vortices-original.webp": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "c65dfe80367b1794",
     "variants": [
       {
         "width": 400,
-        "height": 267,
+        "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.400.avif"
+        "objectKey": "posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.400.avif"
       },
       {
         "width": 900,
-        "height": 600,
+        "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.900.avif"
+        "objectKey": "posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.900.avif"
       },
       {
         "width": 1400,
-        "height": 933,
+        "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1400.avif"
+        "objectKey": "posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.1400.avif"
       },
       {
-        "width": 1500,
-        "height": 1000,
+        "width": 1672,
+        "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1500.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-flow-original.71e6404b1ecafade.1500.avif"
+        "objectKey": "posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-09-20-coral-cilia-vortices-original.c65dfe80367b1794.1672.avif"
       }
     ]
   },
@@ -1616,73 +1616,73 @@
       }
     ]
   },
-  "~/assets/images/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.png": {
+  "~/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp": {
     "originalWidth": 1672,
     "originalHeight": 941,
-    "hash": "6bbeda42d26a7a38",
+    "hash": "07964cd8589a2b19",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.400.avif"
+        "objectKey": "posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.400.avif"
       },
       {
         "width": 900,
         "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.900.avif"
+        "objectKey": "posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1400.avif"
+        "objectKey": "posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.1400.avif"
       },
       {
         "width": 1672,
         "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-parasite-caught-in-the-act-of-breaking-and-entering.6bbeda42d26a7a38.1672.avif"
+        "objectKey": "posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-23-malaria-merozoite-invasion-original.07964cd8589a2b19.1672.avif"
       }
     ]
   },
-  "~/assets/images/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.png": {
+  "~/assets/images/2026-10-24-arsia-mons-elongated-cloud-original.webp": {
     "originalWidth": 1672,
     "originalHeight": 941,
-    "hash": "32a81a90966f2e9e",
+    "hash": "caaf524384a619ed",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.400.avif"
+        "objectKey": "posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.400.avif"
       },
       {
         "width": 900,
         "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.900.avif"
+        "objectKey": "posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1400.avif"
+        "objectKey": "posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.1400.avif"
       },
       {
         "width": 1672,
         "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.32a81a90966f2e9e.1672.avif"
+        "objectKey": "posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-24-arsia-mons-elongated-cloud-original.caaf524384a619ed.1672.avif"
       }
     ]
   },
