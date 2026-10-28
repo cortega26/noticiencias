@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-27T12:06:41.599Z",
+  "generated_at": "2026-10-28T12:48:15.025Z",
   "content": {
-    "total_articles": 53,
-    "v2_articles": 41,
-    "total_words": 30134,
-    "avg_words": 569,
+    "total_articles": 54,
+    "v2_articles": 42,
+    "total_words": 30912,
+    "avg_words": 572,
     "categories": [
       {
         "name": "Ciencia",
-        "count": 15
+        "count": 16
       },
       {
         "name": "Tecnología",
@@ -176,6 +176,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada — estudio revisado por pares en Nature Geoscience basado en modelado numérico; la hipótesis explica la observación con fidelidad, pero la humedad extrema y la nucleación homogénea no han sido confirmadas por mediciones directas in situ.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo",
+        "title": "Cómo el parásito de la malaria abre un portal en la sangre y lo cierra sin rastro",
+        "date": "2026-10-23",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — noticia en Quanta Magazine sobre un estudio estructural reciente (2026) de un solo laboratorio; la resolución de la unión móvil es un avance técnico notable, pero el inhibidor solo se probó in vitro y no hay confirmación independiente ni datos en modelos animales o humanos",
         "review_status": null
       },
       {
@@ -815,11 +827,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-27T12:06:40.839Z"
+    "generated_at": "2026-10-28T12:48:14.382Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 53,
+    "derivatives_available": 54,
     "missing_derivatives": 0
   },
   "health": {
@@ -829,16 +841,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "41 artículos v2 completos."
+      "detail": "42 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "53 artículo(s) con imagen y alt.",
+      "detail": "54 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "53 derivativos disponibles."
+      "detail": "54 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -847,10 +859,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "176 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "185 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 176,
+        "processed": 185,
         "failed": 0
       }
     },
