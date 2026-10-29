@@ -1756,6 +1756,41 @@
       }
     ]
   },
+  "~/assets/images/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "6afa6c0e8c9e14d3",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.png": {
     "originalWidth": 1672,
     "originalHeight": 941,
