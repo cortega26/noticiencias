@@ -1791,6 +1791,41 @@
       }
     ]
   },
+  "~/assets/images/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.png": {
+    "originalWidth": 1672,
+    "originalHeight": 940,
+    "hash": "fa1b2d11c7d59ab4",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 506,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 787,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 940,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
