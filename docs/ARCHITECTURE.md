@@ -62,7 +62,7 @@ configuration and is not changed here.
 ### Search Flow
 
 1. `src/pages/search.json.js` reads `getCollection('posts')` during build.
-2. It uses `src/utils/build-search-index.ts` to strip Markdown, normalize, build a serialized Lunr index, and emit a versioned artifact `{ version, index, store }` to `/search.json`. Version 2 maps short numeric Lunr references to compact store entries containing canonical URLs; this avoids repeating long URLs in posting lists while preserving full-body search and result links. The compressed 150 KiB guard remains enforced by `scripts/check-search-budget.js`.
+2. It uses `src/utils/build-search-index.ts` to strip Markdown, normalize, build a serialized Lunr index, and emit a versioned artifact `{ version, index, store }` to `/search.json`. Version 2 maps short numeric Lunr references to compact store entries containing canonical URLs. Titles, excerpts, and tags are indexed in full; long article bodies contribute five evenly spaced windows capped at 2,800 characters per article. Full articles remain available at their canonical URLs. The compressed 150 KiB guard remains enforced by `scripts/check-search-budget.js`.
 3. `src/pages/buscar.astro` composes `src/components/common/SearchInterface.astro`.
 4. `SearchInterface.astro` owns the browser script that fetches the prebuilt serialized Lunr index (plan 039) and deserializes it via `lunr.Index.load()`.
 5. `src/utils/search.ts` owns pure search normalization.

@@ -23,12 +23,51 @@ import { normalizeSearchDocument } from './search';
 export const SEARCH_ARTIFACT_VERSION = 2;
 
 /**
+ * Maximum body text indexed per article. Five evenly spaced windows retain
+ * search terms from across long articles without shipping the full corpus in
+ * the shared search artifact. Titles, excerpts, and tags remain fully indexed.
+ */
+export const SEARCH_INDEX_CONTENT_MAX_LENGTH = 2_800;
+
+/**
  * Maximum description length kept in the result store (Stream C slim).
  * Full excerpts remain in frontmatter/RSS; the search store only needs a
  * short snippet for list rendering. Truncation happens at build time so the
  * 150KB gzip ceiling (scripts/check-search-budget.js) survives 10/week cadence.
  */
 export const SEARCH_STORE_DESCRIPTION_MAX_LENGTH = 160;
+
+/**
+ * Keep short article bodies intact and sample long ones across their length.
+ * The result store never contains body text; this bounds only Lunr's content
+ * field and leaves each full article available at its canonical URL.
+ */
+export function sampleSearchContent(content: string): string {
+  if (content.length <= SEARCH_INDEX_CONTENT_MAX_LENGTH) return content;
+
+  const sampleCount = 5;
+  const separatorBudget = sampleCount - 1;
+  const windowLength = Math.floor(
+    (SEARCH_INDEX_CONTENT_MAX_LENGTH - separatorBudget) / sampleCount
+  );
+  const maxStart = content.length - windowLength;
+  const windows = Array.from({ length: sampleCount }, (_, index) => {
+    const target = Math.round((maxStart * index) / (sampleCount - 1));
+    let start = target === 0 ? 0 : content.indexOf(' ', target);
+    if (start < 0) start = content.length;
+    else if (start > 0) start += 1;
+
+    let end = Math.min(content.length, start + windowLength);
+    if (end < content.length) {
+      const boundary = content.lastIndexOf(' ', end);
+      if (boundary > start) end = boundary;
+    }
+
+    return content.slice(start, end).trim();
+  });
+
+  return windows.filter(Boolean).join(' ');
+}
 
 export interface SearchStoreEntry {
   title: string;
@@ -117,8 +156,8 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
     };
   }
 
-  // Preserve the same fields, full body and boosts; only the internal ref
-  // changes. Numeric refs replace long canonical URLs in posting lists.
+  // Keep the same fields and boosts. Long body content is sampled at evenly
+  // spaced windows; numeric refs replace long canonical URLs in postings.
   const index = lunr(function (this: lunr.Builder) {
     this.ref('id');
     this.field('title', { boost: 10 });
@@ -127,7 +166,12 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
     this.field('tags');
 
     sorted.forEach((doc, id) => {
-      this.add({ ...normalizeSearchDocument(doc), id: String(id) });
+      const normalized = normalizeSearchDocument(doc);
+      this.add({
+        ...normalized,
+        content: sampleSearchContent(normalized.content),
+        id: String(id),
+      });
     });
   });
 
