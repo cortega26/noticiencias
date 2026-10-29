@@ -1721,6 +1721,41 @@
       }
     ]
   },
+  "~/assets/images/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "5e528f19b6070f0a",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
