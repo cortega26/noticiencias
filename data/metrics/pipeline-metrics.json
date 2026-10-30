@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-29T12:56:24.672Z",
+  "generated_at": "2026-10-30T12:49:43.376Z",
   "content": {
-    "total_articles": 54,
-    "v2_articles": 42,
-    "total_words": 30912,
-    "avg_words": 572,
+    "total_articles": 57,
+    "v2_articles": 45,
+    "total_words": 33401,
+    "avg_words": 586,
     "categories": [
       {
         "name": "Ciencia",
-        "count": 16
+        "count": 17
       },
       {
         "name": "Tecnología",
-        "count": 13
+        "count": 14
       },
       {
         "name": "Salud",
@@ -24,7 +24,7 @@
       },
       {
         "name": "Astronomía",
-        "count": 4
+        "count": 5
       },
       {
         "name": "Arqueología",
@@ -44,6 +44,10 @@
       }
     ],
     "top_tags": [
+      {
+        "name": "inteligencia artificial",
+        "count": 2
+      },
       {
         "name": "universo",
         "count": 2
@@ -159,13 +163,33 @@
       {
         "name": "química",
         "count": 1
-      },
-      {
-        "name": "sarampión",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano",
+        "title": "Rubin estrena su cámara y ya encuentra un candidato a planeta enano",
+        "date": "2026-10-28",
+        "categories": [
+          "Astronomía"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — descubrimiento anunciado vía comunicado sin revisión por pares; tamaño y esfericidad son inferencias a partir de brillo óptico sin medición directa de albedo ni forma",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa",
+        "title": "Por qué una mujer de 30.000 años obliga a reescribir la historia genética de Europa",
+        "date": "2026-10-27",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio publicado en revista revisada por pares (Science) con secuenciación de genomas completos, pero tamaño muestral muy pequeño (n=3) y limitaciones explícitas en alcance geográfico y mecanístico",
+        "review_status": null
+      },
       {
         "slug": "2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada",
         "title": "Un modelo revela cómo una nube de 1.600 km en Marte nace sin polvo",
@@ -212,6 +236,18 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Moderada: estimaciones globales de una síntesis, con incertidumbre reconocida; no prueba permanencia ni una intervención climática.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico",
+        "title": "IA crea proteasas desde cero conservando solo el núcleo catalítico",
+        "date": "2026-10-14",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio revisado por pares en Nature con validación experimental bioquímica y celular, pero resultados preliminares sin evaluación proteómica de especificidad ni datos in vivo; los autores señalan limitaciones del software de diseño y necesidad de restricciones cinéticas integradas.",
         "review_status": null
       },
       {
@@ -827,11 +863,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-29T12:56:23.764Z"
+    "generated_at": "2026-10-30T12:49:40.835Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 54,
+    "derivatives_available": 57,
     "missing_derivatives": 0
   },
   "health": {
@@ -841,16 +877,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "42 artículos v2 completos."
+      "detail": "45 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "54 artículo(s) con imagen y alt.",
+      "detail": "57 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "54 derivativos disponibles."
+      "detail": "57 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -859,10 +895,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "186 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "190 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 186,
+        "processed": 190,
         "failed": 0
       }
     },
