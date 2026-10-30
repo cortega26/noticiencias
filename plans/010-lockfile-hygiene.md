@@ -192,5 +192,6 @@ For the human/agent who owns this code after the change lands:
 - **Deferred:** the `esbuild: 0.28.1` exact override will age into dead
   weight on Astro 7.3.x — revisit (keep vs drop) once the 7.3 line is
   stable, unblocked by nothing.
-- **Deferred:** `lunr@2.3.9` is maintenance-inactive (0 CVEs) — kept
-  deliberately; see plan 014 for the search-budget decision that governs it.
+- **Deferred in 010; superseded 2026-10-29:** `lunr@2.3.9` was kept at the
+  time because it had no known CVEs. ADR-0015 later replaces it with
+  MiniSearch v3 after the full-text search artifact exceeded its budget.

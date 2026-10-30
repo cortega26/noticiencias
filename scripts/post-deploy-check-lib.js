@@ -619,8 +619,8 @@ export function verifyRouteHtml(html) {
 }
 
 /**
- * Verifies the build-time Lunr search artifact (plan 039):
- * `{ version: 2, index: <serialized lunr index>, store: { numericRef: entry } }`.
+ * Verifies the build-time MiniSearch artifact:
+ * `{ version: 3, index: <serialized MiniSearch index>, store: { numericId: entry } }`.
  * @param {unknown} json
  */
 export function verifySearchJson(json) {
@@ -628,11 +628,16 @@ export function verifySearchJson(json) {
     throw new Error('Search index is not a valid artifact object.');
   }
 
-  if (json.version !== 2) {
+  if (json.version !== 3) {
     throw new Error(`Search index artifact version unsupported: ${json.version}.`);
   }
 
-  if (!json.index || typeof json.index !== 'object') {
+  if (
+    !json.index ||
+    typeof json.index !== 'object' ||
+    json.index.serializationVersion !== 2 ||
+    !Array.isArray(json.index.index)
+  ) {
     throw new Error('Search index artifact is missing the serialized index.');
   }
 
@@ -643,6 +648,10 @@ export function verifySearchJson(json) {
   const entries = Object.values(json.store);
   if (entries.length === 0) {
     throw new Error('Search index is empty.');
+  }
+
+  if (json.index.documentCount !== entries.length) {
+    throw new Error('Search index and result store contain different document counts.');
   }
 
   const firstItem = entries[0];

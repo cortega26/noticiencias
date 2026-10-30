@@ -49,7 +49,7 @@ export async function GET() {
       throw new Error('FATAL: All posts failed validation during search index generation.');
     }
 
-    // Build the serialized Lunr index + compact result store at build time.
+    // Build the serialized MiniSearch index + compact result store at build time.
     const artifact = buildSearchArtifact(documents);
 
     return new Response(JSON.stringify(artifact), {

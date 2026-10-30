@@ -1,31 +1,28 @@
 import type { SearchDocument } from '~/utils/search';
+import { MINI_SEARCH_OPTIONS, SEARCH_ARTIFACT_VERSION } from '~/utils/search-config';
 
-export interface LunrResult {
-  ref: string;
+interface SearchResult {
+  id: string;
   score: number;
-  matchData: unknown;
 }
 
-interface LunrIndex {
-  search(query: string): LunrResult[];
+interface SearchIndex {
+  search(query: string): SearchResult[];
 }
 
-interface LunrStatic {
-  Index: { load(serialized: unknown): LunrIndex };
+interface MiniSearchStatic {
+  loadJSON(serialized: string, options: typeof MINI_SEARCH_OPTIONS): SearchIndex;
 }
 
-let index: LunrIndex | null = null;
+let index: SearchIndex | null = null;
 let store: Record<string, SearchDocument> = {};
-let indexPromise: Promise<LunrIndex> | null = null;
+let indexPromise: Promise<SearchIndex> | null = null;
 
-/**
- * Módulo browser-only: carga el índice de búsqueda precompilado
- * (`/search.json`) una sola vez y comparte la promesa entre el diálogo
- * del header y la página `/buscar/`. El arranque es diferido: `loadIndex`
- * solo se invoca al primer uso (foco o apertura del diálogo).
- */
-async function fetchIndex(): Promise<LunrIndex> {
-  const response = await fetch('/search.json', { cache: 'force-cache' });
+/** Loads the static index once, shared by the header and /buscar/ page. */
+async function fetchIndex(): Promise<SearchIndex> {
+  const response = await fetch(`/search.json?v=${SEARCH_ARTIFACT_VERSION}`, {
+    cache: 'force-cache',
+  });
 
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -34,24 +31,22 @@ async function fetchIndex(): Promise<LunrIndex> {
   if (!artifact || typeof artifact !== 'object') {
     throw new Error('El índice de búsqueda tiene un formato inválido.');
   }
-  if (artifact.version !== 2) {
+  if (artifact.version !== SEARCH_ARTIFACT_VERSION) {
     throw new Error('La versión del índice de búsqueda no es compatible.');
   }
   if (!artifact.index || !artifact.store) {
     throw new Error('El índice de búsqueda está incompleto.');
   }
 
-  // v2 stores numeric Lunr refs; each document still carries the canonical
-  // URL needed by results, recent-post links and analytics.
   store = artifact.store as Record<string, SearchDocument>;
 
-  const lunrModule = await import('lunr');
-  const lunr = lunrModule.default as LunrStatic;
-  return lunr.Index.load(artifact.index);
+  const miniSearchModule = await import('minisearch');
+  const MiniSearch = miniSearchModule.default as unknown as MiniSearchStatic;
+  return MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
 }
 
-/** Carga el índice; idempotente y cacheado entre llamadas. */
-export function loadIndex(): Promise<LunrIndex> {
+/** Loads the index; idempotent and cached across calls. */
+export function loadIndex(): Promise<SearchIndex> {
   if (!indexPromise) {
     indexPromise = fetchIndex()
       .then((loaded) => {
@@ -66,23 +61,20 @@ export function loadIndex(): Promise<LunrIndex> {
   return indexPromise;
 }
 
-/** Devuelve true cuando el índice ya está disponible en memoria. */
 export function isIndexReady(): boolean {
   return index !== null;
 }
 
-/** Ejecuta una consulta Lunr ya normalizada (con sufijos `*` si aplica). */
 export function search(query: string): Array<{ ref: string; score: number; doc: SearchDocument }> {
   if (!index) return [];
   return index
     .search(query)
-    .map((result) => ({ ref: result.ref, score: result.score, doc: store[result.ref] }))
+    .map((result) => ({ ref: result.id, score: result.score, doc: store[result.id] }))
     .filter((result): result is { ref: string; score: number; doc: SearchDocument } =>
       Boolean(result.doc)
     );
 }
 
-/** Últimos posts del índice, ordenados por fecha descendente. */
 export function getRecentPosts(count: number): SearchDocument[] {
   return Object.values(store)
     .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))

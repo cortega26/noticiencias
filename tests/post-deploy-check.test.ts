@@ -48,6 +48,20 @@ function jsonResponse(data: unknown, status = 200, headers: Record<string, strin
   });
 }
 
+function validSearchArtifact(store: Record<string, { title: string; url: string }>) {
+  const refs = Object.keys(store);
+  return {
+    version: 3,
+    index: {
+      serializationVersion: 2,
+      documentCount: refs.length,
+      documentIds: Object.fromEntries(refs.map((ref, position) => [String(position), ref])),
+      index: [],
+    },
+    store,
+  };
+}
+
 function createHomeHtml() {
   return `
     <!doctype html>
@@ -202,11 +216,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse({
-        version: 2,
-        index: {},
-        store: { '0': { title: 'Uno', url: '/ciencia/uno/' } },
-      }),
+      jsonResponse(validSearchArtifact({ '0': { title: 'Uno', url: '/ciencia/uno/' } })),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -417,7 +427,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse({ version: 2, index: {}, store: {} }),
+      jsonResponse(validSearchArtifact({})),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
@@ -551,11 +561,7 @@ describe('Post-deploy deploy checker', () => {
           </body>
         </html>
       `),
-      jsonResponse({
-        version: 2,
-        index: {},
-        store: { '0': { title: 'Uno', url: '/ciencia/uno/' } },
-      }),
+      jsonResponse(validSearchArtifact({ '0': { title: 'Uno', url: '/ciencia/uno/' } })),
       new Response('<rss><channel><title>Noticiencias</title></channel></rss>', {
         status: 200,
         headers: { 'content-type': 'application/xml; charset=utf-8' },
