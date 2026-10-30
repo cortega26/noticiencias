@@ -15,7 +15,7 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 - Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](src/config.yaml).
 - Metadata emission: pages pass metadata through layouts into [`src/components/common/Metadata.astro`](src/components/common/Metadata.astro).
 - URL and taxonomy helpers: [`src/utils/permalinks.ts`](src/utils/permalinks.ts) and [`src/utils/blog.ts`](src/utils/blog.ts).
-- Search: build-time JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only Lunr UI on [`src/pages/buscar.astro`](src/pages/buscar.astro).
+- Search: build-time MiniSearch JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only UI on [`src/pages/buscar.astro`](src/pages/buscar.astro). The full article body is indexed; Spanish function words are filtered and the 150 KiB gzip budget is enforced.
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`.
 
 ## Key Directories

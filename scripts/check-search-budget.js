@@ -7,29 +7,18 @@
  *   - search.json exists and is valid JSON
  *   - artifact has version, index, store keys
  *   - store entries do NOT contain 'content' (raw post body)
- *   - short numeric Lunr refs map to unique canonical URLs
+ *   - numeric MiniSearch document IDs map to unique canonical URLs
  *   - store has at least one entry
- *   - deterministic serialization (numeric refs and canonical URLs sorted)
+ *   - deterministic serialization (numeric IDs and canonical URLs sorted)
  *   - gzip size under 150KB (deployment-friendly ceiling)
  *
  * Exits 0 on success, 1 on failure.
  *
- * Migration trigger (plan 114, measured 2026-09-16): 122047 bytes gzip at
- * 36 posts (~3.4 KB/post). At current density the 150KB ceiling binds
- * within ~10 new posts (~3 weeks at 3 posts/week). When this gate fails,
- * migrate the browser search to Pagefind (or slim the store) in a
- * dedicated plan — never raise GZIP_CEILING silently to make it pass.
- *
- * Stream C slim (2026-09-21, solo 10/week): store drops per-doc `image` URLs
- * and truncates descriptions to 160 chars at build time
- * (`SEARCH_STORE_DESCRIPTION_MAX_LENGTH`). Re-measure after slim; if gzip
- * still crosses WARN_BYTES (135KB), schedule the Pagefind migration next.
- *
- * Re-measured 2026-10-11 (plan 014 spike, post-slim): 147274 bytes gzip at
- * 43 posts (~3.4 KB/post avg; ~3.6 KB/post marginal over the 7 posts since
- * 2026-09-16 — the slim did not move the slope). Headroom ~6.3KB ~= 2 posts
- * (<1 week at 3 posts/week); WARN threshold (135KB) already crossed.
- * Verdict: trigger near — see docs/search-budget-verdict.md.
+ * Search artifact v3 uses MiniSearch's compact, serializable full-text index.
+ * It keeps the full normalized article body searchable and filters only
+ * configured Spanish stop words. The 150 KiB ceiling is unchanged.
+ * Historical measurements and the Pagefind comparison are recorded in
+ * docs/search-budget-verdict.md.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
@@ -39,7 +28,7 @@ const distPath = resolve(process.argv[2] || 'dist');
 const searchJsonPath = resolve(distPath, 'search.json');
 
 const GZIP_CEILING = 150 * 1024; // 150KB deployment-friendly ceiling
-const GZIP_WARN = 135 * 1024; // early warning: schedule Pagefind migration next
+const GZIP_WARN = 135 * 1024; // early warning: review index growth and options
 
 function fail(msg) {
   console.error(`❌ ${msg}`);
@@ -62,11 +51,20 @@ try {
 if (!artifact || typeof artifact !== 'object') {
   fail('search artifact is not an object');
 }
-if (artifact.version !== 2) {
-  fail(`search artifact version is ${artifact.version}, expected 2`);
+if (artifact.version !== 3) {
+  fail(`search artifact version is ${artifact.version}, expected 3`);
 }
 if (!artifact.index) {
   fail('search artifact is missing the index field');
+}
+if (
+  artifact.index.serializationVersion !== 2 ||
+  !Number.isInteger(artifact.index.documentCount) ||
+  !Array.isArray(artifact.index.index) ||
+  !artifact.index.documentIds ||
+  typeof artifact.index.documentIds !== 'object'
+) {
+  fail('search artifact does not contain a valid MiniSearch serialized index');
 }
 if (!artifact.store || typeof artifact.store !== 'object') {
   fail('search artifact is missing the store field');
@@ -84,13 +82,23 @@ for (const [url, entry] of storeEntries) {
   }
 }
 
-// v2 uses short stringified numeric Lunr refs, independent of canonical URLs.
-// Require a dense deterministic sequence so every posting maps to a store entry.
+// Require a dense numeric sequence so every MiniSearch document ID maps to a
+// canonical URL in the display store.
 const refs = storeEntries.map(([ref]) => ref);
 for (const [position, ref] of refs.entries()) {
   if (ref !== String(position)) {
     fail(`search store ref ${ref} at position ${position} is not a sequential numeric identifier`);
   }
+}
+if (artifact.index.documentCount !== refs.length) {
+  fail(`MiniSearch document count is ${artifact.index.documentCount}, expected ${refs.length}`);
+}
+const indexRefs = Object.values(artifact.index.documentIds);
+if (
+  indexRefs.length !== refs.length ||
+  indexRefs.some((ref, position) => ref !== String(position))
+) {
+  fail('MiniSearch document IDs do not match the ordered result store');
 }
 
 const urls = storeEntries.map(([ref, entry]) => {
@@ -111,21 +119,22 @@ if (JSON.stringify(urls) !== JSON.stringify(sortedUrls)) {
 }
 
 // Check gzip size
+const rawBytes = Buffer.byteLength(raw, 'utf-8');
 const gzipped = gzipSync(Buffer.from(raw, 'utf-8'));
-console.log(`  artifact: ${raw.length} bytes raw, ${gzipped.length} bytes gzip`);
+console.log(`  artifact: ${rawBytes} bytes raw, ${gzipped.length} bytes gzip`);
 if (gzipped.length > GZIP_CEILING) {
   fail(`gzip size ${gzipped.length} exceeds ${GZIP_CEILING} ceiling (deployment-friendly)`);
 }
 if (gzipped.length > GZIP_WARN) {
   console.warn(
-    `⚠️  gzip size ${gzipped.length} exceeds ${GZIP_WARN} warn threshold — schedule Pagefind migration next (Stream C slim already applied)`
+    `⚠️  gzip size ${gzipped.length} exceeds ${GZIP_WARN} warn threshold — review index growth and search options`
   );
 }
 
 // Check bloated fixture (for the regression-injection test)
-if (raw.length > 500 * 1024 && urls.length < 10) {
+if (rawBytes > 500 * 1024 && urls.length < 10) {
   fail(
-    `raw size ${raw.length} is suspiciously large for only ${urls.length} entries (bloated fixture?)`
+    `raw size ${rawBytes} is suspiciously large for only ${urls.length} entries (bloated fixture?)`
   );
 }
 

@@ -1,68 +1,97 @@
 import { describe, expect, it } from 'vitest';
-import lunr from 'lunr';
-import {
-  buildSearchArtifact,
-  sampleSearchContent,
-  SEARCH_INDEX_CONTENT_MAX_LENGTH,
-} from '../src/utils/build-search-index';
+import MiniSearch from 'minisearch';
+import { buildSearchArtifact } from '../src/utils/build-search-index';
+import { normalizeQuery } from '../src/utils/search';
+import { MINI_SEARCH_OPTIONS } from '../src/utils/search-config';
+import { processSearchTerm } from '../src/utils/search-stop-words';
 
-describe('bounded search content', () => {
-  it('leaves short content unchanged and bounds long content', () => {
-    const short = 'búsqueda corta';
-    expect(sampleSearchContent(short)).toBe(short);
-
-    const long = `inicio ${'relleno '.repeat(1_000)} final`;
-    const sampled = sampleSearchContent(long);
-    expect(sampled.length).toBeLessThanOrEqual(SEARCH_INDEX_CONTENT_MAX_LENGTH);
-    expect(sampled).toContain('inicio');
-    expect(sampled).toContain('final');
-  });
-
-  it('keeps searchable terms from evenly spaced parts of a long article', () => {
-    const words = Array.from({ length: 1_000 }, () => 'relleno');
-    const markers = [
+describe('full-text search index', () => {
+  it('finds terms at the start, middle, and end of a long article body', () => {
+    const body = [
       'inicioarticulo',
-      'primeracuarta',
+      'relleno '.repeat(1_000),
       'centroarticulo',
-      'terceracuarta',
+      'relleno '.repeat(1_000),
       'finalarticulo',
-    ];
-    for (const [index, position] of [25, 255, 485, 715, 970].entries()) {
-      words.splice(position, 0, markers[index]);
-    }
-
+    ].join(' ');
     const artifact = buildSearchArtifact([
       {
-        title: 'Artículo de prueba',
-        url: '/articulo-prueba/',
+        title: 'Artículo largo',
+        url: '/articulo-largo/',
         description: 'Resumen neutral.',
-        content: words.join(' '),
-        tags: [],
+        content: body,
       },
     ]);
-    const index = lunr.Index.load(artifact.index as object);
+    const index = MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
 
-    for (const marker of markers) {
-      const results = index.search(`${marker}*`);
+    for (const marker of ['inicioarticulo', 'centroarticulo', 'finalarticulo']) {
+      const results = index.search(normalizeQuery(marker));
       expect(results).toHaveLength(1);
-      expect(artifact.store[results[0].ref].url).toBe('/articulo-prueba/');
+      expect(artifact.store[results[0].id].url).toBe('/articulo-largo/');
     }
   });
 
-  it('keeps title, description, and tags searchable independently of body sampling', () => {
+  it('keeps titles, excerpts, and tags searchable', () => {
     const artifact = buildSearchArtifact([
       {
-        title: 'Título único',
+        title: 'TituloUnico',
         url: '/titulo/',
-        description: 'Descripción única',
-        content: `cuerpo ${'relleno '.repeat(1_000)}`,
+        description: 'DescripcionUnica',
+        content: 'cuerpo indexable',
         tags: ['etiquetaunica'],
       },
     ]);
-    const index = lunr.Index.load(artifact.index as object);
+    const index = MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
 
-    for (const term of ['titulo', 'descripcion', 'etiquetaunica']) {
-      expect(index.search(`${term}*`)).toHaveLength(1);
+    for (const term of ['titulo', 'descripcion', 'etiqueta']) {
+      expect(index.search(term)).toHaveLength(1);
     }
+  });
+
+  it('filters function words while preserving negation and content terms', () => {
+    expect(processSearchTerm('de')).toBeNull();
+    expect(processSearchTerm('no')).toBe('no');
+    expect(processSearchTerm('estado')).toBe('estado');
+    expect(processSearchTerm('era')).toBe('era');
+
+    const artifact = buildSearchArtifact([
+      {
+        title: 'Resultados del experimento',
+        url: '/experimento/',
+        description: 'Un ensayo independiente.',
+        content: 'La evidencia no demuestra mejora.',
+      },
+      {
+        title: 'Reporte general',
+        url: '/reporte/',
+        description: 'Notas editoriales.',
+        content: 'En esa era, el estado cambió.',
+      },
+    ]);
+    const index = MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
+
+    expect(index.search('no demuestra').map((result) => artifact.store[result.id].url)).toContain(
+      '/experimento/'
+    );
+    expect(index.search('estado').map((result) => artifact.store[result.id].url)).toContain(
+      '/reporte/'
+    );
+    expect(index.search('era').map((result) => artifact.store[result.id].url)).toContain(
+      '/reporte/'
+    );
+    expect(index.search('de')).toHaveLength(0);
+  });
+
+  it('does not copy article bodies into the result store', () => {
+    const artifact = buildSearchArtifact([
+      {
+        title: 'Artículo',
+        url: '/articulo/',
+        description: 'Resumen',
+        content: 'texto que sí se indexa',
+      },
+    ]);
+
+    expect(artifact.store['0']).not.toHaveProperty('content');
   });
 });

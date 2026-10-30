@@ -37,7 +37,7 @@ actually fails.
 Re-measure every ~10 published posts at most — realistically, re-measure on
 the next post publish, since the ceiling binds within ~2 posts.
 
-## Trigger response: bounded Lunr content (2026-10-29)
+## Temporary PR workaround: bounded Lunr content (2026-10-29; superseded)
 
 The gate later failed on the exact head of frontend PR #376,
 `72a507985b84e975be4a3a27dc974067a706a522`: 155,870 gzip bytes for 58 posts,
@@ -65,3 +65,44 @@ the new article found `teghaza`, `manganeso`, `acuosa`, `estratigrafia`, and
 This bounds the artifact while keeping distributed body coverage; terms that
 occur only between sampled windows may no longer match unless they also occur
 in a title, excerpt, or tag. The 150 KiB gate remains unchanged.
+
+This was a temporary CI recovery for PR #376. It was superseded before merge by
+the full-text MiniSearch index below because window sampling still dropped
+searchable body terms.
+
+## Full-text index migration: MiniSearch v3 (2026-10-29)
+
+The Pagefind prototype did not meet the repository's adoption criteria on the
+same 58-article corpus. Its first open-and-search interaction transferred an
+estimated 196,425 gzip bytes including the lazy runtime, and it returned no
+results for two of the 20 Spanish queries. Warm search latency did not provide
+the required improvement. Pagefind was therefore not adopted.
+
+The PR now uses MiniSearch 7.2.0 and a version 3 artifact. It indexes complete
+normalized article bodies with prefix search and title/excerpt/tag boosts. A
+Spanish stop-word filter removes common function words; negation (`no`) remains
+searchable. The result store retains canonical URLs and card metadata, not raw
+body text. The UI and `/search.json` route remain in place, and the browser
+loads the index lazily with a versioned query key.
+
+| Measurement (58 articles) | Full Lunr baseline | MiniSearch v3 |
+| ------------------------- | -----------------: | ------------: |
+| Raw artifact              |      825,598 bytes | 295,894 bytes |
+| Gzip artifact             |      155,870 bytes |  66,356 bytes |
+| Ceiling                   |      153,600 bytes | 153,600 bytes |
+| Headroom                  |       -2,270 bytes |  87,244 bytes |
+
+The locally rebuilt full-text Lunr artifact differs from the CI log by 489 raw
+bytes (825,598 vs 825,109); both gzip to 155,870 bytes. The measured MiniSearch
+gzip artifact is 57.4% smaller. The CI ceiling is unchanged. The 20-query
+comparison used the same Spanish query set against the original full-text
+Lunr artifact: all 19 queries that had results retained the same first result;
+`circónes` gained the expected Teghaza article where Lunr had returned none.
+The query-to-result cases are exercised in `tests/playwright/search.test.ts`.
+Its separate long-body regression searches `certeza de saber`, a phrase in the
+final 500 characters of the new article body and absent from its title,
+excerpt, and tags.
+
+Re-run the artifact-size and relevance measurements as the corpus grows. The
+135 KiB warning remains the early review threshold; do not raise the hard
+150 KiB ceiling to make a future failure pass.
