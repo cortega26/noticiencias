@@ -180,3 +180,12 @@ For the human/agent who owns this code after the change lands:
   this spike's evidence); content-field slimming (needs relevance checks).
   Both are named follow-ups with owners (maintainer decision), unblocked
   by nothing but the trigger firing.
+
+## Follow-up (2026-10-29)
+
+The gate later failed on frontend PR #376 at 58 posts. A bounded-body Lunr
+change was used only as an initial CI recovery and was superseded by a
+full-text MiniSearch v3 proposal. Pagefind was measured on the same corpus and
+rejected for higher transfer, no warm-latency improvement, and two zero-result
+queries. See `docs/search-budget-verdict.md` and ADR-0015. The 150 KiB ceiling
+was not changed.

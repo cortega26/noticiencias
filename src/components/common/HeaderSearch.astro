@@ -222,7 +222,7 @@
       return;
     }
 
-    const results = search(`${normalized}*`).slice(0, 12);
+    const results = search(normalized).slice(0, 12);
     refs.defaultBlock.classList.add('hidden');
     refs.results.classList.remove('hidden');
     refs.resultsList.innerHTML = '';

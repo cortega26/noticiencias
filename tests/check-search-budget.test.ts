@@ -17,6 +17,17 @@ import { describe, it, expect, afterEach } from 'vitest';
 
 const SCRIPT = resolve('scripts/check-search-budget.js');
 
+function serializedIndex(count: number) {
+  return {
+    serializationVersion: 2,
+    documentCount: count,
+    documentIds: Object.fromEntries(
+      Array.from({ length: count }, (_, index) => [String(index), String(index)])
+    ),
+    index: [],
+  };
+}
+
 function runCheck(distPath: string): {
   stdout: string;
   stderr: string;
@@ -58,19 +69,21 @@ describe('check-search-budget', () => {
     tempDirs.push(distDir);
 
     const artifact = {
-      version: 2,
-      index: { fields: ['title', 'excerpt'] },
+      version: 3,
+      index: serializedIndex(3),
       store: {
-        '0': { url: '/posts/post-1', title: 'Post 1', excerpt: 'First post.' },
+        '0': { url: '/posts/post-1', title: 'Post á', excerpt: 'First post.' },
         '1': { url: '/posts/post-2', title: 'Post 2', excerpt: 'Second post.' },
         '2': { url: '/posts/post-3', title: 'Post 3', excerpt: 'Third post.' },
       },
     };
-    writeFileSync(join(distDir, 'search.json'), JSON.stringify(artifact), 'utf-8');
+    const serialized = JSON.stringify(artifact);
+    writeFileSync(join(distDir, 'search.json'), serialized, 'utf-8');
 
     const result = runCheck(distDir);
     expect(result.exitCode).toBe(0);
     expect(result.combined).toContain('✅ search artifact is valid');
+    expect(result.stdout).toContain(`${Buffer.byteLength(serialized, 'utf-8')} bytes raw`);
   });
 
   it('fails when gzip size exceeds the 150KB ceiling (not the bloat heuristic)', () => {
@@ -94,8 +107,8 @@ describe('check-search-budget', () => {
       };
     }
     const artifact = {
-      version: 2,
-      index: { fields: ['title', 'excerpt'] },
+      version: 3,
+      index: serializedIndex(ENTRY_COUNT),
       store,
     };
     mkdirSync(distDir, { recursive: true });

@@ -153,7 +153,7 @@ import Button from '~/components/ds/atoms/Button.astro';
     const normalizedQuery = normalizeQuery(query);
 
     try {
-      const results = search(`${normalizedQuery}*`);
+      const results = search(normalizedQuery);
       // GA4 recommended `search` event; a silent no-op while GA is off.
       // Upstream #267 design (stronger than the planned length bucket): the
       // raw query never leaves the browser, not even bucketed.

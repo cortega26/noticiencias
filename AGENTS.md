@@ -73,7 +73,7 @@ The template layer (`src/components/template/`, `src/layouts/template/`) was ret
 - Categories: `/categorias/[category]/` → `src/pages/categorias/[category]/[...page].astro`
 - Tags: `/temas/[tag]/` → `src/pages/temas/[tag]/[...page].astro`
 - Articles: `/%category%/%slug%/` (or override via frontmatter `permalink`)
-- Search: `/buscar/` → build-time JSON index + Lunr client-side
+- Search: `/buscar/` → build-time MiniSearch JSON index + lazy client-side search
 
 ### 1.3) Image pipeline
 
