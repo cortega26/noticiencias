@@ -1826,6 +1826,41 @@
       }
     ]
   },
+  "~/assets/images/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "083ccd1f26c10ce8",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.png": {
     "originalWidth": 1672,
     "originalHeight": 940,
