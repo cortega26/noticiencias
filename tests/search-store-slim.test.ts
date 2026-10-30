@@ -1,26 +1,20 @@
-/**
- * search-store-slim.test.ts (Stream C — solo 10/week survival)
- *
- * Guards the slimmed search store: no per-doc `image` URLs, descriptions
- * truncated to the snippet ceiling, index still searchable. Prevents
- * regressions that would push `search.json` back over the 150KB gzip
- * ceiling (scripts/check-search-budget.js).
- */
+/** Guards the compact result store and full-text MiniSearch index. */
 
 import { describe, it, expect } from 'vitest';
+import MiniSearch from 'minisearch';
 import {
   buildSearchArtifact,
   SEARCH_STORE_DESCRIPTION_MAX_LENGTH,
 } from '../src/utils/build-search-index';
 import { normalizeQuery } from '../src/utils/search';
-import lunr from 'lunr';
+import { MINI_SEARCH_OPTIONS } from '../src/utils/search-config';
 
-describe('search store slim (Stream C)', () => {
-  it('store entries carry no image field even when input docs have one', () => {
+describe('search result store', () => {
+  it('omits image and article body fields from result entries', () => {
     const artifact = buildSearchArtifact([
       {
         title: 'Con imagen',
-        url: '/a',
+        url: '/a/',
         description: 'corta',
         content: 'cuerpo indexable',
         tags: ['física'],
@@ -34,42 +28,45 @@ describe('search store slim (Stream C)', () => {
     expect(entry).not.toHaveProperty('content');
   });
 
-  it('truncates long descriptions to the snippet ceiling', () => {
+  it('truncates descriptions only in the display store', () => {
     const long = 'x'.repeat(SEARCH_STORE_DESCRIPTION_MAX_LENGTH + 50);
     const artifact = buildSearchArtifact([
-      { title: 'Larga', url: '/b', description: long, content: 'cuerpo' },
+      { title: 'Larga', url: '/b/', description: long, content: long },
     ]);
 
-    const entry = artifact.store['0'];
-    expect(entry.description.length).toBeLessThanOrEqual(SEARCH_STORE_DESCRIPTION_MAX_LENGTH);
-    // Short descriptions pass through untouched.
+    expect(artifact.store['0'].description.length).toBeLessThanOrEqual(
+      SEARCH_STORE_DESCRIPTION_MAX_LENGTH
+    );
+    const index = MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
+    expect(index.search('x'.repeat(10))).toHaveLength(1);
+
     const shortArtifact = buildSearchArtifact([
-      { title: 'Corta', url: '/c', description: 'breve', content: 'cuerpo' },
+      { title: 'Corta', url: '/c/', description: 'breve', content: 'cuerpo' },
     ]);
     expect(shortArtifact.store['0'].description).toBe('breve');
   });
 
-  it('slimmed artifact still loads in Lunr and finds accent-insensitive queries', () => {
+  it('loads and finds accent-insensitive full-text queries', () => {
     const artifact = buildSearchArtifact([
       {
         title: 'Energía Oscura',
-        url: '/energia',
+        url: '/energia/',
         description: 'Un estudio sobre la expansión del universo con datos de seis años.',
         content: 'Contenido detallado sobre física y cosmología observacional.',
         tags: ['física'],
       },
       {
         title: 'Avances en IA',
-        url: '/ia',
+        url: '/ia/',
         description: 'Modelos nuevos.',
         content: 'Redes neuronales.',
         tags: ['tecnología'],
       },
     ]);
 
-    const loaded = lunr.Index.load(artifact.index as object);
-    const results = loaded.search(`${normalizeQuery('energía')}*`);
+    const loaded = MiniSearch.loadJSON(JSON.stringify(artifact.index), MINI_SEARCH_OPTIONS);
+    const results = loaded.search(normalizeQuery('energía'));
     expect(results.length).toBeGreaterThan(0);
-    expect(artifact.store[results[0].ref].url).toBe('/energia');
+    expect(artifact.store[results[0].id].url).toBe('/energia/');
   });
 });

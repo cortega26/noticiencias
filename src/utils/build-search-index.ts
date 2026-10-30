@@ -1,32 +1,27 @@
 /**
- * Build-time Lunr search index generator (server-only).
+ * Build-time MiniSearch index generator (server-only).
  *
  * Uses short, deterministic numeric document references instead of long URL
- * references inside Lunr's repeated postings. The display store retains
+ * references inside the index. The result store retains
  * each canonical URL, so search scope and result navigation are unchanged.
  *
  * Replaces the browser-side index construction that previously downloaded
- * every post's full `body` and built Lunr in the main thread. Now the
+ * every post's full `body` and built a search index in the main thread. Now the
  * serialized index + compact result store are emitted at build time, and
  * the browser only fetches and deserializes.
  *
- * Uses the same fields/boosts as the original browser builder:
- *   ref('url'), field('title', { boost: 10 }), field('description', { boost: 5 }),
- *   field('content'), field('tags')
- *
- * Applies the same accent/case normalization via `normalizeSearchDocument`.
+ * The complete normalized body is indexed. Only common English and Spanish
+ * Spanish function words are omitted from the postings.
  */
-import lunr from 'lunr';
+import MiniSearch from 'minisearch';
 import type { SearchDocument } from './search';
 import { normalizeSearchDocument } from './search';
-
-export const SEARCH_ARTIFACT_VERSION = 2;
+import { MINI_SEARCH_OPTIONS, SEARCH_ARTIFACT_VERSION } from './search-config';
 
 /**
  * Maximum description length kept in the result store (Stream C slim).
  * Full excerpts remain in frontmatter/RSS; the search store only needs a
- * short snippet for list rendering. Truncation happens at build time so the
- * 150KB gzip ceiling (scripts/check-search-budget.js) survives 10/week cadence.
+ * short snippet for list rendering. Truncation happens at build time.
  */
 export const SEARCH_STORE_DESCRIPTION_MAX_LENGTH = 160;
 
@@ -37,10 +32,7 @@ export interface SearchStoreEntry {
   tags?: string | string[];
   date?: string;
   series?: string;
-  // NOTE (Stream C): no `image` field by design. Result thumbnails were the
-  // largest per-doc store cost (~400px resolved URLs) and
-  // `SearchInterface.astro` already null-guards `doc.image`. The Lunr index
-  // still searches title/description/content/tags — display only is slimmed.
+  // Cards do not need an image or the indexed body text.
 }
 
 export interface SearchArtifact {
@@ -85,7 +77,7 @@ export function stripMarkdown(body: string): string {
 }
 
 /**
- * Build the serialized Lunr index + compact result store from a list of
+ * Build the serialized MiniSearch index + compact result store from a list of
  * search documents. Documents are sorted by URL before indexing to ensure
  * deterministic serialization across clean builds.
  */
@@ -97,7 +89,7 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
   // Sort by URL for deterministic output across builds.
   const sorted = [...documents].sort((a, b) => a.url.localeCompare(b.url));
 
-  // Compact store keyed by deterministic short Lunr refs, not full URLs.
+  // Compact store keyed by deterministic short numeric references.
   // Every entry retains its canonical URL for navigation. No raw content,
   // no image URLs. Descriptions truncated to the snippet ceiling.
   const store: Record<string, SearchStoreEntry> = {};
@@ -117,23 +109,18 @@ export function buildSearchArtifact(documents: SearchDocument[]): SearchArtifact
     };
   }
 
-  // Preserve the same fields, full body and boosts; only the internal ref
-  // changes. Numeric refs replace long canonical URLs in posting lists.
-  const index = lunr(function (this: lunr.Builder) {
-    this.ref('id');
-    this.field('title', { boost: 10 });
-    this.field('description', { boost: 5 });
-    this.field('content');
-    this.field('tags');
-
-    sorted.forEach((doc, id) => {
-      this.add({ ...normalizeSearchDocument(doc), id: String(id) });
-    });
-  });
-
-  return {
+  const index = new MiniSearch(MINI_SEARCH_OPTIONS);
+  index.addAll(
+    sorted.map((doc, id) => ({
+      ...normalizeSearchDocument(doc),
+      id: String(id),
+    }))
+  );
+  const miniArtifact = {
     version: SEARCH_ARTIFACT_VERSION,
     index: index.toJSON(),
     store,
   };
+
+  return miniArtifact;
 }
