@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-30T12:49:43.376Z",
+  "generated_at": "2026-10-31T12:21:58.167Z",
   "content": {
-    "total_articles": 57,
-    "v2_articles": 45,
-    "total_words": 33401,
-    "avg_words": 586,
+    "total_articles": 60,
+    "v2_articles": 48,
+    "total_words": 35581,
+    "avg_words": 593,
     "categories": [
       {
         "name": "Ciencia",
-        "count": 17
+        "count": 18
       },
       {
         "name": "Tecnología",
-        "count": 14
+        "count": 16
       },
       {
         "name": "Salud",
@@ -58,6 +58,10 @@
       },
       {
         "name": "coral",
+        "count": 2
+      },
+      {
+        "name": "marte",
         "count": 2
       },
       {
@@ -159,13 +163,45 @@
       {
         "name": "física",
         "count": 1
-      },
-      {
-        "name": "química",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal",
+        "title": "Un rojo no es igual para todos: cómo Apple busca un color universal",
+        "date": "2026-10-29",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — Es un reportaje periodístico que describe una nueva característica de un producto y su potencial impacto, basado en la información proporcionada por el fabricante y el análisis de un experto. No es un estudio científico revisado por pares.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua",
+        "title": "Un trozo de Marte en el Sahara supera a la roca terrestre más antigua",
+        "date": "2026-10-29",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio revisado por pares publicado en Science con metodología robusta (datación U-Pb en circón, geoquímica de isótopos), pero basado en un único espécimen eyectado sin contexto estratigráfico ni ubicación exacta en Marte; los propios autores limitan el alcance y piden confirmación con muestras in situ.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada",
+        "title": "El Océano Austral invierte 30 años de enfrescamiento en solo una década",
+        "date": "2026-10-28",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio basado en observaciones directas de boyas Argo (2004-2024) con coherencia entre seis datasets, pero registro observacional limitado a dos décadas, sin confirmación independiente de permanencia del cambio y con modelos que no reproducen el forzante principal (pérdida de hielo marino)",
+        "review_status": null
+      },
       {
         "slug": "2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano",
         "title": "Rubin estrena su cámara y ya encuentra un candidato a planeta enano",
@@ -863,11 +899,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-30T12:49:40.835Z"
+    "generated_at": "2026-10-31T12:21:57.491Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 57,
+    "derivatives_available": 60,
     "missing_derivatives": 0
   },
   "health": {
@@ -877,16 +913,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "45 artículos v2 completos."
+      "detail": "48 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "57 artículo(s) con imagen y alt.",
+      "detail": "60 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "57 derivativos disponibles."
+      "detail": "60 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -895,10 +931,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "190 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "194 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 190,
+        "processed": 194,
         "failed": 0
       }
     },
