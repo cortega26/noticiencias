@@ -44,7 +44,7 @@ jobs:
         # `continue-on-error` hides the link checker from `failure()`, so its
         # outcome is checked explicitly.
         if: ${{ failure() || steps.links.outcome == 'failure' }}
-        uses: actions/github-script@e69ef5462fd455e02edcaf4dd7708eda96b9eda0 # v7.0.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const title = '🔍 Monitor Continuo: Fallos detectados';
