@@ -13,8 +13,8 @@ tags:
   - energia oscura
   - universo
   - expansion cosmica
-image: ~/assets/images/2026-01-28-article-279.jpg
-image_alt: Observatorio de la Energía Oscura refina comprensión de expansión cósmica
+image: ~/assets/images/2026-01-28-abell-2813-hubble-nasa.jpg
+image_alt: 'El cúmulo Abell 2813 visto por Hubble, con arcos de lente gravitacional fuerte. Crédito: NASA, ESA y D. Cole; imagen de archivo, no son datos del análisis DES de lentes débiles.'
 source_url: https://livescience.com/physics-mathematics/dark-energy/the-dream-has-come-true-standard-model-of-cosmology-holds-up-in-massive-6-year-study-of-the-universe-with-one-big-caveat
 series: Espacio
 refinery_id: '279'
@@ -37,8 +37,8 @@ glossary:
       universo.
   - term: modelo estándar de cosmología
     definition:
-      Marco teórico que describe la evolución del universo asumiendo una densidad constante de energía oscura
-      y materia oscura.
+      Marco conocido como ΛCDM, que incluye materia oscura y una constante cosmológica asociada a una
+      densidad de energía oscura constante.
   - term: oscilaciones acústicas bariónicas
     definition:
       Patrones en la distribución de galaxias que provienen de ondas de sonido en el universo temprano y
@@ -51,10 +51,6 @@ glossary:
     definition:
       Distorsión sutil de la luz de galaxias lejana por la gravedad de materia intermedia, usada para mapear
       la distribución de materia oscura.
-  - term: Observatorio Vera C. Rubin
-    definition:
-      Telescopio grande en construcción en Chile que realizará un censo profundo del cielo para estudiar
-      energía oscura y materia oscura.
 fact_check:
   - label: Y6 Gold contiene 669 millones de objetos, que no equivalen a 669 millones de galaxias en el análisis 3×2pt.
     status: confirmed
@@ -66,13 +62,14 @@ why_it_matters:
   - La comparación entre catálogo y muestra permite entender qué se midió y evita inflar una afirmación citando el
     número mayor disponible.
 confidence:
-  'Moderada: análisis cosmológico dependiente de modelos y de calibración; referencias originales citadas
-  en sus versiones arXiv.'
+  'Moderada: análisis cosmológico dependiente de modelos y de calibración; el trabajo cosmológico
+  se cita en su versión arXiv.'
 sources:
   - title: 'Dark Energy Survey Year 6 Results: Photometric Data Set for Cosmology'
-    url: https://arxiv.org/abs/2501.05739
-    publisher: arXiv / DES Collaboration
+    url: https://doi.org/10.3847/1538-4365/ae18d3
+    publisher: The Astrophysical Journal Supplement Series / DES Collaboration
     role: primary
+    doi: 10.3847/1538-4365/ae18d3
   - title: 'Dark Energy Survey Year 6 Results: Cosmological Constraints from Galaxy Clustering and Weak Lensing'
     url: https://arxiv.org/abs/2601.14559
     publisher: arXiv / DES Collaboration
@@ -82,7 +79,8 @@ sources:
     publisher: Dark Energy Survey
 correction_summary:
   Se corrige la identificación de 669 millones de objetos como galaxias usadas en un único análisis;
-  se añaden fuentes originales y se distingue catálogo, muestras y modelos.
+  se añaden fuentes originales, se distingue catálogo, muestras y superficie, y se corrige la descripción de imagen.
+  Se aclara que la densidad constante del glosario se refiere a la constante cosmológica, no a la materia oscura.
 publication_status: preprint
 evidence_subject_type: observational
 evidence_detail:
@@ -92,22 +90,26 @@ requires_uncertainty_note: true
 uncertainty_note:
   Los resultados dependen del modelo, calibraciones y selección de muestras. No identifican la naturaleza
   de la energía oscura ni prueban que varíe temporalmente.
-corrected_at: '2026-10-22'
+corrected_at: '2026-11-02'
 social:
   publish: false
 ---
+
+**Corrección, 2 de noviembre de 2026.** Aclaramos el glosario para que la densidad constante del modelo ΛCDM se refiera a la constante cosmológica y no a la materia oscura.
 
 El número más grande de una noticia astronómica no siempre es la muestra que sostiene su conclusión. En el Dark Energy Survey (DES), **669 millones corresponde a objetos del catálogo Y6 Gold**. No todos son galaxias ni todos intervienen del mismo modo en cada análisis cosmológico.
 
 ## Del catálogo a las muestras
 
-El [trabajo que describe Y6 Gold](https://arxiv.org/abs/2501.05739) reúne imágenes de seis años de observaciones y cerca de 5.000 grados cuadrados del cielo. El catálogo incorpora fotometría, clasificación de objetos y datos de calidad. Después de selecciones de calidad, sus muestras de referencia contienen unos 448 millones de galaxias y 120 millones de estrellas.
+El [trabajo que describe Y6 Gold](https://doi.org/10.3847/1538-4365/ae18d3) reúne imágenes de seis años de observaciones y cerca de 5.000 grados cuadrados del cielo. El catálogo incorpora fotometría, clasificación de objetos y datos de calidad. Después de selecciones de calidad, sus muestras de referencia contienen unos 448 millones de galaxias y 120 millones de estrellas.
 
 Esos números describen un recurso para distintos análisis. Tener una posición o un brillo registrado no garantiza que un objeto tenga la medida de forma, distancia o calidad necesaria para cualquier pregunta.
 
 ## Qué combina el análisis cosmológico
 
 El [estudio de agrupamiento y lentes gravitacionales débiles](https://arxiv.org/abs/2601.14559) combina tres correlaciones, denominadas 3×2pt:
+
+El catálogo cubre cerca de 5.000 grados cuadrados, pero la región utilizada por este análisis 3×2pt abarca aproximadamente 4.300. Tampoco las áreas del catálogo y de cada análisis son necesariamente intercambiables.
 
 | Medición                 | Muestra o relación usada                        | Qué ayuda a estudiar                                      |
 | ------------------------ | ----------------------------------------------- | --------------------------------------------------------- |
@@ -125,4 +127,4 @@ Para interpretar un titular conviene localizar **la muestra usada, el observable
 
 La pregunta complementaria es cuánto difieren las inferencias de agrupamiento de materia. Nuestra [explicación sobre la comparación entre DES y el fondo cósmico](/ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado/) distingue la comparación de un parámetro de la del conjunto de parámetros. No conviene resumir ambas como un único número de «certeza».
 
-La fecha de esta página conserva la noticia original; la corrección del 22 de octubre documenta la distinción entre catálogo y muestras. Las referencias arXiv identifican las versiones consultadas sin atribuirles aquí una revisión por pares no comprobada.
+La fecha de esta página conserva la noticia original. El trabajo del catálogo se publicó en _The Astrophysical Journal Supplement Series_; para esta nota consultamos su [versión arXiv](https://arxiv.org/abs/2501.05739). El análisis cosmológico se enlaza también en su versión arXiv, sin atribuirle aquí una revisión por pares no comprobada.

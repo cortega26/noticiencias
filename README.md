@@ -55,6 +55,9 @@ Useful local commands:
 - `npm run test:e2e:consent`
 - `npm run test:visual`
 - `npm run check:search-budget`
+- `npm run check:image-attributions` — check registered hero-image source hashes and links, and explicit CC BY and CC0 labels.
+
+Image attribution entries in `data/image-attributions.json` bind a hero-image path to its source-file SHA-256, source URL and license or dedication URL. The check runs in content validation and the pre-publish gate. It catches mismatches and missing links for explicit CC BY and CC0 labels; it does not establish ownership, license validity or conditions for derivative images.
 
 The Content Guard workflow checks outbound links in published articles. Some
 publisher domains, including `openai.com`, reject automated requests from

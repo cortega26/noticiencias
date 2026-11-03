@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-02T00:32:07.937986+00:00",
+  "article": "src/content/posts/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 16:9 sophisticated conceptual editorial artwork for a serious technology publication about personal AI assistants and software security: a minimal unbranded computer workstation on a desk with abstract notification cards and a small physical key nearby, deep blue and warm neutral tones, atmospheric realistic photography style. Fictional interface, no brands, no logos, no legible text, no people, no watermark.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-3470b15f-b692-4155-8e42-dd90eee54d6c.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-personal-assistant-concept.png",
+    "sha256": "522c55d00ec22b1d8d390a3bcce4f29a1407b1a2a0dedfd21681792b53f5fdec",
+    "bytes": 1843374,
+    "width": 1672,
+    "height": 941
+  },
+  "exported": {
+    "path": "src/assets/images/2026-11-01-personal-assistant-concept-original.webp",
+    "sha256": "d8871a6cc52d23046e162a5fc55ee27d6d7d4312c75904c9348ab915c1f2b1eb",
+    "bytes": 146232,
+    "width": 1672,
+    "height": 941,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-28-article-343.webp",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Ilustración conceptual generada con IA de un asistente digital y sus permisos; no muestra la interfaz de OpenClaw.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

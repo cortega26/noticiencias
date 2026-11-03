@@ -163,9 +163,10 @@ const showHealthGuardrail = isHealthCategory && evidenceSubjectType !== 'humans'
     {
       evidenceSubjectType && (
         <p>
-          <strong class="text-text-body">Modelo experimental:</strong>{' '}
+          <strong class="text-text-body">Características del estudio:</strong>{' '}
           {evidenceLabels[evidenceSubjectType]}
-          {evidenceDetail ? ` — ${evidenceDetail}` : ''}.
+          {evidenceDetail ? ` — ${evidenceDetail}` : ''}
+          {!evidenceDetail || !/[.!?…]$/.test(evidenceDetail.trim()) ? '.' : ''}
         </p>
       )
     }

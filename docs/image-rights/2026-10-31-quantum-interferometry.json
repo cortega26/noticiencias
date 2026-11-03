@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T13:55:33.839857+00:00",
+  "article": "src/content/posts/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create an original editorial science magazine hero image, landscape 3:2. A carefully rendered, abstract conceptual visualization of quantum matter-wave interference: a small silvery sodium nanoparticle traveling through three subtle, evenly spaced sheets of ultraviolet light, wavefronts overlapping into a refined interference pattern. Sophisticated, restrained visual style, deep midnight blue with silver and soft violet highlights, convincing scientific instrument atmosphere, no cat, no human, no letters, no numbers, no logo, no diagram labels. Clearly artistic conceptual representation, not a microscopy image.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-fecf46bf-4416-4465-b833-50e96aa26a05.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-quantum-interferometry.png",
+    "sha256": "c37917d3e915e8d95ed04587fd0bee077b1f95a17293d14e51cd6b315f58ab44",
+    "bytes": 2044354,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-25-quantum-interferometry-original.webp",
+    "sha256": "8f866b250b75a636e503a2eb34c7f923999ff53df20a4da0bd05f15a51c55931",
+    "bytes": 131662,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-25-article-87.webp",
+    "provenance": "unverified; visually resembles the image in the source coverage, attribution and licence not established"
+  },
+  "evidence_boundary": "Conceptual illustration; not an image or verified reconstruction of the experimental apparatus or data.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

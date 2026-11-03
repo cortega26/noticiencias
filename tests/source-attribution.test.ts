@@ -111,12 +111,13 @@ describe('rendered source line', () => {
     expect(text).not.toContain('doi.org');
   });
 
-  it('keeps the translation label for an adaptation of a single secondary article', () => {
+  it('credits the turtle study and its secondary coverage', () => {
     const text = sourceLine(
       '2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado'
     );
-    expect(text).toContain('Fuente: Yale News');
-    expect(text).toContain('traducción NotiAI');
+    expect(text).toContain('Fuente primaria: Proceedings of the Royal Society B');
+    expect(text).toContain('Cobertura: Yale News');
+    expect(text).not.toContain('traducción NotiAI');
   });
 
   it('omits the coverage clause on listing cards', () => {

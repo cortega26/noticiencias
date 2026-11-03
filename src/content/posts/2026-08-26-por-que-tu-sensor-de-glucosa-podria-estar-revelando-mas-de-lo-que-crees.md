@@ -15,8 +15,8 @@ tags:
 excerpt:
   GlucoFM aprende patrones de registros de glucosa y mejora varias evaluaciones de predicción. Esas métricas
   no prueban que sustituya pruebas diagnósticas ni mejore tratamientos.
-image: ~/assets/images/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.png
-image_alt: 'Diagrama del modelo de investigación GlucoFM: alineación de lecturas, separación de tendencias lentas y rápidas, arquitectura y comparaciones predictivas; no muestra eficacia clínica de un tratamiento.'
+image: ~/assets/images/2026-08-26-glucofm-concept-original.webp
+image_alt: 'Ilustración conceptual generada con IA de un sensor y señales abstractas de glucosa; no muestra datos reales ni el dispositivo del estudio.'
 source_url: https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/
 series: Salud que importa
 refinery_id: '980'
@@ -42,8 +42,8 @@ glossary:
     definition: Componente del modelo que captura la tendencia basal de la glucosa a lo largo de varias horas.
   - term: corriente rápida
     definition:
-      Componente del modelo que registra las variaciones a corto plazo de la glucosa provocadas por comidas,
-      actividad u otros factores.
+      Componente del modelo que representa desviaciones de corto plazo de la señal; no identifica por sí
+      sola su causa y puede incluir tanto respuestas fisiológicas como artefactos de medición.
   - term: PR‑AUC
     definition:
       Área bajo la curva de precisión‑recall, métrica que evalúa el desempeño de un clasificador considerando
@@ -59,7 +59,7 @@ fact_check:
     status: confirmed
   - label: La mejora de PR-AUC depende del comparador y del protocolo, no es una precisión diagnóstica universal.
     status: confirmed
-  - label: Los datos citados no establecen que aplicar el modelo mejore la salud de pacientes.
+  - label: Los datos citados establecen que aplicar el modelo mejora la salud de pacientes.
     status: uncertain
 why_it_matters:
   - Separar métricas de clasificación y beneficio clínico permite evaluar una propuesta de IA sin confundirla con
@@ -84,16 +84,20 @@ social:
   id: 0e7ec41e5e8d098570c4a6b79d27ce86b5246e56eb932d5fc86034fb690625a9
 correction_summary:
   Se retiran promesas de evitar pruebas y de patrones metabólicos universales; se distingue evaluación
-  predictiva de utilidad clínica y se atribuyen las cifras de mejora a comparadores diferentes.
+  predictiva de utilidad clínica, se atribuyen las cifras de mejora a comparadores diferentes y se precisa
+  el alcance de la separación de participantes y de la señal rápida, incluida una persona con visitas en
+  preentrenamiento y evaluación. Se precisa la formulación de una afirmación no verificada en la ficha.
 publication_status: preprint
 evidence_subject_type: computational
 evidence_detail:
   Evaluación computacional de predicciones sobre cohortes de registros humanos; no ensayo de impacto
   clínico de usar el modelo.
-corrected_at: '2026-10-22'
+corrected_at: '2026-11-03'
 ---
 
-_Esquema de GlucoFM difundido por Google Research. Los gráficos representan evaluaciones predictivas de los desarrolladores, no eficacia demostrada de un diagnóstico o tratamiento._
+**Corrección, 1 de noviembre de 2026.** Precisamos que las variaciones rápidas de la señal no identifican por sí solas su causa y que la separación de grupos se basa en los identificadores de los conjuntos de datos. Se mantienen las correcciones anteriores sobre comparadores y límites clínicos.
+
+**Corrección, 2 de noviembre de 2026.** Aclaramos que, en una cohorte, los autores identificaron visitas de una misma persona en preentrenamiento y evaluación; la separación por identificadores de registro no garantiza separación entre personas en ese caso.
 
 GlucoFM es un modelo que aprende patrones de registros de monitoreo continuo de glucosa. Sus autores reportan mejoras en tareas de predicción metabólica, pero **mejorar una métrica de clasificación no demuestra que una herramienta sustituya pruebas diagnósticas o mejore un tratamiento**.
 
@@ -101,7 +105,7 @@ GlucoFM es un modelo que aprende patrones de registros de monitoreo continuo de 
 
 El [preprint de Li y colaboradores](https://arxiv.org/abs/2605.30865) describe una arquitectura que separa tendencias lentas de la glucosa y desviaciones rápidas. También conserva una máscara para distinguir observaciones y huecos del registro. La componente rápida puede contener tanto respuestas fisiológicas como artefactos del sensor: no representa siempre una comida o una actividad identificable.
 
-El trabajo presenta preentrenamiento con 109.066 horas de registros y evaluaciones en cuatro cohortes y siete tareas de predicción. Los autores comparan representaciones aprendidas usando participantes separados entre entrenamiento y evaluación. Ese diseño busca evitar que el modelo se evalúe simplemente sobre los mismos sujetos con los que aprendió.
+El trabajo presenta preentrenamiento con 109.066 horas de registros y evaluaciones en cuatro cohortes y siete tareas de clasificación. Los autores describen una separación basada en los identificadores definidos por cada conjunto de datos. En ShanghaiT2DM, esos identificadores corresponden a visitas: una auditoría de identidad encontró a una persona con una visita en preentrenamiento y otra en evaluación. Por ello, la separación de registros no equivale en ese caso a una separación completa de personas. El estudio es retrospectivo; tampoco demuestra que la herramienta funcione en cualquier población o dispositivo.
 
 ## Por qué aparecen dos cifras de mejora
 

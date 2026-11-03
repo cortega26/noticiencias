@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T14:05:36.218Z",
+  "article": "src/content/posts/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 3:2 editorial conceptual illustration for a serious science and history magazine. A single generic early incandescent glass bulb resting unlit on a dark walnut workbench, beside a fine carbon filament strand and softly illuminated archival paper without any readable marks. Restrained warm amber and charcoal palette, realistic textures, elegant documentary lighting, simple composition with generous breathing room. This is an imagined generic object, not a photograph or reconstruction of a specific historical Edison artifact or the experiment. No people, no portraits, no lettering, no logos, no diagrams, no claims about filament composition or date.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-f7215bfa-f46d-46b8-8d9a-f15871248131.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-edison-bulb-concept.png",
+    "sha256": "bd51d8dbbb4c935c4b84d3cc2a360b9be8aba68756c1faa715db7710e6409d0a",
+    "bytes": 2251045,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-24-edison-bulb-concept-original.webp",
+    "sha256": "5eea97acabda8b218c386ed73c69886e0148c1e3f776f529ec32e79d538b5fe4",
+    "bytes": 240014,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-24-article-36.jpg",
+    "provenance": "possible historical source, transformation and reuse conditions outside US unresolved"
+  },
+  "evidence_boundary": "Imagined generic bulb; not a photograph or reconstruction of Edison’s apparatus or the experiment.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

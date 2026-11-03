@@ -11,84 +11,74 @@ tags:
   - galápagos
   - linaje extinto
   - hueso de museo
-excerpt: Cinco especímenes óseos de museo, considerados demasiado deteriorados, revelaron dos linajes extintos de tortugas gigantes de San Cristóbal y Santa Fe, separadas hace cientos de miles de años.
-image: ~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif
-image_alt: Primer plano de una tortuga gigante mirando a la cámara sobre terreno rocoso.
+excerpt: Un análisis de ADN muy fragmentado sitúa dos linajes extintos de tortugas de Galápagos en su árbol evolutivo, sin reconstruir genomas completos.
+image: ~/assets/images/2026-08-26-galapagos-tortoise-commons-cc0.jpg
+image_alt: 'Tortuga gigante entre hierba. Crédito: Thecodemachine/Wikimedia Commons, CC0; fotografía de archivo sin relación documentada con las muestras del estudio.'
 source_url: https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot
 refinery_id: '893'
 headlines_variants:
   question: ¿Qué linajes de tortugas gigantes descubrió el ADN de un hueso olvidado?
   benefit: Cómo el ADN de tortugas extintas ayuda a entender la biodiversidad actual de Galápagos
 summary_points:
-  - Cinco especímenes óseos de museo previamente descartados como demasiado deteriorados permitieron recuperar ADN de tortugas gigantes extintas de San Cristóbal y Santa Fe.
-  - Los investigadores combinaron extracción de ADN de huesos secos con algoritmos que rellenan huecos genómicos usando un árbol filogenético de referencia construido a partir de tortugas vivas y muestras históricas mejor conservadas.
-  - El análisis identificó dos linajes genéticamente distintos que se separaron de las tortugas actuales hace varios cientos de miles de años, revelando una diversidad pasada mayor de la sospechada.
+  - Cinco especímenes óseos de museo de dos linajes extintos, de San Cristóbal y Santa Fe, aportaron ADN muy fragmentado para el análisis.
+  - Los investigadores combinaron métodos filogenéticos y de genética de poblaciones para analizar secuencias de muy baja cobertura sin imputar genotipos faltantes.
+  - El análisis situó dos linajes extintos, de San Cristóbal y Santa Fe, en el árbol evolutivo y confirmó que eran entidades distintas.
   - Parte del material genético de esos linajes extintos podría persistir en tortugas híbridas actuales, producto de translocaciones humanas durante la época ballenera y de colonización.
   - Los autores advierten que la precisión disminuye cuando el ADN legible es muy bajo y que los resultados son inferencias estadísticas que requieren más especímenes y datos arqueológicos para confirmarse.
 glossary:
   - term: ADN antiguo
     definition: Material genético extraído de restos biológicos viejos, suele estar fragmentado y mezclado con contaminación ambiental.
   - term: Árbol filogenético de referencia
-    definition: Representación evolutiva basada en genomas completos de especies relacionadas, usada para colocar fragmentos de ADN en su posición evolutiva.
+    definition: Representación de relaciones evolutivas basada en datos de referencia, utilizada para situar muestras de ADN en relación con otros linajes.
   - term: Híbridos
     definition: Individuos resultantes del cruce entre diferentes linajes o especies, que pueden portar material genético de ambos progenitores.
   - term: Contaminación ambiental
     definition: ADN no proveniente del organismo de estudio, proveniente de bacterias, hongos o manipulación humana, que puede interferir en el análisis genético.
-  - term: Algoritmo de imputación
-    definition: Método computacional que estima las secuencias faltantes de ADN usando información de genomas de referencia y patrones de variación conocidos.
+  - term: Cobertura de secuenciación
+    definition: Promedio de lecturas disponibles por posición de un genoma; una cobertura muy baja deja gran parte de la información sin observar.
 fact_check:
   - label: Los especímenes analizados fueron cinco huesos de museo pertenecientes a dos poblaciones extintas, de San Cristóbal y de Santa Fe.
     status: confirmed
-  - label: Los dos linajes identificados se separaron de las tortugas actuales hace varios cientos de miles de años.
+  - label: El estudio recuperó señal evolutiva con profundidades de secuenciación de 0,008× a 0,139×.
+    status: confirmed
+  - label: Parte de la ascendencia de linajes extintos podría persistir en híbridos actuales; no se demuestra la recuperación completa de esas poblaciones.
     status: uncertain
-  - label: El método puede recuperar señal evolutiva cuando menos del 1% del ADN es legible.
-    status: confirmed
-  - label: Parte del material genético de los linajes extintos aún puede estar presente en tortugas híbridas actuales.
-    status: confirmed
   - label: Los resultados son inferencias estadísticas, no secuencias completas.
     status: confirmed
-  - label: El enfoque será aplicado a otras colecciones de museo alrededor del mundo.
-    status: confirmed
 why_it_matters:
-  - Entender la diversidad perdida de tortugas galápaguenses ayuda a diseñar programas de cría que recuperen linajes únicos, beneficiando la conservación en Ecuador y la región.
-  - El descubrimiento muestra que especímenes de museo considerados inútiles pueden ser valiosos, incentivando la revisión de colecciones en toda Latinoamérica.
-  - La presencia de ADN extinto en tortugas híbridas actuales ofrece una oportunidad para restaurar variabilidad genética sin introducir especies extranjeras.
-confidence: Moderada — estudio basado en métodos computacionales sobre ADN muy degradado, con resultados estadísticos y limitaciones reconocidas por los autores.
+  - Las colecciones históricas pueden aportar información evolutiva incluso cuando la cobertura genética es baja, siempre con límites e incertidumbre.
+  - Conocer linajes y ascendencia puede informar la conservación, pero no equivale a resucitar una población extinta.
+confidence: Moderada — resumen del artículo científico y comunicación de Yale; no se revisó el texto completo de la publicación.
 sources:
+  - title: Integration of ultra-low coverage whole-genome sequences for reconstructing the evolutionary history of Galapagos giant tortoises
+    url: https://pubmed.ncbi.nlm.nih.gov/42481050/
+    publisher: Proceedings of the Royal Society B
+    role: primary
+    doi: 10.1098/rspb.2026.0103
   - title: Reading the giant tortoise DNA that time forgot
     url: https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot
     publisher: Yale News
-    date: '2026-08-26'
+    role: secondary
 requires_uncertainty_note: true
-uncertainty_note: Los resultados se basan en fragmentos de ADN altamente degradados y en inferencias estadísticas, por lo que la posición exacta de los linajes en el árbol evolutivo sigue teniendo un margen de error.
+uncertainty_note: El análisis usa fragmentos de baja cobertura y referencias; no reconstruye un genoma completo ni demuestra la recuperación de una población extinta.
+corrected_at: '2026-11-01'
+correction_summary: Se corrigió la descripción del método, que no imputó genotipos; se retiraron fechas y promesas no verificadas y se distinguió profundidad de secuenciación de proporción del genoma leído.
 ---
 
-Leyendo el ADN de la tortuga gigante que el tiempo olvidó
+**Corrección, 31 de octubre de 2026; ampliada el 1 de noviembre.** La versión anterior afirmó que el método rellenaba las secuencias faltantes por imputación. El resumen del estudio indica expresamente que no utilizó imputación de genotipos. También retiramos fechas y afirmaciones de recuperación no verificadas y diferenciamos la profundidad media de secuenciación de la proporción del genoma leído.
 
-Cinco especímenes óseos guardados en un cajón de museo, pensados durante décadas como demasiado deteriorados para servir a la genética, acabaron revelando dos linajes de tortugas gigantes que ya no existen en las Galápagos.
+Los huesos de colecciones históricas pueden contener ADN muy fragmentado. Eso dificulta comparar especies: los datos faltantes y la contaminación pueden distorsionar un árbol evolutivo. Un equipo de investigación analizó muestras de tortugas gigantes de Galápagos con una combinación de herramientas computacionales para estudiar cómo se relacionan linajes vivos y extintos.
 
-## Contexto
+## Qué hicieron los investigadores
 
-Las tortugas gigantes de las Islas Galápagos han sido un modelo clásico para estudiar la evolución, pero gran parte de su historia está escrita en fragmentos de ADN que el tiempo ha deshecho. Cuando el material genético se degrada, quedan solo tramos cortos y mezclados con contaminación ambiental, lo que hace que los métodos tradicionales los descarten como inútiles. Los investigadores de Yale se enfrentaron precisamente a ese problema: extraer información fiable de especímenes cuyo genoma era menos del 1 % legible y cuyo ruido de contaminación era alto.
+Según [Yale](https://news.yale.edu/2026/08/26/reading-giant-tortoise-dna-time-forgot), las muestras incluyeron cinco ejemplares de dos linajes extintos, de San Cristóbal y Santa Fe. En algunas muestras degradadas se pudo leer menos del 1 % del genoma. El equipo comparó la información disponible con referencias de calidad superior para estimar su posición evolutiva.
 
-## El método
+El [resumen del artículo científico](https://pubmed.ncbi.nlm.nih.gov/42481050/) describe herramientas de colocación filogenética, estructura genética y mezcla de ascendencias. Informa profundidades de secuenciación de **0,008× a 0,139×**: son promedios de lectura por posición, no porcentajes directamente equivalentes de genoma recuperado. Los autores señalan que **no imputaron genotipos** de las muestras de cobertura ultrabaja: el procedimiento busca extraer señal útil de los datos observados, no presentar como leído un genoma completo.
 
-Para superar esa limitación, el equipo combinó varias herramientas computacionales de análisis genómico. Primero, aislaron el ADN de huesos secos de cinco especímenes de museo pertenecientes a dos poblaciones extintas: una de la isla San Cristóbal y otra de la isla Santa Fe. Luego, superpusieron esos fragmentos sobre un árbol filogenético de referencia construido a partir de genomas completos de tortugas vivas y de muestras históricas mejor conservadas. El algoritmo rellenó los huecos estadísticamente, sin requerir una muestra de ADN completa, y estimó la posición de cada fragmento en el árbol evolutivo.
+## Qué permite concluir
 
-## Los hallazgos
+El análisis respalda que los linajes históricos de San Cristóbal y Santa Fe eran distintos y ayuda a situarlos entre otras tortugas gigantes del archipiélago. Las relaciones inferidas dependen de los datos y referencias disponibles; no hemos comprobado aquí una fecha precisa de separación de los linajes.
 
-El análisis identificó con seguridad que los especímenes pertenecían a dos linajes distintos, previamente desconocidos en la literatura. Uno corresponde a una población que habitó San Cristóbal y el otro a la de Santa Fe. Ambos se separaron de las tortugas actuales hace varios cientos de miles de años, lo que indica una diversidad mayor de la que se sospechaba. Además, los resultados muestran que parte del material genético de esos linajes extintos aún puede estar presente en tortugas híbridas actuales, fruto de los traslados humanos que ocurrían durante la época de la ballenería y la colonización.
-
-## Límites y alcance
-
-Aunque el método logró rescatar señal evolutiva de muestras muy degradadas, sigue teniendo restricciones: la precisión disminuye cuando el porcentaje de ADN legible cae por debajo de cierto umbral, y la interpretación depende de la calidad del árbol de referencia. Los autores advierten que los resultados son inferencias estadísticas, no secuencias completas, y que se necesitan más especímenes y datos arqueológicos para confirmar la distribución exacta de esas poblaciones en el archipiélago.
-
-## Encaje con el conocimiento
-
-Este trabajo se suma a un esfuerzo prolongado del laboratorio de Yale para mapear la variabilidad genética de las tortugas galápaguenses y usarla en programas de cría en cautiverio. Al demostrar que incluso los restos más fragmentados pueden aportar pistas evolutivas, el estudio amplía el tipo de material que los conservacionistas pueden considerar válido. Además, sugiere que las tortugas híbridas que hoy viven en cautiverio podrían ser un reservorio latente de la diversidad perdida, siempre que se diseñen cruces que favorezcan la recuperación de esos linajes.
-
-Los investigadores planean aplicar el mismo enfoque computacional a otras colecciones de museo alrededor del mundo, esperando que piezas olvidadas en estanterías puedan seguir contando historias de especies que el tiempo parecía haber borrado.
-
-Una frase que podría quedar en la memoria del lector: _un hueso que parecía polvo guardó la clave para resucitar ramas desaparecidas del árbol de la vida de Galápagos_.
+Yale explica que algunos desplazamientos históricos de tortugas entre islas dieron lugar a híbridos y que estos podrían conservar ascendencia de linajes desaparecidos. Esa posibilidad puede orientar estudios y decisiones de conservación, pero identificar ascendencia no equivale a resucitar una población extinta ni demuestra qué cruces serían adecuados.
 
 <!-- source_identity: source_id=yale_news; source_name=Yale News -->
