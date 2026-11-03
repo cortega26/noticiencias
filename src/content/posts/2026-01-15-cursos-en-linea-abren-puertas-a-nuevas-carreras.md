@@ -32,7 +32,7 @@ sources:
     publisher: 'MITx MicroMasters'
     role: primary
   - title: 'Elucidating Import Container Flows: A Simulation Study of Port of New York/New Jersey'
-    url: 'https://ctl.mit.edu/sites/ctl.mit.edu/files/theses/lahloukamalyassine_179698_5334027_Power_Lahlou-Kamal_Capstone_Final_Report-1.pdf'
+    url: 'https://ctl.mit.edu/pub/thesis/elucidating-import-container-flows-simulation-study-port-new-yorknew-jersey'
     publisher: 'MIT Center for Transportation and Logistics'
     date: '2025-05-09'
     role: primary
@@ -48,7 +48,7 @@ El perfil de MIT News cuenta que Power encontró útiles los contenidos para su 
 
 La secuencia importa: la historia no describe un solo módulo que otorgue una maestría. El curso inicial fue el punto de entrada a una credencial de cinco cursos; el grado llegó tras el programa combinado y su semestre en el campus.
 
-Un ejemplo del trabajo realizado durante la maestría es el [proyecto final de Power y Yassine Lahlou-Kamal](https://ctl.mit.edu/sites/ctl.mit.edu/files/theses/lahloukamalyassine_179698_5334027_Power_Lahlou-Kamal_Capstone_Final_Report-1.pdf), publicado por MIT en 2025. Los autores desarrollaron una simulación del flujo de contenedores de importación en el puerto de Nueva York y Nueva Jersey para ensayar cambios en transporte y recursos. En uno de sus escenarios, aumentar la proporción de salida por tren del 15 % al 25 % redujo la congestión de camiones en el modelo. Es un resultado simulado bajo sus supuestos, no una reducción medida después de aplicar ese cambio en el puerto ni una promesa de resultados para otros estudiantes.
+Un ejemplo del trabajo realizado durante la maestría es el [proyecto final de Power y Yassine Lahlou-Kamal](https://ctl.mit.edu/pub/thesis/elucidating-import-container-flows-simulation-study-port-new-yorknew-jersey), publicado por MIT en 2025. Los autores desarrollaron una simulación del flujo de contenedores de importación en el puerto de Nueva York y Nueva Jersey para ensayar cambios en transporte y recursos. En uno de sus escenarios, aumentar la proporción de salida por tren del 15 % al 25 % redujo la congestión de camiones en el modelo. Es un resultado simulado bajo sus supuestos, no una reducción medida después de aplicar ese cambio en el puerto ni una promesa de resultados para otros estudiantes.
 
 ## Qué exige la credencial y qué no promete
 
