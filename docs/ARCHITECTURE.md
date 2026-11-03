@@ -59,6 +59,10 @@ image-delivery mode as an ordinary log line, not an Actions annotation; the
 `github` or `r2` selection is still owned by the existing image delivery
 configuration and is not changed here.
 
+The editorial-field checker and site audit use `glob` 14; the dependency
+override selects `minimatch` 11 for the development toolchain. These versions
+require a compatible Node release; the project uses Node 24.
+
 ### Search Flow
 
 1. `src/pages/search.json.js` reads `getCollection('posts')` during build.
