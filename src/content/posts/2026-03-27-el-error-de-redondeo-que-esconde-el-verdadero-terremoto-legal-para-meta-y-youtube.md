@@ -1,7 +1,7 @@
 ---
-title: 'Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas'
+title: 'Meta y YouTube ante dos veredictos: qué resolvieron los tribunales'
 schema_version: 2
-excerpt: 'Multas récord a Meta y YouTube por daños infantiles revelan un cambio legal mayor: ¿forzarán rediseños cruciales para la seguridad online de los niños?'
+excerpt: 'Los casos de Nuevo México y Los Ángeles plantean cuestiones distintas sobre seguridad y diseño de plataformas; las decisiones pueden ser recurridas.'
 author: Noticiencias
 date: 2026-03-27
 categories:
@@ -13,8 +13,8 @@ tags:
   - sección 230
   - seguridad infantil
   - responsabilidad digital
-image: '~/assets/images/2026-03-27-el-error-de-redondeo.jpg'
-image_alt: "El 'error de redondeo' que esconde el verdadero terremoto legal para Meta y YouTube"
+image: '~/assets/images/2026-03-27-complejo-judicial-santa-fe-allens.jpg'
+image_alt: 'Complejo judicial Steve Herrera, en Santa Fe, Nuevo México. Fotografía de archivo de 2009: AllenS / Wikimedia Commons.'
 source_url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
 refinery_id: 'Two verdicts in two days: How American courts are rewriting the rules for Big Tech and children'
 headlines_variants:
@@ -23,13 +23,13 @@ headlines_variants:
 investigation: false
 featured: false
 summary_points:
-  - Dos veredictos recientes en EE. UU. condenaron a Meta a pagar 375 millones de dólares en Nuevo México, y a Meta y YouTube (70%/30%) a compartir daños por casi 6 millones de dólares en el caso de Los Ángeles, por perjuicios a menores relacionados con el diseño de sus plataformas.
-  - Los jurados concluyeron que características como el desplazamiento infinito, la reproducción automática y los algoritmos de recomendación contribuyeron a adicción, depresión y autolesiones en jóvenes.
-  - El caso de Los Ángeles funciona como un 'bellwether' que podría allanar el camino para cientos de demandas similares y para más de 40 casos pendientes de fiscales estatales.
-  - El acceso a documentos internos de Meta mostró que la empresa priorizó la interacción sobre la seguridad, lo que refuerza la teoría legal de responsabilidad por diseño de producto.
+  - En marzo de 2026, un jurado de Nuevo México impuso a Meta 375 millones de dólares en sanciones civiles por infracciones de la ley estatal de prácticas comerciales.
+  - En agosto, el juez resolvió la demanda por afectación pública y ordenó un fondo de 567 millones de dólares y otras medidas; en septiembre AP informó de la suspensión de las sentencias mientras se tramita una apelación.
+  - En Los Ángeles, otro jurado consideró negligentes a Meta y YouTube en un caso individual y fijó 6 millones de dólares en daños compensatorios y punitivos.
+  - Los casos son distintos; sus resultados no establecen automáticamente responsabilidad en otros países ni en todos los litigios pendientes.
 glossary:
   - term: Sección 230
-    definition: Parte de la Ley de Decencia en las Comunicaciones de EE. UU. que otorga a las plataformas de internet inmunidad frente al contenido publicado por sus usuarios.
+    definition: Disposición legal estadounidense que ofrece protección limitada a servicios interactivos frente a ciertas reclamaciones relacionadas con contenido de terceros; su aplicación depende del caso.
   - term: desplazamiento infinito (infinite scroll)
     definition: Función que carga contenido continuamente mientras el usuario hace scroll, sin necesidad de hacer clic en páginas siguientes.
   - term: reproducción automática (autoplay video)
@@ -41,77 +41,62 @@ glossary:
   - term: diseño de producto
     definition: Decisiones intencionales sobre cómo se estructuran y funcionan las características de una plataforma, que pueden influir en el comportamiento del usuario.
 fact_check:
-  - label: Meta fue ordenada a pagar 375 millones de dólares en el veredicto de Nuevo México.
+  - label: El jurado de Nuevo México fijó 375 millones de dólares en sanciones civiles contra Meta.
     status: confirmed
-  - label: YouTube fue considerada responsable del 30% de los daños en el caso de Los Ángeles.
+  - label: La resolución de agosto ordenó un fondo adicional de 567 millones de dólares para medidas de reparación.
     status: confirmed
-  - label: Las acciones de Meta subieron un 5% tras uno de los veredictos.
-    status: confirmed
-  - label: El caso de Los Ángeles es un 'bellwether' que podría sentar precedente para cientos de demandas similares.
-    status: confirmed
-  - label: Más de 40 casos pendientes de fiscales generales estatales se basan en las teorías legales de estos veredictos.
-    status: confirmed
-  - label: Un juicio federal sobre estas cuestiones está previsto para finales de este año.
-    status: confirmed
+  - label: El juicio sin jurado en Nuevo México aún no ha comenzado.
+    status: unsupported
+  - label: El caso de Los Ángeles resuelve automáticamente todas las demandas similares.
+    status: unsupported
 why_it_matters:
-  - Los fallos podrían inspirar a reguladores latinoamericanos a exigir cambios en el diseño de plataformas para proteger a niños y adolescentes.
-  - Si las compañías deben rediseñar funciones como el autoplay o el infinite scroll, la experiencia de millones de usuarios en la región podría volverse más segura y menos adictiva.
-  - El acceso a documentos internos revela prácticas corporativas de plataformas que operan también en mercados emergentes; esto podría abrir la puerta a demandas colectivas similares en países como Brasil, México o Colombia.
-confidence: Alta — basada en veredictos judiciales recientes, acceso a documentos internos de Meta y la presencia de múltiples casos pendientes que respaldan las conclusiones.
+  - Los casos ilustran diferencias entre sanciones civiles, indemnizaciones individuales y medidas para abordar un daño colectivo.
+  - Un veredicto puede orientar otros litigios, pero cada caso depende de sus hechos, jurisdicción y posibles recursos.
+confidence: Moderada — decisiones y veredictos consultados; no se ha verificado la resolución definitiva de todos los recursos.
 sources:
+  - title: Findings of Fact, Conclusions of Law, and Judgment, Order, and Decree of the Court
+    url: https://nmcourts.gov/wp-content/uploads/2026/08/D-101-CV-2023-02838-Final-FOFCOL-and-Judgment-of-the-Court.pdf
+    publisher: First Judicial District Court of New Mexico
+    role: primary
+  - title: P.F., et al. (KGM) v. Meta Platforms, et al. — verdict form
+    url: https://www.crowell.com/a/web/dDeD9AxfxqDSy7X2L3d3n5/verdict-form-youtube.pdf
+    publisher: Superior Court of California
+    role: primary
   - title: 'Two verdicts in two days: How American courts are rewriting the rules for Big Tech and children'
     url: https://theconversation.com/two-verdicts-in-two-days-how-american-courts-are-rewriting-the-rules-for-big-tech-and-children-279401
     publisher: The Conversation
+    role: secondary
+  - title: Meta appeals landmark jury verdict that found it to blame for social media addiction for young users
+    url: https://apnews.com/article/f2fc62210b02f1945bfd416f5554dd5c
+    publisher: Associated Press
+  - title: Facebook accused of deceiving users in New Mexico as trial over privacy scandal wraps up
+    url: https://apnews.com/article/facebook-meta-new-mexico-privacy-lawsuit-8b414eb0a14d58d7cdc6ae752e25dcb0
+    publisher: Associated Press
+    role: secondary
+corrected_at: '2026-11-01'
+correction_summary: Se actualizaron las fases del litigio de Nuevo México y se distinguieron sanciones, medidas de reparación y daños individuales; se retiraron conclusiones generales no demostradas y se añadió el estado de ejecución informado por AP en septiembre.
+requires_uncertainty_note: true
+uncertainty_note: Las decisiones pueden ser recurridas y su alcance depende de cada caso; esta nota no verifica el resultado definitivo de todos los recursos.
 ---
 
-## Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas
+**Corrección y actualización, 31 de octubre de 2026.** La versión anterior presentaba como futuro un juicio que ya se celebró, llamaba «multas» a indemnizaciones individuales y anticipaba efectos generales que los veredictos no establecen por sí solos.
 
-Dos veredictos recientes en tribunales estadounidenses han sentenciado a Meta (propietaria de Facebook e Instagram) y a YouTube de Google a pagar multas millonarias por daños a niños. Una sentencia de 375 millones de dólares. Otra de casi 6 millones, con más por venir. Cifras que, para cualquier mortal, son astronómicas. Pero, ¿y si para estas empresas, valoradas en billones, estas cuantías fuesen poco más que un error de redondeo? La Bolsa lo tiene claro: las acciones de Meta incluso subieron un 5% tras uno de los veredictos.
+Dos procesos estadounidenses examinaron, desde teorías jurídicas diferentes, la responsabilidad de plataformas digitales por riesgos para menores. Uno enfrenta al estado de Nuevo México con Meta; el otro es una demanda individual en Los Ángeles contra Meta y YouTube. Las decisiones pueden ser recurridas y no resuelven automáticamente otros casos.
 
-Esta reacción contraintuitiva revela la pregunta central: si el dinero no es el verdadero factor de cambio, ¿qué es lo que realmente está en juego en estos nuevos fallos judiciales? ¿Y si estas sentencias marcan el inicio de una era donde las plataformas tecnológicas serán forzadas a rediseñar sus productos para proteger a los niños, en lugar de solo pagar multas simbólicas?
+## Nuevo México: sanción y medidas de reparación
 
-### El Escudo Inquebrantable que Comienza a Resquebrajarse
+En marzo de 2026, un jurado encontró infracciones de la ley estatal de prácticas comerciales e impuso a Meta **375 millones de dólares en sanciones civiles**. En una segunda fase, celebrada ante el juez en mayo según las actuaciones del caso, se examinó una demanda por afectación pública.
 
-Durante décadas, la Sección 230 de la Ley de Decencia en las Comunicaciones ha otorgado a las plataformas de internet una inmunidad casi total por el contenido generado por sus usuarios. Este "puerto seguro" legal ha frustrado innumerables intentos de responsabilizar a las empresas tecnológicas por los daños, especialmente a los más jóvenes. Reguladores y familias se encontraban a menudo con un muro: las plataformas no eran legalmente responsables de lo que sus usuarios hacían, ni siquiera si el contenido era dañino o explotador. Era una laguna legal que parecía insuperable, una premisa fundamental que limitaba cualquier acción.
+La [resolución judicial del 6 de agosto](https://nmcourts.gov/wp-content/uploads/2026/08/D-101-CV-2023-02838-Final-FOFCOL-and-Judgment-of-the-Court.pdf) concluyó que existía una afectación pública y ordenó, además de la sanción anterior, un **fondo de 567 millones de dólares** para medidas de reparación. También dispuso medidas relativas a las cuentas y la protección de menores en el ámbito del caso. El 23 de septiembre, [Associated Press informó](https://apnews.com/article/facebook-meta-new-mexico-privacy-lawsuit-8b414eb0a14d58d7cdc6ae752e25dcb0) de que las sentencias estaban suspendidas mientras se tramitaba una apelación. No hemos consultado la resolución que dispuso esa suspensión ni verificado el estado definitivo del recurso.
 
-### Estrategias Legales Innovadoras Desmontan Defensas Tradicionales
+## Los Ángeles: una demanda individual
 
-Sin embargo, en el transcurso de apenas 48 horas en marzo de 2026, dos jurados en EE. UU. han redefinido el campo de batalla legal, empleando estrategias novedosas que evitan la protección de la Sección 230 y apuntan directamente a las prácticas corporativas y el diseño de los productos.
+En marzo, un jurado consideró que Meta y YouTube habían sido negligentes en el diseño o funcionamiento de sus servicios y que esa negligencia fue un factor sustancial en el daño a una demandante identificada como K.G.M. La decisión asignó en total 6 millones de dólares entre daños compensatorios y punitivos. El [formulario de veredicto relativo a YouTube](https://www.crowell.com/a/web/dDeD9AxfxqDSy7X2L3d3n5/verdict-form-youtube.pdf) recoge las respuestas del jurado; [Associated Press informó](https://apnews.com/article/f2fc62210b02f1945bfd416f5554dd5c) de que Meta recurrió el fallo. No hemos verificado aquí el resultado definitivo de los recursos.
 
-**El caso de Nuevo México: Engaño y Prácticas Desleales**
-El primer veredicto, el 24 de marzo de 2026, no se centró en lo que los usuarios publicaron, sino en _lo que Meta dijo_ sobre la seguridad de sus propias plataformas. El Fiscal General de Nuevo México, Raúl Torrez, argumentó que Meta mintió a sabiendas a los consumidores sobre la seguridad de sus productos, una violación de las leyes de protección al consumidor del estado. La demanda se basó en tres pilares legales bajo la Ley de Prácticas Desleales de Nuevo México:
+## Qué cambia y qué no se puede concluir
 
-1.  **Engaño directo:** Meta hizo declaraciones públicas falsas, desde el testimonio de Mark Zuckerberg ante el Congreso afirmando que la investigación sobre la adicción de la plataforma era "inconclusa", hasta materiales para padres que omitían riesgos conocidos de acoso o manipulación (grooming) y explotación sexual. El jurado consideró que el intercambio de datos por servicios constituye una transacción comercial, haciendo estas declaraciones procesables.
-2.  **Práctica desleal:** Se mostró cómo Meta ignoró repetidas advertencias internas de sus propios ingenieros y ejecutivos sobre la proliferación de material de abuso sexual infantil, algoritmos que amplificaban contenido dañino porque generaba interacción y sistemas de verificación de edad esencialmente cosméticos. Se presentó una secuencia específica: ejecutivos de Meta solicitaron personal para abordar estos daños, Zuckerberg se negó, y la empresa continuó representando públicamente sus esfuerzos de seguridad como adecuados.
-3.  **Abusividad:** Meta se aprovechó de la incapacidad de los niños para evaluar los términos de servicio, negociar la arquitectura de la plataforma o comprender las implicaciones neurológicas de un diseño que maximiza la interacción. La empresa tenía investigación interna exhaustiva que documentaba estas vulnerabilidades y optó por ignorarlas en lugar de mitigarlas.
+Una sanción civil pagadera al Estado, una indemnización para una demandante y un fondo destinado a reparar una afectación pública tienen funciones distintas. El caso de Los Ángeles sirve como referencia para otros litigios coordinados, pero no determina automáticamente el resultado de demandas futuras.
 
-**El caso de Los Ángeles: Negligencia en el Diseño de Producto**
-Al día siguiente, un segundo veredicto en Los Ángeles abordó una teoría diferente en un caso de lesiones personales. La demandante, una joven de 20 años identificada como KGM, que comenzó a usar YouTube a los 6 años e Instagram a los 9, argumentó que las elecciones de diseño deliberadas de las plataformas –como el desplazamiento infinito (_infinite scroll_), la reproducción automática de videos (_autoplay video_) y los algoritmos de recomendación basados en la interacción– fueron la causa de su adicción, depresión y autolesiones.
-
-### El Verano de los Veredictos: Señales de un Cambio Incipiente
-
-El jurado de Nuevo México falló a favor del estado en todos los cargos, ordenando a Meta pagar 375 millones de dólares. Un día después, el jurado de Los Ángeles encontró a Meta y a YouTube negligentes en el diseño de sus plataformas, concluyendo que esta negligencia fue un factor sustancial en el daño a KGM y otorgándole 3 millones de dólares en daños compensatorios, más otros 3 millones en daños punitivos —6 millones de dólares en total—. (Meta fue considerada responsable del 70% de ambos componentes; YouTube del 30%).
-
-Más allá de las cifras, el caso de Los Ángeles es un **"caso testigo" (_bellwether_)**: fue seleccionado entre cientos de demandas similares para probar si una teoría de responsabilidad por el diseño de producto podía prosperar en un juicio con jurado. El éxito de este caso allana el camino para que miles de demandas similares avancen, pasando la exposición financiera potencial de las empresas de cientos de millones a miles de millones de dólares. Se ha establecido que las demandas por negligencia contra el diseño de la plataforma son viables en los tribunales de California, lo que transforma la posición de partida de futuros litigantes.
-
-### La Batalla Continúa: ¿Cambios Reales o Solo Costos Operacionales?
-
-A pesar de estos hitos, es crucial no adelantarse a los acontecimientos. Las sumas de dinero, aunque sustanciales, representan una fracción minúscula de los ingresos de estas corporaciones. Meta y Google ya han anunciado que apelarán, y se espera que las impugnaciones se centren en la Primera Enmienda, que protege la libertad de expresión, y en la controversia científica sobre el vínculo directo entre el diseño de las plataformas y el daño a la salud mental. Por ahora, Instagram, Facebook y YouTube continúan operando exactamente como antes de estos veredictos. Las multas, sin cambios estructurales, se asemejan más a tasas de licencia que a una verdadera rendición de cuentas.
-
-### El Verdadero Potencial Transformador: La Doctrina de la "Molestia Pública"
-
-El verdadero potencial para una transformación estructural radica en la siguiente fase del caso de Nuevo México. A partir del 4 de mayo de 2026, el juez Bryan Biedscheid escuchará la acusación de **"molestia pública"** sin jurado en un juicio de estrado (_bench trial_). Esta doctrina legal, tradicionalmente utilizada para abordar condiciones que afectan a la comunidad en general (como la contaminación del agua, la pintura con plomo o la crisis de los opioides), argumenta que la propia arquitectura de la plataforma de Meta constituye una de esas condiciones dañinas.
-
-Si el juez concuerda, la solución no será una multa adicional, sino una **"orden de cese" (_abatement_)**: una orden judicial que exigiría a Meta eliminar la condición perjudicial. El Fiscal General Torrez ya ha sido explícito sobre lo que buscará: verificación de edad real (no una simple casilla de confirmación), cambios en los algoritmos para reducir la amplificación de contenido dañino y la implementación de un monitor independiente con autoridad para supervisar el cumplimiento. Estas serían demandas estructurales que alterarían fundamentalmente el funcionamiento de las plataformas.
-
-Este enfoque traza un paralelismo directo con el litigio contra la industria tabacalera en la década de 1990, que no solo produjo acuerdos financieros masivos, sino también el histórico "Master Settlement Agreement", imponiendo restricciones permanentes a las prácticas de marketing y financiando programas de salud pública durante décadas. La teoría de la "molestia pública" en Nuevo México está diseñada para producir un resultado análogo para las redes sociales, transformando su modelo de negocio y operación.
-
-### Un Futuro Incierto, Pero Cargado de Precedentes
-
-Por primera vez, un jurado ha tenido acceso a documentos internos de Meta –correos electrónicos de ingenieros advirtiendo sobre autolesiones, propuestas de seguridad rechazadas y decisiones personales de Zuckerberg de priorizar la interacción sobre la protección– y ha dictaminado que estos documentos significan exactamente lo que parecen decir. Este hallazgo, y las teorías legales que lo sustentan, forman ahora la base para más de 40 casos pendientes de fiscales generales estatales, miles de demandas individuales y un juicio federal previsto para finales de este año.
-
-La cuestión central, por tanto, trasciende las cifras: ¿Son estos veredictos el primer temblor de un terremoto legal que obligará a los gigantes tecnológicos a rediseñar fundamentalmente sus productos para proteger a los niños, o solo un recordatorio costoso, pero tolerable, de su poder inalterado? El 4 de mayo de 2026, con el inicio del juicio de estrado en Nuevo México, podría comenzar a escribirse una respuesta, abriendo una nueva era en la responsabilidad de las plataformas digitales.
-
----
+Las disputas sobre el alcance de la Sección 230, las pruebas de causalidad y los remedios dependen de los hechos y de las decisiones de cada tribunal. Ninguno de estos fallos garantiza por sí solo un rediseño universal de las plataformas ni establece una regla aplicable en América Latina.
 
 <!-- source_identity: source_id=the_conversation; source_name=The Conversation -->

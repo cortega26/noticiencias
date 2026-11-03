@@ -1,5 +1,5 @@
 ---
-title: 'El ADN de guepardos momificados revela dos linajes históricos en Arabia'
+title: 'El ADN antiguo de guepardos revela dos linajes históricos en Arabia'
 schema_version: 1
 excerpt: 'El ADN antiguo recuperado en cuevas saudíes vincula distintos ejemplares con guepardos asiáticos y del noroeste africano. Es una pista para la conservación, no una reintroducción demostrada.'
 author: Noticiencias
@@ -11,8 +11,8 @@ tags:
   - 'paleogenética'
   - 'biodiversidad'
   - 'especies en peligro'
-image: '~/assets/images/2026-01-17-article-213.png'
-image_alt: 'Científicos descubren ADN preservado en guepardos momificados'
+image: '~/assets/images/2026-01-17-cheetah-cave-concept-original.webp'
+image_alt: 'Ilustración conceptual generada con IA de un guepardo junto a una cueva; no representa un ejemplar ni un lugar del estudio.'
 source_url: 'https://www.nature.com/articles/s43247-025-03021-6'
 refinery_id: '213'
 headlines_variants:
@@ -22,8 +22,8 @@ investigation: false
 featured: false
 publication_status: peer_reviewed
 summary_points:
-  - 'Los científicos hallaron siete guepardos momificados y 54 restos esqueléticos en cinco cuevas de Arabia Saudita.'
-  - 'El ADN de tres ejemplares permitió relacionar a los más antiguos con el linaje del noroeste de África y al más reciente con el asiático.'
+  - 'Los científicos hallaron siete restos momificados y 54 restos esqueléticos en cinco cuevas de Arabia Saudita.'
+  - 'Los datos genómicos de tres ejemplares acercaron los más antiguos al linaje del noroeste africano y el más reciente al asiático; los tres compartían un haplogrupo mitocondrial asiático.'
   - 'La genética informa qué poblaciones estudiar para una futura reintroducción; no demuestra por sí sola que esa medida sea viable.'
 why_it_matters:
   - 'Una decisión de conservación no puede basarse solamente en que una especie vivió allí: también importa qué linajes existieron y qué condiciones permitirían su supervivencia.'
@@ -45,21 +45,27 @@ sources:
     url: 'https://livescience.com/animals/cats/ancient-mummified-cheetahs-discovered-in-saudi-arabia-contain-preserved-dna-from-the-long-lost-population'
     publisher: 'Live Science'
     role: secondary
-corrected_at: '2026-10-10'
-correction_summary: 'Se contrastó la nota con el estudio primario: se precisaron los 61 restos, los tres genomas y las diferencias entre linajes; se retiró la afirmación no sustentada sobre abundancia y se aclaró que el hallazgo no demuestra la viabilidad de una reintroducción.'
+corrected_at: '2026-11-03'
+correction_summary: 'Se precisaron los 61 restos, los tres ejemplares analizados y las diferencias entre linajes; se retiró la afirmación no sustentada sobre abundancia y se aclaró que el hallazgo no demuestra la viabilidad de una reintroducción. Se distinguieron los resultados genómicos del haplogrupo mitocondrial y se identificaron las muestras como una momia y dos restos esqueléticos. El 3 de noviembre se aclaró que un análisis no separó convincentemente las dos subespecies actuales.'
 ---
+
+**Corrección y actualización, 1 de noviembre de 2026.** Precisamos que el análisis genómico incluyó una momia y dos restos esqueléticos. Las correcciones anteriores distinguieron los linajes y el ADN mitocondrial, y retiraron una afirmación sobre abundancia sin respaldo.
 
 **El hallazgo no revela un único origen para los guepardos que vivieron en Arabia Saudita.** El análisis de ADN antiguo distingue ejemplares relacionados con dos linajes distintos. Esa diferencia puede servir para evaluar proyectos de conservación, pero no significa que la especie pueda reintroducirse de inmediato.
 
 ## Qué encontraron
 
-Un equipo dirigido por investigadores del Centro Nacional de Vida Silvestre de Arabia Saudita inspeccionó cuevas cerca de Arar, en el norte del país. En cinco de ellas identificó **siete guepardos momificados de forma natural y restos esqueléticos de otros 54**. El trabajo se publicó el 15 de enero de 2026 en _Communications Earth & Environment_.
+Un equipo dirigido por investigadores del Centro Nacional de Vida Silvestre de Arabia Saudita inspeccionó cuevas cerca de Arar, en el norte del país. En cinco de ellas identificó **siete restos de guepardos momificados de forma natural y 54 restos esqueléticos**. El trabajo se publicó el 15 de enero de 2026 en _Communications Earth & Environment_.
 
-Las cuevas permitieron preservar información que normalmente se pierde cuando una población desaparece. Los autores combinaron datación por radiocarbono, estudio de huesos y cráneos, y análisis genómicos. Aunque encontraron numerosos restos, el resultado genético principal procede de **tres genomas completos**, no de los 61 restos.
+Las cuevas permitieron preservar información que normalmente se pierde cuando una población desaparece. Los autores combinaron datación por radiocarbono, estudio de huesos y cráneos, y análisis genómicos. Aunque encontraron numerosos restos, el resultado genético principal procede de **tres ejemplares: una momia y dos restos esqueléticos**, no de los 61 restos. El equipo utilizó secuenciación del genoma completo y comparó variantes seleccionadas con datos de guepardos actuales.
 
 ## Por qué importan las diferencias entre linajes
 
 Los investigadores compararon esas secuencias con poblaciones de guepardos actuales. El ejemplar más reciente se agrupó con el linaje asiático (_Acinonyx jubatus venaticus_), mientras que los más antiguos se acercaron al linaje del noroeste de África (_A. j. hecki_).
+
+Los autores advierten que uno de sus métodos, el análisis de componentes principales del genoma, no separó de forma convincente ambas subespecies actuales. La afinidad de las dos muestras antiguas con _A. j. hecki_ también se apoyó en el árbol filogenético y en el análisis de mezcla genética; no es una identificación inequívoca de toda la población histórica a partir de tres animales.
+
+El estudio también analizó ADN mitocondrial, heredado por vía materna: los tres ejemplares se agruparon en un haplogrupo asociado al guepardo asiático. Ese resultado y la afinidad basada en el conjunto del genoma describen distintas partes de la historia genética y no deben tratarse como pruebas idénticas.
 
 Esto matiza la idea de que los guepardos históricos de la península arábiga pertenecían exclusivamente al linaje asiático. También muestra por qué no basta con encontrar restos antiguos y atribuirlos a una única población: **la composición genética pudo cambiar a lo largo del tiempo**.
 

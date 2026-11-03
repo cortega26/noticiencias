@@ -10,13 +10,15 @@
  *   node scripts/broken-link-checker.js [dist_dir]
  */
 
-import { readdirSync, readFileSync, existsSync } from 'node:fs';
-import { resolve, dirname, join, extname } from 'node:path';
+import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
+import { resolve, dirname, join, extname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as cheerio from 'cheerio';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, '..');
-const DIST_DIR = process.argv[2] || resolve(REPO_ROOT, 'dist');
+const DIST_DIR = resolve(process.argv[2] || resolve(REPO_ROOT, 'dist'));
+const SITE_ORIGIN = 'https://noticiencias.com';
 
 // ---------------------------------------------------------------------------
 // Collect all HTML files
@@ -44,35 +46,37 @@ function collectHtmlFiles(dir) {
 // Extract internal links from HTML
 // ---------------------------------------------------------------------------
 
-const LINK_RE = /<a\s[^>]*href\s*=\s*["']([^"']+)["'][^>]*>/gi;
-
 function extractInternalLinks(htmlContent, filePath) {
   const links = [];
-  const matches = htmlContent.matchAll(LINK_RE);
+  const pagePath = '/' + relative(DIST_DIR, filePath).split(sep).join('/');
+  const pageUrl = new URL(pagePath.replace(/index\.html$/, ''), SITE_ORIGIN);
+  const $ = cheerio.load(htmlContent);
+  $('a[href]').each((_, element) => {
+    const href = $(element).attr('href')?.trim();
+    if (!href || href.startsWith('#')) return;
 
-  for (const match of matches) {
-    let href = match[1];
-
-    // Skip external URLs, anchors, mailto, tel
-    if (
-      href.startsWith('http://') ||
-      href.startsWith('https://') ||
-      href.startsWith('mailto:') ||
-      href.startsWith('tel:') ||
-      href.startsWith('#')
-    ) {
-      continue;
+    let url;
+    let pathname;
+    try {
+      url = new URL(href, pageUrl);
+      if (
+        !['http:', 'https:'].includes(url.protocol) ||
+        url.hostname !== new URL(SITE_ORIGIN).hostname
+      )
+        return;
+      pathname = decodeURIComponent(url.pathname);
+    } catch {
+      links.push({ href, resolved: null, sourceFile: filePath });
+      return;
     }
 
-    // Resolve relative path
-    const fileDir = dirname(filePath);
-    const resolved = resolve(fileDir, href);
-
-    // Only check links that point to files within dist/
-    if (resolved.startsWith(DIST_DIR)) {
-      links.push({ href, resolved, sourceFile: filePath });
+    const resolved = resolve(DIST_DIR, '.' + pathname);
+    if (resolved !== DIST_DIR && !resolved.startsWith(DIST_DIR + sep)) {
+      links.push({ href, resolved: null, sourceFile: filePath });
+      return;
     }
-  }
+    links.push({ href, resolved, sourceFile: filePath });
+  });
 
   return links;
 }
@@ -82,20 +86,18 @@ function extractInternalLinks(htmlContent, filePath) {
 // ---------------------------------------------------------------------------
 
 function verifyLink(resolved) {
+  if (!resolved) return { valid: false, reason: 'Invalid internal URL' };
   // Check if file exists
-  if (existsSync(resolved)) {
+  if (existsSync(resolved) && statSync(resolved).isFile()) {
     return { valid: true };
   }
+
+  if (existsSync(join(resolved, 'index.html'))) return { valid: true };
 
   // Try with .html extension
   if (!extname(resolved)) {
     const withHtml = resolved + '.html';
     if (existsSync(withHtml)) {
-      return { valid: true };
-    }
-    // Try index.html in directory
-    const indexHtml = join(resolved, 'index.html');
-    if (existsSync(indexHtml)) {
       return { valid: true };
     }
   }
@@ -112,6 +114,10 @@ function main() {
 
   const htmlFiles = collectHtmlFiles(DIST_DIR);
   console.log(`[broken-link-checker] Found ${htmlFiles.length} HTML files.`);
+  if (htmlFiles.length === 0) {
+    console.error('[broken-link-checker] No HTML files found; build the site first.');
+    process.exit(1);
+  }
 
   const brokenLinks = [];
   let totalLinks = 0;
@@ -134,6 +140,11 @@ function main() {
   }
 
   console.log(`[broken-link-checker] Checked ${totalLinks} internal links.`);
+
+  if (totalLinks === 0) {
+    console.error('[broken-link-checker] No internal links found; the audit cannot pass.');
+    process.exit(1);
+  }
 
   if (brokenLinks.length > 0) {
     console.error(`[broken-link-checker] ${brokenLinks.length} BROKEN LINK(S) FOUND:`);

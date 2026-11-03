@@ -10,7 +10,8 @@ describe('AdSense health evidence consistency', () => {
     const primaryUrls = $('a[data-analytics-primary-source]')
       .map((_, a) => $(a).attr('href'))
       .get();
-    expect(text).toContain('10 de octubre de 2026');
+    expect(text).toContain('1 de noviembre de 2026');
+    expect(text).toContain('Es una clasificación histórica');
     expect(text).toContain('no una garantía absoluta');
     expect(primaryUrls.some((url) => url?.includes('who.int/europe/'))).toBe(true);
     expect(primaryUrls).toContain('https://www.paho.org/en/measles-multi-country-outbreak-2026');

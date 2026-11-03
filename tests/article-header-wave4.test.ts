@@ -16,13 +16,13 @@ describe('Wave 4 article header (P1-04)', () => {
       .map((_, el) => $(el).text().trim())
       .get();
     expect(chips.length).toBeLessThanOrEqual(3);
-    expect(chips).toContain('Modelo: fases mixtas (ver detalle)');
+    expect(chips).toContain('Evidencia: fases mixtas (ver detalle)');
     expect(chips).toContain('Preprint');
     expect(chips).toContain('Fuente primaria');
   });
 
   it('renders no chips for legacy articles without evidence data', () => {
-    const $ = loadSlug('2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado');
+    const $ = loadSlug('2026-02-12-bienvenidos');
     expect($('ul[aria-label="Datos metodológicos"]').length).toBe(0);
   });
 });

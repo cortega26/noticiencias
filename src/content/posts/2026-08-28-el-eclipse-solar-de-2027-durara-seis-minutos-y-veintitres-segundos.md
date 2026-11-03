@@ -14,10 +14,8 @@ tags:
 excerpt:
   La totalidad del eclipse del 2 de agosto de 2027 alcanzará unos 6 minutos y 23 segundos en su máximo. La
   duración local y la visibilidad dependen de la ubicación.
-image: ~/assets/images/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.jpg
-image_alt:
-  Silueta de una persona fotografiando un Sol eclipsado en forma de media luna brillante sobre un cielo
-  dorado.
+image: ~/assets/images/2026-08-28-total-eclipse-2024-nasa.jpg
+image_alt: 'Eclipse solar total del 8 de abril de 2024 visto desde Dallas, como referencia de archivo. Foto: NASA/Keegan Barber.'
 source_url: https://newscientist.com/article/2586640-where-and-when-to-see-2027s-solar-eclipse-of-the-century/
 series: Espacio
 refinery_id: '1030'
@@ -125,6 +123,8 @@ Esa comparación describe máximos geométricos. No establece que una persona qu
 ## Seguridad durante la observación
 
 [NASA recomienda](https://science.nasa.gov/eclipses/safety/) observar las fases parciales mediante gafas o visores solares apropiados; las gafas de sol ordinarias no sirven. Mirar por cámaras, telescopios o binoculares exige filtros solares adecuados colocados delante de la óptica, no gafas de eclipse usadas detrás del instrumento.
+
+Antes de usarlos, revisa los visores y descártalos si están rotos, rayados o dañados; supervisa a los niños durante su uso. Si no dispones de uno, NASA también describe métodos de proyección indirecta: se observa la imagen proyectada, sin mirar al Sol a través del orificio.
 
 Solo durante la breve totalidad, dentro de la franja y cuando el disco brillante del Sol esté completamente oculto, puede retirarse la protección para mirar directamente. Debe volver a colocarse en cuanto reaparezca cualquier parte brillante. Si no estás en la franja de totalidad, mantén la protección durante todo el evento.
 

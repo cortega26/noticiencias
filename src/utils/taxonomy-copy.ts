@@ -34,7 +34,7 @@ const SERIES_DESCRIPTIONS: Record<string, string> = {
   'IA en la práctica':
     'Inteligencia artificial aplicada: herramientas, plataformas y sus efectos reales.',
   'Salud que importa':
-    'Medicina, biología humana y salud pública, con el modelo experimental a la vista.',
+    'Medicina, biología humana y salud pública, con las características de cada estudio a la vista.',
 };
 
 function fallbackSeriesDescription(name: string): string {

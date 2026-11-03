@@ -607,12 +607,45 @@ function auditTagSitemapExclusion() {
   }
 }
 
+function auditSitemapIndexability() {
+  const errorsBefore = errorCount;
+  const sitemapFiles = fs.readdirSync(DIST_DIR).filter((name) => /^sitemap.*\.xml$/.test(name));
+  for (const sitemapFile of sitemapFiles) {
+    const xml = load(fs.readFileSync(path.join(DIST_DIR, sitemapFile), 'utf8'), { xmlMode: true });
+    for (const loc of xml('urlset > url > loc').toArray()) {
+      const url = xml(loc).text().trim();
+      const pathname = new URL(url).pathname.replace(/^\/+|\/+$/g, '');
+      const htmlPath = path.join(DIST_DIR, pathname, 'index.html');
+      if (!fs.existsSync(htmlPath)) continue;
+      const page = load(fs.readFileSync(htmlPath, 'utf8'));
+      const blocked = page('meta[name]')
+        .toArray()
+        .some((element) => {
+          const name = (page(element).attr('name') || '').toLowerCase();
+          const directives = (page(element).attr('content') || '').toLowerCase().split(/[\s,]+/);
+          return (
+            ['robots', 'googlebot'].includes(name) &&
+            directives.some((d) => d === 'noindex' || d === 'none')
+          );
+        });
+      if (blocked) {
+        console.error(`${RED}[FAIL] ${sitemapFile} lists a noindex page: ${url}.${RESET}`);
+        errorCount++;
+      }
+    }
+  }
+  if (errorCount === errorsBefore) {
+    console.log(`${GREEN}PASSED: sitemap HTML pages do not declare noindex.${RESET}`);
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
 auditSocialManifest();
 auditTagSitemapExclusion();
+auditSitemapIndexability();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);

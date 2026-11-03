@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T14:20:28.872Z",
+  "article": "src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape editorial illustration for a rigorous astronomy magazine. A single small amber star fading into a deep midnight-blue starfield, with a faint diffuse halo and subtle distant stars. Elegant restrained visual metaphor, sophisticated painted textures and a deep blue and gold palette, clean composition, no dramatic explosion, no black disk or claims of a visible black hole, no galaxies, no text, no symbols or labels. It is an imagined conceptual image of a fading star, not a scientific depiction or observation of a specific object.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-02b48a73-108d-4285-96e2-d017fa55b150.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-fading-star-concept.png",
+    "sha256": "c7522f727c8b13cfb1ccc11ca6f79bf27c028386956afffc0cf7cb788258eb16",
+    "bytes": 2319185,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-02-16-fading-star-concept-original.webp",
+    "sha256": "2f85cf4b9bb997f7ab0de8b9ce530ec45c0106104cb5c1237e0149a6e153a89a",
+    "bytes": 188336,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-02-16-agujero-negro-colapso.jpg",
+    "provenance": "visual match to artwork credited by Space.com to Keith Miller, Caltech/IPAC-SELab; transformation and reuse permission unverified"
+  },
+  "evidence_boundary": "Imagined generic fading star; not an observation or model of M31-2014-DS1.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

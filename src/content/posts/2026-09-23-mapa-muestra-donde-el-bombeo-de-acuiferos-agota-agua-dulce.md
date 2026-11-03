@@ -13,24 +13,24 @@ tags:
   - llanuras altas
 excerpt: Un análisis de GRACE y GRACE-FO identificó 40 regiones con cambios de agua asociados a actividades humanas; el mapa mide tendencias, no el volumen restante de cada acuífero.
 image: ~/assets/images/2026-09-23-grace-water-storage-original.webp
-image_alt: Ilustración conceptual de dos satélites en órbita observando cambios regionales de almacenamiento de agua sobre la Tierra
+image_alt: Ilustración conceptual generada con IA de dos satélites en órbita observando cambios regionales de almacenamiento de agua sobre la Tierra
 source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/
 refinery_id: '2601'
-corrected_at: '2026-10-12'
-correction_summary: 'Se añadió el estudio primario y se retiró una comparación de 45 % que no quedó verificada en la fuente; se precisaron el alcance regional y los límites del mapa.'
+corrected_at: '2026-11-02'
+correction_summary: 'Se precisaron la selección de regiones, el intercambio entre detalle espacial y temporal, los límites de atribuir tendencias al bombeo y la comparación del 33 % entre métodos; también se corrigió la descripción de GRACE-FO.'
 headlines_variants:
-  question: ¿Dónde muestra el nuevo mapa que el bombeo de acuíferos está agotando el agua dulce?
+  question: ¿Qué cambios de agua terrestre identifica el nuevo mapa y qué permite atribuir?
   benefit: Qué revela el análisis satelital y por qué no predice cuánto durará un acuífero local
 summary_points:
   - El estudio analizó tendencias de almacenamiento de agua terrestre entre abril de 2002 y noviembre de 2025 con observaciones GRACE/GRACE-FO de nivel 1B.
   - Identificó 40 focos de tendencias con asociaciones espaciales significativas a factores humanos, incluidos riego, deforestación y llenado de embalses.
-  - En esos focos, las pérdidas acumuladas estimadas sumaron 3.122 Gt y las ganancias, 2.432 Gt; las magnitudes regionales fueron en promedio 33 % mayores que con la regresión tradicional comparada.
+  - En esos focos, las pérdidas acumuladas estimadas sumaron 3.122 Gt y las ganancias, 2.432 Gt; según el estudio, la regresión tradicional subestimó en promedio un 33 % las magnitudes regionales frente al método nuevo.
   - El método registra cambios de masa a escala regional. No determina el volumen restante de un acuífero ni una fecha de agotamiento.
 glossary:
   - term: GRACE
     definition: Misión de satélites que mide pequeñas variaciones en la gravedad terrestre para inferir cambios en la masa de agua, hielo y tierra.
   - term: GRACE-FO
-    definition: Satélite sucesor de GRACE que continúa las mediciones de gravedad con mayor continuidad y mejor resolución temporal.
+    definition: Misión sucesora de GRACE formada por dos satélites que continúan las mediciones de cambios en la gravedad terrestre.
   - term: acuífero
     definition: Formación geológica subterránea que almacena y permite el movimiento de agua dulce, accesible mediante pozos o manantiales.
   - term: almacenamiento de agua dulce
@@ -38,7 +38,7 @@ glossary:
   - term: tasa de cambio de masa
     definition: Medida de cuánto aumenta o disminuye la masa de agua en una región por unidad de tiempo, obtenida de las variaciones gravitacionales de los satélites.
   - term: modelo geoestadístico
-    definition: Técnica estadística que combina datos espaciales y modelos físicos para separar las contribuciones humanas y climáticas a los cambios observados.
+    definition: Técnica estadística que utiliza la distribución espacial de los datos para estudiar asociaciones entre las tendencias observadas y posibles factores humanos o climáticos.
 fact_check:
   - label: El análisis usó datos de abril de 2002 a noviembre de 2025 y una regresión apilada sobre observaciones GRACE/GRACE-FO de nivel 1B.
     status: confirmed
@@ -46,7 +46,7 @@ fact_check:
     status: confirmed
   - label: En esos focos, el balance acumulado reportado fue de 3.122 Gt de pérdidas frente a 2.432 Gt de ganancias.
     status: confirmed
-  - label: Las magnitudes regionales fueron en promedio 33 % mayores que las obtenidas con el método tradicional comparado por el estudio.
+  - label: Los autores informaron que el método tradicional subestimó en promedio un 33 % las magnitudes regionales frente al método nuevo.
     status: confirmed
   - label: El método no calcula el volumen total de agua almacenado ni cuándo se agotará un acuífero específico.
     status: confirmed
@@ -70,17 +70,21 @@ social:
   id: 062bdfdcf7f453f4d9fc70eccc9e38f819a9e18195e89592b9fc9e70e2440a9b
 ---
 
+**Corrección y actualización, 2 de noviembre de 2026.** La versión anterior expresó como «33 % mayores» una comparación que el estudio describe como una subestimación media del 33 % por el método tradicional. Esas formulaciones no son equivalentes sin precisar la base del porcentaje. También se aclaró que el modelo estudia asociaciones y no separa por sí solo cuánto corresponde a cada causa.
+
 Los satélites GRACE y GRACE-FO permiten seguir cambios en la masa de agua terrestre a gran escala. Un estudio publicado en _Proceedings of the National Academy of Sciences_ aplicó un método de regresión apilada directamente a sus observaciones para distinguir mejor las tendencias regionales de almacenamiento de agua entre abril de 2002 y noviembre de 2025.
 
 ## Qué midió el estudio
 
-El equipo analizó observaciones de nivel 1B de la distancia entre satélites, en lugar de partir solo de los productos mensuales de masa que se usan habitualmente. El método aprovecha la información temporal para mejorar la resolución espacial efectiva. Identificó 40 focos de tendencia con asociaciones espaciales significativas a impulsores humanos, entre ellos el riego con agua subterránea y superficial, la agricultura de secano, la deforestación y el llenado de embalses.
+El equipo analizó observaciones de nivel 1B de la variación de distancia entre satélites, en lugar de partir solo de los productos mensuales de masa que se usan habitualmente. El método aprovecha muchos años de datos para mejorar la resolución espacial efectiva de las tendencias. De 94 focos con tendencias significativas, los autores seleccionaron 40 con asociaciones espaciales a actividades humanas, entre ellas el riego con agua subterránea y superficial, la agricultura de secano, la deforestación y el llenado de embalses.
 
-En conjunto, esos focos acumularon 3.122 gigatoneladas de pérdida de almacenamiento de agua terrestre y 2.432 gigatoneladas de ganancia. Frente a la regresión tradicional de masas mensuales, las magnitudes de las tendencias regionales fueron en promedio 33 % mayores. Esa comparación describe el resultado del método nuevo frente al anterior; no significa que cada acuífero esté perdiendo 33 % más agua ni que los satélites midan directamente cada extracción.
+El mayor detalle espacial tiene una contrapartida: el mapa estima cambios de largo plazo y no conserva la evolución mensual con el mismo detalle que los productos tradicionales. El período analizado tampoco fue una serie continua sin interrupciones: el estudio utilizó datos de GRACE hasta agosto de 2016 y de GRACE-FO desde junio de 2018.
+
+En conjunto, esos focos acumularon 3.122 gigatoneladas de pérdida de almacenamiento de agua terrestre y 2.432 gigatoneladas de ganancia. Los autores informaron que la regresión tradicional de masas mensuales subestimó las magnitudes de las tendencias regionales en un promedio del 33 % frente al método nuevo. Esa comparación entre métodos no significa que cada acuífero esté perdiendo 33 % más agua ni que los satélites midan directamente cada extracción.
 
 ## Lo que el mapa permite concluir
 
-El análisis encontró que las actividades humanas explican una parte significativa de la variación espacial de las tendencias en todos los continentes no polares salvo Australia. También detectó aumentos locales asociados, entre otros factores, con agricultura y embalses. La señal no equivale a una medición de cuánto agua queda bajo una ciudad o cuánto durará un pozo. GRACE registra cambios en masa sobre áreas extensas y no ofrece, por sí solo, el volumen total de un acuífero ni una fecha de agotamiento.
+Los modelos encontraron asociaciones significativas entre variables de uso humano y la variación espacial de las tendencias en cada región continental no polar analizada salvo Australia. Esto no demuestra que las actividades humanas carezcan de efecto allí: indica que no apareció esa asociación significativa en el modelo del estudio. También se detectaron aumentos locales asociados, entre otros factores, con agricultura y embalses. La señal no equivale a una medición de cuánto agua queda bajo una ciudad o cuánto durará un pozo. GRACE registra cambios en masa sobre áreas extensas y no ofrece, por sí solo, el volumen total de un acuífero ni una fecha de agotamiento.
 
 La atribución combina observaciones con modelos estadísticos. Por eso, una asociación entre una tendencia y actividades humanas orienta dónde investigar, pero no demuestra qué proporción de un cambio local procede exclusivamente del bombeo. Los autores presentan el método como una base para futuras misiones de gravedad y para seguir variaciones decenales con mejor detalle espacial.
 
