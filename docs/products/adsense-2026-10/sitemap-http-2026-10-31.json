@@ -1,0 +1,620 @@
+{
+  "checked_at": "2026-10-31",
+  "method": "HTTP GET sitemap-0.xml; GET de cada URL con hasta cuatro solicitudes concurrentes; comparación de status, URL final y enlace canonical. No verifica indexación ni acceso de Googlebot.",
+  "sitemap": "https://noticiencias.com/sitemap-0.xml",
+  "url_count": 102,
+  "results": [
+    {
+      "url": "https://noticiencias.com/",
+      "status": 200,
+      "final": "https://noticiencias.com/",
+      "canonical": "https://noticiencias.com/"
+    },
+    {
+      "url": "https://noticiencias.com/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras/",
+      "status": 200,
+      "final": "https://noticiencias.com/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras/",
+      "canonical": "https://noticiencias.com/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras/"
+    },
+    {
+      "url": "https://noticiencias.com/arqueologia/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos/",
+      "status": 200,
+      "final": "https://noticiencias.com/arqueologia/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos/",
+      "canonical": "https://noticiencias.com/arqueologia/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos/"
+    },
+    {
+      "url": "https://noticiencias.com/arqueologia/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos/",
+      "status": 200,
+      "final": "https://noticiencias.com/arqueologia/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos/",
+      "canonical": "https://noticiencias.com/arqueologia/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos/"
+    },
+    {
+      "url": "https://noticiencias.com/astronomia/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano/",
+      "status": 200,
+      "final": "https://noticiencias.com/astronomia/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano/",
+      "canonical": "https://noticiencias.com/astronomia/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano/"
+    },
+    {
+      "url": "https://noticiencias.com/biologia/2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado/",
+      "status": 200,
+      "final": "https://noticiencias.com/biologia/2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado/",
+      "canonical": "https://noticiencias.com/biologia/2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado/"
+    },
+    {
+      "url": "https://noticiencias.com/biologia/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral/",
+      "status": 200,
+      "final": "https://noticiencias.com/biologia/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral/",
+      "canonical": "https://noticiencias.com/biologia/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/",
+      "canonical": "https://noticiencias.com/blog/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/2/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/2/",
+      "canonical": "https://noticiencias.com/blog/2/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/3/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/3/",
+      "canonical": "https://noticiencias.com/blog/3/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/4/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/4/",
+      "canonical": "https://noticiencias.com/blog/4/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/5/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/5/",
+      "canonical": "https://noticiencias.com/blog/5/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/6/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/6/",
+      "canonical": "https://noticiencias.com/blog/6/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/7/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/7/",
+      "canonical": "https://noticiencias.com/blog/7/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/8/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/8/",
+      "canonical": "https://noticiencias.com/blog/8/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/9/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/9/",
+      "canonical": "https://noticiencias.com/blog/9/"
+    },
+    {
+      "url": "https://noticiencias.com/blog/10/",
+      "status": 200,
+      "final": "https://noticiencias.com/blog/10/",
+      "canonical": "https://noticiencias.com/blog/10/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/arqueologia/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/arqueologia/",
+      "canonical": "https://noticiencias.com/categorias/arqueologia/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/astronomia/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/astronomia/",
+      "canonical": "https://noticiencias.com/categorias/astronomia/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/biologia/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/biologia/",
+      "canonical": "https://noticiencias.com/categorias/biologia/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/ciencia/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/ciencia/",
+      "canonical": "https://noticiencias.com/categorias/ciencia/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/ciencia/2/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/ciencia/2/",
+      "canonical": "https://noticiencias.com/categorias/ciencia/2/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/ciencia/3/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/ciencia/3/",
+      "canonical": "https://noticiencias.com/categorias/ciencia/3/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/editorial/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/editorial/",
+      "canonical": "https://noticiencias.com/categorias/editorial/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/fisica/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/fisica/",
+      "canonical": "https://noticiencias.com/categorias/fisica/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/quimica/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/quimica/",
+      "canonical": "https://noticiencias.com/categorias/quimica/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/salud/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/salud/",
+      "canonical": "https://noticiencias.com/categorias/salud/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/salud/2/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/salud/2/",
+      "canonical": "https://noticiencias.com/categorias/salud/2/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/tecnologia/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/tecnologia/",
+      "canonical": "https://noticiencias.com/categorias/tecnologia/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/tecnologia/2/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/tecnologia/2/",
+      "canonical": "https://noticiencias.com/categorias/tecnologia/2/"
+    },
+    {
+      "url": "https://noticiencias.com/categorias/tecnologia/3/",
+      "status": 200,
+      "final": "https://noticiencias.com/categorias/tecnologia/3/",
+      "canonical": "https://noticiencias.com/categorias/tecnologia/3/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-27-conoce-a-los-misteriosos-electridos/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-27-conoce-a-los-misteriosos-electridos/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-27-conoce-a-los-misteriosos-electridos/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado/",
+      "canonical": "https://noticiencias.com/ciencia/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/",
+      "canonical": "https://noticiencias.com/ciencia/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable/",
+      "canonical": "https://noticiencias.com/ciencia/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos/",
+      "canonical": "https://noticiencias.com/ciencia/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/",
+      "canonical": "https://noticiencias.com/ciencia/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas/",
+      "canonical": "https://noticiencias.com/ciencia/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio/",
+      "canonical": "https://noticiencias.com/ciencia/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos/",
+      "canonical": "https://noticiencias.com/ciencia/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles/",
+      "canonical": "https://noticiencias.com/ciencia/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino/",
+      "canonical": "https://noticiencias.com/ciencia/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos/",
+      "canonical": "https://noticiencias.com/ciencia/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda/",
+      "canonical": "https://noticiencias.com/ciencia/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-09-25-la-gravedad-como-proyector-holografico-del-universo/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-09-25-la-gravedad-como-proyector-holografico-del-universo/",
+      "canonical": "https://noticiencias.com/ciencia/2026-09-25-la-gravedad-como-proyector-holografico-del-universo/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales/",
+      "canonical": "https://noticiencias.com/ciencia/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo/",
+      "canonical": "https://noticiencias.com/ciencia/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa/",
+      "canonical": "https://noticiencias.com/ciencia/2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa/"
+    },
+    {
+      "url": "https://noticiencias.com/ciencia/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua/",
+      "status": 200,
+      "final": "https://noticiencias.com/ciencia/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua/",
+      "canonical": "https://noticiencias.com/ciencia/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua/"
+    },
+    {
+      "url": "https://noticiencias.com/contacto/",
+      "status": 200,
+      "final": "https://noticiencias.com/contacto/",
+      "canonical": "https://noticiencias.com/contacto/"
+    },
+    {
+      "url": "https://noticiencias.com/editorial/2026-02-12-bienvenidos/",
+      "status": 200,
+      "final": "https://noticiencias.com/editorial/2026-02-12-bienvenidos/",
+      "canonical": "https://noticiencias.com/editorial/2026-02-12-bienvenidos/"
+    },
+    {
+      "url": "https://noticiencias.com/fisica/2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura/",
+      "status": 200,
+      "final": "https://noticiencias.com/fisica/2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura/",
+      "canonical": "https://noticiencias.com/fisica/2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura/"
+    },
+    {
+      "url": "https://noticiencias.com/metodologia/",
+      "status": 200,
+      "final": "https://noticiencias.com/metodologia/",
+      "canonical": "https://noticiencias.com/metodologia/"
+    },
+    {
+      "url": "https://noticiencias.com/newsletter/",
+      "status": 200,
+      "final": "https://noticiencias.com/newsletter/",
+      "canonical": "https://noticiencias.com/newsletter/"
+    },
+    {
+      "url": "https://noticiencias.com/nosotros/",
+      "status": 200,
+      "final": "https://noticiencias.com/nosotros/",
+      "canonical": "https://noticiencias.com/nosotros/"
+    },
+    {
+      "url": "https://noticiencias.com/patrocinios/",
+      "status": 200,
+      "final": "https://noticiencias.com/patrocinios/",
+      "canonical": "https://noticiencias.com/patrocinios/"
+    },
+    {
+      "url": "https://noticiencias.com/privacidad/",
+      "status": 200,
+      "final": "https://noticiencias.com/privacidad/",
+      "canonical": "https://noticiencias.com/privacidad/"
+    },
+    {
+      "url": "https://noticiencias.com/recursos/carbono-bosques-suelos/",
+      "status": 200,
+      "final": "https://noticiencias.com/recursos/carbono-bosques-suelos/",
+      "canonical": "https://noticiencias.com/recursos/carbono-bosques-suelos/"
+    },
+    {
+      "url": "https://noticiencias.com/recursos/detector-de-hype/",
+      "status": 200,
+      "final": "https://noticiencias.com/recursos/detector-de-hype/",
+      "canonical": "https://noticiencias.com/recursos/detector-de-hype/"
+    },
+    {
+      "url": "https://noticiencias.com/recursos/exoplanetas-atmosferas-biosignaturas/",
+      "status": 200,
+      "final": "https://noticiencias.com/recursos/exoplanetas-atmosferas-biosignaturas/",
+      "canonical": "https://noticiencias.com/recursos/exoplanetas-atmosferas-biosignaturas/"
+    },
+    {
+      "url": "https://noticiencias.com/reportar-problema/",
+      "status": 200,
+      "final": "https://noticiencias.com/reportar-problema/",
+      "canonical": "https://noticiencias.com/reportar-problema/"
+    },
+    {
+      "url": "https://noticiencias.com/salud/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma/",
+      "status": 200,
+      "final": "https://noticiencias.com/salud/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma/",
+      "canonical": "https://noticiencias.com/salud/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma/"
+    },
+    {
+      "url": "https://noticiencias.com/salud/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas/",
+      "status": 200,
+      "final": "https://noticiencias.com/salud/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas/",
+      "canonical": "https://noticiencias.com/salud/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas/"
+    },
+    {
+      "url": "https://noticiencias.com/salud/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida/",
+      "status": 200,
+      "final": "https://noticiencias.com/salud/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida/",
+      "canonical": "https://noticiencias.com/salud/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida/"
+    },
+    {
+      "url": "https://noticiencias.com/salud/2026-09-18-noticia-cientifica/",
+      "status": 200,
+      "final": "https://noticiencias.com/salud/2026-09-18-noticia-cientifica/",
+      "canonical": "https://noticiencias.com/salud/2026-09-18-noticia-cientifica/"
+    },
+    {
+      "url": "https://noticiencias.com/series/",
+      "status": 200,
+      "final": "https://noticiencias.com/series/",
+      "canonical": "https://noticiencias.com/series/"
+    },
+    {
+      "url": "https://noticiencias.com/series/espacio/",
+      "status": 200,
+      "final": "https://noticiencias.com/series/espacio/",
+      "canonical": "https://noticiencias.com/series/espacio/"
+    },
+    {
+      "url": "https://noticiencias.com/series/ia-en-la-practica/",
+      "status": 200,
+      "final": "https://noticiencias.com/series/ia-en-la-practica/",
+      "canonical": "https://noticiencias.com/series/ia-en-la-practica/"
+    },
+    {
+      "url": "https://noticiencias.com/series/salud-que-importa/",
+      "status": 200,
+      "final": "https://noticiencias.com/series/salud-que-importa/",
+      "canonical": "https://noticiencias.com/series/salud-que-importa/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada/"
+    },
+    {
+      "url": "https://noticiencias.com/tecnologia/2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal/",
+      "status": 200,
+      "final": "https://noticiencias.com/tecnologia/2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal/",
+      "canonical": "https://noticiencias.com/tecnologia/2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal/"
+    },
+    {
+      "url": "https://noticiencias.com/terminos/",
+      "status": 200,
+      "final": "https://noticiencias.com/terminos/",
+      "canonical": "https://noticiencias.com/terminos/"
+    },
+    {
+      "url": "https://noticiencias.com/transparencia/",
+      "status": 200,
+      "final": "https://noticiencias.com/transparencia/",
+      "canonical": "https://noticiencias.com/transparencia/"
+    },
+    {
+      "url": "https://noticiencias.com/uso-de-ia/",
+      "status": 200,
+      "final": "https://noticiencias.com/uso-de-ia/",
+      "canonical": "https://noticiencias.com/uso-de-ia/"
+    }
+  ]
+}

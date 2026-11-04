@@ -1,7 +1,7 @@
 ---
 title: 'Dirigibles y drones estratosféricos buscan llevar internet a zonas remotas'
 schema_version: 2
-excerpt: 'Pruebas de dirigibles y aviones estratosféricos (HAPS) buscan llevar Internet a zonas remotas este año, compitiendo con satélites como Starlink.'
+excerpt: 'Las plataformas de alta altitud exploran nuevas formas de ampliar la conectividad; cobertura, costo y calidad siguen dependiendo de cada despliegue.'
 author: Noticiencias
 date: 2026-01-27
 categories:
@@ -10,25 +10,25 @@ tags:
   - 'conectividad por satélite'
   - dirigibles estratosféricos
   - 'acceso a internet'
-image: '~/assets/images/2026-01-27-article-432.webp'
-image_alt: 'Nuevas plataformas estratosféricas podrían revolucionar la conectividad en áreas remotas'
+image: '~/assets/images/2026-01-27-haps-airship-concept-original.webp'
+image_alt: 'Ilustración conceptual generada con IA de un dirigible imaginario sobre las nubes; no representa un vehículo ni un vuelo real.'
 source_url: 'https://technologyreview.com/2026/01/27/1131780/stratospheric-internet-take-off/'
 refinery_id: '432'
 headlines_variants:
   question: '¿Podría la tecnología de estaciones de plataforma de alta altitud resolver la brecha digital en todo el mundo?'
-  benefit: 'Mejora la accesibilidad a Internet en áreas remotas'
+  benefit: 'Qué habría que comprobar para ampliar el acceso en áreas remotas'
 investigation: false
 featured: false
 summary_points:
-  - Cerca de 2.200 millones de personas carecen de acceso a Internet debido a su ubicación remota.
-  - Empresas están probando dirigibles y drones de alta altitud (HAPS); las pruebas sobre Japón se realizan este año, mientras que las de Indonesia están previstas para fines de 2027.
-  - Aunque el proyecto Loon fracasó, las nuevas plataformas afirman haber superado los problemas técnicos y económicos anteriores.
-  - El mercado de HAPS se proyecta en $1.900 millones para 2033, mucho menor que el esperado para Internet por satélite.
+  - La UIT estimó en noviembre de 2026 que 2.000 millones de personas no usaban internet; revisó a 2.100 millones su estimación para 2025. La ubicación remota no explica por sí sola esas cifras.
+  - Las plataformas de alta altitud pueden proporcionar enlaces de comunicaciones desde aeronaves o globos situados en la estratosfera.
+  - Algunas pruebas han proporcionado conectividad a comunidades remotas, pero su rendimiento y costo deben evaluarse por despliegue.
+  - Asequibilidad, infraestructura, dispositivos y habilidades también influyen en el acceso efectivo a internet.
 glossary:
   - term: dirigibles estratosféricos
     definition: Aeronaves más livianas que el aire que vuelan en la estratosfera (unos 20 km de altura) y pueden llevar equipos de telecomunicaciones.
   - term: plataformas HAPS
-    definition: Estaciones de plataforma de alta altitud (High Altitude Platform Systems) que incluyen globos, dirigibles o aviones no tripulados operando en la estratosfera para proveer servicios como Internet.
+    definition: Sistemas que usan estaciones de radio situadas en plataformas a gran altitud. La UIT define esas estaciones a 20–50 km y en una posición nominal fija respecto de la Tierra.
   - term: antena de matriz de fases
     definition: Tipo de antena electrónica que puede dirigir su haz de señal sin mover partes mecánicas, permitiendo comunicaciones rápidas y flexibles.
   - term: megaconstelaciones
@@ -38,52 +38,52 @@ glossary:
   - term: spin-off
     definition: Empresa nueva que se crea a partir de una división o proyecto de una compañía mayor, manteniendo cierta relación tecnológica o de propiedad.
 fact_check:
-  - label: Aproximadamente 2.200 millones de personas no tienen acceso a Internet por vivir en zonas remotas.
+  - label: La UIT estimó 2.000 millones de personas sin uso de internet en 2026 y revisó a 2.100 millones su estimación para 2025.
     status: confirmed
-  - label: Existen casi 10.000 satélites Starlink activos en órbita y la constelación OneWeb tiene 650 satélites.
-    status: confirmed
-  - label: El proyecto Loon de Google X, iniciado en 2011, cerró en 2021 debido a problemas técnicos y económicos.
-    status: confirmed
-  - label: Varias empresas afirman haber resuelto los problemas técnicos y económicos que frenaron a los HAPS en el pasado.
-    status: uncertain
-  - label: Se proyecta un mercado de HAPS de $1.900 millones para 2033.
-    status: uncertain
-  - label: World Mobile planea probar una antena de matriz de fases que podría competir con las megaconstelaciones de satélites.
-    status: uncertain
+  - label: Todas esas personas carecen de conexión exclusivamente por vivir en lugares remotos.
+    status: unsupported
+  - label: Las HAPS ya han resuelto de forma general los problemas técnicos y económicos de todos los despliegues.
+    status: unsupported
 why_it_matters:
-  - En América Latina, millones de personas en zonas rurales y amazónicas podrían acceder a educación y servicios de salud mediante Internet de alta altitud.
-  - La tecnología HAPS podría desplegarse rápidamente tras desastres naturales, restaurando comunicaciones en áreas aisladas.
-  - Al reducir la dependencia de costosa infraestructura terrestre, los países de la región podrían disminuir la brecha digital sin requerir grandes inversiones en fibra óptica.
-confidence: Moderada — el artículo presenta pruebas en curso y afirmaciones optimistas, pero también señala desafíos técnicos, económicos y un mercado proyectado modesto.
+  - Un enlace aéreo puede ampliar la cobertura, pero no elimina automáticamente barreras de precio, dispositivos o capacidades digitales.
+  - Para evaluar una propuesta concreta hacen falta datos de cobertura, disponibilidad, capacidad, costos y mantenimiento.
+confidence: Moderada — la UIT documenta la definición y pruebas de HAPS; no se evaluó independientemente el desempeño de una empresa concreta.
 sources:
+  - title: '6.3 billion people now online, yet digital divides persist'
+    url: https://www.itu.int/en/mediacentre/Pages/PR-2026-11-03-Facts-and-Figures.aspx
+    publisher: Unión Internacional de Telecomunicaciones
+    date: '2026-11-03'
+    role: primary
+  - title: Global number of Internet users increases, but disparities deepen key digital divides
+    url: https://www.itu.int/en/mediacentre/Pages/PR-2025-11-17-facts-and-figures.aspx
+    publisher: Unión Internacional de Telecomunicaciones
+    role: primary
+  - title: HAPS — High-altitude platform systems
+    url: https://www.itu.int/en/mediacentre/backgrounders/pages/High-altitude-platform-systems.aspx
+    publisher: Unión Internacional de Telecomunicaciones
+    role: primary
   - title: Stratospheric internet could finally start taking off this year
     url: https://technologyreview.com/2026/01/27/1131780/stratospheric-internet-take-off/
     publisher: MIT Technology Review
-    date: '2026-01-27'
+    role: secondary
+corrected_at: '2026-11-03'
+correction_summary: Se corrigió la atribución de la falta de acceso exclusivamente a la ubicación remota, se retiraron pronósticos no actualizados y se precisó la definición reglamentaria de HAPS. El 3 de noviembre se matizó una variante de titular y se actualizaron las estimaciones de uso de internet de la UIT, incluida su revisión del dato de 2025.
+requires_uncertainty_note: true
+uncertainty_note: La viabilidad, el precio y la cobertura dependen del sistema y del despliegue; las pruebas no prueban servicio universal.
 ---
 
-**La conexión estratosférica: ¿una solución para cerrar la brecha digital?**
+**Corrección, 31 de octubre de 2026; ampliada el 1 de noviembre.** Una versión anterior atribuyó la totalidad de las personas desconectadas a vivir en zonas remotas y presentó planes y pronósticos como resultados. Precisamos el dato, sus límites y la definición de HAPS con fuentes de la Unión Internacional de Telecomunicaciones (UIT).
 
-En un mundo donde la conectividad es fundamental, cerca de 2.200 millones de personas siguen sin acceso a Internet debido a su ubicación remota. Sin embargo, las pruebas de dirigibles estratosféricos, aviones no tripulados y otras plataformas de alta altitud para la entrega de Internet podrían cambiar esta realidad este año.
+Las plataformas de gran altitud —conocidas como HAPS— llevan estaciones de comunicaciones en aeronaves, dirigibles o globos. La [UIT](https://www.itu.int/en/mediacentre/backgrounders/pages/High-altitude-platform-systems.aspx) define estas estaciones a una altitud de 20 a 50 kilómetros y en una posición nominal fija respecto de la Tierra; una aeronave o globo de gran altitud no es automáticamente una HAPS. Pueden servir enlaces para usuarios o conectar una red móvil con su infraestructura principal. La UIT describe pruebas de conectividad en comunidades remotas, sin que ello demuestre que todos los proyectos sean comercialmente viables.
 
-**Un problema persistente**
+## La brecha no es solo geográfica
 
-A pesar de la presencia de casi 10.000 satélites Starlink activos en órbita y la constelación OneWeb de 650 satélites, la cobertura sólida de Internet no es algo seguro en vastas extensiones del planeta. El proyecto Loon de Google X, lanzado en 2011, fue uno de los primeros intentos de abordar este desafío utilizando globos de alta altitud para entregar acceso a Internet. Sin embargo, el proyecto enfrentó problemas técnicos y económicos que llevaron a su cierre en 2021.
+En su informe de 2025, la UIT estimó que **2.200 millones de personas no usaban internet** ese año. El [3 de noviembre de 2026](https://www.itu.int/en/mediacentre/Pages/PR-2026-11-03-Facts-and-Figures.aspx), revisó la estimación de 2025 a 2.100 millones y calculó unos 2.000 millones de personas sin uso de internet en 2026. Son estimaciones para años distintos, sujetas a futuras revisiones.
 
-**Nuevos enfoques**
+Esas cifras no indican que todas esas personas vivan lejos de una red: el precio, la calidad del servicio, los dispositivos y las habilidades digitales también condicionan el acceso. Disponer de cobertura es una condición necesaria, pero no garantiza que una familia pueda costear o utilizar el servicio.
 
-Sin embargo, varias empresas han seguido trabajando en la tecnología de estaciones de plataforma de alta altitud (HAPS) y afirman haber resuelto los problemas del pasado. Dirigibles y aviones no tripulados de ala fija están siendo preparados para demostrar su potencial: las pruebas sobre Japón se realizarán este año, mientras que las pruebas en Indonesia están previstas para fines de 2027. La Administración Federal de Aviación de los Estados Unidos también ha publicado un documento que describe cómo se podrían integrar grandes números de HAPS en el espacio aéreo estadounidense.
+## Qué se debe medir en una prueba
 
-**Evidencia y límites**
+Una plataforma aérea puede cubrir un área amplia sin construir una torre en cada punto, pero necesita energía, mantenimiento, espectro autorizado y conexión con redes terrestres. Para valorar un proyecto concreto importan la disponibilidad durante el año, la capacidad compartida entre usuarios, la calidad real y el costo completo de operación.
 
-Es importante destacar que, aunque las empresas involucradas son optimistas, algunos analistas siguen siendo cautos. El mercado de HAPS ha sido lento y desafiante para desarrollarse, y se proyecta un mercado modesto de $1.900 millones para 2033. Además, la industria de Internet por satélite se espera que valga $33.440 millones para 2030, lo que plantea desafíos significativos para las empresas de HAPS.
-
-**Contexto**
-
-La tecnología estratosférica ha sido explorada desde la década de 1990, pero perdió terreno frente a las flotas espaciales debido a la disminución del costo de los lanzamientos espaciales y la inversión ambiciosa de SpaceX. Sin embargo, las empresas actuales de HAPS afirman haber resuelto los desafíos que mataron a sus predecesores y están preparadas para demostrar su potencial.
-
-**Pruebas y desafíos**
-
-Aalto HAPS, una spin-off del fabricante aeroespacial europeo Airbus, ha construido un avión no tripulado solar que realizará pruebas sobre el sur de Japón para probar la entrega de conectividad a los residentes de algunas de las islas más pequeñas y mal conectadas del país. World Mobile, con sede en Londres, también planea probar en vuelo una innovadora antena de matriz de fases que podría competir directamente con las megaconstelaciones de satélites.
-
-A medida que se llevan a cabo las pruebas de HAPS este año, será fundamental evaluar su potencial para cerrar la brecha digital y abordar los desafíos técnicos y económicos que han obstaculizado su desarrollo en el pasado. Aunque el mercado de HAPS es modesto en comparación con la industria de Internet por satélite, su capacidad para entregar conectividad a lugares remotos y escasamente poblados podría ser una solución valiosa para millones de personas en todo el mundo. Sin embargo, solo el tiempo dirá si las empresas de HAPS pueden superar los desafíos y demostrar su valor en un mercado competitivo.
+Las plataformas terrestres, satelitales y estratosféricas pueden cumplir funciones complementarias. Las promesas empresariales o las fechas de un vuelo de prueba no equivalen a un servicio estable ni prueban que una tecnología vaya a cerrar por sí sola la brecha digital.

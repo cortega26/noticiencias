@@ -38,9 +38,9 @@ glossary:
 fact_check:
   - label: El estudio describe una perforación circular de aproximadamente 15 mm en la escápula.
     status: confirmed
-  - label: Una lanza de madera es la explicación propuesta para la perforación; no se ha recuperado el arma.
+  - label: La perforación fue causada con certeza por una lanza de madera.
     status: uncertain
-  - label: La identidad del agresor y la intencionalidad de la lesión no pueden establecerse con estos restos.
+  - label: Los restos permiten identificar al agresor y establecer la intencionalidad de la lesión.
     status: uncertain
 why_it_matters:
   - 'El caso muestra cómo se construye una explicación arqueológica: forma de la lesión, contexto y alternativas deben
@@ -68,10 +68,11 @@ uncertainty_note:
 social:
   publish: false
   id: 95af47ac3fa11d7cc9f6f6db9fe178b80a952c809be7724827765af4ea1dd3b6
-corrected_at: '2026-10-22'
+corrected_at: '2026-11-03'
 correction_summary:
   Se distingue la perforación observada de la hipótesis de una lanza; se corrigen el año de excavación
   y la lesión dental y se retiran afirmaciones no demostradas sobre trayectoria, agresor y cuidados.
+  Se precisan las proposiciones no verificadas de la ficha para distinguirlas de los límites del estudio.
 publication_status: peer_reviewed
 evidence_subject_type: observational
 evidence_detail:

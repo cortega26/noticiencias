@@ -1,0 +1,32 @@
+{
+  "~/assets/images/2026-05-23-starship-vuelo-5-jurvetson.jpg": {
+    "sha256": "55eb3ede440514f632dfbf9a465acfe222126fcba690aacbdb9b7cf39a901220",
+    "source": "https://commons.wikimedia.org/wiki/File:SpaceX_Ignition_(54063834163).jpg",
+    "license": "https://creativecommons.org/licenses/by/2.0/"
+  },
+  "~/assets/images/2026-10-29-calibracion-color-friedrich-haag.jpg": {
+    "sha256": "61a616e928a09bb1e9dc121ac9b264c09160d87973e8681f5ddf076e4df4b861",
+    "source": "https://commons.wikimedia.org/wiki/File:001_2020_05_07_Sensor.jpg",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "~/assets/images/2026-10-27-isturitz-entrada-michel-bakni.jpg": {
+    "sha256": "fce51648a02a1a55abdebccacac3b781d37c1220dace6833665f4abf64f28522",
+    "source": "https://commons.wikimedia.org/wiki/File:The_entery_of_Isturitz_and_Oxocelhaya_caves_(2024).jpg",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "~/assets/images/2026-04-06-anais-112-equipo.jpg": {
+    "sha256": "a232ee9508c68d51f3f95cb44055ffeb6e99e22f88b4229002f6e2a9f01288b0",
+    "source": "https://commons.wikimedia.org/wiki/File:Artistic_view_of_the_ANAIS-112_set_up.jpg",
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "~/assets/images/2026-10-14-proteasa-dokki-9ynm-rcsb.png": {
+    "sha256": "4a4f86fc6aa7f4bf34a7cc040a5f36fddc20d093c3d2e789635b8bb5644f3e80",
+    "source": "https://www.rcsb.org/structure/9YNM",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "~/assets/images/2026-08-26-galapagos-tortoise-commons-cc0.jpg": {
+    "sha256": "bae534e3dd940999876b7b260a61789e63707fbffb99176e43b2aa563c7ff3d2",
+    "source": "https://commons.wikimedia.org/wiki/File:Galapagos_Tortoise_Closeup.jpg",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+}

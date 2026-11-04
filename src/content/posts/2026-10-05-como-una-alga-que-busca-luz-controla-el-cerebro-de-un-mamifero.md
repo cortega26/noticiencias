@@ -48,13 +48,13 @@ glossary:
       un impulso nervioso.
 fact_check:
   - label:
-      La NSF identifica a Deisseroth, Hegemann y Nagel como ganadores del Nobel de Fisiología o Medicina 2026
+      Karolinska Institutet identifica a Deisseroth, Hegemann y Nagel como ganadores del Nobel de Fisiología o Medicina 2026
       por canales activados por luz y optogenética.
     status: confirmed
   - label: El trabajo de Boyden y colaboradores de 2005 demostró control temporal de actividad neuronal mediante channelrhodopsin-2.
     status: confirmed
-  - label: El caso de 2021 demuestra eficacia clínica general para todas las personas con pérdida de visión.
-    status: uncertain
+  - label: El caso de 2021 documenta recuperación visual parcial en una persona, sin demostrar eficacia clínica general.
+    status: confirmed
 why_it_matters:
   - Intervenir en células seleccionadas ayuda a contrastar hipótesis sobre circuitos; distinguir ese uso de una terapia
     validada evita promesas médicas indebidas.
@@ -80,14 +80,19 @@ sources:
   - title: NSF BIO congratulates winners of the 2026 Nobel Prize in Physiology or Medicine
     url: https://www.nsf.gov/bio/updates/nsf-bio-congratulates-winners-2026-nobel-prize-physiology-or
     publisher: U.S. National Science Foundation
+  - title: The Nobel Prize to the pioneers of optogenetics Peter Hegemann, Georg Nagel and Karl Deisseroth
+    url: https://news.ki.se/the-nobel-prize-to-the-pioneers-of-optogenetics-peter-hegemann-georg-nagel-and-karl-deisseroth
+    publisher: Karolinska Institutet
+    date: '2026-10-05'
+    role: primary
 requires_uncertainty_note: true
 social:
   publish: false
   id: d31cc085a6b43a86f75fb1097b5b65070f29c47d0f13e3d84bd6486a1f5b684b
 correction_summary:
   Se incorporan trabajos originales de 2003 y 2005, se distingue activación de inhibición y se
-  acota el resultado clínico citado a un caso de recuperación visual parcial; se retiran promesas regionales sin
-  apoyo.
+  acota el resultado clínico citado a un caso de recuperación visual parcial, con su período de entrenamiento;
+  se retiran promesas regionales sin apoyo.
 publication_status: peer_reviewed
 evidence_subject_type: mixed
 evidence_detail:
@@ -96,12 +101,12 @@ evidence_detail:
 uncertainty_note:
   Los resultados dependen de la proteína, el tejido y la forma de administrar genes y luz. Un caso
   de recuperación parcial no establece un tratamiento general ni permite extrapolar a otros trastornos.
-corrected_at: '2026-10-22'
+corrected_at: '2026-10-31'
 ---
 
 La optogenética permite intervenir en la actividad de células seleccionadas mediante proteínas sensibles a la luz. **El alga no controla el cerebro:** los investigadores introducen una herramienta molecular en células concretas y observan qué ocurre al iluminarlas.
 
-El reconocimiento del Nobel de Fisiología o Medicina 2026 a Karl Deisseroth, Peter Hegemann y Georg Nagel está recogido por la [NSF, que financió parte de esta investigación](https://www.nsf.gov/bio/updates/nsf-bio-congratulates-winners-2026-nobel-prize-physiology-or). Para entender el avance conviene mirar los experimentos, además del premio.
+El [Instituto Karolinska](https://news.ki.se/the-nobel-prize-to-the-pioneers-of-optogenetics-peter-hegemann-georg-nagel-and-karl-deisseroth) identifica a Karl Deisseroth, Peter Hegemann y Georg Nagel como los galardonados con el Nobel de Fisiología o Medicina 2026. La [NSF informa](https://www.nsf.gov/bio/updates/nsf-bio-congratulates-winners-2026-nobel-prize-physiology-or) que financió parte de la investigación de Deisseroth. Para entender el avance conviene mirar los experimentos, además del premio.
 
 ## Dos resultados que no son el mismo experimento
 
@@ -123,6 +128,8 @@ La activación y la inhibición requieren herramientas con propiedades apropiada
 [Sahel y colaboradores publicaron en 2021](https://doi.org/10.1038/s41591-021-01351-4) un caso de recuperación visual parcial en una persona con retinitis pigmentosa. Combinaron un vector que codificaba la proteína ChrimsonR y unas gafas que convertían cambios de la escena en pulsos luminosos dirigidos a la retina.
 
 El paciente pudo percibir, localizar y contar objetos con el ojo tratado y las gafas; no los detectaba sin ellas. El resultado documenta una capacidad concreta bajo condiciones específicas. No significa que recuperara visión normal ni demuestra una cura para todas las causas de ceguera. El trabajo declara relaciones financieras de varios autores con empresas implicadas, un dato pertinente al valorar su contexto.
+
+Según el estudio, el entrenamiento con las gafas comenzó cuatro meses y medio después de la inyección; el paciente empezó a comunicar cambios visuales siete meses después de iniciar ese entrenamiento. La observación corresponde a esa persona y a ese protocolo, no permite anticipar un plazo o beneficio para otros pacientes.
 
 ## Qué preguntar ante una promesa de «control con luz»
 
