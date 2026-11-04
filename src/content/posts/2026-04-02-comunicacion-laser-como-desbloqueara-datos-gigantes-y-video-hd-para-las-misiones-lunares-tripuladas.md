@@ -13,7 +13,7 @@ tags:
   - exploración espacial
   - telemedicina
 image: ~/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg
-image_alt: Lanzamiento de Artemis II desde el Complejo de Lanzamiento 39B del Centro Espacial Kennedy
+image_alt: Lanzamiento de Artemis II desde el Complejo 39B del Centro Espacial Kennedy. Foto de Joel Kowsky/NASA.
 source_url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
 series: 'Espacio'
 refinery_id: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
@@ -22,8 +22,8 @@ headlines_variants:
   benefit: 'Artemis II probó comunicaciones láser a distancia lunar: esto es lo que transmitió'
 investigation: false
 featured: false
-corrected_at: '2026-10-09'
-correction_summary: 'Se actualizó el artículo con los resultados del vuelo, se corrigieron la trayectoria lunar y la afirmación sobre el ancho de banda RF, y se distinguió el resultado de ILLUMA-T.'
+corrected_at: '2026-11-01'
+correction_summary: 'Se actualizó el artículo con los resultados de Artemis II, se distinguieron las tasas de O2O y de ILLUMA-T y se retiró una precisión de apuntamiento no documentada.'
 sources:
   - title: Lincoln Laboratory laser communications terminal launches on historic Artemis II moon mission
     url: https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402
@@ -50,9 +50,11 @@ La comunicación láser usa haces de luz concentrados para transmitir informaci�
 
 Artemis II fue la primera misión tripulada en probar comunicaciones láser a distancia lunar. La nave realizó un sobrevuelo de la Luna; a bordo de Orion viajó el Sistema de Comunicación Óptica Orion Artemis II (O2O), desarrollado por el Laboratorio Lincoln del MIT en colaboración con el Centro de Vuelo Espacial Goddard de la NASA.
 
-El componente central de O2O es el Terminal Óptico Modular, Ágil y Escalable (MAScOT), un dispositivo compacto del tamaño de un gato doméstico. Equipado con un telescopio de cuatro pulgadas montado en un soporte giratorio de dos ejes, MAScOT apunta con una precisión extraordinaria a las estaciones terrestres en la Tierra, enviando y recibiendo datos a través de haces láser. Dentro de su estructura, la "óptica trasera" contiene lentes de enfoque, sensores de seguimiento y espejos de dirección rápida que permiten ese apuntamiento milimétrico.
+El componente central de O2O es el Terminal Óptico Modular, Ágil y Escalable (MAScOT), un dispositivo compacto del tamaño de un gato doméstico. Equipado con un telescopio de cuatro pulgadas montado en un soporte giratorio de dos ejes, MAScOT apunta hacia estaciones terrestres para enviar y recibir datos mediante haces láser. Lentes, sensores de seguimiento y espejos de dirección rápida participan en ese apuntamiento.
 
-Durante el vuelo de unos 10 días, O2O transmitió a la Tierra video de alta definición, fotos, procedimientos de vuelo, datos científicos y de ingeniería, y comunicaciones de voz. NASA informó un total de 484 GB intercambiados entre Orion y la Tierra; la transmisión por láser solo ocurría cuando había línea de vista con estaciones terrestres. La ingeniera principal de sistemas Farzana Khatri del Laboratorio Lincoln describió antes del vuelo las ventajas potenciales del sistema: "Las comunicaciones RF han cumplido bien su propósito, pero su espectro está muy congestionado y no se adapta bien a distancias más largas. La comunicación láser es una solución que podría resolver este problema, y el laboratorio ha sido pionero en este campo."
+Durante el vuelo de unos 10 días, O2O transmitió a la Tierra video de alta definición, fotos, procedimientos de vuelo, datos científicos y de ingeniería, y comunicaciones de voz. NASA informó un total de 484 GB intercambiados entre Orion y la Tierra; la transmisión por láser solo ocurría cuando había línea de vista con estaciones terrestres.
+
+Según los [resultados de NASA](https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/), Orion estableció varios enlaces ópticos de bajada de 260 megabits por segundo. La agencia señala que los sistemas de radio siguieron siendo el medio principal y que, con la infraestructura utilizada a distancia lunar, sus tasas estaban en el rango de unos pocos megabits por segundo. La comparación corresponde a esa configuración y misión, no a un límite universal de la radio.
 
 ### Una Promesa con Precedentes: Éxito en la Estación Espacial
 
@@ -67,7 +69,5 @@ En Artemis II, O2O fue una demostración tecnológica que acompañó a los siste
 El desarrollo de lasercom no es un esfuerzo reciente ni aislado. El Laboratorio Lincoln y la NASA llevan más de dos décadas en este campo, con una trayectoria que incluye misiones como la Lunar Laser Communication Demonstration (LLCD) de 2013, la LCRD de 2021 y la TeraByte Infrared Delivery (TBIRD) de 2022. Artemis II representa el siguiente hito lógico en esta progresión, llevando la tecnología a un entorno de exploración humana de profunda relevancia.
 
 Antes del vuelo, investigadores del MIT plantearon como posibles usos la videoconferencia con médicos, la coordinación de la misión y la transmisión pública de imágenes. Artemis II no demostró una prestación de telemedicina: su resultado informado fue el intercambio de datos de la misión. Las pruebas sí aportan información para diseñar comunicaciones futuras en la Luna y, con más desafíos técnicos, en misiones a Marte.
-
-La fotografía de lanzamiento que acompaña este artículo fue tomada por Joel Kowsky/NASA, según el crédito publicado por MIT News. NASA permite el uso editorial factual de su material sujeto a sus pautas de atribución y no respaldo.
 
 <!-- source_identity: source_id=mit_news; source_name=MIT News -->

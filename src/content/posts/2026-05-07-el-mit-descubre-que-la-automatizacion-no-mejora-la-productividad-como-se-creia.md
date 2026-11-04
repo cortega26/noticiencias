@@ -34,7 +34,7 @@ glossary:
   - term: desigualdad entre grupos
     definition: Diferencia salarial entre grupos demográficos; no equivale a la dispersión de salarios dentro de cada grupo.
   - term: productividad
-    definition: Cantidad de bienes o servicios producidos por unidad de trabajo.
+    definition: Relación entre la producción y los recursos utilizados; la productividad laboral usa trabajo como insumo, mientras otras medidas consideran varios recursos.
 fact_check:
   - label: El estudio estima que la automatización explica el 52 % del aumento de desigualdad entre grupos en EE. UU. entre 1980 y 2016.
     status: confirmed
@@ -48,7 +48,7 @@ why_it_matters:
   - 'El 52 % se refiere a la parte del aumento de desigualdad entre grupos estimada para EE. UU. (1980–2016); no es una proporción de toda la desigualdad ni un resultado global.'
   - 'El análisis distingue cambios dentro y entre grupos: la automatización puede reducir primas salariales dentro de grupos expuestos mientras la brecha entre grupos aumenta.'
   - 'El resultado no permite extrapolar a América Latina ni a años posteriores a 2016; esa comparación requeriría datos locales y más recientes.'
-confidence: Moderada — es un estudio académico revisado por pares con estimaciones basadas en datos históricos de EE. UU.; sus resultados no se generalizan automáticamente fuera del país y periodo analizados.
+confidence: Moderada — estudio académico revisado por pares con estimaciones basadas en datos históricos y un modelo; sus resultados dependen de los indicadores y supuestos utilizados y no se generalizan automáticamente fuera del país y periodo analizados.
 publication_status: peer_reviewed
 sources:
   - title: 'Automation and Rent Dissipation: Implications for Wages, Inequality, and Productivity'
@@ -57,18 +57,25 @@ sources:
     date: '2026-01-30'
     role: primary
     doi: 10.1093/qje/qjag006
+  - title: 'Automation and Rent Dissipation: versión de trabajo de noviembre de 2025'
+    url: https://economics.mit.edu/sites/default/files/2025-11/Automation%20and%20Rent%20Dissipation%20-%20Implications%20for%20Wages%20Inequality%20and%20Productivity.pdf
+    publisher: MIT Economics
+    date: '2025-11-21'
+    role: primary
   - title: "Study: Firms often use automation to control certain workers' wages"
     url: https://news.mit.edu/2026/study-firms-often-use-automation-control-certain-workers-wages-0507
     publisher: MIT News
     date: '2026-05-07'
     role: secondary
-corrected_at: '2026-10-09'
-correction_summary: 'Se precisó que el 52 % corresponde al aumento de desigualdad entre grupos en EE. UU. entre 1980 y 2016, y se añadió el artículo académico primario.'
+corrected_at: '2026-11-03'
+correction_summary: 'Se precisó que el 52 % corresponde al aumento de desigualdad entre grupos en EE. UU. entre 1980 y 2016, y se explicaron los indicadores y el carácter modelado de la estimación. El 3 de noviembre se distinguió la productividad laboral de otras medidas de productividad.'
 ---
 
-Un estudio de Daron Acemoglu y Pascual Restrepo analiza cómo se relacionó la automatización con los salarios en Estados Unidos entre 1980 y 2016. Sus estimaciones atribuyen a la automatización el 52 % del aumento de la desigualdad salarial **entre grupos** durante ese periodo. No significa que explique el 52 % de toda la desigualdad ni que mida lo ocurrido después de 2016.
+Un [estudio de Daron Acemoglu y Pascual Restrepo](https://doi.org/10.1093/qje/qjag006) analiza cómo se relacionó la automatización con los salarios en Estados Unidos entre 1980 y 2016. Sus estimaciones atribuyen a la automatización el 52 % del aumento de la desigualdad salarial **entre grupos** durante ese periodo. No significa que explique el 52 % de toda la desigualdad ni que mida lo ocurrido después de 2016.
 
 El análisis combina información de distintas fuentes estadounidenses y compara 500 grupos demográficos en 49 industrias. La investigación se centra en qué tareas y trabajadores fueron más expuestos a la automatización, no en un pronóstico sobre todos los empleos o tecnologías futuras.
+
+En la [versión de trabajo de noviembre de 2025](https://economics.mit.edu/sites/default/files/2025-11/Automation%20and%20Rent%20Dissipation%20-%20Implications%20for%20Wages%20Inequality%20and%20Productivity.pdf), los autores estiman el desplazamiento de tareas combinando cambios en la participación laboral por industria con indicadores de adopción de robots, servicios de software especializado y maquinaria dedicada. La cifra del 52 % surge de un modelo aplicado a esos datos: no es un recuento directo de las decisiones de cada empresa y depende de los supuestos e indicadores del análisis.
 
 ## Cómo leer las cifras
 
@@ -77,6 +84,8 @@ Los autores describen un mecanismo de **disipación de rentas**: algunas tareas 
 El artículo estima que ese mecanismo explica cerca de una quinta parte de la contribución de la automatización al aumento de desigualdad —unos 10 puntos porcentuales del aumento total— y que compensó entre 60 % y 90 % de las ganancias de productividad asociadas a la automatización en el periodo estudiado. Son estimaciones del análisis, no mediciones de cada empresa.
 
 La distinción entre desigualdad **dentro** de un grupo y **entre** grupos ayuda a interpretar el resultado: la automatización puede reducir algunas primas salariales dentro de los grupos expuestos y, al mismo tiempo, ampliar las diferencias entre grupos. El estudio no concluye que toda automatización reduzca la productividad; los autores señalan que algunas tecnologías sí pueden aumentarla.
+
+La productividad también depende de cómo se mida. La [Oficina de Estadísticas Laborales de EE. UU.](https://www.bls.gov/productivity/overview.htm) distingue la producción por hora trabajada de las medidas que consideran conjuntamente trabajo, capital y otros insumos. Es una distinción general; no convierte por sí sola la estimación de este estudio en una medida de todos los beneficios de la automatización.
 
 El hallazgo aporta evidencia histórica para el debate sobre qué tareas se automatizan y quién recibe sus beneficios. No permite trasladar directamente la cifra a América Latina ni a los años posteriores a 2016; para hacerlo harían falta datos locales y más recientes.
 

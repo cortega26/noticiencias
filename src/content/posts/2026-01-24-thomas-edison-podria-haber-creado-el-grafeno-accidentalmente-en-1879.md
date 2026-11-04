@@ -1,9 +1,11 @@
 ---
-title: 'Thomas Edison podría haber creado el grafeno accidentalmente en 1879'
+title: 'Una recreación de filamentos de carbono plantea una pregunta sobre el grafeno y Edison'
 schema_version: 2
-excerpt: 'Investigación sugiere que Thomas Edison pudo haber producido grafeno accidentalmente en sus experimentos de 1879.'
+excerpt: 'Una bombilla moderna de filamento de bambú produjo material compatible con grafeno al calentarse; la composición de los filamentos históricos de Edison sigue sin verificarse.'
 author: Noticiencias
 date: 2026-01-24
+corrected_at: '2026-11-02'
+correction_summary: 'Se precisaron el material y las condiciones de la bombilla moderna, la cronología histórica del algodón y el bambú, los límites de la atribución histórica y la presencia de carbono sin convertir en las imágenes del experimento.'
 categories:
   - 'Química'
 permalink: 'ciencia/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879'
@@ -11,8 +13,8 @@ tags:
   - 'grafeno'
   - 'thomas edison'
   - 'inventor'
-image: '~/assets/images/2026-01-24-article-36.jpg'
-image_alt: 'Thomas Edison podría haber creado el grafeno accidentalmente en 1879'
+image: '~/assets/images/2026-01-24-edison-bulb-concept-original.webp'
+image_alt: 'Ilustración conceptual generada con IA de una bombilla genérica sobre una mesa; no representa un aparato histórico concreto ni el experimento.'
 source_url: 'https://arstechnica.com/science/2026/01/did-edison-accidentally-make-graphene-in-1879/'
 refinery_id: '36'
 headlines_variants:
@@ -21,8 +23,8 @@ headlines_variants:
 investigation: false
 featured: false
 summary_points:
-  - Los investigadores sugieren que Thomas Edison pudo haber producido accidentalmente grafeno al calentar filamentos de bambú a más de 2000 °C en sus bombillas incandescentes de 1879.
-  - El descubrimiento se basa en una recreación del experimento original realizada por Lucas Eddy, estudiante de la Universidad de Rice, usando bombillas artesanales y la patente de Edison.
+  - Los investigadores proponen que condiciones similares a las de filamentos históricos de carbono podrían haber producido grafeno; no analizaron directamente un filamento de Edison.
+  - El equipo calentó una bombilla moderna con filamento de bambú carbonizado y examinó el material con espectroscopía y microscopía.
   - Si se confirma, el hallazgo abriría preguntas sobre otros materiales avanzados que pudieron sintetizarse mucho antes de ser identificados formalmente por la ciencia moderna.
   - El hallazgo resalta el valor de revisitar experimentos pasados con técnicas modernas para descubrir nuevos usos de materiales conocidos.
 glossary:
@@ -37,16 +39,12 @@ glossary:
   - term: supercondensadores
     definition: Dispositivos de almacenamiento de energía que pueden cargar y descargar muy rápidamente, con mayor densidad de potencia que las baterías convencionales.
 fact_check:
-  - label: Thomas Edison pudo haber creado accidentalmente grafeno en 1879 al calentar filamentos de bambú a más de 2000 °C
+  - label: Los filamentos utilizados por Edison en 1879 contenían grafeno.
     status: uncertain
-  - label: Lucas Eddy, estudiante de posgrado de la Universidad de Rice, logró producir grafeno recreando el experimento de Edison con bombillas artesanales de bambú
-    status: confirmed
-  - label: El filamento de bambú carbonizado de Edison duraba más de 1200 horas con una fuente de 110 voltios
+  - label: Los autores observaron material compatible con grafeno turbostrático en un filamento moderno de bambú calentado.
     status: confirmed
   - label: El grafeno tiene potencial para aplicaciones en baterías, supercondensadores, antenas, filtros de agua, transistores, células solares y pantallas táctiles
     status: confirmed
-  - label: El grafeno se aisló oficialmente por primera vez en 2004
-    status: unsupported
 why_it_matters:
   - La recreación permite investigar cómo se comporta el carbono bajo condiciones similares a las de las primeras bombillas; no establece un nuevo proceso industrial rentable.
   - El conocimiento de que un invento histórico pudo haber generado nanomateriales avanzados motiva a revisitar colecciones de patentes y dispositivos antiguos con técnicas modernas, lo que podría generar innovaciones tecnológicas locales.
@@ -58,10 +56,17 @@ sources:
     publisher: Ars Technica
     date: '2026-01-24'
   - title: Evidence for Graphene Formation in Thomas Edison's 1879 Carbon Filament Experiments
-    url: https://pubmed.ncbi.nlm.nih.gov/41493360/
+    url: https://jmtour.com/wp-content/uploads/2026/01/857-Reprint-graphene-formation-in-thomas-edison-s-1879-carbon-filament-experiments-1-1.pdf
     publisher: ACS Nano
     date: '2026-01-06'
+    role: primary
+    doi: 10.1021/acsnano.5c12759
+  - title: The History of the Light Bulb
+    url: https://www.energy.gov/articles/history-light-bulb
+    publisher: U.S. Department of Energy
 ---
+
+**Corrección, 2 de noviembre de 2026.** Precisamos que las imágenes del filamento calentado también muestran zonas de carbono amorfo sin convertir; el experimento no demuestra una conversión uniforme de todo el material.
 
 ## Qué demostraron y qué no
 
@@ -69,16 +74,16 @@ Investigadores de la Universidad de Rice reprodujeron condiciones similares a la
 
 ## La recreación experimental
 
-La historia comienza con la búsqueda de Lucas Eddy, un estudiante de posgrado de la Universidad de Rice, para encontrar formas de producir grafeno en masa utilizando equipo pequeño y materiales accesibles. Inspirado por la bombilla incandescente de Edison, que podía alcanzar temperaturas críticas de 2000 grados Celsius necesarias para el calentamiento Joule flash, Eddy decidió recrear el experimento original de Edison. Con acceso a la patente original de 1879 y utilizando bombillas artesanales con filamentos de bambú, Eddy logró calentar el material a base de carbono a temperaturas extremadamente altas durante breves períodos, lo que resultó en la formación de capas distintas de grafeno dentro del filamento.
+El equipo encabezado por Lucas Eddy obtuvo una bombilla moderna de filamento de bambú carbonizado y aplicó 110 voltios durante 20 segundos. En la prueba presentada, la temperatura del filamento se estabilizó en torno a 2.173 °C. Los investigadores compararon el material antes y después mediante espectroscopía Raman y microscopía electrónica, y describieron el producto como grafeno turbostrático: capas con desorden en su apilamiento. Las imágenes también muestran regiones de carbono amorfo sin convertir. Esa denominación no significa que hayan aislado una única lámina ni que todo el filamento se haya transformado de manera uniforme.
 
 ## Qué sabemos del trabajo de Edison
 
-Edison, conocido por su perseverancia y creatividad, experimentó con diferentes materiales de filamento para su bombilla incandescente, desde cartón carbonizado hasta bambú. Su descubrimiento de que el bambú carbonizado hacía el mejor filamento, con tiempos de vida de más de 1200 horas utilizando una fuente de alimentación de 110 voltios, marcó un hito en la historia de la iluminación. La similitud entre procesos históricos y modernos hace plausible la posibilidad, pero no permite reconstruir la composición real de cada filamento fabricado por Edison.
+Edison y su equipo experimentaron con distintos materiales. Según el [Departamento de Energía de Estados Unidos](https://www.energy.gov/articles/history-light-bulb), en octubre de 1879 lograron una bombilla con hilo de algodón carbonizado y después continuaron sus ensayos hasta adoptar bambú. La bombilla moderna estudiada usa bambú, por lo que no debe confundirse con una reproducción demostrada de aquel filamento de algodón de 1879. La similitud de condiciones no identifica la composición real de un dispositivo histórico.
 
 ## Alcance del hallazgo
 
-El grafeno, con sus propiedades únicas, tiene un gran potencial para aplicaciones en baterías, supercondensadores, antenas, filtros de agua, transistores, células solares y pantallas táctiles, entre otros. La posibilidad de que Edison haya producido accidentalmente este material más de un siglo antes de su síntesis oficial plantea preguntas sobre qué otros materiales o reacciones inusuales podrían haber sido pasadas por alto en el pasado. Los autores del estudio sugieren que revisitar tecnologías antiguas con herramientas modernas podría conducir a nuevas innovaciones y descubrimientos.
+El grafeno se investiga para aplicaciones como dispositivos electrónicos y almacenamiento de energía. Este experimento no demuestra que fabricar filamentos de bombilla sea una vía industrial rentable para producirlo. En el trabajo, el autor de correspondencia James Tour declara ser accionista de una empresa que comercializa grafeno obtenido mediante calentamiento Joule rápido; indica que no es directivo ni empleado de ella. Los autores proponen que revisar tecnologías antiguas con herramientas modernas puede abrir nuevas preguntas sobre los materiales obtenidos.
 
 ## La pregunta pendiente
 
-Que una recreación actual produzca grafeno no demuestra que Edison lo identificara ni que lo fabricara de forma reproducible en 1879. El interés del estudio está en analizar un proceso histórico con técnicas contemporáneas y aclarar qué materiales pueden generarse en condiciones similares. [El artículo científico original](https://pubmed.ncbi.nlm.nih.gov/41493360/) documenta la recreación y su interpretación.
+Que una bombilla moderna produzca un material compatible con grafeno no demuestra que Edison lo identificara ni que lo fabricara en 1879. El interés del estudio está en analizar un proceso inspirado en la iluminación histórica con técnicas contemporáneas. [El artículo científico completo](https://jmtour.com/wp-content/uploads/2026/01/857-Reprint-graphene-formation-in-thomas-edison-s-1879-carbon-filament-experiments-1-1.pdf) documenta el experimento y la interpretación de sus autores.

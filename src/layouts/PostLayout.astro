@@ -16,6 +16,7 @@ import { getFormattedDate } from '~/utils/date';
 import { serializeJsonLd } from '~/utils/json-ld';
 import type { RelatedSelection } from '~/utils/related';
 import type { MetaData, Post } from '~/types';
+import imageAttributions from '../../data/image-attributions.json';
 
 interface Props {
   post: Post;
@@ -27,6 +28,9 @@ const { post, related, url } = Astro.props;
 const image = (await findImage(post.image)) ?? post.image;
 const imageSrc = typeof post.image === 'string' ? post.image : post.image?.src;
 const imageAlt = post.image_alt ?? '';
+const imageAttribution = imageSrc
+  ? (imageAttributions as Record<string, { source: string; license: string }>)[imageSrc]
+  : undefined;
 // Plan 017 step 3: resolved once in getNormalizedPost — reads, not derivations.
 const displayAuthor = post.displayAuthor;
 const isNoticienciasAi = post.isNoticienciasAi;
@@ -227,7 +231,34 @@ const breadcrumbItems = [
                 fetchpriority="high"
               />
             </div>
-            <figcaption class="mt-2 text-sm text-text-muted">{imageAlt}</figcaption>
+            <figcaption class="mt-2 text-sm text-text-muted">
+              {imageAlt}
+              {imageAttribution && (
+                <span>
+                  {' '}
+                  <a
+                    href={imageAttribution.source}
+                    class="underline underline-offset-4 hover:no-underline"
+                  >
+                    Fuente de la imagen
+                  </a>
+                  {' · '}
+                  <a
+                    href={imageAttribution.license}
+                    rel={
+                      imageAttribution.license.includes('/publicdomain/zero/')
+                        ? undefined
+                        : 'license'
+                    }
+                    class="underline underline-offset-4 hover:no-underline"
+                  >
+                    {imageAttribution.license.includes('/publicdomain/zero/')
+                      ? 'Dedicación CC0'
+                      : 'Licencia'}
+                  </a>
+                </span>
+              )}
+            </figcaption>
           </figure>
         )
       }

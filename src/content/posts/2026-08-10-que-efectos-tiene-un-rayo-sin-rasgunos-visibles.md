@@ -11,22 +11,22 @@ tags:
   - base de datos
   - riesgo
   - sobreviviente
-excerpt: Investigadores de EE.UU. y africanos crearon la mayor base de datos de víctimas de rayo en el continente, entrevistando a sobrevivientes para identificar lesiones a largo plazo no registradas oficialmente.
-image: ~/assets/images/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.avif
-image_alt: Silueta de una persona con paraguas bajo un cielo tormentoso surcado por un rayo.
+excerpt: Un impacto de rayo puede causar lesiones graves aunque no se aprecien marcas externas. Las recomendaciones oficiales explican cómo buscar refugio y pedir ayuda.
+image: ~/assets/images/2026-08-10-lightning-milan-nasa.jpg
+image_alt: Tormenta eléctrica sobre Milán fotografiada desde la Estación Espacial Internacional en 2025. Crédito NASA/Nichole Ayers; imagen de archivo.
 source_url: https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721
 refinery_id: '504'
 headlines_variants:
   question: ¿Cómo afecta a la salud un impacto de rayo que no deja marcas en la piel?
-  benefit: Conocer los efectos ocultos de los rayos te permite prevenir secuelas posteriores en tu comunidad.
+  benefit: Cómo buscar refugio y ayudar después de un impacto de rayo
 summary_points:
-  - Los rayos causan entre 6,000 y 24,000 muertes anuales en todo el mundo, con un amplio rango debido a la escasez de registros, especialmente en regiones con limitado acceso a internet o conflictos.
-  - En África Central, aproximadamente la mitad de los impactos ocurren dentro de edificios que carecen de protección adecuada contra rayos, lo que hace que la recomendación de refugiarse al escuchar el trueno sea ineficaz.
-  - Sobrevivientes a menudo presentan lesiones invisibles como dolor crónico, parálisis parcial, pérdida de memoria, tinnitus y dificultad de concentración, incluso sin marcas externas visibles.
-  - Un caso documentado de una enfermera vacunando en una escuela muestra cómo un rayo la dejó inconsciente, con secuelas que la obligaron a abandonar su trabajo diez años después del incidente.
+  - Un rayo puede causar lesiones graves y secuelas posteriores, incluso cuando las lesiones externas no son evidentes.
+  - Ante una tormenta, las autoridades meteorológicas recomiendan buscar un edificio cerrado adecuado o un vehículo cerrado con techo metálico.
+  - Si una persona es alcanzada, hay que pedir ayuda de emergencia y protegerse de nuevos rayos; es seguro tocar a la víctima para prestar primeros auxilios.
+  - La calidad de los edificios y la protección contra rayos varían; los registros incompletos no permiten extrapolar cifras concretas a todas las regiones.
 glossary:
   - term: pararrayos
-    definition: Dispositivo metálico instalado en edificios que atrae el rayo y lo dirige de forma segura a la tierra para evitar daños.
+    definition: Elemento de un sistema de protección que intercepta una descarga y la conduce a tierra mediante componentes adecuados, reduciendo el riesgo de daños sin eliminarlo.
   - term: puesta a tierra
     definition: Conexión eléctrica que lleva la corriente del rayo al suelo, disipándola de manera segura.
   - term: lesiones invisibles
@@ -36,52 +36,55 @@ glossary:
   - term: edema
     definition: Hinchazón causada por acumulación de líquido en los tejidos, que puede aparecer tras un rayo.
 fact_check:
-  - label: Cada año se estima que entre 6,000 y 24,000 personas mueren por impacto de rayo en el mundo.
+  - label: Las autoridades recomiendan refugiarse en un edificio cerrado adecuado o un vehículo cerrado con techo metálico durante una tormenta.
     status: confirmed
-  - label: En África Central, aproximadamente la mitad de los incidentes de rayo ocurren dentro de edificios.
-    status: confirmed
-  - label: Una enfermera fue lanzada por un rayo a través de una ventana mientras vacunaba a niños, quedó inconsciente y luego desarrolló dolor crónico, parálisis parcial y pérdida de memoria.
-    status: uncertain
-  - label: Diez años después, en el mismo aula sin protección contra rayos, dieciocho niños murieron y treinta y ocho resultaron heridos por otro impacto.
-    status: uncertain
-  - label: Los sobrevivientes de impactos de rayo frecuentemente presentan lesión cerebral, dolor persistente, edema, tinnitus y dificultad para concentrarse.
+  - label: Una persona alcanzada por un rayo conserva una carga eléctrica que impide tocarla.
+    status: unsupported
+  - label: Las lesiones por rayo pueden incluir problemas neurológicos y dolor persistente.
     status: confirmed
 why_it_matters:
-  - En muchas zonas de América Latina, especialmente en áreas rurales y de alta actividad eléctrica, las escuelas y centros de salud también carecen de sistemas de protección contra rayos, lo que aumenta el riesgo de incidentes similares a los descritos en África.
-  - Mejorar la infraestructura de refugio y capacitar al personal médico en el manejo de lesiones invisibles podría reducir las secuelas a largo plazo y salvar vidas en la región.
-confidence: Moderada — artículo de divulgación basado en investigación de la Universidad de Dakota del Norte y la African Centres for Lightning and Education Network, con datos recopilados pero con rangos amplios debido a la escasez de registros y limitaciones metodológicas.
+  - Distinguir entre un refugio adecuado y una construcción abierta ayuda a reducir la exposición durante una tormenta.
+  - Las lesiones pueden necesitar atención urgente y seguimiento aunque no sean evidentes a simple vista.
+confidence: Alta para las recomendaciones generales de refugio y primeros auxilios citadas; las consecuencias médicas varían y requieren evaluación individual.
 sources:
+  - title: Safety Guidelines — Lightning
+    url: https://www.cdc.gov/lightning/safety/
+    publisher: Centros para el Control y la Prevención de Enfermedades de Estados Unidos
+    role: primary
+  - title: Lightning Rules
+    url: https://www.weather.gov/mlb/lightning_rules
+    publisher: Servicio Meteorológico Nacional de Estados Unidos
+    role: primary
+  - title: Medical Aspects of Lightning
+    url: https://www.weather.gov/safety/lightning-medical
+    publisher: Servicio Meteorológico Nacional de Estados Unidos
+    role: primary
   - title: Lightning strikes kill thousands globally each year, but for those who survive, the storm is far from over
     url: https://theconversation.com/lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over-286721
     publisher: The Conversation
+    role: secondary
 requires_uncertainty_note: true
-uncertainty_note: Los efectos a largo plazo se derivan de entrevistas a sobrevivientes y aún requieren confirmación mediante estudios clínicos más amplios.
+uncertainty_note: Los síntomas y las secuelas varían entre personas; la ausencia de marcas no descarta una lesión y no sustituye una evaluación médica.
+corrected_at: '2026-11-02'
+correction_summary: Se corrigió la indicación sobre refugio durante tormentas y se retiraron cifras y casos no contrastados; después se precisaron la indicación de reanimación y los límites de la protección contra rayos.
 ---
 
-En un aula de una escuela primaria africana, una enfermera estaba vacunando a niños cuando un rayo la golpeó, la lanzó contra una ventana y la dejó inconsciente. Al despertar, su piel no tenía rasguños, pero su cuerpo empezó a acumular dolores que nadie podía ver.
+**Corrección, 31 de octubre de 2026.** Una versión anterior afirmó que refugiarse dentro de un edificio perdía sentido durante una tormenta. La recomendación oficial es buscar un refugio adecuado: permanecer al aire libre cuando hay rayos es peligroso. También retiramos cifras y relatos que no pudimos contrastar suficientemente.
 
-## Contexto del fenómeno y la pregunta abierta
+**Corrección, 2 de noviembre de 2026.** Precisamos la indicación de primeros auxilios para no confundir la falta de respuesta con la ausencia de respiración, y aclaramos que un sistema de protección contra rayos reduce el riesgo, pero no garantiza evitar daños.
 
-Cada año se estima que entre seis mil y veinticuatro mil personas mueren a causa de los rayos en todo el mundo, y muchas más resultan heridas. Ese amplio rango se debe a la escasez y fragmentación de los registros, sobre todo en regiones donde el acceso a internet es limitado, existen conflictos o se atribuye el impacto a causas sobrenaturales. Aunque la física del rayo es idéntica en cualquier punto del planeta, sus consecuencias varían según el lugar donde se produzca. En África Central, una de las zonas con mayor actividad eléctrica terrestre, se sabe muy poco sobre quiénes son alcanzados y qué les ocurre después del impacto. Esa falta de conocimiento motivó a un grupo de investigadores de la Universidad de Dakota del Norte a crear, junto con el African Centres for Lightning and Education Network, la base de datos pública más grande del continente sobre víctimas de rayos.
+Un impacto de rayo puede provocar lesiones graves aunque no se vean heridas externas. Los efectos varían: además del peligro inmediato para el corazón y la respiración, algunas personas presentan problemas neurológicos, dolor persistente o dificultades de memoria y concentración. El [Servicio Meteorológico Nacional de Estados Unidos](https://www.weather.gov/safety/lightning-medical) describe estas posibles secuelas; su presencia y duración requieren evaluación individual.
 
-## Qué hicieron los investigadores
+## Dónde refugiarse
 
-A partir de enero de 2018 el equipo comenzó a reunir incidentes de rayos en 46 de los 54 países africanos. Hasta junio de 2026 la base contenía más de dos mil cien entradas, cada una con detalles de fecha, lugar, número de víctimas y, cuando era posible, información sobre las lesiones. Con esos registros elaboraron un índice de riesgo que combina tres factores: la densidad de impactos (peligro), el número de heridos o muertos relativo a la población (exposición) y el PIB per cápita como medida de vulnerabilidad. Al multiplicar esas puntuaciones obtuvieron una clasificación de riesgo para cada nación. Paralelamente, realizaron entrevistas a sobrevivientes para documentar los efectos a largo plazo que no aparecen en las estadísticas habituales.
+Si escuchas un trueno, busca cuanto antes un **edificio cerrado y sólido** o, si no hay uno disponible, un **vehículo completamente cerrado con techo metálico**. Los refugios abiertos, como pabellones o cobertizos, no ofrecen la misma protección. El servicio meteorológico recomienda permanecer en el refugio hasta que hayan transcurrido al menos 30 minutos desde el último trueno.
 
-## Qué encontraron
+Dentro de un edificio, evita el contacto con instalaciones eléctricas conectadas, tuberías y agua mientras dure la tormenta. Los sistemas profesionales de protección contra rayos reducen el riesgo, pero que un edificio no cuente con un pararrayos visible no convierte el exterior en un lugar seguro. La calidad de los refugios disponibles varía según el lugar.
 
-El análisis mostró que catorce de los quince países africanos con datos suficientes caen en categorías de alto o muy alto riesgo de rayos; Sudáfrica es la excepción, pues allí el peligro es moderado, la vulnerabilidad baja y existe una red de reporte y investigación sólida que facilita la documentación. En los países desarrollados, menos del diez por ciento de los incidentes fatales involucran a más de una persona, mientras que en África esa proporción sube al 87 %, según un estudio próximo a publicarse del mismo grupo. En Estados Unidos, entre 2006 y 2025 fallecieron 517 personas por rayo, pero más del noventa por ciento de los alcanzados sobrevivieron, gracias a la disponibilidad de refugios seguros y atención médica rápida. En Canadá se estiman entre nueve y diez muertes y entre 92 y 164 lesiones anuales por la misma causa. En contraste, aproximadamente la mitad de los incidentes en África ocurren dentro de edificios; el consejo “Cuando truene, refugiate adentro” pierde sentido porque la mayoría de escuelas, hogares, iglesias y mercados no poseen un sistema de protección contra rayos diseñado y mantenido según estándares internacionales. Un edificio seguro requiere una red de pararrayos y puesta a tierra adecuada; muchos inmuebles africanos carecen de ella o dependen de un solo pararrayos mal mantenido que no protege la totalidad de la estructura.
+## Si una persona es alcanzada
 
-Las entrevistas revelaron patrones de secuelas invisibles. Una enfermera relató que, mientras vacunaba a niños en una escuela primaria, un rayo la lanzó a través de una ventana, incendió su ropa y la dejó inconsciente. Fue hospitalizada cuatro días y, aunque salió con vida, arrastra dolor crónico, parálisis parcial en las piernas y pérdida de memoria, lo que la obligó a dejar su trabajo. Diez años después, en el mismo aula sin protección contra rayos, dieciocho niños murieron y treinta y ocho resultaron heridos por otro impacto. Los sobrevivientes frecuentemente presentan lesión cerebral, dolor persistente, edema, tinnitus y dificultad para concentrarse; los síntomas varían mucho de una persona a otra. Muchos enfrentan gastos médicos elevados, discapacidades que les impiden volver al trabajo y cambios de tensión en sus relaciones. Cuando buscan ayuda, a menudo se les dice que sus molestias son psicológicas o imaginarias, porque no hay cicatrices visibles y pocos profesionales están capacitados para tratar lesiones por rayo. Esa falta de reconocimiento agrava el impacto psicológico del evento traumático.
+Llama de inmediato al número local de emergencias. Los [CDC](https://www.cdc.gov/lightning/safety/) indican que es seguro tocar a una persona alcanzada: no conserva una carga eléctrica. Antes de acercarte, evalúa el peligro de nuevos rayos para ti y para la víctima. Comprueba si responde y si respira; sigue las instrucciones del servicio de emergencias. Si no respira normalmente, comunica esta situación y sigue las indicaciones para iniciar la reanimación cardiopulmonar.
 
-## Límites y alcance real
-
-Los números de muertes y lesiones provienen de estimaciones basadas en reportes incompletos; la verdadera cifra podría ser mayor o menor según la región. La base de datos africana, aunque la más grande disponible, aún deja fuera incidentes no reportados o aquellos que ocurren en zonas de difícil acceso. El índice de riesgo combina factores disponibles, pero no captura matices locales como la tradición arquitectónica específica o la presencia de sistemas informales de protección. Las entrevistas ofrecen testimonios valiosos, pero no representan una muestra estadísticamente significativa de todos los sobrevivientes. Por tanto, los porcentajes de secuelas y las comparativas entre continentes deben leerse como indicaciones orientativas más que como conclusiones definitivas.
-
-## Cómo encaja en el conocimiento existente
-
-Los hallazgos confirman lo que estudios previos ya sugerían: la carga de los rayos no se mide solo por la cantidad de descargas, sino por la interacción entre peligro ambiental y condiciones socio‑económicas de las poblaciones. La marcada diferencia en la proporción de incidentes de múltiples víctimas entre África y los países desarrollados resalta cómo la infraestructura de refugio y la capacidad de respuesta médica moldean el resultado de un impacto. Asimismo, la prevalencia de lesiones invisibles coincide con reportes de América del Norte y Europa, donde se ha documentado que la mayoría de los sobrevivientes carece de señales externas pero experimenta problemas neurológicos y de dolor crónico. Lo novedoso es la escala de la vulnerabilidad en África Central, donde la combinación de alta frecuencia de rayos, refugios inseguros y acceso limitado a atención especializada crea un contexto de riesgo particularmente agudo.
-
-A pesar de los avances en la recopilación de datos y la concientización, el rayo sigue siendo una amenaza que deja huellas duraderas en quien lo sobrevive. La brecha entre la visibilidad de la herida y la realidad de sus efectos internos sigue dejando a muchos pacientes sin el reconocimiento ni el tratamiento que necesitan. Seguir afinando los registros, mejorar los sistemas de protección en edificios comunitarios y formar al personal médico en el manejo de estas lesiones son pasos que podrían transformar la experiencia de quienes, tras el destello, enfrentan una tormenta que no termina con el trueno.
+Una persona alcanzada necesita valoración médica incluso si inicialmente parece encontrarse bien o no presenta marcas visibles. Las cifras mundiales de víctimas son difíciles de determinar con precisión porque los registros son incompletos; la falta de datos no permite asumir que todas las regiones afronten el mismo riesgo ni dispongan de la misma protección.
 
 <!-- source_identity: source_id=the_conversation; source_name=The Conversation -->

@@ -1,7 +1,7 @@
 ---
-title: 'NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años'
+title: 'Artemis II: qué hizo la primera misión tripulada a la Luna desde 1972'
 schema_version: 1
-excerpt: 'Publicada el 18 de enero de 2026, esta nota anticipa el sobrevuelo lunar tripulado de Artemis II; una actualización fechada resume el vuelo de abril.'
+excerpt: 'La tripulación sobrevoló la Luna y regresó a la Tierra en abril de 2026; la misión no aterrizó ni entró en órbita lunar.'
 author: Noticiencias
 date: 2026-01-18
 categories:
@@ -9,8 +9,8 @@ categories:
 permalink: 'ciencia/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii'
 tags:
   - 'misión'
-image: '~/assets/images/2026-01-18-artemis-ii-mission.jpg'
-image_alt: 'NASA se prepara para un paso histórico en la exploración espacial humana con Artemis II'
+image: '~/assets/images/2026-01-18-artemis-ii-earthset-nasa.jpg'
+image_alt: 'La Tierra se oculta tras la superficie lunar durante el sobrevuelo de Artemis II, el 6 de abril de 2026. Foto: NASA.'
 source_url: 'https://nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/'
 series: 'Espacio'
 refinery_id: '64'
@@ -29,32 +29,22 @@ sources:
     url: 'https://www.nasa.gov/mission/artemis-ii/'
     publisher: 'NASA'
     role: primary
-corrected_at: '2026-10-09'
-correction_summary: 'Se precisó que Artemis II realizó un sobrevuelo, no una órbita lunar; se corrigió la nota sobre la cita de Isaacman y se añadió una actualización fechada. El relato principal conserva el contexto del 18 de enero de 2026.'
+corrected_at: '2026-11-03'
+correction_summary: 'Se consolidaron las correcciones previas y se actualizó la misión con sus hitos documentados; se retiraron citas no contrastadas y texto anterior al vuelo. El 3 de noviembre se precisó la duración del viaje según la ficha de NASA.'
 ---
 
-## Actualización — 9 de octubre de 2026
+**Actualización, 31 de octubre de 2026.** Esta nota se publicó antes del lanzamiento. La versión actual sustituye el relato anticipado por los hitos del vuelo y conserva la corrección anterior: Artemis II realizó un sobrevuelo, no un aterrizaje ni una órbita lunar. También retiramos citas cuya formulación no pudimos corroborar en la fuente enlazada.
 
-Artemis II despegó el 1 de abril de 2026 y amerizó el 10 de abril, tras volar alrededor de la Luna. La noticia que sigue se publicó el 18 de enero de 2026 y conserva la información disponible entonces. [NASA registra los hitos de la misión](https://www.nasa.gov/mission/artemis-ii/).
+Artemis II llevó a cuatro astronautas alrededor de la Luna y regresó a la Tierra en abril de 2026. Fue el primer viaje humano al entorno lunar desde Apollo 17, en 1972. La misión ensayó la nave Orion y sus sistemas con tripulación; no estaba diseñada para aterrizar en la superficie.
 
-## Lo que se sabía antes del vuelo
+## Del lanzamiento al regreso
 
-En un momento crucial de la historia del vuelo espacial humano, la agencia espacial norteamericana NASA está a punto de lanzar su segunda misión en el programa Artemis. Con Artemis II, la agencia espacial estadounidense hará un paso sin precedentes hacia la exploración lunar y más allá. Esta misión tiene como objetivo enviar a los astronautas más lejos de la Tierra que nunca antes, como parte del avance hacia una presencia lunar duradera; enviar estadounidenses a Marte sigue siendo una meta de misiones futuras del programa Artemis, no de Artemis II en sí.
+La nave despegó el **1 de abril de 2026** a bordo del cohete Space Launch System desde el Centro Espacial Kennedy. Viajaron Reid Wiseman, Victor Glover y Christina Koch, de NASA, y Jeremy Hansen, de la Agencia Espacial Canadiense.
 
-La misión Artemis II es el resultado de años de trabajo y planificación, y es considerada un paso fundamental hacia la reanudación de las misiones tripuladas a la Luna. "Artemis II será un paso hacia adelante crucial en la historia del vuelo espacial humano", declaró Jared Isaacman, administrador de NASA. "Esta misión histórica enviará seres humanos más allá de la Tierra que nunca antes".
+El 6 de abril, Orion pasó alrededor de la Luna y la tripulación superó el récord de distancia humana desde la Tierra establecido por Apollo 13. Según [NASA](https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/), el punto más alejado estuvo a 252.756 millas —aproximadamente 406.770 kilómetros— de la Tierra. La cápsula amerizó frente a California el 10 de abril; la [ficha de la misión](https://www.nasa.gov/mission/artemis-ii/) indica una duración de nueve días, una hora y 32 minutos.
 
-La campaña Artemis tiene como objetivo alcanzar tres objetivos fundamentales: beneficiar la economía estadounidense, realizar descubrimientos científicos importantes y preparar las misiones tripuladas a Marte. La misión Artemis II es un paso crucial en este camino, ya que se estima que la agencia espacial estadounidense podrá enviar astronautas a una distancia mayor que cualquier tripulación anterior.
+## Qué probó y qué sigue
 
-La preparación para esta misión ha sido intensa, con los astronautas y el equipo de NASA trabajando incansablemente para asegurarse de que todo esté listo. El kit de prensa oficial para la misión Artemis II ahora está disponible, incluyendo información sobre los astronautas que llevarán a cabo la misión y otros recursos para medios.
+Artemis II fue el primer vuelo tripulado de Orion. Sus objetivos incluyeron comprobar sistemas de la nave y operaciones con personas antes de futuros viajes más complejos. Completar un sobrevuelo no equivale a haber ensayado un descenso a la superficie o una estancia lunar.
 
-_Nota editorial — 9 de octubre de 2026: la fuente oficial de NASA del 16 de enero sí contiene la declaración de Isaacman sobre enviar estadounidenses a Marte. La nota anterior afirmaba por error que esa cita no aparecía. En el comunicado, Marte es una meta futura de la campaña Artemis, no el destino de Artemis II._
-
-Con la misión Artemis II a punto de despegar, la comunidad científica y espacial se está emocionando ante la posibilidad de ver a los astronautas estadounidenses en acción. ¿Cuáles son tus expectativas para esta misión histórica? ¿Cómo crees que afectará la exploración lunar y la búsqueda de vida extraterrestre? Comparte tus pensamientos con nosotros.
-
-Para obtener más información sobre Artemis, visita: https://www.nasa.gov/artemis
-
-Fuente:
-Lauren Low / Rachel Kraft
-Headquarters, Washington
-202-358-1600
-lauren.e.low@nasa.gov / rachel.h.kraft@nasa.gov
+La arquitectura y las fechas de futuras misiones Artemis pueden cambiar. NASA mantiene una [página de la misión](https://www.nasa.gov/mission/artemis-ii/) y una cronología de sus hitos para consultar los detalles de este vuelo histórico.

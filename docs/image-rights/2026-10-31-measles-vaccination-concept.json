@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T20:01:31.222458+00:00",
+  "article": "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 3:2 conceptual illustration for an independent public health science magazine article about measles vaccination coverage. An orderly healthcare desk with a closed generic vaccine vial, a simple paper vaccination record shown with no writing, and a folded teal cloth, softly lit by daylight; no needles, no people, no visible injection, no labels, no symbols, no logos, no text and no numbers. Muted teal, warm ivory and slate palette; calm, trustworthy, understated editorial art direction. This is generic conceptual artwork and must not claim to depict a real vaccine product, a real patient, or a specific vaccination campaign.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-50211a01-1adf-44d6-ab77-cf40720d6f72.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-measles-vaccination-concept.png",
+    "sha256": "63a19bc0c311c5c2ba1b6a4b851723aa61300a7dbe8f34c91943d02afd7290a6",
+    "bytes": 1901059,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-27-measles-vaccination-concept-original.webp",
+    "sha256": "81ff8472f82ad91271903798b863cf4f8946259b3b59a2dc7661fe881a53f518",
+    "bytes": 109756,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-27-article-349.jpg",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Conceptual illustration, not a real vaccine, patient or vaccination campaign.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}
