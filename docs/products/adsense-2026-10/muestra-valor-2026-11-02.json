@@ -1,0 +1,191 @@
+{
+  "date": "2026-11-02",
+  "scope": "60 archivos Markdown locales, no producción",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "method": "Ordenar por SHA-256 UTF-8 de semilla + salto de línea + nombre; seleccionar primeros 30. No es una muestra estadística aleatoria garantizada.",
+  "seed": "noticiencias-adsense-valor-editorial-2026-11-02-v1",
+  "population": [
+    "2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md",
+    "2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md",
+    "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii.md",
+    "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas.md",
+    "2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879.md",
+    "2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada.md",
+    "2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma.md",
+    "2026-01-27-conoce-a-los-misteriosos-electridos.md",
+    "2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md",
+    "2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos.md",
+    "2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md",
+    "2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial.md",
+    "2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md",
+    "2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica.md",
+    "2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos.md",
+    "2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado.md",
+    "2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida.md",
+    "2026-02-12-bienvenidos.md",
+    "2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md",
+    "2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable.md",
+    "2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos.md",
+    "2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md",
+    "2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas.md",
+    "2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura.md",
+    "2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan.md",
+    "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md",
+    "2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas.md",
+    "2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio.md",
+    "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md",
+    "2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos.md",
+    "2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md",
+    "2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles.md",
+    "2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md",
+    "2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees.md",
+    "2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado.md",
+    "2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino.md",
+    "2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos.md",
+    "2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda.md",
+    "2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt.md",
+    "2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md",
+    "2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe.md",
+    "2026-09-18-noticia-cientifica.md",
+    "2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos.md",
+    "2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.md",
+    "2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora.md",
+    "2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce.md",
+    "2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md",
+    "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md",
+    "2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md",
+    "2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra.md",
+    "2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico.md",
+    "2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.md",
+    "2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.md",
+    "2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo.md",
+    "2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md",
+    "2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa.md",
+    "2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada.md",
+    "2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano.md",
+    "2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal.md",
+    "2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua.md"
+  ],
+  "selection": [
+    {
+      "file": "2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada.md",
+      "sha256_at_selection": "48d5b6a4980369533ffa9d4db6591f98e9f46ae0885a6dc2f3483b67b03f8202"
+    },
+    {
+      "file": "2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md",
+      "sha256_at_selection": "ff91100e8e7be8cf298cf6e9961091bb251239c6fce904b6dc518edd217682b6"
+    },
+    {
+      "file": "2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md",
+      "sha256_at_selection": "f046f279c21b9ce041bfb848be8baa3ca9520c2db261b749c32ea2c0318c0bac"
+    },
+    {
+      "file": "2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos.md",
+      "sha256_at_selection": "d2cc9905b844be96bdc46b3c7c3e7a9ebfaae748571cf614c17959e932ed986b"
+    },
+    {
+      "file": "2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce.md",
+      "sha256_at_selection": "b9ac309dd6d6cc3c864fa8744c8f6b5e8ec301465f4ae19d28801de9530edebf"
+    },
+    {
+      "file": "2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas.md",
+      "sha256_at_selection": "88bef3fb2e86730dd594e3b00a085de008515d7f0b0d1464c9fe7268e3d805cb"
+    },
+    {
+      "file": "2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida.md",
+      "sha256_at_selection": "15be239356bdf245390d6724f74fcdd782a9238c64b73bac2b00cff743fb8075"
+    },
+    {
+      "file": "2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.md",
+      "sha256_at_selection": "a93ad403b19ff9368256fe541b445cf30aaf7cbe5dc61c71555c1025308bb222"
+    },
+    {
+      "file": "2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica.md",
+      "sha256_at_selection": "1d62a9f574ce12da5436af91872ca2b8646199f2bb648571ec147b18d3ba72b7"
+    },
+    {
+      "file": "2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial.md",
+      "sha256_at_selection": "4a4261f6df247728653e2e1fab39c710df7b2a23232c680270e84cc3283858cf"
+    },
+    {
+      "file": "2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md",
+      "sha256_at_selection": "550bfb4cd5e53a2dc3d445c06230f4f8cb3e5fd786e13c1806988a8a4cdd2c57"
+    },
+    {
+      "file": "2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md",
+      "sha256_at_selection": "7bda5f89792520ca6ecbf6e93d4a8048b8615d952e1b4d46e09caf738445faef"
+    },
+    {
+      "file": "2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas.md",
+      "sha256_at_selection": "581fec71c8ba22e7ea9cae6646b54c152fadcba87ba1cc40c59419c7dcd9fa49"
+    },
+    {
+      "file": "2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo.md",
+      "sha256_at_selection": "a9cd57f2c8000c188d9a3218a16297a2f57e69a1398475679e83a75cdb00ea70"
+    },
+    {
+      "file": "2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md",
+      "sha256_at_selection": "d6c68a0de29961b0dbc4b49fc80430cfd81f5d9bbe26191b775281abe0bf5cb8"
+    },
+    {
+      "file": "2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable.md",
+      "sha256_at_selection": "539ea0ed7517614f15f6a153aedeeec1950e584b1e1a1c39bf29961d33d16fc8"
+    },
+    {
+      "file": "2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md",
+      "sha256_at_selection": "d9a13c588b6f36e74c1c20c042205b39e4b76e3eeeed70bdae679e763ca7cac3"
+    },
+    {
+      "file": "2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada.md",
+      "sha256_at_selection": "31ba17e9f05e4c8990c665ce919432994d38370446d31541a95e251c77da2d56"
+    },
+    {
+      "file": "2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas.md",
+      "sha256_at_selection": "530f7e167cd7fcdae4b6198eafed87474594b57728f1b5943570caa146352295"
+    },
+    {
+      "file": "2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino.md",
+      "sha256_at_selection": "ffdf1048f2908fdd6c6ffc916bcc24e6b8da48f5eb62c271f00415ddfe2a079e"
+    },
+    {
+      "file": "2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua.md",
+      "sha256_at_selection": "eff20fc457da0998e8f12ee36cdce533bd669af631bad0e2e387a36d759c6af7"
+    },
+    {
+      "file": "2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md",
+      "sha256_at_selection": "e9af66d92a4d6f7481cb3974681d3d46622789762f081952f783006bb3deb558"
+    },
+    {
+      "file": "2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md",
+      "sha256_at_selection": "d217b2450c860ac652add056009bdbf80fff32fb1f48abbb8c3035d0c063b704"
+    },
+    {
+      "file": "2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano.md",
+      "sha256_at_selection": "f02ee974448b223ba9b8ce6f52fe789f4fe5ea3bf6e8db4a0b39ffd2967cf08c"
+    },
+    {
+      "file": "2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md",
+      "sha256_at_selection": "91c8493aba5f1c5f53892479a75d112e69b116dd2a34b0bb7607ce5b1fcbe3d7"
+    },
+    {
+      "file": "2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md",
+      "sha256_at_selection": "b8264f2785d9467bcfeaef6ec421018c3f7beecd3511e9092ad2d64d3131bbb0"
+    },
+    {
+      "file": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md",
+      "sha256_at_selection": "23df04229667eb1e78e1a59675069df9b01a89cd1779b4f29a21c5572f0beac7"
+    },
+    {
+      "file": "2026-01-27-conoce-a-los-misteriosos-electridos.md",
+      "sha256_at_selection": "212ccf26eab74e65a514be80027d134bc039a0f5ce43a3dcba0fef732f08f20d"
+    },
+    {
+      "file": "2026-09-18-noticia-cientifica.md",
+      "sha256_at_selection": "e11d8ac2f8bc6e9c51405132f5a601b374b1435561ec45271978ba6e3483787d"
+    },
+    {
+      "file": "2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma.md",
+      "sha256_at_selection": "019b46b41c7bcbf7c79fb144b0cb5337be7843d50e54af42dd85fb7d098dbadb"
+    }
+  ]
+}

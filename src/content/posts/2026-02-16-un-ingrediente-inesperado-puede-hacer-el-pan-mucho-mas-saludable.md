@@ -1,9 +1,11 @@
 ---
-title: 'Harina de semilla de girasol: pan con más proteína y antioxidantes'
+title: 'Harina de semilla de girasol: qué mostró un estudio sobre el pan'
 schema_version: 2
-excerpt: La harina de semilla de girasol, un subproducto del aceite de girasol, puede enriquecer el pan con proteínas y antioxidantes sin afectar su calidad.
+excerpt: La harina de semilla de girasol, un subproducto del aceite de girasol, se estudia como ingrediente para enriquecer el pan; las formulaciones también plantean desafíos de textura.
 author: Noticiencias
 date: 2026-02-16
+corrected_at: '2026-11-03'
+correction_summary: 'Se aclaró que el pan con extracto era una fórmula separada de las que sustituían harina de trigo por girasol; se corrigió el glosario y se retiraron valores de proteína del pan cuya base no se había verificado. Se precisó que la harina contiene fibra, sin afirmar que sea rica en ella.'
 categories:
   - Salud
 permalink: ciencia/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable
@@ -12,68 +14,69 @@ tags:
   - pan enriquecido
   - proteinas antioxidantes
   - desarrollo sostenible
-image: ~/assets/images/2026-02-16-677.jpg
-image_alt: 'Un ingrediente inesperado puede hacer el pan mucho más saludable'
+image: ~/assets/images/2026-02-16-sunflower-bread-concept-original.webp
+image_alt: 'Ilustración conceptual generada con IA de pan y semillas de girasol; no muestra los panes del estudio.'
 source_url: https://scitechdaily.com/this-unexpected-ingredient-makes-bread-much-healthier/
 series: 'Salud que importa'
 refinery_id: '677'
 headlines_variants:
   question: ¿Puede la harina de semilla de girasol enriquecer el pan sin sacrificar su calidad?
-  benefit: El pan con harina de semilla de girasol tiene más proteínas y antioxidantes
+  benefit: Qué se midió en las formulaciones y qué no se probó en personas
 investigation: false
 featured: false
 summary_points:
-  - La harina de semilla de girasol parcialmente desgrasada, un subproducto de la extracción de aceite de girasol, es rica en proteínas, fibra y antioxidantes.
-  - Al sustituir hasta un 60 % de la harina de trigo por esta harina, el pan alcanzó un 27,16 % de proteínas frente al 8,27 % del pan convencional.
-  - Los niveles de antioxidantes aumentaron proporcionalmente a la cantidad de harina de girasol añadida, pero altas proporciones afectaron la textura del pan.
-  - Añadir el extracto acuoso de harina de semilla de girasol (SFE) mejoró la textura, manteniéndola cercana al pan de trigo tradicional.
-  - Este enfoque aprovecha un residuo industrial barato, promoviendo la economía circular y la sostenibilidad en la producción de pan.
+  - La harina de semilla de girasol parcialmente desgrasada, un subproducto de la extracción de aceite, contiene proteínas, fibra y compuestos antioxidantes.
+  - Las formulaciones con mayor proporción de harina de girasol mostraron más proteína que el control en la tabla consultada; sigue pendiente verificar la base exacta de los valores.
+  - Las formulaciones con harina de girasol mostraron mayor actividad antioxidante en pruebas de laboratorio; las proporciones altas afectaron propiedades físicas del pan.
+  - Una formulación separada con harina de trigo y extracto acuoso de girasol presentó propiedades comparables a las del control en las pruebas descritas.
+  - El estudio exploró el uso de un subproducto industrial; no cuantificó su impacto ambiental ni sus costos a escala comercial.
 glossary:
   - term: harina de semilla de girasol parcialmente desgrasada
     definition: Subproducto obtenido después de extraer el aceite de las semillas de girasol; conserva proteínas, fibra y compuestos antioxidantes.
   - term: extracto acuoso de harina de semilla de girasol (SFE)
-    definition: Solución acuosa derivada de la harina de girasol que se usa para mejorar la textura del pan cuando se incorpora a la masa.
+    definition: Extracto obtenido con agua a partir de la harina de girasol; en el estudio se probó en una fórmula separada con harina de trigo.
   - term: economía circular
     definition: Modelo económico que busca reutilizar residuos y subproductos industriales como materias primas, reduciendo el desperdicio y el impacto ambiental.
   - term: compuestos antioxidantes
-    definition: Moléculas que inhiben la oxidación de otras sustancias, ayudando a proteger las células del daño causado por radicales libres.
+    definition: Sustancias que pueden reaccionar con agentes oxidantes; una medición en laboratorio no demuestra por sí sola un beneficio al consumir un alimento.
 fact_check:
-  - label: Pan con 60 % de harina de girasol alcanzó 27,16 % de proteínas, frente al 8,27 % del pan convencional.
+  - label: La base de cálculo de los valores de proteína está verificada.
+    status: uncertain
+  - label: El estudio midió actividad antioxidante en extractos de las formulaciones mediante ensayos de laboratorio.
     status: confirmed
-  - label: Los niveles de antioxidantes en el pan aumentaron proporcionalmente a la cantidad de harina de girasol añadida.
-    status: confirmed
-  - label: Agregar el extracto acuoso de harina de semilla de girasol (SFE) preservó la textura del pan, manteniéndola cercana al pan de trigo tradicional.
+  - label: El estudio probó el extracto acuoso en una formulación separada con harina de trigo, no en las mezclas que sustituían trigo por harina de girasol.
     status: confirmed
 why_it_matters:
-  - En América Latina, donde el girasol es un cultivo importante, aprovechar su subproducto puede reducir costos y mejorar la nutrición del pan básico.
-  - El mayor contenido de proteínas y fibra podría aportar valor nutricional al pan de consumo diario, aunque este estudio no demuestra beneficios clínicos directos contra la desnutrición o enfermedades crónicas.
-  - Utilizar residuos industriales podría apoyar la sostenibilidad y la economía circular, en línea con metas de desarrollo ambiental de muchos países latinoamericanos.
-confidence: Moderada — estudio de investigadores de la Universidad de São Paulo con resultados experimentales claros, aunque aún en fase de laboratorio y sin validación a gran escala.
+  - El aprovechamiento alimentario de subproductos puede investigarse en distintos contextos, pero este ensayo no calculó costos de producción comercial.
+  - El cambio de composición de las formulaciones no demuestra beneficios clínicos contra la desnutrición o enfermedades crónicas.
+  - El impacto ambiental de reutilizar el subproducto depende del proceso completo y no se cuantificó en este estudio.
+confidence: Limitada — se consultaron fragmentos indexados del estudio; el acceso directo al texto completo falló y queda pendiente verificar la base de los valores de proteína.
 sources:
+  - title: Repurposing Sunflower Seed Flour for Nutritional and Functional High-Protein Breads within a Circular Economy Framework
+    url: https://pubs.acs.org/doi/10.1021/acsfoodscitech.4c01008
+    publisher: ACS Food Science & Technology
+    role: primary
+    doi: 10.1021/acsfoodscitech.4c01008
   - title: This Unexpected Ingredient Makes Bread Much Healthier
     url: https://scitechdaily.com/this-unexpected-ingredient-makes-bread-much-healthier/
     publisher: SciTechDaily
     date: '2026-02-16'
 ---
 
-**Harina de semilla de girasol: pan con más proteína y antioxidantes**
+**Corrección y actualización, 1 de noviembre de 2026; ampliada el 3 de noviembre.** Una versión anterior presentaba beneficios de salud y sostenibilidad como demostrados. El estudio evaluó formulaciones de pan; no aporta por sí solo prueba de beneficios clínicos ni cuantifica el impacto ambiental. La fórmula con extracto se ensayó por separado, con harina de trigo; corregimos también el glosario para no atribuir ese resultado a otras mezclas. Retiramos las cifras de proteína del pan porque aún no hemos verificado su base de cálculo y precisamos que la harina contiene fibra, sin afirmar que sea rica en ella.
 
-En un esfuerzo por hacer que los productos de panadería sean más saludables y sostenibles, investigadores han descubierto que un subproducto de la producción de aceite de girasol podría ser la clave para crear pan más nutritivo. La harina de semilla de girasol parcialmente desgrasada, un residuo de la extracción industrial de aceite de girasol, ha demostrado contener altos niveles de proteínas, fibra y compuestos antioxidantes, lo que la convierte en un candidato prometedor para enriquecer el pan.
+El [estudio publicado en ACS Food Science & Technology](https://pubs.acs.org/doi/10.1021/acsfoodscitech.4c01008) exploró el uso de harina de girasol parcialmente desgrasada, un subproducto de la extracción de aceite, en formulaciones experimentales de pan. Los investigadores compararon su composición y propiedades físicas; no evaluaron beneficios de salud en personas.
 
-**El Potencial de la Harina de Semilla de Girasol**
+## Qué formulaciones compararon
 
-Los investigadores, liderados por el biólogo Leonardo Mendes de Souza Mesquita, del Instituto de Ciencias Biológicas de la Universidad de São Paulo (IB-USP) en Brasil, evaluaron el desempeño de la harina de semilla de girasol en recetas de pan. Reemplazaron la harina de trigo con harina de semilla de girasol en niveles que variaban del 10% al 60% y analizaron la composición química, el comportamiento de la masa y las características del pan final.
+El equipo preparó un control con harina de trigo y seis fórmulas que sustituían entre el 10 % y el 60 % de esa harina por harina de girasol. Además, ensayó por separado una fórmula con harina de trigo y extracto acuoso de girasol. En esta última no se añadió harina de girasol como sustituto de la harina de trigo.
 
-**Resultados Significativos**
+## Proteína, actividad antioxidante y textura
 
-Los resultados mostraron que el pan hecho con harina de semilla de girasol contenía significativamente más proteínas y fibra que el pan de trigo estándar. En el nivel de sustitución más alto, la hogaza alcanzó un 27,16% de proteínas, en comparación con el 8,27% en el pan convencional. Además, los niveles de antioxidantes aumentaron en proporción a la cantidad de harina de girasol agregada.
+La tabla consultada indica más proteína en las formulaciones con mayor sustitución de trigo por girasol que en el control. No hemos verificado suficientemente la base de cálculo de los valores, por lo que no podemos convertirlos en gramos por porción ni trasladar una cifra a otros panes. Los investigadores también midieron actividad antioxidante en pruebas de laboratorio; eso no demuestra un efecto clínico tras consumir el pan.
 
-**Desafíos y Soluciones**
+Las proporciones altas de harina de girasol modificaron propiedades físicas como el volumen y la firmeza. La formulación separada con extracto y harina de trigo mostró parámetros comparables al control en los ensayos descritos. Ese resultado no demuestra que añadir extracto corrija la textura de las mezclas con altos porcentajes de harina de girasol: esa combinación no aparece entre las formulaciones de la tabla.
 
-Aunque los beneficios para la salud fueron claros, cantidades más altas de harina de girasol afectaron la textura del pan. Sin embargo, agregar el extracto acuoso de harina de semilla de girasol (SFE) logró preservar la estructura y la textura del pan, manteniéndolas cerca de las del pan tradicional de trigo.
+## Qué falta por comprobar
 
-**Innovación Sostenible y Economía Circular**
-
-La investigación se ajusta a un esfuerzo más amplio para reaprovechar subproductos industriales. La harina de semilla de girasol parcialmente desgrasada es un material crudo barato que contribuye a la salud humana y la sostenibilidad ambiental. La industria del aceite vende este subproducto solo para evitar desecharlo como residuo, lo que hace que esta innovación sea una estrategia fundamental para promover una economía circular y reducir el desperdicio de recursos.
-
-La harina de semilla de girasol parcialmente desgrasada es un ingrediente inesperado que puede mejorar dramáticamente el valor nutricional del pan. Con su alto contenido de proteínas, fibra y compuestos antioxidantes, este subproducto de la producción de aceite de girasol tiene el potencial de crear pan más saludable y sostenible. Aunque aún hay desafíos que superar en términos de textura, la adición del extracto acuoso de harina de semilla de girasol es una solución efectiva para maximizar los beneficios nutricionales y minimizar los efectos sensoriales adversos. Esta innovación es un paso importante hacia la creación de productos de panadería más saludables y sostenibles.
+Reaprovechar un subproducto puede ser una línea de investigación interesante, pero este trabajo no cuantificó el impacto ambiental ni el costo comercial de su adopción. También hacen falta evaluaciones sensoriales y estudios de producción a escala. Los resultados describen las recetas ensayadas y no demuestran que el producto prevenga enfermedades o mejore la salud de quienes lo consumen.

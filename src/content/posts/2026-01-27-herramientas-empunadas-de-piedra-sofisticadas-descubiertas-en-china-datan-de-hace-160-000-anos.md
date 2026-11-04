@@ -1,7 +1,7 @@
 ---
-title: Herramientas empuñadas de piedra sofisticadas descubiertas en China datan de hace 160.000 años
+title: 'Xigou: indicios de herramientas de piedra con mango en la China prehistórica'
 schema_version: 2
-excerpt: Herramientas de piedra sofisticadas descubiertas en China desafían creencias sobre tecnología primitiva.
+excerpt: Un conjunto de 2.601 piezas de piedra abarca capas de hace unos 160.000 a 72.000 años. Algunas presentan huellas compatibles con el uso de mangos.
 author: Noticiencias
 date: 2026-01-27
 categories:
@@ -13,8 +13,8 @@ tags:
   - petraglia
   - marwick
   - denisovano
-image: ~/assets/images/2026-01-27-235.png
-image_alt: 'Herramientas empuñadas de piedra sofisticadas descubiertas en China datan de hace 160.000 años'
+image: ~/assets/images/2026-01-27-xigou-stone-concept-original.webp
+image_alt: 'Ilustración conceptual generada con IA de una lasca de piedra genérica; no representa una pieza de Xigou.'
 source_url: https://livescience.com/archaeology/human-evolution/160-000-year-old-sophisticated-stone-tools-discovered-in-china-may-not-have-been-made-by-homo-sapiens
 refinery_id: '235'
 headlines_variants:
@@ -23,11 +23,11 @@ headlines_variants:
 investigation: false
 featured: false
 summary_points:
-  - Se descubrieron más de 2.600 herramientas de piedra en el sitio de Xigou, Henan, algunas con mangos (empuñadas), datadas en al menos 160.000 años.
-  - El hallazgo, publicado en Nature Communications, muestra la primera evidencia de herramientas compuestas en el Este de Asia, indicando una mayor complejidad tecnológica de lo previamente pensado.
+  - Se recuperaron 2.601 piezas de piedra en capas de Xigou datadas aproximadamente entre 160.000 y 72.000 años; algunas presentan huellas interpretadas como señales de unión a mangos.
+  - Según los autores, las huellas ofrecen la evidencia más antigua conocida por ellos de enmangue en conjuntos líticos de Asia oriental.
   - La identidad de los fabricantes es incierta; podrían ser Denisovanos, H. longi, H. juluensis o incluso H. sapiens, debido a la presencia de varias especies de homínidos en la región.
   - El descubrimiento desafía la noción de que la tecnología de herramientas de piedra en Asia se retrasaba respecto a Europa y África durante ese período.
-  - Estas herramientas sugieren una flexibilidad conductual y adaptación al entorno que implica capacidades cognitivas avanzadas de los homínidos en China hace 160.000 años.
+  - Las formas de talla y las huellas de uso muestran diversidad técnica; no identifican por sí solas la especie fabricante ni todas sus capacidades cognitivas.
 glossary:
   - term: herramientas empuñadas
     definition: Instrumentos de piedra unidos a un mango o eje de madera u otro material, lo que aumenta su eficacia al permitir mayor palanca y fuerza.
@@ -44,44 +44,46 @@ glossary:
 fact_check:
   - label: El conjunto arqueológico de Xigou cubre aproximadamente entre 160.000 y 72.000 años de antigüedad.
     status: confirmed
-  - label: Más de 2.600 herramientas de piedra fueron halladas en el sitio de Xigou.
+  - label: El conjunto de Xigou incluye 2.601 piezas de piedra, entre las que hay lascas, núcleos y herramientas.
     status: confirmed
   - label: El estudio fue publicado en la revista Nature Communications.
     status: confirmed
-  - label: Las herramientas empuñadas son la primera evidencia de herramientas compuestas en el Este de Asia.
+  - label: Los autores consideran estas huellas la evidencia más antigua conocida de enmangue en conjuntos líticos de Asia oriental.
     status: confirmed
   - label: Los posibles creadores incluyen Denisovanos, H. longi, H. juluensis o H. sapiens.
     status: uncertain
 why_it_matters:
-  - Entender la sofisticación tecnológica de los primeros humanos en Asia puede ayudar a reconstruir los procesos de poblamiento y adaptación de la región, un tema de interés más amplio para el estudio de la dispersión humana hacia América.
-  - Reconocer que la innovación tecnológica no estuvo limitada a ciertas regiones desafía estereotipos sobre la complejidad cognitiva de distintas poblaciones de homínidos en Asia.
-  - Estos hallazgos inspiran a comunidades académicas y museísticas de la región a promover investigaciones comparativas que conecten el pasado asiático con las primeras poblaciones del continente americano.
-confidence: Alta — estudio revisado por pares con evidencia arqueológica sustancial (más de 2.600 herramientas), aunque la identidad exacta de los fabricantes permanece incierta.
+  - La diversidad de técnicas de talla aporta evidencia para estudiar la variación tecnológica de poblaciones humanas antiguas de Asia oriental.
+  - Distinguir las huellas observadas de la reconstrucción de mangos y de la identidad de los fabricantes evita atribuciones que el yacimiento no permite confirmar.
+confidence: Moderada — estudio revisado por pares sobre 2.601 piezas de piedra; la datación de capas tiene incertidumbre y la identidad de sus fabricantes sigue abierta.
 sources:
+  - title: Technological innovations and hafted technology in central China ~160,000–72,000 years ago
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12848047/
+    publisher: Nature Communications
+    role: primary
+    doi: 10.1038/s41467-025-67601-y
   - title: 160,000-year-old sophisticated stone tools discovered in China may not have been made by Homo sapiens
     url: https://livescience.com/archaeology/human-evolution/160-000-year-old-sophisticated-stone-tools-discovered-in-china-may-not-have-been-made-by-homo-sapiens
     publisher: Live Science
     date: '2026-01-27'
+corrected_at: '2026-11-03'
+correction_summary: Se distinguieron las piezas totales de las herramientas, el intervalo de datación de las capas y la inferencia de enmangue; se añadió el estudio original. El 3 de noviembre se precisó el número de piezas con modificaciones basales y el de perforadores con huellas de uso y enmangue.
 ---
 
-## Descubrimiento en China: Herramientas de piedra sofisticadas desafían la percepción del pasado
+**Corrección, 31 de octubre de 2026.** Una versión anterior llamó herramientas a todas las piezas recuperadas y atribuyó a cada una una antigüedad mínima de 160.000 años. El conjunto incluye distintos tipos de restos y procede de capas con un intervalo de fechas; también precisamos cómo se infiere el uso de mangos.
 
-En un hallazgo que redefine nuestra comprensión de la tecnología primitiva en Asia, arqueólogos han descubierto herramientas de piedra sofisticadas en el centro de China que datan de al menos 160.000 años atrás. Este descubrimiento, publicado en la revista _Nature Communications_, no solo desafía la percepción de que la tecnología de herramientas de piedra en Asia se retrasaba con respecto a Europa y África durante este período, sino que también plantea intrigantes preguntas sobre quién podría haber creado estas herramientas.
+En Xigou, provincia de Henan, un equipo arqueológico estudió **2.601 piezas de piedra** procedentes de capas datadas aproximadamente entre 160.000 y 72.000 años. Algunas muestran huellas que los investigadores interpretan como indicios de que fueron fijadas a mangos. El [estudio publicado en _Nature Communications_](https://pmc.ncbi.nlm.nih.gov/articles/PMC12848047/) sitúa el hallazgo dentro de una historia más diversa de tecnologías líticas en Asia oriental.
 
-### Un paso adelante en la tecnología
+## Cómo se llegó a esa interpretación
 
-Las excavaciones en el sitio de Xigou, en la provincia de Henan, revelaron más de 2.600 herramientas de piedra, algunas de las cuales estaban "empuñadas", es decir, unidas a mangos de madera o otros materiales. La identificación de estas herramientas empuñadas marca la primera evidencia de herramientas compuestas en el Este de Asia y sugiere una mayor complejidad tecnológica de lo que se pensaba previamente. Según Michael Petraglia, director del Centro Australiano de Investigación para la Evolución Humana de la Universidad Griffith y coautor del estudio, "la empuñadura es una innovación tecnológica nueva en la que la herramienta de piedra se inserta o une a un mango o un eje", lo que mejoró significativamente el rendimiento de la herramienta al permitir mayor palanca y fuerza para acciones como perforar.
+El conjunto incluye lascas, fragmentos, núcleos y herramientas; no todas las 2.601 piezas son herramientas terminadas. La cronología se estableció mediante luminiscencia aplicada a sedimentos de los niveles arqueológicos. Las fechas enmarcan la secuencia de capas y tienen incertidumbre; no significan que cada pieza tenga exactamente 160.000 años.
 
-### Un misterio sobre los creadores
+El equipo examinó formas de fabricación y huellas microscópicas de desgaste, comparándolas con colecciones experimentales. En algunas piezas identificó marcas compatibles con fijación a un mango o eje. Esa interpretación se basa en las huellas de la piedra: no equivale a mostrar que se hayan conservado todos los mangos originales.
 
-Aunque el descubrimiento es notable, queda una pregunta fundamental sin respuesta: ¿quiénes fueron los responsables de crear estas sofisticadas herramientas? Ben Marwick, profesor de arqueología de la Universidad de Washington y coautor del artículo, señala que la identidad exacta de los fabricantes no es clara debido a la probable presencia de varias especies de homínidos en la región durante ese período. Esto incluye a los Denisovanos, H. longi, H. juluensis o incluso H. sapiens. Marwick expresó su esperanza de que futuras investigaciones puedan recuperar restos fósiles o ADN que arrojen más luz sobre esta intrigante pregunta.
+Los autores registraron 22 herramientas con modificaciones en la base compatibles con un posible enmangue. En dos perforadores observaron tanto huellas de perforación como señales interpretadas como enmangue. No son 2.601 mangos ni 2.601 herramientas compuestas: el total incluye todo el conjunto de piezas de piedra estudiado.
 
-### Desafiando el sesgo
+## Qué sabemos de sus fabricantes
 
-El hallazgo contradice una suposición largamente sostenida sobre la fabricación de herramientas primitivas, sugiriendo que los homínidos del Este de Asia no producían solo herramientas "conservadoras". John Shea, profesor de antropología de la Universidad de Stony Brook, aunque no participó en la investigación, elogió el artículo y señaló que la idea de que el Este de Asia era un rezago cultural siempre fue una especie de mito. Anne Ford, profesora asociada de arqueología de la Universidad de Otago en Nueva Zelanda, también elogió la investigación, destacando que la empuñadura es "un paso tecnológico importante y tiene implicaciones para evaluar la capacidad cognitiva de los homínidos en China durante este período de tiempo".
+Los autores consideran que estas piezas ofrecen la evidencia más antigua de enmangue conocida por ellos en conjuntos líticos de Asia oriental. Ese calificativo depende del registro disponible y puede cambiar con nuevos hallazgos. El sitio no permite asignar con certeza las piezas a una especie concreta: varias poblaciones humanas antiguas pudieron vivir en la región durante ese amplio período.
 
-### Implicaciones más amplias
-
-El descubrimiento no solo redefine nuestra comprensión de la tecnología primitiva en Asia, sino que también plantea interrogantes sobre la evolución y la dispersión de los humanos primitivos. La flexibilidad conductual y la adaptación exitosa al clima y los recursos locales, como sugieren las herramientas de piedra, ofrecen una visión más compleja y sofisticada de la vida en el pasado.
-
-En resumen, el descubrimiento de herramientas de piedra sofisticadas en China abre nuevas perspectivas sobre la tecnología primitiva en Asia, desafía antiguos sesgos sobre el desarrollo cultural en la región y plantea fascinantes preguntas sobre los creadores de estas herramientas. A medida que continuamos explorando el pasado, hallazgos como este nos recuerdan la complejidad y la riqueza de la historia humana, invitándonos a profundizar más en los misterios de nuestra evolución.
+Las estrategias de talla y las posibles herramientas compuestas muestran una variedad de soluciones técnicas. No permiten por sí solas reconstruir todas las capacidades cognitivas de sus fabricantes ni establecer una relación directa con el poblamiento posterior de América.

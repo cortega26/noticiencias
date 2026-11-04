@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T00:40:39.342784+00:00",
+  "article": "src/content/posts/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create a landscape 3:2 refined editorial illustration for a serious science article about searching for faint distant bodies in the outer Solar System. A generic observatory dome silhouette on a Chilean-style mountain ridge under a vast clear blue-black starry sky at night, understated and realistic yet visibly illustrative. No close-up of planets or asteroids, no arrows, circles, labels, simulated telescope data, logos, words, text, people, numbers, or actual observatory architectural likeness. This is an imagined atmosphere, not documentary evidence of the discovery.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-b1318892-6c9d-469c-9f34-9aca6b1349fd.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-distant-object-concept.png",
+    "sha256": "4a6f8afbc4d8779dc8814de34dbf4736598d2c62daa44a53e0334dd5b0a5704e",
+    "bytes": 2626119,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-10-28-distant-object-concept-original.webp",
+    "sha256": "87fae710ac2575d331aacad0d33348c41f1bfcb4639507921c04903a72fef368",
+    "bytes": 321920,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.png",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Imagined observatory and sky; neither Rubin nor a real observation of 2026 ED138.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

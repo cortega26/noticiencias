@@ -1,7 +1,7 @@
 ---
 title: 'Qué es el vibe coding y qué aporta Claude Code'
 schema_version: 2
-excerpt: 'Claude Code promete revolucionar la forma en que creamos software con su facilidad de uso y velocidad'
+excerpt: 'Los asistentes pueden generar y modificar código a partir de instrucciones, pero el resultado necesita pruebas y revisión antes de usarse.'
 author: Noticiencias
 date: 2026-01-31
 categories:
@@ -10,65 +10,61 @@ tags:
   - 'vibe coding'
   - 'codificación'
   - 'programación'
-image: '~/assets/images/2026-01-31-article-521.jpg'
-image_alt: 'Cómo Claude Code está llevando el vibe coding a todos'
+image: '~/assets/images/2026-11-01-coding-assistant-concept-original.webp'
+image_alt: 'Ilustración conceptual generada con IA de un portátil con código abstracto; no muestra la interfaz de Claude Code.'
 source_url: 'https://scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/'
 series: 'IA en la práctica'
 refinery_id: '521'
 headlines_variants:
   question: ''
-  benefit: 'La mejora de habilidades de codificación con herramientas como Claude Code'
+  benefit: 'Qué comprobar al crear software con asistentes de programación'
 investigation: false
 featured: false
 summary_points:
-  - El vibe coding busca convertir instrucciones en lenguaje natural en código funcional, haciendo la programación más accesible.
-  - Claude Code es una herramienta que permite crear sitios web rápidamente y superar obstáculos de forma eficaz, según la experiencia del autor.
-  - En comparación con Codex de OpenAI (2021), Claude Code parece ofrecer mayor facilidad de uso y velocidad.
-  - El concepto de vibe coding fue acuñado por Andrej Karpathy en febrero de 2025 y está ganando interés entre personas sin formación en programación.
+  - El término vibe coding se usa para describir una forma de crear software mediante instrucciones en lenguaje natural y generación asistida por IA.
+  - Claude Code puede trabajar con archivos y comandos según los permisos configurados; sus capacidades pueden cambiar entre versiones.
+  - El código generado puede contener errores o vulnerabilidades y necesita revisión y pruebas.
+  - La experiencia personal de una fuente no demuestra que una herramienta sea más rápida o mejor que otra en todos los proyectos.
 glossary:
   - term: vibe coding
     definition: Enfoque que permite generar código a partir de instrucciones dadas en lenguaje natural, con el objetivo de hacer la programación más intuitiva y accesible.
   - term: Claude Code
     definition: Herramienta de inteligencia artificial que interpreta indicaciones en lenguaje natural y produce código, facilitando la creación de sitios web y otras aplicaciones.
-  - term: Codex
-    definition: Modelo de OpenAI lanzado en 2021 que también convierte instrucciones en inglés plano en código, precursor de herramientas como Claude Code.
   - term: IA para codificar
     definition: Uso de sistemas de inteligencia artificial diseñados para asistir o automatizar la escritura de código de programación.
 fact_check:
-  - label: OpenAI lanzó Codex en 2021
+  - label: Claude Code dispone de opciones para configurar permisos de herramientas y comandos.
     status: confirmed
-  - label: El término 'vibe coding' fue acuñado por Andrej Karpathy en febrero de 2025
-    status: confirmed
-  - label: Según la experiencia personal del autor, Claude Code le permitió crear sitios web complejos de forma más rápida y efectiva que con Codex.
-    status: confirmed
-  - label: El vibe coding está aumentando su popularidad entre no codificadores
-    status: confirmed
+  - label: Una experiencia individual demuestra que Claude Code supera siempre a otras herramientas.
+    status: unsupported
 why_it_matters:
-  - Podría reducir la barrera de entrada al mundo del desarrollo de software, permitiendo que más personas en América Latina creen aplicaciones sin necesidad de aprender lenguajes de programación tradicionales.
-  - Puede impulsar emprendimientos tecnológicos y soluciones locales al facilitar la prototipación rápida de sitios web y herramientas digitales.
-  - Podría contribuir a cerrar la brecha de habilidades digitales en la región y ampliar oportunidades de trabajo remoto.
-confidence: Moderada — artículo de divulgación basado en experiencia personal y opiniones, sin datos empíricos ni revisión por pares detallada.
+  - La generación de código puede facilitar prototipos; verificar requisitos, seguridad y mantenimiento sigue siendo necesario.
+confidence: Moderada — documentación del proveedor y descripción general; no se realizó una comparación independiente de herramientas.
 sources:
+  - title: Claude Code CLI reference
+    url: https://docs.anthropic.com/en/docs/claude-code/cli-usage
+    publisher: Anthropic
+    role: primary
   - title: Software is becoming something you speak into existence
     url: https://scientificamerican.com/article/how-claude-code-is-bringing-vibe-coding-to-everyone/
     publisher: Scientific American
-    date: '2026-01-31'
+    role: secondary
+corrected_at: '2026-11-03'
+correction_summary: Se retiraron experiencias en primera persona atribuidas erróneamente a esta publicación y comparaciones de rendimiento sin prueba propia; se añadió documentación del proveedor. El 3 de noviembre se retiró una atribución histórica no sustentada del glosario y una promesa no demostrada sobre mejora de habilidades.
 ---
 
-**El vibe coding: ¿el futuro de la programación?**
+**Corrección, 31 de octubre de 2026.** La versión anterior hablaba en primera persona como si Noticiencias hubiera realizado una prueba y afirmaba una ventaja de rendimiento sin comparación propia. Retiramos esas afirmaciones y añadimos la documentación del proveedor.
 
-En el mundo de la tecnología, siempre hay un debate sobre cómo hacer que la codificación sea más accesible y fácil para todos. La pregunta es: ¿es posible convertir la codificación en algo que se puede hablar para que exista? Esto nos lleva a explorar las herramientas como Claude Code, que prometen revolucionar la forma en que creamos software.
+El llamado _vibe coding_ describe una forma de crear software en la que una persona expresa lo que quiere y una herramienta de IA propone o modifica código. Puede acelerar la exploración de una idea, pero una aplicación que parece funcionar todavía puede contener errores, problemas de seguridad o comportamientos que nadie ha comprobado.
 
-**Desarrollo del vibe coding**
+Claude Code es una herramienta de Anthropic que puede trabajar con un proyecto y utilizar comandos y otras herramientas, según la configuración. Su [documentación](https://docs.anthropic.com/en/docs/claude-code/cli-usage) describe opciones de permisos y de uso desde la línea de comandos. Esas capacidades y condiciones pueden cambiar entre versiones.
 
-El vibe coding no es un concepto nuevo. Durante los últimos años, se han desarrollado varias plataformas que intentan lograr este objetivo. Sin embargo, Claude Code parece ser diferente debido a su facilidad de uso y velocidad para entender los problemas. Al utilizar Claude Code, he creado varios sitios web con éxito, y cada vez que me encontré con un obstáculo, el software lo solucionó de manera efectiva.
+## De una instrucción a un resultado verificable
 
-**Evidencia y límites**
+Una instrucción como «crea una página de contacto» deja abiertas preguntas: dónde se envían los mensajes, qué datos se conservan y cómo se manejan los errores. La herramienta puede proponer una implementación, pero alguien debe revisar esas decisiones y comprobar que el resultado hace lo esperado.
 
-Es importante destacar que Claude Code no es la primera plataforma en intentar lograr el vibe coding. OpenAI lanzó Codex en 2021, que también convierte instrucciones en inglés plano en código. Sin embargo, Claude Code parece tener una ventaja en términos de facilidad de uso y velocidad. Aunque ambos son poderosos, mi experiencia sugiere que Claude Code es más rápido y efectivo para construir sitios web complejos.
+Para evaluar una aplicación es útil probar sus rutas principales, revisar el código generado y los permisos concedidos, y comprobar qué ocurre con datos privados y fallos. En tareas sensibles o de producción, esas comprobaciones requieren conocimientos y responsabilidad acordes al riesgo.
 
-**Contexto**
+## Qué no demuestra una experiencia individual
 
-El vibe coding se encuentra en un momento crítico. Con la mejora de las habilidades de codificación de Claude Code, la popularidad de la IA para codificar está aumentando entre no codificadores. El término "vibe coding" fue acuñado por Andrej Karpathy, un ex investigador de OpenAI, en febrero de 2025. Esto sugiere que la industria está evolucionando hacia una dirección donde la codificación sea más accesible y fácil para todos.
-
-Aunque el vibe coding parece ser el futuro de la programación, es importante recordar que aún hay limitaciones y desafíos por superar. La pregunta es: ¿podemos confiar en que estas herramientas nos llevarán a un futuro donde la codificación sea más accesible y fácil para todos? Solo el tiempo lo dirá. Sin embargo, una cosa es segura: el vibe coding está aquí para quedarse, y Claude Code es uno de los líderes en este campo. ¿Estás listo para unirte a la revolución del vibe coding?
+Una persona puede crear un sitio útil con ayuda de un asistente sin dominar todos los detalles del código. Eso no demuestra que la herramienta sea más rápida que otra para cualquier proyecto ni que el resultado sea seguro o mantenible. Esta nota no realizó una comparación independiente entre Claude Code y otros asistentes.

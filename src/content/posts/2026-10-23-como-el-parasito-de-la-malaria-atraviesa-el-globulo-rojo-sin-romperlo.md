@@ -1,7 +1,9 @@
 ---
-title: Cómo el parásito de la malaria abre un portal en la sangre y lo cierra sin rastro
+title: Cómo el parásito de la malaria entra en los glóbulos rojos
 schema_version: 2
 date: 2026-10-23
+corrected_at: '2026-11-02'
+correction_summary: 'Se precisaron las observaciones y sus límites clínicos: el inhibidor experimental se une a AMA1 y, en el ensayo, impide formar el complejo; no se probó su eficacia en otros parásitos ni como tratamiento. Se atribuyó a Quanta Magazine la entrevista citada.'
 author: Noticiencias AI
 categories:
   - Ciencia
@@ -11,42 +13,42 @@ tags:
   - criomicroscopía
   - moving junction
   - inhibidor proteico
-excerpt: Criomicroscopía revela la estructura del portal que usa Plasmodium para invadir células; un inhibidor lo bloquea en cultivo, pero falta probarlo in vivo.
+excerpt: Criomicroscopía revela la estructura del portal que usa Plasmodium para invadir células; una proteína experimental reduce la invasión en cultivo; no es un tratamiento clínico.
 image: ~/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp
-image_alt: 'Ilustración generada con IA: un parásito de la malaria entra en un glóbulo rojo a través de una unión de proteínas que hunde la membrana sin romperla.'
+image_alt: 'Ilustración conceptual generada con IA de un parásito entrando en un glóbulo rojo; no muestra una observación ni la estructura molecular real.'
 source_url: https://quantamagazine.org/malaria-parasite-caught-in-the-act-of-breaking-and-entering-20261023/
 refinery_id: '4021'
 headlines_variants:
   question: ¿Cómo logra la malaria entrar en los glóbulos rojos sin romperlos?
-  benefit: Un nuevo blanco para frenar la malaria antes de que invada la sangre
+  benefit: Qué muestra una estructura molecular y qué falta para evaluar un tratamiento
 summary_points:
-  - El laboratorio de Chi-Min Ho en la Universidad de Columbia obtuvo imágenes de criomicroscopía electrónica de la unión móvil (moving junction) de Plasmodium en el momento exacto de la invasión del glóbulo rojo.
-  - El parásito inyecta tres proteínas que forman una cuña densa bajo la membrana del huésped y una cuarta que la conecta al cuerpo del invasor; juntas generan fuerzas electrostáticas y presión mecánica que invierten la curvatura de la membrana.
-  - Con la estructura resuelta, el equipo diseñó mediante inteligencia artificial una proteína inhibidora que encaja en la unión móvil y la bloquea en cultivos de laboratorio.
-  - El mecanismo de invasión mediante unión móvil parece conservado en otros apicomplejos como Toxoplasma gondii y Cyclospora, lo que sugiere un blanco terapéutico de amplio espectro.
+  - El laboratorio de Chi-Min Ho en la Universidad de Columbia aisló complejos de la unión móvil de parásitos detenidos durante la invasión y determinó su estructura mediante criomicroscopía electrónica.
+  - El parásito inyecta tres proteínas que forman una cuña densa bajo la membrana del huésped y una cuarta que la conecta al cuerpo del invasor; según el modelo propuesto, podrían contribuir a deformar la membrana mediante fuerzas electrostáticas y presión mecánica.
+  - Con la estructura resuelta, el equipo diseñó mediante inteligencia artificial una proteína que se une a AMA1 y reduce la invasión de glóbulos rojos en cultivos de laboratorio.
+  - Otros apicomplejos emplean estructuras relacionadas para invadir células, pero este trabajo no demostró que el inhibidor funcione contra ellos.
   - El siguiente objetivo del laboratorio son los complejos adhesivos que el parásito instala en la superficie del glóbulo rojo infectado para evitar el bazo y causar la patología grave.
 glossary:
   - term: Plasmodium
     definition: Género de protozoarios parásitos unicelulares causantes de la malaria; se replican dentro de los glóbulos rojos humanos.
   - term: Unión móvil (moving junction)
-    definition: Estructura transitoria en forma de anillo que el parásito crea en la membrana del glóbulo rojo para abrir un poro, deslizarse y cerrarlo sin dejar rastro.
+    definition: Estructura transitoria en forma de anillo que el parásito crea en la membrana del glóbulo rojo que participa en la entrada del parásito en la célula huésped.
   - term: Apicomplejos
     definition: Filo de parásitos unicelulares que incluye a Plasmodium, Toxoplasma gondii y Cyclospora; comparten un aparato apical especializado para invadir células huésped.
   - term: Criotomografía electrónica
     definition: Técnica de imagen que congela muestras biológicas en hielo vítreo y reconstruye su estructura tridimensional a resolución molecular.
   - term: Proteínas adhesivas de superficie (PfEMP1)
-    definition: Proteínas que el parásito exporta a la membrana del glóbulo rojo infectado para adherirlo al endotelio vascular y evitar su eliminación en el bazo; causan la gravedad clínica.
+    definition: Familia de proteínas que Plasmodium falciparum exporta a la superficie del glóbulo rojo infectado y que pueden favorecer su adhesión a vasos sanguíneos, un proceso asociado a complicaciones graves.
 fact_check:
-  - label: La malaria mata aproximadamente 600.000 personas al año, la mayoría niños en África subsahariana
-    status: uncertain
+  - label: La OMS estimó 610.000 muertes por malaria en el mundo en 2024
+    status: confirmed
   - label: Plasmodium invade glóbulos rojos creando una unión móvil que se abre y cierra en menos de un minuto
     status: uncertain
-  - label: El laboratorio de Ho resolvió la estructura molecular de los cuatro componentes proteicos de cada anclaje de la unión móvil mediante criotomografía electrónica
+  - label: El laboratorio de Ho resolvió la estructura molecular de los cuatro componentes proteicos de cada anclaje de la unión móvil mediante criomicroscopía electrónica
     status: confirmed
-  - label: El parásito inyecta tres proteínas que forman una cuña densa bajo la membrana y una cuarta que conecta la cuña con el cuerpo del invasor
+  - label: La estructura observada y sus propiedades sugieren un mecanismo de deformación de membrana que debe distinguirse de la observación directa de toda la invasión.
     status: confirmed
-  - label: Una proteína inhibidora diseñada por IA bloquea la unión móvil en cultivos de laboratorio
-    status: uncertain
+  - label: Una proteína experimental reduce la invasión de glóbulos rojos en cultivos de laboratorio
+    status: confirmed
   - label: La invasión es un blanco terapéutico difícil porque es un proceso muy breve
     status: uncertain
   - label: Toxoplasma gondii usa el mismo equipamiento bioquímico para invadir células que Plasmodium
@@ -54,49 +56,62 @@ fact_check:
   - label: Las proteínas adhesivas en la superficie del glóbulo rojo infectado causan los síntomas más graves (angustia orgánica, convulsiones, coma)
     status: uncertain
 why_it_matters:
-  - La estructura atómica de la unión móvil permite el diseño racional de fármacos que bloqueen la entrada del parásito, un cuello de botella donde la resistencia sería más difícil de evolucionar.
-  - El mecanismo conservado en apicomplejos abre la posibilidad de inhibidores de amplio espectro contra malaria, toxoplasmosis y ciclosporiasis.
-  - El blanco de las proteínas adhesivas (PfEMP1) ofrece una estrategia para prevenir la patología grave incluso tras la infección establecida.
-confidence: Moderada — noticia en Quanta Magazine sobre un estudio estructural reciente (2026) de un solo laboratorio; la resolución de la unión móvil es un avance técnico notable, pero el inhibidor solo se probó in vitro y no hay confirmación independiente ni datos en modelos animales o humanos
+  - La estructura de la unión móvil permite estudiar posibles inhibidores de la entrada; aún no demuestra un tratamiento ni menor riesgo de resistencia.
+  - Investigar estructuras relacionadas en otros apicomplejos podría orientar estudios comparativos; este inhibidor no se ha demostrado eficaz contra esas infecciones.
+  - Las proteínas adhesivas son otro posible blanco de investigación; su bloqueo como tratamiento necesita evaluación.
+confidence: Moderada — estudio estructural publicado en Cell (2026); la resolución de la unión móvil es un avance técnico notable, pero el inhibidor solo se probó in vitro y la seguridad y eficacia clínica siguen sin demostrarse
 sources:
+  - title: Structural basis for host membrane binding and remodeling by invading malaria parasites
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13322224/
+    publisher: Cell
+    role: primary
+    doi: 10.1016/j.cell.2026.06.012
   - title: Malaria Parasite Caught in the Act of Breaking and Entering
     url: https://quantamagazine.org/malaria-parasite-caught-in-the-act-of-breaking-and-entering-20261023/
     publisher: Quanta Magazine
     date: '2026-10-23'
+  - title: World malaria report 2025
+    url: https://www.who.int/teams/global-malaria-programme/reports/world-malaria-report-2025
+    publisher: Organización Mundial de la Salud
+  - title: Malaria — resistencia parcial a la artemisinina
+    url: https://www.who.int/news-room/questions-and-answers/item/artemisinin-resistance
+    publisher: Organización Mundial de la Salud
 requires_uncertainty_note: true
-uncertainty_note: El inhibidor solo se probó en cultivos celulares; su seguridad y eficacia en animales o humanos es desconocida, y la ventana de 60 segundos para actuar es un reto farmacológico mayor.
+uncertainty_note: El inhibidor solo se probó en cultivos celulares; su seguridad y eficacia en animales o humanos es desconocida, y la brevedad de la invasión plantea desafíos para diseñar tratamientos.
 social:
   publish: true
   id: 2e8a5803aff8ae2fa40038d11f17f0d03fc85e593d2dbe979c5cdd83b2ba52f9
 ---
 
-El parásito de la malaria tiene una llave maestra que nadie había visto en acción. Hasta ahora.
+**Corrección y actualización, 1 de noviembre de 2026; ampliada el 2 de noviembre.** Una versión anterior presentó cloroquina y sulfadoxina-pirimetamina como tratamientos generales de primera línea y afirmó que el inhibidor impedía toda invasión en cultivo. Precisamos la recomendación de la OMS y el resultado experimental, que fue una reducción dependiente de la dosis. También aclaramos que la proteína se une a AMA1 e impide formar el complejo en el ensayo, que no se probó contra otros parásitos como tratamiento y que la cita de un especialista procede de una entrevista de Quanta Magazine.
 
-Cada vez que _Plasmodium_ entra en un glóbulo rojo, construye un portal temporal en la membrana de la célula, se desliza por él y lo cierra detrás de sí sin dejar rastro. El proceso dura menos de un minuto. Durante décadas, los biólogos supieron que ocurría —habían visto el engrosamiento de la membrana al microscopio electrónico en los años setenta—, pero la estructura molecular del portal y el mecanismo exacto seguían siendo invisibles. Sin esa imagen, buscar fármacos que bloquearan la entrada era disparar a ciegas.
+El parásito de la malaria utiliza una estructura molecular para entrar en los glóbulos rojos. Un estudio reciente ha resuelto una parte de esa estructura.
+
+Cada vez que _Plasmodium_ entra en un glóbulo rojo, construye un portal temporal en la membrana de la célula, se desliza por él y la membrana se sella detrás de él. Según la cobertura de Quanta Magazine, la invasión tarda menos de un minuto. Durante décadas, los biólogos supieron que ocurría —habían visto el engrosamiento de la membrana al microscopio electrónico en los años setenta—, pero la estructura molecular del portal y el mecanismo exacto seguían siendo invisibles. Sin esa imagen, buscar fármacos que bloquearan la entrada era disparar a ciegas.
 
 ## El hueso duro de la invasión
 
-La malaria mata unas seiscientas mil personas al año, la mayoría niños en África subsahariana. Los tratamientos de primera línea —cloroquina, sulfadoxina-pirimetamina— atacan al parásito una vez que ya está dentro del glóbulo rojo y se replica. Pero _Plasmodium_ desarrolla resistencia rápido. La invasión es un cuello de botella atractivo: si impides que el parásito entre, detienes la infección antes de que empiece. El problema era que nadie sabía cómo era la cerradura.
+La OMS estimó 610.000 muertes por malaria en 2024; la región africana concentró la mayor parte, y allí los menores de cinco años sufrieron cerca de tres cuartas partes de las muertes. Para la malaria no complicada por _P. falciparum_, la OMS recomienda tratamientos combinados basados en artemisinina; la elección depende del tipo de malaria y del contexto clínico. Pero _Plasmodium_ desarrolla resistencia rápido. La invasión es un cuello de botella atractivo: reducir la entrada en glóbulos rojos podría limitar una fase de su ciclo sanguíneo, aunque no demostraría por sí solo la curación de la infección. El problema era que nadie sabía cómo era la cerradura.
 
 El parásito llega al glóbulo rojo con todo su equipamiento listo. En su superficie expresa proteínas que funcionan como ganchos. En la membrana de la célula huésped inserta un anillo de anclajes proteicos: la _unión móvil_ (_moving junction_). Esos anclajes forman un portal continuo por el que el parásito se cuela. Una vez dentro, la membrana se sella. El parásito no revienta la célula; la remodela desde dentro para que no delate su presencia.
 
 ## Lo que vio el laboratorio de Chi-Min Ho
 
-El equipo de Ho, en la Universidad de Columbia, usó criomicroscopía electrónica para congelar el instante exacto de la invasión y resolver la estructura de los cuatro componentes proteicos de cada anclaje. Lo que encontraron cambia el modelo mental: no es un simple anillo pasivo. El parásito inyecta tres proteínas en el glóbulo rojo que se ensamblan en una cuña densa bajo la membrana; una cuarta proteína conecta esa cuña con el cuerpo del invasor. Al colocar muchos de estos anclajes uno al lado del otro, las proteínas generan fuerzas electrostáticas y presión mecánica que aglomeran los lípidos de la membrana, invierten su curvatura y la doblan hacia adentro alrededor del parásito. Algunos lípidos se desprenden y reensamblan formando una envoltura protectora para el invasor. Cuando el parásito termina de pasar, la membrana se reforma y sella.
+El equipo de Ho, en la Universidad de Columbia, aisló complejos de parásitos detenidos durante la invasión y usó criomicroscopía electrónica para resolver la estructura de cuatro componentes proteicos de la unión móvil. Lo que encontraron cambia el modelo mental: no es un simple anillo pasivo. El parásito inyecta tres proteínas en el glóbulo rojo que se ensamblan en una cuña densa bajo la membrana; una cuarta proteína conecta esa cuña con el cuerpo del invasor. Al colocar muchos de estos anclajes uno al lado del otro, los autores proponen que las proteínas podrían ejercer fuerzas electrostáticas y presión mecánica capaces de deformar la membrana. Este mecanismo es una interpretación de la estructura, no una observación directa de cada paso. Cuando el parásito termina de pasar, la membrana se reforma y sella.
 
-"Es un ejemplo realmente bueno de cómo un campo ha avanzado paso a paso hacia una observación realmente potente", dice Jake Baum, parasitólogo de la Universidad de Nueva Gales del Sur, ajeno al estudio. "Al final del día, esto no es biología molecular. Es biofísica".
+"Es un ejemplo realmente bueno de cómo un campo ha avanzado paso a paso hacia una observación realmente potente", dijo a [Quanta Magazine](https://www.quantamagazine.org/malaria-parasite-caught-in-the-act-of-breaking-and-entering-20261023/) Jake Baum, parasitólogo de la Universidad de Nueva Gales del Sur, ajeno al estudio. "Al final del día, esto no es biología molecular. Es biofísica".
 
 ## De la estructura a un inhibidor —en tubo de ensayo
 
-Con la estructura en la mano, el equipo de Ho usó una plataforma de diseño de proteínas asistida por inteligencia artificial para crear una proteína inhibidora que encaja en la unión móvil y la bloquea. En cultivos de laboratorio, _Plasmodium_ no logra entrar en los glóbulos rojos. Pero —y esto es crucial— la seguridad y la eficacia no se han probado en modelos animales, y mucho menos en humanos. La unión móvil es un blanco fugaz: cualquier fármaco que la ataque tiene una ventana de unos sesenta segundos para actuar antes de que el portal se cierre. Eso exige una molécula extremadamente estable en sangre o de acción ultra-rápida, o ambas cosas. Christiaan van Ooij, de la Universidad de Keele, lo resume: "Algunos siempre han argumentado que la invasión es un blanco terapéutico realmente malo porque es un proceso muy breve".
+Con la estructura en la mano, el equipo de Ho usó una plataforma de diseño de proteínas asistida por inteligencia artificial para crear una proteína experimental. En sus ensayos, esta se unió a la proteína parasitaria AMA1 e impidió la formación del complejo con las proteínas RON; en cultivos redujo la invasión de glóbulos rojos de forma dependiente de la dosis. Los autores calcularon una concentración inhibitoria media (IC₅₀) de 1,66 mg/mL; el resultado es una prueba de concepto en laboratorio, no una medida de eficacia clínica. El experimento no demuestra seguridad ni eficacia en animales o humanos. La brevedad de la invasión plantea un reto para diseñar y administrar un tratamiento eficaz.
 
 ## Una llave para más puertas
 
-_Plasmodium_ pertenece a los apicomplejos, un filo que incluye a _Toxoplasma gondii_ (parásito de gatos que infecta humanos) y _Cyclospora_ (causante de diarrea severa). Todos parecen usar el mismo equipamiento bioquímico para invadir células. Un artículo de 2026 describió cómo _Toxoplasma_ detecta el momento exacto para desplegar su unión móvil; _Plasmodium_ podría operar igual. Entender uno ilumina a los otros.
+_Plasmodium_ pertenece a los apicomplejos, un grupo que también incluye a _Toxoplasma gondii_ y _Cyclospora_. Algunos de estos parásitos utilizan componentes relacionados durante la invasión celular, pero eso no demuestra que tengan mecanismos idénticos ni que esta proteína experimental funcione contra ellos. La posible aplicación a otras infecciones requiere estudios específicos.
 
 ## Lo que queda por resolver
 
-El laboratorio de Ho ya apunta a las siguientes "ballenas blancas": los complejos proteicos que el parásito instala en la superficie del glóbulo rojo infectado para que esta se pegue a las paredes de los vasos sanguíneos y evite el bazo. Esas proteínas adhesivas son las que causan los síntomas más graves —angustia orgánica, convulsiones, coma—. Bloquearlas podría evitar la patología aunque el parásito ya esté dentro.
+El laboratorio de Ho ya apunta a las siguientes "ballenas blancas": los complejos proteicos que el parásito instala en la superficie del glóbulo rojo infectado para que esta se pegue a las paredes de los vasos sanguíneos y evite el bazo. La adhesión de glóbulos rojos infectados participa en complicaciones graves; se investiga si intervenir en esos procesos podría ayudar. No se ha demostrado aquí que bloquear estas proteínas prevenga la enfermedad grave.
 
 La imagen del portal molecular ya no es un misterio. Ahora la pregunta es si podemos fabricar una llave que encaje en la cerradura el tiempo suficiente, en un cuerpo humano, sin romper nada más.
 
