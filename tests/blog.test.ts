@@ -255,7 +255,7 @@ describe('evidence chips (via fetchPosts)', () => {
     const posts = await fetchPosts();
 
     expect(posts[0].evidenceChips).toEqual([
-      'Modelo: personas',
+      'Evidencia: personas',
       'Revisión por pares',
       'Fuente primaria',
     ]);

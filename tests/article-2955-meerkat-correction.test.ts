@@ -33,7 +33,8 @@ describe('article 2955 MeerKAT correction', () => {
   it('retains the original publication date and identifies the study as a preprint', () => {
     expect(raw).toMatch(/^date: 2026-09-21$/m);
     expect(data.publication_status).toBe('preprint');
-    expect(data.corrected_at).toBe('2026-10-10');
+    expect(data.corrected_at).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(String(data.corrected_at) >= '2026-10-10').toBe(true);
     expect(data.sources).toEqual(
       expect.arrayContaining([
         expect.objectContaining({

@@ -17,11 +17,11 @@ image: ~/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp
 image_alt: 'Ilustración generada con IA de un ejercicio de discusión con mapas climáticos, tarjetas y un globo terrestre sobre una mesa.'
 source_url: https://cfg.eu/negotiating-solar-radiation-modification-governance/
 refinery_id: '3274'
-correction_summary: 'Se reemplazó una adaptación extensa de WIRED por una síntesis propia del informe original, con método, resultados y límites explícitos.'
-corrected_at: '2026-10-12'
+correction_summary: 'Se sustituyó una adaptación de WIRED por una síntesis del informe original y se precisaron las reglas de votación, el método y el alcance de las observaciones.'
+corrected_at: '2026-10-31'
 headlines_variants:
-  question: ¿Qué efecto inesperado mostró la simulación de guerra al intentar enfriar la Tierra?
-  benefit: Cómo el hallazgo de la simulación de guerra influye en las decisiones futuras de geoingeniería
+  question: ¿Qué obstáculos aparecieron al negociar reglas de geoingeniería solar?
+  benefit: Qué enseñan tres ejercicios de negociación y cuáles son sus límites
 summary_points:
   - El proyecto realizó tres simulaciones de crisis de dos días con una red internacional de 35 académicos, representantes de la sociedad civil y profesionales.
   - 'En ninguna simulación se alcanzó un acuerdo sobre gobernanza: dos terminaron sin mayoría de dos tercios y una sin consenso.'
@@ -51,7 +51,7 @@ fact_check:
 why_it_matters:
   - El informe ayuda a distinguir el problema científico de estimar efectos climáticos del problema político de acordar quién investiga, verifica y decide.
   - Sus resultados hacen visibles obstáculos de coordinación que pueden orientar el diseño de futuros ejercicios y propuestas; no prueban cómo actuarían países concretos en una crisis real.
-confidence: Moderada — reporte periodístico basado en un ejercicio de simulación de expertos, sin datos empíricos ni publicación académica.
+confidence: Moderada — informe de los organizadores basado en tres ejercicios y reflexiones de participantes; no predice decisiones gubernamentales ni mide efectos climáticos reales.
 sources:
   - title: Negotiating solar radiation modification governance — Evidence from non-ideal simulations
     url: https://cfg.eu/negotiating-solar-radiation-modification-governance/
@@ -62,6 +62,10 @@ sources:
     url: https://wired.com/story/they-war-gamed-dimming-the-sun-it-went-even-worse-than-you-think/
     publisher: WIRED
     role: secondary
+  - title: 'Solar Radiation Modification: Scientific evidence does not support SRM as a viable climate solution'
+    url: https://wedocs.unep.org/entities/publication/4154b06d-6a7a-4df0-aaa9-7472e4f7c6f5
+    publisher: Programa de las Naciones Unidas para el Medio Ambiente
+    role: secondary
 requires_uncertainty_note: true
 uncertainty_note: Los resultados provienen de un ejercicio de simulación y no de una implementación real, por lo que sus conclusiones son preliminares y sujetas a revisiones ante escenarios reales.
 social:
@@ -69,17 +73,19 @@ social:
   id: bf92dccb4b73ed944e067d74423a95c0af15a382392358959a3dc277f3841061
 ---
 
-La modificación de la radiación solar (SRM) agrupa propuestas para reflejar una parte de la energía solar y reducir la temperatura media global. Su eventual gobernanza plantea preguntas sobre investigación, despliegue, control y seguimiento. Un informe del proyecto SAFEGEOGOV examinó esos problemas mediante negociaciones simuladas, no mediante pruebas climáticas ni decisiones de gobiernos reales.
+La modificación de la radiación solar (SRM) agrupa propuestas para reflejar una parte de la energía solar y reducir la temperatura media global. Su eventual gobernanza plantea preguntas sobre investigación, despliegue, control y seguimiento. Un [informe del proyecto SAFEGEOGOV](https://cfg.eu/negotiating-solar-radiation-modification-governance/) examinó esos problemas mediante negociaciones simuladas, no mediante pruebas climáticas ni decisiones de gobiernos reales.
 
 ## Cómo se hicieron los ejercicios
 
 Durante un proyecto de un año, el equipo organizó tres simulaciones de crisis de dos días. Participó una red internacional de 35 académicos, integrantes de organizaciones civiles y profesionales. A cada participante se le asignó un papel con intereses y límites, y los escenarios avanzaron desde una negociación sobre reglas internacionales hasta situaciones ficticias con mayor tensión política.
 
-El propósito era observar puntos de fricción y posibles bloqueos bajo condiciones no ideales. El informe registra más de 40 horas de ejercicios presenciales, reuniones preparatorias y reflexiones de quienes participaron.
+El propósito era observar puntos de fricción y posibles bloqueos bajo condiciones no ideales. El informe registra más de 40 horas de ejercicios presenciales; además, la red participó en reuniones mensuales y aportó reflexiones escritas. El informe está elaborado por quienes organizaron el proyecto.
 
 ## Qué ocurrió en las simulaciones
 
-No se alcanzó un acuerdo de gobernanza en ninguno de los tres ejercicios: los dos primeros no lograron una mayoría de dos tercios y el tercero no obtuvo consenso. El análisis encontró que las conversaciones tendían a concentrarse en competencia estratégica y soberanía estatal, incluso cuando los participantes intentaban volver a los resultados climáticos.
+Ninguna propuesta de acuerdo de gobernanza obtuvo la aprobación requerida: los dos primeros ejercicios exigían una mayoría de dos tercios y el tercero, consenso. El análisis encontró que las conversaciones tendían a concentrarse en competencia estratégica y soberanía estatal, incluso cuando los participantes intentaban volver a los resultados climáticos.
+
+Aunque se presentaron varias propuestas de SRM, las negociaciones se concentraron sobre todo en la inyección de aerosoles en la estratosfera; otras técnicas recibieron poca atención. Las conclusiones del ejercicio no describen por igual todas las opciones propuestas.
 
 También costó establecer una base compartida sobre qué cuenta como investigación, experimento o despliegue. La desconfianza y las diferencias sobre quién controla la tecnología o la información complicaron la cooperación. El informe señala que compartir conocimiento, ampliar capacidades de seguimiento y generar confianza son parte de cualquier discusión multilateral viable.
 
@@ -88,5 +94,7 @@ También costó establecer una base compartida sobre qué cuenta como investigac
 El resultado demuestra que, dentro de estos escenarios diseñados, los participantes no encontraron una fórmula de acuerdo aceptable para las reglas de votación usadas. No indica que gobiernos reales necesariamente fracasarían en una negociación ni calcula la probabilidad de una carrera armamentista. Los papeles asignados, los escenarios y la composición de los participantes influyen en lo que ocurre durante un ejercicio de simulación.
 
 La aportación útil es metodológica: una propuesta de gobernanza no se evalúa solo por sus reglas técnicas. También importan quién define la agenda, qué capacidades de observación existen y si los actores confían en la información disponible. Esas preguntas pueden orientar nuevas consultas y ejercicios, sin tratar un juego de roles como pronóstico.
+
+En un [documento de trabajo de 2026](https://wedocs.unep.org/entities/publication/4154b06d-6a7a-4df0-aaa9-7472e4f7c6f5), el Programa de las Naciones Unidas para el Medio Ambiente advierte de importantes lagunas de conocimiento y riesgos en estas propuestas, y pide que la investigación no desvíe la atención de la reducción de emisiones y la adaptación. Esa evaluación aporta contexto científico y político; no valida ni reproduce los resultados de las simulaciones.
 
 <!-- source_identity: source_id=cfg; source_name=Centre for Future Generations and academic partners -->

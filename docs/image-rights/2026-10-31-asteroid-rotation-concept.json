@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T00:44:17.320004+00:00",
+  "article": "src/content/posts/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 3:2 editorial conceptual illustration for a rigorous astronomy magazine article explaining how astronomers estimate an asteroid's rotation from variations in brightness. An elegant abstract arrangement of a dark irregular rocky silhouette, a distant warm light source and subtle rays, set against a deep indigo star field. Artistic and understated, not a scientific diagram, no chart, no arrows, no numerical data, no text, no logos, no people. This is an imagined generic asteroid with unknown composition, not a depiction or reconstruction of 2025 MN45. High-quality documentary editorial art direction.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-4ea786ee-ae1a-47fc-8d08-12384a1835b6.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-asteroid-rotation-concept.png",
+    "sha256": "13bc0dc01ceed6b40b372c75f35c83b3634e8672e3c76cc26fb14611b0ede3f5",
+    "bytes": 2088014,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-05-15-asteroid-rotation-concept-original.webp",
+    "sha256": "c414fd7aa1eff78430f66aa563f876937105b6339509a40e2fc47c8e84cf7b7d",
+    "bytes": 181432,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Imagined generic asteroid; not an observation, reconstruction, or evidence of 2025 MN45 shape or composition.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

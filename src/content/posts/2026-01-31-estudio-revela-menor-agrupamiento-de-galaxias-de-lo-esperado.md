@@ -13,8 +13,8 @@ tags:
   - universo
   - galaxias
   - cosmología
-image: ~/assets/images/2026-01-31-article-520.jpg
-image_alt: Estudio revela menor agrupamiento de galaxias de lo esperado
+image: ~/assets/images/2026-01-31-hubble-ultra-deep-field-nasa.jpg
+image_alt: 'El campo ultraprofundo de Hubble, con numerosas galaxias. Crédito: NASA, ESA, S. Beckwith y equipo HUDF (STScI), y B. Mobasher (STScI); imagen de archivo, ajena a los datos de DES.'
 source_url: https://scientificamerican.com/article/largest-galaxy-survey-yet-confirms-that-the-universe-is-not-clumpy-enough/
 series: Espacio
 refinery_id: '520'
@@ -25,7 +25,7 @@ investigation: false
 featured: false
 correction_summary:
   Se sustituyen afirmaciones genéricas de refutación por la comparación precisa de S8 y del conjunto
-  de parámetros, y se añaden las referencias primarias.
+  de parámetros, se añade la comparación con Planck por separado y se corrige la descripción de la imagen.
 sources:
   - title: 'Dark Energy Survey Year 6 Results: Cosmological Constraints from Galaxy Clustering and Weak Lensing'
     url: https://arxiv.org/abs/2601.14559
@@ -39,7 +39,7 @@ evidence_subject_type: observational
 evidence_detail:
   Inferencias cosmológicas a partir de correlaciones observadas, comparadas bajo ΛCDM; no prueba
   directa de una nueva teoría.
-corrected_at: '2026-10-22'
+corrected_at: '2026-10-31'
 social:
   publish: false
 ---
@@ -51,6 +51,8 @@ Los resultados del Dark Energy Survey no se resumen bien como «el modelo funcio
 El [trabajo de DES Y6 sobre agrupamiento y lentes débiles](https://arxiv.org/abs/2601.14559), en su versión arXiv consultada, obtiene **S8 = 0,789 ± 0,012** dentro del modelo ΛCDM, con intervalo del 68 %. S8 combina la amplitud de agrupamiento de materia y la densidad de materia.
 
 Frente a una combinación de datos del fondo cósmico de Planck, ACT y SPT, el artículo informa una diferencia de **2,6σ si se proyecta solo en S8**, y de **1,8σ al comparar el conjunto de parámetros**. Esas dos cifras corresponden a comparaciones distintas: no deben intercambiarse según cuál produzca un titular más contundente.
+
+El conjunto de referencia también importa. Frente a Planck 2018 por separado, el mismo estudio encuentra una diferencia de **1,0σ en el espacio completo de parámetros**. Este valor y el 1,8σ anterior responden a comparaciones diferentes: el segundo añade datos de ACT y SPT, además de Planck.
 
 ## Una diferencia de parámetro no es una conclusión universal
 
