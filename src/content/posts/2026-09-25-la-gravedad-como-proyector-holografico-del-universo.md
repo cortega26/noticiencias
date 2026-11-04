@@ -1,5 +1,5 @@
 ---
-title: 'AdS/CFT: qué demuestra la holografía y qué sigue abierto'
+title: 'AdS/CFT: qué propone la holografía y qué sigue abierto'
 schema_version: 2
 date: 2026-09-25
 author: Noticiencias AI
@@ -13,17 +13,17 @@ tags:
   - principio
 excerpt: 'La correspondencia AdS/CFT relaciona gravedad en modelos anti-de Sitter con una teoría cuántica en su frontera; aplicarla a nuestro universo sigue siendo una pregunta abierta.'
 image: ~/assets/images/2026-09-25-ads-cft-holography-original.webp
-image_alt: 'Ilustración original de una geometría de espacio-tiempo conectada con una frontera representada como una malla.'
-source_url: https://quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/
+image_alt: 'Ilustración conceptual generada con IA de una geometría de espacio-tiempo conectada con una frontera representada como una malla.'
+source_url: https://www.quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/
 refinery_id: '2671'
 headlines_variants:
-  question: ¿Qué demuestra realmente la correspondencia AdS/CFT?
+  question: ¿Qué propone la correspondencia AdS/CFT y cuáles son sus límites?
   benefit: 'La diferencia entre una dualidad matemática y afirmar que vivimos en un holograma'
 summary_points:
   - 'AdS/CFT propone una dualidad entre ciertas descripciones con gravedad en espacios anti-de Sitter y teorías cuánticas de campos en su frontera.'
-  - 'La equivalencia matemática se refiere a modelos anti-de Sitter; no demuestra por sí sola que el universo observado sea holográfico.'
+  - 'La equivalencia propuesta se refiere a modelos anti-de Sitter; no demuestra por sí sola que el universo observado sea holográfico.'
   - 'La relación entre el área del horizonte de un agujero negro y su entropía motivó el principio holográfico, pero no prueba que se aplique de la misma forma a cualquier región del espacio.'
-  - 'El universo observado se modela con una geometría de tipo de Sitter, distinta de AdS; extender allí estas ideas sigue abierto.'
+  - 'De Sitter es un modelo simplificado de expansión acelerada, distinto de AdS; extender allí estas ideas sigue abierto.'
   - 'La evidencia revisada aquí no aporta una prueba observacional directa de que nuestro cosmos sea holográfico.'
 glossary:
   - term: AdS/CFT
@@ -33,9 +33,9 @@ glossary:
   - term: Mecánica cuántica
     definition: La rama de la física que estudia el comportamiento de la materia y la energía a escalas muy pequeñas, como átomos y partículas subatómicas.
   - term: Universo anti-de Sitter
-    definition: 'Un modelo de espacio con curvatura negativa, distinto de la geometría que describe la expansión observada del cosmos.'
+    definition: 'Un espacio-tiempo idealizado de curvatura constante negativa, distinto del modelo de de Sitter.'
   - term: Universo de Sitter
-    definition: 'Un modelo de espacio con curvatura positiva, usado para describir un cosmos en expansión acelerada.'
+    definition: 'Un espacio-tiempo idealizado de curvatura constante positiva que sirve como modelo simplificado de expansión acelerada.'
 fact_check:
   - label: 'La propuesta AdS/CFT relaciona ciertas teorías de gravedad en espacios anti-de Sitter con teorías conformes en la frontera.'
     status: confirmed
@@ -53,12 +53,16 @@ why_it_matters:
 confidence: 'Moderada — la dualidad AdS/CFT está formulada para modelos anti-de Sitter; su extensión al cosmos observado no cuenta aquí con una prueba observacional directa.'
 sources:
   - title: Gravity Seems Holographic. What Does That Mean for Reality?
-    url: https://quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/
+    url: https://www.quantamagazine.org/gravity-seems-holographic-what-does-that-mean-for-reality-20260925/
     publisher: Quanta Magazine
     date: '2026-09-25'
     role: secondary
   - title: The Large N Limit of Superconformal Field Theories and Supergravity
     url: https://arxiv.org/abs/hep-th/9711200
+    publisher: arXiv
+    role: primary
+  - title: The AdS/CFT Correspondence
+    url: https://arxiv.org/abs/1501.00007
     publisher: arXiv
     role: primary
   - title: Black Holes and Entropy
@@ -67,9 +71,9 @@ sources:
     date: '1973-04-15'
     role: primary
 requires_uncertainty_note: true
-uncertainty_note: 'La equivalencia AdS/CFT se formula para modelos anti-de Sitter; su extensión al universo observado sigue abierta y no tiene una prueba experimental directa.'
-corrected_at: '2026-10-09'
-correction_summary: 'Se atribuyó a Charlie Wood la anécdota de Quanta y se reorganizó la nota para separar la dualidad AdS/CFT de la extrapolación no demostrada al universo observado.'
+uncertainty_note: 'La equivalencia AdS/CFT es una propuesta sustentada por numerosos resultados teóricos; su extensión al universo observado sigue abierta y esta nota no presenta una prueba observacional directa.'
+corrected_at: '2026-11-01'
+correction_summary: 'Se distinguió la correspondencia propuesta y su evidencia teórica de una demostración general y de la extrapolación al universo observado; se precisó el carácter idealizado de de Sitter.'
 social:
   publish: true
   id: 1d4e797af0e26677073ab8e46c3a8413a2ba31c7f29fb09e85c90027e0a70c0e
@@ -77,11 +81,13 @@ social:
 
 La correspondencia AdS/CFT relaciona dos descripciones matemáticas de ciertos modelos: una con gravedad en un espacio anti-de Sitter y otra con una teoría cuántica definida en su frontera. La pregunta editorial importante es qué demuestra esa relación y qué parte sigue siendo una extrapolación sobre el cosmos real.
 
-## Qué establece la correspondencia AdS/CFT
+## Qué propone la correspondencia AdS/CFT
 
 El periodista científico Charlie Wood describe en su reportaje para Quanta Magazine cómo se encontró con la sigla AdS/CFT al cubrir física. Aquí resumimos el alcance de la idea, contrastándola con el trabajo de Juan Maldacena que formuló la propuesta original.
 
 En 1997, Maldacena propuso que ciertas teorías conformes, en límites específicos de teorías de cuerdas, son duales a descripciones con gravedad en espacios anti-de Sitter. La propuesta conecta dos marcos matemáticos distintos; no es una observación de nuestro universo ni una afirmación de que cualquier región del espacio tenga una frontera holográfica.
+
+Una [revisión de la correspondencia](https://arxiv.org/abs/1501.00007) explica la equivalencia que plantea entre teorías concretas. Existe abundante evidencia teórica en distintos regímenes, pero llamar a la correspondencia una propuesta evita presentar como demostración matemática general cada caso posible.
 
 ## Qué aportan los agujeros negros
 
@@ -89,13 +95,13 @@ Jacob Bekenstein propuso relacionar la entropía de un agujero negro con el áre
 
 ## Por qué no se traslada automáticamente a nuestro cosmos
 
-Los espacios anti-de Sitter de AdS/CFT tienen una curvatura distinta de la geometría de tipo de Sitter que se usa para modelar la expansión acelerada del universo observado. Extender la correspondencia de un marco al otro requiere una teoría adicional. Esa posibilidad se investiga, pero esta síntesis no presenta una verificación experimental de que nuestro cosmos sea holográfico.
+Los espacios-tiempo anti-de Sitter de AdS/CFT son distintos de la solución de de Sitter, un modelo idealizado de expansión acelerada. Nuestro universo contiene materia y no es idéntico a esa solución. Extender la correspondencia a contextos cosmológicos requiere trabajo teórico adicional; esta síntesis no presenta una verificación observacional de que nuestro cosmos sea holográfico.
 
 - **La propuesta AdS/CFT:** relaciona ciertas descripciones matemáticas de gravedad en espacios anti-de Sitter con teorías conformes en su frontera. No demuestra que el universo observado tenga esa geometría o dualidad.
 - **La entropía de los agujeros negros:** su relación teórica con el área del horizonte motivó la investigación sobre holografía. No prueba que toda región del espacio sea holográfica.
 - **La posible holografía de nuestro cosmos:** es una hipótesis que se explora en modelos teóricos; todavía no cuenta aquí con una prueba observacional directa.
 
-La distinción clave para leer la noticia es entre una dualidad matemática en un modelo específico, una motivación teórica basada en agujeros negros y la hipótesis de que esa descripción se aplique al cosmos. Las dos primeras ideas son resultados de física teórica; la tercera sigue abierta y no debe presentarse como un descubrimiento sobre nuestro universo.
+La distinción clave para leer la noticia es entre una dualidad propuesta para teorías específicas, una motivación basada en agujeros negros y la hipótesis de que una descripción holográfica se aplique al cosmos. La primera cuenta con evidencia teórica y la segunda procede de la física de agujeros negros; su aplicación a nuestro universo sigue abierta.
 
 _Esta explicación sintetiza el reportaje de Charlie Wood en Quanta Magazine y lo contrasta con la propuesta original de Maldacena. No presenta investigación observacional propia._
 

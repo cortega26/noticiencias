@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-02T00:32:08.235381+00:00",
+  "article": "src/content/posts/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 16:9 sophisticated conceptual editorial artwork for a serious technology publication about multimodal AI running on hardware: a detailed generic processor on a dark circuit board, subtle abstract light patterns implying audio and images without representing measured data, restrained deep indigo and amber palette, credible editorial photography style. No people, no brand marks, no words, no logo, no watermark.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-7b85f056-2d45-4830-b0cd-d11b148769ea.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-multimodal-chip-concept.png",
+    "sha256": "2104b2c31b6ee877db0b3ad1462c810dca4af1f6d5d4da01a7b77cdfc8213a49",
+    "bytes": 2244336,
+    "width": 1672,
+    "height": 941
+  },
+  "exported": {
+    "path": "src/assets/images/2026-11-01-multimodal-chip-concept-original.webp",
+    "sha256": "82c39a3746360bd8653b5e28f0b25d4a809d9b60000deca7066a9dab678c93c0",
+    "bytes": 271278,
+    "width": 1672,
+    "height": 941,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Ilustración conceptual generada con IA de un procesador y señales multimedia; no representa hardware ni resultados de Muse Glimmer.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

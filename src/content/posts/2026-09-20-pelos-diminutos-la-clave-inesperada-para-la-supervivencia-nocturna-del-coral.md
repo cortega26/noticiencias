@@ -17,8 +17,8 @@ image_alt: 'Ilustración generada con IA: los cilios de un coral generan remolin
 source_url: https://wired.com/story/tiny-hairs-that-help-corals-breathe-may-malfunction-in-warming-oceans/
 refinery_id: '2422'
 headlines_variants:
-  question: ¿Cómo sobreviven los corales de noche si sus cilios dejan de mover agua a alta temperatura?
-  benefit: Entiende por qué el calentamiento oceánico amenaza la respiración nocturna de los corales
+  question: ¿Qué ocurrió con los cilios de un coral bajo calentamiento agudo en laboratorio?
+  benefit: Entiende qué se midió y qué queda por comprobar sobre los cilios y el oxígeno
 summary_points:
   - En muestras de Porites lutea, un equipo midió el batido ciliar y el flujo de agua y oxígeno cerca del tejido durante un calentamiento agudo en oscuridad.
   - La frecuencia del batido aumentó hasta 37 °C, donde empezó a perder regularidad; entre 38 y 40 °C descendió marcadamente.
@@ -66,12 +66,14 @@ sources:
     doi: 10.1126/sciadv.aeg0950
 requires_uncertainty_note: true
 uncertainty_note: Los valores de 37 °C, 39 °C y 41 °C corresponden a calentamiento agudo de Porites lutea en una cámara de laboratorio; no son umbrales universales ni se han validado como señal de blanqueamiento en arrecifes.
-corrected_at: '2026-10-09'
-correction_summary: 'Se separaron los resultados observados a 37, 39 y 41 °C, se precisaron las condiciones del experimento y se retiraron afirmaciones que los datos no validaban en arrecifes ni sobre blanqueamiento.'
+corrected_at: '2026-11-02'
+correction_summary: 'Se separaron los resultados observados a 37, 39 y 41 °C y se distinguió el oxígeno medido en el agua de las inferencias del modelo sobre el tejido. Se acotaron variantes de titular y se precisaron el tamaño de muestra, el control y la iluminación breve de las imágenes.'
 social:
   publish: true
   id: 1e2363b96dea9ba03e0b2402e00833f6d63b3f66e8df5e48a0c50aa18faeefb9
 ---
+
+**Corrección, 2 de noviembre de 2026.** Acotamos las variantes de titular al experimento y precisamos que el ensayo de batido usó tres colonias y breves destellos para adquirir imágenes. También añadimos el control mantenido a 27 °C.
 
 Un experimento de laboratorio siguió cómo el calentamiento alteraba el movimiento de los cilios del coral pétreo _Porites lutea_. El equipo midió el batido ciliar y los flujos de agua y oxígeno junto al tejido. Los resultados describen la respuesta aguda de una especie; no fijan el límite térmico de un arrecife.
 
@@ -81,13 +83,15 @@ Los cilios son prolongaciones celulares móviles que producen corrientes a escal
 
 ## Cómo midieron los investigadores la actividad ciliar
 
-El estudio, publicado en _Science Advances_ el 20 de mayo de 2026, expuso muestras de _Porites lutea_ a una rampa escalonada de temperatura en una cámara de microscopio y en oscuridad. El equipo elevó el nivel 1 °C cada 30 minutos y lo mantuvo otros 30 minutos antes de registrar imágenes; la rampa completa duró alrededor de 14–15 horas. Usó imágenes de alta velocidad para medir la frecuencia del batido y velocimetría de partículas —junto con nanopartículas sensibles al oxígeno— para registrar el flujo y la concentración de O₂ cerca de la superficie. Los resultados incluyeron tres réplicas biológicas.
+El [estudio, publicado en _Science Advances_](https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/) el 20 de mayo de 2026, expuso muestras de _Porites lutea_ a una rampa escalonada de temperatura en una cámara de microscopio. El equipo elevó el nivel 1 °C durante 30 minutos y lo mantuvo otros 30 minutos antes de registrar imágenes; la rampa completa duró alrededor de 14–15 horas. El ensayo de batido usó tres colonias y se realizó en oscuridad, salvo una iluminación de unos cinco segundos para cada captura. Un control se mantuvo a 27 °C durante 15 horas. El equipo usó imágenes de alta velocidad para medir la frecuencia del batido y velocimetría de partículas —junto con nanopartículas sensibles al oxígeno— para registrar el flujo y la concentración de O₂ cerca de la superficie.
 
 La frecuencia del batido aumentó desde 27 °C hasta alcanzar su máximo a 37 °C. A esa temperatura empezó a perder regularidad; entre 38 y 40 °C descendió marcadamente. Los flujos vorticales se mantuvieron en la mayoría de las temperaturas medidas, pero desaparecieron alrededor de 39 °C, cuando el movimiento ciliar estaba muy inhibido. A 41 °C hubo poco o ningún movimiento y la mortalidad llegó al 100 % en el experimento.
 
 ## Qué más revelaron los datos
 
 El equipo combinó estas observaciones con un modelo de transporte de oxígeno. El modelo sugiere que, al subir la temperatura, el aumento de la demanda metabólica puede coincidir con una menor contribución del transporte ciliar. Es una interpretación basada en supuestos sobre el consumo de oxígeno del tejido, no una medición directa de un umbral térmico aplicable a todos los corales.
+
+La medición en el agua no fue una caída continua: a 39 °C aumentó el oxígeno en la capa próxima al coral mientras cesaban los vórtices. Los autores relacionan ese cambio con una capa más delgada y mayor intercambio por difusión. Eso no equivale a medir una recuperación del tejido: el modelo de oxígeno en el tejido responde a otra pregunta y depende de supuestos sobre la respiración.
 
 Los autores proponen estudiar los cambios ciliares como posible indicador temprano de estrés. El experimento no probó su uso en arrecifes ni mostró que el deterioro ciliar preceda al blanqueamiento; esa aplicación necesita validación en condiciones naturales y con otras especies.
 

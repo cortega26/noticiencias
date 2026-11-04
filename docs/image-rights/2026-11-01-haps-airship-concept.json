@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T19:17:29.951Z",
+  "article": "src/content/posts/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape editorial conceptual illustration for a serious technology magazine about high-altitude communication platforms. A single imagined unbranded streamlined airship seen at a distance in a blue upper-atmosphere sky, thin clouds and the soft curve of Earth’s horizon far below, restrained natural colors and refined painted magazine illustration, elegant and credible without claiming real specifications. The airship is fictional and does not depict a real company’s vehicle or an operational service. No labels, text, logos, maps, signal symbols, network overlays, flags, or people.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-d3712535-b7ef-424b-b621-f0fe17861686.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-haps-airship-concept.png",
+    "sha256": "7877de0d9562547e18665ad25bb401cf6b768f3e3b576cf1f8fb581a899b31a2",
+    "bytes": 1917366,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-27-haps-airship-concept-original.webp",
+    "sha256": "f4a95d3ced68a274bafa5a92bb406cf55d893d2c7a336adfb5616df9fc438b9d",
+    "bytes": 138036,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-27-article-432.webp",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Imagined generic airship; not a real vehicle, system, or documented flight.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

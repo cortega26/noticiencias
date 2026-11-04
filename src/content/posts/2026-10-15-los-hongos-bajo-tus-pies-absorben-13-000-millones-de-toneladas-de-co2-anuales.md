@@ -18,7 +18,7 @@ image: ~/assets/images/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millo
 image_alt:
   'Ilustración generada con IA: Raíces de una planta asociadas con una red de hifas de hongos en un corte
   del suelo.'
-source_url: https://quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/
+source_url: https://www.quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/
 refinery_id: '3822'
 headlines_variants:
   question: ¿Cuánto carbono reciben los hongos y cuánto permanece en el suelo?
@@ -40,7 +40,7 @@ glossary:
 fact_check:
   - label: La síntesis de 2023 estima una asignación anual de carbono a micelio equivalente a 13,12 Gt de CO2.
     status: confirmed
-  - label: La fracción de ese flujo que permanece almacenada a largo plazo no queda determinada por la cifra anual.
+  - label: La cifra anual determina qué fracción del flujo permanece almacenada a largo plazo.
     status: uncertain
 why_it_matters:
   - El ciclo subterráneo del carbono importa para comprender los suelos, pero una cifra de transferencia no prueba
@@ -69,10 +69,11 @@ uncertainty_note:
 social:
   publish: false
   id: af82993df82f3917976e9769ce58d4fba69add74a363c8f046cd7391f6f3516b
-corrected_at: '2026-10-22'
+corrected_at: '2026-11-03'
 correction_summary:
   Se corrige la confusión entre transferencia anual de carbono y almacenamiento permanente; se
-  elimina la atribución literal de decisiones y mitigación neta demostrada a las redes fúngicas.
+  elimina la atribución literal de decisiones y mitigación neta demostrada a las redes fúngicas. Se precisa
+  la formulación de la afirmación no verificada en la ficha.
 publication_status: peer_reviewed
 evidence_subject_type: observational
 evidence_detail: Síntesis de estudios y modelos globales de asignación de carbono; no ensayo de remoción permanente.

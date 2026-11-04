@@ -31,7 +31,7 @@ describe('related content on articles (P2-01)', () => {
     expect(titles.length).toBe(3);
     expect(titles.join(' | ')).toContain('Shanidar');
     expect(titles.join(' | ')).toContain('Arpones');
-    expect(titles.join(' | ')).toContain('Herramientas');
+    expect(titles.join(' | ').toLowerCase()).toContain('herramientas');
   });
 
   it('falls back to Más reciente when no signal reaches the threshold', () => {
