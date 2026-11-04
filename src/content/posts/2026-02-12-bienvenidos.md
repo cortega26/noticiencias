@@ -10,7 +10,7 @@ tags:
   - 'lanzamiento'
   - 'periodismo científico'
 image: '~/assets/images/default.png'
-image_alt: 'Bienvenidos a Noticiencias: La Ciencia al Alcance de Todos'
+image_alt: 'Logotipo tipográfico de Noticiencias en azul y gris sobre fondo claro.'
 investigation: false
 featured: false
 corrected_at: '2026-10-10'

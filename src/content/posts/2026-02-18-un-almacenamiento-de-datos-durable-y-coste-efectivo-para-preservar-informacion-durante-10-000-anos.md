@@ -1,7 +1,7 @@
 ---
-title: Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años
+title: 'Project Silica: qué respalda la estimación de 10.000 años de datos en vidrio'
 schema_version: 2
-excerpt: El Proyecto Silica desarrolla una tecnología que podría preservar datos durante 10.000 años utilizando vidrio comúnmente encontrado en utensilios del hogar
+excerpt: Microsoft investiga escritura láser en vidrio para archivos digitales. La duración milenaria es una proyección experimental, no una observación directa.
 author: Noticiencias
 date: 2026-02-18
 categories:
@@ -11,92 +11,77 @@ tags:
   - almacenamiento de datos duradero
   - vidrio para almacenamiento
   - tecnología silica
-image: ~/assets/images/2026-02-18-849.jpg
-image_alt: 'Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años'
+image: ~/assets/images/2026-02-18-glass-storage-concept-original.webp
+image_alt: 'Ilustración conceptual generada con IA de una placa de vidrio genérica; no muestra el dispositivo ni datos del experimento.'
 source_url: https://microsoft.com/en-us/research/blog/project-silicas-advances-in-glass-storage-technology/
 refinery_id: '849'
 headlines_variants:
   question: ¿Cómo se puede preservar la información digital a largo plazo utilizando vidrio?
-  benefit: La técnica voxel de fase permite almacenar cientos de capas de datos en una pieza de vidrio de solo 2 mm de espesor, resistentemente a agua, calor y polvorienta acumulación
+  benefit: Qué se ha probado y qué queda por demostrar para archivar datos en vidrio
 investigation: false
 featured: false
 summary_points:
-  - El proyecto Silica almacena datos en vidrio mediante voxels de fase creados con láseres femtosegundo.
-  - Pruebas de envejecimiento acelerado proyectan que esta técnica podría preservar información durante hasta 10,000 años, gracias a la durabilidad del vidrio frente al agua, calor y polvo.
-  - Se logró escritura paralela de alta velocidad y optimización de codificaciones usando aprendizaje automático.
-  - Se demostró el almacenamiento de una película de Warner Bros. y la preservación de música en colaboración con Global Music Vault.
-  - Los datos pueden leerse con una simple cámara, lo que simplifica el acceso futuro.
+  - Project Silica investiga la escritura de datos en vidrio mediante pulsos láser de femtosegundos y lectura óptica.
+  - Las pruebas de envejecimiento acelerado sustentan una proyección de larga duración; nadie ha observado esos datos durante 10.000 años.
+  - El trabajo estudia vidrio de sílice fundida y borosilicato, con técnicas de escritura y lectura distintas.
+  - El coste completo, la disponibilidad comercial y la conservación futura de equipos y formatos de lectura requieren evaluación adicional.
 glossary:
   - term: voxel de fase
     definition: Un elemento tridimensional de datos creado induciendo cambios en la estructura del vidrio mediante pulsos láser ultracortos.
   - term: femtosegundo
     definition: Una cuatrillonésima de segundo (10⁻¹⁵ s), unidad de tiempo usada para los pulsos láser que escriben en el vidrio.
-  - term: vidrio bórico
-    definition: Tipo de vidrio común y económico, basado en boro y sílice, utilizado en el proyecto en lugar de silicio fundido costoso.
+  - term: vidrio de borosilicato
+    definition: Vidrio que contiene sílice y boro; el estudio lo utilizó para una de las técnicas de escritura, además de ensayar otra técnica en sílice fundida.
   - term: aprendizaje automático
     definition: Técnica de inteligencia artificial que permite optimizar la codificación de símbolos en el vidrio analizando patrones de datos.
   - term: cámara de lectura
-    definition: Dispositivo óptico sencillo que detecta los cambios de fase en el vidrio para recuperar la información almacenada.
+    definition: Sistema óptico que captura las modificaciones del vidrio; el sistema descrito usa un microscopio automatizado, cámara y decodificación.
 fact_check:
-  - label: El vidrio utilizado es comúnmente encontrado en utensilios del hogar.
+  - label: El estudio evalúa escritura láser y lectura óptica de datos almacenados en vidrio.
     status: confirmed
-  - label: El método permite almacenar cientos de capas de datos en una pieza de vidrio de 2 mm de espesor.
-    status: confirmed
-  - label: La escritura paralela a alta velocidad aumenta la velocidad de escritura.
-    status: confirmed
-  - label: Las pruebas de envejecimiento acelerado proyectan una vida útil de al menos 10,000 años, demostrada en una prueba de concepto de preservación musical junto con Global Music Vault.
-    status: confirmed
-  - label: El artículo fue publicado en la revista Nature.
-    status: confirmed
+  - label: La duración de 10.000 años se observó directamente al conservar música durante ese período.
+    status: unsupported
+  - label: Una cámara sin microscopio ni sistema de decodificación basta para recuperar los datos del experimento.
+    status: unsupported
 why_it_matters:
-  - Para América Latina, donde la infraestructura de almacenamiento puede ser costosa y vulnerable a desastres naturales, el vidrio podría ofrecer una solución barata y resistente.
-  - Podría permitir preservar el patrimonio cultural latinoamericano (música, cine, documentos) para futuras generaciones sin necesidad de migraciones frecuentes.
-  - Podría reducir la dependencia de centros de datos energéticamente intensivos, contribuyendo a la sostenibilidad ambiental en la región.
-confidence: Moderada — estudio revisado por pares en Nature con evidencia experimental de durabilidad a corto plazo, pero la afirmación de 10,000 años sigue siendo una proyección no verificable directamente.
+  - La estabilidad del soporte y la capacidad de leer formatos y mantener equipos son problemas distintos para cualquier archivo de larga duración.
+confidence: Moderada — investigación revisada por pares con resultados de laboratorio; la vida útil prolongada se extrapola de pruebas aceleradas.
 sources:
+  - title: Laser writing in glass for dense, fast and efficient archival data storage
+    url: https://www.nature.com/articles/s41586-025-10042-w
+    publisher: Nature
+    role: primary
+    doi: 10.1038/s41586-025-10042-w
   - title: Project Silica's advances in glass storage technology
     url: https://microsoft.com/en-us/research/blog/project-silicas-advances-in-glass-storage-technology/
     publisher: Microsoft Research
-    date: '2026-02-18'
+    role: secondary
+corrected_at: '2026-11-01'
+correction_summary: Se distinguió la duración proyectada de una prueba real, se corrigió la lectura y se precisó qué propiedad térmica mide la extrapolación, además de la definición de borosilicato.
+requires_uncertainty_note: true
+uncertainty_note: La vida útil de miles de años es una extrapolación experimental; no demuestra disponibilidad comercial ni garantiza que formatos y lectores sigan utilizables.
 ---
 
-## Avances del Proyecto Silica: Un Almacenamiento de Datos Durable y Coste-efectivo
+**Corrección, 31 de octubre de 2026; ampliada el 1 de noviembre.** Una versión anterior afirmó que se había conservado música durante 10.000 años y que bastaba una cámara para leer los datos. La duración es una proyección y el sistema de lectura incluye un microscopio y decodificación. También retiramos afirmaciones comerciales no demostradas y precisamos qué se extrapoló y cómo se llama el vidrio estudiado.
 
-En un mundo donde la información digital se multiplica exponencialmente, preservar dicha información para generaciones futuras es crucial. Sin embargo, las soluciones actuales como cintas magnéticas o discos duros tienen una vida útil limitada de solo décadas, lo que las hace inadecuadas para tareas de archivado a largo plazo.
+¿Qué haría falta para conservar un archivo digital durante miles de años? El soporte debe resistir, pero también deben sobrevivir las instrucciones, el equipo y los formatos necesarios para leerlo. [Project Silica](https://www.nature.com/articles/s41586-025-10042-w), de Microsoft Research, aborda la primera parte mediante escritura láser en vidrio.
 
-Microsoft Research ha dado un paso significativo en la tecnología de almacenamiento con el Proyecto Silica. En un estudio recientemente publicado en _Nature_, los investigadores han demostrado una técnica que podría preservar datos durante 10,000 años utilizando vidrio comúnmente encontrado en utensilios del hogar.
+## Cómo se guardan y leen los datos
 
-## Un Problema Perenne
+Los investigadores emplean pulsos láser ultracortos para modificar regiones diminutas dentro del vidrio, llamadas vóxeles, y organizar datos en capas. El estudio describe dos tipos de modificación óptica y pruebas con sílice fundida y vidrio de borosilicato. Para recuperar la información se capturan imágenes con un **microscopio automatizado y una cámara** y se procesan mediante un decodificador. No basta con mirar la placa con una cámara cualquiera.
 
-El almacenamiento de datos a largo plazo siempre ha sido un desafío. Las soluciones actuales como discos duros y cintas magnéticas se deterioran con el tiempo, lo que limita su capacidad para preservar información durante siglos. El Proyecto Silica busca superar estos obstáculos.
+El equipo también estudió escritura paralela y métodos de codificación. Se trata de resultados de investigación obtenidos con equipos específicos: que el material se parezca al de algunos utensilios de cocina no significa que un utensilio doméstico sea, por sí solo, un dispositivo de archivo funcional.
 
-## Cómo Funciona la Tecnología de Almacenamiento en Vidrio
+## Qué significa «10.000 años»
 
-La técnica empleada es revolucionaria y se basa en un método llamado voxel de fase, donde los datos se codifican a través de cambios en la transición de fase del vidrio usando pulsos láser extremadamente breves (femtosegundos). Esta tecnología permite almacenar cientos de capas de datos en una pieza de vidrio de solo 2 mm de espesor.
+La estimación procede de ensayos de envejecimiento acelerado y de un modelo que extrapola el comportamiento observado a períodos mucho más largos. En concreto, los autores estudiaron la estabilidad térmica de **vóxeles de fase en borosilicato**: midieron cómo decaían sus modificaciones a temperaturas elevadas y extrapolaron el tiempo característico de ese decaimiento. La estimación supera 10.000 años a 290 °C bajo las condiciones del modelo.
 
-Este método tiene varias ventajas:
+Ese resultado describe la estabilidad térmica de las marcas, no una prueba de recuperación íntegra de un archivo después de diez milenios. El estudio señala que la extrapolación no incluye factores externos como esfuerzos mecánicos o corrosión química; tampoco garantiza la supervivencia del sistema de lectura.
 
-1. **Durabilidad**: El vidrio es un material que resiste el agua, el calor y la polvorienta acumulación.
-2. **Escalabilidad**: Utiliza vidrio bórico comúnmente disponible en lugar del costoso silicio fundido.
-3. **Facilidad de Lectura**: Ahora solo se necesita una cámara para leer los datos almacenados.
+Microsoft ha mostrado demostraciones de preservación de contenidos, pero estas no han transcurrido durante milenios. Aun si el vidrio conserva las marcas, un archivo futuro necesita lectores operativos, software, información sobre los formatos y una estrategia para evitar pérdidas o roturas.
 
-## Avances Científicos
+## Lo que queda por evaluar
 
-El artículo publicado en _Nature_ destaca varios descubrimientos clave:
-
-1. **Escritura Paralela a Alta Velocidad**: Se ha logrado escribir muchos voxels simultáneamente, aumentando la velocidad de escritura.
-2. **Optimización y Envejecimiento**: Los investigadores han desarrollado técnicas para optimizar las codificaciones de símbolos usando aprendizaje automático y métodos no destructivos para identificar el envejecimiento del vidrio.
-
-## Demostrando la Tecnología
-
-El Proyecto Silica ha demostrado su eficacia a través de varias pruebas, incluyendo almacenar una película de Warner Bros. en vidrio cuarzo y preservar música durante 10,000 años en colaboración con Global Music Vault.
-
-## El Futuro del Almacenamiento de Datos
-
-La fase de investigación está completa, pero el Proyecto Silica sigue explorando la necesidad de preservación sostenible a largo plazo. Este avance no solo ofrece una solución técnica sino también un puente hacia el futuro, permitiendo que las generaciones venideras accedan a nuestra historia y cultura.
-
-Este método de almacenamiento en vidrio puede ser una pieza crucial en la arquitectura del archivado digital, preservando nuestro patrimonio para las futuras generaciones. El Proyecto Silica es un paso significativo hacia el futuro de la tecnología de almacenamiento, demostrando que la información no solo se pierde con el tiempo, sino que también puede ser preservada en formas duraderas y accesibles.
-
----
+El precio del material es solo una parte del costo: fabricar, escribir, leer, mantener y recuperar un archivo requiere infraestructura. Las fuentes consultadas no demuestran aquí un costo total menor para una institución latinoamericana ni una reducción ambiental frente a otras opciones. Esas comparaciones requieren condiciones y mediciones concretas.
 
 <!-- source_identity: source_id=microsoft_research; source_name=Microsoft Research -->

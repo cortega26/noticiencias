@@ -23,8 +23,11 @@ describe('cheetah article primary-source upgrade', () => {
   it('discloses dated editorial correction and distinguishes the study from a reintroduction trial', () => {
     const $ = loadDistArticle(SLUG);
     const text = $('article').text();
-    expect(text).toContain('Corrección (2026-10-10)');
-    expect(text).toContain('tres genomas completos');
+    expect(text).toContain('Corrección (2026-11-03)');
+    expect(text).toContain('una momia y dos restos esqueléticos');
+    expect(text).toContain('haplogrupo mitocondrial');
+    expect(text).toContain('secuenciación del genoma completo');
+    expect(text).toContain('no separó de forma convincente ambas subespecies actuales');
     expect(text).toContain('parentesco genético no equivale a viabilidad ecológica');
   });
 });

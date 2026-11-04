@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T14:16:06.463Z",
+  "article": "src/content/posts/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "A landscape editorial illustration for a rigorous archaeology magazine: a single generic chipped stone flake on a clean muted warm gray field, subtle soft directional light and refined natural-history watercolor and graphite style, generous negative space, visual clarity. No shaft or bindings, no inferred reconstruction of a specific artifact, no humans, animals, maps, labels, text or logos. Imagined educational illustration, not a photograph or a specific archaeological specimen.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-9b71f125-6992-4ddf-841d-fcfea7ccf3fc.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-xigou-stone-concept.png",
+    "sha256": "2c2c2620cf2c3c728094ab122263c0b758361bee7a23c91517d1d54f27decae4",
+    "bytes": 2305009,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-27-xigou-stone-concept-original.webp",
+    "sha256": "db1977ec6b59efae2462bba8efa43ef1ffd094cd8861163f5f84629be0d435b7",
+    "bytes": 156234,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-27-235.png",
+    "provenance": "visual match to image credited by Live Science to Hulk Yuan, IVPP; transformation and reuse permission unverified"
+  },
+  "evidence_boundary": "Imagined generic stone flake; not a specific artifact or reconstruction from Xigou.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

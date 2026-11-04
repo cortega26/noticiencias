@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T14:38:59.708Z",
+  "article": "src/content/posts/2026-01-27-conoce-a-los-misteriosos-electridos.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape conceptual editorial illustration for a serious materials science magazine. A refined abstract arrangement of translucent mineral-like geometric forms with subtle small warm points of light between them, suggesting spaces within a material. Deep navy background and restrained copper and pale blue highlights, tactile elegant scientific magazine visual, generous negative space. No exact molecular or crystal structure, no diagram, no atoms or particle claims, no Earth cutaway, no labels, no letters, no logos. This is an imagined metaphor, not a scientific model, a real specimen, or data.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-0d04aa66-0447-4549-a634-5759434a877a.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-electride-concept.png",
+    "sha256": "c205863d6b5654c6b87fe3ba53448f8fa07c1e52815fe59589b4d84155afbdfd",
+    "bytes": 2306064,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-27-electride-concept-original.webp",
+    "sha256": "729f1bd5b13d5b02387b0a8e8e17b8528404bf3ca68236b3dc7a5758423c8416",
+    "bytes": 232218,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-27-article-206.jpg",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Imagined abstract forms; not a scientific model or specimen.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

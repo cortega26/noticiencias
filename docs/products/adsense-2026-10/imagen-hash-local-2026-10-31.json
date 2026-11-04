@@ -1,0 +1,606 @@
+{
+  "created_at_utc": "2026-11-01T00:44:17.322881+00:00",
+  "scope": "60 archivos Markdown locales de la colección posts; incluye 52 del snapshot histórico y 8 adicionales",
+  "base_sha": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "method": "SHA-256 de la portada referida por cada frontmatter; búsqueda literal del hash en registros listados y coincidencias exactas ya documentadas en snapshot",
+  "limitations": [
+    "Un hash presente no acredita licencia válida, uso autorizado ni aprobación visual.",
+    "Ausencia en estos archivos no prueba ausencia de autorización o infracción.",
+    "No acredita estado de producción ni revisión de cada origen.",
+    "Posibles referencias de terceros deben comprobarse individualmente."
+  ],
+  "evidence_files": [
+    "docs/image-rights-register.md",
+    "docs/products/adsense-2026-10/IMAGE_PROVENANCE.md",
+    "docs/image-rights/2026-10-24-shanidar-image-generation.json",
+    "docs/image-rights/2026-10-28-hero-images-v2.json",
+    "docs/image-rights/2026-10-28-shanidar-hero-v2.json",
+    "docs/image-rights/2026-10-31-cancer-risk-concept.json",
+    "docs/image-rights/2026-10-31-glucofm-concept.json",
+    "docs/image-rights/2026-10-31-measles-vaccination-concept.json",
+    "docs/image-rights/2026-10-31-ocean-census-concept.json",
+    "docs/image-rights/2026-10-31-quantum-interferometry.json",
+    "docs/image-rights/2026-10-31-sunflower-bread-concept.json",
+    "docs/image-rights/quality-refresh-2026-10-19.json",
+    "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json",
+    "docs/image-rights/2026-10-31-esports-survey-concept.json",
+    "docs/image-rights/2026-10-31-distant-object-concept.json",
+    "docs/image-rights/2026-10-31-asteroid-rotation-concept.json",
+    "docs/image-rights/2026-11-01-edison-bulb-concept.json",
+    "docs/image-rights/2026-11-01-cheetah-cave-concept.json",
+    "docs/image-rights/2026-11-01-xigou-stone-concept.json",
+    "docs/image-rights/2026-11-01-fading-star-concept.json",
+    "docs/image-rights/2026-11-01-electride-concept.json",
+    "docs/image-rights/2026-11-01-lighthouse-fiction-concept.json",
+    "docs/image-rights/2026-11-01-glass-storage-concept.json",
+    "docs/image-rights/2026-11-01-haps-airship-concept.json",
+    "docs/image-rights/2026-11-01-coding-assistant-concept.json",
+    "docs/image-rights/2026-11-01-personal-assistant-concept.json",
+    "docs/image-rights/2026-11-01-multimodal-chip-concept.json"
+  ],
+  "counts": {
+    "exact_hash_found": 60,
+    "no_exact_hash_found": 0,
+    "image_missing": 0
+  },
+  "articles": [
+    {
+      "post": "src/content/posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md",
+      "image": "src/assets/images/2026-01-15-micromasters-learning-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "4bc1fe4140556eadfa1fbd82957d3214c3c98e14d7abda91f148797eb996f2d6",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md",
+      "image": "src/assets/images/2026-01-17-cheetah-cave-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "c61a57f919aa3782897d2097515c4943c87756bb0175ac4642633f11b548adcf",
+      "hash_references": ["docs/image-rights/2026-11-01-cheetah-cave-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii.md",
+      "image": "src/assets/images/2026-01-18-artemis-ii-earthset-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "52d3c4e45d465d80f67a67af0b1c82aa3be5106257d61c47d332589c9c478c6c",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas.md",
+      "image": "src/assets/images/2026-01-23-brazil-bone-harpoon-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "f85131c1de76b688f68fe205afe4a4e97e2b3b8b07aec3b7057cb958123b8a1d",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879.md",
+      "image": "src/assets/images/2026-01-24-edison-bulb-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "5eea97acabda8b218c386ed73c69886e0148c1e3f776f529ec32e79d538b5fe4",
+      "hash_references": ["docs/image-rights/2026-11-01-edison-bulb-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada.md",
+      "image": "src/assets/images/2026-01-25-quantum-interferometry-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "8f866b250b75a636e503a2eb34c7f923999ff53df20a4da0bd05f15a51c55931",
+      "hash_references": ["docs/image-rights/2026-10-31-quantum-interferometry.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma.md",
+      "image": "src/assets/images/2026-01-25-daycare-microbiome-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "df003ed69203434e038e3f001c243afcb05e481901866f9ebbdb159987fbfe99",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-27-conoce-a-los-misteriosos-electridos.md",
+      "image": "src/assets/images/2026-01-27-electride-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "729f1bd5b13d5b02387b0a8e8e17b8528404bf3ca68236b3dc7a5758423c8416",
+      "hash_references": ["docs/image-rights/2026-11-01-electride-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md",
+      "image": "src/assets/images/2026-01-27-measles-vaccination-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "81ff8472f82ad91271903798b863cf4f8946259b3b59a2dc7661fe881a53f518",
+      "hash_references": ["docs/image-rights/2026-10-31-measles-vaccination-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos.md",
+      "image": "src/assets/images/2026-01-27-xigou-stone-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "db1977ec6b59efae2462bba8efa43ef1ffd094cd8861163f5f84629be0d435b7",
+      "hash_references": ["docs/image-rights/2026-11-01-xigou-stone-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md",
+      "image": "src/assets/images/2026-01-27-haps-airship-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "f4a95d3ced68a274bafa5a92bb406cf55d893d2c7a336adfb5616df9fc438b9d",
+      "hash_references": ["docs/image-rights/2026-11-01-haps-airship-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial.md",
+      "image": "src/assets/images/2026-01-27-piezo1-mechanosensor-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "8370243a7b55904a6748da217d62f21c03912dcdcea7d81411209e7c770ef431",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md",
+      "image": "src/assets/images/2026-11-01-personal-assistant-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "d8871a6cc52d23046e162a5fc55ee27d6d7d4312c75904c9348ab915c1f2b1eb",
+      "hash_references": ["docs/image-rights/2026-11-01-personal-assistant-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica.md",
+      "image": "src/assets/images/2026-01-28-abell-2813-hubble-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "6eed3efff4f3079e2822b9d09b74269d137b0d92c82650533993ad5f7d5ea7de",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos.md",
+      "image": "src/assets/images/2026-11-01-coding-assistant-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "f8d3ecc27ec138ab4f17e52534e99d8f69050888444e86953e3fd644ee372d7a",
+      "hash_references": ["docs/image-rights/2026-11-01-coding-assistant-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado.md",
+      "image": "src/assets/images/2026-01-31-hubble-ultra-deep-field-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "1541fe079103ad565a64663351ec8e0343b7f299c5fcf73a491bf6df36cc1783",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida.md",
+      "image": "src/assets/images/2026-02-05-cancer-risk-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "3662ce1ecc564ec969540e8814383637f3c2470c545f6161a3ee8cef1fbf07f1",
+      "hash_references": ["docs/image-rights/2026-10-31-cancer-risk-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-02-12-bienvenidos.md",
+      "image": "src/assets/images/default.png",
+      "in_historical_snapshot": true,
+      "sha256": "bae717e6ba555df40d1e80e6fa3c6c304204b2a9db63ec1a34b92d33480bdbc8",
+      "hash_references": ["docs/products/adsense-2026-10/IMAGE_PROVENANCE.md"],
+      "status": "exact_hash_found",
+      "rights_status": "unknown",
+      "rights_note": "La referencia documenta el hash y el historial, pero no acredita autoría ni autorización de uso."
+    },
+    {
+      "post": "src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md",
+      "image": "src/assets/images/2026-02-16-fading-star-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "2f85cf4b9bb997f7ab0de8b9ce530ec45c0106104cb5c1237e0149a6e153a89a",
+      "hash_references": ["docs/image-rights/2026-11-01-fading-star-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable.md",
+      "image": "src/assets/images/2026-02-16-sunflower-bread-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "39192fd64c48bfb6abea9889a58d4301c8b66356923906ae541a0a006f74de68",
+      "hash_references": ["docs/image-rights/2026-10-31-sunflower-bread-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos.md",
+      "image": "src/assets/images/2026-02-18-glass-storage-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "73a81df7ee40dbbdc2bfad76dee8739d9167fb2d379ce333157a9960393d0ba0",
+      "hash_references": ["docs/image-rights/2026-11-01-glass-storage-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md",
+      "image": "src/assets/images/2026-03-27-complejo-judicial-santa-fe-allens.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "6c3d85105aa90a3495273f11a4e4e31ad5e6113f77d28c5748d9064d000f2f16",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas.md",
+      "image": "src/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "eef630d43925d53f1709030211652904083e6fa66f0b622a34fda7afc9b359fe",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura.md",
+      "image": "src/assets/images/2026-04-06-anais-112-equipo.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "a232ee9508c68d51f3f95cb44055ffeb6e99e22f88b4229002f6e2a9f01288b0",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan.md",
+      "image": "src/assets/images/2026-04-24-indirect-prompt-injection-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "ee2ffb4ce0234ac10523e427166023daed0eace65d548d7e4249fec462d14da6",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md",
+      "image": "src/assets/images/2026-05-07-automation-wages-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "e39e18aa75363d6a5dd9e46014442c315ba36374bfb95cecfa581ae7a69e96dd",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas.md",
+      "image": "src/assets/images/2026-05-15-asteroid-rotation-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "c414fd7aa1eff78430f66aa563f876937105b6339509a40e2fc47c8e84cf7b7d",
+      "hash_references": ["docs/image-rights/2026-10-31-asteroid-rotation-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio.md",
+      "image": "src/assets/images/2026-05-23-starship-vuelo-5-jurvetson.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "55eb3ede440514f632dfbf9a465acfe222126fcba690aacbdb9b7cf39a901220",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md",
+      "image": "src/assets/images/2026-06-12-lighthouse-fiction-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "071ef8657d756af5c53cacb3446b441e065e827ca369cf506783d5a32db756c1",
+      "hash_references": ["docs/image-rights/2026-11-01-lighthouse-fiction-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos.md",
+      "image": "src/assets/images/2026-06-14-ocean-census-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "b76c54547037abe5c262f4a533e5b65f7c5754aac94befab169bed6a45eb9fa4",
+      "hash_references": ["docs/image-rights/2026-10-31-ocean-census-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md",
+      "image": "src/assets/images/2026-11-01-multimodal-chip-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "82c39a3746360bd8653b5e28f0b25d4a809d9b60000deca7066a9dab678c93c0",
+      "hash_references": ["docs/image-rights/2026-11-01-multimodal-chip-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles.md",
+      "image": "src/assets/images/2026-08-10-lightning-milan-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "7b5507c0f8186440812509b263203995317084d6f0f9273aac8ca9d0172ac768",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md",
+      "image": "src/assets/images/2026-08-12-ai-sandbox-package-registry-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "09db4079b24e295673256fa38d885ce6d01b03eb8e09a46443d7a411df45ecf9",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees.md",
+      "image": "src/assets/images/2026-08-26-glucofm-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "d40bfffd84e92a9720d2e017ccb8f6abd4d92c8a6f99e9f3a82e9191164c83ac",
+      "hash_references": ["docs/image-rights/2026-10-31-glucofm-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado.md",
+      "image": "src/assets/images/2026-08-26-galapagos-tortoise-commons-cc0.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "bae534e3dd940999876b7b260a61789e63707fbffb99176e43b2aa563c7ff3d2",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino.md",
+      "image": "src/assets/images/2026-08-27-galapagos-modis-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "47f5e66c094a2ad2a19ad5f30dca1a80a23f4fb254c4f64ba6a240063132797b",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos.md",
+      "image": "src/assets/images/2026-08-28-total-eclipse-2024-nasa.jpg",
+      "in_historical_snapshot": true,
+      "sha256": "bd6ad7813caf3d7e414fe002bd27c9b89a1efb0299a85fdb989c0948a4d7b3b6",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda.md",
+      "image": "src/assets/images/2026-08-28-esports-survey-concept-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "6470dde4b72e495753af91b43f062e1470540dd9056fa36c0fc51e0ac9fae26a",
+      "hash_references": ["docs/image-rights/2026-10-31-esports-survey-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt.md",
+      "image": "src/assets/images/2026-09-05-humanoid-robot-sprint-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "aaa00049493e2330d8e2d15ea3c0a9b674e773507c426787898bddc06c6655b3",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md",
+      "image": "src/assets/images/2026-09-10-panama-canal-el-nino-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "d2b10ba238f0c43b3dbba2ae0abb53fead45c3439ef88a668eb2ae2713d5d153",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe.md",
+      "image": "src/assets/images/2026-09-17-young-planet-disk-gap-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "a000b1fdb5acd079d5d3dabbd9351f54b91e024a0dccfcf49b6ec1627665aa62",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-18-noticia-cientifica.md",
+      "image": "src/assets/images/2026-09-18-pancreatic-islet-alginate-beads-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "22e763a61c85c9adf605b75fa5072d145a0003ad1305150acdb0ad4d68d87c43",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos.md",
+      "image": "src/assets/images/2026-09-20-vesuvius-scroll-xray-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "f6183187cb566e983ec05474dfac2e6c8d6dade418788370209e2b723057cdd4",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.md",
+      "image": "src/assets/images/2026-09-20-coral-cilia-vortices-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "c65dfe80367b1794855c35e1d804126adffaba3f0c24aa6dc1053ba1929e2c75",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/2026-10-28-hero-images-v2.json"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora.md",
+      "image": "src/assets/images/2026-09-21-exoplanet-radio-aurora-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "b2a84f95b01d0461bf49a01814893ef89b9e19d2d4f4e0067c3e46aa04f96c99",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce.md",
+      "image": "src/assets/images/2026-09-23-grace-water-storage-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "4d805f6f0ab6f543829c5ba275e7b9d544a570af6f479bedd0dd2d1d853aa905",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md",
+      "image": "src/assets/images/2026-09-25-ads-cft-holography-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "5d1c09daf53b0abd535e33c8323992401a1f28e0c66871bd8405de6619da8956",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md",
+      "image": "src/assets/images/2026-10-05-optogenetics-light-neuron-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "b69e8b2c407cd7eca6ff14db51a9ff7bcb1fc7efb03db93c2e4bede8b75111e7",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md",
+      "image": "src/assets/images/2026-10-12-secondary-forest-recovery-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "d303612d65976fbae551c56b8867f5ba0c17baba753493e5a068316a31eaf703",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra.md",
+      "image": "src/assets/images/2026-10-12-solar-geoengineering-wargame-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "dd5d038bd4bfad8fef48763140810cd202e94a96639658380bbf1060f87e5c19",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/quality-refresh-2026-10-19.json",
+        "docs/products/adsense-2026-10/archive-snapshot-2026-10-22.json (coincidencia histórica)"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico.md",
+      "image": "src/assets/images/2026-10-14-proteasa-dokki-9ynm-rcsb.png",
+      "in_historical_snapshot": false,
+      "sha256": "4a4f86fc6aa7f4bf34a7cc040a5f36fddc20d093c3d2e789635b8bb5644f3e80",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.md",
+      "image": "src/assets/images/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.png",
+      "in_historical_snapshot": true,
+      "sha256": "f1c6713543cdd18c5d8ecfb72a7a7661aff9101fae75f2000b07c92be9091bae",
+      "hash_references": ["docs/products/adsense-2026-10/IMAGE_PROVENANCE.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.md",
+      "image": "src/assets/images/2026-10-17-shanidar-scapula-perforation-original.webp",
+      "in_historical_snapshot": true,
+      "sha256": "83e68712de62c8d26183941a2ff472d44a01cab649df890817a42cd2484d11cc",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/2026-10-28-shanidar-hero-v2.json"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo.md",
+      "image": "src/assets/images/2026-10-23-malaria-merozoite-invasion-original.webp",
+      "in_historical_snapshot": false,
+      "sha256": "07964cd8589a2b196420d2539a9c55db8a9376a0d25386861da8608c5e8e5017",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/2026-10-28-hero-images-v2.json"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md",
+      "image": "src/assets/images/2026-10-24-arsia-mons-elongated-cloud-original.webp",
+      "in_historical_snapshot": false,
+      "sha256": "caaf524384a619ed2a04e4cbc8d975ffb088487672713bd1166315e4b110f193",
+      "hash_references": [
+        "docs/image-rights-register.md",
+        "docs/image-rights/2026-10-28-hero-images-v2.json"
+      ],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa.md",
+      "image": "src/assets/images/2026-10-27-isturitz-entrada-michel-bakni.jpg",
+      "in_historical_snapshot": false,
+      "sha256": "fce51648a02a1a55abdebccacac3b781d37c1220dace6833665f4abf64f28522",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada.md",
+      "image": "src/assets/images/2026-10-28-bellingshausen-icebridge-nasa.jpg",
+      "in_historical_snapshot": false,
+      "sha256": "481c453d492d641c27bece3ad763db4c85c5442eaabdab4edb1c18e6b510cb18",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano.md",
+      "image": "src/assets/images/2026-10-28-distant-object-concept-original.webp",
+      "in_historical_snapshot": false,
+      "sha256": "87fae710ac2575d331aacad0d33348c41f1bfcb4639507921c04903a72fef368",
+      "hash_references": ["docs/image-rights/2026-10-31-distant-object-concept.json"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal.md",
+      "image": "src/assets/images/2026-10-29-calibracion-color-friedrich-haag.jpg",
+      "in_historical_snapshot": false,
+      "sha256": "61a616e928a09bb1e9dc121ac9b264c09160d87973e8681f5ddf076e4df4b861",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    },
+    {
+      "post": "src/content/posts/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua.md",
+      "image": "src/assets/images/2026-10-29-teghaza-001-section-nasa.jpg",
+      "in_historical_snapshot": false,
+      "sha256": "5e0064a5bb9963defb4507ebe87eb60ee68d606d8d9cb71aabc6f70d77c93a4c",
+      "hash_references": ["docs/image-rights-register.md"],
+      "status": "exact_hash_found"
+    }
+  ]
+}
