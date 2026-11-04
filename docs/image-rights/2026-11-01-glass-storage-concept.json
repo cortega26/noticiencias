@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T19:11:46.663Z",
+  "article": "src/content/posts/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape editorial conceptual illustration for a serious technology magazine about experimental data storage in glass: a single clear square glass plate resting on a dark matte lab workbench, soft raking blue and amber light revealing its edges, a few delicate glints, minimalist and visually elegant, precise natural textures, generous space. This is a generic imagined glass plate, not a photograph of a real device or a depiction of recorded data. No human hands, equipment branding, text, labels, logos, diagrams, obvious digital binary or symbols.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-87ba8fec-f410-4dbe-a223-227b285b0a51.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-glass-storage-concept.png",
+    "sha256": "73ae24998bb1e2600b108c2392786ba795c34491ddd86cf250210fb65d0f4a1a",
+    "bytes": 2334341,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-02-18-glass-storage-concept-original.webp",
+    "sha256": "73a81df7ee40dbbdc2bfad76dee8739d9167fb2d379ce333157a9960393d0ba0",
+    "bytes": 243358,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-02-18-849.jpg",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Imagined glass plate; not a photograph of the experimental device.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

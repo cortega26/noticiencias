@@ -33,6 +33,11 @@ describe('search-card meta/tags', () => {
     expect(meta).toContain('2026');
   });
 
+  it('shows the UTC publication date regardless of the reader timezone', () => {
+    expect(formatSearchMeta([], '2026-01-18T00:00:00.000Z')).toBe('18 ene 2026');
+    expect(formatSearchMeta([], '2026-01-18T23:30:00.000Z')).toBe('18 ene 2026');
+  });
+
   it('formats tags from array, string, or missing', () => {
     expect(formatSearchTags(['a', 'b'])).toBe('a, b');
     expect(formatSearchTags('solo')).toBe('solo');

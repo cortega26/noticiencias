@@ -11,7 +11,7 @@ const SEARCH_REGRESSION_CASES = [
     '/ciencia/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua/',
   ],
   [
-    'isótopos de hidrógeno',
+    'isótopos de oxígeno corales',
     '/ciencia/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino/',
   ],
   [
@@ -122,7 +122,7 @@ test('search finds a term near the end of the latest article body', async ({ pag
 
   const input = page.locator('#search-box');
   await expect(input).toBeEnabled();
-  await input.fill('certeza de saber');
+  await input.fill('grano circón datamos');
   await page.locator('#search-form').evaluate((form) => {
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
   });

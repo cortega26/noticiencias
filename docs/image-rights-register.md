@@ -1,5 +1,161 @@
 # Registro puntual de derechos de imagen
 
+## Términos públicos de Anthropic: alcance de la consulta — 1 de noviembre de 2026
+
+El [centro legal de Anthropic](https://www.anthropic.com/legal) distingue los términos para uso individual de Claude Free, Pro y Max de los aplicables a Claude API y Claude for Work; indica que Claude Code queda sujeto a los términos de la modalidad utilizada. En su [centro de transparencia](https://www.anthropic.com/transparency/voluntary-commitments), Anthropic señala que sus términos de consumo y comerciales reconocen al cliente derechos sobre sus outputs. Esto aporta contexto para los lotes de ilustraciones vectoriales documentados más abajo, pero **no identifica la cuenta, modalidad, contrato o términos aplicables cuando se generó cada archivo**. Tampoco acredita exclusividad, derechos de terceros o aprobación visual. Esos extremos continúan pendientes de comprobación antes de considerar cerrada la procedencia de cada lote.
+
+Al cotejar las rutas de los dos lotes del 18 de octubre con el frontmatter local de los artículos, las ocho ilustraciones de esas tablas siguen referenciadas como portada: robot humanoide, canal de Panamá, Elias 2-24 b, papiros de Herculano, Beta Pictoris b, optogenética, bosques secundarios y geoingeniería solar. El cotejo identifica el alcance local; no prueba el estado público ni resuelve por sí mismo los términos aplicables.
+
+## Calibración de pantalla con colorímetro — 1 de noviembre de 2026
+
+Fotografía de Friedrich Haag de un sensor SpyderX durante una calibración en 2020, publicada como obra propia en [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:001_2020_05_07_Sensor.jpg) bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Archivo local `src/assets/images/2026-10-29-calibracion-color-friedrich-haag.jpg`, copia del original de 2878 × 1737; SHA-256 `61a616e928a09bb1e9dc121ac9b264c09160d87973e8681f5ddf076e4df4b861`. La presentación recorta la imagen; la leyenda identifica al autor, la licencia y el recorte y enlaza fuente y licencia en la versión local. La foto es contexto sobre calibración y no representa Apple CMF 2026. Revisión editorial y despliegue pendientes.
+
+## Estructura Dokki_15, entrada 9YNM — 1 de noviembre de 2026
+
+Representación exportada desde el visor 3D de [RCSB PDB, entrada 9YNM](https://www.rcsb.org/structure/9YNM), estructura cristalográfica de la proteasa diseñada Dokki_15 depositada por Bera, Choi, Kang, Nguyen y Baker. La entrada corresponde al trabajo de cisteína citado en la nota; la estructura fue determinada por difracción de rayos X, no es una fotografía de la reacción. Se exportó en PNG a 1920 × 1080, sin recorte automático, con la vista predeterminada del visor y componentes visibles. Archivo local `src/assets/images/2026-10-14-proteasa-dokki-9ynm-rcsb.png`; SHA-256 `4a4f86fc6aa7f4bf34a7cc040a5f36fddc20d093c3d2e789635b8bb5644f3e80`. Las [políticas de RCSB PDB](https://www.rcsb.org/pages/usage-policy) indican que las imágenes moleculares de las páginas de estructura comparten la dedicación CC0 1.0 de los datos y recomiendan acreditar el banco y los autores; la [política de citación](https://www.rcsb.org/pages/policies) incluye capturas de esas vistas. La leyenda y el artículo identifican la entrada y a los autores. Revisión editorial y despliegue pendientes.
+
+## Entrada de Isturitz y Oxocelhaya — 1 de noviembre de 2026
+
+Fotografía de Michel Bakni, tomada en 2024 y publicada como obra propia en [Wikimedia Commons](<https://commons.wikimedia.org/wiki/File:The_entery_of_Isturitz_and_Oxocelhaya_caves_(2024).jpg>) bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Archivo local `src/assets/images/2026-10-27-isturitz-entrada-michel-bakni.jpg`, copia del original de 4080 × 3060; SHA-256 `fce51648a02a1a55abdebccacac3b781d37c1220dace6833665f4abf64f28522`. La portada se recorta en la presentación; la leyenda identifica autor, licencia y recorte, y enlaza fuente y licencia en la versión local. La imagen muestra la entrada actual, no a la persona ni la muestra estudiada. Revisión editorial y despliegue pendientes.
+
+## Complejo judicial de Santa Fe — 1 de noviembre de 2026
+
+Fotografía de AllenS del complejo judicial Steve Herrera en Santa Fe, Nuevo México, tomada en 2009 y publicada como obra propia en [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Santa_Fe_New_Mexico_Judicial_Complex.jpg). El autor la liberó al dominio público mundialmente según la ficha. Archivo local `src/assets/images/2026-03-27-complejo-judicial-santa-fe-allens.jpg`, copia del original de 2880 × 2160; SHA-256 `6c3d85105aa90a3495273f11a4e4e31ad5e6113f77d28c5748d9064d000f2f16`. Es una imagen histórica de contexto: no documenta las audiencias de 2026 ni acredita la ubicación actual de las oficinas del tribunal. Revisión editorial y despliegue pendientes.
+
+## Starship, quinto vuelo — 1 de noviembre de 2026
+
+Fotografía de Steve Jurvetson del 13 de octubre de 2024, publicada en [Flickr](https://flickr.com/photos/44124348109@N01/54063834163) y [Wikimedia Commons](<https://commons.wikimedia.org/wiki/File:SpaceX_Ignition_(54063834163).jpg>) bajo [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); Commons registra una comprobación de la licencia de Flickr. Archivo local `src/assets/images/2026-05-23-starship-vuelo-5-jurvetson.jpg`, copia del original de 3648 × 2631; SHA-256 `55eb3ede440514f632dfbf9a465acfe222126fcba690aacbdb9b7cf39a901220`. La portada se recorta en la presentación; la leyenda identifica título, autor, licencia y recorte, aclara que muestra el vuelo 5 y enlaza fuente y licencia en la versión local. Verificar condiciones de los derivados, revisión editorial y despliegue pendientes.
+
+## Esquema del experimento ANAIS-112 — 1 de noviembre de 2026
+
+Ilustración del equipo ANAIS publicada en [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Artistic_view_of_the_ANAIS-112_set_up.jpg) bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). El archivo coincide byte a byte con el [original publicado por el proyecto ANAIS](https://gifna.unizar.es/anais/wp-content/uploads/2017/05/ANAIS112_2.jpg): `src/assets/images/2026-04-06-anais-112-equipo.jpg`, SHA-256 `a232ee9508c68d51f3f95cb44055ffeb6e99e22f88b4229002f6e2a9f01288b0`. La ficha de Commons no verifica independientemente la identidad del usuario que incorporó la licencia; una versión del mismo esquema sin el logotipo figura en la [publicación del equipo de 2019](https://doi.org/10.1140/epjc/s10052-019-6697-4), distribuida bajo CC BY 4.0. La leyenda identifica la ilustración y el recorte automático; el artículo enlaza la ficha y la licencia. Aprobación visual y despliegue pendientes.
+
+## Abell 2813 desde Hubble — 1 de noviembre de 2026
+
+Imagen de archivo publicada por [NASA](https://science.nasa.gov/image-detail/light-bends-from-the-beyond/), acreditada a NASA, ESA y D. Cole. Archivo local `src/assets/images/2026-01-28-abell-2813-hubble-nasa.jpg`; SHA-256 `6eed3efff4f3079e2822b9d09b74269d137b0d92c82650533993ad5f7d5ea7de`. Las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/) permiten generalmente el uso editorial informativo, con atribución y sin sugerir respaldo; no se identificó advertencia de copyright de terceros en la ficha. Muestra arcos de lente gravitacional fuerte, no los datos del análisis DES de lentes débiles; la leyenda aclara esta diferencia. Aprobación visual y despliegue pendientes.
+
+## Campo ultraprofundo de Hubble — 1 de noviembre de 2026
+
+Imagen de archivo publicada por [NASA](https://science.nasa.gov/asset/hubble/hubble-ultra-deep-field/), acreditada a NASA, ESA, S. Beckwith y el equipo HUDF (STScI), y B. Mobasher (STScI). Archivo local `src/assets/images/2026-01-31-hubble-ultra-deep-field-nasa.jpg`, descargado de la variante JPEG de 3100 × 3100; SHA-256 `1541fe079103ad565a64663351ec8e0343b7f299c5fcf73a491bf6df36cc1783`. Las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/) permiten generalmente el uso editorial informativo de su contenido, con atribución y sin sugerir respaldo; no se identificó advertencia de copyright de terceros en la ficha. La imagen ofrece contexto de galaxias y no representa datos de DES. El crédito y esa diferencia se indican en la leyenda; aprobación visual y despliegue pendientes.
+
+## Dirigible conceptual para HAPS — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; no muestra un vehículo ni un vuelo real. El [recibo](./image-rights/2026-11-01-haps-airship-concept.json) conserva prompt, original y hashes. Sustituye localmente una imagen sin procedencia acreditada en los registros consultados. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Placa de vidrio conceptual — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; no muestra un dispositivo ni datos experimentales. El [recibo](./image-rights/2026-11-01-glass-storage-concept.json) conserva prompt, original y hashes. Sustituye localmente una imagen sin procedencia acreditada en los registros consultados. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Tortuga gigante: fotografía de archivo CC0 — 1 de noviembre de 2026
+
+Fotografía publicada como obra propia por Thecodemachine en [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galapagos_Tortoise_Closeup.jpg), con [dedicación CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). El archivo local `src/assets/images/2026-08-26-galapagos-tortoise-commons-cc0.jpg` corresponde a la variante de 1280 × 720 descargada desde Commons; SHA-256 `bae534e3dd940999876b7b260a61789e63707fbffb99176e43b2aa563c7ff3d2`. Astro genera derivados para su entrega. No se identificó relación entre el animal fotografiado y las muestras estudiadas; el crédito y ese límite figuran en la leyenda. Aprobación visual y despliegue pendientes.
+
+**Procedencia por aclarar (3 de noviembre):** la ficha de Commons identifica a Thecodemachine como autor y aportante de una obra propia, mientras que sus metadatos EXIF muestran «Matthew Sabins» en el campo de autor y dejan vacío el de titular de derechos. No se ha comprobado si ambos nombres corresponden a la misma persona ni quién tenía autoridad para realizar la dedicación. La discrepancia no demuestra por sí sola que CC0 sea inválido, pero requiere revisión independiente antes de dar por cerrados los derechos de esta portada.
+
+La misma combinación de usuario y nombre en EXIF aparece en [otra fotografía de tortuga](https://commons.wikimedia.org/wiki/File:Lazy_Galapagos_Tortoise.jpg) y en una [fotografía de gorilas](https://commons.wikimedia.org/wiki/File:Gorilla_Family.jpg) atribuidas por sus fichas a Thecodemachine. La [galería estadounidense de finalistas de Wiki Science Competition 2023](https://commons.wikimedia.org/wiki/Commons:Wiki_Science_Competition_2023/Winners/United_States) también atribuye a ese usuario un conjunto de animales de Uganda. Esto aporta contexto sobre el conjunto de cargas, pero no confirma la identidad ni acredita por sí mismo la titularidad de la fotografía usada aquí.
+
+## Faro de ficción — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; representa un faro imaginario, no un lugar real. El [recibo](./image-rights/2026-11-01-lighthouse-fiction-concept.json) conserva prompt, original y hashes. Sustituye localmente una imagen cuya procedencia no se acreditó en los registros consultados. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Electridos: formas conceptuales — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; no representa una estructura científica ni una muestra real. El [recibo](./image-rights/2026-11-01-electride-concept.json) conserva prompt, original y hashes. Sustituye localmente una imagen cuya procedencia no se acreditó en los registros consultados. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Galápagos desde Aqua/MODIS — 1 de noviembre de 2026
+
+Imagen de archivo del 8 de octubre de 2016 publicada por [NASA Earth Observatory](https://science.nasa.gov/earth/earth-observatory/the-galapagos-archipelago-89367/), atribuida a NASA/Jeff Schmaltz, LANCE/EOSDIS Rapid Response. Archivo local `src/assets/images/2026-08-27-galapagos-modis-nasa.jpg`, descargado sin conversión de la imagen publicada; SHA-256 `47f5e66c094a2ad2a19ad5f30dca1a80a23f4fb254c4f64ba6a240063132797b`. Las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/) permiten generalmente el uso editorial informativo de sus imágenes, con atribución y sin sugerir respaldo; no se identificó una advertencia de copyright de terceros en esta ficha. La imagen aporta contexto geográfico; no muestra los corales ni los datos del estudio. Aprobación visual y despliegue pendientes.
+
+## Hielo del mar de Bellingshausen: NASA IceBridge — 1 de noviembre de 2026
+
+Imagen de archivo del 5 de noviembre de 2014 publicada por [NASA Earth Observatory](https://science.nasa.gov/earth/earth-observatory/sea-ice-in-the-bellingshausen-sea-86721/), con crédito a IceBridge/DMS y NASA DAAC en el NSIDC. Archivo local `src/assets/images/2026-10-28-bellingshausen-icebridge-nasa.jpg`, descargado sin conversión desde la imagen publicada; SHA-256 `481c453d492d641c27bece3ad763db4c85c5442eaabdab4edb1c18e6b510cb18`. NASA permite generalmente el uso editorial informativo de su contenido, con atribución y sin sugerir respaldo, según sus [directrices](https://www.nasa.gov/nasa-brand-center/images-and-media/); no se identificó una advertencia de copyright de terceros en esta ficha. La imagen ilustra hielo marino, no las observaciones ni el resultado del estudio de salinidad. Despliegue y revisión visual del titular pendientes.
+
+## Estrella conceptual para M31-2014-DS1 — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto y sin imágenes de referencia; no es una observación ni un modelo científico de la estrella. El [recibo](./image-rights/2026-11-01-fading-star-concept.json) conserva prompt, original y hashes. Sustituye localmente una imagen cuya autorización no se ha acreditado. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Lasca conceptual para Xigou — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto y sin imágenes de referencia; no representa un objeto de Xigou. El [recibo](./image-rights/2026-11-01-xigou-stone-concept.json) conserva prompt, original y hashes. Sustituye localmente una ilustración cuya autorización de reutilización no se ha acreditado. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Guepardo y cueva conceptuales — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; no representa un animal ni una cueva del estudio. El [recibo](./image-rights/2026-11-01-cheetah-cave-concept.json) conserva el prompt, original y hashes. Sustituye localmente una imagen cuya autorización de reutilización no se ha acreditado. Aprobación visual, revisión independiente y despliegue pendientes.
+
+## Bombilla conceptual para la nota sobre Edison — 1 de noviembre de 2026
+
+Ilustración generada con IA desde texto, sin imágenes de referencia; no es fotografía ni reconstrucción de un aparato histórico o del experimento. El [recibo](./image-rights/2026-11-01-edison-bulb-concept.json) conserva el prompt, original y hashes. Sustituye localmente una imagen cuya cadena exacta de transformación y situación fuera de EE. UU. siguen sin acreditarse. Aprobación visual del titular, revisión editorial y despliegue pendientes.
+
+## Rotación de asteroides: ilustración conceptual original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto sin imágenes de referencia. El cuerpo es genérico y no representa una observación o reconstrucción de 2025 MN45; la leyenda identifica su carácter y origen. El [recibo](./image-rights/2026-10-31-asteroid-rotation-concept.json) conserva prompt, original y hashes. Sustitución local de una imagen sin permiso de reutilización documentado; aprobación visual del titular y publicación pendientes.
+
+## Objeto transneptuniano: ilustración conceptual original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto sin imágenes de referencia. Representa un observatorio y un cielo imaginarios, no Rubin ni una observación de 2026 ED138; la leyenda identifica su carácter y origen. El [recibo](./image-rights/2026-10-31-distant-object-concept.json) conserva prompt, original y hashes. Sustitución local; aprobación visual del titular y publicación pendientes.
+
+## Esports: ilustración conceptual original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto sin imágenes de referencia. Muestra un espacio de juego genérico y vacío; no representa a un jugador, una lesión ni un diagnóstico real. La leyenda identifica su origen. El [recibo](./image-rights/2026-10-31-esports-survey-concept.json) conserva prompt, original y hashes; no acredita revisión científica ni derechos exclusivos. Sustitución local de una fotografía sin permiso de reutilización documentado; aprobación visual del titular y despliegue pendientes.
+
+## Sarampión: ilustración conceptual original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto sin imágenes de referencia. Presenta una escena sanitaria genérica, no una vacuna o campaña real; la leyenda identifica su carácter conceptual y su origen. El [recibo](./image-rights/2026-10-31-measles-vaccination-concept.json) conserva prompt, original y hashes; no acredita revisión científica ni derechos exclusivos. Sustitución local de una fotografía sin permiso de reutilización documentado; aprobación visual del titular y despliegue pendientes.
+
+## Riesgo de cáncer: ilustración abstracta original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto y sin imágenes de referencia. Las esferas son elementos abstractos y no representan células ni proporciones de casos; la leyenda lo aclara y declara su origen. El [recibo](./image-rights/2026-10-31-cancer-risk-concept.json) registra prompt, original y hashes; no acredita revisión científica ni derechos exclusivos. Sustitución local de una imagen sin permiso de reutilización documentado; aprobación visual del titular y despliegue pendientes.
+
+## Pan de girasol: ilustración conceptual original — 31 de octubre de 2026
+
+Ilustración generada con `image_gen` a partir de texto sin imágenes de referencia. Presenta pan y semillas de manera conceptual; no muestra las formulaciones del ensayo ni prueba efectos nutricionales. La leyenda identifica su origen. El [recibo](./image-rights/2026-10-31-sunflower-bread-concept.json) registra prompt, original y hashes; no acredita revisión científica ni derechos exclusivos. Sustitución local de una imagen sin permiso de reutilización documentado; aprobación visual del titular y despliegue pendientes.
+
+## Censo oceánico: ilustración conceptual original — 31 de octubre de 2026
+
+Portada generada con `image_gen` a partir de texto sin imágenes de referencia. Representa un gusano marino imaginario y no una especie identificada ni una observación real; la leyenda indica su origen. El [recibo](./image-rights/2026-10-31-ocean-census-concept.json) conserva prompt, original y hashes; no acredita revisión científica ni derechos exclusivos. Reemplazo local de una imagen sin permiso de reutilización documentado; aprobación visual del titular y despliegue pendientes.
+
+## Tormenta sobre Milán: fotografía NASA — 31 de octubre de 2026
+
+- [NASA](https://www.nasa.gov/image-article/lightning-from-above/) identifica la fotografía de archivo tomada desde la Estación Espacial Internacional el 1 de julio de 2025 y la acredita a NASA/Nichole Ayers. No representa el impacto de una persona.
+- [Archivo original](https://www.nasa.gov/wp-content/uploads/2026/01/iss073e0532039orig.jpg), conservado sin modificar en `src/assets/images/2026-08-10-lightning-milan-nasa.jpg`; SHA-256 `7b5507c0f8186440812509b263203995317084d6f0f9273aac8ca9d0172ac768`.
+- Uso editorial factual con crédito, conforme a las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/), sin sugerir respaldo institucional. Sustitución local; revisión visual y publicación pendientes.
+
+## GlucoFM: ilustración conceptual original — 31 de octubre de 2026
+
+La portada se generó con `image_gen` a partir de texto y sin imágenes de referencia. Representa de manera conceptual un sensor genérico y señales abstractas; no muestra un dispositivo específico, datos reales ni prueba de eficacia clínica. La leyenda la identifica como generada con IA. El [recibo](./image-rights/2026-10-31-glucofm-concept.json) conserva prompt, original y hashes; no acredita exclusividad ni revisión científica. Reemplaza localmente una figura del material del desarrollador cuya autorización de reutilización no estaba documentada. Revisión visual del titular y despliegue pendientes.
+
+## Eclipse solar de 2024: imagen de archivo para la guía de 2027 — 31 de octubre de 2026
+
+- [NASA Science](https://science.nasa.gov/solar-system/skywatching/april-8-total-solar-eclipse-through-the-eyes-of-nasa/) acredita a NASA/Keegan Barber esta fotografía del eclipse total observado en Dallas el 8 de abril de 2024. Es una imagen de archivo y su leyenda la fecha expresamente; no pretende representar el eclipse futuro de 2027.
+- [Variante de 1536 píxeles](https://science.nasa.gov/wp-content/uploads/2024/04/nhq202404080101large.jpg?w=1536), copiada sin cambios al activo `src/assets/images/2026-08-28-total-eclipse-2024-nasa.jpg`, 1536 × 1024, SHA-256 `bd6ad7813caf3d7e414fe002bd27c9b89a1efb0299a85fdb989c0948a4d7b3b6`. Astro produce derivados para la entrega.
+- Uso editorial factual con crédito, conforme a las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/); no implica respaldo de NASA. Sustitución local; presentación y publicación pública pendientes.
+
+## Teghaza 001: sección del meteorito publicada por NASA/JPL — 31 de octubre de 2026
+
+- [Ficha NASA Photojournal PIA26801](https://science.nasa.gov/photojournal/slice-of-martian-meteorite-teghaza-001/) identifica esta sección microscópica de Teghaza 001 utilizada en el análisis y la acredita a NASA/JPL-Caltech. La ficha se publicó el 29 de octubre de 2026.
+- [JPEG original](https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia26/pia26801/PIA26801.jpg): activo local `src/assets/images/2026-10-29-teghaza-001-section-nasa.jpg`, 3139 × 2424 píxeles, SHA-256 `5e0064a5bb9963defb4507ebe87eb60ee68d606d8d9cb71aabc6f70d77c93a4c`, idéntico a la descarga. Astro genera derivados y puede recortar su presentación; la descripción identifica la vista como sección microscópica.
+- [Política de uso de NASA/JPL](https://www.jpl.nasa.gov/jpl-image-use-policy/): se acredita a NASA/JPL-Caltech y se utiliza en contexto editorial factual sin insinuar respaldo. No se confunde con la fotografía de la roca completa de la noticia de JPL, acreditada a un tercero. Sustitución local, presentación y despliegue público por verificar.
+
+## Artemis II: fotografía real del sobrevuelo lunar — 31 de octubre de 2026
+
+Se reemplaza localmente una ilustración de procedencia no documentada por una fotografía del 6 de abril de 2026 tomada durante el sobrevuelo de Artemis II. La imagen es posterior a la fecha original de la noticia; el artículo ya incorpora una actualización sobre el vuelo.
+
+- [Ficha de la fotografía Earthset](https://www.nasa.gov/image-article/earthset/), crédito NASA. [Archivo descargado](https://www.nasa.gov/wp-content/uploads/2026/04/art002e009288orig-1.jpg?w=2048) desde el servidor de NASA; el parámetro solicita la variante de 2048 píxeles.
+- Activo local: `src/assets/images/2026-01-18-artemis-ii-earthset-nasa.jpg`, JPEG de 2048 × 1365, SHA-256 `52d3c4e45d465d80f67a67af0b1c82aa3be5106257d61c47d332589c9c478c6c`. Coincide byte por byte con la variante descargada; Astro genera sus propios derivados para servirla.
+- Uso editorial factual con atribución, sujeto a las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/) y sin sugerir respaldo institucional. No se atribuye a NASA la ilustración anterior. Revisión de presentación y despliegue pendientes.
+
+## Artemis II: fotografía de lanzamiento utilizada en la nota de comunicación láser — 31 de octubre de 2026
+
+- Activo: `src/assets/images/2026-04-02-lincoln-laboratory-laser-communications-terminal-launches-on-historic-artemis-ii-moon-mission.jpg`, SHA-256 `eef630d43925d53f1709030211652904083e6fa66f0b622a34fda7afc9b359fe`, 2000 × 1333 píxeles.
+- [MIT News](https://news.mit.edu/2026/lincoln-laboratory-laser-communications-terminal-launches-artemis-ii-0402) publica la misma escena y acredita la fotografía a Joel Kowsky/NASA. El archivo local también identifica a NASA/Joel Kowsky en EXIF. La [imagen de MIT](https://news.mit.edu/sites/default/files/images/202604/artemis-ii-launch-nasa-00_0.jpg) tiene las mismas dimensiones y SHA-256 `24de16f4d562e1a1433c8c4569e069ed8e8db9c4d2ff73f13ee91d6e38d1bac4`: los archivos no son idénticos, aunque su diferencia media por canal es inferior a 0,16 en una escala de 0 a 255. No se conoce el historial exacto de transformación.
+- Las [directrices de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/) permiten en general el uso editorial factual con atribución y sin insinuar respaldo. Se añade crédito visible al texto alternativo de esta portada. Esta comprobación corresponde al uso editorial de esta fotografía, no a usos publicitarios o promocionales ni a otros activos.
+- Estado: atribución y evidencia preparadas localmente; falta verificación tras publicación. No se modifica el recuento histórico del snapshot de producción.
+- Comprobación repetida el 1 de noviembre: el archivo local conserva el hash indicado y la variante de MIT mantiene el suyo; ambos miden 2000 × 1333. La diferencia absoluta media entre los 7.998.000 canales RGB decodificados fue 0,130 sobre 255. La semejanza y el crédito apoyan la identificación de la escena, pero no establecen cómo se transformó el archivo local.
+
+## Ilustración conceptual de interferometría — 31 de octubre de 2026
+
+Generada con `image_gen` desde texto, sin imágenes de referencia. Es una representación conceptual, no una fotografía ni una reconstrucción validada del experimento; se identifica como tal en el texto alternativo. El [recibo](./image-rights/2026-10-31-quantum-interferometry.json) registra prompt, originales, hashes y límites; no certifica derechos exclusivos ni revisión científica. Reemplaza localmente una imagen de procedencia no verificada. Aprobación visual del titular y despliegue pendientes.
+
 ## Imágenes de portada v2: reemplazo del 28-10-2026
 
 Tres ilustraciones nuevas, generadas con la herramienta integrada `image_gen` de Codex a partir del director de arte v2 del backend (plan 202), solo desde texto y sin imágenes de referencia. El propietario aprobó la dirección visual el 27-10-2026 en una comparación de cuatro artículos. La de Marte se regeneró para corregir la forma del volcán: Arsia Mons es un volcán escudo, no un cono. La imagen de Shanidar A se trata en la sección siguiente.

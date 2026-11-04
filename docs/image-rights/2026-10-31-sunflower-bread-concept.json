@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T19:56:06.625459+00:00",
+  "article": "src/content/posts/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create a refined landscape 3:2 conceptual illustration for an independent science magazine about an experiment in breadmaking with sunflower seed flour. A sliced rustic loaf and a small dish of sunflower kernels on a clean warm neutral linen surface, gentle indirect daylight, restrained earth and cream colors, sophisticated editorial still-life composition, no people, no packaging, no brand, no labels, no text. The image is illustrative and must not claim to show the experimental loaves or any proven nutritional effect. Elegant and natural rather than advertising, plenty of visual detail and clear composition.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-d87ebaf3-8938-42a3-9c24-8745af41ac54.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-sunflower-bread-concept.png",
+    "sha256": "d4944a83202a482078847d0f6af34d4d1fe5a14c9842796222d7b3739a7e8dc4",
+    "bytes": 2880534,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-02-16-sunflower-bread-concept-original.webp",
+    "sha256": "39192fd64c48bfb6abea9889a58d4301c8b66356923906ae541a0a006f74de68",
+    "bytes": 367082,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-02-16-677.jpg",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Illustrative scene, not a photograph of the experimental breads or evidence of nutrition or health benefits.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

@@ -37,6 +37,9 @@ const legacyRedirects = JSON.parse(safeRead('data/legacy-redirects.json'));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://noticiencias.com',
+  // Resolve this before integrations run so Astro's dev image endpoint and
+  // generated image URLs agree on the same trailing-slash policy.
+  trailingSlash: siteYamlConfig?.site?.trailingSlash ? 'always' : 'never',
   prefetch: false,
   redirects: legacyRedirects,
   integrations: [
@@ -47,6 +50,7 @@ export default defineConfig({
         !page.includes('/social-manifest.json') &&
         !page.includes('/admin/') &&
         !page.includes('/llm-md/') &&
+        new URL(page).pathname.replace(/\/+$/, '') !== '/reportar-problema' &&
         !page.includes(tagBasePath),
     }),
     mdx(),

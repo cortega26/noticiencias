@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-02T00:32:07.705116+00:00",
+  "article": "src/content/posts/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create one sophisticated editorial technology photograph-style conceptual illustration for a Spanish science news website article about software coding assistants. Wide landscape 16:9 composition, close-up of a modern laptop with an abstract code editor interface, softly illuminated keyboard, dark navy and warm neutral palette, elegant realistic professional editorial art direction, subtle texture, ample space, no people, no hands, no brand marks, no logos, no legible text, no letters, no watermarks. It should be clearly a generic conceptual scene, not a real product screenshot.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-d4f36952-c967-45fd-bbdd-98ebf2abc70f.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-coding-assistant-concept.png",
+    "sha256": "edbc81f5ca3500db5f908090e2e693a2a8919b284ea3e9bfbfa3a1a39858908a",
+    "bytes": 1602834,
+    "width": 1672,
+    "height": 941
+  },
+  "exported": {
+    "path": "src/assets/images/2026-11-01-coding-assistant-concept-original.webp",
+    "sha256": "f8d3ecc27ec138ab4f17e52534e99d8f69050888444e86953e3fd644ee372d7a",
+    "bytes": 110438,
+    "width": 1672,
+    "height": 941,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-31-article-521.jpg",
+    "provenance": "no exact hash match in consulted rights records; origin and permission not established"
+  },
+  "evidence_boundary": "Ilustración conceptual generada con IA de un portátil con código abstracto; no muestra la interfaz de Claude Code.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

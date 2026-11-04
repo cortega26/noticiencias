@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T00:28:00.249676+00:00",
+  "article": "src/content/posts/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 3:2 editorial conceptual illustration for a serious public health article about interpreting surveys of esports players. Depict an unoccupied, understated gaming workspace: neutral ergonomic chair, plain desk, unbranded keyboard and a dark blank monitor with soft reflected daylight. Calm documentary magazine atmosphere, subtle deep blue and warm grey tones, refined composition, no people, no pills or medicine, no body parts, no logos, no writing, no numbers, no game screens, no text, no clinical claims. The illustration is conceptual, not evidence of a real player or diagnosis.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-ef9dda4a-41c8-4d75-8ac2-61f8dda4d5ed.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-esports-survey-concept.png",
+    "sha256": "daee7ad0492cdc74bcf778de65837f16ede21d5dc1a8a2377be094775f544d15",
+    "bytes": 1991868,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-08-28-esports-survey-concept-original.webp",
+    "sha256": "6470dde4b72e495753af91b43f062e1470540dd9056fa36c0fc51e0ac9fae26a",
+    "bytes": 148242,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.avif",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Conceptual workspace; not a real player, treatment, or evidence of a diagnosis or injury.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}
