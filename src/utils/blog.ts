@@ -177,7 +177,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
   // are omitted; legacy posts without evidence data render no chips.
   const evidenceChips: string[] = [
     ...(evidence_subject_type && evidence_subject_type !== 'unknown'
-      ? [`Modelo: ${evidenceLabels[evidence_subject_type]}`]
+      ? [`Evidencia: ${evidenceLabels[evidence_subject_type]}`]
       : []),
     ...(publication_status && publication_status !== 'other'
       ? [publicationChipLabels[publication_status]]

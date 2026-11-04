@@ -28,6 +28,11 @@ const CHECKS = [
   { name: 'frontmatter-dates', script: 'check-frontmatter-dates.js', label: 'Frontmatter dates' },
   { name: 'hero-images', script: 'check-hero-images.js', label: 'Hero images' },
   { name: 'image-alt', script: 'check-image-alt.js', label: 'Image alt text' },
+  {
+    name: 'image-attributions',
+    script: 'check-image-attributions.js',
+    label: 'Image attributions',
+  },
   { name: 'slug-quality', script: 'check-slug-quality.js', label: 'Slug quality' },
   { name: 'image-extensions', script: 'check-image-file-extensions.js', label: 'Image extensions' },
   { name: 'content-quality', script: 'check-content-quality.js', label: 'Content quality' },

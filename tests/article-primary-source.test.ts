@@ -12,20 +12,28 @@ describe('P0-01 primary source hierarchy', () => {
   it('Herculano shows primary paper, DOI and secondary coverage', () => {
     const $ = loadSlug('2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos');
     expect($('h3').filter((_, el) => $(el).text().trim() === 'Fuente primaria').length).toBe(1);
-    expect($('a[href="https://doi.org/10.1371/journal.pone.0353485"]').length).toBe(1);
+    expect(
+      $('#fuentes-y-limites a[href="https://doi.org/10.1371/journal.pone.0353485"]').length
+    ).toBe(1);
     expect($('h3').filter((_, el) => $(el).text().trim() === 'Cobertura').length).toBe(1);
   });
 
-  it('biomedico shows primary preprint with DOI and no invented secondary', () => {
+  it('biomedico distinguishes the preprint from explicitly identified secondary coverage', () => {
     const $ = loadSlug('2026-09-18-noticia-cientifica');
     expect($('h3').filter((_, el) => $(el).text().trim() === 'Fuente primaria').length).toBe(1);
     expect($('a[href="https://doi.org/10.64898/2026.09.12.751148"]').length).toBe(1);
-    expect($('h3').filter((_, el) => $(el).text().trim() === 'Cobertura').length).toBe(0);
+    expect($('h3').filter((_, el) => $(el).text().trim() === 'Cobertura').length).toBe(1);
+    expect(
+      $(
+        '#fuentes-y-limites a[href="https://organoidbiofoundry.com/analysis/alginate-microencapsulation-sc-islet-scale-up.html"]'
+      ).length
+    ).toBe(1);
+    expect($('article').text()).toContain('no es una réplica independiente');
   });
 
-  it('legacy articles keep the plain Fuentes heading', () => {
+  it('the turtle article distinguishes the primary study from coverage', () => {
     const $ = loadSlug('2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado');
-    expect($('h3').filter((_, el) => $(el).text().trim() === 'Fuente primaria').length).toBe(0);
-    expect($('h3').filter((_, el) => $(el).text().trim() === 'Fuentes').length).toBe(1);
+    expect($('h3').filter((_, el) => $(el).text().trim() === 'Fuente primaria').length).toBe(1);
+    expect($('h3').filter((_, el) => $(el).text().trim() === 'Cobertura').length).toBe(1);
   });
 });

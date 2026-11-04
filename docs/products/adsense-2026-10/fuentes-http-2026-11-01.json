@@ -1,0 +1,885 @@
+{
+  "checked_at_utc": "2026-11-02T01:04:16.895047+00:00",
+  "scope": "URL únicas de sources con role primary en 60 Markdown locales; instantánea previa a corregir la barra final de Caltech",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "method": "GET requests, redirecciones seguidas, 4 conexiones concurrentes, timeout 12s, respuesta en streaming sin leer cuerpo",
+  "limitations": [
+    "El estado HTTP no valida contenido, independencia ni derechos.",
+    "403 y 203 pueden corresponder a bloqueos o intermediarios; no se clasifican como enlaces muertos.",
+    "Una URL 200 puede devolver desafío de acceso u otra página no relacionada.",
+    "No acredita accesibilidad desde navegador público, Googlebot ni producción.",
+    "Las URLs finales se guardan sin parámetros ni fragmentos."
+  ],
+  "results": [
+    {
+      "url": "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115",
+      "posts": ["src/content/posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md"],
+      "status": 200,
+      "final_url": "https://news.mit.edu/2026/how-online-mit-course-supply-chain-management-sparked-new-career-0115",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://micromasters.mit.edu/scm/frequently-asked-questions/",
+      "posts": ["src/content/posts/2026-01-15-cursos-en-linea-abren-puertas-a-nuevas-carreras.md"],
+      "status": 200,
+      "final_url": "https://micromasters.mit.edu/scm/frequently-asked-questions/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s43247-025-03021-6",
+      "posts": [
+        "src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s43247-025-03021-6",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s43247-026-03258-9",
+      "posts": [
+        "src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s43247-026-03258-9",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/",
+      "posts": [
+        "src/content/posts/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nasa.gov/news-release/what-you-need-to-know-about-nasas-artemis-ii-moon-mission/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nasa.gov/mission/artemis-ii/",
+      "posts": [
+        "src/content/posts/2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nasa.gov/mission/artemis-ii/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-025-67530-w",
+      "posts": [
+        "src/content/posts/2026-01-23-descubren-los-arpones-mas-antiguos-una-revelacion-que-cambia-nuestra-perspectiva-sobre-la-caza-de-ballenas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41467-025-67530-w",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41493360/",
+      "posts": [
+        "src/content/posts/2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879.md"
+      ],
+      "status": 203,
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/41493360/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823444/",
+      "posts": [
+        "src/content/posts/2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823444/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-09983-z",
+      "posts": [
+        "src/content/posts/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41586-025-09983-z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://medlineplus.gov/spanish/druginfo/meds/a682799-es.html",
+      "posts": [
+        "src/content/posts/2026-01-25-la-guarderia-un-lugar-donde-los-bebes-intercambian-microorganismos-y-desarrollan-su-microbioma.md"
+      ],
+      "status": 200,
+      "final_url": "https://medlineplus.gov/spanish/druginfo/meds/a682799-es.html",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23089869/",
+      "posts": ["src/content/posts/2026-01-27-conoce-a-los-misteriosos-electridos.md"],
+      "status": 203,
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/23089869/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11200003/",
+      "posts": ["src/content/posts/2026-01-27-conoce-a-los-misteriosos-electridos.md"],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11200003/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.who.int/news-room/questions-and-answers/item/what-you-need-to-know-about-measles",
+      "posts": [
+        "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.who.int/news-room/questions-and-answers/item/what-you-need-to-know-about-measles",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.who.int/europe/news-room/events/item/2025/09/15/default-calendar/14th-meeting-of-the-european-regional-verification-commission-for-measles-and-rubella-elimination-%28rvc%29",
+      "posts": [
+        "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.who.int/europe/news-room/events/item/2025/09/15/default-calendar/14th-meeting-of-the-european-regional-verification-commission-for-measles-and-rubella-elimination-%28rvc%29",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.who.int/europe/news/item/11-02-2026-measles-cases-dropped-in-europe-and-central-asia-in-2025-compared-to-the-previous-year--but-the-risk-of-outbreaks-remains---unicef-and-who",
+      "posts": [
+        "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.who.int/europe/news/item/11-02-2026-measles-cases-dropped-in-europe-and-central-asia-in-2025-compared-to-the-previous-year--but-the-risk-of-outbreaks-remains---unicef-and-who",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.paho.org/en/measles-multi-country-outbreak-2026",
+      "posts": [
+        "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.paho.org/en/measles-multi-country-outbreak-2026",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/measles-and-rubella-elimination-uk/uk-measles-and-rubella-elimination",
+      "posts": [
+        "src/content/posts/2026-01-27-desafio-global-contra-el-sarampion-por-falta-de-confianza-en-las-vacunas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.gov.uk/government/publications/measles-and-rubella-elimination-uk/uk-measles-and-rubella-elimination",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12848047/",
+      "posts": [
+        "src/content/posts/2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12848047/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.itu.int/en/mediacentre/Pages/PR-2025-11-17-facts-and-figures.aspx",
+      "posts": [
+        "src/content/posts/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.itu.int/en/mediacentre/Pages/PR-2025-11-17-facts-and-figures.aspx",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.itu.int/en/mediacentre/backgrounders/pages/High-altitude-platform-systems.aspx",
+      "posts": [
+        "src/content/posts/2026-01-27-nuevas-plataformas-estratosfericas-podrian-revolucionar-la-conectividad-en-areas-remotas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.itu.int/en/mediacentre/backgrounders/pages/High-altitude-platform-systems.aspx",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41392-025-02455-w",
+      "posts": [
+        "src/content/posts/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41392-025-02455-w",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://medlineplus.gov/spanish/osteoporosis.html",
+      "posts": [
+        "src/content/posts/2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial.md"
+      ],
+      "status": 200,
+      "final_url": "https://medlineplus.gov/spanish/osteoporosis.html",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://openclaw.ai/blog/introducing-openclaw",
+      "posts": [
+        "src/content/posts/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md"
+      ],
+      "status": 200,
+      "final_url": "https://openclaw.ai/blog/introducing-openclaw",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://docs.openclaw.ai/sandboxing",
+      "posts": [
+        "src/content/posts/2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad.md"
+      ],
+      "status": 200,
+      "final_url": "https://docs.openclaw.ai/sandboxing",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.3847/1538-4365/ae18d3",
+      "posts": [
+        "src/content/posts/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica.md"
+      ],
+      "status": 200,
+      "final_url": "https://iopscience.iop.org/article/10.3847/1538-4365/ae18d3",
+      "content_type": "text/html;charset=UTF-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.14559",
+      "posts": [
+        "src/content/posts/2026-01-28-observatorio-de-la-energia-oscura-refina-comprension-de-expansion-cosmica.md",
+        "src/content/posts/2026-01-31-estudio-revela-menor-agrupamiento-de-galaxias-de-lo-esperado.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2601.14559",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://docs.anthropic.com/en/docs/claude-code/cli-usage",
+      "posts": [
+        "src/content/posts/2026-01-31-como-claude-code-esta-llevando-el-vibe-coding-a-todos.md"
+      ],
+      "status": 200,
+      "final_url": "https://code.claude.com/docs/en/cli-usage",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41591-026-04219-7",
+      "posts": [
+        "src/content/posts/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41591-026-04219-7",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41678628/",
+      "posts": [
+        "src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md"
+      ],
+      "status": 203,
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/41678628/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://academic.oup.com/mnras/article/546/3/stag052/8424233",
+      "posts": [
+        "src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md"
+      ],
+      "status": 403,
+      "final_url": "https://academic.oup.com/mnras/article/546/3/stag052/8424233",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://authors.library.caltech.edu/records/xpcf5-99v38/",
+      "posts": [
+        "src/content/posts/2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva.md"
+      ],
+      "status": 404,
+      "final_url": "https://authors.library.caltech.edu/records/xpcf5-99v38/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pubs.acs.org/doi/10.1021/acsfoodscitech.4c01008",
+      "posts": [
+        "src/content/posts/2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable.md"
+      ],
+      "status": 403,
+      "final_url": "https://pubs.acs.org/doi/10.1021/acsfoodscitech.4c01008",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-10042-w",
+      "posts": [
+        "src/content/posts/2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41586-025-10042-w",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://nmcourts.gov/wp-content/uploads/2026/08/D-101-CV-2023-02838-Final-FOFCOL-and-Judgment-of-the-Court.pdf",
+      "posts": [
+        "src/content/posts/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md"
+      ],
+      "status": 200,
+      "final_url": "https://nmcourts.gov/wp-content/uploads/2026/08/D-101-CV-2023-02838-Final-FOFCOL-and-Judgment-of-the-Court.pdf",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://www.crowell.com/a/web/dDeD9AxfxqDSy7X2L3d3n5/verdict-form-youtube.pdf",
+      "posts": [
+        "src/content/posts/2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.crowell.com/a/web/dDeD9AxfxqDSy7X2L3d3n5/verdict-form-youtube.pdf",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/",
+      "posts": [
+        "src/content/posts/2026-04-02-comunicacion-laser-como-desbloqueara-datos-gigantes-y-video-hd-para-las-misiones-lunares-tripuladas.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nasa.gov/missions/artemis/artemis-2/nasa-laser-terminal-enhances-views-during-artemis-ii-mission/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.19559",
+      "posts": [
+        "src/content/posts/2026-04-06-nuevos-experimentos-desafian-la-afirmacion-sobre-la-deteccion-de-materia-oscura.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2503.19559",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://security.googleblog.com/2026/04/ai-threats-in-wild-current-state-of.html",
+      "posts": [
+        "src/content/posts/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan.md"
+      ],
+      "status": 200,
+      "final_url": "https://blog.google/security/prompt-injections-web/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2302.12173",
+      "posts": [
+        "src/content/posts/2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2302.12173",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://economics.yale.edu/research/automation-and-rent-dissipation-implications-wages-inequality-and-productivity",
+      "posts": [
+        "src/content/posts/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md"
+      ],
+      "status": 200,
+      "final_url": "https://economics.yale.edu/research/automation-and-rent-dissipation-implications-wages-inequality-and-productivity",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://economics.mit.edu/sites/default/files/2025-11/Automation%20and%20Rent%20Dissipation%20-%20Implications%20for%20Wages%20Inequality%20and%20Productivity.pdf",
+      "posts": [
+        "src/content/posts/2026-05-07-el-mit-descubre-que-la-automatizacion-no-mejora-la-productividad-como-se-creia.md"
+      ],
+      "status": 200,
+      "final_url": "https://economics.mit.edu/sites/default/files/2025-11/Automation%20and%20Rent%20Dissipation%20-%20Implications%20for%20Wages%20Inequality%20and%20Productivity.pdf",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://doi.org/10.3847/2041-8213/ae2a30",
+      "posts": [
+        "src/content/posts/2026-05-15-un-asteroide-de-700-metros-rota-cada-1-88-minutos-desafiando-teorias-astronomicas.md"
+      ],
+      "status": 200,
+      "final_url": "https://iopscience.iop.org/article/10.3847/2041-8213/ae2a30",
+      "content_type": "text/html;charset=UTF-8"
+    },
+    {
+      "url": "https://www.spacex.com/launches/starship-flight-12",
+      "posts": [
+        "src/content/posts/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.spacex.com/launches/starship-flight-12",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.faa.gov/newsroom/statements/general-statements",
+      "posts": [
+        "src/content/posts/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio.md"
+      ],
+      "status": 403,
+      "final_url": "https://www.faa.gov/newsroom/statements/general-statements",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions/",
+      "posts": [
+        "src/content/posts/2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nasa.gov/missions/artemis/nasa-partners-accelerate-lander-development-for-2028-moon-missions/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.26492",
+      "posts": [
+        "src/content/posts/2026-06-12-los-chatbots-rescataron-a-elias-thorne-de-una-conversacion-casual-y-lo-convirtieron-en-una-ficcion-masiva.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2605.26492",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://oceancensus.org/press-release-scientists-discover-over-1100-new-marine-species-in-landmark-ocean-census/",
+      "posts": [
+        "src/content/posts/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos.md"
+      ],
+      "status": 200,
+      "final_url": "https://oceancensus.org/press-release-scientists-discover-over-1100-new-marine-species-in-landmark-ocean-census/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+      "posts": ["src/content/posts/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md"],
+      "status": 200,
+      "final_url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://dev.meta.ai/docs/muse-glimmer",
+      "posts": ["src/content/posts/2026-08-10-muse-glimmer-ia-de-30-b-que-cabe-en-una-sola-gpu.md"],
+      "status": 200,
+      "final_url": "https://dev.meta.ai/docs/muse-glimmer",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cdc.gov/lightning/safety/",
+      "posts": ["src/content/posts/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles.md"],
+      "status": 200,
+      "final_url": "https://www.cdc.gov/lightning/safety/",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.weather.gov/mlb/lightning_rules",
+      "posts": ["src/content/posts/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles.md"],
+      "status": 200,
+      "final_url": "https://www.weather.gov/mlb/lightning_rules",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.weather.gov/safety/lightning-medical",
+      "posts": ["src/content/posts/2026-08-10-que-efectos-tiene-un-rayo-sin-rasgunos-visibles.md"],
+      "status": 200,
+      "final_url": "https://www.weather.gov/safety/lightning-medical",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://openai.com/es-419/index/hugging-face-model-evaluation-security-incident/",
+      "posts": [
+        "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md"
+      ],
+      "status": 200,
+      "final_url": "https://openai.com/es-419/index/hugging-face-model-evaluation-security-incident/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://openai.com/es-419/index/hugging-face-incident-and-the-road-ahead/",
+      "posts": [
+        "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md"
+      ],
+      "status": 200,
+      "final_url": "https://openai.com/es-419/index/hugging-face-incident-and-the-road-ahead/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "posts": [
+        "src/content/posts/2026-08-12-un-modelo-de-ia-realizo-mas-de-17-500-acciones-en-hugging-face.md"
+      ],
+      "status": 200,
+      "final_url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.30865",
+      "posts": [
+        "src/content/posts/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2605.30865",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42481050/",
+      "posts": [
+        "src/content/posts/2026-08-26-que-revelo-el-adn-de-una-tortuga-que-el-tiempo-habia-borrado.md"
+      ],
+      "status": 200,
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/42481050/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1126/science.ady2660",
+      "posts": [
+        "src/content/posts/2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino.md"
+      ],
+      "status": 403,
+      "final_url": "https://www.science.org/doi/10.1126/science.ady2660",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2027Aug02Tgoogle.html",
+      "posts": [
+        "src/content/posts/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos.md"
+      ],
+      "status": 200,
+      "final_url": "https://eclipse.gsfc.nasa.gov/SEgoogle/SEgoogle2001/SE2027Aug02Tgoogle.html",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html",
+      "posts": [
+        "src/content/posts/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos.md"
+      ],
+      "status": 200,
+      "final_url": "https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://science.nasa.gov/eclipses/safety/",
+      "posts": [
+        "src/content/posts/2026-08-28-el-eclipse-solar-de-2027-durara-seis-minutos-y-veintitres-segundos.md"
+      ],
+      "status": 200,
+      "final_url": "https://science.nasa.gov/eclipses/safety/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8506853/",
+      "posts": ["src/content/posts/2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda.md"],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8506853/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://worldathletics.org/results/iaaf-world-championships-in-athletics/2009/12th-iaaf-world-championships-in-athletics-6998524/men/100-metres/final/result",
+      "posts": [
+        "src/content/posts/2026-09-05-un-robot-humanoide-corrio-mas-rapido-que-usain-bolt.md"
+      ],
+      "status": 200,
+      "final_url": "https://worldathletics.org/results/iaaf-world-championships-in-athletics/2009/12th-iaaf-world-championships-in-athletics-6998524/men/100-metres/final/result",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "posts": [
+        "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pancanal.com/canal-de-panama-adopta-medidas-adicionales-para-atender-la-reduccion-de-precipitaciones-en-la-cuenca-hidrografica/",
+      "posts": [
+        "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md"
+      ],
+      "status": 200,
+      "final_url": "https://pancanal.com/canal-de-panama-adopta-medidas-adicionales-para-atender-la-reduccion-de-precipitaciones-en-la-cuenca-hidrografica/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "posts": [
+        "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://pancanal.com/wp-content/uploads/2026/04/ADV-36-2026-Increase-in-the-Number-of-Neopanamax-Booking-Slots-Draft-Adjustment-and-Transit-Reservation-System.pdf",
+      "posts": [
+        "src/content/posts/2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama.md"
+      ],
+      "status": 200,
+      "final_url": "https://pancanal.com/wp-content/uploads/2026/04/ADV-36-2026-Increase-in-the-Number-of-Neopanamax-Booking-Slots-Draft-Adjustment-and-Transit-Reservation-System.pdf",
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://doi.org/10.3847/2041-8213/ae9bb6",
+      "posts": [
+        "src/content/posts/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe.md"
+      ],
+      "status": 200,
+      "final_url": "https://iopscience.iop.org/article/10.3847/2041-8213/ae9bb6",
+      "content_type": "text/html;charset=UTF-8"
+    },
+    {
+      "url": "https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/",
+      "posts": [
+        "src/content/posts/2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe.md"
+      ],
+      "status": 200,
+      "final_url": "https://science.nasa.gov/blogs/roman/2026/08/30/nasas-roman-space-telescope-launches/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://biorxiv.org/content/10.64898/2026.09.12.751148v1?rss=1",
+      "posts": ["src/content/posts/2026-09-18-noticia-cientifica.md"],
+      "status": 200,
+      "final_url": "https://www.biorxiv.org/content/10.64898/2026.09.12.751148v1",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1371/journal.pone.0353485",
+      "posts": [
+        "src/content/posts/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos.md"
+      ],
+      "status": 200,
+      "final_url": "https://journals.plos.org/plosone/article",
+      "content_type": "text/html;charset=UTF-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/",
+      "posts": [
+        "src/content/posts/2026-09-20-pelos-diminutos-la-clave-inesperada-para-la-supervivencia-nocturna-del-coral.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13189103/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.16720",
+      "posts": [
+        "src/content/posts/2026-09-21-senal-de-radio-de-un-exoplaneta-revela-posible-aurora.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2609.16720",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/",
+      "posts": [
+        "src/content/posts/2026-09-23-mapa-muestra-donde-el-bombeo-de-acuiferos-agota-agua-dulce.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13598224/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/9711200",
+      "posts": [
+        "src/content/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/hep-th/9711200",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/1501.00007",
+      "posts": [
+        "src/content/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1501.00007",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1103/PhysRevD.7.2333",
+      "posts": [
+        "src/content/posts/2026-09-25-la-gravedad-como-proyector-holografico-del-universo.md"
+      ],
+      "status": 403,
+      "final_url": "https://link.aps.org/doi/10.1103/PhysRevD.7.2333",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC283525/",
+      "posts": [
+        "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC283525/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/nn1525",
+      "posts": [
+        "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/nn1525",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41591-021-01351-4",
+      "posts": [
+        "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41591-021-01351-4",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://news.ki.se/the-nobel-prize-to-the-pioneers-of-optogenetics-peter-hegemann-georg-nagel-and-karl-deisseroth",
+      "posts": [
+        "src/content/posts/2026-10-05-como-una-alga-que-busca-luz-controla-el-cerebro-de-un-mamifero.md"
+      ],
+      "status": 200,
+      "final_url": "https://news.ki.se/the-nobel-prize-to-the-pioneers-of-optogenetics-peter-hegemann-georg-nagel-and-karl-deisseroth",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/nature16512",
+      "posts": [
+        "src/content/posts/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/nature16512",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41558-024-01989-1",
+      "posts": [
+        "src/content/posts/2026-10-12-las-redes-invisibles-que-estan-revitalizando-los-bosques-lluviosos.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41558-024-01989-1",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://cfg.eu/negotiating-solar-radiation-modification-governance/",
+      "posts": [
+        "src/content/posts/2026-10-12-simulacion-de-guerra-mostro-efecto-inesperado-al-enfriar-la-tierra.md"
+      ],
+      "status": 200,
+      "final_url": "https://cfg.eu/negotiating-solar-radiation-modification-governance/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11143-w",
+      "posts": [
+        "src/content/posts/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41586-026-11143-w",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11167-2",
+      "posts": [
+        "src/content/posts/2026-10-14-ia-crea-proteasas-desde-cero-conservando-solo-el-nucleo-catalitico.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41586-026-11167-2",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.cub.2023.02.027",
+      "posts": [
+        "src/content/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.md"
+      ],
+      "status": 200,
+      "final_url": "https://linkinghub.elsevier.com/retrieve/pii/S0960982223001677",
+      "content_type": "text/html;charset=UTF-8"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42275513/",
+      "posts": [
+        "src/content/posts/2026-10-15-los-hongos-bajo-tus-pies-absorben-13-000-millones-de-toneladas-de-co2-anuales.md"
+      ],
+      "status": 200,
+      "final_url": "https://pubmed.ncbi.nlm.nih.gov/42275513/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1038/s41598-026-69193-z",
+      "posts": [
+        "src/content/posts/2026-10-17-neandertal-herido-y-cuidado-senal-de-empatia-hace-75-000-anos.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41598-026-69193-z",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13322224/",
+      "posts": [
+        "src/content/posts/2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13322224/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41561-026-02089-9",
+      "posts": [
+        "src/content/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41561-026-02089-9",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2410.03025",
+      "posts": [
+        "src/content/posts/2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2410.03025",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13693654/",
+      "posts": [
+        "src/content/posts/2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa.md"
+      ],
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13693654/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41558-026-02758-y",
+      "posts": [
+        "src/content/posts/2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada.md"
+      ],
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41558-026-02758-y",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.38693",
+      "posts": [
+        "src/content/posts/2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano.md"
+      ],
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2610.38693",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://support.apple.com/es-es/105101",
+      "posts": [
+        "src/content/posts/2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal.md"
+      ],
+      "status": 200,
+      "final_url": "https://support.apple.com/es-es/105101",
+      "content_type": "text/html;charset=utf-8"
+    },
+    {
+      "url": "https://doi.org/10.1126/science.adz5646",
+      "posts": [
+        "src/content/posts/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua.md"
+      ],
+      "status": 403,
+      "final_url": "https://www.science.org/doi/10.1126/science.adz5646",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://doi.org/10.1126/sciadv.aea3420",
+      "posts": [
+        "src/content/posts/2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua.md"
+      ],
+      "status": 403,
+      "final_url": "https://www.science.org/doi/10.1126/sciadv.aea3420",
+      "content_type": "text/html; charset=UTF-8"
+    }
+  ]
+}

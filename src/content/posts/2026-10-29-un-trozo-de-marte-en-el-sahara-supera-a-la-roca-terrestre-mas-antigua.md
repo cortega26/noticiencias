@@ -1,7 +1,9 @@
 ---
-title: Un trozo de Marte en el Sahara supera a la roca terrestre más antigua
+title: Un antiguo meteorito marciano revela pistas sobre la corteza y el agua de Marte
 schema_version: 2
 date: 2026-10-29
+corrected_at: '2026-11-02'
+correction_summary: 'Se incorporaron los estudios primarios, se precisaron los límites de la antigüedad y las inferencias sobre el agua, y se identificó la imagen documental. Se corrigieron la atribución de una entrevista, el nombre de la especialista y afirmaciones no demostradas sobre el viaje del meteorito y futuras muestras.'
 author: Noticiencias AI
 categories:
   - Ciencia
@@ -11,18 +13,18 @@ tags:
   - meteorito
   - circón
   - agua primitiva
-excerpt: Teghaza 001, meteorito de 4.100 millones de años hallado en el Sahara, revela agua temprana y pérdida atmosférica en la corteza marciana primitiva.
-image: ~/assets/images/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.png
-image_alt: 'Ilustración generada con IA: Una mano con guante sostiene un meteorito marciano genérico contra la luz del desierto del Sáhara.'
+excerpt: Teghaza 001, meteorito de 4.100 millones de años hallado en el Sahara, aporta evidencia de interacción con agua y pistas sobre la pérdida temprana de hidrógeno en Marte.
+image: ~/assets/images/2026-10-29-teghaza-001-section-nasa.jpg
+image_alt: 'Sección microscópica del meteorito marciano Teghaza 001 utilizada para estudiar su edad. Imagen: NASA/JPL-Caltech.'
 source_url: https://scientificamerican.com/article/oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past/
 refinery_id: '4773'
 headlines_variants:
-  question: ¿Qué nos cuenta la roca marciana más antigua sobre el agua y la atmósfera temprana?
+  question: ¿Qué nos cuenta esta roca marciana antigua sobre el agua y la atmósfera temprana?
   benefit: Por qué Teghaza 001 cambia lo que sabíamos del Marte primitivo y su agua
 summary_points:
-  - El meteorito Teghaza 001, hallado en el Sahara en 2022, tiene al menos 4.100 millones de años y es la muestra marciana más antigua conocida.
-  - Se originó en la corteza de las tierras altas del sur de Marte y muestra alteración acuosa, evidencia de que el agua líquida circuló por la corteza y el manto superior temprano.
-  - Isótopos de hidrógeno atrapados en la roca indican que Marte ya perdía su atmósfera y se enfriaba hacia el desierto actual en esa época remota.
+  - El meteorito Teghaza 001, hallado en el Sahara en 2022, tiene al menos 4.100 millones de años y es uno de los meteoritos marcianos más antiguos conocidos.
+  - Su composición es compatible con zonas de las tierras altas del sur de Marte; sus minerales muestran alteración por fluidos en la corteza antigua.
+  - Un estudio separado de isótopos de hidrógeno en la roca apoya modelos de pérdida temprana de hidrógeno al espacio.
   - Su composición geoquímica sugiere que el manto marciano es más heterogéneo y complejo de lo que predecían los modelos estándar.
   - Al ser un único espécimen sin ubicación exacta en la superficie, los autores advierten que apenas han "arañado la superficie" y que se necesitan misiones de retorno de muestras para confirmar y contextualizar estos hallazgos.
 glossary:
@@ -39,25 +41,41 @@ glossary:
 fact_check:
   - label: Teghaza 001 tiene al menos 4.100 millones de años
     status: confirmed
-  - label: Es el meteorito marciano intacto más antiguo conocido
+  - label: Es uno de los meteoritos marcianos más antiguos conocidos
     status: confirmed
   - label: El meteorito muestra evidencia de alteración acuosa en la corteza marciana temprana
     status: confirmed
-  - label: Isótopos de hidrógeno en la roca indican pérdida atmosférica temprana en Marte
+  - label: Isótopos de hidrógeno en la roca respaldan modelos de pérdida temprana de hidrógeno en Marte
     status: confirmed
-  - label: El manto marciano es más diverso y complejo de lo que asumían los modelos estándar
+  - label: La composición de la muestra sugiere diversidad en el manto marciano
     status: confirmed
   - label: El meteorito provino de las tierras altas del sur de Marte
-    status: confirmed
+    status: uncertain
 why_it_matters:
-  - Proporciona la primera muestra directa de la corteza marciana primordial, permitiendo calibrar modelos de formación y diferenciación planetaria.
-  - Confirma que Marte temprano tuvo agua líquida y una atmósfera que ya comenzaba a perderse, paralelos clave con la Tierra primitiva.
+  - Aporta una muestra rara de corteza marciana antigua para contrastar modelos de formación y diferenciación planetaria.
+  - Aporta evidencia de interacción con agua y respalda modelos de pérdida temprana de hidrógeno en Marte.
   - Subraya la necesidad de misiones de retorno de muestras con contexto geológico conocido para resolver incertidumbres que un meteorito sin ubicación precisa no puede.
 confidence: Moderada — estudio revisado por pares publicado en Science con metodología robusta (datación U-Pb en circón, geoquímica de isótopos), pero basado en un único espécimen eyectado sin contexto estratigráfico ni ubicación exacta en Marte; los propios autores limitan el alcance y piden confirmación con muestras in situ.
 sources:
+  - title: A Martian meteorite that formed more than 4.1 billion years ago samples Mars’ early crust and mantle
+    url: https://doi.org/10.1126/science.adz5646
+    publisher: Science
+    date: '2026-10-29'
+    role: primary
+    doi: 10.1126/science.adz5646
+  - title: A Noachian hydrosphere component in the 4.1-Ga Martian meteorite Teghaza 001
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13251866/
+    publisher: Science Advances
+    date: '2026-06-10'
+    role: primary
+    doi: 10.1126/sciadv.aea3420
   - title: Oldest known Mars rock is a 'Rosetta stone' for the Red Planet's watery past
     url: https://scientificamerican.com/article/oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past/
     publisher: Scientific American
+  - title: NASA-funded Study Details One of Oldest Mars Meteorites Ever Found
+    url: https://www.nasa.gov/solar-system/planets/mars/nasa-funded-study-details-one-of-oldest-mars-meteorites-ever-found/
+    publisher: NASA
+    date: '2026-10-29'
 requires_uncertainty_note: true
 uncertainty_note: El hallazgo se basa en un único meteorito sin contexto geológico exacto de su cráter de origen en Marte, por lo que sus conclusiones sobre el planeta global son preliminares.
 social:
@@ -65,11 +83,13 @@ social:
   id: defd12a8f2ee0ee350cd2186aa7883cf21f580ce5b40a1e5e7d6b1c3e731843b
 ---
 
-Tienes en las manos un fragmento de roca que nació antes que la roca terrestre más antigua. Esperó 4.100 millones de años en la corteza de Marte, sobrevivió al impacto que la lanzó al espacio, cruzó el sistema solar y aterrizó en el Sahara. Ese fragmento, bautizado Teghaza 001, acaba de convertirse en la ventana más nítida que tenemos al primer capítulo de la historia marciana.
+**Corrección y actualización, 30 de octubre de 2026; ampliada el 2 de noviembre.** Precisamos que el origen en las tierras altas del sur es una hipótesis, no una ubicación confirmada; distinguimos el estudio sobre la roca del análisis de hidrógeno y añadimos sus referencias. También eliminamos comparaciones de antigüedad y afirmaciones globales demasiado categóricas. Corregimos el nombre y la atribución de una especialista y retiramos afirmaciones no demostradas sobre cuánto tiempo pasó el meteorito en Marte y de dónde procederá el próximo hallazgo.
+
+Teghaza 001 es un fragmento de roca formado hace más de 4.100 millones de años en Marte. Tras ser expulsado al espacio por un impacto, llegó a la Tierra y fue hallado en el Sahara. El meteorito ofrece una muestra poco común de la corteza marciana antigua, aunque se desconoce su lugar exacto de origen.
 
 ## El hueco en el relato de Marte
 
-Conocemos varios cientos de meteoritos marcianos. Casi todos son jóvenes: apenas cubren los últimos 600 millones de años de un planeta que cumple 4.500 millones. Es como intentar reconstruir la biografía de un anciano mirando solo fotos de su última semana. La única excepción antigua era un meteorito hallado en la Antártida en los años ochenta, apenas diez millones de años más joven que Teghaza. Esa escasez deja una pregunta abierta: ¿cómo era Marte cuando el agua corría por su superficie y la vida apenas emergía en la Tierra?
+Conocemos varios cientos de meteoritos marcianos. Casi todos son jóvenes: apenas cubren los últimos 600 millones de años de un planeta que cumple 4.500 millones. Es como intentar reconstruir la biografía de un anciano mirando solo fotos de su última semana. Otro meteorito marciano antiguo, ALH 84001, fue hallado en la Antártida y tiene una edad similar, según NASA. Esa escasez deja una pregunta abierta: ¿cómo era Marte cuando el agua corría por su superficie y la vida apenas emergía en la Tierra?
 
 ## Lo que hizo el equipo de Yang Liu
 
@@ -79,25 +99,25 @@ Los circónes son minerales cristalinos extremadamente duros que funcionan como 
 
 ## Lo que la roca cuenta (y lo que no)
 
-Los resultados, publicados en _Science_, dibujan un retrato coherente:
+Dos estudios, publicados en _Science_ y _Science Advances_, aportan piezas complementarias:
 
-- **Edad y origen:** Teghaza 001 es una roca ígnea que se enfrió lentamente a partir de magma en la corteza marciana hace al menos 4.100 millones de años. Su firma química apunta a las tierras altas del sur, ese terreno craterizado y antiguo que domina el hemisferio sur del planeta.
-- **Agua temprana:** Algunos minerales muestran alteración acuosa: el agua líquida se filtró a través de la corteza y el manto superior cuando la roca ya era vieja.
-- **Atmósfera fugaz:** El hidrógeno atrapado en el interior de la roca revela que, incluso en ese momento tan remoto, Marte ya estaba perdiendo su atmósfera y enfriándose hacia el desierto actual.
+- **Edad y origen:** Teghaza 001 es una roca ígnea que se enfrió lentamente a partir de magma en la corteza marciana hace al menos 4.100 millones de años. Su firma química es compatible con varios lugares posibles, entre ellos las tierras altas del sur; el lugar exacto no se conoce.
+- **Agua temprana:** Algunos minerales muestran alteración acuosa: la roca reaccionó con fluidos antes de ser expulsada de Marte.
+- **Atmósfera fugaz:** Un estudio separado en _Science Advances_ interpretó las proporciones de hidrógeno de varios meteoritos, incluido Teghaza, como evidencia compatible con modelos de pérdida temprana de hidrógeno al espacio.
 - **Manto heterogéneo:** La composición del meteorito sugiere que el manto marciano es más diverso y complejo de lo que los modelos estándar asumían.
 
-Todo esto encaja con la idea de que Marte y la Tierra empezaron parejos: océanos de magma que se diferencian en núcleo, manto y corteza. La diferencia llegó después. La tectónica de placas terrestre recicló y borró casi toda su corteza primordial. Marte, sin ese motor geológico, guardó el archivo intacto.
+Todo esto encaja con la idea de que Marte y la Tierra empezaron parejos: océanos de magma que se diferencian en núcleo, manto y corteza. La diferencia llegó después. La tectónica de placas terrestre recicló y borró casi toda su corteza primordial. Marte conserva rocas antiguas en su superficie, aunque también han sufrido transformaciones.
 
 ## Los límites de un mensajero accidental
 
-La etiqueta de "piedra Rosetta" que un revisor puso al artículo es potente, pero hay que leerla con precisión. Teghaza 001 llegó sin carta de presentación: no sabemos el cráter exacto del que salió. Su contexto geológico —qué rocas tenía al lado, en qué capa estratigráfica estaba— se perdió en el impacto que la eyectó. Como señala Anya Udry, de la Universidad de Nevada en Las Vegas, que no participó en el estudio: "Marte es un planeta complejo, y este meteorito es realmente interesante, pero no sabemos exactamente de dónde vino, así que esto es realmente otro ejemplo de por qué necesitamos traer muestras".
+La etiqueta de "piedra Rosetta" que un revisor puso al artículo es potente, pero hay que leerla con precisión. Teghaza 001 llegó sin carta de presentación: no sabemos el cráter exacto del que salió. Su contexto geológico —qué rocas tenía al lado y en qué capa estratigráfica estaba— no se conoce. Según [Smithsonian Magazine](https://www.smithsonianmag.com/smart-news/this-rosy-stone-spotted-in-the-sahara-turned-out-to-be-a-4-1-billion-year-old-meteorite-from-mars-one-of-the-oldest-ever-found-180989786/), la investigadora Arya Udry destacó en una entrevista con Scientific American que esa incertidumbre refuerza el interés de traer muestras con contexto conocido.
 
 El estudio está revisado por pares y publicado en _Science_, pero representa un único espécimen. Liu misma lo resume con honestidad: su equipo "apenas ha arañado la superficie" de lo que el meteorito podría contener.
 
 ## El siguiente capítulo está en la superficie
 
-La lección de Teghaza 001 no es solo lo que nos dice de Marte, sino lo que nos recuerda de la Tierra. Nuestro planeta borró sus primeras páginas; Marte las archivó en la superficie. Cada grano de circón que datamos, cada isótopo de hidrógeno que medimos, reduce la incertidumbre sobre por qué dos mundos gemelos divergieron tanto.
+La lección de Teghaza 001 no es solo lo que nos dice de Marte, sino lo que nos recuerda de la Tierra. La superficie de Marte conserva rocas muy antiguas, aunque su historia también ha sido transformada. Cada grano de circón que datamos, cada isótopo de hidrógeno que medimos, reduce la incertidumbre sobre por qué dos mundos gemelos divergieron tanto.
 
-El próximo dato que importa no vendrá de otro hallazgo fortuito en el desierto. Vendrá cuando las misiones de retorno de muestras traigan material recolectado in situ a un laboratorio terrestre. Ahí sí tendremos contexto, estratigrafía y la certeza de saber exactamente de dónde salió cada grano. Mientras tanto, Teghaza 001 sigue en la vitrina: el fragmento más antiguo de un planeta que fue azul y dejó de serlo.
+Futuras misiones de retorno podrían aportar material recolectado con contexto geológico conocido, mientras que nuevos análisis de meteoritos también pueden aportar información. Teghaza 001 ofrece una muestra rara de la corteza antigua de Marte, con límites que hacen valiosas ambas líneas de investigación.
 
 <!-- source_identity: source_id=scientific_american; source_name=Scientific American -->
