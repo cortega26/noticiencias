@@ -2029,6 +2029,41 @@
       }
     ]
   },
+  "~/assets/images/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "0aa7a8be06935efb",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
