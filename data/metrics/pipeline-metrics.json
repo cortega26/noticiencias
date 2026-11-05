@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-04T14:28:12.804Z",
+  "generated_at": "2026-11-05T14:35:19.102Z",
   "content": {
-    "total_articles": 60,
-    "v2_articles": 48,
-    "total_words": 30474,
-    "avg_words": 508,
+    "total_articles": 61,
+    "v2_articles": 49,
+    "total_words": 31411,
+    "avg_words": 515,
     "categories": [
       {
         "name": "Ciencia",
@@ -12,7 +12,7 @@
       },
       {
         "name": "Tecnología",
-        "count": 16
+        "count": 17
       },
       {
         "name": "Salud",
@@ -166,6 +166,18 @@
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-11-04-edita-el-0-016-de-pesos-y-lleva-el-acierto-matematico-del-8-al-48",
+        "title": "Edita el 0,016 % de pesos y lleva el acierto matemático del 8 % al 48 %",
+        "date": "2026-11-04",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Limitada — único reporte en blog de investigación del MIT sin revisión por pares; experimentos acotados a modelos y tareas pequeñas; resultados no replicados independientemente; los propios autores delimitan alcance y piden benchmarks estandarizados.",
+        "review_status": null
+      },
       {
         "slug": "2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal",
         "title": "Un rojo no es igual para todos: qué propone Apple para calibrar el color",
@@ -899,11 +911,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-11-04T14:28:11.869Z"
+    "generated_at": "2026-11-05T14:35:18.156Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 60,
+    "derivatives_available": 61,
     "missing_derivatives": 0
   },
   "health": {
@@ -913,16 +925,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "48 artículos v2 completos."
+      "detail": "49 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "60 artículo(s) con imagen y alt.",
+      "detail": "61 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "60 derivativos disponibles."
+      "detail": "61 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -931,10 +943,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "203 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "213 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 203,
+        "processed": 213,
         "failed": 0
       }
     },
