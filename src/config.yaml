@@ -26,7 +26,6 @@ metadata:
       - url: '/assets/images/noticiencias-social-og.jpg'
         width: 1200
         height: 630
-        alt: 'Noticiencias: ciencia en español, con la evidencia a la vista.'
         type: 'image/jpeg'
     type: website
   twitter:
