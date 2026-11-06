@@ -23,9 +23,10 @@ metadata:
   openGraph:
     site_name: 'Noticiencias'
     images:
-      - url: '~/assets/images/default.png'
+      - url: '/assets/images/noticiencias-social-og.jpg'
         width: 1200
-        height: 628
+        height: 630
+        type: 'image/jpeg'
     type: website
   twitter:
     handle: '@noti_ciencias'

@@ -1,6 +1,6 @@
 import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './images-optimization';
 import type { ImageMetadata } from 'astro';
-import type { OpenGraph } from '~/components/common/seo';
+import type { OpenGraph, OpenGraphMedia } from '~/components/common/seo';
 import type { ImagesOptimizer } from './images-optimization';
 import { selectPreferredVariantSrc, type DerivativeAwareImageMetadata } from './image-derivatives';
 import { getAsset } from './permalinks';
@@ -129,7 +129,7 @@ export const resolveImageUrl = async (
 
 /** */
 const optimizeOpenGraphImage = async (
-  image: { url?: string } | undefined,
+  image: OpenGraphMedia | undefined,
   astroSite: URL | undefined
 ) => {
   const defaultWidth = 1200;
@@ -145,6 +145,7 @@ const optimizeOpenGraphImage = async (
 
     if (typeof resolvedImage === 'string' && resolvedImage.startsWith('/')) {
       return {
+        ...image, // Retain alt, MIME type and dimensions for public static social images.
         url: String(new URL(getAsset(resolvedImage), astroSite)),
       };
     }
@@ -207,7 +208,7 @@ export const adaptOpenGraphImages = async (
   const images = openGraph.images;
 
   const adaptedImages = await Promise.all(
-    images.map(async (image: { url?: string } | undefined) =>
+    images.map(async (image: OpenGraphMedia | undefined) =>
       optimizeOpenGraphImage(image, astroSite)
     )
   );

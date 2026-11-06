@@ -639,10 +639,49 @@ function auditSitemapIndexability() {
   }
 }
 
+function auditHomepageSocialPreview() {
+  // The social image must be public and the homepage tags must match it.
+  const imagePath = path.join(DIST_DIR, 'assets/images/noticiencias-social-og.jpg');
+  const homepagePath = path.join(DIST_DIR, 'index.html');
+  const imageUrl = 'https://noticiencias.com/assets/images/noticiencias-social-og.jpg';
+
+  if (!fs.existsSync(imagePath)) {
+    console.error(`${RED}[FAIL] Homepage social preview missing from dist.${RESET}`);
+    errorCount++;
+    return;
+  }
+
+  const jpg = fs.readFileSync(imagePath);
+  const hasStartMarker = jpg.subarray(0, 2).equals(Buffer.from([0xff, 0xd8]));
+  const hasEndMarker = jpg.subarray(-2).equals(Buffer.from([0xff, 0xd9]));
+  if (!hasStartMarker || !hasEndMarker) {
+    console.error(`${RED}[FAIL] Homepage preview is not a complete JPEG.${RESET}`);
+    errorCount++;
+  }
+
+  const $ = load(fs.readFileSync(homepagePath, 'utf8'));
+  const expected = [
+    ['meta[property="og:image"]', imageUrl],
+    ['meta[property="og:image:width"]', '1200'],
+    ['meta[property="og:image:height"]', '630'],
+    ['meta[property="og:image:type"]', 'image/jpeg'],
+    ['meta[name="twitter:image"]', imageUrl],
+    ['meta[name="twitter:card"]', 'summary_large_image'],
+  ];
+  for (const [selector, value] of expected) {
+    const actual = $(selector).attr('content');
+    if (actual !== value) {
+      console.error(`${RED}[FAIL] Invalid homepage social tag: ${selector}.${RESET}`);
+      errorCount++;
+    }
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
+auditHomepageSocialPreview();
 auditSocialManifest();
 auditTagSitemapExclusion();
 auditSitemapIndexability();
