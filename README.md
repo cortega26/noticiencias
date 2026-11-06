@@ -14,6 +14,7 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 - Content contract: the only authoritative post schema is [`src/content.config.ts`](src/content.config.ts).
 - Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](src/config.yaml).
 - Metadata emission: pages pass metadata through layouts into [`src/components/common/Metadata.astro`](src/components/common/Metadata.astro).
+- Social preview: the site-wide 1200 × 630 JPEG is [`public/assets/images/noticiencias-social-og.jpg`](public/assets/images/noticiencias-social-og.jpg), configured as a public absolute `og:image`/Twitter image in [`src/config.yaml`](src/config.yaml). Article-specific images continue to override this fallback.
 - URL and taxonomy helpers: [`src/utils/permalinks.ts`](src/utils/permalinks.ts) and [`src/utils/blog.ts`](src/utils/blog.ts).
 - Search: build-time MiniSearch JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only UI on [`src/pages/buscar.astro`](src/pages/buscar.astro). The full article body is indexed; Spanish function words are filtered and the 150 KiB gzip budget is enforced.
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`.

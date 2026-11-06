@@ -639,10 +639,46 @@ function auditSitemapIndexability() {
   }
 }
 
+
+function auditHomepageSocialPreview() {
+  // Public OG images must be directly fetchable at the URL published in <head>.
+  const relativeImage = '/assets/images/noticiencias-social-og.jpg';
+  const expectedImage = `https://noticiencias.com${relativeImage}`;
+  const imagePath = path.join(DIST_DIR, relativeImage.slice(1));
+  if (!fs.existsSync(imagePath)) {
+    console.error(`${RED}[FAIL] Homepage social preview missing from dist: ${relativeImage}.${RESET}`);
+    errorCount++;
+    return;
+  }
+  const jpg = fs.readFileSync(imagePath);
+  if (jpg.length < 1000 || jpg[0] !== 0xff || jpg[1] !== 0xd8 || jpg.at(-2) !== 0xff || jpg.at(-1) !== 0xd9) {
+    console.error(`${RED}[FAIL] Homepage social preview is not a complete JPEG.${RESET}`);
+    errorCount++;
+  }
+  const homepage = load(fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8'));
+  const expected = [
+    ['meta[property="og:image"]', expectedImage],
+    ['meta[property="og:image:width"]', '1200'],
+    ['meta[property="og:image:height"]', '630'],
+    ['meta[property="og:image:type"]', 'image/jpeg'],
+    ['meta[name="twitter:image"]', expectedImage],
+    ['meta[name="twitter:card"]', 'summary_large_image'],
+  ];
+  for (const [selector, value] of expected) {
+    const actual = homepage(selector).attr('content') || '';
+    if (actual !== value) {
+      console.error(`${RED}[FAIL] Homepage ${selector}: expected ${value}, got ${actual}.${RESET}`);
+      errorCount++;
+    }
+  }
+  if (errorCount === 0) console.log(`${GREEN}PASSED: homepage OG and Twitter preview image verified.${RESET}`);
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
+auditHomepageSocialPreview();
 auditSocialManifest();
 auditTagSitemapExclusion();
 auditSitemapIndexability();
