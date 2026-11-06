@@ -652,13 +652,9 @@ function auditHomepageSocialPreview() {
   }
 
   const jpg = fs.readFileSync(imagePath);
-  const validJpeg =
-    jpg.length >= 1000 &&
-    jpg[0] === 0xff &&
-    jpg[1] === 0xd8 &&
-    jpg[jpg.length - 2] === 0xff &&
-    jpg[jpg.length - 1] === 0xd9;
-  if (!validJpeg) {
+  const hasStartMarker = jpg.subarray(0, 2).equals(Buffer.from([0xff, 0xd8]));
+  const hasEndMarker = jpg.subarray(-2).equals(Buffer.from([0xff, 0xd9]));
+  if (!hasStartMarker || !hasEndMarker) {
     console.error(`${RED}[FAIL] Homepage preview is not a complete JPEG.${RESET}`);
     errorCount++;
   }
@@ -673,7 +669,7 @@ function auditHomepageSocialPreview() {
     ['meta[name="twitter:card"]', 'summary_large_image'],
   ];
   for (const [selector, value] of expected) {
-    const actual = $(selector).attr('content') || '';
+    const actual = $(selector).attr('content');
     if (actual !== value) {
       console.error(`${RED}[FAIL] Invalid homepage social tag: ${selector}.${RESET}`);
       errorCount++;
