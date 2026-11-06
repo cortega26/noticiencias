@@ -639,39 +639,46 @@ function auditSitemapIndexability() {
   }
 }
 
-
 function auditHomepageSocialPreview() {
-  // Public OG images must be directly fetchable at the URL published in <head>.
-  const relativeImage = '/assets/images/noticiencias-social-og.jpg';
-  const expectedImage = `https://noticiencias.com${relativeImage}`;
-  const imagePath = path.join(DIST_DIR, relativeImage.slice(1));
+  // The social image must be public and the homepage tags must match it.
+  const imagePath = path.join(DIST_DIR, 'assets/images/noticiencias-social-og.jpg');
+  const homepagePath = path.join(DIST_DIR, 'index.html');
+  const imageUrl = 'https://noticiencias.com/assets/images/noticiencias-social-og.jpg';
+
   if (!fs.existsSync(imagePath)) {
-    console.error(`${RED}[FAIL] Homepage social preview missing from dist: ${relativeImage}.${RESET}`);
+    console.error(`${RED}[FAIL] Homepage social preview missing from dist.${RESET}`);
     errorCount++;
     return;
   }
+
   const jpg = fs.readFileSync(imagePath);
-  if (jpg.length < 1000 || jpg[0] !== 0xff || jpg[1] !== 0xd8 || jpg.at(-2) !== 0xff || jpg.at(-1) !== 0xd9) {
-    console.error(`${RED}[FAIL] Homepage social preview is not a complete JPEG.${RESET}`);
+  const validJpeg =
+    jpg.length >= 1000 &&
+    jpg[0] === 0xff &&
+    jpg[1] === 0xd8 &&
+    jpg[jpg.length - 2] === 0xff &&
+    jpg[jpg.length - 1] === 0xd9;
+  if (!validJpeg) {
+    console.error(`${RED}[FAIL] Homepage preview is not a complete JPEG.${RESET}`);
     errorCount++;
   }
-  const homepage = load(fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8'));
+
+  const $ = load(fs.readFileSync(homepagePath, 'utf8'));
   const expected = [
-    ['meta[property="og:image"]', expectedImage],
+    ['meta[property="og:image"]', imageUrl],
     ['meta[property="og:image:width"]', '1200'],
     ['meta[property="og:image:height"]', '630'],
     ['meta[property="og:image:type"]', 'image/jpeg'],
-    ['meta[name="twitter:image"]', expectedImage],
+    ['meta[name="twitter:image"]', imageUrl],
     ['meta[name="twitter:card"]', 'summary_large_image'],
   ];
   for (const [selector, value] of expected) {
-    const actual = homepage(selector).attr('content') || '';
+    const actual = $(selector).attr('content') || '';
     if (actual !== value) {
-      console.error(`${RED}[FAIL] Homepage ${selector}: expected ${value}, got ${actual}.${RESET}`);
+      console.error(`${RED}[FAIL] Invalid homepage social tag: ${selector}.${RESET}`);
       errorCount++;
     }
   }
-  if (errorCount === 0) console.log(`${GREEN}PASSED: homepage OG and Twitter preview image verified.${RESET}`);
 }
 
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
