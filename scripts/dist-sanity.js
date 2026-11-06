@@ -641,9 +641,9 @@ function auditSitemapIndexability() {
 
 function auditHomepageSocialPreview() {
   // The social image must be public and the homepage tags must match it.
-  const imagePath = path.join(DIST_DIR, 'assets/images/noticiencias-social-og.jpg');
+  const imagePath = path.join(DIST_DIR, 'assets/images/hotlink-ok/noticiencias-social-og.jpg');
   const homepagePath = path.join(DIST_DIR, 'index.html');
-  const imageUrl = 'https://noticiencias.com/assets/images/noticiencias-social-og.jpg';
+  const imageUrl = 'https://noticiencias.com/assets/images/hotlink-ok/noticiencias-social-og.jpg';
 
   if (!fs.existsSync(imagePath)) {
     console.error(`${RED}[FAIL] Homepage social preview missing from dist.${RESET}`);
