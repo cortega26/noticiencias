@@ -2064,6 +2064,41 @@
       }
     ]
   },
+  "~/assets/images/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "6bbca698bbb44876",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/default.png": {
     "originalWidth": 1024,
     "originalHeight": 572,
