@@ -2169,6 +2169,41 @@
       }
     ]
   },
+  "~/assets/images/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "81490b8cefc10774",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-global-homeostatic-forces-shape-the-composition-of-a-hyperdiverse-tropical-insect-fauna.81490b8cefc10774.1672.avif"
+      }
+    ]
+  },
   "~/assets/images/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.png": {
     "originalWidth": 1672,
     "originalHeight": 941,
