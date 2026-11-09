@@ -15,23 +15,18 @@ const description = isRelated
   : 'Historias recientes de Noticiencias.';
 ---
 
-{
-  selection.posts.length > 0 && (
-    <section
-      class="mt-14 border-t border-border-subtle pt-8"
-      data-analytics-related={selection.kind}
-    >
-      {/*
+{selection.posts.length > 0 && (
+  <section class="mt-14 border-t border-border-subtle pt-8" data-analytics-related={selection.kind}>
+    {/*
         P2-01: ranking con umbral (categoría, tags, serie, método). Si nada
         supera el umbral, el bloque se rotula «Más reciente», nunca
         «Relacionado» (DEC-008/P0-08).
       */}
-      <SectionHeading title={title} description={description} />
-      <div class="mt-6 grid gap-6 md:grid-cols-2">
-        {selection.posts.map((post) => (
-          <ArticleCard post={post} variant="compact" />
-        ))}
-      </div>
-    </section>
-  )
-}
+    <SectionHeading title={title} description={description} />
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {selection.posts.map((post) => (
+        <ArticleCard post={post} variant="compact" />
+      ))}
+    </div>
+  </section>
+)}

@@ -57,25 +57,21 @@ const cfBeacon = JSON.stringify({ token: String(cfToken) });
   })();
 </script>
 
-{
-  isEnabled ? (
-    <>
-      {/* Consent Mode v2 advanced (ADR-0012): the bootstrap queues consent default
+{isEnabled ? (
+  <>
+    {/* Consent Mode v2 advanced (ADR-0012): the bootstrap queues consent default
           (all denied) + any stored grant + config BEFORE gtag.js loads, so it must
           stay ahead of the async script below. */}
-      <script is:inline set:html={buildConsentBootstrap(id)} />
-      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
-    </>
-  ) : null
-}
+    <script is:inline set:html={buildConsentBootstrap(id)} />
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} />
+  </>
+) : null}
 
-{
-  isCfEnabled ? (
-    <script
-      is:inline
-      type="module"
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon={cfBeacon}
-    />
-  ) : null
-}
+{isCfEnabled ? (
+  <script
+    is:inline
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon={cfBeacon}
+  />
+) : null}

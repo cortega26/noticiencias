@@ -15,7 +15,9 @@ import Button from '~/components/ds/atoms/Button.astro';
   <div class="search-container">
     <form id="search-form" class="grid gap-3 sm:grid-cols-[1fr_auto]" role="search">
       <div class="relative">
-        <label for="search-box" class="sr-only">Buscar artículos</label>
+        <label for="search-box" class="sr-only">
+          Buscar artículos
+        </label>
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
             class="h-5 w-5 text-text-muted"
@@ -29,7 +31,8 @@ import Button from '~/components/ds/atoms/Button.astro';
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            ></path>
           </svg>
         </div>
         <input
@@ -48,8 +51,7 @@ import Button from '~/components/ds/atoms/Button.astro';
       class="mt-3 min-h-6 text-sm text-text-muted"
       role="status"
       aria-live="polite"
-    >
-    </p>
+    ></p>
 
     <div
       id="search-results"
@@ -57,8 +59,7 @@ import Button from '~/components/ds/atoms/Button.astro';
       role="region"
       aria-live="polite"
       aria-label="Resultados de búsqueda"
-    >
-    </div>
+    ></div>
   </div>
 </section>
 
