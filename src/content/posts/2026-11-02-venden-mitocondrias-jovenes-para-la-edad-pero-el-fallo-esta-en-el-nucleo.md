@@ -92,7 +92,7 @@ La investigación de STAT duró ocho meses e incluyó entrevistas con 45 pacient
 
 ## Un caso que cuestiona el origen del ADN
 
-STAT relata el caso de Heidy Willis, abogada de Miami que dio a luz gemelas a los 33 años tras un procedimiento de TRM en Albania. Willis tenía mutaciones en dos genes del cromosoma 10. Aydin admitió a STAT: "No puedo decir que la transferencia mitocondrial ayude". Después, un informe de ancestros de 23andMe estimó que las niñas tenían un 50 % de ascendencia ucraniana, lo que llevó a Willis a cuestionar el origen de su material genético. 23andMe respondió que sus informes de ancestros no incluyen ADN mitocondrial. Las publicaciones de Willis no llevan la etiqueta #advancedmaternalage, a diferencia de otras publicaciones de la empresa, según STAT.
+STAT relata el caso de Heidy Willis, abogada de Miami que dio a luz gemelas a los 33 años tras un procedimiento de TRM en Albania. Willis tenía mutaciones en dos genes del cromosoma 10. Aydin admitió a STAT: "No puedo decir que la transferencia mitocondrial ayude". Después, un informe de ancestros de 23andMe estimó que las niñas tenían un 50 % de ascendencia ucraniana, lo que llevó a Willis a cuestionar el origen de su material genético. 23andMe respondió que sus informes de ancestros no incluyen ADN mitocondrial. Según STAT, las publicaciones sobre Willis no llevan la etiqueta de «edad materna avanzada» que sí usan otras publicaciones de la empresa.
 
 ## La pausa y lo que queda
 
