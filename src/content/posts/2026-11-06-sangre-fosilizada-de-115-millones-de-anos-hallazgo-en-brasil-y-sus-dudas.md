@@ -21,9 +21,9 @@ headlines_variants:
   benefit: Qué nos dice (y qué no) el hallazgo brasileño sobre la sangre antigua
 summary_points:
   - Investigadores hallaron microestructuras elípticas en un hueso de 115 millones de años de *Aratasaurus museunacionali* (Brasil) que coinciden en tamaño, ubicación y química con glóbulos rojos fosilizados.
-  - Análisis elementales detectaron hierro, carbono y nitrógeno; espectroscopía Raman reveló porfirinas, y extracción molecular confirmó hemo descartando clorofila u otros contaminantes.
-  - El equipo propone que la hausmannita, un óxido de manganeso dentro de las elipsoides, encapsuló y estabilizó las biomoléculas durante la fosilización —un mecanismo de preservación novedoso.
-  - Expertos independientes (incluida Mary Schweitzer) advierten que la evidencia, aunque convergente, no cumple plenamente los criterios establecidos para confirmar sangre fosilizada.
+  - Análisis elementales detectaron hierro, carbono y nitrógeno; la espectroscopía Raman sugirió porfirinas, y el análisis de un extracto del hueso descartó clorofila y también sugirió hemo.
+  - El equipo propone que la hausmannita, un óxido de manganeso hallado dentro de las estructuras, las protegió durante la fosilización; es una hipótesis de los autores.
+  - Mary Schweitzer, paleontóloga independiente, no está convencida de que se haya identificado hemo de forma definitiva y cuestiona que la señal se concentre en las estructuras candidatas.
   - El estudio se publicó en *Proceedings of the National Academy of Sciences* (PNAS) el 2 de noviembre.
 glossary:
   - term: Hemo
@@ -41,39 +41,36 @@ fact_check:
     status: uncertain
   - label: Análisis elemental detectó hierro, carbono y nitrógeno en las microestructuras
     status: confirmed
-  - label: Espectroscopía Raman detectó porfirinas, precursores del hemo
+  - label: La espectroscopía Raman sugirió la presencia de porfirinas, precursoras del hemo
     status: confirmed
-  - label: Extracción molecular confirmó hemo y descartó clorofila como contaminante
+  - label: El análisis de un extracto del hueso descartó contaminación por clorofila y también sugirió hemo
     status: confirmed
-  - label: Hausmannita dentro de las elipsoides actuó como cápsula de preservación de biomoléculas
-    status: confirmed
-  - label: Es la prueba química más antigua y sólida de sangre fosilizada en dinosaurios
-    status: confirmed
+  - label: La hausmannita dentro de las estructuras habría actuado como cápsula de preservación de biomoléculas, según los autores
+    status: uncertain
+  - label: Los autores sostienen que son las estructuras de glóbulos rojos más antiguas y las primeras demostradas químicamente, pero otra investigadora no está convencida
+    status: uncertain
 why_it_matters:
-  - Si se valida, el mecanismo de encapsulamiento por hausmannita orientaría la búsqueda en otros yacimientos ricos en manganeso (p. ej., depósitos lacustres).
-  - El enfoque multi-técnica (morfología + elemento + mineralogía + química molecular) eleva el estándar de evidencia en paleontología molecular.
-  - A largo plazo, permitiría acceder a fisiología de dinosaurios (metabolismo, niveles de actividad) mediante restos moleculares.
-confidence: Moderada — estudio publicado en PNAS (revisado por pares) con múltiples líneas de evidencia convergente, pero expertos independientes señalan que no cumple plenamente los criterios establecidos y persiste incertidumbre sobre la identificación definitiva de glóbulos rojos fosilizados
+  - Si se valida, la hipótesis de la hausmannita sugeriría que este tipo de preservación podría no ser tan rara como se pensaba, según Grice.
+  - El caso muestra por qué en paleontología molecular se exige combinar morfología, análisis elemental, mineralogía y química molecular, y por qué aun así hay desacuerdo sobre cómo interpretarlas.
+  - Grice sostiene que identificar estas estructuras podría ofrecer una vía molecular para estudiar el metabolismo y la actividad de animales extintos.
+confidence: Moderada — estudio publicado en PNAS (revisado por pares) con múltiples líneas de evidencia convergente, pero una paleontóloga independiente no está convencida de que se haya identificado hemo de forma definitiva y persiste la incertidumbre sobre si las estructuras son glóbulos rojos fosilizados
 sources:
   - title: This may be the best evidence yet that dinosaur blood can fossilize
     url: https://sciencenews.org/article/evidence-dinosaur-blood-fossilize
     publisher: Science News
-    date: '2024-11-02'
-  - title: Molecular evidence for preservation of heme in 115-million-year-old dinosaur bone
-    url: https://doi.org/10.1073/pnas.2407389121
+    date: '2026-11-06'
+  - title: Heme signatures in mineralized red blood cells within vascular canals of a 115-million-year-old dinosaur bone
+    url: https://doi.org/10.1073/pnas.2614248123
     publisher: Proceedings of the National Academy of Sciences (PNAS)
-    date: '2024-11-02'
-  - title: Curtin University research on dinosaur blood fossilization
-    url: https://www.curtin.edu.au
-    publisher: Curtin University
+    date: '2026-11-02'
 requires_uncertainty_note: true
-uncertainty_note: 'El hallazgo es preliminar y debatido: las señales de hemo no se concentran solo en las estructuras candidatas y su forma difiere de glóbulos rojos de parientes vivos.'
+uncertainty_note: 'El hallazgo es preliminar y debatido: según una paleontóloga independiente, las señales de hemo no se concentran solo en las estructuras candidatas y su forma difiere de la de los glóbulos rojos de aves y reptiles actuales.'
 social:
   publish: true
   id: 1d8f81130220ae96648282f3d4cc42eb8af5f55b0e69225f3d4449a5e306b411
 ---
 
-La sangre no debería durar 115 millones de años. Los glóbulos rojos se descomponen en días. Sin embargo, dentro de un hueso de la pata de un pequeño dinosaurio emplumado hallado en el noreste de Brasil, un equipo de investigadores dice haber encontrado exactamente eso: estructuras microscópicas con la forma, la química y el entorno mineral que cabría esperar de sangre fosilizada. Si tienen razón, sería la prueba química más antigua y sólida de que la sangre puede sobrevivir al tiempo profundo. Si no, el hallazgo se suma a una lista de falsas alarmas que llevan tres décadas enseñando cuán difícil es distinguir vida antigua de minerales que la imitan.
+La sangre no debería durar 115 millones de años. Los glóbulos rojos se descomponen en días. Sin embargo, dentro de un hueso de la pata de un pequeño dinosaurio emplumado hallado en el noreste de Brasil, un equipo de investigadores dice haber encontrado exactamente eso: estructuras microscópicas con la forma, la química y el entorno mineral que cabría esperar de sangre fosilizada. Según los autores, sería la prueba química más antigua de que la sangre puede sobrevivir al tiempo profundo. Si no, el hallazgo se suma a una lista de falsas alarmas que llevan tres décadas enseñando cuán difícil es distinguir vida antigua de minerales que la imitan.
 
 ## El enigma de la sangre en la piedra
 
@@ -81,20 +78,20 @@ La paleontología molecular persigue una pregunta casi absurda: ¿pueden las mol
 
 ## Qué hizo el equipo de Grice
 
-Kliti Grice, de la Universidad Curtin (Australia), y sus colegas estudiaron un fémur de _Aratasaurus museunacionali_, un terópodo del Cretácico temprano hallado en la Mina Pedra Branca, Brasil. Cortaron secciones delgadas del hueso y las escanearon con haces de electrones enfocados. Dentro de la red vascular fosilizada aparecieron microestructuras elípticas, del tamaño esperado para glóbulos rojos. Luego mapearon su composición elemental: hierro, carbono, nitrógeno —los tres pilares del hemo, el grupo prostético de la hemoglobina que atrapa el oxígeno. Usaron espectroscopía Raman (una técnica que identifica moléculas por cómo dispersan la luz láser) y detectaron porfirinas, los anillos orgánicos precursores del hemo. Finalmente, extrajeron el contenido molecular del hueso, separaron los compuestos y confirmaron que las porfirinas coincidían con hemo, no con clorofila u otros pigmentos que podrían colarse del entorno.
+Kliti Grice, de la Universidad Curtin (Australia), y sus colegas estudiaron un hueso de una extremidad de _Aratasaurus museunacionali_, un terópodo del Cretácico temprano hallado en la Mina Pedra Branca, Brasil. Cortaron secciones delgadas del hueso y las escanearon con haces de electrones enfocados. Dentro de la red vascular fosilizada aparecieron microestructuras elípticas, del tamaño esperado para glóbulos rojos. Luego mapearon su composición elemental: hierro, carbono, nitrógeno —los tres pilares del hemo, el grupo prostético de la hemoglobina que atrapa el oxígeno. Usaron espectroscopía Raman (una técnica que identifica moléculas por cómo dispersan la luz láser) y detectaron porfirinas, los anillos orgánicos precursores del hemo. Finalmente, separaron e identificaron el contenido molecular de un extracto del hueso, lo que descartó la contaminación por otros pigmentos, como la clorofila, y también sugirió la presencia de hemo. En conjunto, el equipo considera que los resultados apuntan sin ambigüedad a restos moleculares de sangre antigua.
 
 ## Qué muestra la evidencia (y qué no)
 
-La convergencia es fuerte: morfología compatible, elementos correctos, firmas moleculares específicas, todo en el mismo sitio microscópico. El equipo propone además un mecanismo de preservación: un mineral de óxido de manganeso llamado hausmannita, presente _dentro_ de las elipsoides, habría actuado como una cápsula del tiempo, estabilizando las estructuras y blindando las moléculas mientras el hueso se fosilizaba. Ese detalle mineralógico es nuevo: en hallazgos previos, los minerales solían reemplazar la biología; aquí, la hausmannita parece haberla protegido.
+Los autores destacan una convergencia de líneas de evidencia: morfología compatible, elementos propios del hemo y firmas moleculares compatibles con porfirinas y hemo. El equipo propone además un mecanismo de preservación: un mineral de óxido de manganeso llamado hausmannita, presente _dentro_ de las elipsoides, habría actuado como una cápsula del tiempo, estabilizando las estructuras y blindando las moléculas mientras el hueso se fosilizaba. Según el equipo, la hausmannita fue clave para la preservación y no un mineral que simplemente reemplazó material biológico ya desaparecido. Es una hipótesis que los propios autores plantean.
 
 Pero la evidencia tiene fisuras. Schweitzer, que no participó en el estudio, señala dos problemas. Primero: las señales de hemo no están confinadas a las elipsoides; surgen del análisis del hueso completo. Si los glóbulos rojos fósiles conservan su hemo, este debería concentrarse en ellas. Segundo: el tamaño y la forma de las estructuras difieren de los glóbulos rojos de aves y cocodrilos, los parientes vivos más cercanos. Grice responde que nadie sabe cómo era un glóbulo rojo de dinosaurio ni cómo la fosilización deforma o encoge las células, y que su conclusión no descansa solo en la forma, sino en "la convergencia de anatomía, morfología, mineralogía, análisis elemental y química molecular".
 
 ## El precedente que obliga a la cautela
 
-En 1997, dos paleontólogos examinaron esferas similares en un fósil —posiblemente un pterosaurio—. Parecían glóbulos rojos. Eran pirita, un mineral de hierro que cristalizó en los huecos vasculares tras la muerte. Ese error fundó los criterios que hoy se exigen. El estudio de Grice dice cumplirlos; Schweitzer dice que no del todo. La discusión no es académica: define qué cuenta como prueba en un campo donde lo extraordinario requiere evidencia extraordinaria.
+En 1997, dos paleontólogos examinaron esferas similares en un fósil —posiblemente un pterosaurio—. Parecían glóbulos rojos. Eran pirita, un mineral de hierro que cristalizó en los huecos vasculares tras la muerte. Ese error fundó los criterios que hoy se exigen. Grice afirma que su estudio cumple esos criterios; Schweitzer no está convencida de que se haya identificado hemo de forma definitiva. La discusión no es académica: define qué cuenta como prueba en un campo donde lo extraordinario requiere evidencia extraordinaria.
 
 ## Lo que sigue
 
-La hausmannita abre una vía. Si ese mineral puede encapsular biomoléculas durante cien millones de años, otros yacimientos con geoquímica similar —depósitos lacustres ricos en manganeso, por ejemplo— podrían guardar sorpresas. Grice lo resume sin triunfalismo: "Simplemente no lo sabemos aún. Pero este tipo de preservación puede no ser tan rara como pensamos". El próximo paso no es anunciar sangre de dinosaurio; es buscar más huesos en esas condiciones y someterlos al mismo escrutinio convergente. La sangre, si está ahí, seguirá esperando.
+Si la hipótesis de la hausmannita se confirma, este tipo de preservación podría no ser tan excepcional. Grice lo resume con cautela: "Simplemente no lo sabemos aún. Pero este tipo de preservación puede no ser tan rara como pensamos". Antes de dar por probada la existencia de sangre de dinosaurio hará falta que otros equipos examinen más huesos en condiciones similares y sometan los resultados al mismo escrutinio.
 
 <!-- source_identity: source_id=science_news; source_name=Science News -->
