@@ -18,6 +18,12 @@ const ARTIFACT_PATTERNS = [
   { pattern: /(^|\/).*\.db$/, label: 'SQLite/DB runtime file' },
   { pattern: /(^|\/).*\.db-(wal|shm)$/, label: 'SQLite WAL/SHM file' },
   { pattern: /(^|\/)\.cache\//, label: '.cache directory' },
+  {
+    // `.gitignore` used to say `node_modules/`, which ignores directories only:
+    // a worktree symlink named `node_modules` was committed more than once.
+    pattern: /(^|\/)node_modules(\/|$)/,
+    label: 'node_modules (dependency tree, symlink or file)',
+  },
 ];
 
 function listTrackedFiles() {
