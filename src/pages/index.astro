@@ -7,7 +7,7 @@ import {
   getRecurringTopics,
   selectArchivePosts,
   selectFeaturedPosts,
-  selectRecentPosts,
+  selectEditionPosts,
 } from '~/utils/hub';
 import { buildSeriesDossiers } from '~/utils/series';
 
@@ -15,11 +15,11 @@ const allPosts = await fetchPosts();
 const editionDate = getEditionDate(allPosts);
 const leadPosts = selectFeaturedPosts(allPosts, 3);
 const leadPostIds = leadPosts.map((post) => post.id);
-const weekly = selectRecentPosts(allPosts, editionDate, { count: 6, excludeIds: leadPostIds });
-const weeklyPostIds = weekly.posts.map((post) => post.id);
+const editionPosts = selectEditionPosts(allPosts, { excludeIds: leadPostIds });
+const editionPostIds = editionPosts.map((post) => post.id);
 const archivePosts = selectArchivePosts(allPosts, {
   count: 3,
-  excludeIds: [...leadPostIds, ...weeklyPostIds],
+  excludeIds: [...leadPostIds, ...editionPostIds],
 });
 const featuredSeries = buildSeriesDossiers(allPosts)[0] ?? null;
 const topicRadar = getRecurringTopics(allPosts);
@@ -36,7 +36,7 @@ const metadata = {
   <DailyDesk
     editionDate={editionDate}
     leadPosts={leadPosts}
-    weekly={weekly}
+    editionPosts={editionPosts}
     archivePosts={archivePosts}
     featuredSeries={featuredSeries}
     topicRadar={topicRadar}

@@ -6,14 +6,6 @@ export interface TopicFrequency {
   count: number;
 }
 
-export interface RecentSelection {
-  /** true when the edition window itself had stories; false means the fallback ran. */
-  inWindow: boolean;
-  posts: Post[];
-}
-
-const DAY_MS = 24 * 60 * 60 * 1000;
-
 const byNewest = (a: Post, b: Post) => b.publishDate.valueOf() - a.publishDate.valueOf();
 
 export function getEditionDate(posts: Post[]): Date {
@@ -49,45 +41,8 @@ export function selectFeaturedPosts(posts: Post[], count = 3): Post[] {
   return selected.slice(0, count);
 }
 
-/**
- * Stories published inside the edition window (default: the seven days
- * ending at the newest publish date). When the window is empty — e.g. the
- * site went a week without publishing — falls back to the newest stories
- * and reports `inWindow: false` so the caller can label them honestly
- * ("Lo más reciente", not "Esta semana").
- */
-export function selectRecentPosts(
-  posts: Post[],
-  editionDate: Date,
-  {
-    days = 7,
-    count = 6,
-    excludeIds = [],
-  }: { days?: number; count?: number; excludeIds?: string[] } = {}
-): RecentSelection {
-  const excluded = new Set(excludeIds);
-  const cutoff = editionDate.valueOf() - days * DAY_MS;
-  const editionValue = editionDate.valueOf();
-  const inWindow = posts
-    .filter(
-      (post) =>
-        !excluded.has(post.id) &&
-        post.publishDate.valueOf() >= cutoff &&
-        post.publishDate.valueOf() <= editionValue
-    )
-    .sort(byNewest)
-    .slice(0, count);
-
-  if (inWindow.length > 0) return { inWindow: true, posts: inWindow };
-
-  return {
-    inWindow: false,
-    posts: posts
-      .filter((post) => !excluded.has(post.id))
-      .sort(byNewest)
-      .slice(0, count),
-  };
-}
+/** Stories shown in the home "De esta edición" block: always six when the archive has them. */
+export const EDITION_POST_COUNT = 6;
 
 /** Newest stories not already promoted on the page (home archive block). */
 export function selectArchivePosts(
@@ -99,6 +54,19 @@ export function selectArchivePosts(
     .filter((post) => !excluded.has(post.id))
     .sort(byNewest)
     .slice(0, count);
+}
+
+/**
+ * The "De esta edición" block: the newest stories that are not already in the
+ * lead. It deliberately has no date window — a window made the block shrink
+ * (or switch label) whenever fewer stories than slots were published that
+ * week. Fewer than `count` only happens when the whole archive has fewer.
+ */
+export function selectEditionPosts(
+  posts: Post[],
+  { count = EDITION_POST_COUNT, excludeIds = [] }: { count?: number; excludeIds?: string[] } = {}
+): Post[] {
+  return selectArchivePosts(posts, { count, excludeIds });
 }
 
 export function getTopicFrequency(posts: Post[], count = 6): TopicFrequency[] {
