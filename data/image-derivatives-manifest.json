@@ -34,59 +34,73 @@
       }
     ]
   },
-  "~/assets/images/2026-01-17-article-213.png": {
-    "originalWidth": 1280,
-    "originalHeight": 720,
-    "hash": "87b66db52f3ac231",
+  "~/assets/images/2026-01-17-cheetah-cave-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "c61a57f919aa3782",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-17-article-213.87b66db52f3ac231.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-article-213.87b66db52f3ac231.400.avif"
+        "objectKey": "posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-17-article-213.87b66db52f3ac231.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-article-213.87b66db52f3ac231.900.avif"
+        "objectKey": "posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.900.avif"
       },
       {
-        "width": 1280,
-        "height": 720,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-17-article-213.87b66db52f3ac231.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-article-213.87b66db52f3ac231.1280.avif"
+        "objectKey": "posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-17-cheetah-cave-concept-original.c61a57f919aa3782.1536.avif"
       }
     ]
   },
-  "~/assets/images/2026-01-18-artemis-ii-mission.jpg": {
-    "originalWidth": 1024,
-    "originalHeight": 1024,
-    "hash": "e79e1242b84cab82",
+  "~/assets/images/2026-01-18-artemis-ii-earthset-nasa.jpg": {
+    "originalWidth": 2048,
+    "originalHeight": 1365,
+    "hash": "52d3c4e45d465d80",
     "variants": [
       {
         "width": 400,
-        "height": 400,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.400.avif"
+        "objectKey": "posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.400.avif"
       },
       {
         "width": 900,
-        "height": 900,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.900.avif"
+        "objectKey": "posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.900.avif"
       },
       {
-        "width": 1024,
-        "height": 1024,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.1024.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-mission.e79e1242b84cab82.1024.avif"
+        "objectKey": "posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.1400.avif"
+      },
+      {
+        "width": 2048,
+        "height": 1365,
+        "format": "avif",
+        "objectKey": "posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.2048.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-18-artemis-ii-earthset-nasa.52d3c4e45d465d80.2048.avif"
       }
     ]
   },
@@ -125,59 +139,38 @@
       }
     ]
   },
-  "~/assets/images/2026-01-24-article-36.jpg": {
-    "originalWidth": 1152,
-    "originalHeight": 632,
-    "hash": "7f499d395fe08121",
+  "~/assets/images/2026-01-24-edison-bulb-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "5eea97acabda8b21",
     "variants": [
       {
         "width": 400,
-        "height": 219,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-24-article-36.7f499d395fe08121.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-article-36.7f499d395fe08121.400.avif"
+        "objectKey": "posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.400.avif"
       },
       {
         "width": 900,
-        "height": 494,
+        "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-24-article-36.7f499d395fe08121.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-article-36.7f499d395fe08121.900.avif"
+        "objectKey": "posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.900.avif"
       },
       {
-        "width": 1152,
-        "height": 632,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-24-article-36.7f499d395fe08121.1152.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-article-36.7f499d395fe08121.1152.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-25-article-87.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 799,
-    "hash": "95fa6309b4240ae0",
-    "variants": [
-      {
-        "width": 400,
-        "height": 266,
-        "format": "avif",
-        "objectKey": "posts/2026-01-25-article-87.95fa6309b4240ae0.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-87.95fa6309b4240ae0.400.avif"
+        "objectKey": "posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.1400.avif"
       },
       {
-        "width": 900,
-        "height": 599,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-01-25-article-87.95fa6309b4240ae0.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-87.95fa6309b4240ae0.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 799,
-        "format": "avif",
-        "objectKey": "posts/2026-01-25-article-87.95fa6309b4240ae0.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-article-87.95fa6309b4240ae0.1200.avif"
+        "objectKey": "posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-24-edison-bulb-concept-original.5eea97acabda8b21.1536.avif"
       }
     ]
   },
@@ -216,115 +209,143 @@
       }
     ]
   },
-  "~/assets/images/2026-01-27-235.png": {
-    "originalWidth": 1280,
-    "originalHeight": 720,
-    "hash": "1f4dfe7931fd4c4c",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-235.1f4dfe7931fd4c4c.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-235.1f4dfe7931fd4c4c.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-235.1f4dfe7931fd4c4c.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-235.1f4dfe7931fd4c4c.900.avif"
-      },
-      {
-        "width": 1280,
-        "height": 720,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-235.1f4dfe7931fd4c4c.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-235.1f4dfe7931fd4c4c.1280.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-27-article-206.jpg": {
-    "originalWidth": 1152,
-    "originalHeight": 648,
-    "hash": "edc12998e2b926bd",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-article-206.edc12998e2b926bd.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-206.edc12998e2b926bd.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-article-206.edc12998e2b926bd.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-206.edc12998e2b926bd.900.avif"
-      },
-      {
-        "width": 1152,
-        "height": 648,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-article-206.edc12998e2b926bd.1152.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-206.edc12998e2b926bd.1152.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-27-article-349.jpg": {
-    "originalWidth": 1350,
-    "originalHeight": 900,
-    "hash": "3e44038b686dab9d",
+  "~/assets/images/2026-01-25-quantum-interferometry-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "8f866b250b75a636",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-27-article-349.3e44038b686dab9d.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-349.3e44038b686dab9d.400.avif"
+        "objectKey": "posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-27-article-349.3e44038b686dab9d.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-349.3e44038b686dab9d.900.avif"
+        "objectKey": "posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.900.avif"
       },
       {
-        "width": 1350,
-        "height": 900,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-01-27-article-349.3e44038b686dab9d.1350.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-349.3e44038b686dab9d.1350.avif"
+        "objectKey": "posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-25-quantum-interferometry-original.8f866b250b75a636.1536.avif"
       }
     ]
   },
-  "~/assets/images/2026-01-27-article-432.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 600,
-    "hash": "6e8bd601e0e7ee3e",
+  "~/assets/images/2026-01-27-electride-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "729f1bd5b13d5b02",
     "variants": [
       {
         "width": 400,
-        "height": 200,
+        "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-27-article-432.6e8bd601e0e7ee3e.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-432.6e8bd601e0e7ee3e.400.avif"
+        "objectKey": "posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.400.avif"
       },
       {
         "width": 900,
-        "height": 450,
-        "format": "avif",
-        "objectKey": "posts/2026-01-27-article-432.6e8bd601e0e7ee3e.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-432.6e8bd601e0e7ee3e.900.avif"
-      },
-      {
-        "width": 1200,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-27-article-432.6e8bd601e0e7ee3e.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-article-432.6e8bd601e0e7ee3e.1200.avif"
+        "objectKey": "posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-electride-concept-original.729f1bd5b13d5b02.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-01-27-haps-airship-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "f4a95d3ced68a274",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-haps-airship-concept-original.f4a95d3ced68a274.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-01-27-measles-vaccination-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "81ff8472f82ad912",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-measles-vaccination-concept-original.81ff8472f82ad912.1536.avif"
       }
     ]
   },
@@ -363,269 +384,283 @@
       }
     ]
   },
-  "~/assets/images/2026-01-28-article-279.jpg": {
-    "originalWidth": 1280,
-    "originalHeight": 720,
-    "hash": "8409b36b0924d0fd",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-279.8409b36b0924d0fd.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-279.8409b36b0924d0fd.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-279.8409b36b0924d0fd.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-279.8409b36b0924d0fd.900.avif"
-      },
-      {
-        "width": 1280,
-        "height": 720,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-279.8409b36b0924d0fd.1280.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-279.8409b36b0924d0fd.1280.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-28-article-343.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 817,
-    "hash": "6c9a0d4ea198354a",
-    "variants": [
-      {
-        "width": 400,
-        "height": 272,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-343.6c9a0d4ea198354a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-343.6c9a0d4ea198354a.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 613,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-343.6c9a0d4ea198354a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-343.6c9a0d4ea198354a.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 817,
-        "format": "avif",
-        "objectKey": "posts/2026-01-28-article-343.6c9a0d4ea198354a.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-article-343.6c9a0d4ea198354a.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-31-article-520.jpg": {
-    "originalWidth": 1200,
-    "originalHeight": 675,
-    "hash": "8c29775dc200ca0d",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-01-31-article-520.8c29775dc200ca0d.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-520.8c29775dc200ca0d.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-01-31-article-520.8c29775dc200ca0d.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-520.8c29775dc200ca0d.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 675,
-        "format": "avif",
-        "objectKey": "posts/2026-01-31-article-520.8c29775dc200ca0d.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-520.8c29775dc200ca0d.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-01-31-article-521.jpg": {
-    "originalWidth": 1200,
-    "originalHeight": 800,
-    "hash": "94975e1394a7c0a7",
+  "~/assets/images/2026-01-27-xigou-stone-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "db1977ec6b59efae",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-01-31-article-521.94975e1394a7c0a7.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-521.94975e1394a7c0a7.400.avif"
+        "objectKey": "posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-01-31-article-521.94975e1394a7c0a7.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-521.94975e1394a7c0a7.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 800,
-        "format": "avif",
-        "objectKey": "posts/2026-01-31-article-521.94975e1394a7c0a7.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-article-521.94975e1394a7c0a7.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-02-05-article-657.jpg": {
-    "originalWidth": 1200,
-    "originalHeight": 675,
-    "hash": "33105c1985d6697e",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-02-05-article-657.33105c1985d6697e.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-article-657.33105c1985d6697e.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-02-05-article-657.33105c1985d6697e.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-article-657.33105c1985d6697e.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 675,
-        "format": "avif",
-        "objectKey": "posts/2026-02-05-article-657.33105c1985d6697e.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-article-657.33105c1985d6697e.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-02-16-677.jpg": {
-    "originalWidth": 2000,
-    "originalHeight": 1333,
-    "hash": "a9e31c1c37ea4a1e",
-    "variants": [
-      {
-        "width": 400,
-        "height": 267,
-        "format": "avif",
-        "objectKey": "posts/2026-02-16-677.a9e31c1c37ea4a1e.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-677.a9e31c1c37ea4a1e.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 600,
-        "format": "avif",
-        "objectKey": "posts/2026-02-16-677.a9e31c1c37ea4a1e.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-677.a9e31c1c37ea4a1e.900.avif"
+        "objectKey": "posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-677.a9e31c1c37ea4a1e.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-677.a9e31c1c37ea4a1e.1400.avif"
+        "objectKey": "posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.1400.avif"
       },
       {
-        "width": 2000,
-        "height": 1333,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-677.a9e31c1c37ea4a1e.2000.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-677.a9e31c1c37ea4a1e.2000.avif"
+        "objectKey": "posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-27-xigou-stone-concept-original.db1977ec6b59efae.1536.avif"
       }
     ]
   },
-  "~/assets/images/2026-02-16-agujero-negro-colapso.jpg": {
-    "originalWidth": 3840,
-    "originalHeight": 2160,
-    "hash": "fd429464ae8bc136",
+  "~/assets/images/2026-01-28-abell-2813-hubble-nasa.jpg": {
+    "originalWidth": 3001,
+    "originalHeight": 2521,
+    "hash": "6eed3efff4f3079e",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 336,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.400.avif"
+        "objectKey": "posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 756,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.900.avif"
+        "objectKey": "posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.900.avif"
       },
       {
         "width": 1400,
-        "height": 788,
+        "height": 1176,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.1400.avif"
+        "objectKey": "posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.1400.avif"
       },
       {
-        "width": 3840,
+        "width": 3001,
+        "height": 2521,
+        "format": "avif",
+        "objectKey": "posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.3001.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-28-abell-2813-hubble-nasa.6eed3efff4f3079e.3001.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-01-31-hubble-ultra-deep-field-nasa.jpg": {
+    "originalWidth": 3100,
+    "originalHeight": 3100,
+    "hash": "1541fe079103ad56",
+    "variants": [
+      {
+        "width": 400,
+        "height": 400,
+        "format": "avif",
+        "objectKey": "posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 900,
+        "format": "avif",
+        "objectKey": "posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 1400,
+        "format": "avif",
+        "objectKey": "posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.1400.avif"
+      },
+      {
+        "width": 3100,
+        "height": 3100,
+        "format": "avif",
+        "objectKey": "posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.3100.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-01-31-hubble-ultra-deep-field-nasa.1541fe079103ad56.3100.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-02-05-cancer-risk-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "3662ce1ecc564ec9",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-05-cancer-risk-concept-original.3662ce1ecc564ec9.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-02-16-fading-star-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "2f85cf4b9bb997f7",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-fading-star-concept-original.2f85cf4b9bb997f7.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-02-16-sunflower-bread-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "39192fd64c48bfb6",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-sunflower-bread-concept-original.39192fd64c48bfb6.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-02-18-glass-storage-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "73a81df7ee40dbbd",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-glass-storage-concept-original.73a81df7ee40dbbd.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-03-27-complejo-judicial-santa-fe-allens.jpg": {
+    "originalWidth": 2880,
+    "originalHeight": 2160,
+    "hash": "6c3d85105aa90a34",
+    "variants": [
+      {
+        "width": 400,
+        "height": 300,
+        "format": "avif",
+        "objectKey": "posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 675,
+        "format": "avif",
+        "objectKey": "posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 1050,
+        "format": "avif",
+        "objectKey": "posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.1400.avif"
+      },
+      {
+        "width": 2880,
         "height": 2160,
         "format": "avif",
-        "objectKey": "posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.3840.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-16-agujero-negro-colapso.fd429464ae8bc136.3840.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-02-18-849.jpg": {
-    "originalWidth": 1200,
-    "originalHeight": 627,
-    "hash": "1743821c510a758f",
-    "variants": [
-      {
-        "width": 400,
-        "height": 209,
-        "format": "avif",
-        "objectKey": "posts/2026-02-18-849.1743821c510a758f.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-849.1743821c510a758f.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 470,
-        "format": "avif",
-        "objectKey": "posts/2026-02-18-849.1743821c510a758f.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-849.1743821c510a758f.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 627,
-        "format": "avif",
-        "objectKey": "posts/2026-02-18-849.1743821c510a758f.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-02-18-849.1743821c510a758f.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-03-27-el-error-de-redondeo.jpg": {
-    "originalWidth": 1356,
-    "originalHeight": 668,
-    "hash": "5790d992d53ebc85",
-    "variants": [
-      {
-        "width": 400,
-        "height": 197,
-        "format": "avif",
-        "objectKey": "posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 443,
-        "format": "avif",
-        "objectKey": "posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.900.avif"
-      },
-      {
-        "width": 1356,
-        "height": 668,
-        "format": "avif",
-        "objectKey": "posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.1356.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-el-error-de-redondeo.5790d992d53ebc85.1356.avif"
+        "objectKey": "posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.2880.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-03-27-complejo-judicial-santa-fe-allens.6c3d85105aa90a34.2880.avif"
       }
     ]
   },
@@ -664,38 +699,24 @@
       }
     ]
   },
-  "~/assets/images/2026-04-06-experiments-refute-dark-matter-claim.png": {
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "hash": "5a6cbc0a5748a3be",
+  "~/assets/images/2026-04-06-anais-112-equipo.jpg": {
+    "originalWidth": 786,
+    "originalHeight": 536,
+    "hash": "a232ee9508c68d51",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 273,
         "format": "avif",
-        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.400.avif"
+        "objectKey": "posts/2026-04-06-anais-112-equipo.a232ee9508c68d51.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-anais-112-equipo.a232ee9508c68d51.400.avif"
       },
       {
-        "width": 900,
-        "height": 506,
+        "width": 786,
+        "height": 536,
         "format": "avif",
-        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.900.avif"
-      },
-      {
-        "width": 1400,
-        "height": 788,
-        "format": "avif",
-        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1400.avif"
-      },
-      {
-        "width": 1920,
-        "height": 1080,
-        "format": "avif",
-        "objectKey": "posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1920.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-experiments-refute-dark-matter-claim.5a6cbc0a5748a3be.1920.avif"
+        "objectKey": "posts/2026-04-06-anais-112-equipo.a232ee9508c68d51.786.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-04-06-anais-112-equipo.a232ee9508c68d51.786.avif"
       }
     ]
   },
@@ -769,185 +790,178 @@
       }
     ]
   },
-  "~/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg": {
-    "originalWidth": 1200,
-    "originalHeight": 630,
-    "hash": "848415bd8cb164b7",
-    "variants": [
-      {
-        "width": 400,
-        "height": 210,
-        "format": "avif",
-        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 473,
-        "format": "avif",
-        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 630,
-        "format": "avif",
-        "objectKey": "posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.848415bd8cb164b7.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 660,
-    "hash": "2b8ee1a450a31fae",
-    "variants": [
-      {
-        "width": 400,
-        "height": 220,
-        "format": "avif",
-        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 495,
-        "format": "avif",
-        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 660,
-        "format": "avif",
-        "objectKey": "posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-spacex-launches-starship-v3the-world-s-most-powerful-and-tallest-rocket-ever.2b8ee1a450a31fae.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.jpg": {
-    "originalWidth": 2000,
-    "originalHeight": 1333,
-    "hash": "077b97f3a2bb7622",
+  "~/assets/images/2026-05-15-asteroid-rotation-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "c414fd7aa1eff784",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.400.avif"
+        "objectKey": "posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.900.avif"
+        "objectKey": "posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.900.avif"
       },
       {
         "width": 1400,
         "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.1400.avif"
+        "objectKey": "posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.1400.avif"
       },
       {
-        "width": 2000,
-        "height": 1333,
+        "width": 1536,
+        "height": 1024,
         "format": "avif",
-        "objectKey": "posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.2000.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-chatbots-keep-telling-stories-about-lighthouse-keeper-elias-thorne-we-might-know-why.077b97f3a2bb7622.2000.avif"
+        "objectKey": "posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-15-asteroid-rotation-concept-original.c414fd7aa1eff784.1536.avif"
       }
     ]
   },
-  "~/assets/images/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.webp": {
-    "originalWidth": 1200,
-    "originalHeight": 675,
-    "hash": "2fcd4d70945e3127",
+  "~/assets/images/2026-05-23-starship-vuelo-5-jurvetson.jpg": {
+    "originalWidth": 3648,
+    "originalHeight": 2631,
+    "hash": "55eb3ede440514f6",
     "variants": [
       {
         "width": 400,
-        "height": 225,
+        "height": 288,
         "format": "avif",
-        "objectKey": "posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.400.avif"
+        "objectKey": "posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.400.avif"
       },
       {
         "width": 900,
-        "height": 506,
+        "height": 649,
         "format": "avif",
-        "objectKey": "posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.900.avif"
-      },
-      {
-        "width": 1200,
-        "height": 675,
-        "format": "avif",
-        "objectKey": "posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.1200.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.2fcd4d70945e3127.1200.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.avif": {
-    "originalWidth": 1356,
-    "originalHeight": 668,
-    "hash": "33db36e4f0e350eb",
-    "variants": [
-      {
-        "width": 400,
-        "height": 197,
-        "format": "avif",
-        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 443,
-        "format": "avif",
-        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.900.avif"
-      },
-      {
-        "width": 1356,
-        "height": 668,
-        "format": "avif",
-        "objectKey": "posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.1356.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-strikes-kill-thousands-globally-each-year-but-for-those-who-survive-the-storm-is-far-from-over.33db36e4f0e350eb.1356.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.png": {
-    "originalWidth": 1910,
-    "originalHeight": 1000,
-    "hash": "30ec3d7abe132a73",
-    "variants": [
-      {
-        "width": 400,
-        "height": 209,
-        "format": "avif",
-        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 471,
-        "format": "avif",
-        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.900.avif"
+        "objectKey": "posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.900.avif"
       },
       {
         "width": 1400,
-        "height": 733,
+        "height": 1010,
         "format": "avif",
-        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1400.avif"
+        "objectKey": "posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.1400.avif"
       },
       {
-        "width": 1910,
-        "height": 1000,
+        "width": 3648,
+        "height": 2631,
         "format": "avif",
-        "objectKey": "posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1910.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-meta-is-back-with-muse-glimmer-local-agentic-multimodal-and-open-source.30ec3d7abe132a73.1910.avif"
+        "objectKey": "posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.3648.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-05-23-starship-vuelo-5-jurvetson.55eb3ede440514f6.3648.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-06-12-lighthouse-fiction-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "071ef8657d756af5",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-12-lighthouse-fiction-concept-original.071ef8657d756af5.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-06-14-ocean-census-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "b76c54547037abe5",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-06-14-ocean-census-concept-original.b76c54547037abe5.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-08-10-lightning-milan-nasa.jpg": {
+    "originalWidth": 4128,
+    "originalHeight": 2752,
+    "hash": "7b5507c0f8186440",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.1400.avif"
+      },
+      {
+        "width": 4128,
+        "height": 2752,
+        "format": "avif",
+        "objectKey": "posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.4128.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-10-lightning-milan-nasa.7b5507c0f8186440.4128.avif"
       }
     ]
   },
@@ -986,143 +1000,164 @@
       }
     ]
   },
-  "~/assets/images/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.png": {
-    "originalWidth": 1553,
-    "originalHeight": 1207,
-    "hash": "c51634966de7ea38",
+  "~/assets/images/2026-08-26-galapagos-tortoise-commons-cc0.jpg": {
+    "originalWidth": 1280,
+    "originalHeight": 720,
+    "hash": "bae534e3dd940999",
     "variants": [
       {
         "width": 400,
-        "height": 311,
+        "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.400.avif"
+        "objectKey": "posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.400.avif"
       },
       {
         "width": 900,
-        "height": 699,
+        "height": 506,
         "format": "avif",
-        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.900.avif"
+        "objectKey": "posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.900.avif"
       },
       {
-        "width": 1400,
-        "height": 1088,
+        "width": 1280,
+        "height": 720,
         "format": "avif",
-        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1400.avif"
-      },
-      {
-        "width": 1553,
-        "height": 1207,
-        "format": "avif",
-        "objectKey": "posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1553.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.c51634966de7ea38.1553.avif"
+        "objectKey": "posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.1280.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-galapagos-tortoise-commons-cc0.bae534e3dd940999.1280.avif"
       }
     ]
   },
-  "~/assets/images/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.avif": {
-    "originalWidth": 766,
-    "originalHeight": 402,
-    "hash": "861d273d4a0de365",
-    "variants": [
-      {
-        "width": 400,
-        "height": 210,
-        "format": "avif",
-        "objectKey": "posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.400.avif"
-      },
-      {
-        "width": 766,
-        "height": 402,
-        "format": "avif",
-        "objectKey": "posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.766.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-reading-the-giant-tortoise-dna-that-time-forgot.861d273d4a0de365.766.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.avif": {
-    "originalWidth": 1356,
-    "originalHeight": 668,
-    "hash": "6e6ea32c76c5036a",
-    "variants": [
-      {
-        "width": 400,
-        "height": 197,
-        "format": "avif",
-        "objectKey": "posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 443,
-        "format": "avif",
-        "objectKey": "posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.900.avif"
-      },
-      {
-        "width": 1356,
-        "height": 668,
-        "format": "avif",
-        "objectKey": "posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.1356.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-corals-show-el-nino-events-are-more-extreme-now-than-in-past-1-000-years-heres-how-my-team-made-the-discovery.6e6ea32c76c5036a.1356.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.avif": {
-    "originalWidth": 1356,
-    "originalHeight": 668,
-    "hash": "46eec330bee3c29d",
-    "variants": [
-      {
-        "width": 400,
-        "height": 197,
-        "format": "avif",
-        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 443,
-        "format": "avif",
-        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.900.avif"
-      },
-      {
-        "width": 1356,
-        "height": 668,
-        "format": "avif",
-        "objectKey": "posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.1356.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-professional-gaming-is-brutal-on-the-body-inside-the-growing-field-of-treating-esports-injuries.46eec330bee3c29d.1356.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.jpg": {
-    "originalWidth": 1350,
-    "originalHeight": 900,
-    "hash": "1496193f17f74026",
+  "~/assets/images/2026-08-26-glucofm-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "d40bfffd84e92a97",
     "variants": [
       {
         "width": 400,
         "height": 267,
         "format": "avif",
-        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.400.avif"
+        "objectKey": "posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.400.avif"
       },
       {
         "width": 900,
         "height": 600,
         "format": "avif",
-        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.900.avif"
+        "objectKey": "posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.900.avif"
       },
       {
-        "width": 1350,
-        "height": 900,
+        "width": 1400,
+        "height": 933,
         "format": "avif",
-        "objectKey": "posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.1350.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-where-and-when-to-see-2027s-solar-eclipse-of-the-century.1496193f17f74026.1350.avif"
+        "objectKey": "posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-26-glucofm-concept-original.d40bfffd84e92a97.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-08-27-galapagos-modis-nasa.jpg": {
+    "originalWidth": 1280,
+    "originalHeight": 995,
+    "hash": "47f5e66c094a2ad2",
+    "variants": [
+      {
+        "width": 400,
+        "height": 311,
+        "format": "avif",
+        "objectKey": "posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 700,
+        "format": "avif",
+        "objectKey": "posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.900.avif"
+      },
+      {
+        "width": 1280,
+        "height": 995,
+        "format": "avif",
+        "objectKey": "posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.1280.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-27-galapagos-modis-nasa.47f5e66c094a2ad2.1280.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-08-28-esports-survey-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "6470dde4b72e4957",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-esports-survey-concept-original.6470dde4b72e4957.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-08-28-total-eclipse-2024-nasa.jpg": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "bd6ad7813caf3d7e",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-08-28-total-eclipse-2024-nasa.bd6ad7813caf3d7e.1536.avif"
       }
     ]
   },
@@ -1546,38 +1581,38 @@
       }
     ]
   },
-  "~/assets/images/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.png": {
-    "originalWidth": 1672,
-    "originalHeight": 941,
-    "hash": "a7173ee8446ef667",
+  "~/assets/images/2026-10-14-proteasa-dokki-9ynm-rcsb.png": {
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "hash": "4a4f86fc6aa7f4bf",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.400.avif"
+        "objectKey": "posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.400.avif"
       },
       {
         "width": 900,
-        "height": 507,
+        "height": 506,
         "format": "avif",
-        "objectKey": "posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.900.avif"
+        "objectKey": "posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.1400.avif"
+        "objectKey": "posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.1400.avif"
       },
       {
-        "width": 1672,
-        "height": 941,
+        "width": 1920,
+        "height": 1080,
         "format": "avif",
-        "objectKey": "posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-researchers-use-ai-to-design-proteins-that-cut-up-other-proteins.a7173ee8446ef667.1672.avif"
+        "objectKey": "posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.1920.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-14-proteasa-dokki-9ynm-rcsb.4a4f86fc6aa7f4bf.1920.avif"
       }
     ]
   },
@@ -1721,178 +1756,276 @@
       }
     ]
   },
-  "~/assets/images/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.png": {
+  "~/assets/images/2026-10-27-isturitz-entrada-michel-bakni.jpg": {
+    "originalWidth": 4080,
+    "originalHeight": 3060,
+    "hash": "fce51648a02a1a55",
+    "variants": [
+      {
+        "width": 400,
+        "height": 300,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 675,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 1050,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.1400.avif"
+      },
+      {
+        "width": 4080,
+        "height": 3060,
+        "format": "avif",
+        "objectKey": "posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.4080.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-isturitz-entrada-michel-bakni.fce51648a02a1a55.4080.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-10-28-bellingshausen-icebridge-nasa.jpg": {
+    "originalWidth": 1280,
+    "originalHeight": 853,
+    "hash": "481c453d492d641c",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.900.avif"
+      },
+      {
+        "width": 1280,
+        "height": 853,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.1280.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-bellingshausen-icebridge-nasa.481c453d492d641c.1280.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-10-28-distant-object-concept-original.webp": {
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "hash": "87fae710ac2575d3",
+    "variants": [
+      {
+        "width": 400,
+        "height": 267,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 600,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 933,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.1400.avif"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "format": "avif",
+        "objectKey": "posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.1536.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-distant-object-concept-original.87fae710ac2575d3.1536.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-10-29-calibracion-color-friedrich-haag.jpg": {
+    "originalWidth": 2878,
+    "originalHeight": 1737,
+    "hash": "61a616e928a09bb1",
+    "variants": [
+      {
+        "width": 400,
+        "height": 241,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 543,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 845,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.1400.avif"
+      },
+      {
+        "width": 2878,
+        "height": 1737,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.2878.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-calibracion-color-friedrich-haag.61a616e928a09bb1.2878.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-10-29-teghaza-001-section-nasa.jpg": {
+    "originalWidth": 3139,
+    "originalHeight": 2424,
+    "hash": "5e0064a5bb9963de",
+    "variants": [
+      {
+        "width": 400,
+        "height": 309,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 695,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 1081,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.1400.avif"
+      },
+      {
+        "width": 3139,
+        "height": 2424,
+        "format": "avif",
+        "objectKey": "posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.3139.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-teghaza-001-section-nasa.5e0064a5bb9963de.3139.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-11-01-coding-assistant-concept-original.webp": {
     "originalWidth": 1672,
     "originalHeight": 941,
-    "hash": "5e528f19b6070f0a",
+    "hash": "f8d3ecc27ec138ab",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.400.avif"
+        "objectKey": "posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.400.avif"
       },
       {
         "width": 900,
         "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.900.avif"
+        "objectKey": "posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1400.avif"
+        "objectKey": "posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.1400.avif"
       },
       {
         "width": 1672,
         "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.5e528f19b6070f0a.1672.avif"
+        "objectKey": "posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-coding-assistant-concept-original.f8d3ecc27ec138ab.1672.avif"
       }
     ]
   },
-  "~/assets/images/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.png": {
+  "~/assets/images/2026-11-01-multimodal-chip-concept-original.webp": {
     "originalWidth": 1672,
     "originalHeight": 941,
-    "hash": "6afa6c0e8c9e14d3",
+    "hash": "82c39a3746360bd8",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.400.avif"
+        "objectKey": "posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.400.avif"
       },
       {
         "width": 900,
         "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.900.avif"
+        "objectKey": "posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1400.avif"
+        "objectKey": "posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.1400.avif"
       },
       {
         "width": 1672,
         "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-a-hidden-ocean-change-near-antarctica-could-have-global-consequences.6afa6c0e8c9e14d3.1672.avif"
+        "objectKey": "posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-multimodal-chip-concept-original.82c39a3746360bd8.1672.avif"
       }
     ]
   },
-  "~/assets/images/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.png": {
+  "~/assets/images/2026-11-01-personal-assistant-concept-original.webp": {
     "originalWidth": 1672,
     "originalHeight": 941,
-    "hash": "fa79e94a2541c755",
+    "hash": "d8871a6cc52d2304",
     "variants": [
       {
         "width": 400,
         "height": 225,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.400.avif"
+        "objectKey": "posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.400.avif"
       },
       {
         "width": 900,
         "height": 507,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.900.avif"
+        "objectKey": "posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.900.avif"
       },
       {
         "width": 1400,
         "height": 788,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.1400.avif"
+        "objectKey": "posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.1400.avif"
       },
       {
         "width": 1672,
         "height": 941,
         "format": "avif",
-        "objectKey": "posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-28-astronomers-found-a-mysterious-object-beyond-neptune-and-it-could-be-a-new-dwarf-planet.fa79e94a2541c755.1672.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.png": {
-    "originalWidth": 1672,
-    "originalHeight": 941,
-    "hash": "083ccd1f26c10ce8",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 507,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.900.avif"
-      },
-      {
-        "width": 1400,
-        "height": 788,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1400.avif"
-      },
-      {
-        "width": 1672,
-        "height": 941,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-apples-new-laptop-supports-one-of-the-coolest-features-for-color-pros.083ccd1f26c10ce8.1672.avif"
-      }
-    ]
-  },
-  "~/assets/images/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.png": {
-    "originalWidth": 1672,
-    "originalHeight": 940,
-    "hash": "fa1b2d11c7d59ab4",
-    "variants": [
-      {
-        "width": 400,
-        "height": 225,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 506,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.900.avif"
-      },
-      {
-        "width": 1400,
-        "height": 787,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1400.avif"
-      },
-      {
-        "width": 1672,
-        "height": 940,
-        "format": "avif",
-        "objectKey": "posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1672.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/2026-10-29-oldest-known-mars-rock-is-a-rosetta-stone-for-the-red-planets-watery-past.fa1b2d11c7d59ab4.1672.avif"
+        "objectKey": "posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-01-personal-assistant-concept-original.d8871a6cc52d2304.1672.avif"
       }
     ]
   },
@@ -1928,6 +2061,146 @@
         "format": "avif",
         "objectKey": "posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1672.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.0aa7a8be06935efb.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "11251194437f79f0",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-04-gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights.11251194437f79f0.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "b5ccd2f4c4db564a",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-a-dynamic-stem-cell-state-links-environmental-cues-to-skeletal-and-regenerative-fates.b5ccd2f4c4db564a.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "6bbca698bbb44876",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-06-microglial-ahr-drives-sex-biased-amyloid-pathology.6bbca698bbb44876.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.png": {
+    "originalWidth": 1672,
+    "originalHeight": 941,
+    "hash": "df321eec7be3da7d",
+    "variants": [
+      {
+        "width": 400,
+        "height": 225,
+        "format": "avif",
+        "objectKey": "posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 507,
+        "format": "avif",
+        "objectKey": "posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.900.avif"
+      },
+      {
+        "width": 1400,
+        "height": 788,
+        "format": "avif",
+        "objectKey": "posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.1400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.1400.avif"
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "format": "avif",
+        "objectKey": "posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.1672.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/2026-11-07-lowering-blood-pressure-after-stroke-or-with-diabetes-poses-challenges-in-research-and-practice.df321eec7be3da7d.1672.avif"
       }
     ]
   },

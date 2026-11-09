@@ -17,14 +17,14 @@ image: ~/assets/images/2026-10-12-secondary-forest-recovery-original.webp
 image_alt: 'Ilustración generada con IA de plántulas y árboles jóvenes junto a un dosel tropical, con un ave que lleva un fruto.'
 source_url: https://doi.org/10.1038/nature16512
 refinery_id: '3344'
-correction_summary: 'Se sustituyó la adaptación extensa de una nota secundaria por una síntesis de dos estudios primarios y se separaron mediciones de carbono de resultados modelados sobre dispersores.'
-corrected_at: '2026-10-12'
+correction_summary: 'Se sustituyó la adaptación de una nota secundaria por una síntesis de estudios primarios; se precisaron la estimación por parcelas de distintas edades y los límites del modelo de dispersión.'
+corrected_at: '2026-10-31'
 headlines_variants:
   question: ¿Cuánto tarda un bosque secundario en recuperar biomasa y carbono?
   benefit: Qué muestran los estudios sobre regeneración, agua y dispersión de semillas
 summary_points:
   - Un estudio de 45 sitios y cerca de 1.500 parcelas neotropicales estimó una captación de carbono 11 veces mayor en bosques secundarios durante sus primeros 20 años que en bosques antiguos.
-  - 'La recuperación varió ampliamente: alcanzar 90 % de las reservas de biomasa de bosques antiguos tomó una mediana de 66 años, y dependió de la disponibilidad de agua.'
+  - 'La recuperación varió ampliamente: la mediana estimada para alcanzar 90 % de la biomasa aérea de bosques antiguos fue de 66 años, a partir de parcelas de distintas edades.'
   - Un modelo de diez paisajes del Bosque Atlántico brasileño estimó menor potencial de carbono cuando la fragmentación restringe el movimiento de aves grandes; no es una medición de recuperación real en todos los trópicos.
 glossary:
   - term: bosque secundario
@@ -35,10 +35,6 @@ glossary:
     definition: Ecosistema que absorbe más dióxido de carbono de la atmósfera de lo que libera, contribuyendo a mitigar el cambio climático.
   - term: reforestación
     definition: Proceso de replantar árboles en áreas donde el bosque ha sido perdido o degradado, a menudo mediante plantaciones de una o pocas especies.
-  - term: agutí
-    definition: Roedor tropical que actúa como principal dispersor de semillas en algunos bosques donde la diversidad de frugívoros es baja.
-  - term: monoespecífico
-    definition: Bosque o comunidad vegetal dominada por una sola especie de árbol, lo que reduce la biodiversidad y la resiliencia frente a disturbios.
 fact_check:
   - label: El estudio de 2016 analizó recuperación de biomasa en 45 sitios y cerca de 1.500 parcelas de bosques neotropicales secundarios.
     status: confirmed
@@ -71,7 +67,7 @@ sources:
     date: '2026-10-12'
     role: secondary
 requires_uncertainty_note: true
-uncertainty_note: La cifra de 11 veces corresponde a la tasa media de captación de carbono en parcelas secundarias durante los primeros 20 años; el 38 % procede de un modelo de paisajes brasileños y no es una medición de recuperación en campo.
+uncertainty_note: Las tasas se estiman comparando parcelas de distintas edades y los 66 años no proceden de seguir cada bosque durante ese plazo. El 38 % procede de un modelo de paisajes brasileños que no incluye la germinación posterior.
 social:
   publish: true
   id: b587196de4bb316c648967b394b6cbeb3f2421fa0556a436a648b4d1855b0730
@@ -81,15 +77,17 @@ Los bosques secundarios vuelven a crecer después de que se abandona o reduce un
 
 ## La biomasa puede recuperarse rápido, con mucha variación
 
-Un análisis publicado en _Nature_ reunió datos de 45 sitios y cerca de 1.500 parcelas de bosques secundarios neotropicales. En promedio, la biomasa aérea acumulada después de 20 años fue de 122 megagramos por hectárea, equivalente a una captación neta de 3,05 megagramos de carbono por hectárea al año. Esa tasa fue 11 veces la de los bosques antiguos incluidos en la comparación.
+Un [análisis publicado en _Nature_](https://doi.org/10.1038/nature16512) reunió datos de 45 sitios y cerca de 1.500 parcelas de bosques secundarios neotropicales. La biomasa aérea estimada a los 20 años fue en promedio de 122 megagramos por hectárea, equivalente a una captación neta de 3,05 megagramos de carbono por hectárea al año. Esa tasa fue 11 veces la de los bosques antiguos incluidos en la comparación.
 
 El promedio no describe una trayectoria uniforme. La recuperación de biomasa después de dos décadas varió más de once veces entre los sitios y aumentó con la disponibilidad de agua. La mediana estimada para recuperar 90 % de las reservas de biomasa de bosques antiguos fue de 66 años. El resultado se refiere a biomasa aérea y carbono; no significa que todas las especies, funciones o condiciones de un bosque antiguo reaparezcan en ese plazo.
 
+Los investigadores estimaron la recuperación mediante **cronosecuencias**: compararon parcelas abandonadas en momentos diferentes, en lugar de seguir cada una durante 66 años. Para la comparación relativa con bosques antiguos contaban con parcelas de referencia en 28 de los 45 sitios. Por eso, la mediana es una estimación del conjunto estudiado, no un plazo garantizado para un bosque concreto.
+
 ## Qué cambia cuando el paisaje está fragmentado
 
-Un segundo estudio, publicado en _Nature Climate Change_, modeló la dispersión de semillas por aves en diez paisajes del Bosque Atlántico brasileño. En paisajes con menos de 40 % de cobertura forestal, el movimiento de aves grandes estuvo más limitado. Como estas dispersan semillas de especies con alto potencial de almacenamiento de carbono, el modelo estimó hasta 38 % menos potencial de carbono en los bosques futuros de los paisajes más fragmentados.
+Un [segundo estudio, publicado en _Nature Climate Change_](https://doi.org/10.1038/s41558-024-01989-1), modeló la dispersión de semillas por aves en diez paisajes del Bosque Atlántico brasileño. En paisajes con menos de 40 % de cobertura forestal, el movimiento de aves grandes estuvo más limitado. Como estas dispersan semillas de especies con alto potencial de almacenamiento de carbono, el modelo estimó hasta 38 % menos potencial de carbono en los bosques futuros de los paisajes más fragmentados.
 
-Ese 38 % es una proyección del modelo sobre comunidades arbóreas posibles, no una disminución de carbono medida después de una intervención. El propio análisis señala que, en paisajes muy fragmentados, la regeneración natural puede necesitar restauración activa para alcanzar objetivos de biodiversidad y carbono.
+Ese 38 % es una proyección del modelo sobre comunidades arbóreas posibles, no una disminución de carbono medida después de una intervención. El cálculo se basa en las semillas que podrían llegar y no incorpora si después germinan o sobreviven a las condiciones locales. El propio análisis señala que, en paisajes muy fragmentados, la regeneración natural puede necesitar restauración activa para alcanzar objetivos de biodiversidad y carbono.
 
 ## Qué aporta esta comparación
 

@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-11-01T14:11:51.580Z",
+  "article": "src/content/posts/2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape editorial illustration for a serious science magazine about ancient cheetah DNA. An elegant, clearly illustrated (not photorealistic) study of a living generic cheetah in profile standing near the entrance of an imagined Arabian limestone cave, restrained ochre and slate colors, sophisticated natural-history print aesthetic with subtle paper texture, accurate ordinary cheetah proportions and spots, quiet directional daylight, wide composition. No remains, no skeletons, no excavated specimens, no humans, no text, no letters, no symbols, no logos. This is a conceptual scene and not a reconstruction of a specific animal or location.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-c1e4fdd7-aaff-4774-ba97-d949e43d6030.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-11-01-cheetah-cave-concept.png",
+    "sha256": "2008231a4a02a843481d23a48e242c6b6974246d767c18fdb125d75e7f01787a",
+    "bytes": 3350351,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-01-17-cheetah-cave-concept-original.webp",
+    "sha256": "c61a57f919aa3782897d2097515c4943c87756bb0175ac4642633f11b548adcf",
+    "bytes": 533216,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-01-17-article-213.png",
+    "provenance": "visual match to image credited by Live Science to Saudi National Center for Wildlife; transformation and reuse permission unverified"
+  },
+  "evidence_boundary": "Imagined scene; not a specific animal or location from the study.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

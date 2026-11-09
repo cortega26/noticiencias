@@ -31,7 +31,7 @@ glossary:
   - term: máser ciclotrónico de electrones
     definition: Mecanismo de emisión coherente de radio producido por electrones que se mueven en un campo magnético; su frecuencia depende de la intensidad local de ese campo.
   - term: preprint
-    definition: Versión de un estudio compartida antes de completar la revisión por pares de una revista científica.
+    definition: Versión de un trabajo científico compartida públicamente fuera de la publicación formal de una revista; su estado de revisión depende de cada trabajo.
 fact_check:
   - label: El equipo observó Beta Pictoris con el conjunto MeerKAT, no con otro radiotelescopio.
     status: confirmed
@@ -65,20 +65,27 @@ sources:
     date: '2026-09-15'
     role: primary
     doi: 10.48550/arXiv.2609.16720
-corrected_at: '2026-10-10'
-correction_summary: La primera versión atribuyó las observaciones al VLA; el estudio utilizó MeerKAT. Reescribimos la nota a partir del preprint original y mantuvimos la fecha histórica de publicación.
+  - title: Astronomers detected radio signals coming from an exoplanet for the first time
+    url: https://www.livescience.com/space/exoplanets/astronomers-detected-radio-signals-coming-from-an-exoplanet-for-the-first-time-spoiler-alert-its-not-aliens
+    publisher: Live Science
+    date: '2026-09-23'
+    role: secondary
+corrected_at: '2026-11-02'
+correction_summary: La primera versión atribuyó las observaciones al VLA; el estudio utilizó MeerKAT. Se añadieron límites de disponibilidad de datos y código y se precisó cómo interpretar las significancias astrométricas.
 social:
   publish: true
   id: 4b7613427d6403c072d8a80d249f7085bc3c3df96104f340860293d36a67ea46
 ---
 
+**Corrección, 2 de noviembre de 2026.** Precisamos que los valores de 4,4 y 4,8 sigmas son significancias equivalentes calculadas por los autores bajo su modelo estadístico, no distancias angulares medidas directamente en una dimensión.
+
 ## Una señal separada de la estrella
 
-Beta Pictoris b es un planeta gigante joven que orbita la estrella Beta Pictoris. El equipo de Kevin N. Ortiz Ceballos, Edo Berger y Yvette Cendes presenta observaciones de radio realizadas con MeerKAT, un conjunto de antenas situado en Sudáfrica. El artículo científico está disponible como preprint en arXiv desde el 15 de septiembre de 2026.
+Beta Pictoris b es un planeta gigante joven que orbita la estrella Beta Pictoris. El equipo de Kevin N. Ortiz Ceballos, Edo Berger y Yvette Cendes presenta observaciones de radio realizadas con MeerKAT, un conjunto de antenas situado en Sudáfrica. El [artículo científico](https://arxiv.org/abs/2609.16720v1) está disponible como preprint en arXiv desde el 15 de septiembre de 2026.
 
 Las observaciones abarcan cuatro épocas entre febrero de 2025 y mayo de 2026, en las bandas L y S, entre 0,856 y 3,5 gigahercios. El reto no era solo detectar una fuente de radio en el sistema: también había que establecer si su posición correspondía a la estrella, a uno de sus planetas o a una fuente de fondo.
 
-Para comparar esas posibilidades, los autores ajustaron la posición de la señal usando fuentes de referencia vinculadas al marco astrométrico de Gaia y un calibrador con posición medida por interferometría de larga base. Con las incertidumbres instrumentales y sistemáticas incluidas, la posición coincide con la órbita calculada de Beta Pictoris b. El análisis la separa de la estrella anfitriona por 4,4 desviaciones estándar y de Beta Pictoris c por 4,8. Es evidencia de localización; por sí sola no muestra directamente una aurora en la atmósfera.
+Para comparar esas posibilidades, los autores ajustaron la posición de la señal usando fuentes de referencia vinculadas al marco astrométrico de Gaia y un calibrador con posición medida por interferometría de larga base. Con las incertidumbres instrumentales y sistemáticas incluidas, la posición coincide con la posición calculada de Beta Pictoris b. Bajo su modelo de errores, el equipo expresa la incompatibilidad con la estrella anfitriona y con Beta Pictoris c como significancias equivalentes de 4,4 y 4,8 sigmas, respectivamente. Estas cifras resumen una comparación estadística de posiciones, no una distancia angular medida en una sola dimensión. La localización por sí sola no muestra directamente una aurora en la atmósfera.
 
 ## Por qué proponen un origen auroral
 
@@ -88,8 +95,12 @@ La señal alcanzó el límite superior de la banda observada, 3,5 gigahercios. S
 
 ## Qué falta por confirmar
 
-La posición de la fuente y las características de las ráfagas sostienen la interpretación del equipo, pero el trabajo sigue siendo un preprint y aún debe pasar por evaluación independiente. Además, la separación de aproximadamente ocho horas entre algunas ráfagas podría ser compatible con la rotación estimada de Beta Pictoris b, pero no establece por sí sola una periodicidad. Más seguimiento en radio ayudaría a comprobar esa modulación y a precisar la geometría del campo.
+La posición de la fuente y las características de las ráfagas sostienen la interpretación del equipo. La versión consultada figura en arXiv como enviada a una revista, sin que ello acredite una revisión por pares completada. Además, la separación de aproximadamente ocho horas entre algunas ráfagas podría ser compatible con la rotación estimada de Beta Pictoris b, pero no establece por sí sola una periodicidad. Más seguimiento en radio ayudaría a comprobar esa modulación y a precisar la geometría del campo.
+
+En la versión consultada, los autores indican que algunos bloques de datos podrían seguir bajo un período de exclusividad y que el código de registro astrométrico se facilitará al publicarse el trabajo. Eso limita lo que puede darse por disponible para una reproducción externa inmediata; no demuestra que todos los datos estén cerrados.
 
 La posible aurora es, por tanto, una explicación física de los datos que el equipo considera consistente con las observaciones. La señal localizada, su polarización y la estimación magnética son resultados del estudio; la confirmación del mecanismo y sus implicaciones depende de nuevas observaciones y de la revisión del preprint.
 
-<!-- source_identity: source_id=science_news; source_name=Science News -->
+Una [cobertura de Live Science](https://www.livescience.com/space/exoplanets/astronomers-detected-radio-signals-coming-from-an-exoplanet-for-the-first-time-spoiler-alert-its-not-aliens) recoge también la opinión de la astrónoma Suzanne Aigrain sobre el interés de futuras mediciones magnéticas en planetas más pequeños. Esa entrevista pertenece a Live Science; no prueba que Beta Pictoris b sea habitable.
+
+<!-- source_identity: source_id=arxiv; source_name=arXiv preprint -->

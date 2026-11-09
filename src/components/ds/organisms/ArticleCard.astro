@@ -69,101 +69,99 @@ const kicker = post.category?.title || 'ÁMBITO';
 const consequenceHeadline = post.why_it_matters?.[0] || post.title;
 ---
 
-{
-  variant === 'consequence' ? (
-    <article class={`group ${styles.article} ${className}`}>
-      <span class="text-xs font-bold uppercase tracking-wider text-primary mb-1">{kicker}</span>
-      <h3 class="text-lg font-bold text-text-body leading-tight">
+{variant === 'consequence' ? (
+  <article class={`group ${styles.article} ${className}`}>
+    <span class="text-xs font-bold uppercase tracking-wider text-primary mb-1">{kicker}</span>
+    <h3 class="text-lg font-bold text-text-body leading-tight">
+      <a
+        href={href}
+        class="transition-colors duration-200 hover:text-primary hover:underline underline-offset-4"
+      >
+        {consequenceHeadline}
+      </a>
+    </h3>
+    <a
+      href={href}
+      class="text-sm font-medium text-text-muted mt-2 block hover:text-primary hover:underline underline-offset-4"
+    >
+      Artículo: {post.title}
+    </a>
+  </article>
+) : (
+  <article class={`group ${styles.article} ${className}`}>
+    {image && (
+      <figure class="min-w-0">
+        <a
+          href={href}
+          class={`block overflow-hidden rounded-md bg-surface-highlight ${styles.image}`}
+        >
+          <Image
+            src={image}
+            alt={imageAlt}
+            width={variant === 'lead' ? 1200 : 640}
+            height={variant === 'lead' ? 800 : 420}
+            widths={[320, 640, 900, 1200]}
+            sizes={
+              variant === 'lead'
+                ? '(max-width: 1024px) 100vw, 760px'
+                : '(max-width: 768px) 100vw, 420px'
+            }
+            class="h-full w-full object-cover"
+            loading={variant === 'lead' ? 'eager' : 'lazy'}
+            fetchpriority={variant === 'lead' ? 'high' : 'auto'}
+          />
+        </a>
+      </figure>
+    )}
+
+    <div
+      class:list={[
+        'flex min-w-0 flex-col justify-center',
+        { 'mt-4': image && (variant === 'standard' || variant === 'compact') },
+      ]}
+    >
+      <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-text-muted">
+        {post.investigation && <InvestigationBadge size="sm" />}
+        {post.category && (
+          <TopicBadge
+            topic={post.category.title}
+            slug={post.category.slug}
+            href={getPermalink(post.category.slug, 'category')}
+            size="sm"
+          />
+        )}
+        <time datetime={post.publishDate.toISOString()}>
+          {getFormattedDate(post.publishDate, 'relative')}
+        </time>
+        {post.readingTime && <span>{post.readingTime} min lectura</span>}
+      </div>
+
+      <SourceLine post={post} showTranslationNote={false} showCoverage={false} class="mb-3" />
+
+      <h2
+        class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold text-balance break-words leading-snug text-text-body ${styles.title}`}
+      >
         <a
           href={href}
           class="transition-colors duration-200 hover:text-primary hover:underline underline-offset-4"
         >
-          {consequenceHeadline}
+          {post.title}
         </a>
-      </h3>
-      <a
-        href={href}
-        class="text-sm font-medium text-text-muted mt-2 block hover:text-primary hover:underline underline-offset-4"
-      >
-        Artículo: {post.title}
-      </a>
-    </article>
-  ) : (
-    <article class={`group ${styles.article} ${className}`}>
-      {image && (
-        <figure class="min-w-0">
-          <a
-            href={href}
-            class={`block overflow-hidden rounded-md bg-surface-highlight ${styles.image}`}
-          >
-            <Image
-              src={image}
-              alt={imageAlt}
-              width={variant === 'lead' ? 1200 : 640}
-              height={variant === 'lead' ? 800 : 420}
-              widths={[320, 640, 900, 1200]}
-              sizes={
-                variant === 'lead'
-                  ? '(max-width: 1024px) 100vw, 760px'
-                  : '(max-width: 768px) 100vw, 420px'
-              }
-              class="h-full w-full object-cover"
-              loading={variant === 'lead' ? 'eager' : 'lazy'}
-              fetchpriority={variant === 'lead' ? 'high' : 'auto'}
-            />
-          </a>
-        </figure>
+      </h2>
+
+      {showExcerpt && post.excerpt && (
+        <p class={`mt-3 line-clamp-3 leading-relaxed text-text-muted ${styles.excerpt}`}>
+          {post.excerpt}
+        </p>
       )}
 
-      <div
-        class:list={[
-          'flex min-w-0 flex-col justify-center',
-          { 'mt-4': image && (variant === 'standard' || variant === 'compact') },
-        ]}
-      >
-        <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-text-muted">
-          {post.investigation && <InvestigationBadge size="sm" />}
-          {post.category && (
-            <TopicBadge
-              topic={post.category.title}
-              slug={post.category.slug}
-              href={getPermalink(post.category.slug, 'category')}
-              size="sm"
-            />
-          )}
-          <time datetime={post.publishDate.toISOString()}>
-            {getFormattedDate(post.publishDate, 'relative')}
-          </time>
-          {post.readingTime && <span>{post.readingTime} min lectura</span>}
+      {showTags && post.tags && post.tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.tags.slice(0, 3).map((tag) => (
+            <TagPill title={tag.title} href={getPermalink(tag.slug, 'tag')} size="sm" />
+          ))}
         </div>
-
-        <SourceLine post={post} showTranslationNote={false} showCoverage={false} class="mb-3" />
-
-        <h2
-          class={`${post.investigation && variant === 'lead' ? 'font-serif' : 'font-heading'} font-bold text-balance break-words leading-snug text-text-body ${styles.title}`}
-        >
-          <a
-            href={href}
-            class="transition-colors duration-200 hover:text-primary hover:underline underline-offset-4"
-          >
-            {post.title}
-          </a>
-        </h2>
-
-        {showExcerpt && post.excerpt && (
-          <p class={`mt-3 line-clamp-3 leading-relaxed text-text-muted ${styles.excerpt}`}>
-            {post.excerpt}
-          </p>
-        )}
-
-        {showTags && post.tags && post.tags.length > 0 && (
-          <div class="mt-4 flex flex-wrap gap-2">
-            {post.tags.slice(0, 3).map((tag) => (
-              <TagPill title={tag.title} href={getPermalink(tag.slug, 'tag')} size="sm" />
-            ))}
-          </div>
-        )}
-      </div>
-    </article>
-  )
-}
+      )}
+    </div>
+  </article>
+)}

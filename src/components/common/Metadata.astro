@@ -72,14 +72,12 @@ const adaptedOpenGraph = await adaptOpenGraphImages(seoProps?.openGraph, Astro.s
 const headTags = buildHead({ ...seoProps, openGraph: adaptedOpenGraph });
 ---
 
-{
-  headTags.map((t) => {
-    if (t.tag === 'title') {
-      return <title>{t.content}</title>;
-    }
-    if (t.tag === 'meta') {
-      return <meta {...t.attrs} />;
-    }
-    return <link {...t.attrs} />;
-  })
-}
+{headTags.map((t) => {
+  if (t.tag === 'title') {
+    return <title>{t.content}</title>;
+  }
+  if (t.tag === 'meta') {
+    return <meta {...t.attrs} />;
+  }
+  return <link {...t.attrs} />;
+})}

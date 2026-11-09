@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T19:46:48.725919+00:00",
+  "article": "src/content/posts/2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create a sophisticated landscape 3:2 editorial illustration for a serious science magazine article about the discovery and classification of marine life. Depict a single imaginative, generic marine bristle worm moving gently through a deep-sea environment, seen against a dark navy background with subtle soft particles, delicate copper and pale teal accents. Restrained, naturalistic illustration rather than sensational bioluminescence; premium museum editorial art direction, clear focal point, subtle texture, generous composition. It is conceptual and must not reproduce or purport to depict any specific documented species or scientific observation. No labels, text, logos, charts, human figures, or watermarks.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-14eb05ba-a5b9-4642-b2c9-9caa62873b24.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-ocean-census-concept.png",
+    "sha256": "3b63f41916aaa6da3d2dd314f5ae5f7ec51161208499c668bf636e5536d8ca2c",
+    "bytes": 2480797,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-06-14-ocean-census-concept-original.webp",
+    "sha256": "b76c54547037abe5c262f4a533e5b65f7c5754aac94befab169bed6a45eb9fa4",
+    "bytes": 260476,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-06-14-ocean-census-reveals-more-than-1-100-new-species.webp",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Conceptual illustration; not a photograph, any identified species, or evidence of an actual scientific observation.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

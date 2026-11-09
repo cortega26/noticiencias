@@ -26,13 +26,14 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:image-alt": "node scripts/check-image-alt.js",
+    "check:image-attributions": "node scripts/check-image-attributions.js",
     "check:doc-drift": "node scripts/check-doc-drift.js",
     "check:editorial-fields": "node scripts/check-editorial-fields.js",
     "check:slug-quality": "node scripts/check-slug-quality.js",
     "check:runtime-artifacts": "node scripts/check-runtime-artifacts.js",
     "check:executable-content": "node scripts/check-executable-content.js",
     "check:reachability": "node scripts/check-component-reachability.js",
-    "check:content": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:translation-residue && npm run check:tags && npm run check:editorial-fields",
+    "check:content": "npm run check:runtime-artifacts && npm run check:executable-content && npm run check:frontmatter-dates && npm run check:hero-images && npm run check:image-alt && npm run check:image-attributions && npm run check:slug-quality && npm run check:published-sidecars && npm run check:image-extensions && npm run check:image-derivatives && npm run check:content-quality && npm run check:translation-residue && npm run check:tags && npm run check:editorial-fields",
     "lint": "npm run check:reachability && npm run check:content && npm run check:doc-drift && npm run format:check && eslint .",
     "lint-fix": "prettier --write . && eslint . --fix",
     "typecheck": "astro check",
@@ -66,7 +67,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.0",
     "astro-icon": "^1.2.0",
-    "csv-parse": "^7.0.2",
+    "csv-parse": "^7.0.3",
     "js-yaml": "^4.3.2",
     "limax": "^4.2.2",
     "lodash.merge": "^4.6.2",
@@ -84,7 +85,8 @@
     "brace-expansion@^5.0.5": "5.0.12",
     "esbuild": "0.28.1",
     "postcss-selector-parser": "7.1.6",
-    "undici@^7.19.0": "7.30.1"
+    "undici@^7.19.0": "7.30.1",
+    "minimatch": "^11.0.2"
   },
   "lint-staged": {
     "*.md": [
@@ -123,12 +125,12 @@
     "eslint-plugin-astro": "^3.2.1",
     "eslint-plugin-no-secrets": "^2.2.1",
     "eslint-plugin-security": "^3.0.1",
-    "glob": "^13.0.0",
+    "glob": "^14.0.3",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-astro": "^1.1.2",
     "typescript": "^5.9.3",
     "vitest": "4.1.12"
   }

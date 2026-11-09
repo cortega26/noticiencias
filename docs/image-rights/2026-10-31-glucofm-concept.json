@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T19:38:51.373607+00:00",
+  "article": "src/content/posts/2026-08-26-por-que-tu-sensor-de-glucosa-podria-estar-revelando-mas-de-lo-que-crees.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Create a sophisticated editorial illustration for a serious Spanish-language science magazine article about research on machine learning from continuous glucose monitoring records. Landscape 3:2. Abstract, conceptual composition: a small unbranded wearable sensor patch on a neutral dark indigo surface, a restrained luminous continuous wave splitting into two layered flowing traces, soft medical laboratory palette of midnight blue, pale cyan and warm white. Clean premium scientific magazine photography-inspired art direction, calm and precise, generous negative space, detailed but not busy. No people, no clinical procedure, no logos, no devices with displays, no numbers, no labels, no text, no graph axes, no claims of diagnosis. This is conceptual artwork, not a depiction of the actual GlucoFM system.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-6fdb8c4c-9aad-4847-8b1a-860a292dfcf4.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-glucofm-concept.png",
+    "sha256": "e74863e290fe0439dd72941fdf312f9d91767c5c673bfddd914c55e47d33efed",
+    "bytes": 2116742,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-08-26-glucofm-concept-original.webp",
+    "sha256": "d40bfffd84e92a9720d2e017ccb8f6abd4d92c8a6f99e9f3a82e9191164c83ac",
+    "bytes": 158088,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-08-26-glucofm-foundation-model-for-continuous-glucose-monitoring.png",
+    "provenance": "figure from developer material; independent reuse permission not documented"
+  },
+  "evidence_boundary": "Conceptual illustration; not a real device, actual GlucoFM architecture, patient data, or evidence of clinical efficacy.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "record_type": "agent-recorded original-image generation receipt",
+  "recorded_at_utc": "2026-10-31T19:59:36.167430+00:00",
+  "article": "src/content/posts/2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida.md",
+  "base_commit": "edd01c5e450d68c98c94878f1f2567bce54d16e5",
+  "tool": "OpenAI imagegen (Codex built-in image_gen.imagegen)",
+  "provider_request_id": null,
+  "input_images": [],
+  "prompt": "Landscape 3:2 editorial conceptual artwork for a rigorous science and public health magazine article about population-level cancer risk factors. Use an elegant abstract composition: a softly lit field of many small neutral circular glass-like forms, a modest subset accented in muted terracotta and teal, arranged organically without suggesting a numerical chart or exact proportion. Quiet, restrained, sophisticated visual tone, textured off-white and deep blue background, strong clarity at mobile width. No microscopic imagery, no patients, no body parts, no medical claims, no words, no numbers, no logos. Clearly conceptual rather than a photograph of a specimen or data visualization.",
+  "tool_output_path": "/home/carlos/.codex/generated_images/01a18eea-5e78-7553-b029-430b7c03da9d/exec-6c8264ce-d28a-488d-bb5d-335d8abe6975.png",
+  "original": {
+    "path": "docs/image-rights/originals/2026-10-31-cancer-risk-concept.png",
+    "sha256": "25de7741e70d485515293d8109f87a5cc597a9154543ebec61518aa0dff50641",
+    "bytes": 2424670,
+    "width": 1536,
+    "height": 1024
+  },
+  "exported": {
+    "path": "src/assets/images/2026-02-05-cancer-risk-concept-original.webp",
+    "sha256": "3662ce1ecc564ec969540e8814383637f3c2470c545f6161a3ee8cef1fbf07f1",
+    "bytes": 239950,
+    "width": 1536,
+    "height": 1024,
+    "parameters": {
+      "format": "webp",
+      "quality": 90,
+      "effort": 6,
+      "resized": false
+    }
+  },
+  "replaces": {
+    "path": "src/assets/images/2026-02-05-article-657.jpg",
+    "provenance": "independent reuse permission not documented"
+  },
+  "evidence_boundary": "Abstract visual, not a scientific micrograph or quantitative depiction of cancer risk.",
+  "review": {
+    "visual_owner_approval": "pending",
+    "independent_scientific_review": "not_performed",
+    "deployment": "not_deployed"
+  }
+}

@@ -607,12 +607,84 @@ function auditTagSitemapExclusion() {
   }
 }
 
+function auditSitemapIndexability() {
+  const errorsBefore = errorCount;
+  const sitemapFiles = fs.readdirSync(DIST_DIR).filter((name) => /^sitemap.*\.xml$/.test(name));
+  for (const sitemapFile of sitemapFiles) {
+    const xml = load(fs.readFileSync(path.join(DIST_DIR, sitemapFile), 'utf8'), { xmlMode: true });
+    for (const loc of xml('urlset > url > loc').toArray()) {
+      const url = xml(loc).text().trim();
+      const pathname = new URL(url).pathname.replace(/^\/+|\/+$/g, '');
+      const htmlPath = path.join(DIST_DIR, pathname, 'index.html');
+      if (!fs.existsSync(htmlPath)) continue;
+      const page = load(fs.readFileSync(htmlPath, 'utf8'));
+      const blocked = page('meta[name]')
+        .toArray()
+        .some((element) => {
+          const name = (page(element).attr('name') || '').toLowerCase();
+          const directives = (page(element).attr('content') || '').toLowerCase().split(/[\s,]+/);
+          return (
+            ['robots', 'googlebot'].includes(name) &&
+            directives.some((d) => d === 'noindex' || d === 'none')
+          );
+        });
+      if (blocked) {
+        console.error(`${RED}[FAIL] ${sitemapFile} lists a noindex page: ${url}.${RESET}`);
+        errorCount++;
+      }
+    }
+  }
+  if (errorCount === errorsBefore) {
+    console.log(`${GREEN}PASSED: sitemap HTML pages do not declare noindex.${RESET}`);
+  }
+}
+
+function auditHomepageSocialPreview() {
+  // The social image must be public and the homepage tags must match it.
+  const imagePath = path.join(DIST_DIR, 'assets/images/hotlink-ok/noticiencias-social-og.jpg');
+  const homepagePath = path.join(DIST_DIR, 'index.html');
+  const imageUrl = 'https://noticiencias.com/assets/images/hotlink-ok/noticiencias-social-og.jpg';
+
+  if (!fs.existsSync(imagePath)) {
+    console.error(`${RED}[FAIL] Homepage social preview missing from dist.${RESET}`);
+    errorCount++;
+    return;
+  }
+
+  const jpg = fs.readFileSync(imagePath);
+  const hasStartMarker = jpg.subarray(0, 2).equals(Buffer.from([0xff, 0xd8]));
+  const hasEndMarker = jpg.subarray(-2).equals(Buffer.from([0xff, 0xd9]));
+  if (!hasStartMarker || !hasEndMarker) {
+    console.error(`${RED}[FAIL] Homepage preview is not a complete JPEG.${RESET}`);
+    errorCount++;
+  }
+
+  const $ = load(fs.readFileSync(homepagePath, 'utf8'));
+  const expected = [
+    ['meta[property="og:image"]', imageUrl],
+    ['meta[property="og:image:width"]', '1200'],
+    ['meta[property="og:image:height"]', '630'],
+    ['meta[property="og:image:type"]', 'image/jpeg'],
+    ['meta[name="twitter:image"]', imageUrl],
+    ['meta[name="twitter:card"]', 'summary_large_image'],
+  ];
+  for (const [selector, value] of expected) {
+    const actual = $(selector).attr('content');
+    if (actual !== value) {
+      console.error(`${RED}[FAIL] Invalid homepage social tag: ${selector}.${RESET}`);
+      errorCount++;
+    }
+  }
+}
+
 console.log(`${GREEN}Starting Dist-Sanity Check...${RESET}`);
 checkDistFreshness();
 scanDir(DIST_DIR);
 auditBuiltArticleHeroes();
+auditHomepageSocialPreview();
 auditSocialManifest();
 auditTagSitemapExclusion();
+auditSitemapIndexability();
 
 if (errorCount > 0) {
   console.error(`\n${RED}FAILED: Found ${errorCount} violations in ${fileCount} files.${RESET}`);

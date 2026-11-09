@@ -39,6 +39,7 @@ export function formatSearchMeta(categories: unknown, date: unknown): string {
           year: 'numeric',
           month: 'short',
           day: 'numeric',
+          timeZone: 'UTC',
         }).format(new Date(date))
       : '';
   return [category, formattedDate].filter(Boolean).join(' · ');

@@ -12,44 +12,49 @@ tags:
   - rotacion rapida
   - asteroide
 excerpt: 'Rubin detecta asteroide de 700m girando cada 1,88 min, más rápido de lo esperado. Su rotación inusual desafía lo que se sabía sobre este tipo de objetos.'
-image: ~/assets/images/2026-05-15-rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors.jpg
-image_alt: Observatorio Vera C. Rubin bajo el cielo nocturno, vinculado al rastreo de asteroides y objetos interestelares
-source_url: https://quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/
+image: ~/assets/images/2026-05-15-asteroid-rotation-concept-original.webp
+image_alt: Ilustración conceptual generada con IA de un asteroide genérico iluminado; no muestra la forma ni la composición de 2025 MN45.
+source_url: https://www.quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/
 series: 'Espacio'
 refinery_id: Rubin Tracks Skyscraper-Size Asteroids, Failed Supernovas, and Interstellar Visitors
 headlines_variants:
   question: ¿Cómo un asteroide de 700 metros sobrevive girando cada 1,88 minutos?
-  benefit: Este descubrimiento redefine la comprensión de asteroides y su formación
+  benefit: Qué puede revelar la rotación sobre la resistencia de un asteroide
+corrected_at: '2026-10-31'
+correction_summary: Se corrigieron afirmaciones no respaldadas sobre la estructura del asteroide, predicción de impactos y observaciones de Rubin; se añadieron las fuentes del estudio.
+sources:
+  - title: Lightcurves, Rotation Periods, and Colors for Vera C. Rubin Observatory’s First Asteroid Discoveries
+    url: https://doi.org/10.3847/2041-8213/ae2a30
+    publisher: The Astrophysical Journal Letters
+    role: primary
+    doi: 10.3847/2041-8213/ae2a30
+  - title: Rubin Tracks Skyscraper-Size Asteroids, Failed Supernovas, and Interstellar Visitors
+    url: https://www.quantamagazine.org/rubin-tracks-skyscraper-size-asteroids-failed-supernovas-and-interstellar-visitors-20260515/
+    publisher: Quanta Magazine
+    role: secondary
+  - title: Rubin Observatory Spots Record-Breaking Asteroid in Pre-Survey Observations
+    url: https://rubinobservatory.org/news/rubin-record-breaking-asteroid-pre-survey
+    publisher: Rubin Observatory
 ---
 
-Un asteroide del tamaño del Edificio Empire State gira cada 1,88 minutos. Los astrónomos no esperaban hallar un objeto de 700 metros girando en menos de 10 minutos; una rotación tan rápida podría generar suficiente fuerza centrífuga como para destrozarlo. Pero en las primeras imágenes del Observatorio Vera C. Rubin, allí estaba, intacto, desafiando lo que se esperaba encontrar.
+**Corrección, 31 de octubre de 2026.** Una versión anterior presentó como hecho el origen y la estructura del asteroide, exageró capacidades de predicción de impactos y describió de forma imprecisa las observaciones de Rubin. Esta actualización se centra en el resultado del estudio y sus límites.
 
-El Observatorio Vera C. Rubin se alza en la cima del Cerro Pachón, en el desierto de Atacama, Chile. Con un telescopio de 8,4 metros de diámetro y la cámara digital más grande del mundo, este observatorio está diseñado para observar el universo en constante cambio. Durante una década, capturará imágenes del cielo nocturno del Hemisferio Sur cada pocos días, creando la película time-lapse más grande jamás construida. En su primer año, espera descubrir un millón de asteroides desconocidos —tanto como en los últimos 200 años de historia— y miles de millones de estrellas y galaxias.
+El asteroide **2025 MN45**, del cinturón principal entre Marte y Júpiter, completa una vuelta en aproximadamente 1,88 minutos. Su diámetro estimado es de unos 710 metros. Esa combinación lo situó, en el momento del anuncio, como el asteroide de más de 500 metros de diámetro con la rotación más rápida conocida; no significa que sea el más rápido de cualquier tamaño.
 
-## Contexto del fenómeno
+## Cómo se midió
 
-Hasta ahora, los astrónomos solo habían podido estudiar el cosmos con lentitud. Los telescopios anteriores tomaban años para mapear el cielo, y los cambios sutiles pasaban desapercibidos. Rubin cambia eso: no solo ve el universo, sino que lo registra en tiempo real. Cada noche, compara nuevas imágenes con mapas anteriores para identificar movimientos, explosiones o objetos nuevos. Es como si la ciencia finalmente tuviera un reloj cósmico preciso, capaz de seguir el ritmo del cosmos.
+El equipo liderado por Sarah Greenstreet analizó variaciones de brillo —curvas de luz— en observaciones obtenidas durante la puesta a punto de la cámara del Observatorio Vera C. Rubin. Esas variaciones permiten estimar la periodicidad de la rotación. El [estudio](https://doi.org/10.3847/2041-8213/ae2a30) obtuvo períodos fiables para 76 objetos y detectó 19 rotadores rápidos, con períodos inferiores a 2,2 horas.
 
-## El método de Rubin
+Rubin recoge imágenes del cielo desde Cerro Pachón, en Chile. El conjunto analizado corresponde a observaciones iniciales, anteriores al programa regular de diez años: no debe confundirse la muestra de ese estudio con el total de objetos que el observatorio pueda descubrir en el futuro.
 
-Para procesar tanta información, Rubin usa un sistema de alertas automatizado. Al comparar nuevas imágenes con mapas previos, el observatorio detecta cambios en tiempo real. El 24 de febrero de 2026, envió 800.000 alertas en una sola noche. Cuando esté completamente operativo, generará 7 millones de alertas y 20 terabytes de datos cada noche. "Todos van a tener dificultad para seguir el ritmo", dice Michael Frazer, "pero es un problema delicioso".
+## Por qué sorprende su giro
 
-## Descubrimientos inesperados
+Muchos asteroides se describen como acumulaciones de fragmentos unidos principalmente por gravedad. Al girar demasiado rápido, una estructura de ese tipo tendría dificultades para mantenerse unida. La rotación de 2025 MN45 sugiere que posee una resistencia interna considerable. Eso no revela directamente su composición ni demuestra que proceda del núcleo de un antiguo cuerpo planetario; son preguntas para observaciones y modelos posteriores.
 
-En junio de 2025, Rubin reveló 1.500 asteroides nuevos. Entre ellos, 19 giraban a velocidades sorprendentes. El más rápido, 2025 MN 45, mide 700 metros de diámetro —casi el doble de la altura del Empire State— y completa una vuelta cada 1,88 minutos. "No esperábamos encontrar algo girando más rápido de 10 minutos", dice Dmitrii Vavilov, coautor del estudio. Para asteroides de este tamaño, la ciencia pensaba que eran montones de escombros débiles, unidos por gravedad. Pero este objeto debe tener una estructura sólida, posiblemente un fragmento de un núcleo planetario muerto desde hace 4.500 millones de años.
+La estimación del tamaño también importa al comparar récords: un objeto pequeño puede girar muy rápido sin que esa comparación sea equivalente a la de uno de cientos de metros. El interés de la muestra está en explorar cómo se relacionan tamaño, giro y resistencia, no en declarar que un solo asteroide haya cambiado toda la historia de formación planetaria.
 
-También participó en el seguimiento del cometa interestelar 3I/ATLAS: tras el anuncio del descubrimiento por parte de ATLAS, búsquedas en datos previos de Rubin mostraron una detección 10 días anterior. Y podría convertirse en una herramienta clave para identificar supernovas fallidas, esos casos en que estrellas masivas colapsan en lugar de explotar. "Es 100 veces más débil que otras encuestas del cielo", explica Stephen Smartt.
+## Qué no demuestra
 
-Rubin mide el desplazamiento de la luz hacia el rojo para calcular distancias a galaxias. Esto ayudará a estudiar la energía oscura y los destellos de radio rápidos, cuyos orígenes siguen siendo un misterio.
-
-## Límites y alcance real
-
-Rubin no resolverá todos los misterios. Aunque espera encontrar entre 5 y 500 objetos interestelares, si no encuentra ninguno, sería igual de importante. Los científicos no saben con certeza cuántos impactadores de pocos metros detectará, pero sí saben que podrá avisar con días de anticipación, en lugar de horas. Si Rubin detecta un asteroide de pocos metros, tú podrás ver una bola de fuego en el cielo con días de anticipación. Los astrónomos podrán enviar equipos al lugar y hasta avisarte para que mires hacia arriba.
-
-## Reescribiendo la historia del sistema solar
-
-Los asteroides que Rubin descubre podrían revelar cómo se formaron los planetas. Algunos tienen órbitas sincronizadas con Neptuno, lo que sugiere que migraron desde su posición original. "Esto nos ayudará a reconstruir la historia de nuestro sistema solar", dice Sarah Greenstreet, autora principal del estudio sobre el asteroide giratorio. Hasta ahora, los científicos creían que los planetas estaban más cerca al formarse, pero no tenían pruebas concretas. Rubin está cambiando eso.
-
-Rubin no solo está mirando el cielo; está cambiando la forma en que lo entendemos. Cada noche, millones de alertas llegan a los científicos, y cada una es una nueva pregunta. ¿Qué otros objetos interestelares están cruzando nuestro sistema solar? ¿Qué revelarán las supernovas sobre la energía oscura? La ciencia está a punto de escribir un nuevo capítulo, y Rubin es la pluma.
+Este hallazgo no anuncia un impacto terrestre ni permite asegurar que Rubin detectará cada objeto peligroso con días de anticipación. La detección depende de la órbita, el brillo, las condiciones de observación y el seguimiento. En particular, 2025 MN45 se describe en el estudio como un objeto del cinturón principal.
 
 <!-- source_identity: source_id=quanta_magazine; source_name=Quanta Magazine -->

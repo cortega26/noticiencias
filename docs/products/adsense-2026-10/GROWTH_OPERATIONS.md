@@ -6,6 +6,14 @@
 
 El snapshot aportado por la investigación del plan cubre 22-sep→19-oct: 22 clics, 169 impresiones, 18 clics de marca visibles. Esta rama no volvió a consultar GSC ni cuenta con una exportación de consultas; los 4 clics restantes **no se clasifican automáticamente como no-marca**. Consultas omitidas/anónimas deben quedar separadas. No se inventan volúmenes de demanda.
 
+### Consulta de Search Console — 3 de noviembre de 2026
+
+Consulta de solo lectura en la interfaz de la propiedad `sc-domain:noticiencias.com`. El informe de páginas indicaba **última actualización 22-oct-2026**, 82 páginas indexadas y 368 sin indexar: 260 con `noindex`, 48 con redirección, 16 con 404, 3 bloqueadas por robots, 40 rastreadas sin indexar y 1 descubierta sin indexar. Son clasificaciones de Google para todas las páginas conocidas, no un conteo de artículos fallidos ni una medición en tiempo real. La interfaz marca «Error» en la validación de `noindex`; esto no demuestra por sí solo que cada exclusión sea accidental.
+
+En los primeros diez ejemplos de «rastreada, actualmente sin indexar» aparecieron las guías `/recursos/carbono-bosques-suelos/` y `/recursos/exoplanetas-atmosferas-biosignaturas/`, junto con ocho feeds `/temas/*/rss.xml`. La tabla mostraba rastreos individuales hasta el 24-oct, aunque el encabezado del informe indicaba actualización del 22-oct; conservar ambas fechas sin deducir el estado actual de cada URL. No se inspeccionaron los 40 ejemplos ni se solicitó validación o indexación.
+
+En Sitemaps, `https://noticiencias.com/sitemap-index.xml` figuraba enviado el 10-oct, leído por última vez el 24-oct, con estado «Correcto» y 102 páginas descubiertas; páginas descubiertas no equivale a páginas indexadas. La vista general mostraba «Sin datos» de Core Web Vitals para móvil y ordenador. Estos datos preceden a las modificaciones locales aún no publicadas y no cierran el gate operativo. El conector GSC Wizard devolvió `subscription_required`; la consulta anterior se hizo directamente en Search Console sin modificar su configuración.
+
 | Familia                     | Evidencia de demanda actual                                           | Página/acción                                                      | Pregunta concreta a resolver                            |
 | --------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------- |
 | Marca Noticiencias          | 18 clics visibles en snapshot previo; pendiente refresco              | Portada y Nosotros                                                 | Qué publica el medio y cómo comprueba sus explicaciones |

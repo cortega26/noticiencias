@@ -1,7 +1,9 @@
 ---
-title: Por qué una mujer de 30.000 años obliga a reescribir la historia genética de Europa
+title: El ADN de Isturitz muestra vínculos genéticos entre poblaciones de la Europa paleolítica
 schema_version: 2
 date: 2026-10-27
+corrected_at: '2026-11-03'
+correction_summary: 'Se precisaron las muestras y las dataciones; se retiraron afirmaciones no demostradas sobre aislamiento, lugar de muerte y pigmentación, y se aclararon los límites del ADN de Chufín. Se precisó la proposición no verificada de la ficha sobre el alcance del estudio.'
 author: Noticiencias AI
 categories:
   - Ciencia
@@ -11,18 +13,18 @@ tags:
   - isturitz
   - flujo genético
   - paleolítico superior
-excerpt: El genoma de una mujer gravetiense de Isturitz muestra ascendencia mixta este-oeste, probando flujo genético hace ~32.000 años. Solo tres genomas; mecanismo desconocido.
-image: ~/assets/images/2026-10-27-30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age.png
-image_alt: 'Ilustración generada con IA: Ilustración científica de una silueta humana translúcida con dos flujos de color que se mezclan dentro, simbolizando la ascendencia genética mixta.'
+excerpt: Un genoma de Isturitz presenta afinidad con poblaciones de Europa central y oriental. El estudio propone modelos para explicar esa señal, pero no identifica dónde ocurrió el contacto.
+image: ~/assets/images/2026-10-27-isturitz-entrada-michel-bakni.jpg
+image_alt: 'Entrada actual del conjunto de cuevas de Isturitz y Oxocelhaya, fotografiada en 2024. Foto: Michel Bakni / Wikimedia Commons, CC BY 4.0; recortada para portada.'
 source_url: https://livescience.com/archaeology/human-evolution/30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age
 refinery_id: '4727'
 headlines_variants:
   question: ¿Estaban realmente aislados los gravetienses de Europa oriental y occidental?
   benefit: Qué nos dice el ADN de Isturitz sobre los verdaderos contactos entre poblaciones paleolíticas
 summary_points:
-  - El genoma de una mujer gravetiense de 30.000 años hallada en la cueva de Isturitz (Francia) muestra ascendencia mixta occidental y oriental, evidenciando flujo genético entre ambas regiones durante la última glaciación.
-  - Los autores datan un pulso de flujo genético entre hace 31.500 y 32.500 años, no como migración masiva sino como intercambio sostenido detectable en el linaje.
-  - Los otros dos genomas nuevos (España e Italia) se agrupan solo con la variante occidental, y los tres individuos comparten fenotipos oscuros y ausencia de endogamia cercana.
+  - El genoma de una mujer gravetiense cuyos restos se hallaron en Isturitz (Francia) presenta afinidad con linajes relacionados con poblaciones de Europa central y oriental.
+  - Si la señal corresponde a un único pulso, el modelo lo sitúa aproximadamente entre hace 31.500 y 32.500 años; otras explicaciones siguen en estudio.
+  - El ADN de Chufín estaba muy degradado; el análisis de parentesco cercano se aplicó a las muestras de Isturitz y Ostuni.
   - El estudio reconoce que tres genomas son insuficientes para resolver la dinámica continental completa y no aclaran los mecanismos ni la extensión del contacto este-oeste.
 glossary:
   - term: Gravetiense
@@ -32,27 +34,33 @@ glossary:
   - term: Ascendencia mixta
     definition: Presencia en un individuo de componentes genéticos provenientes de poblaciones ancestrales distintas.
   - term: Endogamia
-    definition: Reproducción entre individuos emparentados; su ausencia sugiere redes de apareamiento amplias pese a baja densidad poblacional.
+    definition: Reproducción entre individuos emparentados; los indicadores genéticos individuales no revelan por sí solos la organización social de una población.
   - term: Pulso de flujo genético
     definition: Episodio concentrado en el tiempo de intercambio genético entre poblaciones, detectable mediante métodos de datación genómica.
 fact_check:
-  - label: Una mujer que murió hace 30.000 años en Isturitz llevaba ADN con ascendencia mixta occidental y oriental
+  - label: El genoma de la mujer de Isturitz presenta afinidad con un linaje relacionado con poblaciones de Europa central y oriental
     status: confirmed
-  - label: Los gravetienses de Europa occidental y oriental formaban poblaciones distintas sin apenas cruce según el registro genético previo
-    status: confirmed
-  - label: El pulso de flujo genético se fechó entre 31.500 y 32.500 años atrás
+  - label: El registro genético anterior demostraba un aislamiento absoluto entre poblaciones occidentales y orientales
+    status: unsupported
+  - label: Bajo el supuesto de un único pulso, el modelo sitúa la mezcla entre 31.500 y 32.500 años atrás
     status: confirmed
   - label: No fue una migración masiva ni un reemplazo, sino un intercambio detectable
     status: uncertain
-  - label: Los tres individuos comparten piel, cabello y ojos oscuros y sus padres no eran parientes cercanos
+  - label: El análisis de parentesco cercano se aplicó a las muestras de Isturitz y Ostuni
     status: confirmed
-  - label: Tres genomas no resuelven la dinámica de todo un continente; el estudio no aclara cómo ocurrió el flujo ni si fue evento único o patrón amplio
+  - label: Los tres genomas establecen cómo ocurrió el flujo genético y si fue un evento único o un patrón amplio
     status: uncertain
 why_it_matters:
-  - Proporciona respaldo genético directo a la hipótesis arqueológica de que Isturitz fue un nudo de contactos y tránsito entre poblaciones gravetienses este-oeste.
-  - Obliga a revisar modelos poblacionales que asumían aislamiento geográfico durante el Gravetiense, apoyando una red porosa con nodos de concentración.
-confidence: Moderada — estudio publicado en revista revisada por pares (Science) con secuenciación de genomas completos, pero tamaño muestral muy pequeño (n=3) y limitaciones explícitas en alcance geográfico y mecanístico
+  - Aporta datos para contrastar modelos sobre conexiones entre poblaciones gravetienses de distintas regiones.
+  - La afinidad genética es compatible con contactos, pero no identifica el lugar ni el mecanismo de la mezcla.
+confidence: Moderada — estudio publicado en revista revisada por pares (Science Advances) con datos genómicos antiguos, pero tamaño muestral muy pequeño (n=3) y limitaciones explícitas en alcance geográfico y mecanístico
 sources:
+  - title: Early Gravettian genomic data from Western Europe reveal population movements before the LGM
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13693654/
+    publisher: Science Advances
+    date: '2026-10-23'
+    role: primary
+    doi: 10.1126/sciadv.aeh6128
   - title: 30,000-year-old bone found in French cave reveals vast genetic connections between people of Eastern and Western Europe during the Stone Age
     url: https://livescience.com/archaeology/human-evolution/30-000-year-old-bone-found-in-french-cave-reveals-vast-genetic-connections-between-people-of-eastern-and-western-europe-during-the-stone-age
     publisher: Live Science
@@ -63,32 +71,32 @@ social:
   id: b7c314324466a920d9cb5eae8cfaa7a1e52630730106b5242f24a4b98eed554d
 ---
 
-Una mujer que murió hace 30.000 años en la cueva de Isturitz, al suroeste de Francia, llevaba en su ADN la prueba de que Europa oriental y occidental no eran mundos separados durante la última glaciación. Su genoma, secuenciado junto al de otros dos individuos del periodo gravetiense, muestra una ascendencia mixta que obliga a reescribir la idea de que los grupos humanos de aquel entonces vivían aislados por la geografía y el hielo.
+**Corrección y actualización, 1 de noviembre de 2026.** Una versión anterior agrupaba erróneamente la muestra italiana con el linaje occidental, atribuía a los tres individuos un análisis de parentesco aplicado solo a dos y describía un aislamiento absoluto que el registro previo no demostraba. También atribuía sin evidencia el lugar de muerte a la cueva y predicciones de pigmentación a las tres muestras. Precisamos los límites de la muestra de Chufín, que la fecha de mezcla depende de un modelo y que el ADN no localiza el contacto.
+
+Los restos de una mujer que vivió hace unos 30.000 años, hallados en la cueva de Isturitz, al suroeste de Francia, contienen una señal genética relacionada con poblaciones de Europa central y oriental. Su genoma, estudiado junto con los de otros dos individuos del periodo gravetiense, ayuda a poner a prueba modelos sobre las conexiones entre poblaciones. El hallazgo no indica dónde murió ni dónde se produjo el contacto entre sus antepasados.
 
 ## Contexto del fenómeno y de la pregunta abierta
 
-La cultura gravetiense floreció en Europa entre hace unos 34.000 y 25.000 años. Sus señas de identidad —arte portátil, las famosas _venus_ talladas en marfil o piedra, herramientas de sílex estandarizadas— aparecen desde la península ibérica hasta los Urales. Sin embargo, el registro genético era escaso: apenas dos docenas de genomas antiguos recuperados en todo el continente. Con esa muestra, los especialistas habían concluido que los gravetienses de Europa occidental y los de Europa oriental formaban poblaciones distintas, sin apenas cruce.
+La cultura gravetiense floreció en Europa entre hace unos 34.000 y 25.000 años. El registro genético sigue siendo escaso para una región y un periodo tan amplios. Los estudios previos identificaron diferencias entre grupos de ascendencia occidental y oriental, pero también habían encontrado señales de ascendencia mixta en individuos posteriores de la cueva de Goyet, en Bélgica.
 
 ## Qué hicieron los investigadores
 
-El equipo, liderado por el antropólogo evolutivo Pere Gelabert (Universidad de Viena), secuenció los genomas completos de tres individuos gravetienses: uno de España, uno de Italia y la mujer de Isturitz, Francia. El trabajo se publicó el 23 de octubre en _Science Advances_. La cueva de Isturitz, ocupada de forma intermitente desde hace 80.000 años y paso natural entre la Europa continental y la península ibérica, ya era candidata a nudo de contactos por su arqueología; el ADN lo confirma.
+El equipo, liderado por el antropólogo evolutivo Pere Gelabert (Universidad de Viena), obtuvo datos genómicos de tres individuos gravetienses: uno de España, uno de Italia y la mujer de Isturitz, Francia. El trabajo se publicó el 23 de octubre en _Science Advances_. La cueva de Isturitz, ocupada de forma intermitente desde hace 80.000 años y paso natural entre la Europa continental y la península ibérica, ya era candidata a nudo de contactos por su arqueología; la señal genética es compatible con esa hipótesis, pero no demuestra dónde ocurrió la mezcla.
 
 ## Qué encontraron: un pulso de flujo genético hace 32.000 años
 
-El genoma de la mujer de Isturitz es mayoritariamente "occidental", pero contiene una señal clara de ascendencia vinculada a grupos de Europa oriental y central. Los autores datan ese "pulso" de flujo genético entre hace 31.500 y 32.500 años. No es una migración masiva ni un reemplazo: es un intercambio detectable, sostenido el tiempo suficiente para dejar huella en el linaje de una persona que vivió milenios después en el extremo suroccidental del continente.
+El genoma de la mujer de Isturitz se relaciona principalmente con el grupo denominado Fournol, pero también muestra afinidad con linajes relacionados con poblaciones de Europa central y oriental. Bajo el supuesto de un único episodio de mezcla, el modelo sitúa ese posible pulso entre hace 31.500 y 32.500 años. Los autores también consideran que una ascendencia regional más antigua podría contribuir a explicar la señal; los datos no identifican por sí solos la forma exacta del contacto.
 
-Los otros dos genomas nuevos (España e Italia) se agrupan con la variante occidental, sin la señal oriental. Los tres comparten rasgos fenotípicos —piel, cabello y ojos oscuros— y, en los tres casos, sus padres no eran parientes cercanos, lo que sugiere que esas poblaciones evitaban activamente la endogamia a pesar de su baja densidad.
+La muestra de Ostuni, en Italia, muestra afinidad con individuos del grupo Věstonice; el ADN de Chufín, en España, estaba muy degradado y permitió un análisis más limitado de su ascendencia. Los investigadores analizaron el parentesco cercano solo en Isturitz y Ostuni. Esos resultados no demuestran una práctica deliberada de evitar la endogamia.
 
 ## Límites y alcance real
 
-Tres genomas no resuelven la dinámica de todo un continente. El total de muestras gravetienses sigue siendo marginal frente a la extensión geográfica y temporal de la cultura. El estudio documenta _que_ ocurrió flujo genético y _cuándo_ aproximadamente, pero no _cómo_: si fue a través de redes de intercambio de parejas, movimientos estacionales de bandas pequeñas o corredores ecológicos que el hielo dejaba abiertos. Tampoco aclara si la señal oriental en Isturitz representa un evento único o la punta de un patrón más amplio que el muestreo actual no alcanza a ver.
+Tres genomas no resuelven la dinámica de todo un continente. El total de muestras gravetienses sigue siendo marginal frente a la extensión geográfica y temporal de la cultura. El estudio identifica una señal de ascendencia compartida y estima su fecha bajo supuestos concretos, pero no establece _cómo_ ocurrió: si fue a través de redes de intercambio de parejas, movimientos estacionales de bandas pequeñas o corredores ecológicos que el hielo dejaba abiertos. Tampoco aclara si la señal oriental en Isturitz representa un evento único o la punta de un patrón más amplio que el muestreo actual no alcanza a ver.
 
 ## Cómo encaja en lo que ya sabíamos
 
-La arqueología lleva décadas proponiendo que Isturitz fue un centro de agregación y tránsito: la cueva ha producido vasijas hechas con cráneos humanos de hace 15.000-12.000 años, arte portátil abundante y una estratigrafía que cubre decenas de milenios. El ADN da respaldo biológico a esa hipótesis. Además, el hallazgo alinea la genética con la distribución de ciertos estilos técnicos y simbólicos que ya sugerían contactos este-oeste, pero que la genética previa no había confirmado.
+Isturitz tiene un registro arqueológico extenso y los autores lo consideran un posible lugar de agregación regional. La afinidad genética observada es compatible con conexiones entre poblaciones, pero no demuestra que el encuentro ocurriera allí. Los datos anteriores de Goyet ya apuntaban a mezclas, y los autores también identificaron una señal de ascendencia mixta en un individuo previamente publicado de Ormesson, en Francia.
 
-La imagen que emerge no es la de bloques poblacionales estancos, sino la de una red porosa, con nodos como Isturitz donde la geografía concentraba a las personas y, con ellas, sus genes y su cultura.
-
-Lo que queda por ver no es otro yacimiento aislado, sino una red de muestreo densa a lo largo de los corredores pirenaicos, alpinos y danubianos que pudieron conectar las dos Europas gravetienses. Cada genoma nuevo de ese intervalo —34.000 a 25.000 años— tiene hoy más valor informativo que cualquier modelo teórico. La mujer de Isturitz nos dijo que el muro no existía; los próximos genomas tendrán que decirnos dónde estaban las puertas.
+Más muestras de distintas fechas y regiones podrían ayudar a distinguir entre las explicaciones propuestas y a precisar cuán extendidas fueron esas conexiones.
 
 <!-- source_identity: source_id=livescience; source_name=Live Science -->

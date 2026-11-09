@@ -14,6 +14,7 @@ This repository is a static Astro 7 site with MD/MDX content under `src/content/
 - Content contract: the only authoritative post schema is [`src/content.config.ts`](src/content.config.ts).
 - Site/blog configuration: canonical site metadata, robots defaults, and route pathnames live in [`src/config.yaml`](src/config.yaml).
 - Metadata emission: pages pass metadata through layouts into [`src/components/common/Metadata.astro`](src/components/common/Metadata.astro).
+- Social preview: the site-wide 1200 × 630 JPEG is [`public/assets/images/hotlink-ok/noticiencias-social-og.jpg`](public/assets/images/hotlink-ok/noticiencias-social-og.jpg), configured as an absolute `og:image`/Twitter image in [`src/config.yaml`](src/config.yaml). The `hotlink-ok` directory is required: Cloudflare Hotlink Protection otherwise returns 403 to cross-site image requests (including link preview crawlers). Keep this exception scoped to the social card; article-specific images still override the fallback.
 - URL and taxonomy helpers: [`src/utils/permalinks.ts`](src/utils/permalinks.ts) and [`src/utils/blog.ts`](src/utils/blog.ts).
 - Search: build-time MiniSearch JSON at [`src/pages/search.json.js`](src/pages/search.json.js) plus a browser-only UI on [`src/pages/buscar.astro`](src/pages/buscar.astro). The full article body is indexed; Spanish function words are filtered and the 150 KiB gzip budget is enforced.
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`.
@@ -55,6 +56,9 @@ Useful local commands:
 - `npm run test:e2e:consent`
 - `npm run test:visual`
 - `npm run check:search-budget`
+- `npm run check:image-attributions` — check registered hero-image source hashes and links, and explicit CC BY and CC0 labels.
+
+Image attribution entries in `data/image-attributions.json` bind a hero-image path to its source-file SHA-256, source URL and license or dedication URL. The check runs in content validation and the pre-publish gate. It catches mismatches and missing links for explicit CC BY and CC0 labels; it does not establish ownership, license validity or conditions for derivative images.
 
 The Content Guard workflow checks outbound links in published articles. Some
 publisher domains, including `openai.com`, reject automated requests from

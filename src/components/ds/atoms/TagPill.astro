@@ -20,12 +20,10 @@ const sizes = {
 };
 ---
 
-{
-  href ? (
-    <a href={href} class:list={[baseStyles, sizes[size], className]}>
-      {title}
-    </a>
-  ) : (
-    <span class:list={[baseStyles, sizes[size], className]}>{title}</span>
-  )
-}
+{href ? (
+  <a href={href} class:list={[baseStyles, sizes[size], className]}>
+    {title}
+  </a>
+) : (
+  <span class:list={[baseStyles, sizes[size], className]}>{title}</span>
+)}

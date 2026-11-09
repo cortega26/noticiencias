@@ -10,38 +10,36 @@ const buttonClass =
   'inline-flex items-center justify-center rounded-lg border border-border-subtle bg-surface-highlight px-4 py-2 text-sm font-medium text-default hover:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20';
 ---
 
-{
-  enabled && (
-    <>
-      <div
-        id="consent-banner"
-        data-consent-banner
-        role="region"
-        aria-label="Preferencias de privacidad"
-        hidden
-        class="fixed inset-x-0 bottom-0 z-40 border-t border-border-subtle bg-page p-4 shadow-lg not-prose"
-      >
-        <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p class="text-sm text-text-muted sm:max-w-3xl">
-            Google Analytics se carga desde la primera visita y puede recibir señales de medición
-            sin cookies antes de tu elección. Las cookies de analítica se activan solo si aceptas.
-            Puedes rechazarlo y cambiar tu decisión desde el pie de página.
-            <a class="underline hover:text-primary" href="/privacidad/">
-              Más información
-            </a>
-            .
-          </p>
-          <div class="flex shrink-0 gap-3">
-            <button type="button" data-consent-choice="denied" class={buttonClass}>
-              Rechazar
-            </button>
-            <button type="button" data-consent-choice="granted" class={buttonClass}>
-              Aceptar
-            </button>
-          </div>
+{enabled && (
+  <>
+    <div
+      id="consent-banner"
+      data-consent-banner
+      role="region"
+      aria-label="Preferencias de privacidad"
+      hidden
+      class="fixed inset-x-0 bottom-0 z-40 border-t border-border-subtle bg-page p-4 shadow-lg not-prose"
+    >
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-text-muted sm:max-w-3xl">
+          Google Analytics se carga desde la primera visita y puede recibir señales de medición sin
+          cookies antes de tu elección. Las cookies de analítica se activan solo si aceptas. Puedes
+          rechazarlo y cambiar tu decisión desde el pie de página.{' '}
+          <a class="underline hover:text-primary" href="/privacidad/">
+            Más información
+          </a>
+          .
+        </p>
+        <div class="flex shrink-0 gap-3">
+          <button type="button" data-consent-choice="denied" class={buttonClass}>
+            Rechazar
+          </button>
+          <button type="button" data-consent-choice="granted" class={buttonClass}>
+            Aceptar
+          </button>
         </div>
       </div>
-      <ConsentBannerScript />
-    </>
-  )
-}
+    </div>
+    <ConsentBannerScript />
+  </>
+)}

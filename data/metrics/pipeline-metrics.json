@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-30T12:49:43.376Z",
+  "generated_at": "2026-11-08T13:18:46.358Z",
   "content": {
-    "total_articles": 57,
-    "v2_articles": 45,
-    "total_words": 33401,
-    "avg_words": 586,
+    "total_articles": 61,
+    "v2_articles": 49,
+    "total_words": 31411,
+    "avg_words": 515,
     "categories": [
       {
         "name": "Ciencia",
-        "count": 17
+        "count": 18
       },
       {
         "name": "Tecnología",
-        "count": 14
+        "count": 17
       },
       {
         "name": "Salud",
@@ -58,6 +58,10 @@
       },
       {
         "name": "coral",
+        "count": 2
+      },
+      {
+        "name": "marte",
         "count": 2
       },
       {
@@ -159,13 +163,57 @@
       {
         "name": "física",
         "count": 1
-      },
-      {
-        "name": "química",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-11-04-edita-el-0-016-de-pesos-y-lleva-el-acierto-matematico-del-8-al-48",
+        "title": "Edita el 0,016 % de pesos y lleva el acierto matemático del 8 % al 48 %",
+        "date": "2026-11-04",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Limitada — único reporte en blog de investigación del MIT sin revisión por pares; experimentos acotados a modelos y tareas pequeñas; resultados no replicados independientemente; los propios autores delimitan alcance y piden benchmarks estandarizados.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-29-un-rojo-no-es-igual-para-todos-como-apple-busca-un-color-universal",
+        "title": "Un rojo no es igual para todos: qué propone Apple para calibrar el color",
+        "date": "2026-10-29",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — Es un reportaje periodístico que describe una nueva característica de un producto y su potencial impacto, basado en la información proporcionada por el fabricante y el análisis de un experto. No es un estudio científico revisado por pares.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-29-un-trozo-de-marte-en-el-sahara-supera-a-la-roca-terrestre-mas-antigua",
+        "title": "Un antiguo meteorito marciano revela pistas sobre la corteza y el agua de Marte",
+        "date": "2026-10-29",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio revisado por pares publicado en Science con metodología robusta (datación U-Pb en circón, geoquímica de isótopos), pero basado en un único espécimen eyectado sin contexto estratigráfico ni ubicación exacta en Marte; los propios autores limitan el alcance y piden confirmación con muestras in situ.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-10-28-el-oceano-austral-invierte-30-anos-de-enfrescamiento-en-solo-una-decada",
+        "title": "Una capa del océano austral se vuelve más salada tras la pérdida de hielo antártico",
+        "date": "2026-10-28",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio basado en observaciones de Argo y datos satelitales y de reanálisis, pero registro observacional limitado a dos décadas, sin confirmación independiente de permanencia del cambio y con modelos que no reproducen el forzante principal (pérdida de hielo marino)",
+        "review_status": null
+      },
       {
         "slug": "2026-10-28-rubin-estrena-su-camara-y-ya-encuentra-un-candidato-a-planeta-enano",
         "title": "Rubin estrena su cámara y ya encuentra un candidato a planeta enano",
@@ -175,24 +223,24 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — descubrimiento anunciado vía comunicado sin revisión por pares; tamaño y esfericidad son inferencias a partir de brillo óptico sin medición directa de albedo ni forma",
+        "confidence": "Moderada — preprint cuya revisión por pares no está confirmada; tamaño y esfericidad son inferencias a partir de brillo óptico sin medición directa de albedo ni forma",
         "review_status": null
       },
       {
         "slug": "2026-10-27-por-que-una-mujer-de-30-000-anos-obliga-a-reescribir-la-historia-genetica-de-europa",
-        "title": "Por qué una mujer de 30.000 años obliga a reescribir la historia genética de Europa",
+        "title": "El ADN de Isturitz muestra vínculos genéticos entre poblaciones de la Europa paleolítica",
         "date": "2026-10-27",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio publicado en revista revisada por pares (Science) con secuenciación de genomas completos, pero tamaño muestral muy pequeño (n=3) y limitaciones explícitas en alcance geográfico y mecanístico",
+        "confidence": "Moderada — estudio publicado en revista revisada por pares (Science Advances) con datos genómicos antiguos, pero tamaño muestral muy pequeño (n=3) y limitaciones explícitas en alcance geográfico y mecanístico",
         "review_status": null
       },
       {
         "slug": "2026-10-24-un-modelo-explica-una-nube-marciana-de-1-600-km-con-fisica-teorica-nunca-observada",
-        "title": "Un modelo revela cómo una nube de 1.600 km en Marte nace sin polvo",
+        "title": "Un modelo propone cómo podría formarse una nube de 1.600 km en Marte",
         "date": "2026-10-24",
         "categories": [
           "Tecnología"
@@ -204,14 +252,14 @@
       },
       {
         "slug": "2026-10-23-como-el-parasito-de-la-malaria-atraviesa-el-globulo-rojo-sin-romperlo",
-        "title": "Cómo el parásito de la malaria abre un portal en la sangre y lo cierra sin rastro",
+        "title": "Cómo el parásito de la malaria entra en los glóbulos rojos",
         "date": "2026-10-23",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — noticia en Quanta Magazine sobre un estudio estructural reciente (2026) de un solo laboratorio; la resolución de la unión móvil es un avance técnico notable, pero el inhibidor solo se probó in vitro y no hay confirmación independiente ni datos en modelos animales o humanos",
+        "confidence": "Moderada — estudio estructural publicado en Cell (2026); la resolución de la unión móvil es un avance técnico notable, pero el inhibidor solo se probó in vitro y la seguridad y eficacia clínica siguen sin demostrarse",
         "review_status": null
       },
       {
@@ -247,7 +295,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio revisado por pares en Nature con validación experimental bioquímica y celular, pero resultados preliminares sin evaluación proteómica de especificidad ni datos in vivo; los autores señalan limitaciones del software de diseño y necesidad de restricciones cinéticas integradas.",
+        "confidence": "Moderada — dos estudios revisados por pares en Nature informan ensayos bioquímicos y celulares; sus aplicaciones terapéuticas permanecen sin demostrar.",
         "review_status": null
       },
       {
@@ -271,7 +319,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — reporte periodístico basado en un ejercicio de simulación de expertos, sin datos empíricos ni publicación académica.",
+        "confidence": "Moderada — informe de los organizadores basado en tres ejercicios y reflexiones de participantes; no predice decisiones gubernamentales ni mide efectos climáticos reales.",
         "review_status": null
       },
       {
@@ -288,7 +336,7 @@
       },
       {
         "slug": "2026-09-25-la-gravedad-como-proyector-holografico-del-universo",
-        "title": "AdS/CFT: qué demuestra la holografía y qué sigue abierto",
+        "title": "AdS/CFT: qué propone la holografía y qué sigue abierto",
         "date": "2026-09-25",
         "categories": [
           "Ciencia"
@@ -324,7 +372,7 @@
       },
       {
         "slug": "2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos",
-        "title": "¿El plomo en la tinta lee los rollos del Vesubio sin abrirlos?",
+        "title": "El plomo ayuda a leer una réplica de papiro carbonizado sin abrirla",
         "date": "2026-09-20",
         "categories": [
           "Arqueología"
@@ -355,24 +403,24 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — preprint con resultados prometedores pero aún sin revisión por pares y necesidad de validación en modelos de inmunidad humana y optimización de la permeabilidad del gel.",
+        "confidence": "Limitada — se contrastó el resumen del preprint, no el texto completo ni sus datos; el trabajo requiere revisión por pares y validación adicional.",
         "review_status": null
       },
       {
         "slug": "2026-09-17-a-450-anos-luz-estrella-esconde-punto-de-luz-tan-joven-como-bebe",
-        "title": "A 450 años luz, estrella esconde punto de luz tan joven como bebé",
+        "title": "Elias 2-24 b, un planeta joven detectado dentro de un disco de gas y polvo",
         "date": "2026-09-17",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — basado en observaciones combinadas de Keck, ALMA y VLT, pero la edad se estima mediante modelos de enfriamiento con incertidumbre inherente.",
+        "confidence": "Moderada — la identificación combina observaciones de distintas épocas; la edad del sistema y la masa dependen de supuestos, y el movimiento orbital aún no se había medido en el estudio.",
         "review_status": null
       },
       {
         "slug": "2026-09-10-el-nino-2026-ya-esta-ralentizando-el-trafico-del-canal-de-panama",
-        "title": "El Niño 2026 ya está ralentizando el tráfico del Canal de Panamá",
+        "title": "El Niño y el Canal de Panamá: qué muestran los pronósticos y los cupos de tránsito",
         "date": "2026-09-10",
         "categories": [
           "Ciencia"
@@ -391,7 +439,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en declaraciones de expertos y datos del evento, sin revisión por pares de los resultados.",
+        "confidence": "Moderada — la marca robótica procede de cobertura periodística; no se consultó una planilla oficial del evento.",
         "review_status": null
       },
       {
@@ -408,7 +456,7 @@
       },
       {
         "slug": "2026-08-28-las-sesiones-largas-de-esports-danan-tu-espalda",
-        "title": "¿Les pasan factura a la espalda las maratones de eSports? Lo que dicen las encuestas",
+        "title": "Salud y esports: qué pueden decir las encuestas y qué no",
         "date": "2026-08-28",
         "categories": [
           "Ciencia"
@@ -420,14 +468,14 @@
       },
       {
         "slug": "2026-08-27-los-corales-de-galapagos-ocultan-un-secreto-de-el-nino",
-        "title": "Los corales de Galápagos ocultan un secreto de El Niño",
+        "title": "Los corales de Galápagos registran cambios en la variabilidad de El Niño",
         "date": "2026-08-27",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio basado en análisis geoquímico de corales vivos y fósiles con calibraciones ampliamente validadas, comparado con registros instrumentales y modelos climáticos, aunque reconoce incertidumbres locales en la química del agua.",
+        "confidence": "Moderada — resumen publicado, versión preliminar del estudio y cobertura independiente; no se revisó el texto final completo de Science.",
         "review_status": null
       },
       {
@@ -451,7 +499,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio basado en métodos computacionales sobre ADN muy degradado, con resultados estadísticos y limitaciones reconocidas por los autores.",
+        "confidence": "Moderada — resumen del artículo científico y comunicación de Yale; no se revisó el texto completo de la publicación.",
         "review_status": null
       },
       {
@@ -463,7 +511,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta para la atribución del incidente por los informes de OpenAI y Hugging Face; las métricas de 17 500 acciones y 300 por hora se atribuyen a IEEE Spectrum y no constituyen una auditoría independiente de Noticiencias.",
+        "confidence": "Alta para la atribución del incidente por los informes de OpenAI y Hugging Face; el recuento de acciones procede de la reconstrucción forense de Hugging Face y no constituye una auditoría independiente de Noticiencias.",
         "review_status": null
       },
       {
@@ -475,7 +523,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — información provista por el blog técnico de Hugging Face con datos específicos de benchmarks, arquitectura y licencia, aunque el artículo no indica revisión por pares explícita.",
+        "confidence": "Moderada — ficha del modelo y documentación de Meta; rendimiento y seguridad no se probaron de manera independiente en esta nota.",
         "review_status": null
       },
       {
@@ -487,19 +535,19 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en investigación de la Universidad de Dakota del Norte y la African Centres for Lightning and Education Network, con datos recopilados pero con rangos amplios debido a la escasez de registros y limitaciones metodológicas.",
+        "confidence": "Alta para las recomendaciones generales de refugio y primeros auxilios citadas; las consecuencias médicas varían y requieren evaluación individual.",
         "review_status": null
       },
       {
         "slug": "2026-06-14-1-121-especies-marinas-nuevas-descubiertas-y-la-mayoria-ya-estaban-en-los-estantes-de-los-museos",
-        "title": "1.121 especies marinas nuevas descubiertas... y la mayoría ya estaban en los estantes de los museos",
+        "title": "Un censo oceánico informa 1.121 especies marinas desconocidas en un año",
         "date": "2026-06-14",
         "categories": [
           "Ciencia"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — artículo basado en un censo internacional con datos de colecciones museísticas y expediciones, publicado en Scientific American, una fuente de divulgación científica rigurosa.",
+        "confidence": "Moderada — las cifras proceden del comunicado del programa; no se verificó individualmente el estado taxonómico de cada registro.",
         "review_status": null
       },
       {
@@ -516,7 +564,7 @@
       },
       {
         "slug": "2026-05-23-un-cohete-con-un-motor-apagado-y-otro-fallando-llego-al-espacio-y-volvio",
-        "title": "Un cohete con un motor apagado y otro fallando llegó al espacio y volvió",
+        "title": "Starship amerizó tras su vuelo de prueba, pero el propulsor no completó el regreso",
         "date": "2026-05-23",
         "categories": [
           "Ciencia"
@@ -547,19 +595,19 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — es un estudio académico revisado por pares con estimaciones basadas en datos históricos de EE. UU.; sus resultados no se generalizan automáticamente fuera del país y periodo analizados.",
+        "confidence": "Moderada — estudio académico revisado por pares con estimaciones basadas en datos históricos y un modelo; sus resultados dependen de los indicadores y supuestos utilizados y no se generalizan automáticamente fuera del país y periodo analizados.",
         "review_status": null
       },
       {
         "slug": "2026-04-24-sitios-web-ocultan-ordenes-secretas-que-manipulan-a-las-ia-sin-que-los-usuarios-lo-sepan",
-        "title": "Google halla instrucciones ocultas para IA en sitios web públicos",
+        "title": "Google analiza instrucciones dirigidas a asistentes de IA en páginas web",
         "date": "2026-04-24",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — artículo publicado en el blog oficial de seguridad de Google, basado en el análisis de su equipo de amenazas y respaldado por evidencia de experimentos observados en la web pública.",
+        "confidence": "Moderada — se describe un análisis de Google con alcance y método limitados, no una medición global de ataques exitosos.",
         "review_status": null
       },
       {
@@ -571,7 +619,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — basada en el análisis conjunto de dos experimentos independientes con metodología idéntica a DAMA/NaI y un tamaño de muestra suficiente, aunque los autores reconocen que no explican el origen de la modulación observada en DAMA/LIBRA.",
+        "confidence": "Moderada — publicación conjunta revisada por pares; la interpretación está limitada a los datos y supuestos de los análisis citados.",
         "review_status": null
       },
       {
@@ -588,31 +636,31 @@
       },
       {
         "slug": "2026-03-27-el-error-de-redondeo-que-esconde-el-verdadero-terremoto-legal-para-meta-y-youtube",
-        "title": "Meta y YouTube condenadas por daños a menores: la teoría legal que abre más demandas",
+        "title": "Meta y YouTube ante dos veredictos: qué resolvieron los tribunales",
         "date": "2026-03-27",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — basada en veredictos judiciales recientes, acceso a documentos internos de Meta y la presencia de múltiples casos pendientes que respaldan las conclusiones.",
+        "confidence": "Moderada — decisiones y veredictos consultados; no se ha verificado la resolución definitiva de todos los recursos.",
         "review_status": null
       },
       {
         "slug": "2026-02-18-un-almacenamiento-de-datos-durable-y-coste-efectivo-para-preservar-informacion-durante-10-000-anos",
-        "title": "Un almacenamiento de datos durable y coste-efectivo para preservar información durante 10.000 años",
+        "title": "Project Silica: qué respalda la estimación de 10.000 años de datos en vidrio",
         "date": "2026-02-18",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio revisado por pares en Nature con evidencia experimental de durabilidad a corto plazo, pero la afirmación de 10,000 años sigue siendo una proyección no verificable directamente.",
+        "confidence": "Moderada — investigación revisada por pares con resultados de laboratorio; la vida útil prolongada se extrapola de pruebas aceleradas.",
         "review_status": null
       },
       {
         "slug": "2026-02-16-un-agujero-negro-se-forma-sin-explotar-una-estrella-masiva",
-        "title": "Un agujero negro se forma sin explotar una estrella masiva",
+        "title": "Una estrella de Andrómeda se apagó; su posible colapso sigue en debate",
         "date": "2026-02-16",
         "categories": [
           "Astronomía"
@@ -624,26 +672,26 @@
       },
       {
         "slug": "2026-02-16-un-ingrediente-inesperado-puede-hacer-el-pan-mucho-mas-saludable",
-        "title": "Harina de semilla de girasol: pan con más proteína y antioxidantes",
+        "title": "Harina de semilla de girasol: qué mostró un estudio sobre el pan",
         "date": "2026-02-16",
         "categories": [
           "Salud"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio de investigadores de la Universidad de São Paulo con resultados experimentales claros, aunque aún en fase de laboratorio y sin validación a gran escala.",
+        "confidence": "Limitada — se consultaron fragmentos indexados del estudio; el acceso directo al texto completo falló y queda pendiente verificar la base de los valores de proteína.",
         "review_status": null
       },
       {
         "slug": "2026-02-05-estudio-revela-que-un-tercio-del-cancer-es-prevenible-con-cambios-en-el-estilo-de-vida",
-        "title": "El 38 % de los casos de cáncer de 2022 se atribuye a factores de riesgo evitables",
+        "title": "Un estudio atribuye el 38 % de los casos estimados de cáncer de 2022 a riesgos modificables",
         "date": "2026-02-05",
         "categories": [
           "Salud"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio revisado por pares en Nature Medicine con datos globales de 2022, aunque menciona limitaciones en la calidad de los datos y posibles factores no considerados.",
+        "confidence": "Moderada — las cifras y el método general se contrastaron con el resumen indexado del estudio; no se revisaron todas las tablas ni se reproduce el análisis.",
         "review_status": null
       },
       {
@@ -655,7 +703,7 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en experiencia personal y opiniones, sin datos empíricos ni revisión por pares detallada.",
+        "confidence": "Moderada — documentación del proveedor y descripción general; no se realizó una comparación independiente de herramientas.",
         "review_status": null
       },
       {
@@ -672,14 +720,14 @@
       },
       {
         "slug": "2026-01-28-moltbot-asistente-personal-de-inteligencia-artificial-ofrece-funcionalidades-innovadoras-pero-tambien-plantea-desafios-de-seguridad",
-        "title": "Moltbot: un asistente personal de IA que puede ejecutar comandos en tu equipo",
+        "title": "De Moltbot a OpenClaw: qué permisos necesita un asistente de IA",
         "date": "2026-01-28",
         "categories": [
           "Tecnología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — artículo de divulgación basado en declaraciones del desarrollador y opiniones de expertos, sin evidencia empírica detallada.",
+        "confidence": "Moderada — documentación del proyecto consultada el 31 de octubre de 2026; no se auditó una instalación ni una versión concreta.",
         "review_status": null
       },
       {
@@ -691,12 +739,12 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada: análisis cosmológico dependiente de modelos y de calibración; referencias originales citadas en sus versiones arXiv.",
+        "confidence": "Moderada: análisis cosmológico dependiente de modelos y de calibración; el trabajo cosmológico se cita en su versión arXiv.",
         "review_status": null
       },
       {
         "slug": "2026-01-27-conoce-a-los-misteriosos-electridos",
-        "title": "Conoce a los misteriosos electridos",
+        "title": "Electridos: electrones en cavidades y una hipótesis sobre el núcleo terrestre",
         "date": "2026-01-27",
         "categories": [
           "Química"
@@ -720,14 +768,14 @@
       },
       {
         "slug": "2026-01-27-herramientas-empunadas-de-piedra-sofisticadas-descubiertas-en-china-datan-de-hace-160-000-anos",
-        "title": "Herramientas empuñadas de piedra sofisticadas descubiertas en China datan de hace 160.000 años",
+        "title": "Xigou: indicios de herramientas de piedra con mango en la China prehistórica",
         "date": "2026-01-27",
         "categories": [
           "Arqueología"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Alta — estudio revisado por pares con evidencia arqueológica sustancial (más de 2.600 herramientas), aunque la identidad exacta de los fabricantes permanece incierta.",
+        "confidence": "Moderada — estudio revisado por pares sobre 2.601 piezas de piedra; la datación de capas tiene incertidumbre y la identidad de sus fabricantes sigue abierta.",
         "review_status": null
       },
       {
@@ -739,12 +787,12 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — el artículo presenta pruebas en curso y afirmaciones optimistas, pero también señala desafíos técnicos, económicos y un mercado proyectado modesto.",
+        "confidence": "Moderada — la UIT documenta la definición y pruebas de HAPS; no se evaluó independientemente el desempeño de una empresa concreta.",
         "review_status": null
       },
       {
         "slug": "2026-01-27-piezo1-identificado-como-sensor-de-ejercicio-interno-crucial",
-        "title": "Piezo1, la proteína que detecta el ejercicio en las células madre del hueso",
+        "title": "Piezo1 y la respuesta ósea al movimiento: qué mostró un estudio preclínico",
         "date": "2026-01-27",
         "categories": [
           "Salud"
@@ -756,14 +804,14 @@
       },
       {
         "slug": "2026-01-25-investigadores-logran-la-superposicion-cuantica-mas-grande-registrada",
-        "title": "Investigadores logran la superposición cuántica más grande registrada",
+        "title": "Interferencia cuántica en nanopartículas de miles de átomos de sodio",
         "date": "2026-01-25",
         "categories": [
           "Física"
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — basado en estudio publicado en revista científica (informado por Scientific American), aunque el artículo es divulgativo y no detalla todos los aspectos metodológicos.",
+        "confidence": "Moderada — estudio revisado por pares en Nature; sus conclusiones se aplican al montaje, las partículas y los modelos examinados.",
         "review_status": null
       },
       {
@@ -775,12 +823,12 @@
         ],
         "schema_version": 2,
         "editorial_score": null,
-        "confidence": "Moderada — estudio longitudinal revisado por pares en tres centros, con modelado metagenómico; las estimaciones de origen no prueban cada transmisión y no evalúan resultados clínicos.",
+        "confidence": "Moderada para las cepas compartidas en los tres centros; la interpretación del análisis de medicamentos es limitada por una ambigüedad de clasificación y no se evaluaron beneficios clínicos.",
         "review_status": null
       },
       {
         "slug": "2026-01-24-thomas-edison-podria-haber-creado-el-grafeno-accidentalmente-en-1879",
-        "title": "Thomas Edison podría haber creado el grafeno accidentalmente en 1879",
+        "title": "Una recreación de filamentos de carbono plantea una pregunta sobre el grafeno y Edison",
         "date": "2026-01-24",
         "categories": [
           "Química"
@@ -816,7 +864,7 @@
       },
       {
         "slug": "2026-01-18-nasa-se-prepara-para-un-paso-historico-en-la-exploracion-espacial-humana-con-artemis-ii",
-        "title": "NASA prepara Artemis II, un sobrevuelo lunar tripulado tras más de 50 años",
+        "title": "Artemis II: qué hizo la primera misión tripulada a la Luna desde 1972",
         "date": "2026-01-18",
         "categories": [
           "Astronomía"
@@ -828,7 +876,7 @@
       },
       {
         "slug": "2026-01-17-cientificos-descubren-adn-preservado-en-guepardos-momificados",
-        "title": "El ADN de guepardos momificados revela dos linajes históricos en Arabia",
+        "title": "El ADN antiguo de guepardos revela dos linajes históricos en Arabia",
         "date": "2026-01-17",
         "categories": [
           "Biología"
@@ -863,11 +911,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-10-30T12:49:40.835Z"
+    "generated_at": "2026-11-08T13:18:45.668Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 57,
+    "derivatives_available": 61,
     "missing_derivatives": 0
   },
   "health": {
@@ -877,16 +925,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "45 artículos v2 completos."
+      "detail": "49 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "57 artículo(s) con imagen y alt.",
+      "detail": "61 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "57 derivativos disponibles."
+      "detail": "61 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -895,10 +943,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "190 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "220 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 190,
+        "processed": 220,
         "failed": 0
       }
     },

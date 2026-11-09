@@ -1,7 +1,7 @@
 # Link-checker exclusions shared by Content Guard (changed posts only) and the
 # weekly Link Audit (whole site). One regular expression per line.
 #
-# Only hosts that PERMANENTLY reject GitHub runner probes belong here. A site
+# Hosts that permanently reject GitHub runner probes belong here. A site
 # that is down for a while must NOT be added: Content Guard no longer checks
 # old posts, and the weekly audit is the place to report it.
 
@@ -18,3 +18,15 @@ ipcc\.ch
 # APS DOIs resolve to journals.aps.org, which answers 403 to runner IPs; the DOI
 # is the canonical, permanent identifier of the source.
 doi\.org/10\.1103
+
+# Specific sources returned 403 to the GitHub runner on 2026-11-03. These
+# exceptions also affect the weekly audit and require separate manual review.
+^https://apnews\.com/article/f2fc62210b02f1945bfd416f5554dd5c$
+^https://apnews\.com/article/facebook\-meta\-new\-mexico\-privacy\-lawsuit\-8b414eb0a14d58d7cdc6ae752e25dcb0$
+^https://apnews\.com/article/el\-nino\-climate\-change\-disasters\-worsening\-heat\-cf2e0bbe4b241c5ad0141ca0f93f44dd$
+^https://apnews\.com/article/china\-world\-humanoid\-robot\-games\-100m\-record\-b61c03c7dd570f6a3db1756b9e5ea63e$
+^https://www\.bls\.gov/productivity/overview\.htm$
+^https://www\.cdc\.gov/lightning/safety/$
+^https://doi\.org/10\.1093/qje/qjag006$
+^https://doi\.org/10\.1126/science\.adz5646$
+^https://pubs\.acs\.org/doi/10\.1021/acsfoodscitech\.4c01008$

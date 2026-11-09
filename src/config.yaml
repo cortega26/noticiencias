@@ -23,9 +23,11 @@ metadata:
   openGraph:
     site_name: 'Noticiencias'
     images:
-      - url: '~/assets/images/default.png'
+      # Cloudflare Hotlink Protection: only paths containing /hotlink-ok/ allow off-site previews.
+      - url: '/assets/images/hotlink-ok/noticiencias-social-og.jpg'
         width: 1200
-        height: 628
+        height: 630
+        type: 'image/jpeg'
     type: website
   twitter:
     handle: '@noti_ciencias'

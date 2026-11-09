@@ -47,105 +47,104 @@ const footerSecondaryLinks = [
   class:list={[{ dark: theme === 'dark' }, 'relative border-t border-border-subtle not-prose']}
 >
   <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 text-text-muted intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-  >
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 text-text-muted intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
     <div class="grid grid-cols-2 gap-x-4 gap-y-8 py-8 sm:gap-x-8 md:py-12 lg:grid-cols-3">
       <div class="col-span-2 lg:col-span-1">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
+          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
+            {SITE?.name}
+          </a>
         </div>
         <p class="text-sm text-text-muted leading-relaxed">
           Ciencia en español claro, con fuentes a la vista y revisión editorial.
         </p>
         <div class="text-sm text-muted flex flex-wrap gap-x-1 gap-y-1">
-          {
-            footerSecondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
-          {
-            showConsentToggle && (
-              <>
-                {footerSecondaryLinks.length ? ' · ' : ''}
-                <button
-                  type="button"
-                  data-consent-open
-                  class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
-                >
-                  Preferencias de privacidad
-                </button>
-              </>
-            )
-          }
+          {footerSecondaryLinks.map(({ text, href }, index) => (
+            <>
+              {index !== 0 ? ' · ' : ''}
+              <a
+                class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
+                href={href}
+                set:html={text}
+              />
+            </>
+          ))}
+          {showConsentToggle && (
+            <>
+              {footerSecondaryLinks.length ? ' · ' : ''}
+              <button
+                type="button"
+                data-consent-open
+                class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
+              >
+                Preferencias de privacidad
+              </button>
+            </>
+          )}
         </div>
       </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-1">
-            <div class="text-text-body font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
-                    <a
-                      class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
-                      <Fragment set:html={text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
-      }
+      {links.map(({ title, links }) => (
+        <div class="col-span-1">
+          <div class="text-text-body font-medium mb-2">{title}</div>
+          {links && Array.isArray(links) && links.length > 0 && (
+            <ul class="text-sm">
+              {links.map(({ text, href, ariaLabel }) => (
+                <li class="mb-2">
+                  <a
+                    class="text-text-muted hover:text-primary hover:underline transition duration-150 ease-in-out"
+                    href={href}
+                    aria-label={ariaLabel}
+                  >
+                    <Fragment set:html={text} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
     </div>
     <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-text-muted hover:bg-surface-highlight focus:outline-none focus:ring-4 focus:ring-primary/20 rounded-lg text-sm p-3 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )
-      }
+      {socialLinks?.length ? (
+        <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
+          {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+            <li>
+              <a
+                class="text-text-muted hover:bg-surface-highlight focus:outline-none focus:ring-4 focus:ring-primary/20 rounded-lg text-sm p-3 inline-flex items-center"
+                aria-label={ariaLabel}
+                href={href}
+              >
+                {icon && <Icon name={icon} class="w-5 h-5" />}
+                <Fragment set:html={text} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        ''
+      )}
 
       <div class="text-sm mr-4 text-text-muted">
         <Fragment set:html={footNote} />
         <div>
-          Código abierto en <a
+          Código abierto en{' '}
+          <a
             class="underline text-text-muted hover:text-primary transition duration-150 ease-in-out"
             href="https://github.com/cortega26/noticiencias"
             target="_blank"
-            rel="noopener">GitHub</a
-          > · Desarrollado por <a
+            rel="noopener"
+          >
+            GitHub
+          </a>{' '}
+          · Desarrollado por{' '}
+          <a
             class="underline text-text-muted hover:text-primary transition duration-150 ease-in-out"
             href="https://tooltician.com/"
             target="_blank"
-            rel="noopener">Tooltician</a
+            rel="noopener"
           >
+            Tooltician
+          </a>
         </div>
       </div>
     </div>
