@@ -29,12 +29,8 @@ const weeklyDescription = weekly.inWindow
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
   <header class="mb-8 border-b border-border-subtle pb-6">
-    <p class="mb-3 text-sm text-text-muted">
-      Portada · {editionLabel}
-    </p>
-    <h1
-      class="max-w-4xl text-balance font-heading text-3xl font-bold leading-tight text-text-body sm:text-4xl lg:text-5xl"
-    >
+    <p class="mb-3 text-sm text-text-muted">Portada · {editionLabel}</p>
+    <h1 class="max-w-4xl text-balance font-heading text-3xl font-bold leading-tight text-text-body sm:text-4xl lg:text-5xl">
       Ciencia en español, con la evidencia a la vista.
     </h1>
     <p class="mt-4 max-w-3xl text-lg leading-relaxed text-text-muted">
@@ -44,24 +40,23 @@ const weeklyDescription = weekly.inWindow
     <a
       href="/metodologia/"
       class="mt-3 inline-block py-1 text-sm font-semibold text-primary underline underline-offset-4 hover:no-underline"
-      >Cómo trabajamos con las fuentes</a
     >
+      Cómo trabajamos con las fuentes
+    </a>
   </header>
 
-  {
-    leadPost && (
-      <section aria-label="Historia principal">
-        <ArticleCard post={leadPost} variant="lead" />
-        {secondaryLeadPosts.length > 0 && (
-          <div class="mt-6 grid gap-6 md:grid-cols-2">
-            {secondaryLeadPosts.map((post) => (
-              <ArticleCard post={post} variant="compact" showTags={false} />
-            ))}
-          </div>
-        )}
-      </section>
-    )
-  }
+  {leadPost && (
+    <section aria-label="Historia principal">
+      <ArticleCard post={leadPost} variant="lead" />
+      {secondaryLeadPosts.length > 0 && (
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          {secondaryLeadPosts.map((post) => (
+            <ArticleCard post={post} variant="compact" showTags={false} />
+          ))}
+        </div>
+      )}
+    </section>
+  )}
 
   <section class="mt-10 border-y border-border-subtle py-7" aria-labelledby="home-guides">
     <h2 id="home-guides" class="font-heading text-2xl font-bold text-text-body">
@@ -77,8 +72,9 @@ const weeklyDescription = weekly.inWindow
           <a
             href="/recursos/carbono-bosques-suelos/"
             class="hover:text-primary hover:underline underline-offset-4"
-            >El carbono que entra al bosque no siempre se queda</a
           >
+            El carbono que entra al bosque no siempre se queda
+          </a>
         </h3>
         <p class="mt-3 leading-relaxed text-text-muted">
           Qué distingue el flujo de carbono, las reservas y el almacenamiento duradero en bosques y
@@ -91,8 +87,9 @@ const weeklyDescription = weekly.inWindow
           <a
             href="/recursos/exoplanetas-atmosferas-biosignaturas/"
             class="hover:text-primary hover:underline underline-offset-4"
-            >De detectar un planeta a buscar señales de vida</a
           >
+            De detectar un planeta a buscar señales de vida
+          </a>
         </h3>
         <p class="mt-3 leading-relaxed text-text-muted">
           Las pruebas que permiten hablar de un exoplaneta, su atmósfera y una posible biosignatura.
@@ -101,69 +98,63 @@ const weeklyDescription = weekly.inWindow
     </div>
   </section>
 
-  {
-    weekly.posts.length > 0 && (
-      <section class="mt-12">
-        <SectionHeading
-          title={weeklyTitle}
-          description={weeklyDescription}
-          href="/blog/"
-          linkText="Archivo completo"
-        />
-        <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {weekly.posts.map((post) => (
-            <ArticleCard post={post} variant="standard" showTags={false} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+  {weekly.posts.length > 0 && (
+    <section class="mt-12">
+      <SectionHeading
+        title={weeklyTitle}
+        description={weeklyDescription}
+        href="/blog/"
+        linkText="Archivo completo"
+      />
+      <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {weekly.posts.map((post) => (
+          <ArticleCard post={post} variant="standard" showTags={false} />
+        ))}
+      </div>
+    </section>
+  )}
 
-  {
-    featuredSeries && (
-      <section class="mt-12">
-        <SectionHeading
-          title="Serie destacada"
-          description="Una colección para leer un hilo completo, del primer artículo al último."
-        />
-        <div class="mt-6 flex flex-col gap-4 border-y border-border-subtle py-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 class="font-heading text-2xl font-bold text-text-body">{featuredSeries.name}</h3>
-            <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
-              {featuredSeries.description}
-            </p>
-            <p class="mt-1 text-sm text-text-muted">
-              {`${featuredSeries.count} ${featuredSeries.count === 1 ? 'artículo' : 'artículos'}`} ·
-              Actualizada el {getFormattedDate(featuredSeries.latestDate, 'long')}
-            </p>
-          </div>
-          <a
-            href={getPermalink(`/series/${featuredSeries.slug}`, 'page')}
-            data-analytics-series={featuredSeries.slug}
-            class="shrink-0 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-          >
-            Ver la serie →
-          </a>
+  {featuredSeries && (
+    <section class="mt-12">
+      <SectionHeading
+        title="Serie destacada"
+        description="Una colección para leer un hilo completo, del primer artículo al último."
+      />
+      <div class="mt-6 flex flex-col gap-4 border-y border-border-subtle py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-text-body">{featuredSeries.name}</h3>
+          <p class="mt-1 max-w-2xl text-sm leading-relaxed text-text-muted">
+            {featuredSeries.description}
+          </p>
+          <p class="mt-1 text-sm text-text-muted">
+            {`${featuredSeries.count} ${featuredSeries.count === 1 ? 'artículo' : 'artículos'}`} ·
+            Actualizada el {getFormattedDate(featuredSeries.latestDate, 'long')}
+          </p>
         </div>
-      </section>
-    )
-  }
+        <a
+          href={getPermalink(`/series/${featuredSeries.slug}`, 'page')}
+          data-analytics-series={featuredSeries.slug}
+          class="shrink-0 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+        >
+          Ver la serie →
+        </a>
+      </div>
+    </section>
+  )}
 
-  {
-    archivePosts.length > 0 && (
-      <section class="mt-12">
-        <SectionHeading
-          title="Del archivo"
-          description="Piezas del archivo, elegidas para volver a leerlas."
-        />
-        <div class="mt-6 grid gap-5">
-          {archivePosts.map((post) => (
-            <ArticleCard post={post} variant="row" showExcerpt={false} showTags={false} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+  {archivePosts.length > 0 && (
+    <section class="mt-12">
+      <SectionHeading
+        title="Del archivo"
+        description="Piezas del archivo, elegidas para volver a leerlas."
+      />
+      <div class="mt-6 grid gap-5">
+        {archivePosts.map((post) => (
+          <ArticleCard post={post} variant="row" showExcerpt={false} showTags={false} />
+        ))}
+      </div>
+    </section>
+  )}
 
   <TopicStrip
     topics={topicRadar}
@@ -174,17 +165,15 @@ const weeklyDescription = weekly.inWindow
   />
 
   <nav aria-label="Secciones" class="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-    {
-      configuredCategorySections.map(({ title, slug }) => (
-        <a
-          href={getPermalink(slug, 'category')}
-          data-analytics-category={slug}
-          class="font-semibold text-text-muted hover:text-primary"
-        >
-          {title}
-        </a>
-      ))
-    }
+    {configuredCategorySections.map(({ title, slug }) => (
+      <a
+        href={getPermalink(slug, 'category')}
+        data-analytics-category={slug}
+        class="font-semibold text-text-muted hover:text-primary"
+      >
+        {title}
+      </a>
+    ))}
   </nav>
 
   <section class="mt-12 border-t border-border-subtle pt-8">

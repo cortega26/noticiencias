@@ -29,26 +29,24 @@ const schema = serializeJsonLd({
 
 <nav aria-label="Migas de pan" class="mx-auto max-w-6xl px-4 pt-6 sm:px-6">
   <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-text-muted">
-    {
-      items.map((item, index) => (
-        <li class="flex items-center gap-x-2">
-          {index < items.length - 1 ? (
-            <a href={item.href} class="underline-offset-4 hover:text-text-body hover:underline">
-              {item.label}
-            </a>
-          ) : (
-            <span class="text-text-body" aria-current="page">
-              {item.label}
-            </span>
-          )}
-          {index < items.length - 1 && (
-            <span aria-hidden="true" class="select-none text-text-muted/60">
-              /
-            </span>
-          )}
-        </li>
-      ))
-    }
+    {items.map((item, index) => (
+      <li class="flex items-center gap-x-2">
+        {index < items.length - 1 ? (
+          <a href={item.href} class="underline-offset-4 hover:text-text-body hover:underline">
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-text-body" aria-current="page">
+            {item.label}
+          </span>
+        )}
+        {index < items.length - 1 && (
+          <span aria-hidden="true" class="select-none text-text-muted/60">
+            /
+          </span>
+        )}
+      </li>
+    ))}
   </ol>
 </nav>
 

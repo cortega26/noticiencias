@@ -26,12 +26,10 @@ const trendIcons = {
   <dt class="text-sm font-medium text-text-muted truncate">{title}</dt>
   <dd class="mt-2 flex items-baseline gap-2">
     <span class="text-3xl font-bold text-text-body">{value}</span>
-    {
-      subtitle && (
-        <span class={`text-sm ${trendColors[trend]}`}>
-          {trendIcons[trend]} {subtitle}
-        </span>
-      )
-    }
+    {subtitle && (
+      <span class={`text-sm ${trendColors[trend]}`}>
+        {trendIcons[trend]} {subtitle}
+      </span>
+    )}
   </dd>
 </div>

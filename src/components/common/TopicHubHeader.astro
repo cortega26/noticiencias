@@ -34,55 +34,47 @@ const fallbackDescription = `${total} ${total === 1 ? 'historia publicada' : 'hi
   <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">
     {description ?? fallbackDescription}
   </p>
-  {
-    updatedAt && (
-      <p class="mt-3 text-sm text-text-muted">
-        {`${total} ${total === 1 ? 'historia' : 'historias'}`} · Actualizada el{' '}
-        {getFormattedDate(updatedAt, 'long')}
-      </p>
-    )
-  }
-  {
-    areas.length > 0 && (
-      <nav aria-label="Áreas del tema" class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-        {areas.map((area) => (
+  {updatedAt && (
+    <p class="mt-3 text-sm text-text-muted">
+      {`${total} ${total === 1 ? 'historia' : 'historias'}`} · Actualizada el{' '}
+      {getFormattedDate(updatedAt, 'long')}
+    </p>
+  )}
+  {areas.length > 0 && (
+    <nav aria-label="Áreas del tema" class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+      {areas.map((area) => (
+        <a
+          href={getPermalink(area.slug, 'category')}
+          data-analytics-category={area.slug}
+          class="font-semibold text-text-muted hover:text-primary"
+        >
+          {area.title}
+        </a>
+      ))}
+    </nav>
+  )}
+  {series.length > 0 && (
+    <p class="mt-3 text-sm text-text-muted">
+      Series:{' '}
+      {series.map((item, index) => (
+        <>
+          {index > 0 && ' · '}
           <a
-            href={getPermalink(area.slug, 'category')}
-            data-analytics-category={area.slug}
-            class="font-semibold text-text-muted hover:text-primary"
+            href={getPermalink(`/series/${item.slug}`, 'page')}
+            class="font-semibold text-primary underline-offset-4 hover:underline"
           >
-            {area.title}
+            {item.name}
           </a>
-        ))}
-      </nav>
-    )
-  }
-  {
-    series.length > 0 && (
-      <p class="mt-3 text-sm text-text-muted">
-        Series:{' '}
-        {series.map((item, index) => (
-          <>
-            {index > 0 && ' · '}
-            <a
-              href={getPermalink(`/series/${item.slug}`, 'page')}
-              class="font-semibold text-primary underline-offset-4 hover:underline"
-            >
-              {item.name}
-            </a>
-          </>
-        ))}
-      </p>
-    )
-  }
-  {
-    relatedTopics.length > 0 && (
-      <TopicStrip
-        topics={relatedTopics}
-        title="Temas relacionados"
-        description="Temas que aparecen cerca de este hilo."
-        class="mt-5"
-      />
-    )
-  }
+        </>
+      ))}
+    </p>
+  )}
+  {relatedTopics.length > 0 && (
+    <TopicStrip
+      topics={relatedTopics}
+      title="Temas relacionados"
+      description="Temas que aparecen cerca de este hilo."
+      class="mt-5"
+    />
+  )}
 </header>
