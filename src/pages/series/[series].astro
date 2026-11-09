@@ -52,16 +52,14 @@ const metadata = {
     </header>
 
     <ol class="grid list-none gap-6">
-      {
-        dossier.posts.map((post, index) => (
-          <li>
-            <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
-              Parte {index + 1}
-            </p>
-            <ArticleCard post={post} variant="row" />
-          </li>
-        ))
-      }
+      {dossier.posts.map((post, index) => (
+        <li>
+          <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+            Parte {index + 1}
+          </p>
+          <ArticleCard post={post} variant="row" />
+        </li>
+      ))}
     </ol>
   </section>
 </Layout>

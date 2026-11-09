@@ -53,8 +53,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     { sticky: isSticky, relative: !isSticky, dark: isDark },
     'top-0 z-40 flex-none mx-auto w-full border-b border-transparent transition-all ease-in-out duration-300',
   ]}
-  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
-  {...id ? { id } : {}}
+  {...(isSticky ? { 'data-aw-sticky-header': true } : {})}
+  {...(id ? { id } : {})}
 >
   <div class="absolute inset-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md"></div>
   <div
@@ -88,58 +88,54 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-visible lg:justify-self-center"
       aria-label="Main navigation"
     >
-      <ul
-        class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
-      >
-        {
-          links.map(({ text, href, links }) => (
-            <li class:list={['relative', { dropdown: links?.length }]}>
-              {links?.length ? (
-                <>
-                  <button
-                    type="button"
-                    aria-label={text}
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
-                    data-aw-dropdown-trigger
-                  >
-                    {text}{' '}
-                    <Icon
-                      name="tabler:chevron-down"
-                      class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline"
-                    />
-                  </button>
-                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 lg:top-full lg:mt-1 lg:z-50 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class:list={[
-                            'first:rounded-t-md last:rounded-b-md lg:hover:bg-gray-100 hover:text-primary dark:hover:text-primary dark:hover:bg-gray-700 py-2 px-5 block whitespace-nowrap',
-                            { 'text-primary font-bold': href2 === currentPath },
-                          ]}
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <a
-                  class:list={[
-                    'hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors',
-                    { 'text-primary font-bold': href === currentPath },
-                  ]}
-                  href={href}
+      <ul class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center">
+        {links.map(({ text, href, links }) => (
+          <li class:list={['relative', { dropdown: links?.length }]}>
+            {links?.length ? (
+              <>
+                <button
+                  type="button"
+                  aria-label={text}
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors"
+                  data-aw-dropdown-trigger
                 >
-                  {text}
-                </a>
-              )}
-            </li>
-          ))
-        }
+                  {text}{' '}
+                  <Icon
+                    name="tabler:chevron-down"
+                    class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline"
+                  />
+                </button>
+                <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded-md lg:absolute lg:right-0 lg:top-full lg:mt-1 lg:z-50 pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[220px] drop-shadow-xl border border-gray-100 dark:border-gray-800">
+                  {links.map(({ text: text2, href: href2 }) => (
+                    <li>
+                      <a
+                        class:list={[
+                          'first:rounded-t-md last:rounded-b-md lg:hover:bg-gray-100 hover:text-primary dark:hover:text-primary dark:hover:bg-gray-700 py-2 px-5 block whitespace-nowrap',
+                          { 'text-primary font-bold': href2 === currentPath },
+                        ]}
+                        href={href2}
+                      >
+                        {text2}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a
+                class:list={[
+                  'hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap transition-colors',
+                  { 'text-primary font-bold': href === currentPath },
+                ]}
+                href={href}
+              >
+                {text}
+              </a>
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
     <div
@@ -152,32 +148,28 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         <div class="flex">
           <HeaderSearch />
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-3 inline-flex items-center"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-5 h-5" />
-              </a>
-            )
-          }
+          {showRssFeed && (
+            <a
+              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-3 inline-flex items-center"
+              aria-label="RSS Feed"
+              href={getAsset('/rss.xml')}
+            >
+              <Icon name="tabler:rss" class="w-5 h-5" />
+            </a>
+          )}
         </div>
-        {
-          actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((btnProps) => (
-                <Button
-                  {...btnProps}
-                  class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"
-                />
-              ))}
-            </span>
-          ) : (
-            ''
-          )
-        }
+        {actions?.length ? (
+          <span class="ml-4 rtl:ml-0 rtl:mr-4">
+            {actions.map((btnProps) => (
+              <Button
+                {...btnProps}
+                class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"
+              />
+            ))}
+          </span>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   </div>

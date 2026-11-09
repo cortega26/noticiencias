@@ -26,13 +26,11 @@ const primaryLabel =
 const isTranslated = !hasPrimary && /noticiencias\s+ai/i.test(post.author ?? '');
 ---
 
-{
-  (hasPrimary || coverage) && (
-    <p class={`font-medium text-text-muted ${size === 'sm' ? 'text-sm' : 'text-xs'} ${className}`}>
-      {hasPrimary ? 'Fuente primaria' : 'Fuente'}:{' '}
-      <span class="text-text-body">{hasPrimary ? primaryLabel : coverage}</span>
-      {hasPrimary && coverage && showCoverage && <span> · Cobertura: {coverage}</span>}
-      {showTranslationNote && isTranslated && <span> · traducción NotiAI</span>}
-    </p>
-  )
-}
+{(hasPrimary || coverage) && (
+  <p class={`font-medium text-text-muted ${size === 'sm' ? 'text-sm' : 'text-xs'} ${className}`}>
+    {hasPrimary ? 'Fuente primaria' : 'Fuente'}:{' '}
+    <span class="text-text-body">{hasPrimary ? primaryLabel : coverage}</span>
+    {hasPrimary && coverage && showCoverage && <span> · Cobertura: {coverage}</span>}
+    {showTranslationNote && isTranslated && <span> · traducción NotiAI</span>}
+  </p>
+)}

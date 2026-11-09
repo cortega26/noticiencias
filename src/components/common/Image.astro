@@ -144,15 +144,13 @@ if (fallbackAttributes) {
 }
 ---
 
-{
-  !image ? (
-    <Fragment />
-  ) : avifSource && fallbackAttributes ? (
-    <picture>
-      <source type="image/avif" srcset={avifSource.srcset} sizes={avifSource.sizes} />
-      <img src={avifSource.fallbackSrc} referrerpolicy="no-referrer" {...fallbackAttributes} />
-    </picture>
-  ) : (
-    <img src={image.src} referrerpolicy="no-referrer" {...image.attributes} />
-  )
-}
+{!image ? (
+  <Fragment />
+) : avifSource && fallbackAttributes ? (
+  <picture>
+    <source type="image/avif" srcset={avifSource.srcset} sizes={avifSource.sizes} />
+    <img src={avifSource.fallbackSrc} referrerpolicy="no-referrer" {...fallbackAttributes} />
+  </picture>
+) : (
+  <img src={image.src} referrerpolicy="no-referrer" {...image.attributes} />
+)}

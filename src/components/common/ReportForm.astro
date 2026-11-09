@@ -7,16 +7,18 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 <div class="max-w-2xl mx-auto p-6 bg-white dark:bg-slate-900 shadow-md rounded-lg relative">
   <!-- Success View (Hidden by default) -->
   <div id="success-view" class="hidden text-center py-10">
-    <div
-      class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-6"
-    >
+    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-6">
       <svg
         class="h-10 w-10 text-green-600 dark:text-green-400"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
         ></path>
       </svg>
     </div>
@@ -52,7 +54,9 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
         required
         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-slate-800 dark:border-slate-700 dark:text-gray-300"
       >
-        <option value="" disabled selected>Seleccione una opción para comenzar</option>
+        <option value="" disabled selected>
+          Seleccione una opción para comenzar
+        </option>
         <option value="content_factual">Error verificable en el contenido</option>
         <option value="content_source">Fuente incorrecta o mal citada</option>
         <option value="content_interpretation">Dato o gráfico mal interpretado</option>
@@ -107,9 +111,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
 
       <!-- Content Specific Fields -->
       <div id="specific-content" class="hidden space-y-4 border-l-2 border-blue-500 pl-4 py-2 mt-2">
-        <h4
-          class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-2"
-        >
+        <h4 class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-2">
           Evidencia
         </h4>
 
@@ -150,9 +152,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
         id="specific-technical"
         class="hidden space-y-4 border-l-2 border-amber-500 pl-4 py-2 mt-2"
       >
-        <h4
-          class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2"
-        >
+        <h4 class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">
           Entorno
         </h4>
         <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
@@ -188,9 +188,7 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
     </div>
 
     <!-- Disclaimer -->
-    <div
-      class="rounded-md bg-gray-50 dark:bg-slate-800 p-4 border border-gray-200 dark:border-slate-700"
-    >
+    <div class="rounded-md bg-gray-50 dark:bg-slate-800 p-4 border border-gray-200 dark:border-slate-700">
       <div class="flex">
         <div class="flex-shrink-0">
           <svg
@@ -202,7 +200,8 @@ const endpoint = APP_CONFIG?.form?.endpoint || '';
             <path
               fill-rule="evenodd"
               d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"></path>
+              clip-rule="evenodd"
+            ></path>
           </svg>
         </div>
         <div class="ml-3 flex-1 md:flex md:justify-between">

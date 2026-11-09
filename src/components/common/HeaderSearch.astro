@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <button
@@ -21,7 +20,8 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
-      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+    ></path>
   </svg>
 </button>
 
@@ -32,7 +32,9 @@
 >
   <div class="p-4 sm:p-5">
     <form class="relative" role="search" data-search-form>
-      <label for="header-search-input" class="sr-only">Buscar artículos</label>
+      <label for="header-search-input" class="sr-only">
+        Buscar artículos
+      </label>
       <svg
         class="pointer-events-none absolute inset-y-0 left-0 ml-3 h-5 w-5 self-center text-text-muted"
         aria-hidden="true"
@@ -45,7 +47,8 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+        ></path>
       </svg>
       <input
         id="header-search-input"
@@ -77,13 +80,17 @@
 
     <div data-search-default class="mt-4">
       <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">Recientes</p>
-      <ul data-search-recent class="mt-2 max-h-72 divide-y divide-border-subtle overflow-y-auto">
-      </ul>
+      <ul
+        data-search-recent
+        class="mt-2 max-h-72 divide-y divide-border-subtle overflow-y-auto"
+      ></ul>
     </div>
 
     <div data-search-results class="mt-4 hidden">
-      <ul data-search-results-list class="max-h-80 divide-y divide-border-subtle overflow-y-auto">
-      </ul>
+      <ul
+        data-search-results-list
+        class="max-h-80 divide-y divide-border-subtle overflow-y-auto"
+      ></ul>
     </div>
 
     <p
@@ -91,8 +98,7 @@
       class="mt-2 min-h-4 text-xs text-text-muted"
       role="status"
       aria-live="polite"
-    >
-    </p>
+    ></p>
 
     <footer class="mt-3 border-t border-border-subtle pt-3 text-right">
       <a
