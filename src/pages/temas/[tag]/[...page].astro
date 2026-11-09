@@ -78,7 +78,9 @@ const metadata = {
     />
 
     <div class="grid gap-6">
-      {page.data.map((post) => <ArticleCard post={post} variant="row" />)}
+      {page.data.map((post) => (
+        <ArticleCard post={post} variant="row" />
+      ))}
     </div>
 
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

@@ -23,47 +23,39 @@ const [leadPost, ...restPosts] = posts;
     <h1 class="font-heading text-4xl font-black leading-tight text-text-body md:text-5xl">
       {title}
     </h1>
-    {
-      description && (
-        <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">{description}</p>
-      )
-    }
-    {
-      taxonomy && (
-        <a href={getPermalink(taxonomy.slug, 'category')} class="sr-only">
-          {taxonomy.title}
-        </a>
-      )
-    }
+    {description && (
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-text-muted">{description}</p>
+    )}
+    {taxonomy && (
+      <a href={getPermalink(taxonomy.slug, 'category')} class="sr-only">
+        {taxonomy.title}
+      </a>
+    )}
   </header>
 
-  {
-    leadPost ? (
-      <>
-        <ArticleCard post={leadPost} variant="lead" />
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
-          {restPosts.map((post) => (
-            <ArticleCard post={post} variant="standard" />
-          ))}
-        </div>
-      </>
-    ) : (
-      <p class="border-y border-border-subtle py-8 text-text-muted">
-        Esta sección no tiene artículos publicados por ahora.
-      </p>
-    )
-  }
+  {leadPost ? (
+    <>
+      <ArticleCard post={leadPost} variant="lead" />
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {restPosts.map((post) => (
+          <ArticleCard post={post} variant="standard" />
+        ))}
+      </div>
+    </>
+  ) : (
+    <p class="border-y border-border-subtle py-8 text-text-muted">
+      Esta sección no tiene artículos publicados por ahora.
+    </p>
+  )}
 
-  {
-    topics.length > 0 && (
-      <TopicStrip
-        topics={topics}
-        title="Temas de la sección"
-        description="Temas frecuentes dentro de esta sección."
-        class="mt-10"
-      />
-    )
-  }
+  {topics.length > 0 && (
+    <TopicStrip
+      topics={topics}
+      title="Temas de la sección"
+      description="Temas frecuentes dentro de esta sección."
+      class="mt-10"
+    />
+  )}
 
   <aside class="mt-10 border-t border-border-subtle pt-5">
     <SectionHeading title="Volver a esta sección" level={2} />
