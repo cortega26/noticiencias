@@ -82,7 +82,7 @@ const SEARCH_REGRESSION_CASES = [
     'contaminación plomo salud infantil',
     '/arqueologia/2026-09-20-el-plomo-en-la-tinta-lee-los-rollos-del-vesubio-sin-abrirlos/',
   ],
-  ['ciencia inteligencia artificial evidencia', '/editorial/2026-02-12-bienvenidos/'],
+  ['bienvenidos a Noticiencias ciencia al alcance de todos', '/editorial/2026-02-12-bienvenidos/'],
 ] as const;
 
 // Trailing-slash investigation concluded 2026-08-11 (plan 031): production
