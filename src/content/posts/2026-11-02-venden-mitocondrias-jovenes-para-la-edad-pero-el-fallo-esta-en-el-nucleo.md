@@ -1,5 +1,5 @@
 ---
-title: Venden mitocondrias jóvenes para la edad, pero el fallo está en el núcleo
+title: Se vende el reemplazo mitocondrial como remedio para la edad, pero la evidencia es escasa
 schema_version: 2
 date: 2026-11-02
 author: Noticiencias AI
@@ -11,20 +11,20 @@ tags:
   - infertilidad por edad
   - adn nuclear
   - fiv tres padres
-excerpt: 'Una investigación revela que clínicas venden reemplazo mitocondrial para la edad sin evidencia: el fallo está en el ADN nuclear, no en las mitocondrias.'
+excerpt: 'Una investigación de STAT señala que se ofrece reemplazo mitocondrial a mujeres mayores sin evidencia sólida; los datos que sugieren que el problema está en el ADN nuclear son pequeños y no publicados.'
 image: ~/assets/images/2026-11-02-women-travel-thousands-of-miles-for-a-reproductive-moonshot-scientists-say-theyve-been-misled.png
 image_alt: 'Ilustración generada con IA: Ilustración científica de un ovocito humano: una micropipeta inyecta mitocondrias brillantes, pero el núcleo central muestra cromosomas enredados y fragmentados, evidenciando que el ADN nuclear envejecido sigue fallando.'
 source_url: https://statnews.com/2026/11/02/three-parent-ivf-fertility-tourism-investigation-mrt-therapy/
 refinery_id: '5357'
 headlines_variants:
-  question: ¿Sirve la FIV de tres padres para concebir tras los 40? Los datos dicen que no
-  benefit: Por qué pagar 30.000 dólares por mitocondrias donadas no resuelve la infertilidad por edad
+  question: ¿Hay evidencia de que la FIV de tres padres ayude a concebir tras los 40?
+  benefit: Qué se sabe, y qué no, sobre pagar por mitocondrias donadas para tratar la infertilidad por edad
 summary_points:
   - Una investigación de STAT revela que la técnica de reemplazo mitocondrial (TRM), diseñada para prevenir enfermedades mitocondriales hereditarias, se comercializa como tratamiento de fertilidad para mujeres mayores sin evidencia sólida que respalde su eficacia para ese fin.
   - Empresas con base en EE. UU. facilitan el turismo reproductivo a clínicas en Albania, Grecia y Filipinas, donde mujeres pagan decenas de miles de dólares por procedimientos no aprobados en su país de origen.
-  - El único ensayo revisado por pares sobre TRM para infertilidad (Mitalipov y Costa-Borges, 2023) incluyó 25 pacientes menores de 40 años con una tasa de nacidos vivos del 31,6 % por transferencia, pero la mayoría de las participantes portaban mutaciones mitocondriales, no infertilidad por edad.
-  - Datos no publicados de 2019 del embriólogo Valeriy Mazur sugieren que el envejecimiento del ADN nuclear, no el de las mitocondrias, es la causa principal de fallos reproductivos en mujeres mayores, y que el reemplazo citoplasmático no revierte ese problema.
-  - Bioeticistas advierten que se está realizando un experimento intergeneracional mal controlado, con riesgos a largo plazo desconocidos para los niños nacidos mediante esta técnica.
+  - Según STAT, el único estudio revisado por pares sobre donación mitocondrial para infertilidad (Mitalipov y Costa-Borges, 2023) incluyó 25 pacientes menores de 40 años, con una tasa de nacidos vivos del 31,6 % por transferencia y menos del 10 % en las 12 pacientes de 39 años.
+  - Datos no publicados de 2019 del embriólogo Pavlo Mazur, basados en 19 mujeres, sugieren que el problema radica en el ADN nuclear y no en las mitocondrias; no están revisados por pares.
+  - Bioeticistas citados por STAT advierten de los riesgos de comercializar un procedimiento experimental, cuyos efectos a largo plazo en los niños se desconocen.
 glossary:
   - term: Reemplazo mitocondrial (TRM)
     definition: Técnica que extrae el ADN nuclear del óvulo o embrión de una paciente y lo transfiere a un óvulo donado sano del que se ha retirado el núcleo, de modo que el embrión resultante hereda el ADN nuclear de los padres y el ADN mitocondrial de la donante.
@@ -34,8 +34,6 @@ glossary:
     definition: 'Nombre popular para el reemplazo mitocondrial, porque el niño resultante lleva material genético de tres personas: madre, padre y donante de mitocondrias.'
   - term: Turismo reproductivo
     definition: Práctica de viajar a otro país para acceder a tratamientos de fertilidad que están prohibidos, no regulados o no disponibles en el país de origen del paciente.
-  - term: Aneuploidía
-    definition: Anomalía en el número de cromosomas de una célula (por ejemplo, 47 en lugar de 46), causa frecuente de fallo de implantación, aborto espontáneo o síndromes genéticos; su frecuencia aumenta con la edad materna.
 fact_check:
   - label: La TRM se comercializa como tratamiento de fertilidad para mujeres mayores a pesar de escasa evidencia de eficacia para ese uso
     status: confirmed
@@ -45,15 +43,15 @@ fact_check:
     status: confirmed
   - label: El ensayo de Mitalipov y Costa-Borges (2023) demostró eficacia de la TRM para infertilidad por edad materna
     status: uncertain
-  - label: Los datos no publicados de Mazur (2019) indican que el ADN nuclear envejecido, no las mitocondrias, es el principal obstáculo reproductivo en mujeres mayores
-    status: confirmed
-  - label: Clínicas en Filipinas eliminaron de sus sitios web promesas de 'rejuvenecimiento ovocitario' y tasas del 60 % en mayores de 40 años
+  - label: Los datos no publicados de Pavlo Mazur (2019, 19 mujeres) sugieren que el ADN nuclear envejecido, y no las mitocondrias, es el principal obstáculo reproductivo
+    status: uncertain
+  - label: IVF Asia Group retiró de su web las referencias al 'rejuvenecimiento ovocitario' y la tasa del 60 % en mayores de 40 años
     status: confirmed
 why_it_matters:
   - Mujeres a las que se deniega cobertura de FIV por edad en sus sistemas de salud nacionales buscan en el extranjero procedimientos costosos y experimentalmente no validados.
-  - La comercialización prematura de una técnica diseñada para prevenir enfermedades graves la convierte en un producto de esperanza sin respaldo científico para el envejecimiento reproductivo.
-  - Los niños nacidos mediante TRM para infertilidad enfrentan riesgos a largo plazo desconocidos, mientras sus familias asumen la carga financiera y emocional de un experimento no controlado.
-confidence: Moderada — investigación periodística rigurosa basada en 45 entrevistas, revisión de contratos y documentos, y análisis de literatura científica; las limitaciones incluyen dependencia de datos no publicados (póster de Mazur 2019) y de un único ensayo revisado por pares con población mixta (enfermedad mitocondrial e infertilidad).
+  - Una técnica diseñada para prevenir enfermedades graves se ofrece para el envejecimiento reproductivo sin evidencia sólida de eficacia, según STAT.
+  - Los efectos a largo plazo en los niños nacidos mediante TRM para infertilidad se desconocen, y las familias asumen un alto costo económico.
+confidence: Moderada — investigación periodística de ocho meses con 45 entrevistas, revisión de contratos y registros empresariales; el resumen científico depende de datos no publicados (póster de Mazur 2019, 19 mujeres) y de un único estudio revisado por pares sobre TRM para infertilidad, de 25 pacientes. Es una sola fuente, sin verificación independiente de las afirmaciones sobre personas y empresas.
 sources:
   - title: Women travel thousands of miles for a reproductive moonshot. Scientists say they've been misled
     url: https://statnews.com/2026/11/02/three-parent-ivf-fertility-tourism-investigation-mrt-therapy/
@@ -66,48 +64,44 @@ social:
   id: 2ed3290c66b83aa13b1140d739a9f755bf1a3495d566a2b1af3e6cb1a1cc863a
 ---
 
-**El negocio de la esperanza mitocondrial: cuando la FIV de tres padres se vende como cura para la edad**
-
-Una mujer holandesa de 46 años viaja a Albania, paga más de 30.000 dólares y recibe un embrión que lleva ADN de una donante ucraniana. La promesa: las mitocondrias jóvenes de ese óvulo donado actuarán como pilas nuevas, devolviendo vitalidad a sus propios óvulos envejecidos. El resultado: dos embriones sobreviven al proceso, uno es anómalo, el otro no implanta. La prueba de embarazo da negativa. Su historia no es única. Es el patrón de una industria que ha convertido una técnica diseñada para evitar enfermedades mortales en un producto de fertilidad para mujeres mayores, sin la evidencia que la respalde.
+Una mujer holandesa de 46 años viaja a Albania, paga más de 30.000 dólares y se somete a un procedimiento con la promesa de que mitocondrias jóvenes de un óvulo donado devolverán vitalidad a sus propios óvulos envejecidos. Según la investigación de STAT, solo dos de sus embriones reconstruidos llegaron a la transferencia: uno era genéticamente anómalo y el otro no implantó. Su caso ilustra, según STAT, un negocio que ha convertido una técnica pensada para evitar enfermedades graves en un producto de fertilidad para mujeres mayores, sin evidencia sólida de que funcione.
 
 ## La técnica que cambió de propósito
 
-El reemplazo mitocondrial (TRM, por sus siglas en inglés _mitochondrial replacement techniques_) nació con un objetivo preciso: permitir que mujeres portadoras de mutaciones en su ADN mitocondrial —el pequeño genoma circular que heredamos solo de nuestra madre y que alimenta a cada célula— tuvieran hijos biológicos sin transmitirles enfermedades a menudo fatales. El procedimiento extrae el ADN nuclear del óvulo de la paciente (o de su embrión recién fertilizado) y lo trasplasta a un óvulo donado sano al que se le ha quitado su propio núcleo. El bebé resultante lleva ADN nuclear de ambos padres y ADN mitocondrial de la donante. De ahí el nombre coloquial: "FIV de tres padres".
+El reemplazo mitocondrial (TRM, por sus siglas en inglés _mitochondrial replacement techniques_) nació para que mujeres portadoras de mutaciones en su ADN mitocondrial —el pequeño genoma circular que se hereda por vía materna— pudieran tener hijos biológicos sin transmitirles enfermedades a menudo graves. El procedimiento traslada el ADN nuclear del óvulo de la paciente (o de su embrión recién fertilizado) a un óvulo donado al que se le ha retirado el núcleo. El bebé resultante lleva ADN nuclear de ambos padres y ADN mitocondrial de la donante, de ahí el nombre coloquial de "FIV de tres padres".
 
-En Estados Unidos, el Congreso bloqueó en 2015 cualquier evaluación de la FDA para uso clínico en humanos. En el Reino Unido, un comité independiente autoriza caso por caso, y solo para prevención de enfermedades mitocondriales. Pero en países con regulaciones más laxas —Albania, Ucrania, México, Bahamas, Filipinas, Eslovaquia, República Dominicana— ha florecido un mercado paralelo. Una empresa con sede en Illinois, International Fertility Group of North America (IFG), actúa como intermediaria: recluta pacientes en EE. UU. y Europa, coordina viajes, pagos y contratos, y las deriva a clínicas asociadas que realizan el procedimiento. IFG no es una clínica; no tiene licencia médica. Es, en la práctica, una agencia de turismo reproductivo.
+En Estados Unidos, el Congreso prohibió en 2015 a la FDA evaluar su uso clínico. En el Reino Unido, un panel independiente de expertos autoriza cada caso de forma individual. Pese a ello, según STAT, una empresa con sede en Illinois, International Fertility Group of North America (IFG), conecta a pacientes de Estados Unidos y Europa con clínicas en el extranjero que ofrecen la técnica como tratamiento de fertilidad. IFG se constituyó en Illinois en 2023.
 
 ## El vacío de datos detrás de la promesa
 
-Ninguna de las clínicas que operan con IFG ha publicado resultados completos en revistas médicas de alto impacto con revisión por pares rigurosa. El sitio web de IFG llegó a afirmar una tasa de embarazo superior al 50 % en ciclos con TRM, sin desglosar por edad ni mostrar la metodología. Cuando STAT pidió el respaldo, la empresa dijo que los datos provenían de sus clínicas asociadas y que debían ser verificados. La Clínica SAGA en Tirana, donde se atienden la mayoría de las clientas de IFG, respondió que no hace seguimiento de las pacientes tras su partida: su acuerdo con IFG es, en sus palabras, "similar a un arrendamiento".
+STAT encontró registros deficientes en una clínica que ofrece el procedimiento y datos incompletos publicados en revistas marginales. La web de IFG llegó a afirmar una tasa de embarazo del 54 % por ciclo con TRM, cifra que luego retiró. La Clínica SAGA, en Tirana, describió su relación con IFG como "similar a un arrendamiento".
 
-Un estudio publicado en 2024 en _The Journal of Reproduction_ —una revista no indexada en las bases de datos médicas principales, lanzada por un obstetra argentino que huyó de EE. UU. tras acusaciones de fraude en fertilidad— reportó tasas de nacidos vivos del 48 % en mujeres de edad materna avanzada, y del 33 % en mayores de 42 años. Para ponerlo en contexto: el mayor estudio de FIV convencional en mujeres de 45 años o más encuentra una tasa de nacidos vivos del 4,4 % por transferencia. Científicos independientes que revisaron el artículo a petición de STAT señalaron anomalías: se aceptó en menos de tres semanas, una de las autoras (Uliana Dorofeyeva, directora clínica asesora de IFG) formaba parte del consejo editorial, y apareció junto a un anuncio de página completa de Ovogene, el banco de óvulos que ella y el embriólogo Birol Aydin operan en Eslovaquia y que provee los óvulos donantes para el programa. Aydin defendió sus datos, pero admitió que las estadísticas agregadas —incluso separadas por edad— no reflejan la eficacia real porque hay demasiadas variables sin controlar: historiales distintos, protocolos de congelación distintos, clínicas distintas. "No puedes ponerte en las estadísticas como paciente", dijo.
+Un estudio publicado en _The Journal of Reproduction_ —revista no indexada en las principales bases de datos médicas, fundada en 2022 por un obstetra argentino que, según STAT, salió de Estados Unidos en 1995 en medio de acusaciones de fraude en fertilidad— informó de una tasa de nacidos vivos del 48,3 % en 27 pacientes de edad materna avanzada y del 33 % en mayores de 42 años. Como referencia, STAT cita una tasa del 4,4 % por transferencia de embriones en mujeres de 45 años o más. Científicos independientes señalaron anomalías: el artículo se aceptó en menos de tres semanas, una de sus autoras formaba parte del consejo editorial de la revista y apareció junto a un anuncio de página completa de Ovogene, un banco de óvulos.
 
-## Lo que la ciencia sabe y lo que se calla
+## Lo que la ciencia sabe
 
-La hipótesis de venta es sencilla: con la edad, las mitocondrias de los óvulos se deterioran; aportar mitocondrias jóvenes restablece la energía necesaria para que el embrión se desarrolle. Pero la evidencia directa de que la disfunción mitocondrial sea la causa principal de la infertilidad por edad es, en palabras de Mary Herbert —pionera de la TRM en Newcastle y ahora preparando un ensayo en Australia—, "muy, muy escasa. Diría que todavía la estoy buscando".
+La hipótesis comercial es sencilla: con la edad, las mitocondrias de los óvulos se deterioran, y aportar mitocondrias jóvenes restablece la energía que necesita el embrión. Pero Mary Herbert, investigadora de la técnica, dijo a STAT que la evidencia directa de que la disfunción mitocondrial explique la infertilidad por edad es "muy, muy escasa".
 
-Los datos que existen apuntan en otra dirección. Pavlo Mazur, el embriólogo ucraniano que pionero la transferencia pronuclear (una variante de TRM) en Kiev, probó la técnica en cientos de cigotos de mujeres de 36 a 44 años. Solo una, de 42, logró un embrión con el número correcto de cromosomas. Pero cuando invirtió el experimento —puso ADN nuclear de donantes jóvenes en óvulos de pacientes mayores— el 40 % de los embriones resultantes llegaron a etapa de implantación y el 70 % de esos eran cromosómicamente normales. Conclusión de Mazur: el problema no son las mitocondrias de la mujer mayor; es su ADN nuclear, que acumula errores en la meiosis con la edad. Intercambiar el citoplasma no arregla eso. "Es demasiado tarde para marcar la diferencia", dijo. Sus resultados, presentados en un póster en 2019, nunca se publicaron en revista revisada por pares porque no tenía consentimiento de las pacientes ni aprobación de un comité de ética para los experimentos de control. Jacques Cohen, exeditor de _Reproductive Biomedicine Online_, lamentó la pérdida: "Su trabajo es importante. Es una pérdida increíble para el campo, el público y las pacientes".
+Los datos existentes apuntan en otra dirección, aunque son limitados. El embriólogo Pavlo Mazur probó la transferencia pronuclear (una variante de TRM) con ovocitos de 19 mujeres de entre 36 y 44 años: solo una, de 42, obtuvo alguna vez un embrión con el número correcto de cromosomas. En el experimento inverso, con ADN nuclear de donantes jóvenes en óvulos de pacientes mayores, cerca del 40 % de los embriones llegó a la etapa de implantación y cerca del 70 % de ellos era cromosómicamente normal. Su conclusión es que el problema radica en el ADN nuclear y no en las mitocondrias. Presentó esos resultados en un póster en 2019, pero las revistas rechazaron su manuscrito porque no contaba con el consentimiento de las pacientes ni con la aprobación de un comité de ética. Son datos no publicados ni revisados por pares, y se basan en pocas pacientes. El embriólogo Jacques Cohen lamentó que se perdiera ese trabajo, "porque su trabajo es importante".
 
-El único ensayo revisado por pares sobre TRM para infertilidad (no para enfermedad mitocondrial) provino de Shoukhrat Mitalipov y Nuno Costa-Borges en 2023: 25 pacientes menores de 40 años en una clínica griega, tasa de nacidos vivos del 31,6 % por transferencia. Pero en el material suplementario, las 12 pacientes de 39 años tuvieron una tasa inferior al 10 %. Mitalipov ha dicho a STAT que cree improbable que la TRM funcione en mayores de 40, aunque no ha podido probarlo.
+STAT señala que solo existe un estudio revisado por pares sobre donación mitocondrial para superar la infertilidad, el de Shoukhrat Mitalipov y Nuno Costa-Borges, de 2023, en una clínica de Grecia: una tasa de nacidos vivos del 31,6 % por transferencia en 25 pacientes menores de 40 años. En el material suplementario, las 12 pacientes de 39 años tuvieron una tasa inferior al 10 %.
 
-## El rastro corporativo y la paciente que cuestionó su origen
+## Vínculos entre empresas
 
-La investigación de STAT —ocho meses, 45 entrevistas, revisión de contratos, registros mercantiles, chats de WhatsApp, grupos de Facebook— revela una red de empresas entrelazadas por lazos familiares y societarios. En el centro está Dorofeyeva: consultora pagada de IFG, copropietaria de Ovogene en Eslovaquia, accionista de la Clínica SAGA en Albania junto a Aydin y al cofundador turco del hospital, Ahmet Kal. IFG se incorporó en Illinois en 2023 por Igor Kostyuk, quien también registró Ovogene y Ark Cryo (envío de biomateriales congelados) en EE. UU. y Eslovaquia. La directora de operaciones de IFG, Maria Mazepa, está casada con Ostap Mazepa, director comercial de Ovogene Eslovaquia; su padre es Ruslan Chervak, gerente de marketing de IFG. IFG sostiene que "una relación familiar no establece control corporativo común, conflicto de interés o conducta indebida" y que cada entidad mantiene su estructura, contabilidad y obligaciones propias. Pero la opacidad dificulta obtener respuestas claras: cuando académicos ofrecieron volar a Albania a auditar los datos, fueron rechazados. "No querían compartir ningún dato", dijo Pasha Itsykson, embriólogo en Israel que intentó organizar un ensayo formal.
+La investigación de STAT duró ocho meses e incluyó entrevistas con 45 pacientes, médicos, operadores de clínicas e investigadores, además de la revisión de contratos y registros empresariales. Según STAT, IFG fue constituida por Igor Kostyuk, a quien la empresa identifica como su presidente, y los registros de Illinois lo vinculan también con Ovogene (2021) y Ark Cryo (2020), una empresa que envía óvulos y embriones congelados por mensajería internacional. La directora de operaciones de IFG, Maria Mazepa, está casada con Ostap Mazepa, director comercial de Ovogene, y el padre de este, Ruslan Chervak, trabaja en IFG. IFG sostiene que "una relación familiar no establece control corporativo común, conflicto de interés o conducta indebida".
 
-El caso más inquietante es el de Heidy Willis, la cara pública del programa de IFG. Abogada de Miami, 33 años al dar a luz a gemelas tras TRM en Albania. Su historia se usa en marketing sin la etiqueta _advancedmaternalage_. Willis tenía un problema genético raro (mutaciones en dos genes del cromosoma 10) que bloqueaba la maduración de sus óvulos. Aydin combinó TRM con maduración _in vitro_ —un cultivo hormonal para madurar óvulos inmaduros en el laboratorio—. Quedó un embrión normal, se transfirió, se dividió en dos. Aydin admite a STAT: "No puedo decir que la transferencia mitocondrial ayude". Y luego llegó el correo de 23andMe: el test de ancestros de las niñas estimaba un 50 % de ascendencia ucraniana. Willis pensó: "¿Esto fue solo un óvulo donado? ¿Me mintieron?". Aydin y Dorofeyeva le dijeron que 23andMe calcula ancestros por ADN mitocondrial. 23andMe lo negó: sus informes usan cientos de miles de marcadores nucleares, no ADN mitocondrial. Aydin restó crédito a la prueba de consumo. Willis zanjó: "Después de todo esto, no me importa si son mías. Solo estoy feliz de ser mamá". Volvió a Albania y tuvo un tercer hijo con TRM.
+## Un caso que cuestiona el origen del ADN
+
+STAT relata el caso de Heidy Willis, abogada de Miami que dio a luz gemelas a los 33 años tras un procedimiento de TRM en Albania. Willis tenía mutaciones en dos genes del cromosoma 10. Aydin admitió a STAT: "No puedo decir que la transferencia mitocondrial ayude". Después, un informe de ancestros de 23andMe estimó que las niñas tenían un 50 % de ascendencia ucraniana, lo que llevó a Willis a cuestionar el origen de su material genético. 23andMe respondió que sus informes de ancestros no incluyen ADN mitocondrial. Las publicaciones de Willis no llevan la etiqueta #advancedmaternalage, a diferencia de otras publicaciones de la empresa, según STAT.
 
 ## La pausa y lo que queda
 
-En julio de 2025, tras las preguntas de STAT y una nota crítica en _Nature_, IFG anunció una pausa temporal en la captación de nuevas pacientes para TRM. Aydin decidió dejar de realizarla: "Estar tan estirado empezó a afectar mi salud, y ya no creo que las pacientes deban pagar por un tratamiento experimental para el cual es tan difícil seleccionar a las que puedan beneficiarse". Dorofeyeva dijo que no derivará a otras clínicas: "No diría que creo en la tecnología; creo en la tecnología en manos de Birol". IFG eliminó toda mención a TRM de su web, calificándolo de "decisión precautoria de comunicación".
+Tras las preguntas de STAT en julio, IFG anunció una pausa temporal en la captación de pacientes para TRM, y Aydin decidió dejar de realizarla. Una de las responsables de IFG dijo que no derivará pacientes a otras clínicas: "creo en la tecnología en manos de Birol". Otras ofertas siguen activas: en Bahamas, el médico Zaher Merhi ofrece otra variante, con transferencia de material genético de óvulos inmaduros, que ha intentado en dos pacientes, una de ellas con éxito en la reconstrucción del embrión y aún sin transferencia. En Filipinas, IVF Asia Group retiró durante el verano de su web las referencias al "rejuvenecimiento ovocitario" y la afirmación de una tasa de nacidos vivos del 60 % en mujeres de 40 años o más.
 
-Pero la demanda no desaparece. En Bahamas, el médico Zaher Merhi ofrece otra variante de TRM (transferencia de material genético de óvulos inmaduros) con solo dos pacientes intentadas, una exitosa en reconstrucción, sin transferencia aún, y lista de espera creciente. En Filipinas, dos clínicas borraron de sus webs las promesas de "rejuvenecimiento ovocitario" y tasas del 60 % en mayores de 40. El embriólogo que hacía los procedimientos se fue.
+Los bioeticistas Jeffrey Kahn (Johns Hopkins) e I. Glenn Cohen (Harvard) advierten, según STAT, de los riesgos de comercializar un procedimiento experimental. "Estás pagando por el privilegio de ser un conejillo de indias", dijo Kahn.
 
-Bioéticos como Jeffrey Kahn (Johns Hopkins) y Glenn Cohen (Harvard) coinciden: lo que ocurre hoy es un experimento intergeneracional mal controlado, donde familias pagan decenas de miles de dólares por un procedimiento cuyos riesgos a largo plazo para los niños —y cuya eficacia real— son desconocidos. "Estás pagando por el privilegio de ser un conejillo de indias", dijo Kahn. "¿En qué otro ámbito de la medicina la gente se apuntaría a eso?".
+## Qué queda por resolver
 
-Las pacientes dicen que preferirían un ensayo clínico riguroso. Pero no quieren esperar. El tiempo, para ellas, no es una variable científica: es el enemigo.
-
----
-
-La técnica que debía liberar a niños de enfermedades letales se vende hoy como antídoto contra el reloj biológico. La evidencia disponible sugiere que no lo es. Lo que queda por resolver no es solo si la TRM puede ayudar a alguna mujer mayor a concebir —quizás una minoría con disfunción mitocondrial real—, sino cómo un sistema de salud que niega cobertura a la FIV tras los 40 empuja a tantas a buscar en el extranjero una promesa que la ciencia aún no ha cumplido.
+La técnica desarrollada para evitar enfermedades mitocondriales graves se ofrece hoy como tratamiento para el envejecimiento reproductivo. La evidencia disponible, según lo recogido por STAT, no demuestra que funcione para ese fin: queda por saber si la TRM puede ayudar a alguna mujer mayor a concebir, y las pacientes que viajan al extranjero lo hacen sin datos publicados y completos que respalden la promesa.
 
 <!-- source_identity: source_id=stat_news; source_name=STAT News -->
