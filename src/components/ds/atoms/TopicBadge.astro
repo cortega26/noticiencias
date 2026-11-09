@@ -35,19 +35,17 @@ const colors =
   'bg-surface-highlight text-primary hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent';
 ---
 
-{
-  href ? (
-    <a
-      href={href}
-      data-analytics-category={slug}
-      class:list={[baseStyles, sizes[size], colors, className]}
-      {...rest}
-    >
-      {topic}
-    </a>
-  ) : (
-    <span class:list={[baseStyles, sizes[size], colors, className]} {...rest}>
-      {topic}
-    </span>
-  )
-}
+{href ? (
+  <a
+    href={href}
+    data-analytics-category={slug}
+    class:list={[baseStyles, sizes[size], colors, className]}
+    {...rest}
+  >
+    {topic}
+  </a>
+) : (
+  <span class:list={[baseStyles, sizes[size], colors, className]} {...rest}>
+    {topic}
+  </span>
+)}

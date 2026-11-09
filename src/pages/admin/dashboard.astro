@@ -187,74 +187,66 @@ const metadata = {
         <div class="px-5 py-4 border-b border-border-subtle">
           <h3 class="text-lg font-heading font-bold text-text-body">Categorías principales</h3>
         </div>
-        {
-          topCategories.length > 0 ? (
-            <ul class="divide-y divide-border-subtle">
-              {topCategories.map((cat) => (
-                <li class="px-5 py-3 flex items-center justify-between">
-                  <a
-                    href={`/categorias/${cleanSlug(cat.name)}`}
-                    class="text-sm font-medium text-primary hover:underline"
-                  >
-                    {cat.name}
-                  </a>
-                  <span class="text-sm text-text-muted">{cat.count} artículos</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div class="px-5 py-8 text-center text-text-muted text-sm">
-              No hay datos de categorías. Ejecuta{' '}
-              <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">
-                npm run generate:metrics
-              </code>
-              .
-            </div>
-          )
-        }
+        {topCategories.length > 0 ? (
+          <ul class="divide-y divide-border-subtle">
+            {topCategories.map((cat) => (
+              <li class="px-5 py-3 flex items-center justify-between">
+                <a
+                  href={`/categorias/${cleanSlug(cat.name)}`}
+                  class="text-sm font-medium text-primary hover:underline"
+                >
+                  {cat.name}
+                </a>
+                <span class="text-sm text-text-muted">{cat.count} artículos</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="px-5 py-8 text-center text-text-muted text-sm">
+            No hay datos de categorías. Ejecuta{' '}
+            <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>
+            .
+          </div>
+        )}
       </div>
     </div>
 
     <section>
       <h2 class="font-heading text-xl font-bold text-text-body mb-4">Artículos recientes</h2>
-      {
-        recentArticles.length > 0 ? (
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle">
-            <ul class="divide-y divide-border-subtle">
-              {recentArticles.map((article) => (
-                <li class="px-5 py-3 flex items-center justify-between gap-4">
-                  <div class="min-w-0">
-                    <p class="text-sm font-medium text-text-body truncate">{article.title}</p>
-                    <p class="text-xs text-text-muted mt-0.5">
-                      {article.date} &middot; {article.categories?.join(', ') || 'Sin categoría'}
-                    </p>
-                  </div>
-                  <div class="shrink-0 flex items-center gap-2">
-                    {article.schema_version >= 2 && (
-                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                        v{article.schema_version}
-                      </span>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle px-5 py-8 text-center text-text-muted text-sm">
-            No hay artículos para mostrar. Ejecuta{' '}
-            <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>
-            .
-          </div>
-        )
-      }
+      {recentArticles.length > 0 ? (
+        <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle">
+          <ul class="divide-y divide-border-subtle">
+            {recentArticles.map((article) => (
+              <li class="px-5 py-3 flex items-center justify-between gap-4">
+                <div class="min-w-0">
+                  <p class="text-sm font-medium text-text-body truncate">{article.title}</p>
+                  <p class="text-xs text-text-muted mt-0.5">
+                    {article.date} &middot; {article.categories?.join(', ') || 'Sin categoría'}
+                  </p>
+                </div>
+                <div class="shrink-0 flex items-center gap-2">
+                  {article.schema_version >= 2 && (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                      v{article.schema_version}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-border-subtle px-5 py-8 text-center text-text-muted text-sm">
+          No hay artículos para mostrar. Ejecuta{' '}
+          <code class="bg-gray-100 dark:bg-slate-700 px-1 rounded">npm run generate:metrics</code>.
+        </div>
+      )}
     </section>
 
     <footer class="text-center text-xs text-text-muted pt-4">
       <p>
-        Última generación: {
-          metrics?.generated_at ? new Date(metrics.generated_at).toLocaleString('es-MX') : 'Nunca'
-        }
+        Última generación:{' '}
+        {metrics?.generated_at ? new Date(metrics.generated_at).toLocaleString('es-MX') : 'Nunca'}
         &middot; Este dashboard es una página estática generada en CI.
       </p>
     </footer>
