@@ -17,6 +17,22 @@ test('home page has navigation', async ({ page }) => {
   await expect(page.locator('header').first()).toBeVisible();
 });
 
+test('home "De esta edición" always shows exactly six stories, none repeated from the lead', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const edition = page.getByTestId('home-edition');
+  await expect(edition.getByRole('heading', { name: 'De esta edición' })).toBeVisible();
+  await expect(edition.locator('article')).toHaveCount(6);
+
+  const hrefs = (locator: ReturnType<typeof page.locator>) =>
+    locator.evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+  const leadHrefs = await hrefs(page.locator('[aria-label="Historia principal"] a[href^="/"]'));
+  const editionHrefs = await hrefs(edition.locator('article a[href^="/"]'));
+  expect(leadHrefs.length).toBeGreaterThan(0);
+  for (const href of editionHrefs) expect(leadHrefs).not.toContain(href);
+});
+
 // Trailing-slash investigation concluded 2026-08-11 (plan 031): production
 // serves the slash form as canonical (301s no-slash routes, 200 on the
 // slash form), and config.yaml now sets trailingSlash: true so the local

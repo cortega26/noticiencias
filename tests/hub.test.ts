@@ -7,7 +7,8 @@ import {
   getTopicFrequency,
   selectArchivePosts,
   selectFeaturedPosts,
-  selectRecentPosts,
+  selectEditionPosts,
+  EDITION_POST_COUNT,
 } from '../src/utils/hub';
 import { makePost as post } from './helpers/post-factory';
 
@@ -199,48 +200,73 @@ describe('hub curation helpers', () => {
 });
 
 describe('home recency helpers', () => {
-  it('selects only stories inside the edition window, newest first', () => {
-    const posts = [
-      post({ id: 'edition', publishDate: new Date('2026-09-20T00:00:00Z') }),
-      post({ id: 'inside', publishDate: new Date('2026-09-18T00:00:00Z') }),
-      post({ id: 'edge', publishDate: new Date('2026-09-13T00:00:00Z') }),
-      post({ id: 'outside', publishDate: new Date('2026-09-12T00:00:00Z') }),
-    ];
+  it('always returns exactly six stories, newest first, when the archive has enough', () => {
+    // Only two stories fall in the last seven days: the old window shrank the block to two.
+    const posts = Array.from({ length: 12 }, (_, index) =>
+      post({
+        id: `story-${index}`,
+        publishDate: new Date(Date.UTC(2026, 8, 20) - index * 4 * 24 * 60 * 60 * 1000),
+      })
+    );
 
-    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'));
+    const edition = selectEditionPosts(posts);
 
-    expect(selection.inWindow).toBe(true);
-    expect(selection.posts.map((item) => item.id)).toEqual(['edition', 'inside', 'edge']);
+    expect(EDITION_POST_COUNT).toBe(6);
+    expect(edition).toHaveLength(6);
+    expect(edition.map((item) => item.id)).toEqual([
+      'story-0',
+      'story-1',
+      'story-2',
+      'story-3',
+      'story-4',
+      'story-5',
+    ]);
   });
 
-  it('honors excludeIds and the count cap inside the window', () => {
-    const posts = [
-      post({ id: 'hero', publishDate: new Date('2026-09-20T00:00:00Z') }),
-      post({ id: 'second', publishDate: new Date('2026-09-19T00:00:00Z') }),
-      post({ id: 'third', publishDate: new Date('2026-09-18T00:00:00Z') }),
-    ];
+  it('skips the lead stories and takes the next six newest', () => {
+    const posts = Array.from({ length: 12 }, (_, index) =>
+      post({
+        id: `story-${index}`,
+        publishDate: new Date(Date.UTC(2026, 8, 20) - index * 24 * 60 * 60 * 1000),
+      })
+    );
 
-    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'), {
-      count: 1,
-      excludeIds: ['hero'],
+    const edition = selectEditionPosts(posts, {
+      excludeIds: ['story-0', 'story-1', 'story-7'],
     });
 
-    expect(selection.inWindow).toBe(true);
-    expect(selection.posts.map((item) => item.id)).toEqual(['second']);
+    expect(edition.map((item) => item.id)).toEqual([
+      'story-2',
+      'story-3',
+      'story-4',
+      'story-5',
+      'story-6',
+      'story-8',
+    ]);
   });
 
-  it('falls back to newest stories and reports the fallback when the window is empty', () => {
+  it('does not depend on how old the newest stories are', () => {
+    const posts = Array.from({ length: 8 }, (_, index) =>
+      post({
+        id: `old-${index}`,
+        publishDate: new Date(Date.UTC(2025, 0, 31) - index * 24 * 60 * 60 * 1000),
+      })
+    );
+
+    expect(selectEditionPosts(posts)).toHaveLength(6);
+  });
+
+  it('returns fewer than six only when the whole archive has fewer', () => {
     const posts = [
-      post({ id: 'old', publishDate: new Date('2026-01-01T00:00:00Z') }),
-      post({ id: 'older', publishDate: new Date('2025-12-01T00:00:00Z') }),
+      post({ id: 'a', publishDate: new Date('2026-09-20T00:00:00Z') }),
+      post({ id: 'b', publishDate: new Date('2026-09-19T00:00:00Z') }),
+      post({ id: 'c', publishDate: new Date('2026-09-18T00:00:00Z') }),
     ];
 
-    const selection = selectRecentPosts(posts, new Date('2026-09-20T00:00:00Z'), {
-      excludeIds: ['old'],
-    });
-
-    expect(selection.inWindow).toBe(false);
-    expect(selection.posts.map((item) => item.id)).toEqual(['older']);
+    expect(selectEditionPosts(posts, { excludeIds: ['a'] }).map((item) => item.id)).toEqual([
+      'b',
+      'c',
+    ]);
   });
 
   it('selects archive posts excluding what is already promoted', () => {

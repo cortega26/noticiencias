@@ -5,26 +5,23 @@ import TopicStrip from '~/components/common/TopicStrip.astro';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/date';
 import { configuredCategorySections } from '~/utils/categorySections';
-import type { RecentSelection, TopicFrequency } from '~/utils/hub';
+import type { TopicFrequency } from '~/utils/hub';
 import type { SeriesDossier } from '~/utils/series';
 import type { Post } from '~/types';
 
 interface Props {
   editionDate: Date;
   leadPosts: Post[];
-  weekly: RecentSelection;
+  editionPosts: Post[];
   archivePosts: Post[];
   featuredSeries: SeriesDossier | null;
   topicRadar: TopicFrequency[];
 }
 
-const { editionDate, leadPosts, weekly, archivePosts, featuredSeries, topicRadar } = Astro.props;
+const { editionDate, leadPosts, editionPosts, archivePosts, featuredSeries, topicRadar } =
+  Astro.props;
 const [leadPost, ...secondaryLeadPosts] = leadPosts;
 const editionLabel = getFormattedDate(editionDate, 'long');
-const weeklyTitle = weekly.inWindow ? 'De esta edición' : 'Lo más reciente';
-const weeklyDescription = weekly.inWindow
-  ? 'Historias publicadas durante los siete días anteriores a la fecha de esta edición, con la fuente a un clic.'
-  : 'Las historias más recientes del archivo, con la fuente a un clic.';
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
@@ -98,16 +95,16 @@ const weeklyDescription = weekly.inWindow
     </div>
   </section>
 
-  {weekly.posts.length > 0 && (
-    <section class="mt-12">
+  {editionPosts.length > 0 && (
+    <section class="mt-12" data-testid="home-edition">
       <SectionHeading
-        title={weeklyTitle}
-        description={weeklyDescription}
+        title="De esta edición"
+        description="Las historias más recientes después de las destacadas, con la fuente a un clic."
         href="/blog/"
         linkText="Archivo completo"
       />
       <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {weekly.posts.map((post) => (
+        {editionPosts.map((post) => (
           <ArticleCard post={post} variant="standard" showTags={false} />
         ))}
       </div>
