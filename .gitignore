@@ -17,7 +17,8 @@ skills-lock.json
 
 
 # dependencies
-node_modules/
+# no trailing slash: also ignore a node_modules symlink or file
+node_modules
 
 # logs
 npm-debug.log*
