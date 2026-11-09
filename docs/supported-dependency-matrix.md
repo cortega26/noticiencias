@@ -10,7 +10,7 @@ files own exact versions and CI behavior.
 | Layer      | Supported version | Notes                                                                |
 | ---------- | ----------------- | -------------------------------------------------------------------- |
 | Node.js    | `>=24.0.0 <25`    | Pinned in `package.json#engines`; CI uses `node-version: 24`         |
-| Astro      | `~7.2.8`          | Astro 7 (Rust compiler, Sätteri Markdown, `compressHTML: 'jsx'`)     |
+| Astro      | `^7.4.0`           | Astro 7 (Rust compiler, Sätteri Markdown, `compressHTML: 'jsx'`)     |
 | Tailwind   | `^4.3.3`          | Via `@tailwindcss/vite` (not `@astrojs/tailwind`)                    |
 | MDX        | `^8.1.2`          | Peers Astro 7; Sätteri Markdown                                      |
 | Vite       | Transitive        | Resolved by Astro and the lockfile; not a direct dependency          |
