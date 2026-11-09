@@ -1,7 +1,9 @@
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
-import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
+import type { Root as HastRoot } from 'hast';
+import type { Root as MdastRoot } from 'mdast';
+import type { Plugin } from 'unified';
 
 interface AstroData {
   astro: {
@@ -22,7 +24,7 @@ function hasAstroData(data: unknown): data is AstroData {
   );
 }
 
-export const readingTimeRemarkPlugin: RemarkPlugin = () => {
+export const readingTimeRemarkPlugin: Plugin<[], MdastRoot> = () => {
   return function (tree, file: unknown) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
@@ -38,7 +40,7 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
   };
 };
 
-export const responsiveTablesRehypePlugin: RehypePlugin = () => {
+export const responsiveTablesRehypePlugin: Plugin<[], HastRoot> = () => {
   return function (tree) {
     if (!tree.children) return;
 
@@ -61,7 +63,7 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
   };
 };
 
-export const lazyImagesRehypePlugin: RehypePlugin = () => {
+export const lazyImagesRehypePlugin: Plugin<[], HastRoot> = () => {
   return function (tree) {
     if (!tree.children) return;
 
