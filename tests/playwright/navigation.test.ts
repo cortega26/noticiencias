@@ -25,11 +25,19 @@ test('home "De esta edición" always shows exactly six stories, none repeated fr
   await expect(edition.getByRole('heading', { name: 'De esta edición' })).toBeVisible();
   await expect(edition.locator('article')).toHaveCount(6);
 
-  const hrefs = (locator: ReturnType<typeof page.locator>) =>
-    locator.evaluateAll((links) => links.map((link) => link.getAttribute('href')));
-  const leadHrefs = await hrefs(page.locator('[aria-label="Historia principal"] a[href^="/"]'));
-  const editionHrefs = await hrefs(edition.locator('article a[href^="/"]'));
+  // Only story links: category/tag links legitimately repeat across cards.
+  const storyHrefs = (locator: ReturnType<typeof page.locator>) =>
+    locator.evaluateAll((links) =>
+      links
+        .map((link) => link.getAttribute('href') ?? '')
+        .filter((href) => /^\/[^/]+\/\d{4}-\d{2}-\d{2}-/.test(href))
+    );
+  const leadHrefs = await storyHrefs(
+    page.locator('[aria-label="Historia principal"] a[href^="/"]')
+  );
+  const editionHrefs = await storyHrefs(edition.locator('article a[href^="/"]'));
   expect(leadHrefs.length).toBeGreaterThan(0);
+  expect(editionHrefs.length).toBeGreaterThan(0);
   for (const href of editionHrefs) expect(leadHrefs).not.toContain(href);
 });
 
