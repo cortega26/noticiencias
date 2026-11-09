@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-08T13:18:46.358Z",
+  "generated_at": "2026-11-09T16:11:16.361Z",
   "content": {
-    "total_articles": 61,
-    "v2_articles": 49,
-    "total_words": 31411,
-    "avg_words": 515,
+    "total_articles": 68,
+    "v2_articles": 56,
+    "total_words": 37072,
+    "avg_words": 545,
     "categories": [
       {
         "name": "Ciencia",
-        "count": 18
+        "count": 20
       },
       {
         "name": "Tecnología",
@@ -16,11 +16,11 @@
       },
       {
         "name": "Salud",
-        "count": 7
+        "count": 11
       },
       {
         "name": "Biología",
-        "count": 5
+        "count": 6
       },
       {
         "name": "Astronomía",
@@ -58,6 +58,10 @@
       },
       {
         "name": "coral",
+        "count": 2
+      },
+      {
+        "name": "célula madre",
         "count": 2
       },
       {
@@ -159,13 +163,69 @@
       {
         "name": "núcleo terrestre",
         "count": 1
-      },
-      {
-        "name": "física",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-11-07-bajar-la-presion-a-120-mm-hg-protege-tras-un-derrame-pero-no-a-diabeticos",
+        "title": "Bajar la presión a 120 mm Hg protege tras un derrame, pero no a diabéticos",
+        "date": "2026-11-07",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — Los resultados de dos estudios clave fueron presentados en una conferencia; uno de ellos ya fue publicado en una revista de alto impacto (*New England Journal of Medicine*) y el otro (REDUCE) aún es preliminar y no ha pasado por revisión de pares.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-06-250-000-insectos-en-madagascar-misma-estructura-que-la-de-europa",
+        "title": "Madagascar tendría al menos 250.000 especies de insectos y una estructura parecida a la de los bosques templados",
+        "date": "2026-11-06",
+        "categories": [
+          "Biología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Limitada — preprint sin revisión por pares; la cifra de 250.000 especies es, según los propios autores, una cota inferior muy conservadora, y la explicación por fuerzas globales se infiere de modelos y patrones, no de experimentos.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-06-las-celulas-madre-de-tus-huesos-pueden-elegir-su-rol-para-repararse",
+        "title": "Un preprint en ratones sugiere que las células madre del hueso cambian de estado según su entorno",
+        "date": "2026-11-06",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — se trata de un preprint con resultados preliminares obtenidos principalmente en ratones, y el propio artículo menciona la necesidad de validación exhaustiva en modelos más cercanos a la fisiología humana.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-06-que-une-a-la-microbiota-con-mas-placa-amiloide-en-el-cerebro-femenino",
+        "title": "Un sensor de la microglía vincula la microbiota con la placa amiloide, sobre todo en ratones hembra",
+        "date": "2026-11-06",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Limitada — preprint sin revisión por pares, experimentos principales en ratones, cohorte humana pequeña; resultados no directamente extrapolables a humanos sin validación clínica",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-06-sangre-fosilizada-de-115-millones-de-anos-hallazgo-en-brasil-y-sus-dudas",
+        "title": "¿Sangre fosilizada de 115 millones de años? Hallazgo en Brasil y sus dudas",
+        "date": "2026-11-06",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio publicado en PNAS (revisado por pares) con múltiples líneas de evidencia convergente, pero una paleontóloga independiente no está convencida de que se haya identificado hemo de forma definitiva y persiste la incertidumbre sobre si las estructuras son glóbulos rojos fosilizados",
+        "review_status": null
+      },
       {
         "slug": "2026-11-04-edita-el-0-016-de-pesos-y-lleva-el-acierto-matematico-del-8-al-48",
         "title": "Edita el 0,016 % de pesos y lleva el acierto matemático del 8 % al 48 %",
@@ -176,6 +236,30 @@
         "schema_version": 2,
         "editorial_score": null,
         "confidence": "Limitada — único reporte en blog de investigación del MIT sin revisión por pares; experimentos acotados a modelos y tareas pequeñas; resultados no replicados independientemente; los propios autores delimitan alcance y piden benchmarks estandarizados.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-03-solo-uno-de-ocho-ninos-incas-sacrificados-tenia-harmina-el-ritual-no-era-uniforme",
+        "title": "Solo uno de ocho niños incas sacrificados tenía harmina: el ritual no era uniforme",
+        "date": "2026-11-03",
+        "categories": [
+          "Ciencia"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio revisado por pares en Antiquity, pero con solo ocho individuos y una única detección de harmina; los propios autores no descartan otras sustancias que la tecnología actual no detecta.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-02-venden-mitocondrias-jovenes-para-la-edad-pero-el-fallo-esta-en-el-nucleo",
+        "title": "Se vende el reemplazo mitocondrial como remedio para la edad, pero la evidencia es escasa",
+        "date": "2026-11-02",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — investigación periodística de ocho meses con 45 entrevistas, revisión de contratos y registros empresariales; el resumen científico depende de datos no publicados (póster de Mazur 2019, 19 mujeres) y de un único estudio revisado por pares sobre TRM para infertilidad, de 25 pacientes. Es una sola fuente, sin verificación independiente de las afirmaciones sobre personas y empresas.",
         "review_status": null
       },
       {
@@ -911,11 +995,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-11-08T13:18:45.668Z"
+    "generated_at": "2026-11-09T16:11:15.645Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 61,
+    "derivatives_available": 68,
     "missing_derivatives": 0
   },
   "health": {
@@ -925,16 +1009,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "49 artículos v2 completos."
+      "detail": "56 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "61 artículo(s) con imagen y alt.",
+      "detail": "68 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "61 derivativos disponibles."
+      "detail": "68 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -943,10 +1027,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "220 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "232 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 220,
+        "processed": 232,
         "failed": 0
       }
     },
