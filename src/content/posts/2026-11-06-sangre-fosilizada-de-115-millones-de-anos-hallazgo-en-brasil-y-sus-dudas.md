@@ -60,8 +60,8 @@ sources:
     publisher: Science News
     date: '2026-11-06'
   - title: Heme signatures in mineralized red blood cells within vascular canals of a 115-million-year-old dinosaur bone
-    url: https://doi.org/10.1073/pnas.2614248123
-    publisher: Proceedings of the National Academy of Sciences (PNAS)
+    url: https://pubmed.ncbi.nlm.nih.gov/42970671/
+    publisher: Proceedings of the National Academy of Sciences (PNAS), doi 10.1073/pnas.2614248123
     date: '2026-11-02'
 requires_uncertainty_note: true
 uncertainty_note: 'El hallazgo es preliminar y debatido: según una paleontóloga independiente, las señales de hemo no se concentran solo en las estructuras candidatas y su forma difiere de la de los glóbulos rojos de aves y reptiles actuales.'
