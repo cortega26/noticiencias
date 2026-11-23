@@ -11,7 +11,14 @@ const {
 } = Astro.props;
 ---
 
-<button type="button" class={className} aria-label={label} data-aw-toggle-menu>
+<button
+  type="button"
+  class={className}
+  aria-label={label}
+  aria-controls="main-navigation"
+  aria-expanded="false"
+  data-aw-toggle-menu
+>
   <span class="sr-only">{label}</span>
   <slot>
     <span

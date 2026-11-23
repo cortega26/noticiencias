@@ -1,0 +1,80 @@
+[
+  {
+    "name": "absent article URL",
+    "field": "article_url",
+    "value": null,
+    "valid": true
+  },
+  {
+    "name": "blank evidence URL",
+    "field": "evidence_url",
+    "value": "",
+    "valid": true
+  },
+  {
+    "name": "article URL with encoded space",
+    "field": "article_url",
+    "value": "https://noticiencias.com/una%20nota",
+    "valid": true
+  },
+  {
+    "name": "article URL with subdomain and port",
+    "field": "article_url",
+    "value": "HTTPS://archivo.NOTICIENCIAS.COM:443/nota",
+    "valid": true
+  },
+  {
+    "name": "external evidence with Unicode path",
+    "field": "evidence_url",
+    "value": "https://example.org/edición",
+    "valid": true
+  },
+  {
+    "name": "article URL with literal space",
+    "field": "article_url",
+    "value": "https://noticiencias.com/una nota",
+    "valid": false
+  },
+  {
+    "name": "evidence URL with literal space",
+    "field": "evidence_url",
+    "value": "https://example.org/una nota",
+    "valid": false
+  },
+  {
+    "name": "relative evidence URL",
+    "field": "evidence_url",
+    "value": "/nota",
+    "valid": false
+  },
+  {
+    "name": "out of range evidence port",
+    "field": "evidence_url",
+    "value": "https://example.org:65536/nota",
+    "valid": false
+  },
+  {
+    "name": "unrelated article domain",
+    "field": "article_url",
+    "value": "https://example.org/nota",
+    "valid": false
+  },
+  {
+    "name": "preserved surrounding whitespace",
+    "field": "evidence_url",
+    "value": " https://example.org/nota ",
+    "valid": true
+  },
+  {
+    "name": "relative article URL",
+    "field": "article_url",
+    "value": "/nota",
+    "valid": false
+  },
+  {
+    "name": "non-HTTP article URL",
+    "field": "article_url",
+    "value": "ftp://noticiencias.com/nota",
+    "valid": false
+  }
+]

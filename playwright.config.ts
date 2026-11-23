@@ -45,7 +45,10 @@ export default defineConfig({
   projects: [
     {
       name: 'mobile-375',
-      use: { ...devices['Pixel 5'] },
+      use: {
+        ...devices['Pixel 5'],
+        viewport: { width: 375, height: devices['Pixel 5'].viewport.height },
+      },
     },
     {
       name: 'desktop-1280',

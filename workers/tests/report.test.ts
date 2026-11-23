@@ -6,6 +6,14 @@
 import { describe, it, expect } from 'vitest';
 import { validateReportPayload, VALID_PROBLEM_TYPES } from '../src/utils/validate';
 
+import urlCases from '../../tests/fixtures/reader-report-url-contract.json';
+
+it.each(urlCases)('validates $name against the shared URL contract', ({ field, value, valid }) => {
+  expect(validateReportPayload({ problem_type: 'content_factual', [field]: value }).valid).toBe(
+    valid
+  );
+});
+
 describe('validateReportPayload', () => {
   it('rejects empty body', () => {
     const result = validateReportPayload(null);
