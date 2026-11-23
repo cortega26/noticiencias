@@ -64,7 +64,10 @@ describe('handleReport', () => {
   let fetchSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
-    fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('{}', { status: 200 }));
+    fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockReset()
+      .mockResolvedValue(new Response('{}', { status: 200 }));
   });
 
   it.each([
@@ -160,6 +163,71 @@ describe('handleReport', () => {
     const res = await handleReport(makeRequest(VALID_PAYLOAD), env);
     expect(res.status).toBe(201);
   });
+
+  it.each(['rate_limit', 'idempotency_read', 'idempotency_write'] as const)(
+    'returns the correct receipt when KV fails during %s',
+    async (phase) => {
+      const articleUrl = 'https://noticiencias.com/articulo-privado';
+      const providerError = new Error('private provider details');
+      const r2 = makeFakeR2();
+      const kv = makeFakeKV();
+      const errorLog = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const infoLog = vi.spyOn(console, 'log').mockImplementation(() => {});
+      const env = {
+        ENVIRONMENT: 'test',
+        REPORT_BUCKET: r2 as never,
+        RATE_LIMIT_KV: kv as never,
+        EMAIL_API_KEY: 'key',
+        EMAIL_FROM: 'from@noticiencias.com',
+        EMAIL_TO: 'to@noticiencias.com',
+      } as Env;
+
+      if (phase === 'rate_limit') kv.put.mockRejectedValueOnce(providerError);
+      if (phase === 'idempotency_read') {
+        kv.get.mockImplementation(async (key) => {
+          if (key.startsWith('idempotency:')) throw providerError;
+          return kv.store.get(key) ?? null;
+        });
+      }
+      if (phase === 'idempotency_write') {
+        kv.put.mockImplementation(async (key, value) => {
+          if (key.startsWith('idempotency:')) throw providerError;
+          kv.store.set(key, value);
+        });
+      }
+
+      try {
+        const response = await handleReport(
+          makeRequest({ ...VALID_PAYLOAD, article_url: articleUrl }),
+          env
+        );
+        const body = (await response.json()) as { id?: string; error?: string };
+
+        if (phase === 'idempotency_write') {
+          expect(response.status).toBe(201);
+          expect(body.id).toEqual(expect.any(String));
+          expect(r2.put).toHaveBeenCalledTimes(1);
+          const stored = JSON.parse([...r2.objects.values()][0]);
+          expect(stored.id).toBe(body.id);
+          expect(errorLog).toHaveBeenCalledWith(expect.stringContaining(`id=${body.id}`));
+        } else {
+          expect(response.status).toBe(503);
+          expect(body.error).toEqual(expect.any(String));
+          expect(r2.put).not.toHaveBeenCalled();
+          expect(fetchSpy).not.toHaveBeenCalled();
+        }
+
+        expect(errorLog).toHaveBeenCalledWith(expect.stringContaining(`phase=${phase}`));
+        const logs = JSON.stringify([...errorLog.mock.calls, ...infoLog.mock.calls]);
+        expect(logs).not.toContain(articleUrl);
+        expect(logs).not.toContain(providerError.message);
+        expect(logs).not.toContain(VALID_PAYLOAD.description);
+      } finally {
+        errorLog.mockRestore();
+        infoLog.mockRestore();
+      }
+    }
+  );
 
   it('does not consume rate-limit quota for invalid payloads', async () => {
     const rateLimitKv = makeFakeKV();

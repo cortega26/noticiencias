@@ -26,8 +26,30 @@ async function fillAndSubmit(page: Page) {
 }
 
 test('report form page loads', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+
   const response = await page.goto('/reportar-problema/');
   expect(response?.status()).toBe(200);
+  await expect(page.locator('#report-problem-form')).toHaveAttribute('data-bound', 'true');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://noticiencias.com/reportar-problema/'
+  );
+  const brokenImages = await page
+    .locator('img')
+    .evaluateAll((images) =>
+      images
+        .filter(
+          (image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth === 0
+        )
+        .map((image) => image.getAttribute('src'))
+    );
+  expect(brokenImages).toEqual([]);
+  expect(errors).toEqual([]);
 });
 
 test('report form has problem type selector', async ({ page }) => {
@@ -108,7 +130,115 @@ test('a successful submission shows success only after a 2xx response with a rep
   await fillAndSubmit(page);
 
   await expect(page.locator('#success-view')).toBeVisible();
+  await expect(page.locator('#report-receipt-id')).toHaveText('abc-123');
   await expect(form).toBeHidden();
+});
+
+test('requires the shared URL and a nonblank description before sending', async ({ page }) => {
+  let requestCount = 0;
+  await useTestEndpoint(page);
+  await page.route('**/api/report', (route) => {
+    requestCount += 1;
+    return route.fulfill({ status: 201, json: { id: 'abc-123' } });
+  });
+  await page.goto('/reportar-problema/');
+  await page.selectOption('#problem-type', 'technical_site');
+
+  const description = page.locator('#report-description');
+  const url = page.locator('#report-url');
+  const submit = page.locator('#submit-btn');
+  const error = page.locator('#form-error');
+
+  for (const [articleUrl, descriptionText] of [
+    ['', 'Falla del sitio'],
+    ['https://noticiencias.com/prueba', ''],
+    ['https://noticiencias.com/prueba', '   '],
+  ]) {
+    await url.fill(articleUrl);
+    await description.fill(descriptionText);
+    await submit.click();
+    await expect(error).toContainText('campos obligatorios');
+  }
+
+  await description.fill('Falla del sitio');
+  await submit.click();
+  await expect(page.locator('#report-receipt-id')).toHaveText('abc-123');
+  expect(requestCount).toBe(1);
+});
+
+test('retains category drafts and sends only the active category fields', async ({ page }) => {
+  const payloads: unknown[] = [];
+  await useTestEndpoint(page);
+  await page.route('**/api/report', (route) => {
+    payloads.push(route.request().postDataJSON());
+    return route.fulfill({ status: 201, json: { id: `report-${payloads.length}` } });
+  });
+  await page.goto('/reportar-problema/');
+  const type = page.locator('#problem-type');
+  const snippet = page.locator('#content-snippet');
+  const evidence = page.locator('#content-evidence');
+  const browser = page.locator('#tech-browser');
+  const submit = page.locator('#submit-btn');
+
+  await type.selectOption('content_factual');
+  await page.fill('#report-url', 'https://noticiencias.com/prueba');
+  await page.fill('#report-description', 'Detalles del reporte');
+  await evidence.fill('https://example.org/fuente');
+  await snippet.fill('   ');
+  await submit.click();
+  await expect(page.locator('#form-error')).toContainText('campos obligatorios');
+  await snippet.fill('Texto original');
+  await evidence.fill('ftp://example.org/fuente');
+  await submit.click();
+  await expect(page.locator('#form-error')).toContainText('http/https');
+  await type.selectOption('technical_site');
+  await expect(evidence).toBeDisabled();
+  await browser.fill('Firefox');
+  await type.selectOption('content_factual');
+  await expect(snippet).toHaveValue('Texto original');
+  await expect(evidence).toHaveValue('ftp://example.org/fuente');
+  await expect(browser).toBeDisabled();
+  await type.selectOption('technical_site');
+  await expect(browser).toHaveValue('Firefox');
+  await submit.click();
+  await expect(page.locator('#report-receipt-id')).toHaveText('report-1');
+
+  await page.click('#reset-form-btn');
+  await type.selectOption('technical_site');
+  await browser.fill('Safari');
+  await type.selectOption('content_factual');
+  await page.fill('#report-url', 'https://noticiencias.com/prueba');
+  await page.fill('#report-description', 'Detalles del reporte');
+  await snippet.fill('Texto original');
+  await evidence.fill('https://example.org/fuente');
+  await submit.click();
+  await expect(page.locator('#report-receipt-id')).toHaveText('report-2');
+
+  expect(payloads).toEqual([
+    {
+      problem_type: 'technical_site',
+      article_url: 'https://noticiencias.com/prueba',
+      description: 'Detalles del reporte',
+      tech_browser: 'Firefox',
+    },
+    {
+      problem_type: 'content_factual',
+      article_url: 'https://noticiencias.com/prueba',
+      description: 'Detalles del reporte',
+      content_snippet: 'Texto original',
+      evidence_url: 'https://example.org/fuente',
+    },
+  ]);
+});
+
+test('a successful HTTP response without a receipt leaves the form available', async ({ page }) => {
+  await useTestEndpoint(page);
+  await page.route('**/api/report', (route) => route.fulfill({ status: 201, json: { id: '   ' } }));
+  await page.goto('/reportar-problema/');
+  await fillAndSubmit(page);
+  await expect(page.locator('#form-error')).toContainText('Ocurrió un error');
+  await expect(page.locator('#submit-btn')).toBeEnabled();
+  await expect(page.locator('#success-view')).toBeHidden();
 });
 
 test('a 422 response shows a validation error, not success', async ({ page }) => {
@@ -164,7 +294,7 @@ test('a network failure shows a generic error, not success', async ({ page }) =>
   await expect(page.locator('#success-view')).toBeHidden();
 });
 
-test('repeated ClientRouter navigations do not attach duplicate submit listeners', async ({
+test('repeated ClientRouter page-load events do not attach duplicate submit listeners', async ({
   page,
 }) => {
   let requestCount = 0;
@@ -180,9 +310,8 @@ test('repeated ClientRouter navigations do not attach duplicate submit listeners
 
   await page.goto('/reportar-problema/');
 
-  // Navigate away and back to force astro:page-load to fire again.
-  await page.goto('/');
-  await page.goto('/reportar-problema/');
+  await expect(page.locator('#report-problem-form')).toHaveAttribute('data-bound', 'true');
+  await page.evaluate(() => document.dispatchEvent(new Event('astro:page-load')));
 
   await fillAndSubmit(page);
   await expect(page.locator('#success-view')).toBeVisible();

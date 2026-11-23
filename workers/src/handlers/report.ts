@@ -47,32 +47,27 @@ export async function handleReport(request: Request, env: Env): Promise<Response
     return errorResponse(`Datos inválidos: ${validation.errors.join('; ')}`, 422);
   }
 
+  let idempotencyKey: string | undefined;
   if (env.RATE_LIMIT_KV) {
-    const rateLimit = await checkRateLimit(env.RATE_LIMIT_KV, clientIp);
-    if (!rateLimit.allowed) {
-      return errorResponse('Demasiadas solicitudes. Intente nuevamente más tarde.', 429);
+    try {
+      const rateLimit = await checkRateLimit(env.RATE_LIMIT_KV, clientIp);
+      if (!rateLimit.allowed) {
+        return errorResponse('Demasiadas solicitudes. Intente nuevamente más tarde.', 429);
+      }
+    } catch {
+      return reportUnavailable('rate_limit');
+    }
+
+    idempotencyKey = `idempotency:${await sha256Hex(bodyText)}`;
+    try {
+      const existingId = await env.RATE_LIMIT_KV.get(idempotencyKey);
+      if (existingId) return reportReceipt(existingId);
+    } catch {
+      return reportUnavailable('idempotency_read');
     }
   }
 
   const data = body as Record<string, unknown>;
-  const idempotencyKey = `idempotency:${await sha256Hex(bodyText)}`;
-
-  // Idempotency: a retry of the exact same payload within the window
-  // returns the original report's id instead of creating a duplicate.
-  if (env.RATE_LIMIT_KV) {
-    const existingId = await env.RATE_LIMIT_KV.get(idempotencyKey);
-    if (existingId) {
-      return jsonResponse(
-        {
-          message:
-            'Reporte recibido. Gracias por ayudarnos a mantener la precisión de Noticiencias.',
-          id: existingId,
-        },
-        201
-      );
-    }
-  }
-
   const timestamp = new Date().toISOString();
 
   const record = {
@@ -101,8 +96,8 @@ export async function handleReport(request: Request, env: Env): Promise<Response
         httpMetadata: { contentType: 'application/json' },
       });
       storedDurably = true;
-    } catch (err) {
-      console.error('Failed to store report in R2:', err);
+    } catch {
+      console.error(`[report] phase=r2_store failed id=${record.id}`);
     }
   }
 
@@ -112,8 +107,8 @@ export async function handleReport(request: Request, env: Env): Promise<Response
     try {
       await sendEmail(env, emailBody);
       emailSent = true;
-    } catch (err) {
-      console.error('Failed to send email notification:', err);
+    } catch {
+      console.error(`[report] phase=email_delivery failed id=${record.id}`);
     }
   }
 
@@ -127,21 +122,33 @@ export async function handleReport(request: Request, env: Env): Promise<Response
     );
   }
 
-  if (env.RATE_LIMIT_KV) {
-    await env.RATE_LIMIT_KV.put(idempotencyKey, record.id, {
-      expirationTtl: IDEMPOTENCY_WINDOW_SECONDS,
-    });
+  if (env.RATE_LIMIT_KV && idempotencyKey) {
+    try {
+      await env.RATE_LIMIT_KV.put(idempotencyKey, record.id, {
+        expirationTtl: IDEMPOTENCY_WINDOW_SECONDS,
+      });
+    } catch {
+      console.error(`[report] phase=idempotency_write failed id=${record.id}`);
+    }
   }
 
-  console.log(
-    `[report] type=${record.problem_type} article=${record.article_url || 'none'} id=${record.id} ` +
-      `r2=${storedDurably} email=${emailSent}`
-  );
+  console.log(`[report] id=${record.id} r2=${storedDurably} email=${emailSent}`);
+  return reportReceipt(record.id);
+}
 
+function reportUnavailable(phase: 'rate_limit' | 'idempotency_read'): Response {
+  console.error(`[report] phase=${phase} failed`);
+  return errorResponse(
+    'El servicio de reportes no está disponible. Intente nuevamente más tarde.',
+    503
+  );
+}
+
+function reportReceipt(id: string): Response {
   return jsonResponse(
     {
       message: 'Reporte recibido. Gracias por ayudarnos a mantener la precisión de Noticiencias.',
-      id: record.id,
+      id,
     },
     201
   );
