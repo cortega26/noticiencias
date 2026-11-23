@@ -1,6 +1,6 @@
 # Plan 021 · Asegurar el recibo y la utilidad de los reportes
 
-**Estado** TODO · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** medio · **Dependencias** ninguna
+**Estado** DONE (verificado localmente) · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** medio · **Dependencias** ninguna
 
 **Base** `e271512f744998e25a1da3175797a25fa6c89f1e` · 2026-11-22 · **Hallazgos** H01, H06 y H10
 
@@ -8,7 +8,7 @@
 
 Una persona recibe un ID cuando el reporte fue recibido por un destino duradero. El formulario exige URL y descripción, omite los controles de la categoría inactiva y preserva sus valores como borrador si la persona vuelve a seleccionarla. Las fallas del almacenamiento auxiliar producen diagnósticos acotados sin registrar URLs introducidas por usuarios.
 
-## Estado actual y alcance
+## Diagnóstico original y alcance
 
 - `workers/src/handlers/report.ts:50–74` ejecuta el limitador y consulta la idempotencia en KV antes de almacenar. En `97–128` evalúa los destinos y devuelve 503 si ambos fallan. En `130–146` espera `KV.put` antes de responder 201, incluso cuando R2 ya guardó el ID. Una simulación del handler real confirmó una escritura en R2 seguida de un rechazo. El log de `136–139` incluye `record.article_url`.
 - `workers/src/utils/rateLimit.ts:61–74` deriva una clave por cliente y minuto y hace una escritura por admisión. Cloudflare limita las escrituras a una por segundo por clave. El contrato actual usa KV con consistencia eventual y una ventana de idempotencia de 600 segundos basada en el cuerpo exacto. [Límites de KV](https://developers.cloudflare.com/kv/platform/limits/), [contrato de reportes](../docs/report-pipeline-setup.md#L11)
@@ -32,3 +32,7 @@ Una persona recibe un ID cuando el reporte fue recibido por un destino duradero.
 Comprobar la base con `git diff e271512f..HEAD -- workers/src/handlers/report.ts workers/tests/report.handler.test.ts src/components/common/ReportForm.astro tests/playwright/report-form.test.ts docs/report-pipeline-setup.md`. Si cambiaron la semántica de recibo o los consumidores del API, conciliar el contrato antes de editar. Si las pruebas requieren otros bindings o acceso a producción, detenerse y registrar esa dependencia. Trabajar en una rama o worktree aislado. Comprobar también la interacción a 375 y 1280 px con el endpoint simulado. Al cierre, revisar el diff y actualizar la fila 021 con el SHA y los resultados.
 
 **Pendiente** La garantía de idempotencia entre solicitudes concurrentes y el cambio de backend de rate limiting requieren una decisión propia. El plan reduce el daño del fallo de KV y conserva la política de admisión.
+
+## Cierre local
+
+Implementado sobre `2da7714dea317d8b908bd8617507137e1b4fcc6f`. Validación local de lint, tipos, contenido, compilación y dist, con 1.035 pruebas de auditoría y 93 pruebas del Worker. Las 30 comprobaciones del formulario a 375 y 1280 px usan un endpoint simulado.

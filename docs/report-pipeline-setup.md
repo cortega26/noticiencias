@@ -18,7 +18,12 @@ resource availability. Verify existing resources before creating replacements.
 - The body limit is 20,000 bytes. Invalid JSON returns `400`, invalid fields
   `422`, an oversized body `413`, and a rate-limit rejection `429`.
 - With `RATE_LIMIT_KV`, the handler applies rate limiting and a 600-second
-  retry window keyed by the exact request body. These KV checks do not
+  retry window keyed by the exact request body. If the rate limiter or retry
+  lookup fails, the handler returns `503` before writing the report. Once a
+  sink accepts a report, the handler returns `201` and its receipt ID even if
+  it cannot record the ID in KV. An identical retry can then create another
+  receipt. Failure logs include the phase and the receipt ID when available.
+  These KV checks do not
   guarantee exactly-once submission under concurrent requests; see
   [Cloudflare KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/).
 - Without KV, those checks are skipped. Without an available R2 or email
