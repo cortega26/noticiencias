@@ -35,4 +35,4 @@ Comprobar la base con `git diff e271512f..HEAD -- workers/src/handlers/report.ts
 
 ## Cierre local
 
-Implementado sobre `2da7714dea317d8b908bd8617507137e1b4fcc6f`. Validación local de lint, tipos, contenido, compilación y dist, con 1.035 pruebas de auditoría y 93 pruebas del Worker. Las 28 comprobaciones del formulario a 375 y 1280 px usan un endpoint simulado.
+Implementado sobre `2da7714dea317d8b908bd8617507137e1b4fcc6f`. Validación local de lint, tipos, contenido, compilación y dist, con 1.035 pruebas de auditoría y 93 pruebas del Worker. Las 30 comprobaciones del formulario a 375 y 1280 px usan un endpoint simulado.

@@ -166,13 +166,13 @@ test('requires the shared URL and a nonblank description before sending', async 
   expect(requestCount).toBe(1);
 });
 
-test('retains category drafts and sends only the active category fields', async ({ page }) => {
-  const payloads: unknown[] = [];
+test('retains drafts and omits inactive content fields from a technical report', async ({
+  page,
+}) => {
   await useTestEndpoint(page);
-  await page.route('**/api/report', (route) => {
-    payloads.push(route.request().postDataJSON());
-    return route.fulfill({ status: 201, json: { id: `report-${payloads.length}` } });
-  });
+  await page.route('**/api/report', (route) =>
+    route.fulfill({ status: 201, json: { id: 'technical-receipt' } })
+  );
   await page.goto('/reportar-problema/');
   const type = page.locator('#problem-type');
   const snippet = page.locator('#content-snippet');
@@ -200,35 +200,43 @@ test('retains category drafts and sends only the active category fields', async 
   await expect(browser).toBeDisabled();
   await type.selectOption('technical_site');
   await expect(browser).toHaveValue('Firefox');
-  await submit.click();
-  await expect(page.locator('#report-receipt-id')).toHaveText('report-1');
 
-  await page.click('#reset-form-btn');
+  const submission = page.waitForRequest('**/api/report');
+  await submit.click();
+  await expect(page.locator('#report-receipt-id')).toHaveText('technical-receipt');
+  expect((await submission).postDataJSON()).toEqual({
+    problem_type: 'technical_site',
+    article_url: 'https://noticiencias.com/prueba',
+    description: 'Detalles del reporte',
+    tech_browser: 'Firefox',
+  });
+});
+
+test('omits inactive technical fields from a content report', async ({ page }) => {
+  await useTestEndpoint(page);
+  await page.route('**/api/report', (route) =>
+    route.fulfill({ status: 201, json: { id: 'editorial-receipt' } })
+  );
+  await page.goto('/reportar-problema/');
+  const type = page.locator('#problem-type');
   await type.selectOption('technical_site');
-  await browser.fill('Safari');
+  await page.fill('#tech-browser', 'Safari');
   await type.selectOption('content_factual');
   await page.fill('#report-url', 'https://noticiencias.com/prueba');
   await page.fill('#report-description', 'Detalles del reporte');
-  await snippet.fill('Texto original');
-  await evidence.fill('https://example.org/fuente');
-  await submit.click();
-  await expect(page.locator('#report-receipt-id')).toHaveText('report-2');
+  await page.fill('#content-snippet', 'Texto original');
+  await page.fill('#content-evidence', 'https://example.org/fuente');
 
-  expect(payloads).toEqual([
-    {
-      problem_type: 'technical_site',
-      article_url: 'https://noticiencias.com/prueba',
-      description: 'Detalles del reporte',
-      tech_browser: 'Firefox',
-    },
-    {
-      problem_type: 'content_factual',
-      article_url: 'https://noticiencias.com/prueba',
-      description: 'Detalles del reporte',
-      content_snippet: 'Texto original',
-      evidence_url: 'https://example.org/fuente',
-    },
-  ]);
+  const submission = page.waitForRequest('**/api/report');
+  await page.click('#submit-btn');
+  await expect(page.locator('#report-receipt-id')).toHaveText('editorial-receipt');
+  expect((await submission).postDataJSON()).toEqual({
+    problem_type: 'content_factual',
+    article_url: 'https://noticiencias.com/prueba',
+    description: 'Detalles del reporte',
+    content_snippet: 'Texto original',
+    evidence_url: 'https://example.org/fuente',
+  });
 });
 
 test('a successful HTTP response without a receipt leaves the form available', async ({ page }) => {

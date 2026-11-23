@@ -58,6 +58,22 @@ function makeFakeKV() {
   };
 }
 
+function failKvAt(kv: ReturnType<typeof makeFakeKV>, phase: string, error: Error) {
+  if (phase === 'rate_limit') kv.put.mockRejectedValueOnce(error);
+  if (phase === 'idempotency_read') {
+    kv.get.mockImplementation(async (key) => {
+      if (key.startsWith('idempotency:')) throw error;
+      return kv.store.get(key) ?? null;
+    });
+  }
+  if (phase === 'idempotency_write') {
+    kv.put.mockImplementation(async (key, value) => {
+      if (key.startsWith('idempotency:')) throw error;
+      kv.store.set(key, value);
+    });
+  }
+}
+
 const VALID_PAYLOAD = { problem_type: 'content_factual', description: 'Algo está mal' };
 
 describe('handleReport', () => {
@@ -182,19 +198,7 @@ describe('handleReport', () => {
         EMAIL_TO: 'to@noticiencias.com',
       } as Env;
 
-      if (phase === 'rate_limit') kv.put.mockRejectedValueOnce(providerError);
-      if (phase === 'idempotency_read') {
-        kv.get.mockImplementation(async (key) => {
-          if (key.startsWith('idempotency:')) throw providerError;
-          return kv.store.get(key) ?? null;
-        });
-      }
-      if (phase === 'idempotency_write') {
-        kv.put.mockImplementation(async (key, value) => {
-          if (key.startsWith('idempotency:')) throw providerError;
-          kv.store.set(key, value);
-        });
-      }
+      failKvAt(kv, phase, providerError);
 
       try {
         const response = await handleReport(
