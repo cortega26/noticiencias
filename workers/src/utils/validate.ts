@@ -62,6 +62,23 @@ function isNoticienciasHost(hostname: string): boolean {
   return hostname === 'noticiencias.com' || hostname.endsWith('.noticiencias.com');
 }
 
+function parseReportUrl(value: string): { url: URL; authority: string } {
+  // Validate the original authority before WHATWG normalization. The
+  // Collector reads the original string with Python's urlsplit.
+  const text = value.replace(/^[ \t\r\n\f\v]+|[ \t\r\n\f\v]+$/g, '');
+  const authority = /^https?:\/\/([^/?#]+)/i.exec(text)?.[1];
+  if (!authority || /[\p{White_Space}\p{Cc}\\]/u.test(text)) {
+    throw new TypeError('Expected an absolute HTTP(S) URL');
+  }
+
+  // Python rejects authority characters that normalize into URL delimiters.
+  const withoutDelimiters = authority.replace(/[@:#?]/g, '');
+  if (/[/?#@:]/.test(withoutDelimiters.normalize('NFKC'))) {
+    throw new TypeError('Ambiguous URL authority');
+  }
+  return { url: new URL(text), authority };
+}
+
 function validateOptionalString(
   data: Record<string, unknown>,
   field: keyof ReportPayload,
@@ -109,8 +126,9 @@ export function validateReportPayload(body: unknown): ValidationResult {
   const articleUrl = validateOptionalString(data, 'article_url', 'URL del artículo', errors);
   if (articleUrl !== undefined) {
     try {
-      const url = new URL(articleUrl);
-      if (!isNoticienciasHost(url.hostname)) {
+      const { url, authority } = parseReportUrl(articleUrl);
+      const rawHost = authority.slice(authority.lastIndexOf('@') + 1).split(':')[0];
+      if (!isNoticienciasHost(url.hostname) || !isNoticienciasHost(rawHost.toLowerCase())) {
         errors.push('URL del artículo debe ser de noticiencias.com');
       }
     } catch {
@@ -127,12 +145,7 @@ export function validateReportPayload(body: unknown): ValidationResult {
   const evidenceUrl = validateOptionalString(data, 'evidence_url', 'URL de evidencia', errors);
   if (evidenceUrl !== undefined) {
     try {
-      const url = new URL(evidenceUrl);
-      // Plan 019: scheme allowlist — javascript:/data: URIs would persist to
-      // R2/email and execute on render. Only http(s) evidence links accepted.
-      if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-        errors.push('URL de evidencia no es válida');
-      }
+      parseReportUrl(evidenceUrl);
     } catch {
       errors.push('URL de evidencia no es válida');
     }

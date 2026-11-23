@@ -135,3 +135,26 @@ PROGRESS) or to backend-ledger items (048 PARTIAL, 084 spec TODO,
   See ADR-0015. Pagefind was not adopted.
 - `serving/api.py` split and other backend items: live in the backend
   ledger (plans 118–130), not duplicated here.
+
+## Auditoría profunda del 22 de noviembre de 2026
+
+Base `e271512f744998e25a1da3175797a25fa6c89f1e`. El [informe de revisión](audit-2026-11-22.md) contiene los hallazgos con evidencia, el alcance de la validación y las opciones de producto. El orden siguiente recoge los cinco planes seleccionados.
+
+| Plan | Trabajo                                                                                  | Hallazgos     | Prioridad | Esfuerzo | Estado |
+| ---- | ---------------------------------------------------------------------------------------- | ------------- | --------- | -------- | ------ |
+| 021  | [Recibo y utilidad de reportes](021-integridad-recepcion-reportes.md)                    | H01, H06, H10 | P1        | M        | TODO   |
+| 022  | [Carga y teclado del buscador](022-busqueda-encabezado-carga-teclado.md)                 | H02           | P1        | S        | TODO   |
+| 023  | [Canales y cupo de distribución social](023-candidatos-distribucion-social.md)           | H03           | P1        | M        | TODO   |
+| 024  | [Diagnósticos de publicación automatizada](024-diagnosticos-publicacion-automatizada.md) | H04           | P1        | M        | TODO   |
+| 025  | [Evidencia del smoke postdespliegue](025-evidencia-smoke-postdespliegue.md)              | H05           | P1        | M        | TODO   |
+
+Los cinco planes pueden ejecutarse en paralelo en ramas aisladas. Coordinar la actualización del índice y verificar cada plan sobre la base integrada antes de registrar el cierre. Los hallazgos restantes y las opciones de producto están en el informe.
+
+### Segunda selección del 23 de noviembre de 2026
+
+| Plan | Trabajo                                                                                   | Hallazgos | Prioridad | Esfuerzo | Estado |
+| ---- | ----------------------------------------------------------------------------------------- | --------- | --------- | -------- | ------ |
+| 026  | [Menú responsivo y pruebas de navegación](026-menu-responsivo-y-pruebas-de-navegacion.md) | H08, H19  | P2        | S–M      | DONE   |
+| 027  | [Tamaños reales de miniaturas](027-tamanos-reales-de-miniaturas.md)                       | H07       | P2        | S        | DONE   |
+
+Ambos planes comparten la comprobación a 375 y 1280 px. El plan 027 fija sus viewports y DPR explícitamente, por lo que puede ejecutarse en paralelo con 026. La [segunda selección del Collector](../../noticiencias_news_collector/plans/README.md#segunda-selección-del-23-de-noviembre-de-2026) incluye el plan 222 entre repositorios sobre el contrato de URLs de reportes.

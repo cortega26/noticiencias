@@ -67,11 +67,15 @@ describe('handleReport', () => {
     fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('{}', { status: 200 }));
   });
 
-  it('returns 422 for an invalid payload without touching any sink', async () => {
+  it.each([
+    { problem_type: 'bogus' },
+    { problem_type: 'content_factual', article_url: 'https://noticiencias.com/una nota' },
+    { problem_type: 'content_factual', evidence_url: 'https://example.org/una nota' },
+  ])('returns 422 for an invalid payload without touching any sink (%j)', async (payload) => {
     const r2 = makeFakeR2();
     const env = { ENVIRONMENT: 'test', REPORT_BUCKET: r2 as never } as Env;
 
-    const res = await handleReport(makeRequest({ problem_type: 'bogus' }), env);
+    const res = await handleReport(makeRequest(payload), env);
 
     expect(res.status).toBe(422);
     expect(r2.put).not.toHaveBeenCalled();

@@ -104,7 +104,9 @@ const consequenceHeadline = post.why_it_matters?.[0] || post.title;
             sizes={
               variant === 'lead'
                 ? '(max-width: 1024px) 100vw, 760px'
-                : '(max-width: 768px) 100vw, 420px'
+                : variant === 'row'
+                  ? '(min-width: 40rem) 160px, 96px'
+                  : '(max-width: 768px) 100vw, 420px'
             }
             class="h-full w-full object-cover"
             loading={variant === 'lead' ? 'eager' : 'lazy'}

@@ -50,28 +50,30 @@ import { UI } from 'astrowind:config';
       }
     }
 
+    function setMenuExpanded(expanded) {
+      const button = document.querySelector('[data-aw-toggle-menu]');
+      const header = document.getElementById('header');
+      button?.setAttribute('aria-expanded', String(expanded));
+      button?.classList.toggle('expanded', expanded);
+      document.body.classList.toggle('overflow-hidden', expanded);
+      for (const name of ['h-screen', 'expanded', 'bg-page']) {
+        header?.classList.toggle(name, expanded);
+      }
+      document.getElementById('main-navigation')?.classList.toggle('hidden', !expanded);
+      header?.querySelector(':scope > div > div:last-child')?.classList.toggle('hidden', !expanded);
+    }
+
+    // Keep this aligned with the header's Tailwind lg classes.
+    const desktopMenu = window.matchMedia('(min-width: 64rem)');
+    desktopMenu.addEventListener('change', () => setMenuExpanded(false));
+
     const onLoad = function () {
       let lastKnownScrollPosition = window.scrollY;
       let ticking = true;
 
-      attachEvent('#header nav', 'click', function () {
-        document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('header')?.classList.remove('h-screen');
-        document.getElementById('header')?.classList.remove('expanded');
-        document.getElementById('header')?.classList.remove('bg-page');
-        document.querySelector('#header nav')?.classList.add('hidden');
-        document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
-      });
-
-      attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-        elem.classList.toggle('expanded');
-        document.body.classList.toggle('overflow-hidden');
-        document.getElementById('header')?.classList.toggle('h-screen');
-        document.getElementById('header')?.classList.toggle('expanded');
-        document.getElementById('header')?.classList.toggle('bg-page');
-        document.querySelector('#header nav')?.classList.toggle('hidden');
-        document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+      attachEvent('#main-navigation', 'click', () => setMenuExpanded(false));
+      attachEvent('[data-aw-toggle-menu]', 'click', (_, button) => {
+        setMenuExpanded(!desktopMenu.matches && button.getAttribute('aria-expanded') !== 'true');
       });
 
       attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -133,17 +135,6 @@ import { UI } from 'astrowind:config';
         newlink.click();
       });
 
-      const screenSize = window.matchMedia('(max-width: 767px)');
-      screenSize.addEventListener('change', function () {
-        document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('header')?.classList.remove('h-screen');
-        document.getElementById('header')?.classList.remove('expanded');
-        document.getElementById('header')?.classList.remove('bg-page');
-        document.querySelector('#header nav')?.classList.add('hidden');
-        document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
-      });
-
       function applyHeaderStylesOnScroll() {
         const header = document.querySelector('#header[data-aw-sticky-header]');
         if (!header) return;
@@ -169,14 +160,7 @@ import { UI } from 'astrowind:config';
     };
     const onPageShow = function () {
       document.documentElement.classList.add('motion-safe:scroll-smooth');
-      const elem = document.querySelector('[data-aw-toggle-menu]');
-      if (elem) {
-        elem.classList.remove('expanded');
-      }
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.querySelector('#header nav')?.classList.add('hidden');
+      setMenuExpanded(false);
     };
 
     window.onload = onLoad;

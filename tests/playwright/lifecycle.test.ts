@@ -15,16 +15,33 @@
  * Runs at both mobile-375 (Pixel 5) and desktop-1280 (Desktop Chrome).
  */
 
-import { test, expect } from './fixtures';
+import { test, expect, type Page } from './fixtures';
 
 const ROUNDS = 10;
 
 // Test-mode instrumentation hooks (not shipped to production).
 declare global {
   interface Window {
+    __swapCount?: number;
     __observerCount?: number;
     __observerCallbackCount?: number;
     __scrollHandlerCount?: number;
+  }
+}
+
+async function navigateAcrossRoutes(page: Page, rounds: number) {
+  await page.evaluate(() => {
+    window.__swapCount = 0;
+    document.addEventListener('astro:after-swap', () => {
+      window.__swapCount = (window.__swapCount ?? 0) + 1;
+    });
+  });
+  for (let i = 0; i < rounds; i++) {
+    const path = i % 2 === 0 ? '/blog/' : '/';
+    const link = path === '/' ? '#header a[href="/"]' : 'a[href="/blog/"]:visible';
+    await page.locator(link).first().click();
+    await expect(page).toHaveURL(path);
+    await expect.poll(() => page.evaluate(() => window.__swapCount)).toBe(i + 1);
   }
 }
 
@@ -40,16 +57,7 @@ test.describe('lifecycle idempotency across page swaps', () => {
 
     await page.goto('/');
 
-    // Navigate via client-side <a> clicks (View Transitions), not page.goto.
-    for (let i = 0; i < ROUNDS; i++) {
-      const homeLink = page.locator('a[href="/"]').first();
-      const blogLink = page.locator('a[href="/blog"]').first();
-      const target = i % 2 === 0 ? blogLink : homeLink;
-      if ((await target.count()) > 0 && (await target.isVisible())) {
-        await target.click();
-        await page.waitForLoadState('networkidle');
-      }
-    }
+    await navigateAcrossRoutes(page, ROUNDS);
 
     // No errors about detached nodes, undefined properties, or observer leaks.
     expect(
@@ -59,46 +67,35 @@ test.describe('lifecycle idempotency across page swaps', () => {
     expect(pageErrors, `page errors after ${ROUNDS} swaps: ${pageErrors.join('; ')}`).toEqual([]);
   });
 
-  test('menu toggle opens then closes after navigation (no double-handler)', async ({
-    page,
-  }, testInfo) => {
-    // The toggle is wrapped in `lg:hidden` (mobile-only pattern in
-    // Header.astro); on desktop viewports it exists but is never visible,
-    // so the click-assert sequence is only meaningful on mobile.
-    test.skip(
-      testInfo.project.name === 'desktop-1280',
-      'menu toggle is hidden on desktop (lg:hidden) by design'
-    );
-
+  test('menu state resets on desktop resize and after Astro swaps', async ({ page }) => {
+    await page.setViewportSize({ width: 900, height: 850 });
     await page.goto('/');
+    const toggle = page.locator('[data-aw-toggle-menu]');
+    const nav = page.locator('#main-navigation');
+    const body = page.locator('body');
 
-    // Navigate to an article and back to exercise swaps
-    const articleLink = page.locator('a[href^="/blog/"], a[href*="/noticias/"]').first();
-    if ((await articleLink.count()) > 0) {
-      await articleLink.click();
-      await page.waitForLoadState('networkidle');
-      const homeLink = page.locator('a[href="/"]').first();
-      if ((await homeLink.count()) > 0) {
-        await homeLink.click();
-        await page.waitForLoadState('networkidle');
-      }
-    }
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(body).toHaveClass(/overflow-hidden/);
 
-    // Find the menu toggle button (data-aw-toggle-menu)
-    const menuToggle = page.locator('[data-aw-toggle-menu]').first();
-    if ((await menuToggle.count()) === 0) {
-      test.skip(true, 'no menu toggle on this route');
-      return;
-    }
+    await page.setViewportSize({ width: 1280, height: 850 });
+    await expect(toggle).toBeHidden();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await expect(body).not.toHaveClass(/overflow-hidden/);
+    await expect(page.locator('#header')).not.toHaveClass(/h-screen/);
+    await expect(nav).toBeVisible();
 
-    // Click to open
-    await menuToggle.click();
-    await expect(page.locator('#header').first()).toHaveClass(/expanded/);
+    await page.setViewportSize({ width: 900, height: 850 });
+    await expect(nav).toBeHidden();
+    await navigateAcrossRoutes(page, 2);
 
-    // Click again to close — if a double-handler were attached, the second
-    // click would toggle it back open (or the first would toggle twice).
-    await menuToggle.click();
-    await expect(page.locator('#header').first()).not.toHaveClass(/expanded/);
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(nav).toBeVisible();
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await expect(nav).toBeHidden();
+    await expect(body).not.toHaveClass(/overflow-hidden/);
   });
 
   test('IntersectionObserver count grows linearly, not multiplicatively', async ({ page }) => {
@@ -136,27 +133,13 @@ test.describe('lifecycle idempotency across page swaps', () => {
     // Count observer creations after initial load
     const initialCount = await page.evaluate(() => window.__observerCount || 0);
 
-    // Navigate back and forth 5 times
-    let actualNavigations = 0;
-    for (let i = 0; i < 5; i++) {
-      const homeLink = page.locator('a[href="/"]').first();
-      const blogLink = page.locator('a[href="/blog"]').first();
-      const target = i % 2 === 0 ? blogLink : homeLink;
-      if ((await target.count()) > 0 && (await target.isVisible())) {
-        await target.click();
-        await page.waitForLoadState('networkidle');
-        actualNavigations++;
-      }
-    }
+    const actualNavigations = 5;
+    await navigateAcrossRoutes(page, actualNavigations);
 
     const finalCount = await page.evaluate(() => window.__observerCount || 0);
     const swapsCreated = finalCount - initialCount;
 
-    // Each swap should create at most 1 new observer (via astro:after-swap -> start()).
-    // Some navigations may not trigger a swap if going to the same route,
-    // so the count should be <= actualNavigations. If disconnect() were
-    // missing, old observers would still be observing — the regression
-    // signal is console errors from detached nodes, not the count itself.
+    // Each verified swap may create at most one replacement observer.
     expect(
       swapsCreated,
       `observer count grew linearly (navigations=${actualNavigations})`
