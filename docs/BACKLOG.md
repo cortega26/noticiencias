@@ -1,0 +1,82 @@
+# Backlog de Noticiencias (frontend)
+
+Estado: vivo
+Actualizado: 2026-10-25
+Backend: [`docs/BACKLOG.md` del colector](https://github.com/cortega26/noticiencias_news_collector/blob/main/docs/BACKLOG.md)
+
+Este es el único lugar donde se registra **qué falta por hacer** en este repositorio. Los ítems del pipeline editorial que dependen del backend se enlazan, no se repiten.
+
+## Reglas
+
+- **Solo trabajo abierto.** Al cerrar un ítem, se quita de aquí y la evidencia queda en el registro que corresponda (no en este archivo).
+- **No sustituye a los registros de evidencia.** Se enlazan y se mantienen donde están: [AdSense LEDGER.md](products/adsense-2026-10/LEDGER.md), los IMPLEMENTATION_LEDGER.md de cada programa y el [`plans/README.md`](../plans/README.md).
+- **Cada estado lleva fecha y fuente.** Si dos fuentes se contradicen, se escribe «por verificar»; no se adivina.
+- **Dueño:** _Titular_ (decide, aprueba, tiene las cuentas) o _Agente_ (implementa y deja evidencia).
+- **Prioridad:** todo lo que no es el gate de AdSense (§1) es secundario hasta cerrarlo.
+- **Archivo:** los backlogs cerrados y la lista de acciones del operador del 23-sep están en [`archive/backlogs/`](archive/backlogs/).
+
+## 1. Prioridad absoluta: gate de AdSense
+
+Reloj de observación: **NO INICIADO** (LEDGER §4 y §5d, 24-oct-2026). Cuando se cumplan G1–G5 y se verifiquen en producción, siguen **4 semanas estables** con evidencia semanal ([GROWTH_OPERATIONS.md](products/adsense-2026-10/GROWTH_OPERATIONS.md)) y **una sola re-solicitud**, que pulsa el titular.
+
+No son requisitos y no deben usarse como metas: 2,5 posts/semana, 8 semanas de constancia, 30 artículos, puntuación ≥8, 95 % de indexación (LEDGER §4).
+
+| #   | Ítem                                                                                                                                                  | Dueño                                                | Estado (fecha)                                                                                                                                                                                                                        | Se cierra cuando                                                                                                                                                 | Fuente                                                                                                                                                    |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| G1  | Reevaluar los 52 artículos vivos: errores materiales corregidos, revisión humana factual registrada y retiros o consolidaciones solo con autorización | Titular (revisión, ~4 h/sem) y Agente (reparaciones) | Triage por IA 52/52; sin revisión humana factual acreditada; ningún retiro ejecutado (22-oct y 24-oct)                                                                                                                                | Cada artículo con revisión registrada, o retirado/consolidado con autorización, y ningún fallo material abierto. Un fallo no se compensa con una puntuación alta | LEDGER §3 y §5d; [CONTENT_TRIAGE.md](products/adsense-2026-10/CONTENT_TRIAGE.md); [EDITORIAL_EVIDENCE.md](products/adsense-2026-10/EDITORIAL_EVIDENCE.md) |
+| G2  | Cadena editorial: comparación vieja/nueva con un candidato real y aceptación humana semántica; prueba real del crítico con un proveedor autorizado    | Titular (credenciales y aceptación) y Agente         | Plan 191 del backend en PARCIAL; candidatos anteriores retenidos; sin ejecución satisfactoria acreditada (24-oct)                                                                                                                     | Ejecución aceptada y registrada; plan 191 en DONE. El trabajo vive en el backend                                                                                 | LEDGER §5d; [backlog del backend](https://github.com/cortega26/noticiencias_news_collector/blob/main/docs/BACKLOG.md)                                     |
+| G3  | Procedencia o sustitución de las portadas con procedencia sin resolver                                                                                | Agente (recibos) y Titular (aprobación visual)       | 32 pendientes en producción (22-oct). El PR #351 (Shanidar) se fusionó el 25-oct y la propuesta lo cuenta como 31, pero IMAGE_PROVENANCE aún dice 32: **por verificar**                                                               | 0 pendientes: cada portada con recibo de procedencia o reemplazada. Ninguna fuente no verificada se da por autorizada                                            | [IMAGE_PROVENANCE.md](products/adsense-2026-10/IMAGE_PROVENANCE.md); [`image-rights-register.md`](image-rights-register.md)                               |
+| G4  | Navegación, metadatos, autoría y promesas del boletín acordes con el comportamiento real; sin inventar revisores humanos ni ocultar asistencia de IA  | Agente                                               | Formularios y promesas de boletín retirados y verificados en producción (24-oct). Divulgación editorial discreta (#353) y leyenda de héroe (#352) fusionadas el 25-oct: **contenido por revisar**. Página de autor: **por verificar** | Verificación estricta en producción sin discrepancias entre texto y comportamiento                                                                               | LEDGER §5c; [`plans/020-adsense-reader-experience.md`](../plans/020-adsense-reader-experience.md)                                                         |
+| G5  | Checks de producción: rutas, imágenes, canonicals, accesibilidad y regresiones                                                                        | Agente                                               | PASS en modo estricto el 24-oct (52 artículos, 70 rutas, 106 medios, 44 vistas)                                                                                                                                                       | Repetir tras cualquier cambio de producto que provenga de G1–G4                                                                                                  | LEDGER §5c (`npm run test:deploy -- https://noticiencias.com`)                                                                                            |
+
+## 2. Depende del titular
+
+Decisiones y acciones que solo puede ejecutar quien tiene las cuentas o la autoridad editorial.
+
+**Del gate de AdSense (18-oct y 24-oct):**
+
+- [ ] Dedicar las horas de revisión factual de G1 y registrar la aprobación real. No se registra una revisión que no ocurrió.
+- [ ] Autorizar o descartar cualquier lista de retiros (hay 6 candidatos propuestos el 18-oct en CONTENT_TRIAGE.md; la reevaluación del 22-oct está en curso).
+- [ ] Aprobar visualmente el reemplazo de la portada de Shanidar (el PR #351 ya está fusionado: **por verificar** si la aprobación ocurrió).
+- [ ] Confirmar los términos de uso comercial de las ilustraciones generadas (SVG y PNG de generación de imágenes).
+- [ ] GA4: revisar Google Signals y los vínculos con Google Ads. La política de privacidad declara que están desactivados y hay envíos a `www.google.com/g/collect` (LEDGER §5d). No ampliar el CSP.
+- [ ] `public/robots.txt`: `facebookexternalhit` es el rastreador de vistas previas, no de entrenamiento; valorar `meta-externalagent` (LEDGER del 18-oct, **por verificar**).
+- [ ] Buttondown: indicar el handle público válido. Ya no bloquea (los formularios están retirados); solo hace falta para reactivar el boletín con destino y doble confirmación probados.
+
+**Acciones de operador heredadas** (lista del 23-sep, archivada en [`archive/backlogs/OPERATOR_PENDING.md`](archive/backlogs/OPERATOR_PENDING.md) con pasos y verificación; **sin reverificar desde esa fecha**):
+
+- [ ] GA4: crear las 12 dimensiones personalizadas y marcar el evento clave (FU-022).
+- [ ] Verificación posterior al despliegue de GA4 y Consent Mode, plan 009 ([`ANALYTICS_OPERATOR_CHECKLIST.md`](ANALYTICS_OPERATOR_CHECKLIST.md)).
+- [ ] Transform Rule de CSP en Cloudflare (FU-017).
+- [ ] Primer informe periódico de crecimiento (`transparencia.md:27`).
+- [ ] Plan 048: decisión del registry de enriquecimiento al llegar a ≥200 registros (eran 44 el 23-sep). El trabajo está en el backend.
+- [ ] Benchmark LLM con ranking ciego, cuando responda el endpoint de GLM o al ejecutar el plan 084 del backend.
+- [ ] FU-024, conversión confirmada del boletín: **depende de que el boletín se reactive**; hoy no aplica.
+- [ ] Decisiones de producto: plan 006 (social, premisa invertida), plan 005 (biblioteca de recursos), notificación a lectores de correcciones, feedback de rendimiento social a curaduría.
+
+## 3. Programas y planes abiertos (secundarios al gate)
+
+| Programa o plan                                                                                                             | Estado (fecha y fuente)                                                                                                                                                     | Siguiente paso                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| SEO 2026-10 ([backlog](products/seo-2026-10/BACKLOG.md), [ledger](products/seo-2026-10/IMPLEMENTATION_LEDGER.md))           | SEO-01 a SEO-15 en NOT_STARTED, estado PLAN_PROPOSED (10-oct). Después se fusionaron #302 y #303, que tocan SEO técnico; **estado actual por verificar**                    | Revisar el ledger contra `main` y decidir si algo se adelanta o queda tras el gate |
+| Auditoría 2026-09 ([backlog](products/audit-2026-09/BACKLOG.md), [ledger](products/audit-2026-09/IMPLEMENTATION_LEDGER.md)) | Waves 2 a 8 en DONE. Waves 0 y 1 constan en REVIEW, y P0-10 y P2-07 también; el ledger de cierre de deuda del 23-sep no los menciona: **por verificar** si ya se fusionaron | Confirmar contra `main` y cerrar o fusionar lo que quede en REVIEW                 |
+| Plan 005, biblioteca de recursos (`plans/005-recursos-library-spike.md`)                                                    | TODO (23-sep)                                                                                                                                                               | Decisión del titular (§2). Las dos guías de `/recursos/` ya existen desde #345     |
+| Plan 006, graduación social (`plans/006-social-graduation-spike.md`)                                                        | BLOCKED: premisa invertida, el flag está en `true` desde el 14-sep (23-sep)                                                                                                 | Decisión del titular (§2)                                                          |
+| Plan 009, GA4 y Consent Mode                                                                                                | IN PROGRESS: construido y habilitado el 18-sep; falta la verificación posterior al despliegue (plans/README)                                                                | Acción de operador (§2)                                                            |
+| Plan 010, sistema de crecimiento medible y monetización                                                                     | TODO desde el 4-oct. Depende de documentos del repositorio del plano de control del portafolio                                                                              | Retomar tras el gate                                                               |
+| Planes 010 a 019 de la octava pasada (lockfile, UTC, hardening, etc.)                                                       | Constan DONE el 11-oct; el 010 y el 011 dicen «unmerged»: **por verificar** si llegaron a `main`                                                                            | Comprobar contra `main`                                                            |
+| Plan 020, experiencia de lectura para AdSense                                                                               | Cabecera: «implementación, verificación independiente pendiente». Su contenido se integró en #346: **por verificar** el estado                                              | Actualizar la cabecera del plan y cerrar                                           |
+
+**Issues abiertos:** [#233](https://github.com/cortega26/noticiencias/issues/233) (experimento de cadencia de publicación) y [#234](https://github.com/cortega26/noticiencias/issues/234) (Discover Reality Lab). Su progreso se registra en las propias issues.
+
+## 4. Deuda menor heredada (sin verificar)
+
+Pendientes de handoffs antiguos de imágenes (jun-2026). Ninguno bloquea nada y ninguno se reverificó:
+
+- [ ] Directivas `eslint-disable` sin uso en `scripts/check-frontmatter-dates.js`.
+- [ ] Seis archivos `.jpg` etiquetados como tales pero con datos WebP.
+- [ ] Valorar `<picture>` para un respaldo explícito AVIF y WebP.
+- [ ] Reprocesar artículos antiguos de la base de datos del backend para obtener imágenes correctas.
+- [ ] Dimensiones de `default.png` en `src/content/posts/2026-02-12-bienvenidos.md`. Pierde sentido si ese post se retira (propuesto en CONTENT_TRIAGE.md).
+
+Detalle y contexto en [`archive/backlogs/`](archive/backlogs/).

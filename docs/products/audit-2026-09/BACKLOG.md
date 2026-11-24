@@ -1,5 +1,7 @@
 # Noticiencias — Backlog canónico de mejora editorial, UX y Growth
 
+> **Estado de ejecución:** el estado y la prioridad de este trabajo viven en [`docs/BACKLOG.md`](../../BACKLOG.md). Este archivo conserva las especificaciones de los paquetes de trabajo.
+
 Fecha: 2026-09-22
 
 ## North Star

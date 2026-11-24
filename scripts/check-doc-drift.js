@@ -58,7 +58,7 @@ const DEFAULT_DOC_FILES = [
   'docs/DEPLOYMENT_SECURITY_HEADERS.md',
   'docs/EDITORIAL.md',
   'docs/EDITORIAL_VOICE.md',
-  'docs/OPERATOR_PENDING.md',
+  'docs/BACKLOG.md',
 ];
 
 const DOC_FILES = (() => {

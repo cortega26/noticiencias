@@ -1,5 +1,7 @@
 # ROADMAP — De los spikes a la operación
 
+> **Estado de ejecución:** el backlog vigente es [`docs/BACKLOG.md`](../docs/BACKLOG.md). Este archivo conserva la guía de waves y la trazabilidad; su función de backlog quedó absorbida allí.
+
 > Alcance: los 6 planes de dirección en `plans/` (001–006), planificados
 > contra el commit `8af478b` (2026-09-15) sobre el repo front-end
 > `noticiencias`. El back-end (`noticiencias_news_collector`) no fue

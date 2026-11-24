@@ -1,5 +1,7 @@
 # Search SEO backlog: independently executable work packages
 
+> **Estado de ejecución:** el estado y la prioridad de este trabajo viven en [`docs/BACKLOG.md`](../../BACKLOG.md). Este archivo conserva las especificaciones de los paquetes de trabajo.
+
 **Program:** [README.md](README.md) | **Execution:** [AGENT_HANDOFF.md](AGENT_HANDOFF.md) | **State:** [IMPLEMENTATION_LEDGER.md](IMPLEMENTATION_LEDGER.md).
 
 This backlog is a **prioritized queue, not an instruction to implement everything in a single PR**. Every task starts with a fresh code/GSC review. A conditional task may close as **NOT_NEEDED** with supporting evidence. An account or editorial action must be recorded distinctly from a merged code change. Risk and effort are approximate and should be adjusted from current repository reality.
