@@ -143,9 +143,9 @@ Base `e271512f744998e25a1da3175797a25fa6c89f1e`. El [informe de revisión](audit
 | Plan | Trabajo                                                                                  | Hallazgos     | Prioridad | Esfuerzo | Estado |
 | ---- | ---------------------------------------------------------------------------------------- | ------------- | --------- | -------- | ------ |
 | 021  | [Recibo y utilidad de reportes](021-integridad-recepcion-reportes.md)                    | H01, H06, H10 | P1        | M        | DONE   |
-| 022  | [Carga y teclado del buscador](022-busqueda-encabezado-carga-teclado.md)                 | H02           | P1        | S        | TODO   |
-| 023  | [Canales y cupo de distribución social](023-candidatos-distribucion-social.md)           | H03           | P1        | M        | TODO   |
-| 024  | [Diagnósticos de publicación automatizada](024-diagnosticos-publicacion-automatizada.md) | H04           | P1        | M        | TODO   |
+| 022  | [Carga y teclado del buscador](022-busqueda-encabezado-carga-teclado.md)                 | H02           | P1        | S        | DONE   |
+| 023  | [Canales y cupo de distribución social](023-candidatos-distribucion-social.md)           | H03           | P1        | M        | DONE   |
+| 024  | [Diagnósticos de publicación automatizada](024-diagnosticos-publicacion-automatizada.md) | H04           | P1        | M        | DONE   |
 | 025  | [Evidencia del smoke postdespliegue](025-evidencia-smoke-postdespliegue.md)              | H05           | P1        | M        | TODO   |
 
 Los cinco planes pueden ejecutarse en paralelo en ramas aisladas. Coordinar la actualización del índice y verificar cada plan sobre la base integrada antes de registrar el cierre. Los hallazgos restantes y las opciones de producto están en el informe.
