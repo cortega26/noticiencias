@@ -504,14 +504,14 @@ describe('makeSocialPost validation', () => {
   });
 
   it('rejects an unknown platform', () => {
-    expect(() =>
-      makeSocialPost(baseArticle(), { platform: 'mastodon', account_key: 'a' })
-    ).toThrowError(expect.objectContaining({ code: 'INVALID_PLATFORM' }));
+    expect(() => makeSocialPost(baseArticle(), { platform: 'mastodon', account_key: 'a' })).toThrow(
+      expect.objectContaining({ code: 'INVALID_PLATFORM' })
+    );
   });
 
   it('rejects a missing or blank account_key', () => {
     for (const account_key of ['', '   ', undefined as unknown as string]) {
-      expect(() => makeSocialPost(baseArticle(), { platform: 'x', account_key })).toThrowError(
+      expect(() => makeSocialPost(baseArticle(), { platform: 'x', account_key })).toThrow(
         expect.objectContaining({ code: 'INVALID_DESTINATION' })
       );
     }
@@ -528,7 +528,7 @@ describe('makeSocialPost validation', () => {
     ]) {
       expect(() =>
         makeSocialPost(baseArticle({ canonical_url }), { platform: 'facebook', account_key: 'a' })
-      ).toThrowError(expect.objectContaining({ code: 'INVALID_CANONICAL' }));
+      ).toThrow(expect.objectContaining({ code: 'INVALID_CANONICAL' }));
     }
   });
 
@@ -536,7 +536,7 @@ describe('makeSocialPost validation', () => {
     const canonical_url = 'https://noticiencias.com/ciencia/eclipsé/';
     expect(() =>
       makeSocialPost(baseArticle({ canonical_url }), { platform: 'x', account_key: 'a' })
-    ).toThrowError(expect.objectContaining({ code: 'INVALID_CANONICAL' }));
+    ).toThrow(expect.objectContaining({ code: 'INVALID_CANONICAL' }));
     // other networks count the URL literally and accept it
     expect(() =>
       makeSocialPost(baseArticle({ canonical_url }), { platform: 'facebook', account_key: 'a' })
@@ -547,7 +547,7 @@ describe('makeSocialPost validation', () => {
     for (const title of ['', '   ', '\u0000\u0001', '\n\t']) {
       expect(() =>
         makeSocialPost(baseArticle({ title }), { platform: 'x', account_key: 'a' })
-      ).toThrowError(expect.objectContaining({ code: 'INVALID_TEXT' }));
+      ).toThrow(expect.objectContaining({ code: 'INVALID_TEXT' }));
     }
   });
 

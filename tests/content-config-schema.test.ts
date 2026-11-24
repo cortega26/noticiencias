@@ -7,7 +7,7 @@ vi.mock('astro:content', () => ({
 
 import { collections } from '../src/content.config';
 
-const schema = (collections.posts as unknown as { schema: z.ZodTypeAny }).schema;
+const schema = (collections.posts as unknown as { schema: z.ZodType }).schema;
 
 type ParsedPost = { social?: { publish: boolean; id?: string } };
 
