@@ -82,25 +82,6 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `target_mode=${summary.targetMode}\n`, 'utf8');
           EOF
 
-      - name: Notify on bot failure
-        if: failure()
-        env:
-          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
-          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
-        run: |
-          cat > /tmp/bot-landing-failure.json <<'EOF'
-          {"check": "bot-landing", "status": "fail", "errors": [{"message": "Image delivery quota guard step failed."}]}
-          EOF
-          node scripts/backend-notify.js --status=fail --event=bot_landing_failed --payload-file=/tmp/bot-landing-failure.json || true
-
-      - name: Upload backend notification diagnostics
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: backend-notify-failure
-          path: ${{ runner.temp }}/backend-notify-failure.json
-          if-no-files-found: ignore
-
       - name: Warn when bot PAT is not configured
         env:
           GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || '' }}
@@ -109,6 +90,7 @@ jobs:
             echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured - bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run). Configure the fine-grained PAT to enable self-serve landing."
           fi
       - name: Commit mode update to automation branch
+        id: commit_mode
         if: steps.evaluate.outcome == 'success' && steps.quota_summary.outputs.mode_changed == 'true'
         env:
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
@@ -160,16 +142,33 @@ jobs:
           )"
 
           if [ -n "$existing_pr_number" ]; then
-            gh pr edit "$existing_pr_number" --title "$pr_title" --body "$pr_body"
             pr_url="$(gh pr view "$existing_pr_number" --json url --jq '.url')"
-            echo "created=false" >> "$GITHUB_OUTPUT"
             echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+            gh pr edit "$existing_pr_number" --title "$pr_title" --body "$pr_body"
+            echo "created=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           pr_url="$(gh pr create --base "$BASE_BRANCH" --head "$AUTOMATION_BRANCH" --title "$pr_title" --body "$pr_body")"
           echo "created=true" >> "$GITHUB_OUTPUT"
           echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Report quota automation failure
+        if: >-
+          failure() && (steps.evaluate.outcome == 'failure' ||
+          steps.commit_mode.outcome == 'failure' || steps.create_pr.outcome == 'failure')
+        env:
+          PHASE: ${{ steps.evaluate.outcome == 'failure' && 'Evaluate quota' || steps.commit_mode.outcome == 'failure' && 'Commit mode update' || 'Create or update pull request' }}
+          PR_URL: ${{ steps.create_pr.outputs.url }}
+        run: |
+          echo "::error title=Quota automation failed::$PHASE"
+          {
+            echo '### Quota automation failed'
+            printf -- '- Phase: %s\n' "$PHASE"
+            if [[ -n "$PR_URL" ]]; then
+              printf -- '- [Pull request](%s)\n' "$PR_URL"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Update quota guard summary with PR details
         if: always()

@@ -122,7 +122,7 @@ describe('buildEnvelope delivery_id', () => {
       githubEnv,
     });
 
-    expect(envelope.delivery_id).toBe('v1:999:publish_complete');
+    expect(envelope.delivery_id).toMatch(/^v2:[a-f0-9]{64}$/);
   });
 
   it('omits delivery_id without a real run id so the backend derives its own key', () => {
@@ -151,6 +151,46 @@ describe('buildEnvelope delivery_id', () => {
     });
 
     expect(first.delivery_id).toBe(second.delivery_id);
+  });
+
+  it('deduplicates equivalent evidence and identifies corrected attempts separately', () => {
+    const evidence = {
+      event: 'publish_complete',
+      status: 'success',
+      diagnostics: [{ check: 'deploy', status: 'pass' }],
+      publicationIds: ['a', 'b'],
+      githubEnv,
+    };
+    const refs = [
+      { refinery_id: 'a', pull_request_number: 10, content_sha256: 'a'.repeat(64) },
+      { refinery_id: 'b', pull_request_number: 11, content_sha256: 'b'.repeat(64) },
+    ];
+    const original = buildEnvelope(evidence);
+    const corrected = buildEnvelope({ ...evidence, publicationAttemptRefs: refs });
+    const reordered = buildEnvelope({
+      ...evidence,
+      publicationIds: ['b', 'a'],
+      publicationAttemptRefs: [...refs].reverse(),
+      diagnostics: [{ status: 'pass', check: 'deploy' }],
+    });
+    expect(corrected.delivery_id).not.toBe(original.delivery_id);
+    expect(reordered.delivery_id).toBe(corrected.delivery_id);
+    expect(
+      buildEnvelope({
+        ...evidence,
+        publicationAttemptRefs: [{ ...refs[0], content_sha256: 'c'.repeat(64) }, refs[1]],
+      }).delivery_id
+    ).not.toBe(corrected.delivery_id);
+    expect(
+      buildEnvelope({
+        ...evidence,
+        publicationAttemptRefs: refs,
+        githubEnv: {
+          ...githubEnv,
+          GITHUB_REPOSITORY: 'other/repo',
+        },
+      }).delivery_id
+    ).not.toBe(corrected.delivery_id);
   });
 
   it('differs per event within the same run', () => {
@@ -252,7 +292,7 @@ describe('sendWebhookNotification', () => {
       sleepImpl: noSleep,
     });
 
-    expect(result).toEqual({ ok: false, attempts: 3, error: 'network down' });
+    expect(result).toEqual({ ok: false, attempts: 3, error: 'Webhook transport error' });
     expect(fetchImpl).toHaveBeenCalledTimes(3);
   });
 
@@ -327,7 +367,10 @@ describe('sendWebhookNotification retries and diagnostics', () => {
     expect(result).toEqual({ ok: true, status: 202, attempts: 2 });
   });
 
-  it('writes a diagnostic artifact only after the final failed attempt', async () => {
+  it.each([
+    { statuses: [422], status: 422 },
+    { statuses: [500, 500, 500], status: 500 },
+  ])('writes a diagnostic artifact for terminal HTTP $status', async ({ statuses, status }) => {
     const dir = mkdtempSync(join(tmpdir(), 'notify-artifact-'));
     const artifact = join(dir, 'failure.json');
     const payload = buildEnvelope({
@@ -341,25 +384,30 @@ describe('sendWebhookNotification retries and diagnostics', () => {
       const result = await sendWebhookNotification({
         webhookUrl: 'https://backend.example/webhook',
         payload,
-        fetchImpl: fakeFetchSequence([500, 500, 500]),
+        fetchImpl: fakeFetchSequence(statuses),
         sleepImpl: noSleep,
         failureArtifactPath: artifact,
       });
 
-      expect(result).toEqual({ ok: false, status: 500, attempts: 3 });
+      expect(result).toEqual({
+        ok: false,
+        status,
+        attempts: statuses.length,
+        artifactWritten: true,
+      });
       const record = JSON.parse(readFileSync(artifact, 'utf-8'));
       expect(record.event).toBe('publish_complete');
-      expect(record.delivery_id).toBe('v1:999:publish_complete');
+      expect(record.delivery_id).toMatch(/^v2:[a-f0-9]{64}$/);
       expect(record.run_url).toBe('https://github.com/org/repo/actions/runs/999');
-      expect(record.attempts).toBe(3);
-      expect(record.status).toBe(500);
+      expect(record.attempts).toBe(statuses.length);
+      expect(record.status).toBe(status);
       expect(record.generated_at).toBeTruthy();
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
   });
 
-  it('does not write an artifact on success', async () => {
+  it('does not write an artifact when a throttled request succeeds on retry', async () => {
     const dir = mkdtempSync(join(tmpdir(), 'notify-artifact-ok-'));
     const artifact = join(dir, 'failure.json');
 
@@ -367,12 +415,56 @@ describe('sendWebhookNotification retries and diagnostics', () => {
       await sendWebhookNotification({
         webhookUrl: 'https://backend.example/webhook',
         payload: {},
-        fetchImpl: fakeFetch(202),
+        fetchImpl: fakeFetchSequence([429, 202]),
+        sleepImpl: noSleep,
         failureArtifactPath: artifact,
       });
 
       expect(existsSync(artifact)).toBe(false);
     } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('reports a write failure without replacing the delivery outcome', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'notify-artifact-write-error-'));
+    try {
+      const result = await sendWebhookNotification({
+        webhookUrl: 'https://backend.example/webhook',
+        payload: {},
+        fetchImpl: fakeFetch(422),
+        failureArtifactPath: dir,
+      });
+      expect(result).toEqual({ ok: false, status: 422, attempts: 1, artifactWritten: false });
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('keeps transport diagnostics bounded and excludes request and exception details', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'notify-artifact-transport-'));
+    const artifact = join(dir, 'failure.json');
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      const detail = 'private transport detail';
+      const result = await sendWebhookNotification({
+        webhookUrl: 'https://backend.example/webhook',
+        webhookToken: 'fixture-private-token',
+        payload: { diagnostics: ['private request data'] },
+        fetchImpl: vi.fn().mockRejectedValue(new Error(detail)),
+        maxAttempts: 1,
+        failureArtifactPath: artifact,
+      });
+      expect(result).toEqual({
+        ok: false,
+        attempts: 1,
+        error: 'Webhook transport error',
+        artifactWritten: true,
+      });
+      const output = readFileSync(artifact, 'utf8') + JSON.stringify(log.mock.calls);
+      expect(output).not.toMatch(/private|backend\.example/);
+    } finally {
+      log.mockRestore();
       rmSync(dir, { recursive: true, force: true });
     }
   });

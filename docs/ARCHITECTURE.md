@@ -54,7 +54,12 @@ This presentation choice does not change the deployed host or the Pages output
 used by the verification and post-publish callback.
 
 Workflows that upload diagnostic artifacts use a commit-SHA-pinned
-`actions/upload-artifact@v7.0.2` (Node.js 24). The build reports its active
+`actions/upload-artifact@v7.0.2` (Node.js 24). The Pages deployment uploads a bounded webhook diagnostic on terminal rejection
+or retry exhaustion. Metrics, contract snapshots, and image quota automation
+report their failed phase and available PR link through an Actions annotation
+and job summary. Publication webhooks carry validation and deployment events.
+
+The build reports its active
 image-delivery mode as an ordinary log line, not an Actions annotation; the
 `github` or `r2` selection is still owned by the existing image delivery
 configuration and is not changed here.

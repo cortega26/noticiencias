@@ -34,8 +34,7 @@ const REPO_ROOT = resolve(__dirname, '..');
 
 const deployUrl = process.argv[2] || process.env.DEPLOY_URL || '';
 const webhookUrl = process.env.BACKEND_WEBHOOK_URL;
-// CI uploads this artifact when a delivery is lost after the bounded
-// retries; the path lives in RUNNER_TEMP so it never dirties the checkout.
+// CI uploads this artifact when a delivery fails; the path lives in RUNNER_TEMP so it never dirties the checkout.
 const failureArtifactPath =
   process.env.BACKEND_NOTIFY_ARTIFACT_PATH ||
   join(process.env.RUNNER_TEMP || __dirname, 'backend-notify-failure.json');
@@ -111,7 +110,7 @@ async function main() {
     githubEnv: process.env,
   });
 
-  console.log(`[post-publish-callback] Notifying backend at ${webhookUrl}...`);
+  console.log('[post-publish-callback] Notifying backend...');
   const result = await sendWebhookNotification({
     webhookUrl,
     webhookToken: process.env.BACKEND_WEBHOOK_TOKEN,
@@ -120,9 +119,12 @@ async function main() {
   });
 
   if (!result.ok) {
+    const artifact = result.artifactWritten
+      ? `Diagnostic artifact saved to ${failureArtifactPath}.`
+      : 'Diagnostic artifact unavailable.';
     console.warn(
       `[post-publish-callback] Backend notification failed after ${result.attempts ?? 1} ` +
-        `attempt(s) but the deploy was successful. Diagnostic artifact: ${failureArtifactPath}`
+        `attempt(s) but the deploy was successful. ${artifact}`
     );
   }
 }
