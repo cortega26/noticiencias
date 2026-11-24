@@ -84,6 +84,13 @@ jobs:
   deploy:
     needs: package
     runs-on: ubuntu-24.04
+    env:
+      # The canonical public URL is the contract for verification and for the
+      # backend callback. `steps.deployment.outputs.page_url` mirrors the Pages
+      # custom-domain host and scheme, so it can be http/www while a custom
+      # domain or certificate is being provisioned. Never let that leak into
+      # the published URL stored by the backend.
+      CANONICAL_SITE_URL: https://noticiencias.com/
     # Keep the Pages environment for deployment protection rules. GitHub can
     # flag even a public, static environment URL as potentially secret; publish
     # the canonical public link in the successful job summary instead.
@@ -118,12 +125,15 @@ jobs:
       - name: Verify Deployment
         env:
           DEPLOY_CHECK_MODE: hybrid
-        run: npm run test:deploy -- ${{ steps.deployment.outputs.page_url }}
+        # Verify the canonical public URL, not the Pages deployment URL: the
+        # latter mirrors the custom-domain host/scheme and can be http/www
+        # while GitHub provisions a certificate.
+        run: npm run test:deploy -- ${{ env.CANONICAL_SITE_URL }}
 
       - name: Publish canonical site URL
         if: success()
         run: |
-          echo 'Published: https://noticiencias.com' >> "$GITHUB_STEP_SUMMARY"
+          echo "Published: ${{ env.CANONICAL_SITE_URL }}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: 📣 Post-Publish Callback
         if: success()
@@ -134,9 +144,9 @@ jobs:
           GITHUB_API_URL: ${{ github.api_url }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME: ${{ github.ref_name }}
-          DEPLOY_URL: ${{ steps.deployment.outputs.page_url }}
+          DEPLOY_URL: ${{ env.CANONICAL_SITE_URL }}
           GITHUB_BASE_SHA: ${{ github.event.before }}
-        run: node scripts/post-publish-callback.js ${{ steps.deployment.outputs.page_url }}
+        run: node scripts/post-publish-callback.js ${{ env.CANONICAL_SITE_URL }}
 
       - name: Upload backend notification diagnostics
         if: always()
