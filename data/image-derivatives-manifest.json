@@ -2379,34 +2379,6 @@
       }
     ]
   },
-  "~/assets/images/default.png": {
-    "originalWidth": 1024,
-    "originalHeight": 572,
-    "hash": "bae717e6ba555df4",
-    "variants": [
-      {
-        "width": 400,
-        "height": 223,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.400.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif"
-      },
-      {
-        "width": 900,
-        "height": 503,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.900.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.900.avif"
-      },
-      {
-        "width": 1024,
-        "height": 572,
-        "format": "avif",
-        "objectKey": "posts/default.bae717e6ba555df4.1024.avif",
-        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.1024.avif"
-      }
-    ]
-  },
   "~/assets/images/2026-11-20-watching-as-a-giant-star-swallowed-its-neighbor-and-exploded.png": {
     "originalWidth": 1672,
     "originalHeight": 941,
@@ -2439,6 +2411,34 @@
         "format": "avif",
         "objectKey": "posts/2026-11-20-watching-as-a-giant-star-swallowed-its-neighbor-and-exploded.846dcf8b1713d79d.1672.avif",
         "url": "https://www.cdn.noticiencias.com/posts/2026-11-20-watching-as-a-giant-star-swallowed-its-neighbor-and-exploded.846dcf8b1713d79d.1672.avif"
+      }
+    ]
+  },
+  "~/assets/images/default.png": {
+    "originalWidth": 1024,
+    "originalHeight": 572,
+    "hash": "bae717e6ba555df4",
+    "variants": [
+      {
+        "width": 400,
+        "height": 223,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.400.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.400.avif"
+      },
+      {
+        "width": 900,
+        "height": 503,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.900.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.900.avif"
+      },
+      {
+        "width": 1024,
+        "height": 572,
+        "format": "avif",
+        "objectKey": "posts/default.bae717e6ba555df4.1024.avif",
+        "url": "https://www.cdn.noticiencias.com/posts/default.bae717e6ba555df4.1024.avif"
       }
     ]
   }
