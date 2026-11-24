@@ -55,6 +55,9 @@ export default defineConfig({
     }),
     mdx(),
     icon({
+      // The integration scans src/icons by default; keep the (empty) directory
+      // tracked so builds do not warn about a missing local icon collection.
+      // Every <Icon> currently uses the tabler set below.
       include: {
         tabler: ['*'],
       },

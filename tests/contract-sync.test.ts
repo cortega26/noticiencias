@@ -19,7 +19,7 @@ vi.mock('astro:content', () => ({
 
 import { collections } from '../src/content.config';
 
-const postsSchema = (collections.posts as unknown as { schema: z.ZodTypeAny }).schema;
+const postsSchema = (collections.posts as unknown as { schema: z.ZodType }).schema;
 
 const invariantBasePost = {
   title: 'A valid post title',
