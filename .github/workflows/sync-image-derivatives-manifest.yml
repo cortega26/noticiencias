@@ -19,6 +19,10 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          # A GITHUB_TOKEN push is gated by GitHub bot-approval: the follow-up
+          # checks conclude action_required and never run. Use the bot PAT so
+          # the manifest commit triggers normal workflows on content branches.
+          token: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || github.token }}
 
       - name: Setup Node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -31,6 +35,14 @@ jobs:
 
       - name: Publish image derivatives manifest
         run: npm run publish:image-derivatives
+
+      - name: Warn when bot PAT is not configured
+        env:
+          BOT_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN }}
+        run: |
+          if [ -z "$BOT_TOKEN" ]; then
+            echo "::warning::NOTICIENCIAS_BOT_TOKEN is not configured - the manifest commit will use GITHUB_TOKEN and its checks will conclude action_required and never run."
+          fi
 
       - name: Commit manifest update when needed
         env:
