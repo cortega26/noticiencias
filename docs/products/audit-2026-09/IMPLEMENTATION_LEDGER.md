@@ -828,7 +828,7 @@ Fuera de wave, se cierran los follow-ups que quedaban abiertos. Rama
 - **FU-001 + flake `target-size`** (`0fb20b3`): `checkA11y` mide solo tras
   `load` + fuentes + altura estable y vuelve arriba. Evidencia: a11y 8/8
   bajo carga (14/14 cada uno) y consentimiento 3/3 bajo carga (22/22).
-  `docs/backlog/a11y-target-size-flake.md` queda resuelto.
+  `docs/archive/backlogs/a11y-target-size-flake.md` queda resuelto.
 - **FU-015** (`a2c91f9`): pasada editorial verificada sobre los 16
   titulares marcados (antes/después en `HEADLINE_INVENTORY.md`); sin
   cambios de URL y con los encabezados duplicados alineados.
@@ -864,5 +864,5 @@ Fuera de wave, se cierran los follow-ups que quedaban abiertos. Rama
 
 Ningún follow-up del programa queda abierto como deuda técnica. Las
 acciones de operador quedan consolidadas, con pasos y verificación, en
-`docs/OPERATOR_PENDING.md`; el resto es roadmap (planes 005/006, plan 048 a
+`docs/archive/backlogs/OPERATOR_PENDING.md` (hoy en `docs/BACKLOG.md` §2); el resto es roadmap (planes 005/006, plan 048 a
 ≥200 registros, revisita del benchmark LLM).

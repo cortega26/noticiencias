@@ -256,7 +256,7 @@ process exit early and aborts. Locally, start `npm run preview` first and run
   `{enabled && ...}` block of `ConsentBanner.astro`; with the id null the built
   `dist/` contains no banner script, element, footer control or gtag.js.
 - **Unresolved flake, not attributed** — tracked in
-  `docs/backlog/a11y-target-size-flake.md` with the data, three untested
+  `docs/archive/backlogs/a11y-target-size-flake.md` with the data, three untested
   hypotheses and a reproduction loop. Summary: axe `target-size` on a tag pill
   failed in ~3 of ~13 local runs under machine load, then 0/10 on this branch and
   0/10 on the pre-phase-1 commit; the failing pages carry no phase 1 markup.

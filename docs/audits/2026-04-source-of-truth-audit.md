@@ -25,7 +25,7 @@ This mattered because the previous docs mixed historical migration notes, real c
 - `docs/SOURCE_OF_TRUTH.md`
 - `docs/ARCHITECTURE.md`
 - `docs/audits/2026-04-source-of-truth-audit.md`
-- `docs/backlog/source-of-truth-backlog.md`
+- `docs/archive/backlogs/source-of-truth-backlog.md`
 
 ### Left Unchanged
 
