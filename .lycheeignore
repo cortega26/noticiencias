@@ -15,6 +15,9 @@ openai\.com
 technologyreview\.com
 # Bot challenge (403) for any non-browser client.
 ipcc\.ch
+# UNEP's document repository answers 403 to non-browser/runner clients; the
+# record is public in a browser.
+wedocs\.unep\.org
 # APS DOIs resolve to journals.aps.org, which answers 403 to runner IPs; the DOI
 # is the canonical, permanent identifier of the source.
 doi\.org/10\.1103
