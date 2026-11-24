@@ -107,6 +107,7 @@ function chunk(list, size) {
  * @property {(ms: number) => Promise<void>} [sleep]
  * @property {() => number} [rng]
  * @property {() => Promise<string>} fetchManifest returns the raw manifest body
+ * @property {import('./http.js').FetchLike} [fetchImpl] fetches public articles and images
  * @property {{ fetchImpl: Function, token?: string, timeoutMs?: number }} [githubDeps]
  * @property {import('./state.js').StateStore} [stateStore] required unless mode is dry-run
  * @property {ReturnType<typeof import('./providers/buffer.js').createBufferClient>} [bufferClient]
@@ -345,11 +346,21 @@ export async function runDistribution(deps) {
   let manifestChanged = false;
   let haltAll = false;
   let haltReason = null;
-  let newArticlesTouched = new Set();
+  const newArticlesTouched = new Set();
+  const haltedChannels = new Set();
   const sendRows = [];
 
   for (const candidate of allCandidates) {
     if (haltAll || manifestChanged) break;
+    if (haltedChannels.has(candidate.platform)) continue;
+    if (selectors.articleId && candidate.social_id !== selectors.articleId) continue;
+    if (
+      selectors.platform &&
+      selectors.platform !== 'all' &&
+      candidate.platform !== selectors.platform
+    )
+      continue;
+
     const article = findManifestArticle(manifest, candidate);
     if (!article) continue;
 
@@ -361,14 +372,6 @@ export async function runDistribution(deps) {
       continue;
     }
     newArticlesTouched.add(candidate.social_id);
-
-    if (selectors.articleId && candidate.social_id !== selectors.articleId) continue;
-    if (
-      selectors.platform &&
-      selectors.platform !== 'all' &&
-      candidate.platform !== selectors.platform
-    )
-      continue;
 
     const verified = await verifyPublicArticle({
       article: {
@@ -409,16 +412,7 @@ export async function runDistribution(deps) {
       haltAll = true;
       haltReason = outcome.haltReason;
     }
-    if (outcome.channelHalted) {
-      // Channel-level halt (Buffer draft/needs_approval, plan §13): stop
-      // sending NEW posts to this exact platform for the rest of the run,
-      // without affecting other networks.
-      allCandidates.splice(
-        0,
-        allCandidates.length,
-        ...allCandidates.filter((c) => c.platform !== candidate.platform)
-      );
-    }
+    if (outcome.channelHalted) haltedChannels.add(candidate.platform);
   }
   summary.sent = sendRows;
   if (manifestChanged)

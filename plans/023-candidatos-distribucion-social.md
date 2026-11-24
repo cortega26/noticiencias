@@ -1,6 +1,6 @@
 # Plan 023 · Respetar el canal y el cupo de distribución social
 
-**Estado** TODO · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** medio · **Dependencias** ninguna
+**Estado** DONE (verificado localmente) · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** medio · **Dependencias** ninguna
 
 **Base** `e271512f744998e25a1da3175797a25fa6c89f1e` · 2026-11-22 · **Hallazgo** H03
 
@@ -8,7 +8,7 @@
 
 Una pausa de Buffer detiene futuros envíos del canal afectado durante la ejecución actual. El resto de candidatos conserva su orden y el cupo de artículos considera solo candidatos elegibles por canal y selectores.
 
-## Estado actual y alcance
+## Diagnóstico original y alcance
 
 - `scripts/social/publish.js:340–371` arma una lista de candidatos y carga cada artículo contra el límite antes de aplicar `selectors.articleId` y `selectors.platform`. En `412–420`, ante `outcome.channelHalted`, reemplaza con `splice` la lista que recorre `for…of`. Eso desplaza candidatos sin visitar detrás del índice interno del iterador.
 - La prueba local mediante el orquestador real e integraciones simuladas usó dos artículos, cada uno con Facebook, X y LinkedIn. Al detener Facebook en el primero, X del primero se omitió. Con selector por el segundo artículo y cupo de uno, el primer artículo consumió el presupuesto y el total de envíos fue cero.
@@ -28,3 +28,7 @@ Una pausa de Buffer detiene futuros envíos del canal afectado durante la ejecuc
 | `npm run typecheck && npm run validate:content && npm run build && npm run test:dist && npm run test:audit` | Declarada                                                                        | Salida 0 con las dependencias del lockfile y un `dist/` del checkout actual. |
 
 Comprobar deriva con `git diff e271512f..HEAD -- scripts/social/publish.js tests/social/publish-orchestration.test.ts`. Si cambian las reglas de elegibilidad o los límites del ledger, revisar la política del scheduler antes de ajustar la secuencia. Trabajar en una rama o worktree aislado. Al cierre, revisar el diff y actualizar la fila 023 con el SHA y los resultados.
+
+## Cierre local
+
+Implementado sobre `1f98b330e375b49e2598ca1a49c63dfbe8eee5af`. Tres de los cinco casos nuevos reprodujeron fallos antes de la corrección y los cinco pasaron después. Pasaron lint, tipos, validación de contenido, build, dist, 355 pruebas de distribución y 1.040 pruebas de auditoría. Los casos de publicación usan integraciones simuladas.
