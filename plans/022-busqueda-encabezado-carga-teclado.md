@@ -1,6 +1,6 @@
 # Plan 022 · Resolver la primera consulta y corregir el teclado del buscador
 
-**Estado** TODO · **Prioridad** P1 · **Esfuerzo** S · **Riesgo** bajo · **Dependencias** ninguna
+**Estado** DONE (verificado localmente) · **Prioridad** P1 · **Esfuerzo** S · **Riesgo** bajo · **Dependencias** ninguna
 
 **Base** `e271512f744998e25a1da3175797a25fa6c89f1e` · 2026-11-22 · **Hallazgo** H02
 
@@ -8,7 +8,7 @@
 
 El buscador del encabezado muestra la consulta más reciente cuando el índice termina de cargar. El estado «sin resultados» representa una búsqueda ejecutada. El campo admite flechas y Enter y los demás controles conservan su activación habitual.
 
-## Estado actual y alcance
+## Diagnóstico original y alcance
 
 - `src/components/common/HeaderSearch.astro:223–248` ejecuta `search` inmediatamente y muestra vacío si recibe un array vacío. En `261–272` y `295–306`, la promesa de carga llama solo a `renderRecent`. `src/utils/browser/search-index.ts:49–75` comparte una promesa por documento, la invalida al fallar y devuelve un array vacío mientras no hay índice.
 - `HeaderSearch.astro:317–331` captura Enter en todo el diálogo si existe un destacado. El formulario de `34–60` carece de destino y nombre para la consulta. Sin destacado, Enter carece de navegación explícita a `/buscar/`.
@@ -28,3 +28,7 @@ El buscador del encabezado muestra la consulta más reciente cuando el índice t
 | `CI=1 npm run test:e2e -- tests/playwright/search.test.ts --project=mobile-375 --project=desktop-1280`                                     | Declarada. Los casos existentes pasaron en Chromium local con viewport explícito. Las dos fallas se reprodujeron en Chromium | Pasa en ambos breakpoints con foco, teclado y navegación verificados.   |
 
 Comprobar deriva con `git diff e271512f..HEAD -- src/components/common/HeaderSearch.astro tests/playwright/search.test.ts`. Si ha cambiado el contrato de traspaso de la consulta, validar primero el mecanismo vigente y revisar el alcance. Trabajar en una rama o worktree aislado. Comprobar también la interacción a 375 y 1280 px. Al cierre, revisar el diff y actualizar la fila 022 con el SHA y los resultados.
+
+## Cierre local
+
+Implementado y verificado sobre `2da7714dea317d8b908bd8617507137e1b4fcc6f`. El diálogo se monta fuera del contenedor de controles exclusivos de escritorio para que el atajo funcione a 375 px. Pasaron lint, tipos, validación de contenido, build, dist, 1.035 pruebas de auditoría y 22 casos de Chromium a 375 y 1280 px. El índice v3 de 69 artículos pesó 72.839 bytes gzip frente al límite de 153.600.
