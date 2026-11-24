@@ -67,4 +67,12 @@ npm run test:deploy -- https://noticiencias.com/
 curl -I https://noticiencias.com/
 ```
 
+## Continuous verification
+
+`.github/workflows/host-topology-guard.yml` runs the same
+`npm run test:deploy -- https://noticiencias.com/` gate daily and keeps one issue open
+(marker `<!-- host-topology-guard -->`) while it fails. The deploy job only runs on a push,
+so this catches DNS/Pages drift between deploys — for example an apex/www flip or a missing
+edge header rule.
+
 Historical observation only (not rechecked in this audit): on `2026-05-25`, the site returned `Strict-Transport-Security: max-age=0; includeSubDomains; preload` and did not return the other required security headers, which is why `https://securityheaders.com/?q=noticiencias.com&followRedirects=on` graded the site `F`.

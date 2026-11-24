@@ -1,0 +1,96 @@
+name: Host Topology Guard
+
+# Daily smoke of the production host contract. The deploy gate only runs on a
+# push, so a DNS/Pages drift (like the 2026-11-19 apex/www flip) can persist
+# for days without a deploy. This runs the same `test:deploy` gate against the
+# canonical URL and keeps ONE issue open (found by its marker) while it fails.
+
+on:
+  schedule:
+    - cron: '23 6 * * *' # daily 06:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: host-topology-guard
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify canonical host
+        id: check
+        # The report must still reach the issue step.
+        continue-on-error: true
+        env:
+          DEPLOY_CHECK_MODE: hybrid
+        run: |
+          set -o pipefail
+          npm run test:deploy -- https://noticiencias.com/ 2>&1 | tee deploy-check.txt
+
+      - name: Update the host topology issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXIT_CODE: ${{ steps.check.outcome == 'success' && '0' || '1' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          marker='<!-- host-topology-guard -->'
+          title='Host topology guard: canonical host or security headers failing'
+          # Match the marker in the body itself: search indexing of HTML
+          # comments is not guaranteed and a miss would open duplicates.
+          issue=$(gh issue list --state open --limit 200 --json number,body \
+            --jq "[.[] | select(.body | contains(\"$marker\"))][0].number // empty")
+
+          if [ "$EXIT_CODE" = "0" ]; then
+            if [ -n "$issue" ]; then
+              gh issue comment "$issue" --body "The guard is clean again ($RUN_URL). Closing."
+              gh issue close "$issue"
+            fi
+            echo "Host topology is healthy."
+            exit 0
+          fi
+
+          # Keep the issue readable: strip ANSI color codes from the deploy check.
+          [ -f deploy-check.txt ] || echo "The deploy check did not run (install or setup failed)." > deploy-check.txt
+          sed -r 's/\x1B\[[0-9;]*[mK]//g' deploy-check.txt > deploy-check-clean.txt
+
+          {
+            echo "$marker"
+            echo "Daily host topology guard failed ($RUN_URL)."
+            echo
+            echo 'This runs the same `test:deploy` gate as the deploy job against `https://noticiencias.com/`.'
+            echo 'It catches DNS/Pages drift between deploys: apex no longer canonical, missing edge headers, or the Worker bypassed.'
+            echo
+            echo '```text'
+            cat deploy-check-clean.txt
+            echo '```'
+          } > body.md
+
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --body-file body.md
+            echo "Updated issue #$issue"
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi
+
+      - name: Fail when the check failed
+        if: steps.check.outcome != 'success'
+        run: exit 1
