@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-19T15:41:41.365Z",
+  "generated_at": "2026-11-25T17:09:12.243Z",
   "content": {
-    "total_articles": 69,
-    "v2_articles": 57,
-    "total_words": 37716,
-    "avg_words": 547,
+    "total_articles": 71,
+    "v2_articles": 59,
+    "total_words": 39331,
+    "avg_words": 554,
     "categories": [
       {
         "name": "Ciencia",
@@ -12,11 +12,11 @@
       },
       {
         "name": "Tecnología",
-        "count": 17
+        "count": 18
       },
       {
         "name": "Salud",
-        "count": 11
+        "count": 12
       },
       {
         "name": "Biología",
@@ -62,6 +62,10 @@
       },
       {
         "name": "célula madre",
+        "count": 2
+      },
+      {
+        "name": "malaria",
         "count": 2
       },
       {
@@ -159,13 +163,33 @@
       {
         "name": "electridos",
         "count": 1
-      },
-      {
-        "name": "catalizadores",
-        "count": 1
       }
     ],
     "articles_by_date": [
+      {
+        "slug": "2026-11-20-una-estrella-trago-a-su-vecina-7-anos-y-estallo-primera-vez-que-se-ve-la-secuencia",
+        "title": "Una estrella tragó a su vecina 7 años y estalló: primera vez que se ve la secuencia",
+        "date": "2026-11-20",
+        "categories": [
+          "Tecnología"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Moderada — estudio publicado en Nature (revisado por pares) con reconstrucción multi-telescopio y modelo coherente, pero se trata de un único evento, el polvo oculta el desenlace final y la interpretación del balance energético depende de suposiciones de modelo.",
+        "review_status": null
+      },
+      {
+        "slug": "2026-11-10-resistencia-a-la-malaria-del-cuerno-de-africa-no-sigue-cepa-dominante",
+        "title": "Resistencia a la malaria del Cuerno de África no sigue cepa dominante",
+        "date": "2026-11-10",
+        "categories": [
+          "Salud"
+        ],
+        "schema_version": 2,
+        "editorial_score": null,
+        "confidence": "Limitada — estudio preprint sin revisión por pares, muestra de 120 aislamientos y análisis basado en modelos poblacionales con supuestos no verificados.",
+        "review_status": null
+      },
       {
         "slug": "2026-11-07-bajar-la-presion-a-120-mm-hg-protege-tras-un-derrame-pero-no-a-diabeticos",
         "title": "Bajar la presión a 120 mm Hg protege tras un derrame, pero no a diabéticos",
@@ -1007,11 +1031,11 @@
   },
   "pipeline": {
     "last_validation": null,
-    "generated_at": "2026-11-19T15:41:40.558Z"
+    "generated_at": "2026-11-25T17:09:11.567Z"
   },
   "images": {
     "delivery_mode": "github",
-    "derivatives_available": 69,
+    "derivatives_available": 71,
     "missing_derivatives": 0
   },
   "health": {
@@ -1021,16 +1045,16 @@
     },
     "editorial": {
       "status": "pass",
-      "detail": "57 artículos v2 completos."
+      "detail": "59 artículos v2 completos."
     },
     "hero_images": {
       "status": "pass",
-      "detail": "69 artículo(s) con imagen y alt.",
+      "detail": "71 artículo(s) con imagen y alt.",
       "errors": 0
     },
     "derivatives": {
       "status": "pass",
-      "detail": "69 derivativos disponibles."
+      "detail": "71 derivativos disponibles."
     },
     "lint": {
       "status": "pass",
@@ -1039,10 +1063,10 @@
     "callbacks": {
       "status": "pass",
       "evidence": "present",
-      "detail": "247 entrega(s) procesada(s), ninguna pendiente.",
+      "detail": "256 entrega(s) procesada(s), ninguna pendiente.",
       "counts": {
         "received": 0,
-        "processed": 247,
+        "processed": 256,
         "failed": 0
       }
     },
