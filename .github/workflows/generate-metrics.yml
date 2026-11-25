@@ -53,25 +53,6 @@ jobs:
         # must not run lint-staged or the full validation chain on the runner.
         run: git config core.hooksPath /dev/null
 
-      - name: Notify on bot landing failure
-        if: failure()
-        env:
-          BACKEND_WEBHOOK_URL: ${{ secrets.BACKEND_WEBHOOK_URL }}
-          BACKEND_WEBHOOK_TOKEN: ${{ secrets.BACKEND_WEBHOOK_TOKEN }}
-        run: |
-          cat > /tmp/bot-landing-failure.json <<'EOF'
-          {"check": "bot-landing", "status": "fail", "errors": [{"message": "Bot landing step failed; the PR may be left open for manual merge."}]}
-          EOF
-          node scripts/backend-notify.js --status=fail --event=bot_landing_failed --payload-file=/tmp/bot-landing-failure.json || true
-
-      - name: Upload backend notification diagnostics
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: backend-notify-failure
-          path: ${{ runner.temp }}/backend-notify-failure.json
-          if-no-files-found: ignore
-
       - name: Warn when bot PAT is not configured
         env:
           GH_TOKEN: ${{ secrets.NOTICIENCIAS_BOT_TOKEN || '' }}
@@ -80,6 +61,7 @@ jobs:
             echo "::warning::NOTICIENCIAS_BOT_TOKEN secret is not configured - bot PRs fall back to GITHUB_TOKEN and are gated by GitHub bot-approval (checks conclude action_required and never run). Configure the fine-grained PAT to enable self-serve landing."
           fi
       - name: Commit and land metrics
+        id: land
         # Direct pushes to main are rejected by branch protection; land via PR
         # (scripts/ci-land-bot-pr.sh merges once Content Guard passes).
         #
@@ -117,3 +99,17 @@ jobs:
             git push -u origin "HEAD:$BRANCH"
           fi
           bash scripts/ci-land-bot-pr.sh "$BRANCH" "chore: update pipeline metrics"
+
+      - name: Report bot landing failure
+        if: failure() && steps.land.outcome == 'failure'
+        env:
+          PR_URL: ${{ steps.land.outputs.url }}
+        run: |
+          echo "::error title=Bot landing failed::Commit and land metrics"
+          {
+            echo '### Bot landing failed'
+            echo '- Phase: Commit and land metrics'
+            if [[ -n "$PR_URL" ]]; then
+              printf -- '- [Pull request](%s)\n' "$PR_URL"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

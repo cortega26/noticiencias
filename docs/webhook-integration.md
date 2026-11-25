@@ -56,6 +56,15 @@ Crear un PR, terminar un workflow del backend y confirmar un despliegue son
 sucesos distintos. La ausencia de callback no demuestra que el despliegue haya
 fallado.
 
+## Identidad y reintentos de entrega
+
+Cada callback de CI usa un `delivery_id` de la forma `v2:<sha256>`. La huella
+incluye el repositorio, el run, el evento y la evidencia del callback. El
+timestamp del envelope y el orden de las referencias de publicación no
+cambian la identidad. Si se recupera una referencia exacta que faltaba, el
+nuevo payload recibe una clave distinta y el backend puede procesarlo. Los
+recibos v1 conservan su clave.
+
 ## Diagnóstico
 
 Revisar el rango Git, los IDs enviados, el resultado HTTP y los registros

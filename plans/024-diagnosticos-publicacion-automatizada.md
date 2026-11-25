@@ -1,6 +1,6 @@
 # Plan 024 · Registrar los fallos de notificación y aterrizaje
 
-**Estado** TODO · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** bajo · **Dependencias** ninguna
+**Estado** DONE (verificado localmente) · **Prioridad** P1 · **Esfuerzo** M · **Riesgo** bajo · **Dependencias** ninguna
 
 **Base** `e271512f744998e25a1da3175797a25fa6c89f1e` · 2026-11-22 · **Hallazgo** H04
 
@@ -8,7 +8,7 @@
 
 Las entregas terminales de webhook dejan un diagnóstico recuperable cuando se configura un destino para el artefacto. GitHub Actions muestra los fallos de automatización después del paso que falló, con la fase real y el resultado original del job.
 
-## Estado actual y alcance
+## Diagnóstico original y alcance
 
 - `scripts/backend-notify.js:119–139` ya construye y escribe un registro pequeño. En `209–210` retorna sin pasar por ese método al recibir una respuesta terminal. En `227–235` agotar los reintentos sí escribe el artefacto. `scripts/post-publish-callback.js:114–126` anuncia el artefacto en ambas ramas. `.github/workflows/deploy.yml:141–147` carga el archivo de `runner.temp` si existe.
 - `.github/workflows/generate-metrics.yml:56–73` y `.github/workflows/sync-contract-snapshot.yml:49–66` evalúan el aviso antes de sus respectivos «Commit and land». `.github/workflows/image-delivery-quota.yml:85–102` evalúa el aviso antes del commit y la creación o actualización del PR. GitHub Actions evalúa `failure()` según pasos ya ejecutados. [Expresiones de GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#failure)
@@ -27,3 +27,7 @@ Las entregas terminales de webhook dejan un diagnóstico recuperable cuando se c
 | `npm run lint && npm run validate:content && npm run build && npm run test:dist && npm run test:audit` | Lint ejecutado. Los demás comandos corresponden al gate del repo                                   | Salida 0, incluido `check:doc-drift`.         |
 
 Comprobar la deriva con `git diff e271512f..HEAD -- .github/workflows/generate-metrics.yml .github/workflows/sync-contract-snapshot.yml .github/workflows/image-delivery-quota.yml scripts/backend-notify.js scripts/post-publish-callback.js tests/backend-notify.test.ts tests/bot-landing-notification-workflows.test.ts docs/ARCHITECTURE.md`. Si cambió el esquema de eventos o el manejo de correlación, comprobar el nuevo contrato y ajustar el alcance antes de seguir. El test debe simular los fallos sin abrir PR ni enviar webhooks reales. Trabajar en una rama o worktree aislado. Al cierre, revisar el diff y actualizar la fila 024 con el SHA y los resultados.
+
+## Cierre local
+
+Implementado sobre `1f98b330e375b49e2598ca1a49c63dfbe8eee5af`, preservando el emisor v2 preparado para el plan 217 del Collector. El helper de aterrizaje conserva la URL del PR en el output del paso antes de consultar sus checks. Pasaron lint y doc drift, tipos, validación de contenido, build, dist y 1.043 pruebas de auditoría, incluidas 30 pruebas focalizadas. El helper se ejercitó con un CLI GitHub simulado y conservó el código de fallo y la URL del PR.

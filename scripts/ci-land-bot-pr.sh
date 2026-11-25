@@ -17,8 +17,12 @@ set -euo pipefail
 BRANCH="$1"
 TITLE="$2"
 
-gh pr create --base main --head "$BRANCH" --title "$TITLE" \
-  --body "Automated change committed by a scheduled workflow; merged automatically once required checks pass."
+PR_URL="$(gh pr create --base main --head "$BRANCH" --title "$TITLE" \
+  --body "Automated change committed by a scheduled workflow; merged automatically once required checks pass.")"
+printf '%s\n' "$PR_URL"
+if [[ -n "${GITHUB_OUTPUT:-}" ]]; then
+  printf 'url=%s\n' "$PR_URL" >> "$GITHUB_OUTPUT"
+fi
 
 # 90 polls x 10s = 15 min. Longer than a plain 10-min window so runner queue
 # delays (Content Guard can sit queued for tens of minutes) don't mask a

@@ -1,116 +1,124 @@
 ---
+interface Props {
+  part: 'trigger' | 'dialog';
+}
+
+const { part } = Astro.props;
 ---
 
-<button
-  type="button"
-  data-search-trigger
-  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-3 inline-flex items-center"
-  aria-label="Buscar en el archivo (pulsa /)"
-  title="Buscar (⌘K / Ctrl+K)"
->
-  <svg
-    class="h-5 w-5"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 20 20"
+{part === 'trigger' ? (
+  <button
+    type="button"
+    data-search-trigger
+    class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-3 inline-flex items-center"
+    aria-label="Buscar en el archivo (pulsa /)"
+    title="Buscar (⌘K / Ctrl+K)"
   >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-    ></path>
-  </svg>
-</button>
-
-<dialog
-  data-search-dialog
-  class="m-auto w-[min(92vw,38rem)] rounded-xl border border-border-subtle bg-white p-0 shadow-2xl backdrop:bg-slate-900/40 dark:bg-slate-950 dark:backdrop:bg-black/60"
-  aria-label="Buscador del sitio"
->
-  <div class="p-4 sm:p-5">
-    <form class="relative" role="search" data-search-form>
-      <label for="header-search-input" class="sr-only">
-        Buscar artículos
-      </label>
-      <svg
-        class="pointer-events-none absolute inset-y-0 left-0 ml-3 h-5 w-5 self-center text-text-muted"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 20 20"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-        ></path>
-      </svg>
-      <input
-        id="header-search-input"
-        data-search-input
-        type="text"
-        placeholder="Buscar por hallazgo, tema o fuente..."
-        autocomplete="off"
-        class="min-h-11 w-full rounded-md border border-border-subtle bg-white py-2.5 pl-10 pr-9 text-base text-text-body outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:bg-slate-900"
-      />
-      <button
-        type="button"
-        data-search-close
-        class="absolute inset-y-0 right-0 mr-2 inline-flex items-center rounded-md p-1.5 text-text-muted hover:bg-gray-100 hover:text-text-body dark:hover:bg-gray-700"
-        aria-label="Cerrar búsqueda"
-      >
+    <svg
+      class="h-5 w-5"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+      ></path>
+    </svg>
+  </button>
+) : (
+  <dialog
+    data-search-dialog
+    class="m-auto w-[min(92vw,38rem)] rounded-xl border border-border-subtle bg-white p-0 shadow-2xl backdrop:bg-slate-900/40 dark:bg-slate-950 dark:backdrop:bg-black/60"
+    aria-label="Buscador del sitio"
+  >
+    <div class="p-4 sm:p-5">
+      <form action="/buscar/" class="relative" role="search" data-search-form>
+        <label for="header-search-input" class="sr-only">
+          Buscar artículos
+        </label>
         <svg
-          class="h-4 w-4"
+          class="pointer-events-none absolute inset-y-0 left-0 ml-3 h-5 w-5 self-center text-text-muted"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
+          viewBox="0 0 20 20"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          ></path>
         </svg>
-      </button>
-    </form>
+        <input
+          id="header-search-input"
+          data-search-input
+          name="q"
+          type="text"
+          placeholder="Buscar por hallazgo, tema o fuente..."
+          autocomplete="off"
+          class="min-h-11 w-full rounded-md border border-border-subtle bg-white py-2.5 pl-10 pr-9 text-base text-text-body outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:bg-slate-900"
+        />
+        <button
+          type="button"
+          data-search-close
+          class="absolute inset-y-0 right-0 mr-2 inline-flex items-center rounded-md p-1.5 text-text-muted hover:bg-gray-100 hover:text-text-body dark:hover:bg-gray-700"
+          aria-label="Cerrar búsqueda"
+        >
+          <svg
+            class="h-4 w-4"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </form>
 
-    <div data-search-default class="mt-4">
-      <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">Recientes</p>
-      <ul
-        data-search-recent
-        class="mt-2 max-h-72 divide-y divide-border-subtle overflow-y-auto"
-      ></ul>
+      <div data-search-default class="mt-4">
+        <p class="text-xs font-semibold uppercase tracking-wider text-text-muted">Recientes</p>
+        <ul
+          data-search-recent
+          class="mt-2 max-h-72 divide-y divide-border-subtle overflow-y-auto"
+        ></ul>
+      </div>
+
+      <div data-search-results class="mt-4 hidden">
+        <ul
+          data-search-results-list
+          class="max-h-80 divide-y divide-border-subtle overflow-y-auto"
+        ></ul>
+      </div>
+
+      <p
+        data-search-status
+        class="mt-2 min-h-4 text-xs text-text-muted"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <footer class="mt-3 border-t border-border-subtle pt-3 text-right">
+        <a
+          data-search-all
+          href="/buscar/"
+          class="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+        >
+          Ver todos los resultados →
+        </a>
+      </footer>
     </div>
-
-    <div data-search-results class="mt-4 hidden">
-      <ul
-        data-search-results-list
-        class="max-h-80 divide-y divide-border-subtle overflow-y-auto"
-      ></ul>
-    </div>
-
-    <p
-      data-search-status
-      class="mt-2 min-h-4 text-xs text-text-muted"
-      role="status"
-      aria-live="polite"
-    ></p>
-
-    <footer class="mt-3 border-t border-border-subtle pt-3 text-right">
-      <a
-        data-search-all
-        href="/buscar/"
-        class="text-sm font-semibold text-primary underline-offset-4 hover:underline"
-      >
-        Ver todos los resultados →
-      </a>
-    </footer>
-  </div>
-</dialog>
+  </dialog>
+)}
 
 <script>
   import { getRecentPosts, isIndexReady, loadIndex, search } from '~/utils/browser/search-index';
@@ -130,6 +138,7 @@
   interface DialogRefs {
     dialog: HTMLDialogElement;
     trigger: HTMLButtonElement;
+    form: HTMLFormElement;
     input: HTMLInputElement;
     close: HTMLButtonElement;
     recent: HTMLElement;
@@ -151,6 +160,7 @@
   const getRefs = (): DialogRefs | null => {
     const dialog = document.querySelector<HTMLDialogElement>('[data-search-dialog]');
     const trigger = document.querySelector<HTMLButtonElement>('[data-search-trigger]');
+    const form = document.querySelector<HTMLFormElement>('[data-search-form]');
     const input = document.querySelector<HTMLInputElement>('[data-search-input]');
     const close = document.querySelector<HTMLButtonElement>('[data-search-close]');
     const recent = document.querySelector<HTMLElement>('[data-search-recent]');
@@ -163,6 +173,7 @@
     if (
       !dialog ||
       !trigger ||
+      !form ||
       !input ||
       !close ||
       !recent ||
@@ -177,6 +188,7 @@
     return {
       dialog,
       trigger,
+      form,
       input,
       close,
       recent,
@@ -187,9 +199,6 @@
       allLink,
     };
   };
-
-  let activeIndex = -1;
-  let currentQuery = '';
 
   const renderRecent = (refs: DialogRefs): void => {
     refs.recent.innerHTML = '';
@@ -213,122 +222,83 @@
     }
   };
 
-  const clearResults = (refs: DialogRefs): void => {
-    refs.resultsList.innerHTML = '';
-    refs.results.classList.add('hidden');
-    refs.defaultBlock.classList.remove('hidden');
-    activeIndex = -1;
-  };
-
-  const renderResults = (refs: DialogRefs, query: string): void => {
+  const renderQuery = (refs: DialogRefs): void => {
+    const { input, results, resultsList, defaultBlock, status, allLink } = refs;
+    const query = input.value.trim();
     const normalized = normalizeQuery(query);
+    allLink.href = normalized ? `/buscar/?q=${encodeURIComponent(query)}` : '/buscar/';
+    if (!isIndexReady()) return;
+
+    resultsList.replaceChildren();
+    results.classList.toggle('hidden', !normalized);
+    defaultBlock.classList.toggle('hidden', Boolean(normalized));
+
     if (!normalized) {
-      clearResults(refs);
-      refs.status.textContent = '';
+      status.textContent = '';
+      renderRecent(refs);
       return;
     }
 
-    const results = search(normalized).slice(0, 12);
-    refs.defaultBlock.classList.add('hidden');
-    refs.results.classList.remove('hidden');
-    refs.resultsList.innerHTML = '';
-    activeIndex = -1;
-
-    if (results.length === 0) {
-      refs.status.textContent = dialogEmptyMessage(query);
-      refs.allLink.href = `/buscar/?q=${encodeURIComponent(query)}`;
-      return;
-    }
-
-    refs.status.textContent = dialogCountMessage(results.length);
-    refs.allLink.href = `/buscar/?q=${encodeURIComponent(query)}`;
-
-    for (const { doc } of results) {
-      refs.resultsList.appendChild(buildDialogItem(doc));
-    }
+    const matches = search(normalized).slice(0, 12);
+    status.textContent = matches.length
+      ? dialogCountMessage(matches.length)
+      : dialogEmptyMessage(query);
+    for (const { doc } of matches) resultsList.appendChild(buildDialogItem(doc));
   };
 
-  const setActive = (refs: DialogRefs, direction: 1 | -1): void => {
+  const moveActive = (refs: DialogRefs, event: KeyboardEvent): void => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
     const items = Array.from(refs.resultsList.querySelectorAll('a'));
-    if (items.length === 0) return;
-    activeIndex = (activeIndex + direction + items.length) % items.length;
-    items.forEach((item, i) => {
-      item.classList.toggle('is-active', i === activeIndex);
-      if (i === activeIndex) item.scrollIntoView({ block: 'nearest' });
-    });
-  };
+    if (!items.length) return;
+    event.preventDefault();
 
-  const openDialog = (): void => {
-    const refs = getRefs();
-    if (!refs) return;
-
-    if (!refs.dialog.open) {
-      refs.dialog.showModal();
-      void loadIndex()
-        .then(() => renderRecent(refs))
-        .catch((error: unknown) => {
-          console.error('Search index error:', error);
-          refs.status.textContent = 'Error al cargar el buscador.';
-        });
-    }
-    refs.input.focus();
-  };
-
-  const closeDialog = (): void => {
-    const refs = getRefs();
-    if (!refs) return;
-    refs.dialog.close();
+    const direction = event.key === 'ArrowDown' ? 1 : -1;
+    let current = items.findIndex((item) => item.classList.contains('is-active'));
+    if (current < 0 && direction === -1) current = 0;
+    const active = (current + direction + items.length) % items.length;
+    items.forEach((item, index) => item.classList.toggle('is-active', index === active));
+    items[active].scrollIntoView({ block: 'nearest' });
   };
 
   const initDialog = (): void => {
     const refs = getRefs();
-    if (!refs) return;
-
-    // Marcador de ownership: evita duplicar listeners entre transiciones
-    // de página (patrón BasicScripts: elem.__awBound / dataset).
-    if (refs.trigger.dataset.searchBound === 'true') return;
+    if (!refs || refs.trigger.dataset.searchBound === 'true') return;
     refs.trigger.dataset.searchBound = 'true';
 
-    refs.trigger.addEventListener('click', openDialog);
-    refs.close.addEventListener('click', closeDialog);
+    const { dialog, form, input, resultsList, status, allLink } = refs;
+    let opening = 0;
+    refs.trigger.addEventListener('click', async () => {
+      if (dialog.open) return;
+      const currentOpening = ++opening;
+      const isCurrent = () => dialog.isConnected && dialog.open && opening === currentOpening;
 
-    refs.input.addEventListener('focus', () => {
-      void loadIndex()
-        .then(() => renderRecent(refs))
-        .catch((error: unknown) => {
-          console.error('Search index error:', error);
-          refs.status.textContent = 'Error al cargar el buscador.';
-        });
-    });
-
-    refs.input.addEventListener('input', () => {
-      currentQuery = refs.input.value;
-      renderResults(refs, currentQuery);
-    });
-
-    refs.dialog.addEventListener('close', () => {
-      refs.input.value = '';
-      currentQuery = '';
-      clearResults(refs);
-      refs.status.textContent = '';
-      refs.allLink.href = '/buscar/';
-    });
-
-    refs.dialog.addEventListener('keydown', (event: KeyboardEvent) => {
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        setActive(refs, 1);
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        setActive(refs, -1);
-      } else if (event.key === 'Enter') {
-        const items = Array.from(refs.resultsList.querySelectorAll('a'));
-        const active = items.find((item) => item.classList.contains('is-active'));
-        if (active instanceof HTMLAnchorElement) {
-          event.preventDefault();
-          window.location.href = active.href;
+      input.value = '';
+      allLink.href = '/buscar/';
+      dialog.showModal();
+      input.focus();
+      if (!isIndexReady()) {
+        status.textContent = 'Cargando índice de búsqueda...';
+        try {
+          await loadIndex();
+        } catch (error) {
+          if (isCurrent()) {
+            console.error('Search index error:', error);
+            status.textContent = 'Error al cargar el buscador.';
+          }
+          return;
         }
       }
+      if (isCurrent()) renderQuery(refs);
+    });
+
+    refs.close.addEventListener('click', () => dialog.close());
+    input.addEventListener('input', () => renderQuery(refs));
+    input.addEventListener('keydown', (event) => moveActive(refs, event));
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!normalizeQuery(input.value)) return;
+      const active = resultsList.querySelector<HTMLAnchorElement>('a.is-active');
+      window.location.href = active?.href ?? allLink.href;
     });
   };
 
@@ -347,7 +317,7 @@
       if (event.key === '/' && isEditableTarget(event.target)) return;
 
       event.preventDefault();
-      openDialog();
+      document.querySelector<HTMLButtonElement>('[data-search-trigger]')?.click();
     });
   }
 

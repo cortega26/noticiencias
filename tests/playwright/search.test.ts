@@ -3,7 +3,7 @@
  * Verifies the search index loads and the search interface works.
  */
 
-import { test, expect } from './fixtures';
+import { test, expect, type Page } from './fixtures';
 
 const SEARCH_REGRESSION_CASES = [
   [
@@ -91,6 +91,12 @@ const SEARCH_REGRESSION_CASES = [
 // build matches the deployed site. Previously the local build 404'd on
 // `/buscar/` while production served 200 — stale config, now fixed.
 test('search page loads with input field', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+
   const response = await page.goto('/buscar/');
   expect(response?.status()).toBe(200);
 
@@ -98,6 +104,18 @@ test('search page loads with input field', async ({ page }) => {
   // mobile viewports).
   const searchInput = page.locator('#search-box');
   await expect(searchInput).toBeVisible();
+  await expect(searchInput).toBeEnabled();
+  const brokenImages = await page
+    .locator('img')
+    .evaluateAll((images) =>
+      images
+        .filter(
+          (image) => image instanceof HTMLImageElement && image.complete && !image.naturalWidth
+        )
+        .map((image) => image.getAttribute('src'))
+    );
+  expect(brokenImages).toEqual([]);
+  expect(errors).toEqual([]);
 });
 
 test('search index JSON is accessible', async ({ page }) => {
@@ -171,4 +189,120 @@ test('LLMs.txt is accessible', async ({ page }) => {
 
   const text = await response.text();
   expect(text.length).toBeGreaterThan(0);
+});
+
+test.describe('header search', () => {
+  const indexRequest = '**/search.json?*';
+  const dialogSelector = '[data-search-dialog]';
+  const inputSelector = '[data-search-input]';
+  const resultSelector = '[data-search-results-list] a';
+  const [firstQuery, firstResult] = SEARCH_REGRESSION_CASES[0];
+  const [latestQuery, latestResult] = SEARCH_REGRESSION_CASES[1];
+
+  async function openHeaderSearch(page: Page) {
+    const trigger = page.locator('[data-search-trigger]');
+    if (await trigger.isVisible()) await trigger.click();
+    else await page.keyboard.press('/');
+  }
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
+
+  test('runs the latest query after the lazy index arrives', async ({ page }) => {
+    const { promise: gate, resolve: release } = Promise.withResolvers<void>();
+    await page.route(indexRequest, async (route) => {
+      await gate;
+      await route.continue();
+    });
+    const requested = page.waitForRequest(indexRequest);
+    await openHeaderSearch(page);
+    await requested;
+
+    const dialog = page.locator(dialogSelector);
+    const input = dialog.locator(inputSelector);
+    await expect(input).toBeFocused();
+    await input.fill(firstQuery);
+    await input.fill(latestQuery);
+    await expect(dialog.getByRole('status')).toHaveText('Cargando índice de búsqueda...');
+    await expect(dialog.locator(resultSelector)).toHaveCount(0);
+
+    release();
+    await expect(dialog.locator(resultSelector).first()).toHaveAttribute('href', latestResult);
+    await expect(dialog.locator('[data-search-all]')).toHaveAttribute(
+      'href',
+      `/buscar/?q=${encodeURIComponent(latestQuery)}`
+    );
+
+    await input.clear();
+    await expect(dialog.locator('[data-search-recent] a').first()).toBeVisible();
+    await expect(dialog.locator('[data-search-all]')).toHaveAttribute('href', '/buscar/');
+  });
+
+  test('retries a failed index load when reopened', async ({ page }) => {
+    await page.route(indexRequest, (route) => route.fulfill({ status: 503 }), { times: 1 });
+    const trigger = page.locator('[data-search-trigger]');
+    const dialog = page.locator(dialogSelector);
+    await openHeaderSearch(page);
+    await expect(dialog.getByRole('status')).toHaveText('Error al cargar el buscador.');
+    await dialog.locator(inputSelector).press('Escape');
+    await expect(dialog).toBeHidden();
+    if (await trigger.isVisible()) await expect(trigger).toBeFocused();
+
+    await openHeaderSearch(page);
+    await dialog.locator(inputSelector).fill(firstQuery);
+    await expect(dialog.locator(resultSelector).first()).toHaveAttribute('href', firstResult);
+  });
+
+  test('keeps Enter native on the close button and follows an active suggestion from the input', async ({
+    page,
+  }) => {
+    const dialog = page.locator(dialogSelector);
+    const input = dialog.locator(inputSelector);
+    const result = dialog.locator(resultSelector).first();
+
+    await openHeaderSearch(page);
+    await input.fill(firstQuery);
+    await expect(result).toHaveAttribute('href', firstResult);
+    await input.press('ArrowDown');
+    await expect(result).toHaveClass(/\bis-active\b/);
+    await dialog.getByRole('button', { name: 'Cerrar búsqueda' }).press('Enter');
+    await expect(dialog).toBeHidden();
+    await expect(page).toHaveURL('/');
+
+    await openHeaderSearch(page);
+    await input.fill(firstQuery);
+    await expect(result).toHaveAttribute('href', firstResult);
+    await input.press('ArrowDown');
+    await input.press('Enter');
+    await expect(page).toHaveURL(firstResult);
+  });
+
+  for (const method of ['input', 'all results link'] as const) {
+    test(`opens the full search from the ${method}`, async ({ page }) => {
+      const dialog = page.locator(dialogSelector);
+      const input = dialog.locator(inputSelector);
+      await openHeaderSearch(page);
+      await input.press('Enter');
+      await expect(dialog).toBeVisible();
+      await input.fill(latestQuery);
+      await expect(dialog.locator(resultSelector).first()).toHaveAttribute('href', latestResult);
+
+      if (method === 'input') {
+        await input.press('Enter');
+      } else {
+        await input.press('ArrowDown');
+        await dialog.locator('[data-search-all]').press('Enter');
+      }
+
+      const fullSearch = page.locator('#search-box');
+      await expect(fullSearch).toHaveValue(latestQuery);
+      await expect(page.locator(`#search-results a[href="${latestResult}"]`).first()).toBeVisible();
+      await expect(page).toHaveURL('/buscar/');
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        'href',
+        'https://noticiencias.com/buscar/'
+      );
+    });
+  }
 });

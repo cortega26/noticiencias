@@ -30,7 +30,7 @@
  *     run_url: "https://github.com/<owner>/<repo>/actions/runs/<run_id>",
  *     publication_ids: ["<refinery_id>", ...],
  *     publication_attempt_refs: [{ refinery_id, pull_request_number, content_sha256 }, ...],
- *     delivery_id: "v1:<run_id>:<event>"   // present in CI; backend dedupes
+ *     delivery_id: "v2:<sha256>"   // present in CI; backend dedupes
  *   }
  *
  * Sending is bounded-retry best-effort: transient failures (network, 429,
@@ -46,10 +46,11 @@
  * using buildEnvelope() instead of hand-assembling a payload.
  */
 
+import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 
-const DELIVERY_ID_VERSION = 'v1';
+const DELIVERY_ID_VERSION = 'v2';
 const DEFAULT_MAX_ATTEMPTS = 3;
 const DEFAULT_RETRY_BASE_MS = 1000;
 
@@ -57,16 +58,31 @@ function sleep(ms) {
   return new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
 }
 
-/**
- * Versioned delivery/idempotency id for one logical callback.
- *
- * Stable across retries of the same workflow run + event, distinct across
- * runs. Returns null when there is no real run id (local invocation), so the
- * backend derives its own stable key instead of us fabricating a shared id.
- */
-function deliveryIdFor({ event, runId }) {
+function canonicalJson(value) {
+  return JSON.stringify(value, (_key, entry) => {
+    if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
+      return Object.fromEntries(
+        Object.keys(entry)
+          .sort()
+          .map((key) => [key, entry[key]])
+      );
+    }
+    return entry;
+  });
+}
+
+function deliveryIdFor(repo, runId, evidence) {
   if (!runId || runId === 'unknown') return null;
-  return `${DELIVERY_ID_VERSION}:${runId}:${event}`;
+  const refs = evidence.publication_attempt_refs.map(canonicalJson).sort();
+  const ids = [...evidence.publication_ids].sort();
+  const material = canonicalJson({
+    repo,
+    runId,
+    ...evidence,
+    publication_ids: ids,
+    publication_attempt_refs: refs,
+  });
+  return `${DELIVERY_ID_VERSION}:${createHash('sha256').update(material).digest('hex')}`;
 }
 
 /**
@@ -96,8 +112,7 @@ export function buildEnvelope({
   const branch = env.GITHUB_REF_NAME || 'unknown';
   const runId = env.GITHUB_RUN_ID || 'unknown';
 
-  const deliveryId = deliveryIdFor({ event, runId });
-  return {
+  const evidence = {
     event,
     commit_sha: sha,
     branch,
@@ -105,9 +120,13 @@ export function buildEnvelope({
     diagnostics: Array.isArray(diagnostics) ? diagnostics : [diagnostics],
     frontend_ref: sha,
     run_url: `https://github.com/${repo}/actions/runs/${runId}`,
-    timestamp: new Date().toISOString(),
     publication_ids: publicationIds || [],
     publication_attempt_refs: publicationAttemptRefs || [],
+  };
+  const deliveryId = deliveryIdFor(repo, runId, evidence);
+  return {
+    ...evidence,
+    timestamp: new Date().toISOString(),
     ...(deliveryId ? { delivery_id: deliveryId } : {}),
   };
 }
@@ -116,11 +135,11 @@ function isRetryableStatus(status) {
   return status === 429 || status >= 500;
 }
 
-function buildFailureRecord({ payload = {}, attempts, status, error }) {
+function buildFailureRecord({ payload, attempts, status, error }) {
   const record = {
-    event: payload.event || null,
-    delivery_id: payload.delivery_id || null,
-    run_url: payload.run_url || null,
+    event: payload?.event || null,
+    delivery_id: payload?.delivery_id || null,
+    run_url: payload?.run_url || null,
     attempts,
     generated_at: new Date().toISOString(),
   };
@@ -130,12 +149,13 @@ function buildFailureRecord({ payload = {}, attempts, status, error }) {
 }
 
 function writeFailureArtifact(artifactPath, failure) {
-  if (!artifactPath) return;
   try {
     writeFileSync(artifactPath, JSON.stringify(buildFailureRecord(failure), null, 2));
-    console.error(`[backend-notify] Wrote failure artifact to ${artifactPath}`);
-  } catch (err) {
-    console.error(`[backend-notify] Could not write failure artifact: ${err.message}`);
+    console.error('[backend-notify] Wrote failure artifact.');
+    return true;
+  } catch {
+    console.error('[backend-notify] Could not write failure artifact.');
+    return false;
   }
 }
 
@@ -182,9 +202,25 @@ export async function sendWebhookNotification({
     headers.Authorization = `Bearer ${webhookToken}`;
   }
 
-  const attempts = Math.max(1, maxAttempts);
+  const attempts = Number.isFinite(maxAttempts)
+    ? Math.max(1, Math.floor(maxAttempts))
+    : DEFAULT_MAX_ATTEMPTS;
   let lastStatus;
   let lastError;
+
+  function fail(attempt) {
+    const failure = lastStatus !== undefined ? { status: lastStatus } : { error: lastError };
+    const result = { ok: false, attempts: attempt, ...failure };
+    if (!failureArtifactPath) return result;
+    return {
+      ...result,
+      artifactWritten: writeFailureArtifact(failureArtifactPath, {
+        payload,
+        attempts: attempt,
+        ...failure,
+      }),
+    };
+  }
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
@@ -201,18 +237,17 @@ export async function sendWebhookNotification({
         return { ok: true, status: response.status, attempts: attempt };
       }
 
-      const body = await response.text().catch(() => '');
       lastStatus = response.status;
       console.error(
-        `[backend-notify] Backend responded with ${response.status} (attempt ${attempt}/${attempts}): ${body.slice(0, 200)}`
+        `[backend-notify] Backend responded with ${response.status} (attempt ${attempt}/${attempts})`
       );
       if (!isRetryableStatus(response.status)) {
-        return { ok: false, status: response.status, attempts: attempt };
+        return fail(attempt);
       }
-    } catch (err) {
-      lastError = err.message;
+    } catch {
+      lastError = 'Webhook transport error';
       lastStatus = undefined;
-      console.error(`[backend-notify] Attempt ${attempt}/${attempts} failed: ${err.message}`);
+      console.error(`[backend-notify] Attempt ${attempt}/${attempts} failed: ${lastError}`);
     }
 
     if (attempt < attempts) {
@@ -224,15 +259,8 @@ export async function sendWebhookNotification({
     }
   }
 
-  const failure = lastStatus !== undefined ? { status: lastStatus } : { error: lastError };
   console.error(`[backend-notify] Giving up after ${attempts} attempt(s).`);
-  writeFailureArtifact(failureArtifactPath, {
-    payload,
-    attempts,
-    status: lastStatus,
-    error: lastStatus === undefined ? lastError : undefined,
-  });
-  return { ok: false, attempts, ...failure };
+  return fail(attempts);
 }
 
 // ---------------------------------------------------------------------------
